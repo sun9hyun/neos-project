@@ -14,4 +14,24 @@ public class MoveController {
     public String frag(){
         return "app/community/fragmentTest";
     }
+
+    @GetMapping("/freeBoard")
+    public String freeboard(){
+        return "app/community/freeboard";
+    }
+
+    @GetMapping("/counseling")
+    public String counseling(){
+        return "app/community/counseling";
+    }
+
+    @GetMapping("header")
+    public String header(){
+        return "app/fix/header";
+    }
+
+    @GetMapping("footer")
+    public String footer(){
+        return "app/fix/footer";
+    }
 }

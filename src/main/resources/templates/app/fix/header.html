@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 전 헤더</title>
+    <link rel="stylesheet" href="/css/fix/header.css">
+</head>
+<body>
+<header class="Header" th:fragment="header">
+    <nav>
+        <img src="/images/fix/logo.png" alt="letspl_logo" class="logo">
+        <ul class="Navbar">
+            <li><a href="">네오스인</a></li>
+            <li><a href="">스터디</a></li>
+            <li><a href="">자료팔기</a></li>
+            <li><a href="">커뮤니티</a></li>
+            <li><a href="">공지사항</a></li>
+        </ul>
+        <div class="loginWrap">
+            <div class="searchWrap">
+                <a class="searchIc"><span>검색</span>
+                    <img class="pcSearch" src="	https://letspl.me/assets/images/ic-search-white.png" alt="검색하기">
+                </a>
+            </div>
+            <div class="joinAndLoginWrap">
+                <a class="joinAndLogin">가입</a>
+                <a class="joinAndLogin">로그인</a>
+            </div>
+        </div>
+    </nav>
+</header>
+</body>
+</html>

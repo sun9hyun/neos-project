@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네오스인</title>
+    <link rel="stylesheet" href="/css/neosUser/neosListPrev.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+</head>
+
+<body>
+<header th:replace="/app/fix/header.html :: header"></header>
+
+<section class="peopleView">
+    <div class="commonContentViewHeader letsplerViewerHeader projectView">
+        <h1><span class="smTxt">팀빌딩</span><span class="bgTxt">멤버 모집하기</span></h1>
+        <div class="todayLetspler">
+            <h1 class="tit">멤버를 모집해봐요!</h1>
+            <div class="todayLetsplerWrap">
+                <div class="imgWrap"><img src="/images/neosUser/group_img.jpg"></div>
+                <div class="txtWrap">
+                    <div class="letsplerDescWrap">
+                        <p class="smTxt">&nbsp;채팅</p>
+                        <p></p>
+                        <h3 class="descTxt">내가 원하는 네오스인을 찾아서 채팅을 시작해보세요!</h3>
+                        <h3 class="descTxt">팀원을 모집하기 위한 첫걸음! 네오스인의 프로필을 확인하고 </h3>
+                        <h3 class="descTxt">자신이 원하는 인재라면! 주저하지 말고 채팅 해보세요! 아마 좋은 결과가 있을거에요!</h3>
+                    </div>
+                    <p>&nbsp;</p>
+                    <div class="letsplerDescWrap">
+                        <p class="smTxt">&nbsp;프로젝트 스터디</p>
+                        <p></p>
+                        <h3 class="descTxt">내가 원하는 팀원을 찾았으면 본격적으로 프로젝트와 스터디를 시작해봐요!</h3>
+                        <h3 class="descTxt">프로젝트 탭을 눌러서 모임을 생성하고 모임을 시작해보세요! </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="letspler_TopList">
+    <h1 class="tit">이번주 활발한 활동을 한 <span>TOP10,</span></h1>
+    <div class="topList">
+        <div class="top3listWrap">
+            <div class="top3 yellow"><a href="/people/추추추" target="_blank">
+                <div class="left"><img loading="lazy"
+                                       src="https://letspl.me/assets/images/ico-rankbdg-gold.png" alt="렛플력 1위">
+                    <p>추추추
+                    <div class="status up"><span class="ranking_number">930</span></div>
+                    </p>
+                </div>
+            </a>
+                <div class="right">
+                    <p>일일 로그인 완료(으)로 <span>렛플력 10</span>이 지급 되었습니다.</p>
+                </div>
+            </div>
+            <div class="top3 gray"><a href="/people/HENGXI" target="_blank">
+                <div class="left"><img loading="lazy"
+                                       src="https://letspl.me/assets/images/ico-rankbdg-silver.png" alt="렛플력 2위">
+                    <p>HENGXI
+                    <div class="status up"><span class="ranking_number">790</span></div>
+                    </p>
+                </div>
+            </a>
+                <div class="right">
+                    <p>일일 로그인 완료(으)로 <span>렛플력 10</span>이 지급 되었습니다.</p>
+                </div>
+            </div>
+            <div class="top3 red"><a href="/people/렛플운영자" target="_blank">
+                <div class="left"><img loading="lazy"
+                                       src="https://letspl.me/assets/images/ico-rankbdg-brozen.png" alt="렛플력 3위">
+                    <p>렛플운영자
+                    <div class="status up"><span class="ranking_number">760</span></div>
+                    </p>
+                </div>
+            </a>
+                <div class="right">
+                    <p>일일 로그인 완료(으)로 <span>렛플력 10</span>이 지급 되었습니다.</p>
+                </div>
+            </div>
+        </div>
+        <div class="top10listWrap">
+            <div class="top10"><a href="/people/안승미" target="_blank">
+                <div class="left"><span class="lanking">4</span>
+                    <p>안승미
+                    <div class="status up"><span class="ranking_number">750</span></div>
+                    </p>
+                </div>
+            </a>
+                <div class="right">
+                    <p>렛플내 활동(으)로 <span>렛플력 50</span>이 지급 되었습니다.</p>
+                </div>
+            </div>
+            <div class="top10"><a href="/people/엔터프로페셔널" target="_blank">
+                <div class="left"><span class="lanking">5</span>
+                    <p>엔터프로페셔널
+                    <div class="status down"><span class="ranking_number">710</span></div>
+                    </p>
+                </div>
+            </a>
+                <div class="right">
+                    <p>프로젝트/스터디&amp;네트워킹 종료(으)로 <span>렛플력 -300</span>이 회수 되었습니다.</p>
+                </div>
+            </div>
+            <div class="top10"><a href="/people/tommykim" target="_blank">
+                <div class="left"><span class="lanking">6</span>
+                    <p>tommykim
+                    <div class="status up"><span class="ranking_number">630</span></div>
+                    </p>
+                </div>
+            </a>
+                <div class="right">
+                    <p>댓글 등록(으)로 <span>렛플력 30</span>이 지급 되었습니다.</p>
+                </div>
+            </div>
+            <div class="top10"><a href="/people/심채운" target="_blank">
+                <div class="left"><span class="lanking">7</span>
+                    <p>심채운
+                    <div class="status up"><span class="ranking_number">620</span></div>
+                    </p>
+                </div>
+            </a>
+                <div class="right">
+                    <p>프로젝트/스터디&amp;네트워킹 개설(으)로 <span>렛플력 300</span>이 지급 되었습니다.</p>
+                </div>
+            </div>
+            <div class="top10"><a href="/people/써니1" target="_blank">
+                <div class="left"><span class="lanking">8</span>
+                    <p>써니1
+                    <div class="status up"><span class="ranking_number">610</span></div>
+                    </p>
+                </div>
+            </a>
+                <div class="right">
+                    <p>프로젝트/스터디&amp;네트워킹 개설(으)로 <span>렛플력 300</span>이 지급 되었습니다.</p>
+                </div>
+            </div>
+            <div class="top10"><a href="/people/김효정" target="_blank">
+                <div class="left"><span class="lanking">9</span>
+                    <p>김효정
+                    <div class="status up"><span class="ranking_number">580</span></div>
+                    </p>
+                </div>
+            </a>
+                <div class="right">
+                    <p>일일 로그인 완료(으)로 <span>렛플력 10</span>이 지급 되었습니다.</p>
+                </div>
+            </div>
+            <div class="top10"><a href="/people/nanagi" target="_blank">
+                <div class="left"><span class="lanking">10</span>
+                    <p>nanagi
+                    <div class="status up"><span class="ranking_number">570</span></div>
+                    </p>
+                </div>
+            </a>
+                <div class="right">
+                    <p>일일 로그인 완료(으)로 <span>렛플력 10</span>이 지급 되었습니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="peopleView">
+    <div class="commonContentViewHeader letsplerViewerHeader projectView">
+        <div class="peopleSearchOption">
+            <h1 class="tit" style="margin-top: 30px;">네오스인 찾기</h1>
+            <div class="searchOption" style="margin-bottom: 0px;"><select class="smSelect">
+                <option value="KR00">지역 미지정</option>
+                <option value="KR01">서울특별시</option>
+                <option value="KR02">경기도</option>
+                <option value="KR03">부산광역시</option>
+                <option value="KR04">인천광역시</option>
+                <option value="KR05">대구광역시</option>
+                <option value="KR06">경상남도</option>
+                <option value="KR07">경상북도</option>
+                <option value="KR08">대전광역시</option>
+                <option value="KR09">충청남도</option>
+                <option value="KR10">충청북도</option>
+                <option value="KR11">전라남도</option>
+                <option value="KR12">전라북도</option>
+                <option value="KR13">광주광역시</option>
+                <option value="KR14">강원도</option>
+                <option value="KR15">울산광역시</option>
+                <option value="KR16">제주특별자치도</option>
+                <option value="KR17">세종특별자치시</option>
+            </select>
+                <select class="smSelect">
+                    <option value="0000">학생 구분</option>
+                    <option value="0201">고등학생</option>
+                    <option value="0202">대학생</option>
+                </select>
+                <select class="smSelect">
+                    <option value="00">모임 여부</option>
+                    <option value="01">미진행 중</option>
+                    <option value="02">진행 중</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="peopleGrid">
+        <ul class="peopleGridList">
+            <li class="letspler_Re"><img loading="lazy" class="newMark"
+                                         src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img
+                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png"
+                                alt="민쇼니"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">민쇼니
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
+                                                        alt="실명인증"></div>
+                            <div class="certiWrap"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>3</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>3</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;UI/UX기획</span><span> 중수</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;미입력</span><span></span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
+                    <div class="userInfoTagWrap"></div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re"><img loading="lazy" class="newMark"
+                                         src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
+                                                     alt="박종우"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">박종우
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
+                                                        alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>3</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>0</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;DB/빅데이터/DS</span><span> 초심자</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;미입력</span><span></span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
+                    <div class="userInfoTagWrap"></div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re"><img loading="lazy" class="newMark"
+                                         src="https://letspl.me/assets/images/ic-badge_project_update.png"
+                                         alt="업데이트이력이 있는 렛플인">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
+                                                     alt="추추추"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_8.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">추추추
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-gray.png"
+                                                        alt="휴대폰인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>1</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>3</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;웹 서버</span><span> 초심자</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;미입력</span><span></span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
+                    <div class="userInfoTagWrap"></div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+
+
+            <li class="letspler_Re"><img loading="lazy" class="newMark"
+                                         src="https://letspl.me/assets/images/ic-badge_project_update.png"
+                                         alt="업데이트이력이 있는 렛플인">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img
+                                src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"
+                                alt="ROSA"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">ROSA
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
+                                                        alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>1</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>2</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;웹 서버</span><span> 초보</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;UI/UX기획</span><span>초보</span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
+                    <div class="userInfoTagWrap"></div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re"><img loading="lazy" class="newMark"
+                                         src="https://letspl.me/assets/images/ic-badge_project_update.png"
+                                         alt="업데이트이력이 있는 렛플인">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
+                                                     alt="손희성"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">손희성
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
+                                                        alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>1</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>0</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;웹프론트엔드</span><span> 고수</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;웹 서버</span><span>초보</span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
+                    <div class="userInfoTagWrap">
+                        <div>
+                            <h3>#BACKEND</h3>
+                        </div>
+                        <div>
+                            <h3>#RUST</h3>
+                        </div>
+                    </div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+
+
+            <li class="letspler_Re"><img loading="lazy" class="newMark"
+                                         src="https://letspl.me/assets/images/ic-badge_project_update.png"
+                                         alt="업데이트이력이 있는 렛플인">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img
+                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/undefined/images/90E02248-2776-4AC5-88EE-476D9308FD5B.png"
+                                alt="지훈씨"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">지훈씨
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
+                                                        alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>1</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>0</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;의료/의학자</span><span> 초심자</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;사업기획</span><span>초보</span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
+                    <div class="userInfoTagWrap">
+                        <div>
+                            <h3>#영어가능</h3>
+                        </div>
+                        <div>
+                            <h3>#스타트업</h3>
+                        </div>
+                        <div>
+                            <h3>#유학생</h3>
+                        </div>
+                        <div>
+                            <h3>#CEO</h3>
+                        </div>
+                        <div>
+                            <h3>#창업</h3>
+                        </div>
+                    </div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img
+                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/3/images/icon.png"
+                                alt="pp391zzk"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_21.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">pp391zzk
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
+                                                        alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>3</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>14</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;사업기획</span><span> 고수</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;크로스플랫폼</span><span>중수</span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
+                    <div class="userInfoTagWrap">
+                        <div>
+                            <h3>#기획</h3>
+                        </div>
+                        <div>
+                            <h3>#프로젝트매니징</h3>
+                        </div>
+                        <div>
+                            <h3>#모바일앱기획</h3>
+                        </div>
+                        <div>
+                            <h3>#와라와라편의점</h3>
+                        </div>
+                        <div>
+                            <h3>#크로스플랫폼</h3>
+                        </div>
+                    </div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
+                                                     alt="Alex"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_11.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">Alex
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
+                                                        alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>1</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>3</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;웹 서버</span><span> 중수</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;미입력</span><span></span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>3</span>개 있습니다</p>
+                    <div class="userInfoTagWrap">
+                        <div>
+                            <h3>#끈기</h3>
+                        </div>
+                        <div>
+                            <h3>#집중력</h3>
+                        </div>
+                        <div>
+                            <h3>#체력</h3>
+                        </div>
+                    </div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img
+                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/undefined/images/rn_image_picker_lib_temp_8f98b3f1-e6ac-498b-bca9-06eed7e31ae3.jpg"
+                                alt="태리님"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_9.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">태리님
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
+                                                        alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>1</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>1</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;사업기획</span><span> 고수</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;UI/UX기획</span><span>중수</span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
+                    <div class="userInfoTagWrap">
+                        <div>
+                            <h3>#사업기획</h3>
+                        </div>
+                    </div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img
+                                src="https://k.kakaocdn.net/dn/7ZJ2p/btrCwaZdmw8/5h3vTtKUE3Lm2QRWQ3Q761/img_640x640.jpg"
+                                alt="김기명"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_7.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">김기명
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
+                                                        alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>1</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>2</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;영업</span><span> 초보</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;투자/고문</span><span>중수</span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
+                    <div class="userInfoTagWrap">
+                        <div>
+                            <h3>#영업 #초보 #렛플</h3>
+                        </div>
+                    </div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
+                                                     alt="Dokyung"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_7.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">Dokyung
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-gray.png"
+                                                        alt="휴대폰인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>4</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>1</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;UI/UX디자인</span><span> 중수</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;미입력</span><span></span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
+                    <div class="userInfoTagWrap"></div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
+                                                     alt="아무무"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_7.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">아무무
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
+                                                        alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>3</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>0</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;크로스플랫폼</span><span> 중수</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;안드로이드</span><span>중수</span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
+                    <div class="userInfoTagWrap">
+                        <div>
+                            <h3>#FLUTTER</h3>
+                        </div>
+                        <div>
+                            <h3>#ANDROID</h3>
+                        </div>
+                        <div>
+                            <h3>#웹앱</h3>
+                        </div>
+                        <div>
+                            <h3>#앱개발자</h3>
+                        </div>
+                        <div>
+                            <h3>#대기업</h3>
+                        </div>
+                    </div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img
+                                src="https://k.kakaocdn.net/dn/bcyvx7/btrMtGBWn0B/EVIedv2DoHzbBIdFvytAgK/img_640x640.jpg"
+                                alt="graycrisp"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">graycrisp
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-gray.png"
+                                                        alt="휴대폰인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>1</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>2</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;(디자인)기타</span><span> 고수</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;UI/UX디자인</span><span>중수</span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
+                    <div class="userInfoTagWrap">
+                        <div>
+                            <h3>#모션그래픽</h3>
+                        </div>
+                        <div>
+                            <h3>#프로덕트디자이너</h3>
+                        </div>
+                        <div>
+                            <h3>#인터렉션</h3>
+                        </div>
+                        <div>
+                            <h3>#비주얼디자인</h3>
+                        </div>
+                        <div>
+                            <h3>#UXUI</h3>
+                        </div>
+                    </div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img
+                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/1884/images/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-31%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%209.51.00.png"
+                                alt="줘니이"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">줘니이
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
+                                                        alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>1</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>1</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;UI/UX디자인</span><span> 중수</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;그래픽디자인</span><span>고수</span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
+                    <div class="userInfoTagWrap">
+                        <div>
+                            <h3>#ux</h3>
+                        </div>
+                        <div>
+                            <h3>#ui</h3>
+                        </div>
+                        <div>
+                            <h3>#앱</h3>
+                        </div>
+                        <div>
+                            <h3>#디자인</h3>
+                        </div>
+                        <div>
+                            <h3>#사이드프로젝트</h3>
+                        </div>
+                    </div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
+                                                     alt="madol"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">madol
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
+                                                        alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>1</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>0</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;웹 서버</span><span> 중수</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;크로스플랫폼</span><span>중수</span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
+                    <div class="userInfoTagWrap">
+                        <div>
+                            <h3>#GOLANG</h3>
+                        </div>
+                        <div>
+                            <h3>#FLUTTER</h3>
+                        </div>
+                        <div>
+                            <h3>#PHP</h3>
+                        </div>
+                        <div>
+                            <h3>#AWS</h3>
+                        </div>
+                        <div>
+                            <h3>#MYSQL</h3>
+                        </div>
+                    </div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
+                                                     alt="임마누엘"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">임마누엘
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-gray.png"
+                                                        alt="휴대폰인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>3</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>0</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;UI/UX기획</span><span> 초보</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;UI/UX디자인</span><span>초보</span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
+                    <div class="userInfoTagWrap">
+                        <div>
+                            <h3>#UX</h3>
+                        </div>
+                        <div>
+                            <h3>#UI/UX기획</h3>
+                        </div>
+                    </div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
+                                                     alt="아니그웃"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">아니그웃
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
+                                                        alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>3</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>0</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;기타</span><span> 초보</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;미입력</span><span></span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
+                    <div class="userInfoTagWrap"></div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
+                                                     alt="김민재0"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">김민재0
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
+                                                        alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>3</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>0</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;UI/UX기획</span><span> 중수</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;미입력</span><span></span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
+                    <div class="userInfoTagWrap"></div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+
+            <li class="letspler_Re">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
+                                                     alt="LeeHyeran"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_2.png"
+                                                 alt="렛플렙">
+                            <h2 class="userName">LeeHyeran
+                                <ul class="idHoverMenu">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
+                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
+                                                        alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                      alt="커피포인트"><span>1</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
+                                      style="width: 20px; height: 20px;"><span>0</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;UI/UX기획</span><span> 중수</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;UI/UX디자인</span><span>초보</span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
+                    <div class="userInfoTagWrap"></div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png"
+                                  alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <div class="moreBtn"><a>더 불러오기</a></div>
+    </div>
+
+</section>
+
+<div th:replace="/app/fix/footer.html :: footer"></div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/neosUser/neosList.js"></script>
+
+</html>

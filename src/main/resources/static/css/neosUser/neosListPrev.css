@@ -180,7 +180,7 @@ img {
 }
 
 .peopleSearchOption .searchOption .smSelect {
-    max-width: 140px;
+    max-width: 186px;
     width: 100%;
     border: 1px solid #bcbccb;
     border-radius: 4px;
@@ -423,11 +423,6 @@ img {
     height: 24px;
 }
 
-.letspler_Re .top .profileTxt .coffeAndHeart div span {
-    font-size: 13px;
-    color: #333;
-}
-
 .letspler_Re .top .profileTxt .coffeAndHeart div {
     align-items: center;
     margin-right: 10px;
@@ -436,6 +431,7 @@ img {
 .letspler_Re .top .profileTxt .coffeAndHeart div span {
     font-size: 13px;
     color: #333;
+    margin-top: 3px;
 }
 
 .letspler_Re .bottom .userFavorite li h2, .letspler_Re .bottom .userFavorite li h3 {

@@ -1,0 +1,1287 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'GmarketSansMedium'!important;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    font-size: 16px;
+}
+
+body {
+    background: #fff;
+    -webkit-text-size-adjust: none;
+}
+
+blockquote, body, button, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, pre, select, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body, button, input, select, td, textarea, th {
+    line-height: 1.5;
+    color: #333;
+}
+
+section {
+    width: 100%;
+    background-color: #fff;
+}
+
+textarea:focus{outline: none}
+
+
+/* -----------------------------상단부------------------------------- */
+.projectPageHeaderWrap {
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 40px 0 44px;
+    position: relative;
+    background-size: cover;
+}
+
+.projectPageHeaderWrap .projectPurposeWrap {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.projectPageHeaderWrap .projectPurposeWrap div {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 8px 27px;
+    border-radius: 2px;
+    background-color: #f9f8ff;
+    display: inline-block;
+    background-color: #1A7CFF;
+}
+
+.projectPageHeaderWrap .projectPurposeWrap {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.projectPageHeaderWrap .projectPurposeWrap div h2 {
+    color: #594bba;
+    font-size: 14px;
+    line-height: 15px;
+    font-weight: 400;
+    padding: 5px 0;
+    color: #fff;
+}
+
+.projectPageHeaderWrap .projectPageHeaderContent {
+    max-width: 1040px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.projectPageHeaderWrap .projectTit {
+    text-align: center;
+    color: #222;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 34px;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: center;
+    justify-content: center;
+    margin-top: 28px;
+    margin-bottom: 12px;
+}
+
+dl, li, menu, ol, ul {
+    list-style: none;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap {
+    cursor: pointer;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-align: center;
+    align-items: center;
+    position: relative;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .leaderImg, .projectPageHeaderWrap .projectLeaderWrap .userIdWrap .leaderImg a {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .leaderImg {
+    width: 37px;
+    height: 37px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+a, button, input, select, textarea {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+a, a:active, a:hover {
+    text-decoration: none;
+}
+
+a {
+    color: #333;
+    background-color: transparent;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .leaderImg a img {
+    width: 37px;
+    height: 37px;
+    object-fit: cover;
+    aspect-ratio: auto 20 / 20;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .userIdTxt {
+    font-size: 14px;
+    color: #666;
+    margin-left: 11.5px;
+    margin-right: 6.5px;
+    font-weight: 400;
+    display: inline-block;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .confirmPhoneTxt {
+    font-size: 13px;
+    color: #1A7CFF;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .lastLoginTxt {
+    font-size: 13px;
+    color: #b7b7c7;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu {
+    display: none;
+    position: absolute;
+    width: 120px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    z-index: 555;
+    -webkit-box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    -moz-box-shadow: 2px 2px 5px 0 rgba(0,0,0,.2);
+    box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li {
+    width: 100%;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li a {
+    display: block;
+    padding: 10px 15px;
+    font-weight: 400;
+    font-size: .875rem;
+    color: #333;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.projectPageHeaderWrap .statusTagWrap {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+}
+
+.projectPageHeaderWrap .statusTagWrap .statusTag.gray {
+    background-color: #f2f2f2;
+}
+
+.projectPageHeaderWrap .statusTagWrap .statusTag {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 3px 9px;
+    color: #333;
+    border-radius: 100px;
+    margin-right: 6px;
+    font-size: .7rem;
+}
+
+.projectPageHeaderWrap .statusTagWrap .statusTag.white {
+    background-color: #fff;
+    border: 1px solid #e8e8e8;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* -----------------------------내용 TAB------------------------------- */
+
+.projectPageWrap {
+    max-width: 1200px;
+    width: 100%;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.projectPageWrap .contents {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 0 40px;
+    position: relative;
+    max-width: 840px;
+    margin: 0;
+}
+
+.contents, .projectTabMenu {
+    width: 100%;
+    background-color: #fff;
+}
+
+.projectTabMenu {
+    margin-bottom: 15px;
+    /* position: sticky; */
+    top: 55px;
+    z-index: 500;
+}
+
+.projectTabMenu>ul {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.projectTabMenu>ul li {
+    font-size: 15px;
+    color: #42495b;
+    -moz-box-flex: 1;
+    flex: 1 1;
+}
+
+.projectTabMenu>ul li a.active,
+.projectTabMenu>ul li a:hover {
+    color: #42495b;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-bottom: none;
+    padding: 12px 0;
+}
+
+.projectTabMenu>ul li a {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 11.5px 0;
+    -moz-box-align: center;
+    align-items: center;
+    display: -moz-box;
+    display: flex;
+    -moz-box-pack: center;
+    justify-content: center;
+    border-top: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #000;
+    color: #8e8ea2;
+    cursor: pointer;
+    background-color: #fcfcfc;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* --------------------------오른쪽 네비------------------------ */
+
+.projectPageWrap .projectRightInfoContetns {
+    max-width: 300px;
+    width: 100%;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 20px;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    position: sticky;
+    top: 74px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap {
+    border-bottom: 1px solid #e6e6e6;
+    padding: 20px 0;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap {
+    padding-top: 0;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .userIdWrap, .projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap .checkboxTit {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap .checkboxTit {
+    font-size: 1.125rem;
+    color: #000;
+    font-weight: 500;
+    -moz-box-align: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .leaderImg {
+    width: 54px;
+    height: 54px;
+    margin-right: 24px;
+    flex-shrink: 0;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: start;
+    align-items: flex-start;
+    -moz-box-pack: center;
+    justify-content: center;
+    position: relative;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .leaderImg .leaderImgWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .leaderImg img {
+    width: 54px;
+    height: 54px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .rightBox .userIdTxt {
+    font-size: 15px;
+    line-height: 16px;
+    font-weight: 400;
+    color: #000;
+    position: relative;
+    width: auto;
+    display: -moz-inline-box;
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .rightBox .userIdTxt:before {
+    content: "";
+    position: absolute;
+    width: 102%;
+    left: -1%;
+    height: 0;
+    background-color: rgba(97,180,199,.5);
+    bottom: 2px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .idHoverMenu {
+    display: none;
+    position: absolute;
+    width: 120px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    z-index: 555;
+    top: 16px;
+    -webkit-box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    -moz-box-shadow: 2px 2px 5px 0 rgba(0,0,0,.2);
+    box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .idHoverMenu ul li {
+    width: 100%;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .idHoverMenu ul li a {
+    display: block;
+    padding: 10px 15px;
+    font-weight: 400;
+    font-size: .875rem;
+    color: #333;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .rightBox .confirmPhoneTxt {
+    font-size: 12px;
+    line-height: 14px;
+    color: #8e8ea2;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .rightBox span {
+    display: block;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .rightBox .proejctReactionRateTxt {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .rightBox .proejctReactionRateTxt span {
+    display: inline;
+    font-size: 14px;
+    line-height: 14px;
+    color: #424251;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: end;
+    justify-content: flex-end;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .heartWrap, .projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .shareWrap {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    font-size: 13px;
+    line-height: 14px;
+    cursor: pointer;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .heartWrap {
+    margin-right: 6px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .heartWrap.viewCount svg {
+    margin-right: 4px;
+    width: 14px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .rightBox span {
+    display: block;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .heartWrap .favoriteSymbol {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .heartWrap .favoriteNumber {
+    margin-left: 5px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap span {
+    font-size: 13px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .heartWrap .favorite {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-white.b1db0e3e169a5cf61afa41daf5bfdc15.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .shareWrap img {
+    width: 16px;
+    height: auto;
+}
+
+
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.projectPageWrap .projectRightInfoContetns
+.projectRightInfoWrap .basicInfoWrap .leaderInfo .userIdWrap, .projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap .checkboxTit {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap .checkboxTit {
+    font-size: 1.125rem;
+    color: #000;
+    font-weight: 500;
+    -moz-box-align: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.projectPageWrap .projectRightInfoContetns .infoWrap .tabTxt {
+    font-size: 14px;
+    line-height: 14px;
+    color: #333;
+    font-weight: 400;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap:last-child .checkboxTit {
+    margin-bottom: 12px;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    margin-top: 0;
+    -moz-box-align: end;
+    align-items: flex-end;
+    /*     overflow-x: auto; */
+    overflow-x: hidden;
+    white-space: nowrap;
+    padding-top: 24px;
+    padding-bottom: 15px;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-right: -20px;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li:first-child .hoverName {
+    right: -52px!important;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li .hoverName {
+    width: 114px;
+    height: 28px;
+    background-color: rgba(0,0,0,.8);
+    -webkit-box-sizing: 0 3px 24px 0 rgba(0,0,0,.2);
+    -moz-box-sizing: 0 3px 24px 0 rgba(0,0,0,.2);
+    box-sizing: 0 3px 24px 0 rgba(0,0,0,.2);
+    position: absolute;
+    top: -24px;
+    right: -10px;
+    border-radius: 4px;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    z-index: 99;
+    display: none;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li p {
+    width: 100%;
+    text-align: center;
+    line-height: 1;
+    position: relative;
+    top: 3px;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li:first-child {
+    margin-left: 0;
+    margin-right: 0;
+    left: 0;
+    right: 0;
+    display: inline-block;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li span:first-child {
+    font-size: 12px!important;
+    color: #1A7CFF!important;
+    margin-right: 4px!important;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li span:last-child {
+    font-size: 12px!important;
+    color: #fff!important;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li:nth-child(2) {
+    margin-left: -20px;
+}
+
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap .subscribeBtn.active {
+    background-color: #1A7CFF;
+    color: #fff;
+    border: 1px solid #1A7CFF;
+}
+
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap .subscribeBtn {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 0!important;
+    background-color: #f2f2f2;
+    padding: 10px 0;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li .imgWrap {
+    max-width: 62px;
+    width: 62px;
+    height: 62px;
+    border-radius: 100px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li img {
+    width: 62px;
+    height: 62px;
+    object-fit: cover;
+}
+
+/* ------------------------------내용부----------------------------------- */
+
+.projectDetailWrap {
+    position: relative;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+.projectManagementContents.active {
+    display: block;
+}
+
+.projectManagementContents {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: none;
+}
+
+.projectManagementContents .workTabMenu ul,
+.projectManagementContents .workTabMenu ul li {
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.projectManagementContents .workTabMenu ul {
+    width: 100%;
+    display: -moz-box;
+    display: flex;
+    margin-bottom: 24px;
+}
+
+.projectManagementContents .workTabMenu ul li.active,
+.projectManagementContents .workTabMenu ul li:hover {
+    border: 1px solid #000;
+    background-color: #000;
+}
+
+.projectManagementContents .workTabMenu ul li:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.projectManagementContents .workTabMenu ul li {
+    display: -moz-inline-box;
+    display: inline-flex;
+    width: 50%;
+    -moz-box-pack: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px solid #000;
+}
+
+.projectManagementContents .workTabMenu ul li.active a,
+.projectManagementContents .workTabMenu ul li:hover a {
+    color: #fff;
+}
+
+.projectManagementContents .workTabMenu a {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 12px 0;
+    width: 100%;
+    display: block;
+    font-size: .8rem;
+    color: #8e8ea2;
+    text-align: center;
+    cursor: pointer;
+}
+
+.projectManagementContents .workTabMenu ul li:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.projectManagementContents .workTabMenu ul li {
+    border: 1px solid #f5f5f5;
+}
+
+.projectManagementContents .memberManagementTab.active {
+    display: block;
+}
+
+.projectManagementContents .projectMangementTab {
+    display: none;
+}
+
+.buildProjectContents {
+    padding: 40px 120px;
+}
+
+/* ------------------------------ 멤버 관리 ------------------------------- */
+
+.projectManagementContents .memberManagementTab .applicantSection {
+    margin-top: 32px;
+}
+
+.projectManagementContents .section {
+    margin-bottom: 20px;
+}
+
+.projectManagementContents .memberManagementTab .section h3 {
+    font-size: 22px;
+    color: #42495b;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.projectManagementContents .memberManagementTab .applicantSection .emptyApply {
+    width: 100%;
+    background-color: #f7f7f7;
+    font-size: 14px;
+    color: #c9c9d9;
+    text-align: center;
+    padding: 25px 0;
+    margin-bottom: 15px;
+}
+
+.projectManagementContents .memberManagementTab .nowMemberSection .listTit2 {
+    font-size: .8rem!important;
+    color: #42495b;
+    margin-bottom: 10px;
+}
+
+b, strong {
+    font-weight: 700;
+}
+
+.projectManagementContents .memberManagementTab .section h3 span {
+    font-size: 1rem;
+    margin-left: 3px;
+    color: #42495b;
+    font-weight: 400;
+}
+
+.projectManagementContents .memberManagementTab .nowMemberSection .listTit {
+    font-size: 1.125rem;
+    color: #42495b;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.projectManagementContents .projectMemberList {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin-top: 20px;
+    grid-column-gap: 6px;
+}
+
+.letspler_Re {
+    max-width: 285px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    padding: 20px 15px 10px 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
+
+.letspler_Re .top {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: start;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.letspler_Re .top .profilePicWrap {
+    position: relative;
+}
+
+.letspler_Re .top .profilePicWrap .profilePic {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #f3f3f4;
+    background-color: #efefef;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.letspler_Re .top .profilePicWrap .profilePic img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+}
+
+.letspler_Re .top .favorite.active {
+    background-size: 14px;
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-full.5a5209416a8859031c9099b5540c281a.svg);
+}
+
+.letspler_Re .top .favorite {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background-color: #fff;
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-white.b1db0e3e169a5cf61afa41daf5bfdc15.svg);
+    background-repeat: no-repeat;
+    background-size: 14px;
+    background-position: 50%;
+    bottom: -6px;
+    right: 10px;
+    border-radius: 100px;
+    -webkit-box-shadow: 0 0 24px 0 rgb(0 0 0 / 10%);
+    -moz-box-shadow: 0 0 24px 0 rgba(0,0,0,.1);
+    box-shadow: 0 0 24px 0 rgb(0 0 0 / 10%);
+}
+
+.letspler_Re .top .profileTxt, .letspler_Re .top .profileTxt .idWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-direction: normal;
+}
+
+.letspler_Re .top .profileTxt {
+    -moz-box-orient: vertical;
+    flex-direction: column;
+}
+
+.letspler_Re .top .profileTxt .idWrap {
+    -moz-box-orient: horizontal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.letspler_Re .top .profileTxt, .letspler_Re .top .profileTxt .idWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-direction: normal;
+}
+
+.letspler_Re .top .profileTxt .idWrap .userLv {
+    width: 28px;
+    height: 20px;
+    object-fit: cover;
+    margin-right: 8px;
+}
+
+.letspler_Re .top .profileTxt .idWrap .userName {
+    font-size: 15px;
+    line-height: 28px;
+    color: #333;
+    margin-right: 5px;
+    cursor: pointer;
+    letter-spacing: -.5px;
+    font-weight: 500;
+}
+
+.letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu {
+    display: none;
+    position: absolute;
+    width: 120px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    -moz-box-shadow: 2px 2px 5px 0 rgb(0 0 0/20%);
+    box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    margin-left: -35px;
+}
+
+.letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu li {
+    width: 100%;
+}
+
+dl, li, menu, ol, ul {
+    list-style: none;
+}
+
+.letspler_Re .top .profileTxt .idWrap .certiWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+}
+
+.letspler_Re .top .profileTxt .idWrap .userCertIcon {
+    width: 18px;
+    height: 18px;
+    object-fit: cover;
+}
+
+.letspler_Re .top .profileTxt .coffeAndHeart, .letspler_Re .top .profileTxt .coffeAndHeart div {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+.letspler_Re .top .profileTxt .coffeAndHeart {
+    margin-top: 2px;
+    margin-left: 1px;
+}
+
+.letspler_Re .top .profileTxt .coffeAndHeart div {
+    -moz-box-align: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.letspler_Re .top .profileTxt .coffeAndHeart, .letspler_Re .top .profileTxt .coffeAndHeart div {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+.letspler_Re .top .profileTxt .coffeAndHeart div img {
+    width: 24px;
+    height: 24px;
+}
+
+.letspler_Re .top .profileTxt .coffeAndHeart div span {
+    font-size: 13px;
+    color: #333;
+}
+
+.letspler_Re .bottom .ingProjectTxt {
+    font-size: 13px;
+    color: #666;
+    margin-top: 10px;
+    font-weight: 400;
+}
+
+.letspler_Re .bottom .userFavorite li h2,
+.letspler_Re .bottom .userFavorite li h3 {
+    line-height: normal;
+    font-size: medium;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.letspler_Re .bottom .userFavorite li h2 span:first-child {
+    font-size: 14px;
+    color: #333;
+    font-weight: 400;
+}
+
+.letspler_Re .bottom .userFavorite li h2 span:nth-child(2) {
+    font-size: 14px;
+    color: #999;
+    margin-left: 10px;
+    font-weight: 400;
+}
+
+.letspler_Re .bottom .chatBtn {
+    width: 100%;
+    display: -moz-box;
+    display: flex;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-pack: center;
+    justify-content: center;
+    padding: 6px;
+    font-size: 13px;
+    margin-top: 10px;
+    -moz-box-align: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.letspler_Re .bottom .chatBtn div {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.letspler_Re .bottom .chatBtn div img {
+    width: 16px;
+    margin-right: 6px;
+}
+
+.letspler_Re .bottom .chatBtn div span {
+    cursor: pointer;
+}
+
+.projectDetailWrap button.blackBtn {
+    padding: 7px 21px 6px;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+    font-size: 13px;
+    color: #222;
+}
+
+.projectDetailWrap button {
+    padding: 14px 29px!important;
+    border-radius: 4px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
+
+.projectDetailWrap button, .projectDetailWrap button.black {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: .75rem;
+    line-height: 1rem;
+}
+
+button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.projectManagementContents .memberManagementTab .nowMemberSection .listTit3 {
+    font-size: 20px!important;
+    color: #42495b;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.projectManagementContents .projectMemberList {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin-top: 20px;
+    grid-column-gap: 6px;
+}
+
+.projectManagementContents .projectMemberList.projectMemberPosition .letspler_Re {
+    padding: 30px 15px 30px 20px;
+}
+
+.letspler_Re {
+    max-width: 285px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    padding: 20px 15px 10px 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
+
+.projectManagementContents .projectMemberList.projectMemberPosition .letspler_Re .top {
+    margin-bottom: 28px;
+}
+
+.letspler_Re .top {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: start;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+.letspler_Re .top .profilePicWrap {
+    position: relative;
+}
+
+.letspler_Re .top .profilePicWrap .profilePic {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #f3f3f4;
+    background-color: #efefef;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.letspler_Re .top .profilePicWrap .profilePic img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+}
+
+.projectManagementContents .projectMemberList.projectMemberPosition .letspler_Re .bottom {
+    font-size: 14px;
+}
+
+.letspler_Re .top .profileTxt, .letspler_Re .top .profileTxt .idWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-direction: normal;
+}
+
+.letspler_Re .top .profileTxt .idWrap {
+    -moz-box-orient: horizontal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.letspler_Re .top .profileTxt, .letspler_Re .top .profileTxt .idWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-direction: normal;
+}
+
+/* ------------------------------ 정보 관리 ------------------------------- */

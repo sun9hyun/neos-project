@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>전자이용 약관</title>
+    <link rel="stylesheet" href="/css/loginAndJoin/electronicFinanceClause.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+</head>
+<body>
+
+<header th:replace="/app/fix/header.html :: header"></header>
+<div class="policySection">
+    <div class="verAndstart">
+        <p class="verNum"></p>
+        <p class="startDate"></p>
+    </div>
+    <div class="policyWrap" id="policyWrap">
+        <h1>제&nbsp;1 장&nbsp;총칙</h1>
+        <h2>제&nbsp;1 조&nbsp;목적&nbsp;및&nbsp;적용대상</h2>
+        <p><br data-tomark-pass=""><br>
+            본&nbsp;약관은&nbsp;어썸크루(이하&nbsp;‘회사’라&nbsp;합니다)가&nbsp;제공하는&nbsp;전자지급결제대행서비스,
+            선불전자지급수단의&nbsp;발행&nbsp;및&nbsp;관리서비스,
+            전자고지결제서비스(이하&nbsp;통칭하여&nbsp;‘전자금융거래서비스’라&nbsp;합니다)를&nbsp;이용자가&nbsp;이용함에&nbsp;있어, 회사와&nbsp;이용자간&nbsp;권리,
+            의무&nbsp;및&nbsp;회원의&nbsp;이용절차&nbsp;등에&nbsp;관한&nbsp;사항을&nbsp;규정하는&nbsp;것을&nbsp;그&nbsp;목적으로&nbsp;합니다.</p>
+        <p>회사는&nbsp;통신판매업을&nbsp;운영하며,
+            회사가&nbsp;제공하는&nbsp;결제서비스를&nbsp;이용한&nbsp;결제/정산은&nbsp;회사가&nbsp;정한&nbsp;결제/정산규정에&nbsp;따릅니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;2 조&nbsp;용어정의</h2>
+        <p>본&nbsp;약관에서&nbsp;정한&nbsp;용어의&nbsp;정의는&nbsp;아래와&nbsp;같습니다.</p>
+        <p>‘전자금융거래’라&nbsp;함은&nbsp;회사가&nbsp;전자적&nbsp;장치를&nbsp;통하여&nbsp;전자금융업무를&nbsp;제공하고,
+            이용자가&nbsp;회사의&nbsp;종사자와&nbsp;직접&nbsp;대면하거나&nbsp;의사소통을&nbsp;하지&nbsp;아니하고&nbsp;자동화된&nbsp;방식으로&nbsp;이를&nbsp;이용하는&nbsp;거래를&nbsp;말합니다.
+        </p>
+        <p>‘전자지급수단’이라&nbsp;함은&nbsp;선불전자지급수단,
+            신용카드&nbsp;등&nbsp;전자금융거래법&nbsp;제2조&nbsp;제11호에서&nbsp;정하는&nbsp;전자적&nbsp;방법에&nbsp;따른&nbsp;지급수단을&nbsp;말합니다.
+        </p>
+        <p>‘전자지급거래’라&nbsp;함은&nbsp;자금을&nbsp;주는&nbsp;자(이하&nbsp;‘지급인’이라&nbsp;합니다)가&nbsp;회사로&nbsp;하여금&nbsp;전자지급수단을&nbsp;이용하여&nbsp;자금을&nbsp;받는&nbsp;자(이하&nbsp;‘수취인’이라&nbsp;합니다)에게&nbsp;자금을&nbsp;이동하게&nbsp;하는&nbsp;전자금융거래를&nbsp;말합니다.
+        </p>
+        <p>‘전자적&nbsp;장치’라&nbsp;함은&nbsp;전자금융거래정보를&nbsp;전자적&nbsp;방법으로&nbsp;전송하거나&nbsp;처리하는데&nbsp;이용되는&nbsp;장치로서&nbsp;현금자동지급기,
+            자동입출금기, 지급용단말기, 컴퓨터,
+            전화기&nbsp;그&nbsp;밖에&nbsp;전자적&nbsp;방법으로&nbsp;정보를&nbsp;전송하거나&nbsp;처리하&nbsp;는&nbsp;장치를&nbsp;말합니다.</p>
+        <p>‘접근매체’라&nbsp;함은&nbsp;전자금융거래에&nbsp;있어서&nbsp;거래지시를&nbsp;하거나&nbsp;회원&nbsp;및&nbsp;거래내용의&nbsp;진실성과&nbsp;정확성을&nbsp;확보하기&nbsp;위하여&nbsp;사용되는&nbsp;수단&nbsp;또는&nbsp;정보로서&nbsp;전자식&nbsp;카드&nbsp;및&nbsp;이에&nbsp;준하는&nbsp;전자적&nbsp;정보(신용카드번호를&nbsp;포함합니&nbsp;다),
+            전자서명법&nbsp;상의&nbsp;전자서명생성정보&nbsp;및&nbsp;인증서, 금융기관&nbsp;또는&nbsp;전자금융업자에&nbsp;등록된&nbsp;회원번호,
+            회원의&nbsp;생체정보,
+            이상의&nbsp;수단이나&nbsp;정보를&nbsp;사용하는데&nbsp;필요한&nbsp;비밀번호&nbsp;등&nbsp;전자금융거래법&nbsp;제2조&nbsp;제10호에서&nbsp;정하고&nbsp;있는&nbsp;것을&nbsp;말합니다.
+        </p>
+        <p>‘전자금융거래서비스’라&nbsp;함은&nbsp;회사가&nbsp;이용자에게&nbsp;제공하는&nbsp;제4조&nbsp;기재의&nbsp;서비스를&nbsp;말합니다.</p>
+        <p>‘이용자’이라&nbsp;함은&nbsp;본&nbsp;약관&nbsp;제3조&nbsp;제2항, 제3항,
+            제4항에서&nbsp;달리&nbsp;정한&nbsp;경우를&nbsp;제외하고는&nbsp;본&nbsp;약관에&nbsp;동의하고&nbsp;본&nbsp;약관에&nbsp;따라&nbsp;회사가&nbsp;제공하는&nbsp;전자금융거래서비스를&nbsp;이용하는&nbsp;이용자를&nbsp;말합니다.
+        </p>
+        <p>‘거래지시’라&nbsp;함은&nbsp;회원이&nbsp;본&nbsp;약관에&nbsp;따라&nbsp;회사에게&nbsp;전자금융거래의&nbsp;처리를&nbsp;지시하는&nbsp;것을&nbsp;말합니다.
+        </p>
+        <p>‘오류’라&nbsp;함은&nbsp;이용자의&nbsp;고의&nbsp;또는&nbsp;과실&nbsp;없이&nbsp;전자금융거래가&nbsp;전자금융거래계약&nbsp;또는&nbsp;이용자의&nbsp;거래지시에&nbsp;따라&nbsp;이행되지&nbsp;아니한&nbsp;경우를&nbsp;말합니다.
+        </p>
+        <p>‘개설자’라&nbsp;함은&nbsp;개설된&nbsp;모임의&nbsp;주최자를&nbsp;이야기합니다.</p>
+        <p>‘신청자’라&nbsp;함은&nbsp;개설된&nbsp;모임의&nbsp;참여자를&nbsp;이야기합니다.</p>
+        <p>본&nbsp;조&nbsp;및&nbsp;본&nbsp;약관의&nbsp;다른&nbsp;조항에서&nbsp;정의한&nbsp;것을&nbsp;제외하고는&nbsp;전자금융거래법&nbsp;등&nbsp;관련&nbsp;법령에&nbsp;정한&nbsp;바에&nbsp;따릅니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;3 조&nbsp;약관의&nbsp;명시&nbsp;및&nbsp;변경</h2>
+        <p><br data-tomark-pass=""><br>
+            회사는&nbsp;이용자와&nbsp;전자금융거래를&nbsp;하기&nbsp;전에&nbsp;본&nbsp;약관을&nbsp;개별&nbsp;서비스에&nbsp;게시하고&nbsp;본&nbsp;약관의&nbsp;중요한&nbsp;내용을&nbsp;확인할&nbsp;수&nbsp;있도록&nbsp;합니다.
+        </p>
+        <p>회사는&nbsp;이용자의&nbsp;요청이&nbsp;있는&nbsp;경우&nbsp;전자문서의&nbsp;전송(전자우편을&nbsp;이용한&nbsp;전송을&nbsp;포함합니다), 모사전송,
+            우편&nbsp;또는&nbsp;직접교부의&nbsp;방식에&nbsp;의하여&nbsp;본&nbsp;약관의&nbsp;사본을&nbsp;이용자에게&nbsp;교부합니다.</p>
+        <p>회사가&nbsp;본&nbsp;약관을&nbsp;변경하는&nbsp;때에는&nbsp;그&nbsp;시행일&nbsp;30일&nbsp;전에&nbsp;변경되는&nbsp;약관을&nbsp;금융거래정보&nbsp;입력화면&nbsp;또는&nbsp;개별&nbsp;서비스의&nbsp;공지사항&nbsp;게시판&nbsp;등에&nbsp;게시함으로써&nbsp;이용자에게&nbsp;공지합니다.
+            다만,
+            법령의&nbsp;개정으로&nbsp;인하여&nbsp;긴급하게&nbsp;약관을&nbsp;변경한&nbsp;때에는&nbsp;변경된&nbsp;약관을&nbsp;홈페이지에&nbsp;30일&nbsp;이상&nbsp;게시하고&nbsp;이용자에게&nbsp;전자우편&nbsp;등을&nbsp;통하여&nbsp;사후&nbsp;통지합니다.
+        </p>
+        <p>회사는&nbsp;제3항의&nbsp;공지나&nbsp;통지를&nbsp;할&nbsp;경우&nbsp;“이용자가&nbsp;변경에&nbsp;동의하지&nbsp;아니한&nbsp;경우&nbsp;공지나&nbsp;통지를&nbsp;받은&nbsp;날로부터&nbsp;30일&nbsp;이내에&nbsp;계약을&nbsp;해지할&nbsp;수&nbsp;있으며,
+            계약해지의&nbsp;의사표시를&nbsp;하지&nbsp;아니한&nbsp;경우에는&nbsp;변경에&nbsp;동의한&nbsp;것으로&nbsp;본다.”라는&nbsp;취지의&nbsp;내용을&nbsp;공지하거나&nbsp;통지합니다.
+        </p>
+        <p>이용자가&nbsp;제4항의&nbsp;공지나&nbsp;통지를&nbsp;받은&nbsp;날로부터&nbsp;30일&nbsp;이내에&nbsp;계약해지의&nbsp;의사표시를&nbsp;하지&nbsp;아니한&nbsp;경우에는&nbsp;변경에&nbsp;동의한&nbsp;것으로&nbsp;봅니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;4 조&nbsp;이용시간</h2>
+        <p><br data-tomark-pass=""><br>
+            회사는&nbsp;이용자에게&nbsp;연중무휴&nbsp;1일&nbsp;24시간&nbsp;전자금융거래서비스를&nbsp;제공함을&nbsp;원칙으로&nbsp;합니다. 다만,
+            금융회사&nbsp;기타&nbsp;결제수단&nbsp;발행업자의&nbsp;사정에&nbsp;따라&nbsp;달리&nbsp;정할&nbsp;수&nbsp;있습니다.</p>
+        <p>회사는&nbsp;정보통신설비의&nbsp;보수,
+            점검&nbsp;기타&nbsp;기술상의&nbsp;필요나&nbsp;금융회사&nbsp;기타&nbsp;결제수단&nbsp;발행업자의&nbsp;사정에&nbsp;의하여&nbsp;전자금융거래서비스&nbsp;중단이&nbsp;불가피한&nbsp;경우,
+            전자금융거래서비스&nbsp;중단&nbsp;3일&nbsp;전까지&nbsp;게시&nbsp;가능한&nbsp;전자적&nbsp;수단을&nbsp;통하여&nbsp;전자금융거래서비스&nbsp;중단&nbsp;사실을&nbsp;게시한&nbsp;후&nbsp;전자금융거래서비스를&nbsp;일시&nbsp;중단할&nbsp;수&nbsp;있습니다.
+            다만, 시스템&nbsp;장애복구, 긴급한&nbsp;프로그램&nbsp;보수,
+            외부요인&nbsp;등&nbsp;불가피한&nbsp;경우에는&nbsp;사전&nbsp;게시&nbsp;없이&nbsp;전자금융거래서비스를&nbsp;중단할&nbsp;수&nbsp;있습니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;5 조&nbsp;거래내용의&nbsp;확인</h2>
+        <p><br data-tomark-pass=""><br>
+            회사는&nbsp;개별&nbsp;서비스&nbsp;내&nbsp;이용자&nbsp;정보&nbsp;조회&nbsp;화면을&nbsp;통하여&nbsp;이용자의&nbsp;거래내용&nbsp;(이용자의&nbsp;오류정정&nbsp;요구사실&nbsp;및&nbsp;처리&nbsp;결과에&nbsp;관한&nbsp;사항을&nbsp;포함합니다.)을&nbsp;확인할&nbsp;수&nbsp;있도록&nbsp;하며,
+            이용자의&nbsp;거래내용에&nbsp;대해&nbsp;서면교부를&nbsp;요청하는&nbsp;경우에는&nbsp;요청을&nbsp;받은&nbsp;날로부터&nbsp;2주&nbsp;이내에&nbsp;모사전송,
+            우편&nbsp;또는&nbsp;직접교부의&nbsp;방법으로&nbsp;거래내용에&nbsp;관한&nbsp;서면을&nbsp;교부합니다.</p>
+        <p>회사는&nbsp;제1항에&nbsp;따른&nbsp;이용자의&nbsp;거래내용&nbsp;서면교부&nbsp;요청을&nbsp;받은&nbsp;경우&nbsp;전자적&nbsp;장치의&nbsp;운영장애,
+            그&nbsp;밖의&nbsp;이유로&nbsp;거래내용을&nbsp;제공할&nbsp;수&nbsp;없는&nbsp;때에는&nbsp;즉시&nbsp;이용자에게&nbsp;전자문서&nbsp;전송(전자우편을&nbsp;이용한&nbsp;전송을&nbsp;포함한다.)의&nbsp;방법으로&nbsp;그러한&nbsp;사유를&nbsp;알려야&nbsp;하며,
+            전자적&nbsp;장치의&nbsp;운영장애&nbsp;등의&nbsp;사유로&nbsp;거래내용을&nbsp;제공할&nbsp;수&nbsp;없는&nbsp;기간은&nbsp;제1항의&nbsp;거래내용에&nbsp;관한&nbsp;서면의&nbsp;교부기간에&nbsp;산입하지&nbsp;아니합니다.
+        </p>
+        <p>1.
+            제1항의&nbsp;대상이&nbsp;되는&nbsp;거래내용&nbsp;중&nbsp;정보보관&nbsp;대상기간이&nbsp;5년인&nbsp;것은&nbsp;다음&nbsp;각호와&nbsp;같습니다.
+        </p>
+        <ol>
+            <li>거래계좌의&nbsp;명칭&nbsp;또는&nbsp;번호<br>
+                <span class="size" style="font-size:13px" data-tomark-pass="">&nbsp;2)
+                        전자금융거래의&nbsp;종류&nbsp;및&nbsp;금액</span><br>
+                <span class="size" style="font-size:13px" data-tomark-pass="">&nbsp;3)
+                        전자금융거래상대방을&nbsp;나타내는&nbsp;정보</span><br>
+                <span class="size" style="font-size:13px" data-tomark-pass="">&nbsp;4) 전자금융거래일시</span><br>
+                <span class="size" style="font-size:13px" data-tomark-pass="">&nbsp;5)
+                        전자적&nbsp;장치의&nbsp;종류&nbsp;및&nbsp;전자적&nbsp;장치를&nbsp;식별할&nbsp;수&nbsp;있는&nbsp;정보</span><br>
+                <span class="size" style="font-size:13px" data-tomark-pass="">&nbsp;6)
+                        회사가&nbsp;전자금융거래의&nbsp;대가로&nbsp;받은&nbsp;수수료</span><br>
+                <span class="size" style="font-size:13px" data-tomark-pass="">&nbsp;7)
+                        회원의&nbsp;출금&nbsp;동의에&nbsp;관한&nbsp;사항</span><br>
+                <span class="size" style="font-size:13px" data-tomark-pass="">&nbsp;8)
+                        해당&nbsp;전자금융거래와&nbsp;관련한&nbsp;전자적&nbsp;장치의&nbsp;접속기록</span><br>
+                <span class="size" style="font-size:13px" data-tomark-pass="">&nbsp;9)
+                        전자금융거래의&nbsp;신청&nbsp;및&nbsp;조건의&nbsp;변경에&nbsp;관한&nbsp;사항</span>
+            </li>
+        </ol>
+        <p>2.
+            제1항의&nbsp;대상이&nbsp;되는&nbsp;거래내용&nbsp;중&nbsp;정보보관&nbsp;대상기간이&nbsp;1년인&nbsp;것은&nbsp;다음&nbsp;각&nbsp;호와&nbsp;같습니다.
+        </p>
+        <ol>
+            <li>전자지급수단의&nbsp;이용과&nbsp;관련된&nbsp;거래승인에&nbsp;관한&nbsp;기록<br>
+                &nbsp;2) 회원의&nbsp;오류정정&nbsp;요구사실&nbsp;및&nbsp;처리결과에&nbsp;관한&nbsp;사항<br>
+                &nbsp;3) 기타&nbsp;금융위원회가&nbsp;고시로&nbsp;정한&nbsp;사항</li>
+        </ol>
+        <p>이용자는&nbsp;제1항에서&nbsp;정한&nbsp;서면교부를&nbsp;요청하고자&nbsp;할&nbsp;경우&nbsp;다음의&nbsp;주소&nbsp;및&nbsp;전화번호로&nbsp;요청할&nbsp;수&nbsp;있습니다.
+        </p>
+        <p>주소&nbsp;:&nbsp;서울특별시&nbsp;마포구&nbsp;신수로6길&nbsp;25(신수동, 윤스빌) 303호</p>
+        <p>사이트&nbsp;주소&nbsp;: <a href="https://www.neos.me"><span class="colour" style="color:blue"
+                                                                  data-tomark-pass=""><u data-tomark-pass="">https://www.neos.me</u></span></a></p>
+        <h2>제&nbsp;6 조&nbsp;거래지시의&nbsp;철회&nbsp;등</h2>
+        <p><br data-tomark-pass=""><br>
+            이용자는&nbsp;회사의&nbsp;전자금융거래서비스를&nbsp;이용하여&nbsp;전자지급거래를&nbsp;한&nbsp;경우,
+            회원은&nbsp;지급의&nbsp;효력이&nbsp;발생하기&nbsp;전까지&nbsp;본&nbsp;약관에서&nbsp;정한&nbsp;바에&nbsp;따라&nbsp;제6조&nbsp;제5항에&nbsp;기재된&nbsp;주소,
+            전화번호, 전자우편주소를&nbsp;이용한&nbsp;우편, 전화연락,
+            전자문서&nbsp;전송의&nbsp;방법으로&nbsp;또는&nbsp;개별&nbsp;서비스&nbsp;내&nbsp;철회에&nbsp;의한&nbsp;방법으로&nbsp;거래지시를&nbsp;철회할&nbsp;수&nbsp;있습니다.
+            단, 각&nbsp;서비스&nbsp;별&nbsp;거래지시&nbsp;철회의&nbsp;효력&nbsp;발생시기는&nbsp;본&nbsp;약관&nbsp;제17조,
+            제27조에서&nbsp;정한&nbsp;바에&nbsp;따릅니다.</p>
+        <p>이용자는&nbsp;전자지급의&nbsp;효력이&nbsp;발생한&nbsp;경우에&nbsp;전자상거래등에서의&nbsp;소비자보호에&nbsp;관한&nbsp;법률&nbsp;등&nbsp;관련&nbsp;법령상&nbsp;청약의&nbsp;철회의&nbsp;방법에&nbsp;따라&nbsp;결제대금을&nbsp;반환&nbsp;받을&nbsp;수&nbsp;있습니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;7 조&nbsp;오류의&nbsp;정정&nbsp;등</h2>
+        <p><br data-tomark-pass=""><br>
+            이용자는&nbsp;전자금융거래서비스를&nbsp;이용함에&nbsp;있어&nbsp;오류가&nbsp;있음을&nbsp;안&nbsp;때에는&nbsp;회사에&nbsp;대해&nbsp;그&nbsp;정정을&nbsp;요구할&nbsp;수&nbsp;있습니다.
+        </p>
+        <p>회사는&nbsp;전항의&nbsp;규정에&nbsp;따른&nbsp;오류의&nbsp;정정요구를&nbsp;받은&nbsp;때&nbsp;또는&nbsp;스스로&nbsp;전자금융거래에&nbsp;오류가&nbsp;있음을&nbsp;안&nbsp;때에는&nbsp;이를&nbsp;즉시&nbsp;조사하여&nbsp;처리한&nbsp;후&nbsp;정정요구를&nbsp;받은&nbsp;날&nbsp;또는&nbsp;오류가&nbsp;있음을&nbsp;안&nbsp;날부터&nbsp;2주&nbsp;이내에&nbsp;그&nbsp;결과를&nbsp;이용자에게&nbsp;알려&nbsp;드립니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;8 조&nbsp;전자금융거래&nbsp;기록의&nbsp;생성&nbsp;및&nbsp;보존</h2>
+        <p>회사는&nbsp;이용자가&nbsp;이용한&nbsp;전자금융거래의&nbsp;내용을&nbsp;추적,
+            검색하거나&nbsp;그&nbsp;내용에&nbsp;오류가&nbsp;발생한&nbsp;경우에&nbsp;이를&nbsp;확인하거나&nbsp;정정할&nbsp;수&nbsp;있는&nbsp;기록을&nbsp;생성하여&nbsp;보존합니다.<br>
+            제1항의&nbsp;규정에&nbsp;따라&nbsp;회사가&nbsp;보존하여야&nbsp;하는&nbsp;기록의&nbsp;종류&nbsp;및&nbsp;보존방법은&nbsp;제6조&nbsp;제3항&nbsp;및&nbsp;제4항에&nbsp;따릅니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;9 조&nbsp;전자금융거래&nbsp;정보의&nbsp;제공금지</h2>
+        <p>회사는&nbsp;전자금융거래서비스를&nbsp;제공함에&nbsp;있어서&nbsp;취득한&nbsp;이용자의&nbsp;인적사항, 이용자의&nbsp;계좌,
+            접근매체&nbsp;및&nbsp;전자금융거래의&nbsp;내용과&nbsp;실적에&nbsp;관한&nbsp;정보&nbsp;또는&nbsp;자료를&nbsp;금융실명법&nbsp;등&nbsp;법령에&nbsp;의하거나&nbsp;이용자의&nbsp;동의를&nbsp;얻지&nbsp;아니하고&nbsp;제3자에게&nbsp;제공,
+            누설하거나&nbsp;업무&nbsp;상&nbsp;목적&nbsp;외에&nbsp;사용하지&nbsp;아니합니다.</p>
+        <p>회사는&nbsp;이용자가&nbsp;안전하게&nbsp;전자금융거래서비스를&nbsp;이용할&nbsp;수&nbsp;있도록&nbsp;이용자의&nbsp;개인정보보호를&nbsp;위하여&nbsp;개인정보처리방침을&nbsp;운용합니다.
+            회사의&nbsp;개인정보처리방침은&nbsp;회사의&nbsp;홈페이지&nbsp;또는&nbsp;개별&nbsp;서비스에&nbsp;링크된&nbsp;화면에서&nbsp;확인할&nbsp;수&nbsp;있습니다.
+        </p>
+        <h2>제&nbsp;10 조&nbsp;회사의&nbsp;책임</h2>
+        <p>회사는&nbsp;다음&nbsp;각호의&nbsp;사고로&nbsp;인하여&nbsp;회원에게&nbsp;손해가&nbsp;발생한&nbsp;경우에는&nbsp;그&nbsp;손해를&nbsp;배상할&nbsp;책임을&nbsp;부담합니다.
+        </p>
+        <p>1. 접근매체의&nbsp;위조나&nbsp;변조로&nbsp;발생한&nbsp;사고</p>
+        <p>2. 계약체결&nbsp;또는&nbsp;거래지시의&nbsp;전자적&nbsp;전송이나&nbsp;처리과정에서&nbsp;발생한&nbsp;사고</p>
+        <p>3.
+            전자금융거래를&nbsp;위한&nbsp;전자적&nbsp;장치&nbsp;또는&nbsp;정보통신망&nbsp;이용촉진&nbsp;및&nbsp;정보보호&nbsp;등에&nbsp;관한&nbsp;법률&nbsp;제2조&nbsp;제1항&nbsp;제1호에&nbsp;따른&nbsp;정보통신망에&nbsp;침입하여&nbsp;거짓이나&nbsp;그&nbsp;밖의&nbsp;부정한&nbsp;방법으로&nbsp;획득한&nbsp;접근매체의&nbsp;이용으로&nbsp;발생한&nbsp;사고
+        </p>
+        <p>4.
+            회사는&nbsp;제1항에도&nbsp;불구하고&nbsp;다음&nbsp;각호의&nbsp;경우에는&nbsp;그&nbsp;책임의&nbsp;전부&nbsp;또는&nbsp;일부를&nbsp;이용자에게&nbsp;부담하게&nbsp;할&nbsp;수&nbsp;있습니다.
+        </p>
+        <ol>
+            <li>회원이&nbsp;접근매체를&nbsp;제3자에게&nbsp;대여하거나&nbsp;그&nbsp;사용을&nbsp;위임한&nbsp;경우&nbsp;또는&nbsp;양도나&nbsp;담보의&nbsp;목적으로&nbsp;제공한&nbsp;경우
+            </li>
+            <li>제3자가&nbsp;권한&nbsp;없이&nbsp;회원의&nbsp;접근매체를&nbsp;이용하여&nbsp;전자금융거래를&nbsp;할&nbsp;수&nbsp;있음을&nbsp;알았거나&nbsp;쉽게&nbsp;알&nbsp;수&nbsp;있었음에도&nbsp;불구하고&nbsp;접근매체를&nbsp;누설하거나&nbsp;노출&nbsp;또는&nbsp;방치한&nbsp;경우
+            </li>
+            <li>법인(중소기업기본법제2조&nbsp;제2항에&nbsp;의한&nbsp;소기업을&nbsp;제외한다)인&nbsp;회원에게&nbsp;손해가&nbsp;발생한&nbsp;경우로서&nbsp;회사가&nbsp;사고를&nbsp;방지하기&nbsp;위하여&nbsp;보안절차를&nbsp;수립하고&nbsp;이를&nbsp;철저히&nbsp;준수하는&nbsp;등&nbsp;합리적으로&nbsp;요구되는&nbsp;충분한&nbsp;주의의무&nbsp;를&nbsp;다한&nbsp;경우
+            </li>
+            <li>회사는&nbsp;회원으로부터&nbsp;거래지시가&nbsp;있음에도&nbsp;불구하고&nbsp;천재지변,
+                회사의&nbsp;귀책사유가&nbsp;없는&nbsp;기타의&nbsp;불가항력적인&nbsp;사유로&nbsp;처리&nbsp;불가능하거나&nbsp;지연된&nbsp;경우로서&nbsp;회원에게&nbsp;처리&nbsp;불가능&nbsp;또는&nbsp;지연사유를&nbsp;통지한&nbsp;경우(금융기관&nbsp;또는&nbsp;결제수단발행업자나&nbsp;통신판매업자가&nbsp;통지한&nbsp;경우를&nbsp;포함합니다)에는&nbsp;회원에&nbsp;대해&nbsp;이로&nbsp;인한&nbsp;책임을&nbsp;부담하지&nbsp;않습니다.
+            </li>
+        </ol>
+        <h2>제&nbsp;11 조&nbsp;분쟁처리&nbsp;및&nbsp;분쟁조정</h2>
+        <p><span class="size" style="font-size:13px" data-tomark-pass="">1.
+                    이용자는&nbsp;회사의&nbsp;서비스&nbsp;페이지&nbsp;하단에&nbsp;게시된&nbsp;분쟁처리&nbsp;담당자&nbsp;또는&nbsp;연락처를&nbsp;통하여&nbsp;전자금융거래와&nbsp;관련한&nbsp;의견&nbsp;및&nbsp;불만의&nbsp;제기,
+                    손해배상의&nbsp;청구&nbsp;등의&nbsp;분쟁처리를&nbsp;요구할&nbsp;수&nbsp;있습니다.</span></p>
+        <p>2.
+            이용자가&nbsp;회사에&nbsp;대하여&nbsp;분쟁처리를&nbsp;신청한&nbsp;경우&nbsp;회사는&nbsp;15일&nbsp;이내에&nbsp;이에&nbsp;대한&nbsp;조사&nbsp;또는&nbsp;처리&nbsp;결과를&nbsp;이용자에게&nbsp;안내합니다.
+        </p>
+        <p>3.
+            이용자가&nbsp;회사의&nbsp;분쟁처리결과에&nbsp;대하여&nbsp;이의가&nbsp;있을&nbsp;경우&nbsp;금융위원회의&nbsp;설치&nbsp;등에&nbsp;관한&nbsp;법률&nbsp;제51조의&nbsp;규정에&nbsp;따른&nbsp;금융감독원의&nbsp;금융분쟁조정위원회나&nbsp;소비자기본법&nbsp;제60조&nbsp;제1항의&nbsp;규정에&nbsp;따른&nbsp;한국소비자원의&nbsp;소비자분쟁조정위원회에&nbsp;회사의&nbsp;전자금융거래서비스의&nbsp;이용과&nbsp;관련한&nbsp;분쟁조정을&nbsp;신청할&nbsp;수&nbsp;있습니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;12 조&nbsp;회사의&nbsp;안전성&nbsp;확보&nbsp;의무</h2>
+        <p>회사는&nbsp;전자금융거래가&nbsp;안전하게&nbsp;처리될&nbsp;수&nbsp;있도록&nbsp;전자금융거래의&nbsp;종류별로&nbsp;전자적&nbsp;전송이나&nbsp;처리를&nbsp;위한&nbsp;인력,
+            시설,
+            전자적&nbsp;장치&nbsp;등의&nbsp;정보기술부문&nbsp;및&nbsp;전자금융업무에&nbsp;관하여&nbsp;금융위원회가&nbsp;정하는&nbsp;기준을&nbsp;준수합니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;13 조&nbsp;약관&nbsp;외&nbsp;준칙</h2>
+        <p>회사와&nbsp;이용자&nbsp;사이에&nbsp;개별적으로&nbsp;합의한&nbsp;사항이&nbsp;본&nbsp;약관에&nbsp;정한&nbsp;사항과&nbsp;다를&nbsp;때에는&nbsp;그&nbsp;합의사항을&nbsp;본&nbsp;약관에&nbsp;우선하여&nbsp;적용합니다.<br>
+            전자금융거래에&nbsp;관하여&nbsp;본&nbsp;약관에&nbsp;정하지&nbsp;않은&nbsp;사항은&nbsp;개별약관이&nbsp;정하는&nbsp;바에&nbsp;따릅니다.</p>
+        <p>본&nbsp;약관과&nbsp;전자금융거래에&nbsp;관한&nbsp;개별약관에&nbsp;정하지&nbsp;아니한&nbsp;사항(용어의&nbsp;정의&nbsp;포함)에&nbsp;대하여는&nbsp;다른&nbsp;합의사항이&nbsp;없으면&nbsp;전자금융거래법,
+            여신전문금융업법,
+            전자상거래&nbsp;등에서의&nbsp;소비자&nbsp;보호에&nbsp;관한&nbsp;법률&nbsp;등&nbsp;관계&nbsp;법령에서&nbsp;정한&nbsp;바에&nbsp;따릅니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;14 조&nbsp;면책조항</h2>
+        <p>1.
+            회사는&nbsp;천재지변&nbsp;또는&nbsp;이에&nbsp;준하는&nbsp;불가항력으로&nbsp;인하여&nbsp;서비스를&nbsp;제공할&nbsp;수&nbsp;없는&nbsp;경우에는&nbsp;서비스&nbsp;제공에&nbsp;관한&nbsp;책임이&nbsp;면제됩니다.<br>
+            2. 회사는&nbsp;회원의&nbsp;귀책사유로&nbsp;인한&nbsp;서비스&nbsp;이용의&nbsp;장애에&nbsp;대하여&nbsp;책임을&nbsp;지지&nbsp;않습니다.<br>
+            3.
+            회사는&nbsp;회원이&nbsp;서비스를&nbsp;이용하여&nbsp;기대하는&nbsp;수익을&nbsp;상실한&nbsp;것에&nbsp;대하여&nbsp;책임을&nbsp;지지&nbsp;않으며&nbsp;그밖에&nbsp;서비스를&nbsp;통하여&nbsp;얻은&nbsp;자료로&nbsp;인한&nbsp;손해에&nbsp;관하여&nbsp;책임을&nbsp;지지&nbsp;않습니다.<br>
+            4. 회사는&nbsp;회원이&nbsp;서비스에&nbsp;게재한&nbsp;정보, 자료, 사실의&nbsp;신뢰도,
+            정확성&nbsp;등&nbsp;내용에&nbsp;관하여는&nbsp;책임을&nbsp;지지&nbsp;않습니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;15 조&nbsp;관할법원</h2>
+        <p>서비스&nbsp;이용과&nbsp;관련하여&nbsp;회사와&nbsp;회원간에&nbsp;이견&nbsp;또는&nbsp;분쟁이&nbsp;있는&nbsp;경우,
+            양&nbsp;당사자간의&nbsp;합의에&nbsp;의해&nbsp;원만히&nbsp;해결하여야&nbsp;합니다.</p>
+        <p>만약&nbsp;제1항의&nbsp;분쟁이&nbsp;원만히&nbsp;해결되지&nbsp;못하여&nbsp;소송이&nbsp;제기된&nbsp;경우,
+            소송은&nbsp;관련&nbsp;법령에&nbsp;정한&nbsp;절차에&nbsp;따른&nbsp;법원을&nbsp;관할&nbsp;법원으로&nbsp;합니다.</p>
+        <p>회사와&nbsp;이용자간에&nbsp;제기된&nbsp;소송에는&nbsp;대한민국&nbsp;법을&nbsp;적용합니다.</p>
+        <h1>제&nbsp;2 장&nbsp;전자금융거래서비스</h1>
+        <p><br data-tomark-pass=""></p>
+        <h2>제&nbsp;16 조&nbsp;전자금융거래서비스의&nbsp;구성&nbsp;및&nbsp;내용</h2>
+        <p>개설자는&nbsp;행사&nbsp;개설시&nbsp;회사의&nbsp;전자금융거래서비스&nbsp;이용을&nbsp;선택할&nbsp;수&nbsp;있습니다.<br>
+            전자금융거래서비스는&nbsp;다음&nbsp;각&nbsp;호의&nbsp;개별&nbsp;서비스로&nbsp;구성됩니다.</p>
+        <p>1. 전자지급결제대행서비스</p>
+        <p>2. 선불전자지급수단&nbsp;발행&nbsp;및&nbsp;관리서비스</p>
+        <p>3. 전자고지결제서비스</p>
+        <p>4. 전자금융거래서비스는&nbsp;PG사를&nbsp;통해&nbsp;제공되며,
+            개설자는&nbsp;회사로부터&nbsp;카드단말기를&nbsp;유료&nbsp;대여할&nbsp;수&nbsp;있습니다.<br>
+            <span class="size" style="font-size:13px" data-tomark-pass="">&nbsp;
+                    &nbsp;회원은&nbsp;아래와&nbsp;같은&nbsp;결제증빙을&nbsp;제공받습니다.</span>
+        </p>
+        <ol>
+            <li>신용카드&nbsp;매출전표&nbsp;: 신용카드&nbsp;결제&nbsp;완료&nbsp;시&nbsp;등록된&nbsp;이메일로&nbsp;제공합니다.</li>
+            <li>거래확인서&nbsp;: 신용카드&nbsp;외&nbsp;결제수단으로&nbsp;결제&nbsp;완료&nbsp;시&nbsp;이메일로&nbsp;제공합니다.</li>
+            <li>거래명세서&nbsp;: 네오스&nbsp;결제서비스를&nbsp;이용한&nbsp;신청자가&nbsp;희망할&nbsp;경우&nbsp;제공됩니다.</li>
+            <li>현금영수증&nbsp;: 신청자가&nbsp;발행을&nbsp;희망할&nbsp;경우&nbsp;어썸크루에서&nbsp;발행합니다.</li>
+        </ol>
+        <p>위수탁&nbsp;(세금)계산서&nbsp;:
+            개설자가&nbsp;위수탁&nbsp;발행에&nbsp;동의할&nbsp;경우&nbsp;신청자의&nbsp;요청&nbsp;시&nbsp;어썸크루에서&nbsp;발행합니다.</p>
+        <h1>제&nbsp;3 장&nbsp;전자지급결제대행("커피" 포인트) 서비스</h1>
+        <h2>제&nbsp;17 조&nbsp;목적</h2>
+        <p>이&nbsp;약관은&nbsp;어썸크루(이하&nbsp;'회사'라&nbsp;칭함)의 네오스 서비스(<a
+                href="http://www.neos.me">http://www.neos.me</a>)를&nbsp;통하여&nbsp;제공되는&nbsp;각종&nbsp;유료&nbsp;서비스&nbsp;및&nbsp;서비스&nbsp;이용을&nbsp;위한&nbsp;'XX포인트'의&nbsp;이용조건&nbsp;및&nbsp;절차에&nbsp;관한&nbsp;사항을&nbsp;규정함을&nbsp;목적으로&nbsp;합니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;18 조&nbsp;약관의&nbsp;효력&nbsp;및&nbsp;변경</h2>
+        <p>본&nbsp;약관의&nbsp;내용은&nbsp;홈페이지&nbsp;및&nbsp;서비스&nbsp;화면에&nbsp;이를&nbsp;공지하거나&nbsp;전자우편&nbsp;등의&nbsp;방법으로&nbsp;회원에게&nbsp;공지함으로써&nbsp;효력이&nbsp;발생됩니다.
+        </p>
+        <p>'회사'는&nbsp;본&nbsp;약관의&nbsp;내용에&nbsp;있어&nbsp;합리적인&nbsp;변경&nbsp;사유가&nbsp;발생할&nbsp;시,
+            이를&nbsp;변경할&nbsp;수&nbsp;있습니다.</p>
+        <p>본&nbsp;약관에&nbsp;명시되지&nbsp;않은&nbsp;사항에&nbsp;대해서는&nbsp;전기통신기본법, 전기통신사업법,
+            정보통신망이용촉진등에관한법률&nbsp;및&nbsp;기타&nbsp;관련&nbsp;법령의&nbsp;규정에&nbsp;따릅니다.</p>
+        <p>회사는&nbsp;필요하다고&nbsp;인정되는&nbsp;경우&nbsp;이&nbsp;약관을&nbsp;변경할&nbsp;수&nbsp;있습니다.
+            회사는&nbsp;약관이&nbsp;변경되는&nbsp;경우에&nbsp;변경된&nbsp;약관의&nbsp;내용과&nbsp;적용일을&nbsp;정하여,
+            그&nbsp;적용일로부터&nbsp;7일전&nbsp;홈페이지에&nbsp;온라인으로&nbsp;공시합니다. 다만,
+            이용자에게&nbsp;불리하게&nbsp;약관&nbsp;내용을&nbsp;변경하는&nbsp;경우에는&nbsp;적용일로부터&nbsp;30일전&nbsp;홈페이지에&nbsp;온라인으로&nbsp;공시하거나&nbsp;회원이&nbsp;입력한&nbsp;가장&nbsp;최근의&nbsp;e-mail로&nbsp;전송하는&nbsp;방법으로&nbsp;회원에게&nbsp;고지합니다.
+            변경된&nbsp;약관은&nbsp;공시하거나&nbsp;고지한&nbsp;적용일로부터&nbsp;효력이&nbsp;발생합니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;19 조&nbsp;용어의&nbsp;정의</h2>
+        <p>이&nbsp;약관에서&nbsp;사용하는&nbsp;용어의&nbsp;정의는&nbsp;다음과&nbsp;같습니다.</p>
+        <p>1. 커피 포인트&nbsp;:
+            회사에서&nbsp;서비스하는&nbsp;유료&nbsp;서비스만을&nbsp;이용하기&nbsp;위해&nbsp;구매하는&nbsp;인터넷상의&nbsp;결제수단으로&nbsp;현금&nbsp;100원(부가세
+            포함 110원)당 1의&nbsp;비율로 계산 되며,&nbsp;네오스&nbsp;아이디를&nbsp;기준으로&nbsp;충전, 결제, 환불&nbsp;등이&nbsp;가능합니다.</p>
+        <p><span class="size" style="font-size:13px" data-tomark-pass="">2. 충전:
+                    회사에서&nbsp;제공하는&nbsp;결제&nbsp;방식을&nbsp;통해&nbsp;일정&nbsp;금액&nbsp;단위로&nbsp;'XX"포인트를&nbsp;구입하는&nbsp;것을&nbsp;말합니다.</span>
+        </p>
+        <p>3, 사용 : 회사에서 제공하는 유료서비스를 "커피"포인트를 이용해 구매하는 것을 의미한다.</p>
+        <p>4. 부여 : 회사에서 제공하는 기준에 따라 "커피"포인트를 무상으로 부여받는 것을 의미합니다</p>
+        <p>5. 소멸 : 회원이 가진 "커피"포인트의 가치를 회수하는 것을 의미합니다.</p>
+        <p>6. 유료서비스 : 회사에서 사용자의 편의를 위해 구현한 기능으로서, 한시적이고 제한적인 사용권을 지닙니다.</p>
+        <p><br data-tomark-pass=""><br>
+            제5항의&nbsp;회사가&nbsp;제공하는&nbsp;유료&nbsp;서비스를&nbsp;원활하게&nbsp;이용하기&nbsp;위해&nbsp;회원은&nbsp;유료서비스&nbsp;이용신청&nbsp;후,
+            다음&nbsp;각&nbsp;호에&nbsp;해당하는&nbsp;사항을&nbsp;준수하여야&nbsp;합니다.</p>
+        <p>- 유료서비스&nbsp;이용을&nbsp;신청한&nbsp;회원은&nbsp;서비스&nbsp;이용요금을&nbsp;성실히&nbsp;납부하여야&nbsp;합니다.<br>
+            &nbsp;- 유료서비스&nbsp;이용을&nbsp;신청한&nbsp;회원은&nbsp;서비스&nbsp;이용요금을&nbsp;신청&nbsp;후&nbsp;즉시&nbsp;결제하여야&nbsp;합니다.
+            단,
+            무통장입금의&nbsp;방식으로&nbsp;정액제를&nbsp;신청한&nbsp;회원은&nbsp;신청&nbsp;완료&nbsp;후&nbsp;1주일&nbsp;이내에&nbsp;해당&nbsp;금액을&nbsp;입금하여야&nbsp;하며,
+            1주일&nbsp;이내에&nbsp;입금&nbsp;하지&nbsp;않을&nbsp;시에는&nbsp;그&nbsp;신청을&nbsp;철회한&nbsp;것으로&nbsp;간주합니다.<br>
+            &nbsp;-
+            자동결제&nbsp;서비스는&nbsp;이용자가&nbsp;구매한&nbsp;아이템의&nbsp;사용기간이&nbsp;만료되는&nbsp;날의&nbsp;전날에&nbsp;자동&nbsp;결제되는&nbsp;것을&nbsp;원칙으로&nbsp;합니다.
+            다만,
+            이용자가&nbsp;해당&nbsp;서비스의&nbsp;별도&nbsp;해지&nbsp;절차에&nbsp;따라&nbsp;해지&nbsp;신청을&nbsp;한&nbsp;경우&nbsp;또는&nbsp;신청&nbsp;시&nbsp;명시된&nbsp;자동&nbsp;결제일에&nbsp;회원이&nbsp;지정한&nbsp;결제&nbsp;수단을&nbsp;통한&nbsp;정상&nbsp;결제가&nbsp;이루어지지&nbsp;않을&nbsp;경우,
+            해당&nbsp;서비스는&nbsp;자동&nbsp;중단됩니다.<br>
+            &nbsp;- 시간제&nbsp;및&nbsp;기타&nbsp;요금제&nbsp;중&nbsp;시간을&nbsp;기준으로&nbsp;하는&nbsp;서비스는, 각 상품마다의 기한만큼 유효합니다.
+            그&nbsp;기간을&nbsp;초과하여서는&nbsp;해당&nbsp;서비스를&nbsp;이용할&nbsp;수&nbsp;없습니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;20 조 "커피"포인트의&nbsp;충전</h2>
+        <p><br data-tomark-pass=""><br>
+            "커피" 포인트의&nbsp;충전은&nbsp;신용카드, 휴대전화&nbsp;결제, 무통장입금,
+            실시간&nbsp;계좌이체&nbsp;등&nbsp;회사에서&nbsp;제공하는&nbsp;결제방식을&nbsp;통해서&nbsp;가능합니다. 단,
+            각&nbsp;결제수단을&nbsp;운영하는&nbsp;사업자가&nbsp;별도로&nbsp;있는&nbsp;경우,
+            회원은&nbsp;해당&nbsp;결제수단을&nbsp;이용하기&nbsp;전에&nbsp;해당&nbsp;결제수단의&nbsp;사업자가&nbsp;제시하는&nbsp;절차를&nbsp;이행하여야&nbsp;합니다.
+            회사의&nbsp;서비스&nbsp;이용요금을&nbsp;결제할&nbsp;때에는&nbsp;해당&nbsp;결제수단의&nbsp;사업자가&nbsp;제시하는&nbsp;절차&nbsp;이행&nbsp;및&nbsp;이용약관에&nbsp;동의한&nbsp;것으로&nbsp;간주합니다.
+        </p>
+        <p>"커피" 포인트&nbsp;충전은&nbsp;회사의&nbsp;내부&nbsp;정책에&nbsp;의해&nbsp;제공되는&nbsp;단위로&nbsp;충전할&nbsp;수&nbsp;있으며,
+            이&nbsp;때&nbsp;선택된&nbsp;결제수단&nbsp;및&nbsp;서비스&nbsp;별로&nbsp;충전단위가&nbsp;상이할&nbsp;수&nbsp;있습니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;21 조 "커피"포인트&nbsp;결제에&nbsp;대한&nbsp;승인</h2>
+        <p><br data-tomark-pass=""><br>
+            회사는&nbsp;다음의&nbsp;각&nbsp;항에&nbsp;해당하는&nbsp;이용신청에&nbsp;대해서는&nbsp;승인을&nbsp;하지&nbsp;않거나,
+            추후&nbsp;해당&nbsp;승인을&nbsp;취소할&nbsp;수&nbsp;있습니다.</p>
+        <p>1. 실명이&nbsp;아닌&nbsp;경우</p>
+        <p>2. 타인의&nbsp;명의를&nbsp;이용&nbsp;또는&nbsp;도용하여&nbsp;신청하는&nbsp;경우</p>
+        <p>3. 필수적&nbsp;기재사항을&nbsp;누락&nbsp;또는&nbsp;오기한&nbsp;경우</p>
+        <p>4. 이용&nbsp;요금을&nbsp;납부하지&nbsp;않거나&nbsp;납부자를&nbsp;확인할&nbsp;수&nbsp;없는&nbsp;경우</p>
+        <p>5. 명의자의&nbsp;동의나&nbsp;승낙&nbsp;없이&nbsp;결제&nbsp;수단을&nbsp;무단&nbsp;도용하여&nbsp;이용요금을&nbsp;결제한&nbsp;경우</p>
+        <p>6. 그&nbsp;밖에&nbsp;회원의&nbsp;귀책사유로&nbsp;승인이&nbsp;불가능하다고&nbsp;판단되는&nbsp;경우</p>
+        <p>7.
+            회사는&nbsp;다음의&nbsp;각&nbsp;항에&nbsp;해당하는&nbsp;경우에는&nbsp;이용신청에&nbsp;대한&nbsp;승인&nbsp;제한&nbsp;사유가&nbsp;해소될&nbsp;때까지&nbsp;승인을&nbsp;제한할&nbsp;수&nbsp;있습니다.
+        </p>
+        <p>8. 서비스&nbsp;설비가&nbsp;부족하여&nbsp;만족스러운&nbsp;서비스를&nbsp;제공할&nbsp;수&nbsp;없다고&nbsp;판단될&nbsp;경우</p>
+        <p>9. 서비스&nbsp;상의&nbsp;장애가&nbsp;발생한&nbsp;경우<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;22 조 "커피"포인트의&nbsp;사용</h2>
+        <p><br data-tomark-pass=""><br>
+            "커피"포인트는&nbsp;회사의&nbsp;서비스&nbsp;및&nbsp;유료&nbsp;콘텐츠&nbsp;이용료를&nbsp;결제하는데&nbsp;이용되며,
+            회원의&nbsp;결제&nbsp;및&nbsp;이용&nbsp;내역&nbsp;등은&nbsp;홈페이지&nbsp;&gt; 마이페이지&nbsp;에서&nbsp;확인하실&nbsp;수&nbsp;있습니다.
+        </p>
+        <p>회사&nbsp;서비스의&nbsp;중대한&nbsp;하자에&nbsp;의해&nbsp;콘텐츠가&nbsp;손상, 훼손,
+            삭제되었거나&nbsp;불량했을&nbsp;경우&nbsp;회사의&nbsp;판단에&nbsp;따라 "커피"포인트의&nbsp;재충전,
+            또는&nbsp;해당&nbsp;콘텐츠의&nbsp;복원&nbsp;등으로&nbsp;보상&nbsp;받을&nbsp;수&nbsp;있습니다.</p>
+        <p>"커피" 포인트 잔액에&nbsp;대한&nbsp;이자수익은&nbsp;발생하지&nbsp;않습니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2><span class="size" style="font-size:22px" data-tomark-pass="">제 22조 "커피"포인트의 부여</span></h2>
+        <p>1. "커피"포인트는 회사의 이벤트나 회원의 특정조건(실명인증 등)에 따라 무상으로 부여가 가능합니다,<br>
+            2. 네오스은 회원간의 커뮤니케이션 증진을 위하여 , 대화 이용 시 사용하는 포인트의 일부를 상대방에게 환원하고 있습니다.<br>
+            &nbsp; &nbsp;회원은 서비스내 활동에 따라, 아래의 기준으로 배분(포인트 * 배분율 소수 둘째자리 내림)하여 지급합니다.<br>
+            <br data-tomark-pass="">
+        </p>
+        <table>
+            <thead>
+            <tr>
+                <th>레벨</th>
+                <th>네오력</th>
+                <th>포인트 환원율</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>0~5</td>
+                <td>~ 500</td>
+                <td>0%</td>
+            </tr>
+            <tr>
+                <td>6~15</td>
+                <td>501~5,000</td>
+                <td>50%</td>
+            </tr>
+            <tr>
+                <td>16~20</td>
+                <td>5,001~10,000</td>
+                <td>55%</td>
+            </tr>
+            <tr>
+                <td>21~25</td>
+                <td>10,001~25,000</td>
+                <td>60%</td>
+            </tr>
+            <tr>
+                <td>26~29</td>
+                <td>25,001~50,000</td>
+                <td>65%</td>
+            </tr>
+            <tr>
+                <td>30~</td>
+                <td>50,001~</td>
+                <td>70%</td>
+            </tr>
+            </tbody>
+        </table>
+        <p><br data-tomark-pass=""><br>
+            <br data-tomark-pass="">
+        </p>
+        <h2><span class="size" style="font-size:22px" data-tomark-pass="">제&nbsp;23 조 "커피" 포인트의&nbsp;소멸</span></h2>
+        <p><br data-tomark-pass=""><br>
+            <span class="size" style="font-size:13px"
+                  data-tomark-pass="">상법&nbsp;제64조&nbsp;상사시효에&nbsp;근거하여&nbsp;네오스&nbsp;서비스의&nbsp;최종&nbsp;이용일로부터&nbsp;이용내역&nbsp;없이&nbsp;60개월이&nbsp;경과한&nbsp;경우&nbsp;"커피"
+                    포인트는&nbsp;자동으로&nbsp;소멸됩니다.</span><br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;24 조&nbsp;"커피" 포인트의&nbsp;환불</h2>
+        <p>1. 결제 취소 : 일주일내에 고객센터를 통하여 결제 취소 요청 시 , 전액 취소가 가능합니다.<br>
+            &nbsp; &nbsp;(일주일 이후 취소는 원칙적으로 환불만 가능합니다)</p>
+        <p>2.&nbsp;<span class="size" style="font-size:13px"
+                         data-tomark-pass="">회원이&nbsp;자신의&nbsp;ID를&nbsp;통해&nbsp;충전한 "커피"
+                    포인트의&nbsp;잔액에&nbsp;대한&nbsp;환불을&nbsp;요청하면&nbsp;적법한&nbsp;절차에&nbsp;따라&nbsp;환불&nbsp;받을&nbsp;수&nbsp;있습니다.</span><br>
+            <span class="size" style="font-size:13px" data-tomark-pass="">&nbsp; - 환불&nbsp;시에는 "커피"&nbsp;
+                    포인트&nbsp;잔액에서 10%의&nbsp;수수료를&nbsp;공제한&nbsp;금액을&nbsp;환불해&nbsp;드립니다.</span><br>
+            <span class="size" style="font-size:13px" data-tomark-pass="">&nbsp; &nbsp; (단, "커피"
+                    포인트&nbsp;잔액이&nbsp;10,000원&nbsp;미만인&nbsp;경우, 1,000원의&nbsp;환불&nbsp;수수료를&nbsp;공제합니다.)&nbsp;</span><br>
+            <span class="size" style="font-size:13px" data-tomark-pass="">&nbsp; - "커피"포인트의
+                    잔액이&nbsp;1,000원&nbsp;이하인&nbsp;경우에는&nbsp;환불이&nbsp;불가능합니다.</span>
+        </p>
+        <p><br data-tomark-pass=""></p>
+        <h2>제&nbsp;25 조&nbsp;개인정보의&nbsp;보호</h2>
+        <p>회사는 네오스
+            서비스와&nbsp;관련한&nbsp;회원의&nbsp;정보를&nbsp;본&nbsp;이용계약상의&nbsp;서비스&nbsp;제공을&nbsp;위한&nbsp;목적으로만&nbsp;사용하며&nbsp;본인의&nbsp;사전&nbsp;동의&nbsp;없이&nbsp;제&nbsp;3자에게&nbsp;누설&nbsp;또는&nbsp;배포할&nbsp;수&nbsp;없습니다.
+            그러나&nbsp;다음&nbsp;각&nbsp;호에&nbsp;해당하는&nbsp;경우에는&nbsp;그렇지&nbsp;않습니다.</p>
+        <p>1. 서비스&nbsp;제공에&nbsp;따른&nbsp;요금&nbsp;정산을&nbsp;위하여&nbsp;필요한&nbsp;경우<br>
+            2.
+            통계작성•학술연구&nbsp;또는&nbsp;시장조사를&nbsp;위하여&nbsp;필요한&nbsp;경우로서&nbsp;특정&nbsp;개인을&nbsp;알아볼&nbsp;수&nbsp;없는&nbsp;형태로&nbsp;가공하여&nbsp;제공하는경우<br>
+            3. 금융실명거래및비밀보장에관한법률, 신용정보의이용및보호에관한법률, 전기통신기본법, 전기통신사업법, 지방세법, 소비자보호법, 한국은행법,
+            형사소송법&nbsp;등&nbsp;법률에&nbsp;특별한&nbsp;규정이&nbsp;있는&nbsp;경우<br>
+            <span class="size" style="font-size:13px" data-tomark-pass="">4.
+                    회사는&nbsp;휴대전화&nbsp;결제와&nbsp;관련하여&nbsp;고객의&nbsp;이의제기가&nbsp;있는&nbsp;경우&nbsp;또는&nbsp;이에&nbsp;준하는&nbsp;사안으로&nbsp;결제중재센터의&nbsp;요청이&nbsp;있는&nbsp;경우,
+                    문제해결을&nbsp;위해&nbsp;필요한&nbsp;범위&nbsp;내에서&nbsp;서비스와&nbsp;관련된&nbsp;회원의&nbsp;결제&nbsp;여부&nbsp;등을&nbsp;휴대전화&nbsp;결제&nbsp;중재센터에&nbsp;확인하여&nbsp;줄&nbsp;수&nbsp;있습니다.</span>
+        </p>
+        <p>기타&nbsp;개인정보&nbsp;보호와&nbsp;관련된&nbsp;사항은&nbsp;회사의&nbsp;'개인정보&nbsp;취급방침'에&nbsp;따릅니다.</p>
+        <h2>제&nbsp;26 조&nbsp;회사의&nbsp;의무</h2>
+        <p>회사의&nbsp;고의&nbsp;또는&nbsp;귀책사유로&nbsp;과오금이&nbsp;발생한&nbsp;경우,
+            과오금&nbsp;전액을&nbsp;환불&nbsp;하도록&nbsp;하며&nbsp;신용카드&nbsp;결제의&nbsp;경우&nbsp;카드&nbsp;결제&nbsp;취소를&nbsp;원칙으로&nbsp;합니다.
+            단, 회원의&nbsp;고의&nbsp;또는&nbsp;귀책사유로&nbsp;과오금이&nbsp;발생한&nbsp;경우,
+            회사가&nbsp;과오금을&nbsp;환불하는데&nbsp;소용되는&nbsp;비용은&nbsp;합리적인&nbsp;범위&nbsp;내에서&nbsp;이용자가&nbsp;부담하도록&nbsp;합니다.
+        </p>
+        <p>회사는&nbsp;제&nbsp;12
+            조&nbsp;상의&nbsp;면책조항에&nbsp;해당하지&nbsp;않는&nbsp;범위에서&nbsp;서비스를&nbsp;정상적으로&nbsp;이행하여야&nbsp;합니다.</p>
+        <h2>제&nbsp;27조&nbsp;서비스의&nbsp;이용제한</h2>
+        <p>다음의&nbsp;각&nbsp;항에&nbsp;해당하는&nbsp;행위를&nbsp;하는&nbsp;경우에&nbsp;회사는&nbsp;서비스의&nbsp;이용을&nbsp;제한하거나&nbsp;정지&nbsp;또는&nbsp;네오스&nbsp;아이디를&nbsp;삭제(회수)할&nbsp;수&nbsp;있습니다.
+        </p>
+        <p>1. 해킹&nbsp;또는&nbsp;기타&nbsp;시스템에&nbsp;무리를&nbsp;주는&nbsp;행위</p>
+        <p>2. "커피"포인트&nbsp;서비스에&nbsp;대한&nbsp;권리를&nbsp;제3자에게&nbsp;양도, 매매하는&nbsp;행위</p>
+        <p>3. "커피"포인트&nbsp;결제에&nbsp;있어&nbsp;그&nbsp;결제수단을&nbsp;위변조, 도용하거나&nbsp;부정취득&nbsp;또는&nbsp;사용하는&nbsp;행위<br>
+            <br data-tomark-pass="">
+        </p>
+        <h2>제&nbsp;28조&nbsp;서비스&nbsp;제공의&nbsp;중지</h2>
+        <p>회사는&nbsp;다음&nbsp;각호에&nbsp;해당하는&nbsp;경우&nbsp;서비스&nbsp;제공을&nbsp;중지&nbsp;할&nbsp;수&nbsp;있습니다.</p>
+        <p>1. 서비스용&nbsp;설비의&nbsp;보수&nbsp;등&nbsp;공사로&nbsp;인한&nbsp;부득이한&nbsp;경우</p>
+        <p>2. 전기통신사업법에&nbsp;규정된&nbsp;기간통신사업자가&nbsp;전기통신서비스를&nbsp;중지했을&nbsp;경우</p>
+        <p>3. 기타&nbsp;불가항력적&nbsp;사유가&nbsp;있는&nbsp;경우</p>
+        <p>4. 회사는&nbsp;국가비상사태, 정전,
+            서비스&nbsp;설비의&nbsp;장애&nbsp;또는&nbsp;서비스&nbsp;이용의&nbsp;폭주&nbsp;등으로&nbsp;정상적인&nbsp;서비스&nbsp;이용에&nbsp;지장이&nbsp;있는&nbsp;때에는&nbsp;서비스의&nbsp;전부&nbsp;또는&nbsp;일부를&nbsp;제한하거나&nbsp;정지&nbsp;할&nbsp;수&nbsp;있습니다.
+        </p>
+        <p>본&nbsp;약관은&nbsp;2020년 09월&nbsp;01일&nbsp;부터&nbsp;시행됩니다.</p>
+    </div>
+</div>
+
+<div th:replace="/app/fix/footer.html :: footer"></div>
+</body>
+</html>

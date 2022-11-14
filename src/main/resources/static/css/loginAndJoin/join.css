@@ -12,7 +12,9 @@ body {
     font-family: 'GmarketSansMedium';
 }
 
-.modalWrapOpen .loginModal {
+
+
+.modalWrapOpen .joinModal {
     max-width: 384px;
     width: 100%;
     border-radius: 8px;
@@ -29,18 +31,18 @@ body {
     position: relative;
 }
 
-.modalWrapOpen .loginModal p.modalTit {
+.modalWrapOpen .joinModal p.modalTit {
     margin-bottom: 32px;
 }
 
-.modalWrapOpen .loginModal p {
+.modalWrapOpen .joinModal p {
     font-size: 1.5rem;
     color: #333;
     font-weight: 700;
     position: relative;
 }
 
-.modalWrapOpen .loginModal .closeBtn {
+.modalWrapOpen .joinModal .closeBtn {
     width: 36px;
     height: 36px;
     background: none;
@@ -54,7 +56,7 @@ fieldset, img {
     border: 0;
 }
 
-.modalWrapOpen .loginModal .loginBtn.naver {
+.modalWrapOpen .joinModal .joinBtn.naver {
     background-color: #1eb400;
     color: #fff;
     background-image: url(https://letspl.s3.ap-northeast-2.amazonaws.com/images/icon/Ic-sns-naver.png);
@@ -63,20 +65,7 @@ fieldset, img {
     background-repeat: no-repeat;
 }
 
-.modalWrapOpen .loginModal .loginBtn {
-    width: 100%;
-    border: none;
-    border-radius: 4px;
-    position: relative;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    font-size: .75rem;
-    padding: 13.5px 0;
-    margin-bottom: 6px;
-}
-
-.modalWrapOpen .loginModal .loginBtn.naver:after {
+.modalWrapOpen .joinModal .joinBtn.naver:after {
     content: "";
     height: 100%;
     position: absolute;
@@ -90,7 +79,7 @@ fieldset, img {
     box-shadow: 0 3px 12px 0 rgb(0 0 0 / 20%);
 }
 
-.modalWrapOpen .loginModal .loginBtn.kakao {
+.modalWrapOpen .joinModal .joinBtn.kakao {
     background-color: #f7e317;
     color: #3e201e;
     background-image: url(https://letspl.s3.ap-northeast-2.amazonaws.com/images/icon/ic-sns-kk.png);
@@ -99,8 +88,26 @@ fieldset, img {
     background-repeat: no-repeat;
 }
 
+.modalWrapOpen .joinModal .joinBtn {
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: .75rem;
+    padding: 13.5px 0;
+    margin-bottom: 6px;
+}
 
-.modalWrapOpen .loginModal .loginBtn.google {
+a, button, input, select, textarea {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+}
+
+.modalWrapOpen .joinModal .joinBtn.google {
     background-color: #fff;
     border: 1px solid #888;
     color: #444;
@@ -110,7 +117,26 @@ fieldset, img {
     background-repeat: no-repeat;
 }
 
-.modalWrapOpen .loginModal .signupBtn {
+.modalWrapOpen .joinModal p.loginNoticeTxt {
+    font-size: 11px;
+    margin-top: 12px;
+    font-weight: 400;
+}
+
+
+.modalWrapOpen .joinModal p.loginNoticeTxt a {
+    color: #ea6560;
+}
+
+a, a:active, a:hover {
+    text-decoration: none;
+}
+
+a {
+    background-color: transparent;
+}
+
+.modalWrapOpen .joinModal .signupBtn {
     font-size: .75rem;
     color: #8e8ea2;
     text-decoration: none;
@@ -127,7 +153,14 @@ fieldset, img {
 
 
 
-.loginModal {
+
+
+
+
+
+
+
+.joinModal {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -140,9 +173,17 @@ fieldset, img {
 
 }
 
-.loginModal.open {
+.joinModal.open {
     opacity: 1;
     visibility: visible;
-    margin-top: 21%;
+    margin-top: 23%;
     border: solid 1px black;
 }
+
+/*.joinModal.open{*/
+/*    margin-top: -200px;*/
+/*    opacity: 1;*/
+/*    margin-top: -78px;*/
+/*}*/
+
+/*.joinModal*/

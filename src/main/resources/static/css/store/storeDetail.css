@@ -1,0 +1,370 @@
+@charset "UTF-8";
+
+.projectPageHeaderWrap {
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 40px 0 44px;
+    position: relative;
+    background-size: cover;
+}
+
+.projectPageHeaderWrap .projectPageHeaderContent {
+    max-width: 1040px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.projectPageHeaderWrap .projectTit {
+    text-align: center;
+    color: #222;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 34px;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: center;
+    justify-content: center;
+    margin-top: 28px;
+    margin-bottom: 12px;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap {
+    cursor: pointer;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-align: center;
+    align-items: center;
+    position: relative;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .leaderImg, .projectPageHeaderWrap .projectLeaderWrap .userIdWrap .leaderImg a {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .leaderImg {
+    width: 37px;
+    height: 37px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .leaderImg a img {
+    width: 37px;
+    height: 37px;
+    object-fit: cover;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .userIdTxt {
+    font-size: 14px;
+    color: #666;
+    margin-left: 11.5px;
+    margin-right: 6.5px;
+    font-weight: 400;
+    display: inline-block;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .confirmPhoneTxt {
+    font-size: 13px;
+    color: #ea6560;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .lastLoginTxt {
+    font-size: 13px;
+    color: #b7b7c7;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu {
+    display: none;
+    position: absolute;
+    width: 120px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    z-index: 555;
+    -webkit-box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    -moz-box-shadow: 2px 2px 5px 0 rgba(0,0,0,.2);
+    box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li {
+    width: 100%;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li a {
+    display: block;
+    padding: 10px 15px;
+    font-weight: 400;
+    font-size: .875rem;
+    color: #333;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.projectPageHeaderWrap .statusTagWrap {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+}
+
+.projectPageHeaderWrap .statusTagWrap .statusTag.white {
+    background-color: #fff;
+    border: 1px solid #e8e8e8;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.projectPageHeaderWrap .statusTagWrap .statusTag:last-child {
+    margin-right: 0;
+}
+
+.projectPageHeaderWrap .statusTagWrap .statusTag {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 3px 9px;
+    color: #333;
+    border-radius: 100px;
+    margin-right: 6px;
+    font-size: .7rem;
+}
+
+/*------------------------------------------------------------------------------*/
+
+.projectPageWrap {
+    max-width: 1200px;
+    width: 100%;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.projectPageWrap .contents {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 0 40px;
+    position: relative;
+    max-width: 840px;
+    margin: 0;
+}
+
+.contents, .projectTabMenu {
+    width: 100%;
+    background-color: #fff;
+}
+
+.projectTabMenu {
+    margin-bottom: 15px;
+    top: 55px;
+    z-index: 500;
+}
+
+.contents, .projectTabMenu {
+    width: 100%;
+    background-color: #fff;
+}
+
+.projectTabMenu>ul {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+.projectTabMenu>ul li {
+    font-size: 15px;
+    color: #42495b;
+    -moz-box-flex: 1;
+    flex: 1 1;
+}
+
+.projectTabMenu>ul li a.active {
+    color: #42495b;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-bottom: none;
+    padding: 12px 0;
+    font-size: 16px;
+}
+
+.projectTabMenu>ul li a {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 11.5px 0;
+    -moz-box-align: center;
+    align-items: center;
+    display: -moz-box;
+    display: flex;
+    -moz-box-pack: center;
+    justify-content: center;
+    border-bottom: 1px solid #000;
+    color: #8e8ea2;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.projectDetailWrap {
+    position: relative;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+.projectInfoTabContents.active {
+    display: block;
+}
+
+/*----------------------------------------------------------------------*/
+.projectInfoTabContents .section.statusSection {
+    border-bottom: 1px solid #e6e6e6;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 15px 24px 15px 0;
+}
+
+.projectInfoTabContents .section {
+    margin-bottom: 35px;
+}
+
+/*----------------------------------------------------------------------*/
+
+.projectDetailWrap .projectTab .section h1.tabTit {
+    font-size: 22px;
+    line-height: 22px;
+    color: #000;
+    font-weight: 700;
+    padding-bottom: 15px;
+}
+
+.projectInfoTabContents .section.statusSection ul {
+    margin-top: 16px;
+}
+
+.projectInfoTabContents .section.statusSection ul li {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+/*-------------------------------------------------------------------*/
+
+.projectInfoTabContents .section.onlyTxtSection textarea:disabled {
+    -webkit-text-fill-color: #222;
+    opacity: 1;
+}
+
+/*-------------------------------------------------------------------*/
+.projectPageWrap .projectRightInfoContetns {
+    max-width: 300px;
+    width: 100%;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 20px;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    position: sticky;
+    top: 74px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap {
+    padding-top: 0;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap {
+    border-bottom: 1px solid #e6e6e6;
+    padding: 10px 0;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .userIdWrap, .projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .userIdWrap, .projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap .checkboxTit {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap .checkboxTit {
+    font-size: 1.125rem;
+    color: #000;
+    font-weight: 500;
+    -moz-box-align: center;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+/*---------------------------------------------------------------------------------------------------------------*/
+
+.projectTextArea{
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 0px;
+    border-radius: 4px;
+    margin-right: 14px;
+    resize: none;
+    border: 0px;
+    background-color: transparent;
+    height: 405px !important;
+    font-family: 'GmarketSansMedium' !important;
+}
+
+.infoWrap{
+    padding-bottom: 8px !important;
+}

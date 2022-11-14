@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NEOS | 자료상점 상세보기</title>
+    <link rel="stylesheet" href="/css/store/storeDetail.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+</head>
+<body>
+    <header th:replace="/app/fix/header.html :: header"></header>
+
+    <section>
+        <div class="projectPageHeaderWrap">
+            <div class="projectPageHeaderContent">
+                <h2 class="projectTit">[안내] 자료상점 작성하기</h2>
+                <li class="projectLeaderWrap">
+                    <div class="userIdWrap">
+                        <div class="leaderImg">
+                            <a href="javascript:;">
+                                <img width="20px" height="20px" src="https://letspl.me/assets/images/prof-no-img.png"
+                                     alt="추추추">
+                            </a>
+                        </div>
+                        <div class="rightTxt userId">
+                            <h2 class="userIdTxt">추추추</h2>
+                            <span class="confirmPhoneTxt">(휴대폰 인증)</span>
+                            <span class="lastLoginTxt"> 오늘 <!-- --> 로그인
+                            </span>
+                            <div class="idHoverMenu">
+                                <ul>
+                                    <li>
+                                        <a href="javascript:;">프로필 상세</a>
+                                    </li>
+                                    <li>
+                                        <a>1:1 대화</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <div class="statusTagWrap">
+                    <span class="statusTag white">무료</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="projectPageWrap">
+            <div class="projectDetailContents contents">
+                <div class="projectTabMenu clearfix">
+                    <ul>
+                        <li><a name="#info" class="active">정보</a></li>
+                        <li><a name="member" class="">&nbsp</a></li>
+                        <li><a name="question" class="">&nbsp</a></li>
+                        <li><a name="work" class="">&nbsp</a></li>
+                        <li><a name="feed" class="">&nbsp</a></li>
+                        <li><a name="mgmt" class="">&nbsp</a></li>
+                    </ul>
+                </div>
+                <div class="projectDetailWrap">
+                    <div class="projectTab projectInfoTabContents active">
+                        <div class="section statusSection">
+                            <h1 class="tabTit">첨부파일</h1>
+                            <ul>
+                                <li>
+                                    <a>
+                                        <img src="" alt="">
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <a>
+                                        <img src="" alt="">
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <a>
+                                        <img src="" alt="">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="section onlyTxtSection">
+                            <h1 class="tabTit">- 소개</h1>
+                            <textarea class="projectTextArea" disabled="">
+●  자료상점이란?
+
+[목표] : 서로 자료와 성적이 잘나오는 노하우를 공유하여 성적을 높일 수 있게 됩니다
+
+
+
+●  참여 조건
+
+[지식수준] : 본인이 가지고 있는 지식
+
+[유료] : 포인트로 결제 할 수 있고 포인트 충전은 마이페이지에서 충전 가능합니다
+
+[기타]  : 모두가 참여 할 수 있는 공간입니다 많은 참여 바랍니다!🤗
+
+
+
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="projectRightInfoContetns">
+                <div class="projectRightInfoWrap" style="padding-bottom: 0;">
+                    <div class="basicInfoWrap infoWrap">
+                        <p class="checkboxTit">다운로드 QR코드</p>
+
+                    </div>
+                    <div style="text-align: center;">
+                        <a href="javascript:;" style="font-size: 0;">
+                            <img src="/images/store/qrDetail.jpg" style="width: 90%; height: 90%;">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+
+    </section>
+
+    <div th:replace="/app/fix/footer.html :: footer"></div>
+</body>
+</html>

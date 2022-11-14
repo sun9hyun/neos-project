@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>로그인 모달</title>
+    <link rel="stylesheet" href="/css/loginAndJoin/login.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+</head>
+<body>
+<nav>
+    <img src="/images/fix/logo.png" alt="letspl_logo" class="logo">
+    <ul class="Navbar">
+        <li><a href="">네오스인</a></li>
+        <li><a href="">스터디</a></li>
+        <li><a href="">자료상점</a></li>
+        <li><a href="">커뮤니티</a></li>
+        <li><a href="">공지사항</a></li>
+    </ul>
+    <div class="loginWrap">
+        <div class="searchWrap">
+            <a class="searchIc"><span>검색</span>
+                <img class="pcSearch" src="	https://letspl.me/assets/images/ic-search-white.png" alt="검색하기">
+            </a>
+        </div>
+        <div class="joinAndLoginWrap">
+            <a class="joinAndLogin">가입</a>
+            <a class="login" style="font-size: 14px; color: #666; cursor: pointer " >로그인</a>
+        </div>
+    </div>
+</nav>
+
+<!--회원 가입 모달-->
+<div class="modalWrapOpen">
+    <div class="loginModal"><p class="modalTit">로그인</p>
+                <button class="closeBtn"><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" style="cursor: pointer;"></button>
+                <button class="loginBtn naver" style="cursor: pointer;">네이버 아이디로 로그인<!-- --> </button>
+                <button class="loginBtn kakao" style="cursor: pointer;">카카오 계정으로 로그인</button>
+                <button class="loginBtn google" style="cursor: pointer;">구글 계정으로 로그인</button>
+                <a class="signupBtn" style="cursor: pointer;">회원 가입하기</a></div>
+</div>
+
+<div th:replace="/app/fix/footer.html :: footer"></div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/loginAndJoin/join.js"></script>
+
+<script>
+        /* 회원 가입 누르면 모달  */
+        $(document).ready(function() {
+        console.log("들어왔다");
+        $('.login').on('click', function() {
+        console.log("또들어왔넴")
+        $('.loginModal').toggleClass('open');
+        return false;
+        });
+        console.log("한번더 들어왔따")
+        });
+
+        /* 모달 닫기 할 떄 닫힘*/
+        function closeModal() {
+        $('.loginModal').toggleClass();
+        window.location.reload();
+        };
+</script>
+
+</html>

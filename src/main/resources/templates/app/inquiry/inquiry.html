@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>문의하기</title>
+    <link rel="stylesheet" href="/css/inquiry/inquiry.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+</head>
+<body>
+
+
+<header th:replace="/app/fix/header.html :: header"></header>
+<div id="__next">
+    <section class="userProfileSection">
+        <div class="profileInfo">
+            <div class="pic">
+                <div class="picWrap"><img
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png"
+                        alt="민쇼니"></div><a class="favoriteSymbol">
+                <div class="favorite active"></div>
+            </a>
+            </div>
+            <div class="profileInfoTxt">
+                <div class="profileInfoTxtFirst">
+                    <div class="profileStatusSection">
+                        <div class="userTag grayTag"><span style="cursor: pointer">번호미인증</span></div>
+                        <div class="userTag" style="background-color:#50a9ab;border:1px solid#50a9ab">
+                            <span style="cursor: pointer">ENTP</span>
+                        </div>
+                        <div class="modifyBtn" style="cursor: pointer"><img src="https://letspl.me/assets/images/ic-profile-modify.png"
+                                                    alt="수정"></div>
+                    </div>
+                    <h2 class="tit"><img class="userLv"
+                                         src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png"
+                                         alt="렛플렙">&nbsp;
+                        <!-- -->민쇼니
+                    </h2>
+                    <p class="introduction">마지막 로그인 :
+                        <!-- --> 오늘
+                    </p>
+                    <div class="topBtnWrap btnWrap"><button class="pinkBtn">1:1 대화</button><button
+                            class="blackBtn">모임
+                        초대</button></div>
+                </div>
+                <div class="myTabWrapContainer">
+                    <div class="myTabWrap"><a class="">정보</a><a class="active">나의 문의함(
+                        <!-- -->1
+                        <!-- -->)
+                    </a><a class="">스토리(
+                        <!-- -->0
+                        <!-- -->)
+                    </a></div>
+                </div>
+                <section class="grayBg secretNote">
+                    <div class="projectFeedContents mypage">
+                        <p class="tit">나의 문의함(Q&amp;A)&nbsp; <span>(1)</span></p>
+                        <div class="communiWrap"><textarea placeholder="네오스 궁금한것이 있나요? " rows="2"
+                                                           maxlength="1000"></textarea></div>
+                        <div class="section feedUploadedSection">
+                            <div class="feedUploadWrap">
+                                <div class="feedContentsWrap">
+                                    <div class="top"><a href="/people/민쇼니" target="_blank">
+                                        <div class="thumb"><img loading="lazy"
+                                                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png"
+                                                                alt="user_image"></div>
+                                    </a>
+                                        <div class="name">
+                                            <p class="profileName">민쇼니
+
+                                            </p><span>22.11.09 16:51</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="feedContents"><textarea disabled="" maxlength="1000"
+                                                                        style="font-size: 0.875rem; height: 62px !important;">의대에 관심있는데 안과전공한 사람들의 스터디에 들어가고싶은데 어케 들어가여?</textarea>
+                                    </div>
+                                    <div class="btnWrap"><button class="txtBtn">수정</button>
+                                        <div class="divider"></div><button class="txtBtn">삭제</button>
+                                    </div>
+                                    <div class="bottom">
+                                        <span
+                                            class="replayCount">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</div>
+<div th:replace="/app/fix/footer.html :: footer"></div>
+
+
+</body>
+</html>

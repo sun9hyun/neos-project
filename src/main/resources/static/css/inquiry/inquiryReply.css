@@ -12,11 +12,7 @@
     font-size: 14px;
 }
 
-
-
-
-
-.userProfileSection,
+userProfileSection,
 .userProfileSection .profileInfo {
     width: 100%;
     margin: 0 auto;
@@ -577,4 +573,254 @@ ul {
     flex-direction: row;
     -moz-box-align: center;
     align-items: center;
+}
+
+.feedUploadWrap .replyWrap {
+    background-color: #f8f8f8;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 16px 34px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+}
+
+.feedUploadWrap .replyWrap .replayInput {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: start;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.feedUploadWrap .replyWrap .replayInput .txtInput {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    display: -moz-box;
+    display: flex;
+    width: 100%;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -moz-box-align: end;
+    align-items: flex-end;
+}
+
+.feedUploadWrap .replyWrap .replayInput .txtInput textarea {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    font-size: .8rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 11px 16px;
+    border-radius: 4px;
+    resize: none;
+    border: 1px solid #e3e3e3;
+    color: #222;
+}
+
+.feedUploadWrap .replyWrap .buttonCountWrap {
+    display: -moz-box;
+    display: flex;
+    width: 100%;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+}
+
+.feedUploadWrap .replyWrap .buttonCountWrap .count {
+    font-size: 14px;
+    color: #b1b1b1;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.feedUploadWrap .replyWrap .buttonCountWrap .count span:first-child {
+    color: #333;
+}
+
+.feedUploadWrap .replyWrap .replayInput .txtInput button {
+    padding: 7px 27px !important;
+    margin-left: 0;
+    margin-top: 12px;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+}
+
+.feedUploadWrap .replyWrap .replyWrapContent {
+    margin-bottom: 14px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.feedUploadWrap .replyWrap .top {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+.feedUploadWrap .replyWrap .top .left {
+    margin-right: 16px;
+    flex-shrink: 0;
+}
+
+.feedUploadWrap .replyWrap .top .left .profileThumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e3e3e3;
+}
+
+.feedUploadWrap .replyWrap .top .right {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    -moz-box-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.feedUploadWrap .replyWrap .top .right .profileName {
+    font-size: 1rem;
+    color: #42495b;
+    line-height: 1.125rem;
+}
+
+.feedUploadWrap .replyWrap .top .right .profileName .hoverView {
+    position: absolute;
+    display: none;
+    width: 120px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    -moz-box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
+    box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    z-index: 10;
+}
+
+.feedUploadWrap .replyWrap .top .right .dateTxt {
+    font-size: .75rem;
+}
+
+.feedUploadWrap .replyWrap .bottom {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -moz-box-align: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+.feedUploadWrap .replyWrap .bottom .left {
+    width: 44px;
+    margin-right: 16px;
+}
+
+.feedUploadWrap .replyWrap .bottom .txtWrap,
+.feedUploadWrap .replyWrap .bottom .txtWrap textarea {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.feedUploadWrap .replyWrap .bottom .txtWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    margin-right: 14px;
+    width: 100%;
+    padding-left: 10px;
+}
+
+element.style {
+    font-size: 0.875rem;
+    height: 42px !important;
+}
+
+.feedUploadWrap .replyWrap .bottom .txtWrap textarea:disabled {
+    background: none;
+    border: none;
+    font-size: .875rem;
+    color: #222;
+    -moz-box-flex: 1;
+    flex: 1 1;
+    padding: 0;
+    resize: none;
+    opacity: 1;
+    -webkit-text-fill-color: #222;
+    margin-bottom: 20px;
+}
+
+.secretNote .projectFeedContents.mypage .communiWrap .buttonCountWrap {
+    display: -moz-box !important;
+    display: flex !important;
+    -moz-box-orient: horizontal !important;
+    -moz-box-direction: normal !important;
+    flex-direction: row !important;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    padding-right: 0;
+}
+
+.mypage.projectFeedContents .communiWrap .buttonCountWrap {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 10px;
+}
+
+.mypage.projectFeedContents .communiWrap .buttonCountWrap .count {
+    font-size: 14px;
+    color: #b1b1b1;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.mypage.projectFeedContents .communiWrap .buttonCountWrap button {
+    padding: 7px 21px 6px;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+    font-size: 13px;
+    color: #222;
 }

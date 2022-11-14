@@ -23,4 +23,9 @@ public class NeosUserController {
         return "app/neosUser/userInfo";
     }
 
+    @GetMapping("/infoAllNo")
+    public String infoAllNo(){
+        return "app/neosUser/userInfoAllNo";
+    }
+
 }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>검색 완료 창</title>
+    <title>NEOS | 검색 완료</title>
     <link rel="stylesheet" href="/css/search/searchComplete.css">
     <link rel="stylesheet" href="/css/fix/header.css">
 </head>
@@ -15,7 +15,7 @@
     <div class="searchResultSection">
         <div class="searchInputWrap"><input type="text" class="searchInput" placeholder="검색내용을 입력해주세요(e.g 리액트 개발자)"
                 value="개발" maxlength="30">
-            <div class="inputBtnWrap"><button class="inputDelBtn"><img loading="lazy" src="https://letspl.me/assets/images/ic-del.svg"
+            <div class="inputBtnWrap"><button class="inputDelBtn" onClick="sendReply()"><img loading="lazy" src="https://letspl.me/assets/images/ic-del.svg"
                         alt="초기화"></button><button class="inputSearchBtn"><img loading="lazy"
                         src="https://letspl.me/assets/images/ic-search.png" alt="검색"></button></div>
         </div>
@@ -1530,5 +1530,13 @@
     </div>
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
-
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/search/searchComplete.js"></script>
+<script>
+    // var $searchInput = $(".searchInput");
+    // function sendReply(){
+    //     console.log($searchInput.val)
+    //     $searchInput.val = "";
+    // }
+</script>
 </html>

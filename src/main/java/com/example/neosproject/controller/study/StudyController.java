@@ -28,4 +28,21 @@ public class StudyController {
         return "app/study/questionStudy";
     }
 
+    @GetMapping("/feed")
+    public String feed(){
+        return "app/study/feedStudy";
+    }
+
+    @GetMapping("/management")
+    public String management(){
+        return "app/study/studyManagement";
+    }
+
+
+
+    @GetMapping("/test")
+    public String test(){
+        return "app/study/test";
+    }
+
 }

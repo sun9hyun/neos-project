@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인 후 헤더</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="/css/main/loginHeader.css">
+    <link rel="stylesheet" href="/css/fix/loginHeader.css">
 </head>
 
 <body>
@@ -16,11 +16,11 @@
             <nav>
                 <img src="/images/main/logo.png" alt="letspl_logo" class="logo">
                 <ul class="Navbar">
-                    <li><a href="">네오스인</a></li>
-                    <li><a href="">스터디</a></li>
-                    <li><a href="">자료상점</a></li>
-                    <li><a href="">커뮤니티</a></li>
-                    <li><a href="">공지사항</a></li>
+                    <li><a class="click" href="">네오스인</a></li>
+                    <li><a class="click" href="">스터디</a></li>
+                    <li><a class="click" href="">자료상점</a></li>
+                    <li><a class="click" href="">커뮤니티</a></li>
+                    <li><a class="click" href="">공지사항</a></li>
                 </ul>
 
                 <div class="loginWrap">
@@ -64,26 +64,26 @@
                                 <div class="pointTxt"><span>8 P</span></div><button><span>충전</span></button>
                             </div>
                             <div class="navLIst">
-                                <div><a href="/people/sun9hyun">내 프로필</a></div>
-                                <div><a href="/my?tab=info">정보 수정</a></div>
-                                <div><a href="/my?tab=project">모임 현황</a></div>
+                                <div><a class="popClick" href="/people/sun9hyun">내 프로필</a></div>
+                                <div><a class="popClick" href="/my?tab=info">정보 수정</a></div>
+                                <div><a class="popClick" href="/my?tab=project">모임 현황</a></div>
                             </div>
                             <div class="alarmList">
                                 <ul>
                                     <li class="alarmTit">내 모임 (1)</li>
-                                    <li class="alarmContent"><a href="/project/624">
+                                    <li class="alarmContent"><a class="popClick" href="/project/624">
                                             <p>[스터디&amp;네트워킹] spring boot 팀프로젝트</p><span class="dateInfo">22.11.08
                                                 부터 참여중</span><span class="newTag"></span>
                                         </a></li>
                                 </ul>
                                 <ul>
                                     <li class="alarmTit">신규 알림 (1)</li>
-                                    <li class="alarmContent"><a href="/my?tab=alarm">
+                                    <li class="alarmContent"><a class="popClick" href="/my?tab=alarm">
                                             <p>회원님을 찾는 프로젝트 대학 동아리 플랫폼 App가 게시되었습니다.</p><span class="dateInfo">22.11.09
                                                 09:08</span><span class="newTag"></span>
                                         </a></li>
                                     <li class="moreAlarm">
-                                        <p>이 외 <em>0</em>건의 메시지가 있습니다.</p><a href="/my?tab=alarm">확인하러 가기</a>
+                                        <p>이 외 <em>0</em>건의 메시지가 있습니다.</p><a class="popClick" href="/my?tab=alarm">확인하러 가기</a>
                                     </li>
                                 </ul>
                             </div>

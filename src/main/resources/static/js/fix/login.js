@@ -32,3 +32,14 @@ var swiper = new Swiper(".mySwiper", {
         prevEl: ".swiper-button-prev",
     },
 });
+
+let header = document.getElementsByClassName("Header");
+
+header.addEventListener("mouseover", function (event) {
+    event.target.style.color = "#fbdd97";
+}, false);
+
+
+header.addEventListener("mouseout", function(event){
+    event.target.style.color = "white";
+}, false)

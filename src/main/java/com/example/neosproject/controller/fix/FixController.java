@@ -11,4 +11,8 @@ public class FixController {
     public String fix(){
         return "app/fix/header";
     }
+    @GetMapping("/loginHeader")
+    public String login(){
+        return "app/fix/loginHeader";
+    }
 }

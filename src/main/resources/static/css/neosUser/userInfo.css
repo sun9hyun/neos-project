@@ -1,0 +1,1209 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    font-family: 'GmarketSansMedium';
+}
+
+blockquote, body, button, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, pre, select, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+}
+
+.userProfileSection .profileInfo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0 0;
+}
+
+.userProfileSection, .userProfileSection .profileInfo {
+    width: 100%;
+    margin: 0 auto;
+    transition: all .2s;
+}
+
+.userProfileSection .profileInfo .pic {
+    width: 130px;
+    height: 130px;
+    border-radius: 10px;
+    background-color: #ddd;
+    transition: all .2s;
+    position: relative;
+    margin: 0 auto 16px;
+}
+
+.userProfileSection .profileInfo .pic .picWrap {
+    width: 130px;
+    height: 130px;
+    border-radius: 10px;
+    background-color: #ddd;
+    overflow: hidden;
+    transition: all .2s;
+    position: relative;
+}
+
+.userProfileSection .profileInfo .pic .picWrap img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+}
+
+.userProfileSection .profileInfo .pic .favoriteSymbol {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border-radius: 100px;
+    bottom: -12px;
+    right: -12px;
+    background: #fff;
+    box-shadow: 0 0 24px 0 rgb(0 0 0 / 10%);
+}
+
+a, button, input, select, textarea {
+    tap-highlight-color: transparent;
+}
+
+a, a:active, a:hover {
+    text-decoration: none;
+}
+
+a {
+    color: #333;
+    background-color: transparent;
+}
+
+.userProfileSection .profileInfo .pic .favoriteSymbol .favorite {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-white.b1db0e3e169a5cf61afa41daf5bfdc15.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    top: 54%;
+    left: 51%;
+    transform: translate(-50%, -50%);
+}
+
+.userProfileSection .profileInfo .profileInfoTxt {
+    border-bottom: 1px solid #dcdce1;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    margin: 0 auto;
+}
+
+.userProfileSection .profileInfo .profileInfoTxtFirst {
+    text-align: center;
+}
+
+.userProfileSection .profileInfo .profileInfoTxt .profileStatusSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.userProfileSection .profileInfo .profileInfoTxt .userTag {
+    border: 1px solid #1A7CFF;
+    background-color: #1A7CFF;
+    border-radius: 100px;
+    display: inline-block;
+    height: auto !important;
+    margin-right: 4px;
+}
+
+.userProfileSection .profileInfo .profileInfoTxt .userTag span {
+    color: #fff;
+    font-size: .6875rem;
+    display: block;
+    padding: 4px 14px;
+    margin-top: 3px;
+}
+
+.userProfileSection .profileInfo .profileInfoTxt .tit {
+    font-size: 22px;
+    color: #42495b;
+    line-height: 1.6;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.userProfileSection .profileInfo .profileInfoTxt .tit img {
+    width: 40px;
+    object-fit: cover;
+}
+
+.userProfileSection .profileInfo .profileInfoTxt .introduction {
+    font-size: .8125rem;
+    color: #696980;
+}
+
+.userProfileSection .profileInfo .profileInfoTxt .topBtnWrap {
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.userProfileSection button.pinkBtn {
+    border-radius: 4px;
+    font-size: .75rem;
+    color: #fff;
+    width: auto !important;
+    padding: 14px 38px 10px !important;
+    background-color: #1A7CFF;
+}
+
+.btnWrap button.pinkBtn {
+    background-color: #1A7CFF;
+}
+
+.btnWrap button.grayBtn, .btnWrap button.pinkBtn {
+    color: #fff;
+    font-size: .75rem;
+    padding: 11px 35px;
+    border-radius: 4px;
+    width: 240px;
+    box-sizing: border-box;
+    border: none;
+}
+
+button, input[type=button], input[type=file], input[type=reset], input[type=submit] {
+    border-radius: 0;
+}
+
+button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+button, input, select, textarea {
+    font-size: 100%;
+    vertical-align: middle;
+}
+
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+
+button, input {
+    overflow: visible;
+}
+
+button, select {
+    text-transform: none;
+}
+
+.userProfileSection .topBtnWrap button:last-child {
+    margin-left: 6px;
+}
+
+.userProfileSection button.blackBtn {
+    border-radius: 4px;
+    font-size: .75rem;
+    color: #fff;
+    padding: 14px 35px 10px !important;
+    background-color: #42495b;
+}
+
+.myTabWrapContainer {
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
+    position: sticky;
+    top: 74px;
+    z-index: 1000;
+    background-color: #fff;
+}
+
+.myTabWrapContainer .myTabWrap {
+    display: inline-flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    border-bottom: 1.5px solid #ededed;
+    width: 100%;
+}
+
+.myTabWrapContainer .myTabWrap a.active, .myTabWrapContainer .myTabWrap a:hover {
+    color: #333;
+    font-weight: 700;
+    border-bottom: 2px solid #000;
+    cursor: pointer;
+}
+
+.myTabWrapContainer .myTabWrap a {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.myTabWrapContainer .myTabWrap a {
+    padding: 14px 4px;
+    font-size: 15px;
+    line-height: 15px;
+    color: #999;
+    transition: all .2s;
+}
+
+.userProfileSection .summaryInfo {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+    max-width: 1080px;
+    margin: 0 auto 20px;
+}
+
+.userProfileSection .summaryInfo ul {
+    font-size: 1rem;
+    color: #424251;
+    width: 100%;
+}
+
+.userProfileSection .summaryInfo ul li.userInfoTit:first-child {
+    margin-top: 5px;
+}
+
+.userProfileSection .summaryInfo ul li.userInfoTit {
+    margin-top: 21px;
+    margin-bottom: 18px;
+}
+
+.userProfileSection .summaryInfo ul li {
+    margin-bottom: 24px;
+}
+
+.userProfileSection .summaryInfo ul li {
+    font-size: 13px;
+    line-height: 13px;
+}
+
+dl, li, menu, ol, ul {
+    list-style: none;
+}
+
+b, strong {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.userProfileSection .summaryInfo ul li.userCharacter span:first-child {
+    width: 75px;
+    margin-right: 42px;
+    display: inline-block;
+    color: #424251;
+}
+
+.userProfileSection .summaryInfo ul li.userCharacter h2.gray {
+    color: #666;
+    font-size: 13px;
+    line-height: 13px;
+    display: inline-block;
+    font-weight: 400;
+}
+
+.portfolioAndSkillWrap {
+    background-color: #fafafa;
+    padding: 20px 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.portfolioAndSkillWrap .portfolioAndSkill, .portfolioLinkWrap {
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.portfolioAndSkillWrap .portfolioAndSkill .tit {
+    font-size: 22px !important;
+    color: #000;
+    line-height: 19px;
+}
+
+.portfolioAndSkillWrap .portfolioAndSkill .skill {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.portfolioAndSkillWrap .portfolioAndSkill .skill .subtit {
+    width: 60px;
+    font-size: 14px;
+    color: #222;
+}
+
+.portfolioAndSkillWrap .portfolioAndSkill .subtit {
+    font-size: 14px;
+    color: #222;
+}
+
+.portfolioAndSkillWrap .portfolioAndSkill .skill .skillContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.portfolioAndSkillWrap .portfolioAndSkill .skill .skillWrap {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+    margin-top: 10px;
+}
+
+.portfolioAndSkillWrap .portfolioAndSkill .skill .skillWrap img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    margin-bottom: 4px;
+}
+
+.portfolioAndSkillWrap .portfolioAndSkill .skill .skillWrap .skillName {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.portfolioAndSkillWrap .portfolioAndSkill .skill .skillWrap .skillName p {
+    font-size: 10px;
+    line-height: 12px;
+    margin-right: 1px;
+}
+
+.portfolioAndSkillWrap .portfolioAndSkill .skill .skillWrap .skillName .skillproFici {
+    display: inline-flex;
+}
+
+.portfolioAndSkillWrap .portfolioAndSkill .skill .skillWrap .skillName .skillproFici i.active {
+    background-image: url(https://letspl.me/_next/static/media/ic-skill-small-on.b30014f1cdd41faddd102ed4c50b746a.png);
+}
+
+.portfolioAndSkillWrap .portfolioAndSkill .skill .skillWrap .skillName .skillproFici i {
+    width: 16px;
+    height: 15px;
+    background-image: url(https://letspl.me/_next/static/media/ic-skill-small.a25ac64d80bfa48d5ed63001cb3dc85b.png);
+    background-size: contain;
+}
+
+.projectInfo {
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.projectInfo .projectInfoWrap {
+    display: flex;
+    flex-direction: column !important;
+}
+
+.projectInfo .projectInfoWrap .subTit {
+    font-size: 22px !important;
+    margin-bottom: 20px !important;
+    color: #42495b !important;
+    font-weight: 700 !important;
+}
+
+.projectInfo .projectInfoWrap .projectGrid {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    overflow-x: auto;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ededed;
+}
+
+.projectInfo .projectInfoWrap .projectGrid .projectGridWrap {
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.projectGridWrap, .projectGridWrap .top {
+    position: relative;
+}
+
+.projectGridWrap {
+    max-width: 285px;
+    width: 100%;
+    height: 290px;
+    box-sizing: border-box;
+    padding: 0 0 12px;
+    border-radius: 8px;
+    border: 1px solid #ebebeb;
+    background-color: #fff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.projectGridWrap .projectTopInfo {
+    display: inline-flex;
+    overflow: hidden;
+}
+
+.projectGridWrap .projectTopInfo .projectThumb, .projectGridWrap .projectTopInfo .top {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.projectGridWrap .projectTopInfo .top {
+    position: absolute;
+    padding-top: 12px;
+    padding-left: 10px;
+    padding-right: 12px;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top .badgeWrap, .top .badgeWrap .badge {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.top .badgeWrap .badge.blue {
+    background-color: #594bba;
+}
+
+.top .badgeWrap .badge {
+    box-sizing: border-box;
+    padding: 4px 10px;
+    margin-right: 4px;
+}
+
+.top .badgeWrap .badge h2, .top .badgeWrap .badge span {
+    color: #fff;
+    font-size: 12px;
+    line-height: 19px;
+    padding-top: 2px;
+}
+
+.top .favorite {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-white.b1db0e3e169a5cf61afa41daf5bfdc15.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.projectGridWrap .projectBottomInfo {
+    box-sizing: border-box;
+    padding: 14px;
+}
+
+.projectGridWrap .projectBottomInfo .txtWrap.studyTxtWrap {
+    margin-top: 50px;
+}
+
+.projectGridWrap .projectBottomInfo .txtWrap .category {
+    font-size: 12px;
+    line-height: 12px;
+    color: #b1b1b1;
+    font-weight: 400;
+}
+
+.projectGridWrap .projectBottomInfo .txtWrap .tit {
+    font-size: 14px;
+    color: #000;
+    line-height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 12px;
+    height: 24px;
+    font-weight: 400;
+    width: 100%;
+}
+
+.projectGridWrap .projectBottomInfo .txtWrap .studyCategory {
+    font-size: 12px;
+    line-height: 12px;
+    height: 12px;
+    color: #b1b1b1;
+    margin-top: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.projectGridWrap .projectBottomInfo .txtWrap .iconWrap {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    overflow: hidden;
+    height: 30px;
+}
+
+.projectGridWrap .projectBottomInfo .txtWrap .iconWrap img {
+    width: 30px;
+    height: auto;
+    margin-right: 4px;
+}
+
+.projectGridWrap .projectInfo2 {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.projectGridWrap .projectInfo2 .middleWrap, .projectGridWrap .projectInfo2 .middleWrap .left .heartCount {
+    flex-direction: row;
+    align-items: center;
+}
+
+.projectGridWrap .projectInfo2 .middleWrap {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.projectGridWrap .projectInfo2 .middleWrap .left .heartCount {
+    display: inline-flex;
+}
+
+.projectGridWrap .projectInfo2 .middleWrap .left .heartCount img {
+    width: 12.5px;
+    height: auto;
+    margin-right: 4px;
+}
+
+.projectGridWrap .projectInfo2 .middleWrap .left .heartCount span, .projectGridWrap .projectInfo2 .middleWrap .right p {
+    font-size: 12px;
+    color: #888;
+}
+
+.projectGridWrap .projectInfo2 .bottomWrap {
+    border-top: 1px solid #f6f6f6;
+    line-height: 14px;
+    padding-top: 9px;
+    padding-bottom: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.projectGridWrap .projectInfo2 .bottomWrap .gatherTxt {
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.projectGridWrap .projectInfo2 .bottomWrap .gatherTxt div {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.projectGridWrap .projectInfo2 .bottomWrap .gatherTxt div span:first-child {
+    margin-right: 4px;
+}
+
+.projectGridWrap .projectInfo2 .bottomWrap .gatherTxt div span {
+    font-size: 12px;
+    color: #666;
+    font-weight: 400;
+}
+
+.projectInfo.subscriberWrap {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.userOption.watchedLetspler {
+    width: 100%;
+}
+
+.projectInfo.subscriberWrap .watchedLetspler .subTit {
+    font-size: 22px;
+    color: #000;
+    margin-bottom: 20px !important;
+}
+
+.userOption.watchedLetspler .subTit {
+    font-size: 1.375rem;
+    margin-bottom: 12px !important;
+    color: #42495b !important;
+    font-weight: 700 !important;
+}
+
+.userOption.watchedLetspler .subTit span {
+    color: #1A7CFF;
+}
+
+.userOption.watchedLetspler ul {
+    display: inline-block;
+    flex-direction: row;
+}
+
+.userOption.watchedLetspler ul li:first-child {
+    margin-left: 0;
+    margin-right: 0;
+    left: 0;
+    right: 0;
+}
+
+.userOption.watchedLetspler ul li {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-right: -20px;
+}
+
+.userOption.watchedLetspler ul li .hoverName {
+    width: 114px;
+    height: 28px;
+    background-color: rgba(0, 0, 0, .8);
+    position: absolute;
+    top: -24px;
+    border-radius: 4px;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    display: none;
+}
+
+.userOption.watchedLetspler ul li p {
+    width: 100%;
+    text-align: center;
+    line-height: 1;
+    position: relative;
+    top: 3px;
+    left: 8px;
+}
+
+.userOption.watchedLetspler ul li span:first-child {
+    font-size: 12px !important;
+    color: #1A7CFF !important;
+    margin-right: 4px !important;
+}
+
+.userOption.watchedLetspler ul li span:last-child {
+    font-size: 12px !important;
+    color: #fff !important;
+}
+
+.userOption.watchedLetspler ul li .imgWrap {
+    max-width: 62px;
+    width: 62px;
+    height: 62px;
+    border-radius: 100px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+}
+
+.userOption.watchedLetspler ul li img {
+    width: 62px;
+    height: 62px;
+    object-fit: cover;
+}
+
+.userOption.watchedLetspler ul li:nth-child(2) {
+    margin-left: -20px;
+}
+
+.projectInfo .morePeopleView {
+    width: 100%;
+    margin: 0 auto 20px;
+}
+
+.projectInfo .morePeopleView .peopleRecommendWrapTit {
+    box-sizing: border-box;
+    padding: 20px 0;
+    display: flex;
+}
+
+.projectInfo .morePeopleView .peopleRecommendWrapTit p {
+    color: #424251;
+    font-size: 1.375rem;
+    font-weight: 700;
+}
+
+.projectInfo .morePeopleView .peopleRecommendContents {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    padding: 12px 0 15px;
+    white-space: nowrap;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+}
+
+.projectInfo .morePeopleView .peopleRecommendContents .box {
+    display: inline-flex;
+    flex-direction: column;
+    width: 285px;
+    flex: none;
+    margin-right: 10px !important;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.projectInfo .morePeopleView .peopleRecommendContents .box .top {
+    display: inline-flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    align-items: flex-start;
+    padding-bottom: 12px;
+    position: relative;
+}
+
+.projectInfo .morePeopleView .peopleRecommendContents .box .top .userPic {
+    position: relative;
+}
+
+.userProfileSection .profileInfo .profileInfoTxt a {
+    font-size: 1rem;
+    color: #8e8ea2;
+    margin-bottom: 0;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1.6;
+}
+
+.projectInfo .morePeopleView .peopleRecommendContents .box .top .left {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-right: 12px;
+}
+
+.projectInfo .morePeopleView .peopleRecommendContents .box .top .left img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+}
+
+.projectInfo .morePeopleView .peopleRecommendContents .box .top .right {
+    white-space: normal;
+    position: relative;
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.projectInfo .morePeopleView .peopleRecommendContents .box .top .right div {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.projectInfo .morePeopleView .peopleRecommendContents .box .top .right .userLv {
+    width: 28px;
+    height: 20px;
+    object-fit: cover;
+    margin-right: 8px;
+}
+
+.projectInfo .morePeopleView .peopleRecommendContents .box .top .right .peopleNameTxt {
+    font-size: 15px;
+    line-height: 25px;
+    font-weight: 700;
+    color: #42495b;
+    display: inline-block;
+    position: relative;
+    letter-spacing: -.3px;
+}
+
+.projectInfo .morePeopleView .peopleRecommendContents .box .top .right .coffeAndHeart {
+    margin-top: 4px;
+}
+
+.projectInfo .morePeopleView .peopleRecommendContents .box .bottom {
+    box-sizing: border-box;
+    padding-top: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    border-top: 1px solid #ededed;
+    white-space: nowrap;
+}
+
+.projectInfo .morePeopleView .peopleRecommendContents .box .bottom p {
+    font-size: 11px;
+    color: #333;
+    padding: 3.8px 11.7px 6.2px 12.3px;
+    border-radius: 13px;
+    border: 1px solid #e8e8e8;
+    box-sizing: border-box;
+    margin-right: 5px;
+}
+
+.userProfileSection .summaryInfo ul ul.userInfoWrap {
+    box-sizing: border-box;
+    background-color: #f6f6f9;
+    padding: 27px 0 25px 36px;
+    border-bottom: 0 solid #42495b;
+    margin-top: 14px;
+    margin-bottom: 27px;
+}
+
+.userProfileSection .summaryInfo ul ul.userInfoWrap li span:first-child {
+    width: 72px;
+    margin-right: 48px;
+    display: inline-flex;
+}
+
+.userProfileSection .summaryInfo ul li.userOption span.optionTxt {
+    width: 22%;
+    color: #424251;
+}
+
+.userProfileSection .summaryInfo ul li.userOption h3 {
+    display: inline;
+    color: #696980;
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 400;
+}
+
+.userProfileSection .summaryInfo ul li.userOption span {
+    display: inline;
+    color: #696980;
+    margin-left: 4px;
+}
+
+.userProfileSection .summaryInfo ul li.textArea {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.userProfileSection .summaryInfo ul li.textArea .introTxt {
+    font-size: 14px;
+    line-height: 1.36;
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 0;
+    flex-direction: column;
+    word-break: break-all;
+    white-space: normal;
+    font-weight: 400;
+}
+
+
+.userProfileSection .summaryInfo ul li.userMbti .Alpha span {
+    background-color: #50a9ab;
+}
+
+.userProfileSection .summaryInfo ul li.userMbti .mbType span {
+    box-sizing: border-box;
+    padding: 7px 16px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 100px;
+    width: auto;
+    max-width: auto;
+    line-height: 1.36;
+    margin: 0px 20px 0px 85px;
+    padding-top: 10px;
+}
+
+.userProfileSection .summaryInfo ul li.textArea span.optionTxt {
+    width: 75px !important;
+    margin-right: 50px;
+    color: #424521;
+    display: inline-flex;
+    flex-shrink: 0;
+}
+
+.userProfileSection .summaryInfo ul li.userMbti .mbType p {
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+}
+
+.userProfileSection .summaryInfo ul li.userMbti .Alpha p:before {
+    background-color: #e7f7f7;
+    opacity: .5;
+}
+
+.userProfileSection .summaryInfo ul li.userMbti .mbType p:before {
+    content: " ";
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    bottom: 0;
+    z-index: 0;
+}
+
+.userProfileSection .summaryInfo ul li.userMbti {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.userProfileSection .summaryInfo ul li:last-child {
+    margin-bottom: 0;
+}
+
+.userProfileSection .summaryInfo ul li.userMbti .mbType {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.idHoverMenu {
+    display: none;
+}
+
+.userName {
+    font-size: 15px;
+    line-height: 28px;
+    color: #333;
+    margin-right: 5px;
+    cursor: pointer;
+    letter-spacing: -.5px;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.idHoverMenu {
+    display: none;
+    position: absolute;
+    width: 90px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    z-index: 999;
+}
+
+.idHoverMenu li {
+    width: 100%;
+}
+
+.idHoverMenu li a {
+    display: block !important;
+    padding: 5px 10px !important;
+    font-weight: 400 !important;
+    font-size: .75rem !important;
+    color: #333 !important;
+    padding-bottom: 2px !important;
+}
+
+.idHoverMenu li:hover {
+    background-color: rgba(26, 124, 255, .8);
+}
+
+.idHoverMenu li a:hover {
+    color: #fff !important;
+}
+
+.userProfileSection .profileInfo .pic .favoriteSymbol .favorite:active, .userProfileSection .profileInfo .pic .favoriteSymbol .favorite:hover {
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-red.dc81687625806b2a936003e32f80a843.svg)
+}
+
+.userProfileSection .profileInfo .pic .favoriteSymbol .favorite.active {
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-full.5a5209416a8859031c9099b5540c281a.svg);
+}
+
+.userCertIcon {
+    width: 18px;
+    height: 18px;
+    object-fit: cover;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+.top .favorite:hover {
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-hover.03f7a2966e132a098a985cdc42f83b46.svg);
+}
+
+.userProfileSection .profileInfo .profileInfoTxt .userTag.grayTag {
+    background-color: #9796a7;
+    border: 1px solid #9796a7;
+}
+
+.userProfileSection .summaryInfo ul li.keywordTagWrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.userProfileSection .summaryInfo ul li.keywordTagWrap span.subtit {
+    width: 75px;
+    margin-right: 45px;
+    display: inline-block;
+    color: #424251;
+    padding-top: 4px;
+}
+
+.userProfileSection .summaryInfo ul li.keywordTagWrap .keywordTag {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    margin-right: 6px;
+    border-radius: 17px;
+    border: 1px solid #e8e8e8;
+    background-color: #fff;
+    padding: 7px 12px;
+    font-weight: 400;
+    padding-top: 10px;
+}
+
+.userProfileSection .summaryInfo ul li.keywordTagWrap .keywordTag span {
+    font-size: 14px;
+    line-height: 1.36;
+    color: #333;
+    box-sizing: border-box;
+    display: -moz-inline-box;
+    display: inline-flex;
+}
+
+.modalWrapOpen {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+    display: none;
+}
+
+.modalWrapOpen .commonModal {
+    padding: 60px 20px 40px;
+    background-color: #fff;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    border-radius: 8px;
+    max-width: 406px;
+    min-width: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all .2s;
+    z-index: 999999;
+}
+
+.modalWrapOpen .commonModal .modalTit {
+    font-size: 1.125rem;
+    color: #42495b;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.25rem;
+}
+
+.modalWrapOpen .commonModal .closeBtn {
+    width: 22px;
+    height: 22px;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 24px;
+}
+
+.modalWrapOpen .commonModal .closeBtn img {
+    width: 100%;
+}
+
+.modalWrapOpen .commonModal .commonModalContent p {
+    font-size: .75rem;
+    color: #8e8ea2;
+    text-align: center;
+    line-height: 1rem;
+}
+
+.modalWrapOpen .commonModal .btnWrap {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.btnWrap {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.modalWrapOpen .commonModal .btnWrap button.whiteBtn {
+    border: 1px solid #ea6560;
+    color: #ea6560;
+    background-color: #fff;
+}
+
+.modalWrapOpen .commonModal .btnWrap.doubleBtnWrap button {
+    height: 44px;
+    width: 49%;
+    border: none;
+    box-sizing: border-box;
+    font-size: .75rem;
+    padding: 0;
+    border-radius: 4px;
+}
+
+.btnWrap button.whiteBtn {
+    background-color: #fff;
+    color: #000;
+    font-size: .75rem;
+    padding: 11px 35px;
+    border-radius: 4px;
+    width: 240px;
+    box-sizing: border-box;
+    border: none;
+}
+
+.modalWrapOpen .commonModal .btnWrap button.redBtn {
+    border: 1px solid #ea6560;
+    background-color: #ea6560;
+    color: #fff;
+}
+
+
+
+
+

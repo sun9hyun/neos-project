@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>이거를 참고하세요.</title>
+    <link rel="stylesheet" href="/css/study/fragment.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <!--헤더 CSS 젤 아래-->
+</head>
+<body>
+<header th:replace="/app/fix/header.html :: header"></header>
+
+
+
+<div th:replace="/app/fix/footer.html :: footer"></div>
+</body>
+</html>

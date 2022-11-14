@@ -1,0 +1,233 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'GmarketSansMedium';
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    font-size: 16px;
+}
+
+body {
+    background: #fff;
+}
+
+div, section {
+    display: block;
+}
+
+body, button, input, select, td, textarea, th {
+    line-height: 1.5;
+    color: #333;
+}
+
+section {
+    width: 100%;
+    background-color: #fff;
+}
+
+.buildStudyTitWrap {
+    width: 100%;
+    max-width: 100%;
+    padding: 62px 20px 32px;
+    background-color: #1A7CFF;
+    box-sizing: border-box;
+}
+
+.buildStudyTitWrap .titContents {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.buildStudyTitWrap .titContents h3 {
+    color: #fff;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 3rem;
+}
+
+.buildStudyTitWrap .titContents p {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.buildStudyWrap {
+    max-width: 1200px;
+    width: 100%;
+    margin: 26px auto 0;
+    -webkit-box-shadow: 0 3px 28px 0 rgb(0 0 0 / 4%);
+    -moz-box-shadow: 0 3px 28px 0 rgba(0,0,0,.04);
+    box-shadow: 0 3px 28px 0 rgb(0 0 0 / 4%);
+    height: 100%;
+}
+
+.buildStudyContents {
+    padding: 40px 120px;
+}
+
+.buildStudyContents .question, .buildStudyContents .question .stepWrap {
+    flex-direction: row;
+    align-items: center;
+}
+
+.buildStudyContents .question {
+    position: relative;
+    display: flex;
+}
+
+.buildStudyContents .question p {
+    color: #000;
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: 500;
+}
+
+.buildStudyContents .question p span {
+    font-size: 13px;
+    color: #b1b1b1;
+    display: block;
+    line-height: 20px;
+    padding-top: 10px;
+    font-weight: 400;
+}
+
+.buildStudyContents .answer {
+    margin-top: 16px;
+    margin-bottom: 28px;
+}
+
+dl, li, menu, ol, ul {
+    list-style: none;
+}
+
+.buildStudyContents .answer ul li .inputWrap.studyTitle {
+    width: 100%;
+}
+
+.buildStudyContents .answer ul li .inputWrap input,
+.buildStudyContents .answer div .answer input,
+.buildStudyContents .answer div .inputWrap select,
+.selectBox select,
+.selectBoxLeft select   {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid #bcbccb;
+    box-sizing: border-box;
+    height: auto!important;
+    color: #696980;
+    font-size: 14px;
+    border-radius: 4px!important;
+}
+
+.selectBox select   {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid #bcbccb;
+    box-sizing: border-box;
+    height: auto!important;
+    color: #696980;
+    font-size: 14px;
+    border-radius: 4px!important;
+}
+
+
+
+
+input {
+    flex: 1 1;
+}
+
+blockquote, body, button, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, pre, select, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+}
+
+.buildStudyContents .question p span:before {
+    content: "❗";
+    color: #1A7CFF;
+}
+
+input::placeholder{color: #b1b1b1a8}
+
+.selectBoxWrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+}
+
+.selectBoxLeft {
+    width: 100%;
+    margin-right: 20px;
+}
+
+.selectBox {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    height: 450px;
+    font-size: 15px;
+    padding: 11px 16px;
+    border-radius: 4px;
+    margin-right: 14px;
+    resize: none;
+    border: 1px solid rgb(151, 150, 167);
+}
+
+
+.buildStudyContents .confirmBtnWrap .previewBtn,
+.buildStudyContents .confirmBtnWrap .saveBtn {
+    width: auto!important;
+}
+
+.btnWrap button.grayBtn,
+.btnWrap button.pinkBtn {
+    color: #fff;
+    font-size: .75rem;
+    padding: 11px 35px;
+    border-radius: 4px;
+    width: 240px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+}
+
+
+.buildStudyContents .confirmBtnWrap {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: center;
+    justify-content: center;
+}
+
+.btnWrap button.grayBtn {
+    background-color: #9796a7;
+}
+
+.buildStudyContents .confirmBtnWrap button:nth-child(2) {
+    margin: 0 6px;
+}
+
+.btnWrap button.pinkBtn {
+    background-color: #1A7CFF;
+}
+
+.buildStudyContents .btnWrap button {
+    width: auto!important;
+    max-width: 140px!important;
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 후 헤더</title>
+    <link rel="stylesheet" href="/css/fix/loginHeader.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+</head>
+
+<body>
+<div id="next">
+    <header class="Header">
+        <nav>
+            <img src="/images/main/logo.png" alt="letspl_logo" class="logo">
+            <ul class="Navbar">
+                <li><a href="">네오스인</a></li>
+                <li><a href="">스터디</a></li>
+                <li><a href="">자료상점</a></li>
+                <li><a href="">커뮤니티</a></li>
+                <li><a href="">공지사항</a></li>
+            </ul>
+
+            <div class="loginWrap">
+                <div class="loginLogout">
+                    <div class="newDot">
+                        <div class="redDot"></div>
+                    </div>
+                    <div class="searchWrap">
+                        <a class="searchIc"><span>검색</span>
+                            <img class="pcSearch" src="	https://letspl.me/assets/images/ic-search-white.png"
+                                 alt="검색하기">
+                        </a>
+                    </div>
+                    <a class="navBtn buildProject">
+                        <span>모임 or 스토리 생성</span>
+                    </a>
+                    <div class="profile">
+                        <img
+                                src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png">
+                    </div>
+
+                    <!--  팝업창  -->
+                    <div class="hoverMenu ">
+                        <div class="profileSummary clearfix">
+                            <div class="left prifileInfo"><a href="/people/sun9hyun"><img loading="lazy"
+                                                                                          src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png"></a>
+                            </div>
+                            <div class="right idInfo">
+                                <div class="lvAndLogout">
+                                    <div class="lv"><img loading="lazy" class="userLv"
+                                                         src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
+                                                         alt="렛플렙"></div><a class="logOut">로그아웃</a>
+                                </div><a href="/people/sun9hyun">
+                                <p class="userId">sun9hyun</p>
+                            </a><a href="/people/sun9hyun">
+                                <p class="positionTxt"><span>본캐 : 웹 서버</span><span>/&nbsp;초심자</span></p>
+                            </a>
+                            </div>
+                        </div>
+                        <div class="pointWrap">
+                            <div class="pointTxt"><span>8 P</span></div><button><span>충전</span></button>
+                        </div>
+                        <div class="navLIst">
+                            <div><a href="/people/sun9hyun">내 프로필</a></div>
+                            <div><a href="/my?tab=info">정보 수정</a></div>
+                            <div><a href="/my?tab=project">모임 현황</a></div>
+                        </div>
+                        <div class="alarmList">
+                            <ul>
+                                <li class="alarmTit">내 모임 (1)</li>
+                                <li class="alarmContent"><a href="/project/624">
+                                    <p>[스터디&amp;네트워킹] spring boot 팀프로젝트</p><span class="dateInfo">22.11.08
+                                                부터 참여중</span><span class="newTag"></span>
+                                </a></li>
+                            </ul>
+                            <ul>
+                                <li class="alarmTit">신규 알림 (1)</li>
+                                <li class="alarmContent"><a href="/my?tab=alarm">
+                                    <p>회원님을 찾는 프로젝트 대학 동아리 플랫폼 App가 게시되었습니다.</p><span class="dateInfo">22.11.09
+                                                09:08</span><span class="newTag"></span>
+                                </a></li>
+                                <li class="moreAlarm">
+                                    <p>이 외 <em>0</em>건의 메시지가 있습니다.</p><a href="/my?tab=alarm">확인하러 가기</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    </header>
+    <!-- 배너 -->
+    <div class=banners>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img class="banner1" src="/images/main/banner1.PNG"></div>
+                <div class="swiper-slide"><img class="banner2" src="/images/main/banner2.PNG"></div>
+                <!-- <div class="swiper-slide"><img class="banner1"
+                src="banner3.jpg"></div> -->
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <!-- 중앙 배너 -->
+    <section class="bannerSection">
+        <div>
+            <div class="carousel-root">
+                <div class="carousel carousel-slider" style="width: 100%;">
+                    <ul class="control-dots">
+                        <li class="dot selected" value="0" role="button" tabindex="0" aria-label="slide item 1">
+                        </li>
+                    </ul><button type="button" aria-label="previous slide / item"
+                                 class="control-arrow control-prev control-disabled"></button>
+                    <div class="slider-wrapper axis-horizontal">
+                        <ul class="slider animated"
+                            style="transform: translate3d(0px, 0px, 0px); transition-duration: 100ms;">
+                            <li class="slide selected previous">
+                                <div class="bannerWrap">
+                                    <p class="lgTxt">NEOS - 스터디</p>
+                                    <p class="smTxt">함께 스터디 할 인원을 모집해보세요!</p><a>스터디 모집하기</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><button type="button" aria-label="next slide / item"
+                                  class="control-arrow control-next control-disabled"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+
+    <div class="Footer">
+        <div class="footerContentBottom">
+            <div class="wrap">
+                <div class="left">
+                    <ul>
+                        <!-- <li>개빠사크루</li> -->
+                        <li>사업등록번호 : 782-99-06054</li>
+                        <li>대표 : 심민성</li>
+                        <li><a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=6193900615&amp;apv_perm_no="
+                               target="_blank">통신판매신고번호 : 제 2022-서울강남-3477호</a></li>
+                        <li>주소 : 경상남도 창원시 소답동 청학아파트 304호</li>
+                        <li><a href="tel:070-4111-6054">TEL : 070.4111.6054</a></li>
+                        <li>개인정보담당자 : 김로사<a href="mailto:help@lespl.me">&nbsp;ro@neos.me</a></li>
+                    </ul>
+                    <p>Copyright ⓒ 2022 NEOS. All rights reserved.</p>
+                    <ul class="mbWrap">
+                        <li><a href="/tnc/service_policy">서비스 이용약관</a></li>
+                        <li><a href="/tnc/privacy_policy">개인정보취급방침</a></li>
+                        <li><a href="/tnc/payment_policy">전자금융거래약관</a></li>
+                        <li><a href="/tnc/refund_policy">결제/환불약관</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chattingWrap2"><div class="chattingToggle active callChatNormal"></div></div>
+
+</div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="/js/fix/login.js"></script>
+
+</html>

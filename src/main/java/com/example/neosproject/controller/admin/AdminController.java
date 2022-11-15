@@ -23,4 +23,12 @@ public class AdminController {
     public String bannerEditer(){
         return "app/admin/bannerEdit";
     }
+
+    // 공지사항
+    @GetMapping("/noticePost")
+    public String noticePost(){return "app/admin/noticePost";}
+
+    //게시글관리
+    @GetMapping("/content")
+    public String contentManage(){return "app/admin/studyManagement";}
 }

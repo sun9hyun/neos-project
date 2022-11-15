@@ -352,3 +352,17 @@ button.whiteBtn:hover{
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+a.searchIc {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    padding: 6px 10px;
+    background-color: #1A7CFF;
+    border-radius: 2px;
+    margin-right: 10px;
+}

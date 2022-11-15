@@ -23,9 +23,26 @@ public class NeosUserController {
         return "app/neosUser/userInfo";
     }
 
+    @GetMapping("/info2")
+    public String info2(){
+        return "app/neosUser/userInfo2";
+    }
+
     @GetMapping("/infoAllNo")
     public String infoAllNo(){
         return "app/neosUser/userInfoAllNo";
     }
+
+    @GetMapping("/chat")
+    public String chat(){
+        return "app/fix/chattingBase";
+    }
+
+    @GetMapping("/chatAll")
+    public String chatAll(){
+        return "app/fix/chattingAll";
+    }
+
+
 
 }

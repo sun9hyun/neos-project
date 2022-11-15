@@ -19,7 +19,7 @@ dl, li, menu, ol, ul {
 .chattingWrap {
     right: -360px;
     max-width: 720px;
-    display: block;
+    display: none;
 }
 
 .chattingWrap2 {

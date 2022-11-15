@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>채팅창</title>
+    <link rel="stylesheet" href="/css/fix/chatting.css">
+</head>
+<body>
+<div class="chattingSpace" th:fragment="chattingSpaceAll">
+    <div class="chattingWrap2">
+        <div class="chattingToggle active callChatNormal">
+
+        </div>
+    </div>
+
+    <div class="chattingWrap listOff">
+        <div class="chattingContentWrap ">
+            <div class="chattingHeader">
+                <div class="left"><p>대화 목록</p></div>
+                <div class="right active"><a class="backBtn"></a>
+                    <div class="thumbWrap">
+                        <div class="thumb"><img loading="lazy" src="https://letspl.me/assets/iclogo_rec.png"
+                                                alt="chat_image"></div>
+                    </div>
+                    <div class="userIdAndTimeInfo"><p class="userId">렛플 - 오픈 챗&nbsp;(633)</p>
+                        <div class="morAndFoldBtnWrap">
+                            <div class="alarmOnBtn"></div>
+                            <div class="moreBtn"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="foldChatBtn"></div>
+            </div>
+            <div class="chattingSection">
+                <div class="list left">
+                    <ul>
+                        <li class="active">
+                            <div class="thumb"><img loading="lazy" src="https://letspl.me/assets/iclogo_rec.png"
+                                                    alt="chat_image"></div>
+                            <div class="chatInfo"><p class="userIdAndBeforeTime">
+                                <div class="right"><span class="userId">렛플 - 오픈챗</span></div>
+                                <span class="beforeTime">1일 전</span></p><p class="chatInfoTxt">오늘도 화이팅입니다.
+                                    렛플 뉴스레터(2022-11-14)
+
+                                    “연합군 모여라” vs “혼자서도 충분“https://letspl.me.이커머스 공룡들 난타전 [홍키자의 빅테크]
+                                    https://n.news.naver.com/mnews/article/009/0005044173?sid=103
+
+                                    韓 클라우드, 日서 '쾌속질주'
+                                    https://n.news.naver.com/mnews/article/030/0003058773?sid=105
+
+                                    [단독]탈잉도 70% 감원…'재능공유 플랫폼' 위기
+                                    https://n.news.naver.com/mnews/article/011/0004121560?sid=105
+
+                                    삼성전자 청소년을 차세대 SW개발자로 … 교육부터 채용 전폭 지원
+                                    https://n.news.naver.com/mnews/article/009/0005044310?sid=101
+
+                                    걸핏하면 퇴사한다던 김 과장https://letspl.me.그 얘기 쏙들어간 이유 [더테크웨이브]
+                                    https://n.news.naver.com/article/009/0005044172?sid=105
+
+                                    “먹통사태 원인·방지대책은”…카카오가 직접 밝힌다
+                                    https://n.news.naver.com/mnews/article/009/0005044518?sid=105
+
+                                    [써보니]카카오브레인 B^ DISCOVER, 상업용 일러스트 시장 대체할 수 있을까
+                                    https://n.news.naver.com/mnews/article/277/0005176456?sid=105
+
+                                    "카톡도 제쳤다"…'혐오 논란' 이루다 어떻게 바뀌었길래 [조아라의 IT's fun]
+                                    https://n.news.naver.com/mnews/article/015/0004773891?sid=105
+
+                                    고객이 '와우'할 때까지 혁신…확 앞당긴 흑자 시대
+                                    https://n.news.naver.com/mnews/article/009/0005044368?sid=103
+
+                                    좋은 시절 지났나…알리바바 쌍십일 매출액 공개 안해
+                                    https://n.news.naver.com/mnews/article/079/0003706399?sid=104
+
+                                    美 물가 정점론에…"다시 빅테크" vs "그래도 경기 방어株"
+                                    https://n.news.naver.com/mnews/article/015/0004774004?sid=101
+
+                                    스트리밍 전쟁에 출혈 컸던 디즈니 "인력 감축" 예고
+                                    https://n.news.naver.com/mnews/article/469/0000707243?sid=105
+
+                                    경쟁 심화되는 음원 스트리밍 시장, 스포티파이가 1위를 유지하는 비결
+                                    https://n.news.naver.com/mnews/article/293/0000041405?sid=105
+
+                                    트위터 유료 계정 '돈만 내면' 사칭 가능…논란 끝에 중단
+                                    https://n.news.naver.com/mnews/article/001/0013571126?sid=105
+
+                                    '미들웨어', 구글과 페이스북의 뉴스 유통 독점 해법 될까
+                                    https://n.news.naver.com/mnews/article/006/0000115539?sid=105
+
+                                    하루만에 우려가 환호로 … 기술株 먼저 뛰었다
+                                    https://n.news.naver.com/mnews/article/009/0005043997?sid=101
+
+                                    TDI, 네이버 vs 카카오…‘지도’ 앱 승자는?
+                                    https://n.news.naver.com/mnews/article/088/0000783812?sid=105
+
+                                    마스토돈, 머스크發 ‘트위터 탈출’에 이용자 급부상…네카오는?
+                                    https://n.news.naver.com/mnews/article/243/0000034086?sid=105
+
+                                    "가성비"vs"거부감"…넷플릭스 광고요금제에 엇갈린 시선
+                                    https://entertain.naver.com/read?oid=001&amp;aid=0013570895
+
+                                    쿠팡 흑자실현은 韓 스타트업의 새 이정표
+                                    https://n.news.naver.com/mnews/article/092/0002273413?sid=105
+
+                                    구글, 美서도 플레이스토어 '이용자 선택 결제' 적용
+                                    https://n.news.naver.com/mnews/article/092/0002273368?sid=105
+
+                                    아마존 전사적 비용절감 추진…AI 알렉사도 구조조정 검토
+                                    https://n.news.naver.com/mnews/article/001/0013569081?sid=101
+
+                                    애플 9% 폭등, 하루새 시총 254조 증가…월가 신기록(종합)
+                                    https://n.news.naver.com/mnews/article/421/0006451738?sid=105
+
+                                    [인뱅, 거품vs혁신]①카카오뱅크發 인뱅 가치 재조정
+                                    https://n.news.naver.com/article/277/0005175645
+
+                                    [인뱅, 거품vs혁신]②한때 참신했는데…이젠 '그 나물에 그 밥'
+                                    https://n.news.naver.com/mnews/article/277/0005175644?sid=101
+
+                                    [인뱅, 거품vs혁신]③금융범죄에 악용…보이스피싱 2배로 '급증'
+                                    https://n.news.naver.com/article/277/0005175646
+
+                                    ‘떠나기 싫은 일터’ 만드는 기업들… 해외여행 경비 대주고 20년 근속 1000만원 포상
+                                    https://n.news.naver.com/mnews/article/081/0003316114?sid=101
+
+                                    애사심 ‘이별’… ‘이직’의 시대
+                                    https://n.news.naver.com/mnews/article/081/0003316115?sid=101
+
+                                    두자릿수 쑥쑥 크던 온라인 광고 시장 한파… 유튜브는 첫 광고 감소
+                                    https://n.news.naver.com/article/023/0003727637?sid=101</p>
+                                <p class="endTime">종료 : 종료기한없음</p></div>
+                        </li>
+                    </ul>
+                </div>
+                        <div class="dayInfo"><p>22.11.04 금요일</p></div>
+                        <div class="opponent">
+                            <div class="thumb"><a href="/people/ROSA" target="_blank"><img
+                                    src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"
+                                    alt="chat_image"></a></div>
+                            <div class="userIdChatTxt"><span class="userId">ROSA</span>
+                                <p class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">안녕하세요&nbsp;</a></span>
+                                <div class="timeWrap"><span class="time">오후 3:07</span></div>
+                                </p></div>
+                        </div>
+                        <div class="opponent">
+                            <div class="thumb"><a href="/people/ROSA" target="_blank"><img
+                                    src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"
+                                    alt="chat_image"></a></div>
+                            <div class="userIdChatTxt"><span class="userId">ROSA</span>
+                                <p class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">😊&nbsp;</a></span>
+                                <div class="timeWrap"><span class="time">오후 3:07</span></div>
+                                </p></div>
+                        </div>
+                        <div class="opponent">
+                            <div class="thumb"><a href="/people/렛플운영자" target="_blank"><img
+                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/-1/images/KakaoTalk_20201018_112451542.png"
+                                    alt="chat_image"></a></div>
+                            <div class="userIdChatTxt"><span class="userId">렛플운영자</span>
+                                <p class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">😀 로사님 반가워요&nbsp;</a></span>
+                                <div class="timeWrap"><span class="time">오후 3:08</span></div>
+                                </p></div>
+                        </div>
+                        <div class="dayInfo"><p>22.11.07 월요일</p></div>
+                        <div class="opponent">
+                            <div class="thumb"><a href="/people/렛플운영자" target="_blank"><img
+                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/-1/images/KakaoTalk_20201018_112451542.png"
+                                    alt="chat_image"></a></div>
+                            <div class="userIdChatTxt"><span class="userId">렛플운영자</span>
+                                <p class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">오늘도 화이팅입니다.&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">렛플 뉴스레터(2022-11-07)&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">네이버 주요서비스 약 1시간반 장애…"롤드컵 중계 영향추정"(종합)&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/001/0013556906?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/001/0013556906?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">네이버, 중고·리셀 플랫폼에만 '3.4조 투자' 배경은&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/277/0005173013?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/277/0005173013?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">쿠팡 vs 네이버 연합군, '내일배송'으로 세게 붙는다&nbsp;</a><a
+                                        href="https://n.news.naver.com/mnews/article/417/0000866725?sid=101"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/417/0000866725?sid=101&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">"5년 내 500억 달러 수주"https://letspl.me. '원팀 코리아' 사우디서 로드쇼&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/469/0000706057?sid=101"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/469/0000706057?sid=101&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">삼성페이에도 모바일 운전면허증 담는다&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/014/0004923984?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/014/0004923984?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">컬리 몸값 ‘1조’도 어렵다?…가치 끌어올리기 총력&nbsp;</a><a
+                                        href="https://n.news.naver.com/mnews/article/293/0000041307?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/293/0000041307?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">머스크, 트위터 직원 3700명 하룻밤새 해고… 韓법인도 25% 감원&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/020/0003460656?sid=104"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/020/0003460656?sid=104&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">트위터 '피의 금요일' 이후… 메타도 대규모 정리해고 '초읽기'&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/011/0004118891?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/011/0004118891?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">'웹2 공룡' 구글 클라우드, '웹3' 뛰어든다…솔라나와 5단계 협업&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/421/0006440335?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/421/0006440335?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">코딩만 잘하면 합격이라는데 … 막상 취업은 '바늘 구멍'&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/009/0005040737?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/009/0005040737?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">[뉴스룸에서] 네카쿠라배 임금인상 1년 후&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/article/005/0001564635" target="_blank"
+                                        style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/article/005/0001564635&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">[미디어 비평] 신문 뉴스가 제값을 받으려면&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/082/0001182466?sid=110"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/082/0001182466?sid=110&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">[횡설수설/우경임]美 빅테크 감원 한파&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/020/0003460658?sid=110"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/020/0003460658?sid=110&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">네이버, 구글 넘어선 한글 언어모델https://letspl.me.누구나 제공&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/092/0002272629?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/092/0002272629?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">'크로스보더 플랫폼' 구상 크림, 1700억원 규모 유상증자&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/015/0004770763?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/015/0004770763?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">KT도 사우디 간다…'네옴 시티'에 '디지코' 역량 이식 나서&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/421/0006436006?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/421/0006436006?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">다음 메일 일시 오류…“즉시 복구”&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/011/0004118189?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/011/0004118189?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">'공공의 적' 네이버 배달 등판?… '땡겨요'도 변수&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/417/0000866212?sid=101"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/417/0000866212?sid=101&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">“화성, 걷는다, 광각” 입력하자 20초만에 잡지 표지가…&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/023/0003726183?sid=101"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/023/0003726183?sid=101&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">아마존 구글 메타, 당장 돈 안되는 사업은 일단 접는다&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/023/0003726242?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/023/0003726242?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">GM 이어 화이자-아우디도 트위터 광고 중단, 머스크 어쩌나&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/421/0006436424?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/421/0006436424?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">메타는 ‘메타버스 캐즘’에 빠지는 걸까&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/092/0002272646?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/092/0002272646?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">[단독]스타트업 투자 혹한기 속…숨고 '재능강의' 손 뗀다&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/011/0004117582?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/011/0004117582?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">첫 실적발표 앞둔 쏘카, 주가 급락 속 흑자 폭 넓힐까&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/138/0002135910?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/138/0002135910?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">‘눈속임 설계’로 쌓아올린 카카오 왕국…“이젠 의존도 낮출 때”&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/028/0002613008?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/028/0002613008?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">주가 '뚝' 카카오…"믿었던 매출증가율마저 한자릿수로 추락"&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/015/0004770490?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/015/0004770490?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">1년을 기다렸는데 주가는 -85%https://letspl.me.카카오페이 직원들의 눈물&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/009/0005039301?sid=101"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/009/0005039301?sid=101&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">31개월 만에…아마존, 시총 1조弗 붕괴&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/015/0004770383?sid=104"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/015/0004770383?sid=104&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">괜히 ‘메타’로 바꿨나… 주가 폭락, 인스타·왓츠앱 잇단 먹통&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/005/0001563695?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/005/0001563695?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">억눌렸던 여행 수요 대폭발https://letspl.me. 에어비앤비 최대 순이익&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/469/0000705416?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/469/0000705416?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span>
+                                <div class="timeWrap"><span class="time">오전 10:02</span></div>
+                                </p></div>
+                        </div>
+                        <div class="dayInfo"><p>22.11.08 화요일</p></div>
+                        <div class="opponent">
+                            <div class="thumb"><a href="/people/tommykim" target="_blank"><img
+                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4541/images/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-10-18%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2011.43.19%202.png"
+                                    alt="chat_image"></a></div>
+                            <div class="userIdChatTxt"><span class="userId">tommykim</span>
+                                <p class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">안녕하세요~&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">&nbsp;</a></span>
+                                <div class="timeWrap"><span class="time">오후 3:27</span></div>
+                                </p></div>
+                        </div>
+                        <div class="opponent">
+                            <div class="thumb"><a href="/people/렛플운영자" target="_blank"><img
+                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/-1/images/KakaoTalk_20201018_112451542.png"
+                                    alt="chat_image"></a></div>
+                            <div class="userIdChatTxt"><span class="userId">렛플운영자</span>
+                                <p class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">&nbsp;</a><a
+                                        style="color: rgb(234, 101, 96); text-decoration: underline;">@tommykim</a><a
+                                        style="color: rgb(51, 51, 51);">님 안녕하세요&nbsp;</a></span>
+                                <div class="timeWrap"><span class="time">오후 3:29</span></div>
+                                </p></div>
+                        </div>
+                        <div class="dayInfo"><p>22.11.10 목요일</p></div>
+                        <div class="opponent">
+                            <div class="thumb"><a href="/people/hoony" target="_blank"><img
+                                    src="https://letspl.me/assets/images/prof-no-img.png" alt="chat_image"></a></div>
+                            <div class="userIdChatTxt"><span class="userId">hoony</span>
+                                <p class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">안녕하세용&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">&nbsp;</a></span>
+                                <div class="timeWrap"><span class="time">오후 1:39</span></div>
+                                </p></div>
+                        </div>
+                        <div class="opponent">
+                            <div class="thumb"><a href="/people/보기보기" target="_blank"><img
+                                    src="https://letspl.me/assets/images/prof-no-img.png" alt="chat_image"></a></div>
+                            <div class="userIdChatTxt"><span class="userId">보기보기</span>
+                                <p class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">하이루 방가방가&nbsp;</a></span>
+                                <div class="timeWrap"><span class="time">오후 3:10</span></div>
+                                </p></div>
+                        </div>
+                        <div class="dayInfo"><p>22.11.11 금요일</p></div>
+                        <div class="opponent">
+                            <div class="thumb"><a href="/people/써니1" target="_blank"><img
+                                    src="https://k.kakaocdn.net/dn/du2pSP/btrAskqLe6U/LcnKNIcTlpdqr0a5SPZo7K/img_640x640.jpg"
+                                    alt="chat_image"></a></div>
+                            <div class="userIdChatTxt"><span class="userId">써니1</span>
+                                <p class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">안녕하세요 ㅎ&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">&nbsp;</a></span>
+                                <div class="timeWrap"><span class="time">오후 2:23</span></div>
+                                </p></div>
+                        </div>
+                        <div class="opponent">
+                            <div class="thumb"><a href="/people/써니1" target="_blank"><img
+                                    src="https://k.kakaocdn.net/dn/du2pSP/btrAskqLe6U/LcnKNIcTlpdqr0a5SPZo7K/img_640x640.jpg"
+                                    alt="chat_image"></a></div>
+                            <div class="userIdChatTxt"><span class="userId">써니1</span>
+                                <p class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">오픈챗이 있었네요&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">&nbsp;</a></span>
+                                <div class="timeWrap"><span class="time">오후 2:24</span></div>
+                                </p></div>
+                        </div>
+                        <div class="opponent">
+                            <div class="thumb"><a href="/people/렛플운영자" target="_blank"><img
+                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/-1/images/KakaoTalk_20201018_112451542.png"
+                                    alt="chat_image"></a></div>
+                            <div class="userIdChatTxt"><span class="userId">렛플운영자</span>
+                                <p class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">안녕하세요 오픈챗을 운영하고 있습니다.(카카오톡 오픈챗+ 자체 오픈챗)&nbsp;</a></span>
+                                <div class="timeWrap"><span class="time">오후 2:59</span></div>
+                                </p></div>
+                        </div>
+                        <div class="opponent">
+                            <div class="thumb"><a href="/people/써니1" target="_blank"><img
+                                    src="https://k.kakaocdn.net/dn/du2pSP/btrAskqLe6U/LcnKNIcTlpdqr0a5SPZo7K/img_640x640.jpg"
+                                    alt="chat_image"></a></div>
+                            <div class="userIdChatTxt"><span class="userId">써니1</span>
+                                <p class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">카카오도 주소좀 알려주세요&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">&nbsp;</a></span>
+                                <div class="timeWrap"><span class="time">오후 3:06</span></div>
+                                </p></div>
+                        </div>
+                        <div class="opponent">
+                            <div class="thumb"><a href="/people/써니1" target="_blank"><img
+                                    src="https://k.kakaocdn.net/dn/du2pSP/btrAskqLe6U/LcnKNIcTlpdqr0a5SPZo7K/img_640x640.jpg"
+                                    alt="chat_image"></a></div>
+                            <div class="userIdChatTxt"><span class="userId">써니1</span>
+                                <p class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">지원자와 대화할때도 커피포인트가 들어가나요?&nbsp;</a></span>
+                                <div class="timeWrap"><span class="time">오후 3:13</span></div>
+                                </p></div>
+                        </div>
+                        <div class="opponent">
+                            <div class="thumb"><a href="/people/렛플운영자" target="_blank"><img
+                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/-1/images/KakaoTalk_20201018_112451542.png"
+                                    alt="chat_image"></a></div>
+                            <div class="userIdChatTxt"><span class="userId">렛플운영자</span>
+                                <p class="chatTxt"><span class="chatTxtContents"><a
+                                        href="https://open.kakao.com/o/gnX95XHc" target="_blank"
+                                        style="color: rgb(51, 51, 51); text-decoration: underline;">https://open.kakao.com/o/gnX95XHc&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">2580입니다&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">지원자와 하셔도 포인트는들어갑니다&nbsp;</a></span>
+                                <div class="timeWrap"><span class="time">오후 3:22</span></div>
+                                </p></div>
+                        </div>
+                        <div class="dayInfo"><p>22.11.14 월요일</p></div>
+                        <div class="opponent">
+                            <div class="thumb"><a href="/people/렛플운영자" target="_blank"><img
+                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/-1/images/KakaoTalk_20201018_112451542.png"
+                                    alt="chat_image"></a></div>
+                            <div class="userIdChatTxt"><span class="userId">렛플운영자</span>
+                                <p class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">오늘도 화이팅입니다.&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">렛플 뉴스레터(2022-11-14)&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">“연합군 모여라” vs “혼자서도 충분“https://letspl.me.이커머스 공룡들 난타전 [홍키자의 빅테크]&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/009/0005044173?sid=103"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/009/0005044173?sid=103&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">韓 클라우드, 日서 '쾌속질주'&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/030/0003058773?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/030/0003058773?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">[단독]탈잉도 70% 감원…'재능공유 플랫폼' 위기&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/011/0004121560?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/011/0004121560?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">삼성전자 청소년을 차세대 SW개발자로 … 교육부터 채용 전폭 지원&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/009/0005044310?sid=101"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/009/0005044310?sid=101&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">걸핏하면 퇴사한다던 김 과장https://letspl.me.그 얘기 쏙들어간 이유 [더테크웨이브]&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/article/009/0005044172?sid=105" target="_blank"
+                                        style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/article/009/0005044172?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">“먹통사태 원인·방지대책은”…카카오가 직접 밝힌다&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/009/0005044518?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/009/0005044518?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">[써보니]카카오브레인 B^ DISCOVER, 상업용 일러스트 시장 대체할 수 있을까&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/277/0005176456?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/277/0005176456?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">"카톡도 제쳤다"…'혐오 논란' 이루다 어떻게 바뀌었길래 [조아라의 IT's fun]&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/015/0004773891?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/015/0004773891?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">고객이 '와우'할 때까지 혁신…확 앞당긴 흑자 시대&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/009/0005044368?sid=103"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/009/0005044368?sid=103&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">좋은 시절 지났나…알리바바 쌍십일 매출액 공개 안해&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/079/0003706399?sid=104"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/079/0003706399?sid=104&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">美 물가 정점론에…"다시 빅테크" vs "그래도 경기 방어株"&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/015/0004774004?sid=101"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/015/0004774004?sid=101&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">스트리밍 전쟁에 출혈 컸던 디즈니 "인력 감축" 예고&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/469/0000707243?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/469/0000707243?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">경쟁 심화되는 음원 스트리밍 시장, 스포티파이가 1위를 유지하는 비결&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/293/0000041405?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/293/0000041405?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">트위터 유료 계정 '돈만 내면' 사칭 가능…논란 끝에 중단&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/001/0013571126?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/001/0013571126?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">'미들웨어', 구글과 페이스북의 뉴스 유통 독점 해법 될까 &nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/006/0000115539?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/006/0000115539?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">하루만에 우려가 환호로 … 기술株 먼저 뛰었다&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/009/0005043997?sid=101"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/009/0005043997?sid=101&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">TDI, 네이버 vs 카카오…‘지도’ 앱 승자는?&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/088/0000783812?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/088/0000783812?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">마스토돈, 머스크發 ‘트위터 탈출’에 이용자 급부상…네카오는?&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/243/0000034086?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/243/0000034086?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">"가성비"vs"거부감"…넷플릭스 광고요금제에 엇갈린 시선&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://entertain.naver.com/read?oid=001&amp;aid=0013570895"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://entertain.naver.com/read?oid=001&amp;aid=0013570895&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">쿠팡 흑자실현은 韓 스타트업의 새 이정표&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/092/0002273413?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/092/0002273413?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">구글, 美서도 플레이스토어 '이용자 선택 결제' 적용&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/092/0002273368?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/092/0002273368?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">아마존 전사적 비용절감 추진…AI 알렉사도 구조조정 검토&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/001/0013569081?sid=101"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/001/0013569081?sid=101&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">애플 9% 폭등, 하루새 시총 254조 증가…월가 신기록(종합)&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/421/0006451738?sid=105"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/421/0006451738?sid=105&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">[인뱅, 거품vs혁신]①카카오뱅크發 인뱅 가치 재조정&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/article/277/0005175645" target="_blank"
+                                        style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/article/277/0005175645&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">[인뱅, 거품vs혁신]②한때 참신했는데…이젠 '그 나물에 그 밥'&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/277/0005175644?sid=101"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/277/0005175644?sid=101&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">[인뱅, 거품vs혁신]③금융범죄에 악용…보이스피싱 2배로 '급증'&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/article/277/0005175646" target="_blank"
+                                        style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/article/277/0005175646&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">‘떠나기 싫은 일터’ 만드는 기업들… 해외여행 경비 대주고 20년 근속 1000만원 포상&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/081/0003316114?sid=101"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/081/0003316114?sid=101&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">애사심 ‘이별’… ‘이직’의 시대&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/mnews/article/081/0003316115?sid=101"
+                                        target="_blank" style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/mnews/article/081/0003316115?sid=101&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a></span><span
+                                        class="chatTxtContents"><a style="color: rgb(51, 51, 51);">두자릿수 쑥쑥 크던 온라인 광고 시장 한파… 유튜브는 첫 광고 감소&nbsp;</a></span><span
+                                        class="chatTxtContents"><a
+                                        href="https://n.news.naver.com/article/023/0003727637?sid=101" target="_blank"
+                                        style="color: rgb(51, 51, 51); text-decoration: underline;">https://n.news.naver.com/article/023/0003727637?sid=101&nbsp;</a><a
+                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a style="color: rgb(51, 51, 51);">&nbsp;</a></span>
+                                <div class="timeWrap"><span class="time">오전 10:30</span></div>
+                                </p></div>
+                        </div>
+                        <div id="chat_ref_0"></div>
+                    </div>
+                    <div class="chatInputArea">
+                        <div class="buttonGroup">
+                            <button class="buttonComponents_button__1hvQa buttonComponents_circle__2iQ3w buttonComponents_whiteGray__25YEf   ">
+                                <img class="" src="https://letspl.me/assets/images/ic-add.svg"></button>
+                            <button class="buttonComponents_button__1hvQa buttonComponents_circle__2iQ3w buttonComponents_whiteGray__25YEf   ">
+                                <img class="" src="https://letspl.me/assets/images/ic-emoji.svg"></button>
+                        </div>
+                        <div class="mentions mentions--multiLine"
+                             style="position: relative; overflow-y: visible; height: 24px;">
+                            <div class="mentions__control">
+                                <div class="mentions__highlighter"
+                                     style="position: relative; box-sizing: border-box; width: 100%; color: transparent; overflow: hidden; white-space: pre-wrap; overflow-wrap: break-word; border: 1px solid transparent; text-align: start;"></div>
+                                <textarea placeholder="@으로 상대방 지정이 가능합니다." rows="5" cols="40" class="mentions__input"
+                                          style="display: block; width: 100%; position: absolute; margin: 0px; top: 0px; left: 0px; box-sizing: border-box; background-color: transparent; font-family: inherit; font-size: inherit; letter-spacing: inherit; height: 100%; bottom: 0px; overflow: hidden; resize: none;"></textarea>
+                            </div>
+                        </div>
+                        <button class="buttonComponents_button__1hvQa buttonComponents_circle__2iQ3w buttonComponents_blueBlack__2HIFu  buttonComponents_lgImg__2-hZO ">
+                            <img class="" src="https://letspl.me/assets/images/ic-send.svg"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

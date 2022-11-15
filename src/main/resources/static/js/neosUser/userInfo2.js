@@ -62,9 +62,9 @@ $(".modalWrapOpen .commonModal .btnWrap button.redBtn").on("click", function () 
 
 /* 스터디 초대 눌렀을 때 초대 가능하면 나오는 모달 관련*/
 
-$(".blackBtn").click(function(){
-    $(".modalBg").css("display", "block");
-});
+// $(".blackBtn").click(function(){
+//     $(".modalBg").css("display", "block");
+// });
 
 $(".modalBg .modal .closeBtn.imgBtn img").on("click", function () {
     $(".modalBg").css("display", "none");
@@ -92,9 +92,9 @@ $(".commonModal .closeBtn img").on("click", function () {
 
 /* 스터디 초대 눌렀을 때 초대 불가능하면 나오는 모달 관련 */
 
-// $(".blackBtn").click(function(){
-//     $(".noModal").css("display", "block");
-// });
+$(".blackBtn").click(function(){
+    $(".noModal").css("display", "block");
+});
 
 $(".noModal .commonModal .closeBtn").on("click", function () {
     $(".noModal").css("display", "none");

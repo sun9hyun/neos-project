@@ -16,4 +16,14 @@ public class MyPageController {
     public String myPageNeos(){
         return "app/myPage/myPageNeos";
     }
+
+    @GetMapping("/myPageStore")
+    public String myPageStore(){
+        return "app/myPage/myPageStore";
+    }
+
+    @GetMapping("/myPageStudy")
+    public String myPageStudy(){
+        return "app/myPage/myPageStudy";
+    }
 }

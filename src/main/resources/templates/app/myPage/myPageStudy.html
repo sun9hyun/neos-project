@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NEOS | 마이페이지</title>
+    <link rel="stylesheet" href="/css/study/listStudy.css">
+    <link rel="stylesheet" href="/css/myPage/myPageStudy.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+</head>
+<body>
+    <header th:replace="/app/fix/header.html :: header"></header>
+
+    <section class="mypage">
+        <div class="commonContentViewHeader">
+            <h1>
+                <span class="smTxt">LET'S see</span>
+                <span class="bgTxt">마이페이지</span>
+            </h1>
+        </div>
+
+        <div class="myTabMenu">
+            <ul>
+                <li class="">
+                    <a name="info">정보</a>
+                </li>
+                <li class="active">
+                    <a name="project">스터디(1)</a>
+                </li>
+                <li class="">
+                    <a name="story">자료상점(1)</a>
+                </li>
+                <li class="">
+                    <a name="favorite">구독(3)</a>
+                </li>
+                <li class="">
+                    <a name="alarm">알림(6)</a>
+                </li>
+                <li class="">
+                    <a name="payment">포인트</a>
+                </li>
+                <li class="">
+                    <a name="exp">네오력</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="myTabContents noticeTab active">
+            <h3 class="tabCommonTit">지원 현황</h3>
+            <div class="noProject"><p>지원한 모임이 없습니다.</p></div>
+
+            <h3 class="tabCommonTit">진행 현황</h3>
+            <div class="projectGridWrap" style="margin-right:10px">
+                <div class="projectTopInfo">
+                    <div class="top">
+                        <div class="badgeWrap">
+                            <div class="badge black">
+                                <!-- <h2>사이드프로젝트</h2> -->
+                                <img src="/images/study/inha.png">
+                            </div>
+                        </div>
+                        <div class="favorite "></div>
+                    </div>
+                    <div class="projectThumb"><img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_11.png" alt="커뮤니티 연계 교통 정보 어플"></div>
+                </div>
+                <div class="projectBottomInfo">
+                    <div class="txtWrap projectWrap">
+                        <h3 class="category">전공과목</h3>
+                        <h2 class="tit">공업수학_라플라스 변환</h2>
+                    </div>
+                </div>
+                <div class="projectInfo2">
+                    <div class="middleWrap">
+                        <div class="left">
+                            <div class="heartCount"><img loading="lazy" src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>3</span></div>
+                        </div>
+                        <div class="right">
+                        </div>
+                    </div>
+                    <div class="bottomWrap">
+                        <div class="gatherTxt">
+                            <div><span>모집완료</span><span>0/4</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="tabCommonTit">완료 현황</h3>
+            <div class="noProject"><p>완료한 모임이 없습니다.</p></div>
+
+        </div>
+
+
+
+
+    </section>
+
+
+
+    <div th:replace="/app/fix/footer.html :: footer"></div>
+</body>
+</html>

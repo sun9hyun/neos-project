@@ -325,3 +325,26 @@ input {
 .note-editable{
     height: 600px;
 }
+
+.uploadBox label {
+    border: 1px solid #9796a7;
+    color: #9796a7;
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 12px;
+    padding: 7px 20px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.uploadBox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}

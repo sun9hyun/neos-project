@@ -1272,8 +1272,8 @@ b, strong {
     border: 1px solid #9796a7;
     font-size: .75rem;
     color: #222;
-    padding: 10px 16px;
     box-sizing: border-box;
+    padding: 10px 0 8px 5px;
 }
 
 .modalBg .modal .btnWrap {

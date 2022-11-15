@@ -30,5 +30,11 @@ public class AdminController {
 
     //게시글관리
     @GetMapping("/content")
-    public String contentManage(){return "app/admin/studyManagement";}
+    public String studyManage(){return "app/admin/studyManagement";}
+    //자유게시판관리
+    @GetMapping("/free")
+    public String freeManage(){return "app/admin/freeBoardManagement";}
+    //고민상담게시판관리
+    @GetMapping("/counseling")
+    public String counselingManage(){return "app/admin/counselingBoardManagement";}
 }

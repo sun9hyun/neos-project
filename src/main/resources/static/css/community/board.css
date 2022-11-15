@@ -170,7 +170,7 @@
 }
 
 .loungeTrendComponents_LoungeTrendContainer__1xnsy {
-    background: #f1f1f1 !important;
+    background: #e1e1e1 !important
 }
 
 .centerSectionBox {
@@ -365,4 +365,29 @@ a.searchIc {
     background-color: #1A7CFF;
     border-radius: 2px;
     margin-right: 10px;
+}
+.postWrap{
+    display: flex;
+    flex: none;
+    margin-left: auto;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.postBtn{
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    padding: 6px 10px;
+    background-color: #1A7CFF;
+    border-radius: 2px;
+    cursor:pointer;
+    height: 4rem;
+}
+
+.postBtn span{
+    color:#fff;
 }

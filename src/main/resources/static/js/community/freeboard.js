@@ -168,7 +168,7 @@ $rereplyButton.on("click",function(){
 })
 
 /*모달*/
-const $writeBtn = $(".writingBtn");
+const $writeBtn = $(".postBtn");
 const $cancelBtn = $(".editorWrapButtonBoxLeft").find(".buttonComponents_md__26Zib");
 const $exitBtn = $(".closeButtonBox").find("img");
 const $registerBtn = $(".editorWrapButtonBoxRight").find("button")

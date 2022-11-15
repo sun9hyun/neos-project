@@ -69,11 +69,12 @@
                         <div class="projectTab projectManagementContents active">
                             <div class="workTabMenu" style="margin-top: 15px;">
                                 <ul>
-                                    <li class="active"><a>멤버 관리</a></li>
-                                    <li class=""><a>정보 관리</a></li>
+                                    <li class=""><a>멤버 관리</a></li>
+                                    <li class="active"><a>정보 관리</a></li>
                                 </ul>
                             </div>
-                            <div class="memberManagementTab active">
+                            <!-------- 멤버관리 DIV -------->
+                            <div class="memberManagementTab">
                                 <div class="section applicantSection">
                                     <h3>지원자 현황</h3>
                                     <div class="emptyApply">현재 지원자가 없습니다.</div>
@@ -308,30 +309,32 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="projectMangementTab buildProjectContents  ">
+
+                            <!-------- 정보 관리 DIV -------->
+                            <div class="projectMangementTab buildProjectContents active">
                                 <div class="question">
-                                    <p>- 스터디&amp;네트워킹 주제</p>
+                                    <p>- 스터디 주제</p>
                                 </div>
                                 <div class="answer">
                                     <ul>
                                         <li>
                                             <div class="inputWrap projectTitle row"><input
                                                     placeholder="3~20글자로 적어주세요 예)인공지능 스터디&amp;네트워킹" maxlength="20"
-                                                    value="spring  boot 팀프로젝트"></div>
+                                                    value="[공업수학] 라플라스 변환의 이해와 적용"></div>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="alimTalkCheckBox">
                                     <div class="projectMotiveSettingWrap">
                                         <div class="question">
-                                            <p>- 상태변경<span class="" for="">&nbsp;스터디&amp;네트워킹 완료는 시작일로부터 30일 이후부터 설정이
+                                            <p>- 상태변경<span class="" for="">&nbsp;스터디 완료는 시작일로부터 30일 이후부터 설정이
                                                     가능합니다</span></p>
                                         </div>
                                         <div class="answer"><select>
                                             <option value="01" disabled="">준비 중</option>
                                             <option value="02">진행 중</option>
                                             <option value="04">임시 중단</option>
-                                            <option value="05">스터디&amp;네트워킹 완료</option>
+                                            <option value="05">스터디 완료</option>
                                         </select></div>
                                     </div>
                                 </div>
@@ -347,7 +350,7 @@
                                                             class="SingleDatePickerInput SingleDatePickerInput_1 SingleDatePickerInput__withBorder SingleDatePickerInput__withBorder_2">
                                                         <div class="DateInput DateInput_1"><input
                                                                 class="DateInput_input DateInput_input_1"
-                                                                aria-label="Date" type="text" id="date_input"
+                                                                aria-label="Date" type="date" id="date_input"
                                                                 name="date_input" placeholder="Date" autocomplete="off"
                                                                 aria-describedby="DateInput__screen-reader-message-date_input"
                                                                 value="2023-05-08">
@@ -364,88 +367,56 @@
                                     </div>
                                 </div>
                                 <div class="question">
-                                    <p>- 스터디&amp;네트워킹 분야/키워드</p>
+                                    <p>- 스터디 분야/키워드</p>
                                 </div>
                                 <div class="answer">
-                                    <ul>
-                                        <li>
-                                            <div class="inputWrap twoInput row studyKeywordWrap">
-                                                <div class=" css-1stwjcq-container">
-                                                    <div class=" css-1luw0me-control">
-                                                        <div class=" css-1021qq">
-                                                            <div class=" css-18oty59-singleValue">백엔드개발</div>
-                                                            <div class="css-1dnjvql">
-                                                                <div class="" style="display: inline-block;"><input
-                                                                        autocapitalize="none" autocomplete="off"
-                                                                        autocorrect="off" id="react-select-2-input"
-                                                                        spellcheck="false" tabindex="0" type="text"
-                                                                        aria-autocomplete="list" value=""
-                                                                        style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;">
-                                                                    <div
-                                                                            style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 16px; font-family: &quot;Noto Sans KR&quot;, Lato, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class=" css-1wy0on6"></div>
-                                                    </div><input name="theme_value" type="hidden" value="05">
-                                                </div>
-                                            </div>
-                                            <div class="answer skillStackAnswer">
-                                                <div class="inputWrap row"><input
-                                                        placeholder="예) java, react, figma, photoshop" value="">
-                                                    <ul class="skillList">
-                                                        <li>
-                                                            <div class="icon-txt"><img loading="lazy"
-                                                                                       src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg"
-                                                                                       alt="">
-                                                                <p>Spring</p>
-                                                            </div><button><img loading="lazy"
-                                                                               src="../assets/images/ic-close.svg" alt=""></button>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon-txt"><img loading="lazy"
-                                                                                       src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/javascript/javascript-original.svg"
-                                                                                       alt="">
-                                                                <p>Javascript</p>
-                                                            </div><button><img loading="lazy"
-                                                                               src="../assets/images/ic-close.svg" alt=""></button>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    <div>
+                                        <div class="inputWrap studyTitle row">
+                                            <select id="studySubjectSelect">
+                                                <option>전공 수업</option>
+                                                <option >전공 과제</option>
+                                                <option>기타 교양</option>
+                                                <option selected>공통 과목</option>
+                                            </select>
+                                        </div>
+                                        <div class="answer">
+                                            <input type="text" id="studySubject2" placeholder="예) 재료역학, 수리역학, 철근콘크리트, 강구조설계" minlength="3"
+                                                   maxlength="20" autocomplete="off" value=" 공업수학">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="question">
                                     <p>- 지역</p>
                                 </div>
                                 <div class="answer answer5">
                                     <div class="projectMettingPlaceSettingWrap">
-                                        <div class="selectWrap"><select name="" id="">
-                                            <option value="00">온라인/오프라인 모두 가능</option>
-                                            <option value="01">온라인만 가능</option>
-                                            <option value="02">오프라인만 가능</option>
-                                        </select><select name="" id="">
-                                            <option value="KR00">지역 상관없음</option>
-                                            <option value="KR01">서울특별시</option>
-                                            <option value="KR02">경기도</option>
-                                            <option value="KR03">부산광역시</option>
-                                            <option value="KR04">인천광역시</option>
-                                            <option value="KR05">대구광역시</option>
-                                            <option value="KR06">경상남도</option>
-                                            <option value="KR07">경상북도</option>
-                                            <option value="KR08">대전광역시</option>
-                                            <option value="KR09">충청남도</option>
-                                            <option value="KR10">충청북도</option>
-                                            <option value="KR11">전라남도</option>
-                                            <option value="KR12">전라북도</option>
-                                            <option value="KR13">광주광역시</option>
-                                            <option value="KR14">강원도</option>
-                                            <option value="KR15">울산광역시</option>
-                                            <option value="KR16">제주특별자치도</option>
-                                            <option value="KR17">세종특별자치시</option>
-                                        </select></div>
+                                        <div class="selectWrap">
+                                            <select name="" id="">
+                                                <option value="00">온라인/오프라인 모두 가능</option>
+                                                <option value="01">온라인만 가능</option>
+                                                <option value="02" selected>오프라인만 가능</option>
+                                            </select>
+                                            <select name="" id="">
+                                                <option value="KR00">지역 상관없음</option>
+                                                <option value="KR01">서울특별시</option>
+                                                <option value="KR02">경기도</option>
+                                                <option value="KR03">부산광역시</option>
+                                                <option value="KR04" selected>인천광역시</option>
+                                                <option value="KR05">대구광역시</option>
+                                                <option value="KR06">경상남도</option>
+                                                <option value="KR07">경상북도</option>
+                                                <option value="KR08">대전광역시</option>
+                                                <option value="KR09">충청남도</option>
+                                                <option value="KR10">충청북도</option>
+                                                <option value="KR11">전라남도</option>
+                                                <option value="KR12">전라북도</option>
+                                                <option value="KR13">광주광역시</option>
+                                                <option value="KR14">강원도</option>
+                                                <option value="KR15">울산광역시</option>
+                                                <option value="KR16">제주특별자치도</option>
+                                                <option value="KR17">세종특별자치시</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="question">
@@ -469,9 +440,9 @@
 [참여회비] (예 : 매 모임마다 1만원의 회비가 있습니다)
 
 [기타]  ( 예: 인천 거주하시는 분이시면 더욱 좋겠습니다)" maxlength="1000"
-                                                                                      style="width: 90%; height: 450px; font-size: 1rem; padding: 11px 16px; border-radius: 4px; margin-right: 14px; resize: none; border: 1px solid rgb(151, 150, 167);">●  스터디&amp;네트워킹 목표 및 진행방식
+                                >●  스터디 목표 및 진행방식
 
-[목표] : spring boot를 통한 프로젝트 완성
+[목표] : 라플라스 변환의 이해와 적용
 
 [진행방식] : 오프라인
 
@@ -480,25 +451,25 @@
 [기간] :  1개월
 
 
-●  참여 조건
+ ●  참여 조건
 
-[지식수준] : 해당 언어에 대한 지식이 조금 있으셨으면 합니다.
+[지식수준] : 해당 과목에 대한 지식이 조금 있으셨으면 합니다.
 
 [참여회비] 매 모임마다 2만원의 회비가 있습니다
 
 [기타]  오프라인 모임에 문제가 없는 분이시면 더욱 좋겠습니다</textarea></div>
-                                <div class="alimTalkCheckBox">
+                                <!-- <div class="alimTalkCheckBox">
                                     <div class="labelChecbox">
                                         <div class="question">
                                             <p>- 카카오톡 알림톡 수신<span>신규 지원자/질문 등록 시 카카오알림톡이 발송됩니다.</span></p>
                                         </div>
                                         <div class="answer"><label class="switch"><input type="checkbox" value="true"
-                                                                                         checked=""><span class="slider round"></span></label></div>
+                                                    checked=""><span class="slider round"></span></label></div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="btnWrap projectMgmgtBtnWrap"><button
                                         class="blackBtn proejectModifyBtn">업데이트</button><button
-                                        class="pinkBtn proejectModifyBtn">스터디&amp;네트워킹 포기</button></div>
+                                        class="pinkBtn proejectModifyBtn">스터디 포기</button></div>
                             </div>
                         </div>
                     </div>

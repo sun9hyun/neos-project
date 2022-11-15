@@ -38,6 +38,11 @@ section {
 
 textarea:focus{outline: none}
 
+input, select {
+    outline: none;
+}
+
+input::placeholder{color: #b1b1b1a8}
 
 /* -----------------------------상단부------------------------------- */
 .projectPageHeaderWrap {
@@ -763,6 +768,10 @@ fieldset, img {
     display: block;
 }
 
+.projectManagementContents .memberManagementTab {
+    display: none;
+}
+
 .projectManagementContents {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -1285,3 +1294,310 @@ button {
 }
 
 /* ------------------------------ 정보 관리 ------------------------------- */
+
+.projectManagementContents .projectMangementTab.active {
+    display: block;
+    padding: 0!important;
+    max-width: 905px;
+}
+
+.projectManagementContents .projectMangementTab {
+    display: none;
+}
+
+.buildProjectContents .question,
+.buildProjectContents .question .stepWrap {
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.buildProjectContents .question {
+    position: relative;
+    display: -moz-box;
+    display: flex;
+}
+
+.buildProjectContents .question p {
+    color: #000;
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: 500;
+}
+
+.buildProjectContents .answer {
+    margin-top: 16px;
+    margin-bottom: 28px;
+}
+
+.buildProjectContents .answer ul li .inputWrap.projectTitle {
+    width: 100%;
+}
+
+.buildProjectContents .answer ul li .inputWrap input {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid #bcbccb;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: auto!important;
+    color: #696980;
+    font-size: 14px;
+    border-radius: 4px!important;
+}
+
+.projectManagementContents .projectMangementTab .alimTalkCheckBox .question {
+    margin-top: 24px;
+}
+
+.buildProjectContents .question p span {
+    font-size: 13px;
+    color: #b1b1b1;
+    display: block;
+    line-height: 20px;
+    padding-top: 10px;
+    font-weight: 400;
+}
+
+.buildProjectContents .question p span:before {
+    content: "❗";
+    color: #1A7CFF;
+}
+
+.buildProjectContents .answer {
+    margin-top: 16px;
+    margin-bottom: 28px;
+}
+
+.projectManagementContents .projectMangementTab .projectMotiveSettingWrap select {
+    width: 49%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #bcbccb;
+    border-radius: 4px;
+    padding: 10px 16px;
+    background-color: #fff;
+    background-image: url(https://letspl.me/_next/static/media/option-triangle.2abb88b721408916136ac6048ff74b95.svg);
+    background-position: 96%;
+    background-repeat: no-repeat;
+    font-size: .875rem;
+    -webkit-appearance: none!important;
+    margin-bottom: 6px;
+}
+
+.projectManagementContents .projectMangementTab .projectMettingPlaceSettingWrap .selectWrap {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    width: 100%;
+}
+
+.projectManagementContents .projectBenchSettingWrap,
+.projectManagementContents .projectInforSettingWrap,
+.projectManagementContents .projectMangementTab
+.projectInputWrap, .projectManagementContents
+.projectMangementTab .projectMettingPlaceSettingWrap,
+.projectManagementContents .projectMangementTab .projectMettingPlanSettingWrap,
+.projectManagementContents .projectMangementTab .projectMettingTimeSettingWrap,
+.projectManagementContents .projectMangementTab .projectMotiveSettingWrap,
+.projectManagementContents .projectMangementTab .projectTextWrap,
+.projectManagementContents .projectProfitSettingWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    width: 100%;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.projectManagementContents .projectMangementTab .projectMettingPlaceSettingWrap .selectWrap .SingleDatePicker {
+    width: 49%;
+}
+
+.SingleDatePicker {
+    position: relative;
+    display: inline-block;
+}
+
+.projectManagementContents .projectMangementTab .projectMettingPlaceSettingWrap .selectWrap .SingleDatePicker .SingleDatePickerInput {
+    width: 100%!important;
+    border: none;
+}
+
+.SingleDatePickerInput__withBorder {
+    border-radius: 2px;
+    border: 1px solid #dbdbdb;
+}
+
+.SingleDatePickerInput {
+    display: inline-block;
+    background-color: #fff;
+}
+
+.projectManagementContents .projectMangementTab .projectMettingPlaceSettingWrap .selectWrap .SingleDatePicker .SingleDatePickerInput .DateInput {
+    width: 100%!important;
+}
+
+.DateInput {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    position: relative;
+    display: inline-block;
+    width: 130px;
+    vertical-align: middle;
+}
+
+.projectManagementContents .projectMangementTab input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 8.5px 20px;
+    border-radius: 4px;
+    border: 1px solid #bcbccd;
+    color: #696980;
+    font-size: .9rem;
+    line-height: 1rem;
+}
+
+input[type=password], input[type=search], input[type=submit], input[type=text], input[type=date] {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+.DateInput_input {
+    font-weight: 200;
+    font-size: 19px;
+    line-height: 24px;
+    color: #484848;
+    background-color: #fff;
+    width: 100%;
+    padding: 11px 11px 9px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+}
+
+input {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    border: none;
+    height: 46px;
+    font-size: 13px;
+    padding: 4px 0 0;
+}
+
+.DateInput_screenReaderMessage {
+    border: 0;
+    clip: rect(0,0,0,0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.buildProjectContents .answer .multiSelect .css-1stwjcq-container, .buildProjectContents .answer .studyKeywordWrap .css-1stwjcq-container {
+    width: 100%!important;
+}
+
+.answer ul li .inputWrap input,
+.answer div .answer input,
+.answer div .inputWrap select,
+.selectBox select, .selectBoxLeft select {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid #bcbccb;
+    box-sizing: border-box;
+    height: auto!important;
+    color: #696980;
+    font-size: 14px;
+    border-radius: 4px!important;
+}
+
+.projectManagementContents .projectMangementTab .projectMettingPlaceSettingWrap .selectWrap select:first-child {
+    margin-right: 2%;
+}
+
+.projectManagementContents .projectMangementTab .projectMettingPlaceSettingWrap .selectWrap select, .projectManagementContents .projectMangementTab .projectMettingPlanSettingWrap select, .projectManagementContents .projectMangementTab .projectMettingTimeSettingWrap select, .projectManagementContents .projectProfitSettingWrap select {
+    width: 49%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #bcbccb;
+    border-radius: 4px;
+    padding: 10px 16px;
+    background-color: #fff;
+    background-image: url(https://letspl.me/_next/static/media/option-triangle.2abb88b721408916136ac6048ff74b95.svg);
+    background-position: 96%;
+    background-repeat: no-repeat;
+    font-size: .875rem;
+    -webkit-appearance: none!important;
+}
+
+textarea {
+    width: 100%;
+    height: 450px;
+    font-size: 15px;
+    padding: 11px 16px;
+    border-radius: 4px;
+    margin-right: 14px;
+    resize: none;
+    border: 1px solid rgb(151, 150, 167);
+}
+
+.projectManagementContents .projectMangementTab .projectMgmgtBtnWrap {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: center;
+    justify-content: center;
+}
+
+.btnWrap {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.projectManagementContents .projectMangementTab .projectMgmgtBtnWrap button:first-child {
+    margin-right: 4px;
+}
+
+.projectManagementContents .projectMangementTab .projectMgmgtBtnWrap button {
+    margin: 0;
+    border-radius: 4px;
+}
+
+
+
+.btnWrap button.pinkBtn {
+    background-color: #1A7CFF;
+}
+
+.btnWrap button.blackBtn,
+.btnWrap button.pinkBtn {
+    color: #fff;
+    font-size: .75rem;
+    padding: 11px 35px;
+    border-radius: 4px;
+    width: 140px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+}
+
+.btnWrap button.blackBtn{
+    color: black;
+}

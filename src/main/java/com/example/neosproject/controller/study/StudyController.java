@@ -38,6 +38,11 @@ public class StudyController {
         return "app/study/studyManagement";
     }
 
+    @GetMapping("/work")
+    public String work(){
+        return "app/study/workStudy";
+    }
+
 
 
     @GetMapping("/test")

@@ -5,6 +5,7 @@
     <title>NEOS | 스터디 상세보기</title>
     <link rel="stylesheet" href="/css/study/studyManagement.css">
     <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
     <header th:replace="/app/fix/header.html :: header"></header>
@@ -69,8 +70,8 @@
                         <div class="projectTab projectManagementContents active">
                             <div class="workTabMenu" style="margin-top: 15px;">
                                 <ul>
-                                    <li class=""><a>멤버 관리</a></li>
-                                    <li class="active"><a>정보 관리</a></li>
+                                    <li class="memberMag"><a>멤버 관리</a></li>
+                                    <li class="contentsMag active"><a>정보 관리</a></li>
                                 </ul>
                             </div>
                             <!-------- 멤버관리 DIV -------->
@@ -566,4 +567,6 @@
 
     <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/study/studyManagement.js"></script>
 </html>

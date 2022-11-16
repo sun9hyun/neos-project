@@ -226,7 +226,7 @@ section {
     justify-content: center;
     -moz-box-align: center;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 15px;
     flex-shrink: 0;
     overflow: hidden;
     position: relative;
@@ -267,7 +267,7 @@ input {
     align-items: flex-start;
     -moz-box-pack: end;
     justify-content: flex-end;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 .buildProjectContents .answer .thumbnailWrap .uploadBox button {
@@ -284,11 +284,12 @@ input {
 }
 
 .buildProjectContents .answer .thumbnailWrap .uploadBox ul li {
-    font-size: 15px;
+    font-size: 13px;
     color: #42495b;
-    line-height: 18px;
+    line-height: 15px;
     margin-bottom: 7px;
     width: 170px;
+    word-wrap: break-word;
 }
 
 .buildProjectContents .answer .thumbnailWrap .uploadBox ul li:before {
@@ -336,7 +337,7 @@ input {
     font-size: 12px;
     padding: 7px 20px;
     border-radius: 4px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     cursor: pointer;
 }
 

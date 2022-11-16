@@ -145,3 +145,7 @@ body, button, input, select, td, textarea, th {
     margin-top: 10px;
     position: relative;
 }
+
+.top .favorite:hover {
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-hover.03f7a2966e132a098a985cdc42f83b46.svg);
+}

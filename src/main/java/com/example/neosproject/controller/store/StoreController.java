@@ -7,16 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/store/*")
 public class StoreController {
+//    자료상점 목록
     @GetMapping("/storeList")
     public String storeList(){
         return "app/store/storeList";
     }
 
+//    자료상점 글작성
     @GetMapping("/storeCreate")
     public String storeCreate(){
         return "app/store/storeCreate";
     }
 
+//    자료상점 상세
     @GetMapping("/storeDetail")
     public String storeDetail(){
         return "app/store/storeDetail";

@@ -15,9 +15,14 @@
     <div class="searchResultSection">
         <div class="searchInputWrap"><input type="text" class="searchInput" placeholder="검색내용을 입력해주세요(e.g 리액트 개발자)"
                 value="누구세요" maxlength="30">
-            <div class="inputBtnWrap"><button class="inputDelBtn"><img loading="lazy" src="https://letspl.me/assets/images/ic-del.svg"
+            <div class="inputBtnWrap"><span id="del"><button class="inputDelBtn"></span><img loading="lazy" src="https://letspl.me/assets/images/ic-del.svg"
                         alt="초기화"></button><button class="inputSearchBtn"><img loading="lazy"
                         src="https://letspl.me/assets/images/ic-search.png" alt="검색"></button></div>
+
+<!--        <div class="input-group">-->
+<!--            <input id="searchinput" type="text">-->
+<!--            <span id="searchclear">X</span>-->
+<!--        </div>-->
         </div>
         <div class="searchHistoryWrap" style="margin-bottom: 50px;"></div>
         <div class="searchResultTxtWrap">
@@ -29,4 +34,23 @@
     </div>
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<!--<script src="/js/search/searchAfter.js"></script>-->
+<script>
+
+    var $ipt = $('.searchInput'),
+        $clearIpt = $('.inputDelBtn');
+
+    $ipt.keyup(function(){
+        $(".inputDelBtn").toggle(Boolean($(this).val()));
+    });
+
+    $clearIpt.toggle(Boolean($ipt.val()));
+    $clearIpt.click(function(){
+        $(".searchInput").val('').focus();
+        $(this).hide();
+    });
+
+
+</script>
 </html>

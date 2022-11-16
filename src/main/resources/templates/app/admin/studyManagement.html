@@ -58,6 +58,8 @@
     <script src="https://vendor-cdn.imweb.me/js/table_list.js?1633057104"></script>
     <link rel="stylesheet" href="/css/admin/contentManagement.css">
     <link rel="stylesheet" href="/css/admin/adminTotalCss.css">
+    <link rel="stylesheet" href="/css/admin/adminPaging.css">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 
 <body class="menubar-hoverable header-fixed menubar-pin menubar-visible">
@@ -272,6 +274,7 @@
                 </div>
             </div>
         </section>
+        <section th:replace="/app/admin/adminPaging.html :: adminPaging">
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>

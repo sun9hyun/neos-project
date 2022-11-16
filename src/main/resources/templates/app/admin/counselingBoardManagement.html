@@ -41,6 +41,7 @@
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/alarm_menu.css?1648796493">
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/fonts/fontello/src/css/fontello.css?1657576838">
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/bootstrap-theme-dashboard.css?1618365623">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
     <!--<link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/dashboard.css?1663833898">-->
     <link rel="stylesheet" href="/css/admin/configBannerDash.css">
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/select2.css?1590627710">
@@ -58,6 +59,7 @@
     <script src="https://vendor-cdn.imweb.me/js/table_list.js?1633057104"></script>
     <link rel="stylesheet" href="/css/admin/contentManagement.css">
     <link rel="stylesheet" href="/css/admin/adminTotalCss.css">
+    <link rel="stylesheet" href="/css/admin/adminPaging.css">
 </head>
 
 <body class="menubar-hoverable header-fixed menubar-pin menubar-visible">
@@ -272,6 +274,7 @@
                 </div>
             </div>
         </section>
+        <section th:replace="/app/admin/adminPaging.html :: adminPaging">
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>

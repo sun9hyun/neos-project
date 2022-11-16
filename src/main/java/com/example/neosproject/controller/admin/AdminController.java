@@ -37,4 +37,7 @@ public class AdminController {
     //고민상담게시판관리
     @GetMapping("/counseling")
     public String counselingManage(){return "app/admin/counselingBoardManagement";}
+    //문의글 관리
+    @GetMapping("/inquiry")
+    public String inquiryManage(){return "app/admin/inquiryList";}
 }

@@ -101,4 +101,15 @@ button {
     /* cursor: pointer; */
 }
 
+button, input, select, textarea {
+    font-size: 90%;
+    vertical-align: middle;
+    margin: -197px;
+}
+button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: 'GmarketSansMedium';
+}
 

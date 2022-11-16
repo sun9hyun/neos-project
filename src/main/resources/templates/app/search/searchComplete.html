@@ -1532,12 +1532,22 @@
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="/js/search/searchComplete.js"></script>
+<!--<script src="/js/search/searchAfter.js"></script>-->
 <script>
-    // var $searchInput = $(".searchInput");
-    // function sendReply(){
-    //     console.log($searchInput.val)
-    //     $searchInput.val = "";
-    // }
+
+    var $ipt = $('.searchInput'),
+        $clearIpt = $('.inputDelBtn');
+
+    $ipt.keyup(function(){
+        $(".inputDelBtn").toggle(Boolean($(this).val()));
+    });
+
+    $clearIpt.toggle(Boolean($ipt.val()));
+    $clearIpt.click(function(){
+        $(".searchInput").val('').focus();
+        $(this).hide();
+    });
+
+
 </script>
 </html>

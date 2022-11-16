@@ -174,3 +174,26 @@ button, input, select, textarea {
     height: 16px;
     margin-left: 6px;
 }
+
+.input-group{position: relative;margin: 50px;width:200px}
+#searchinput {
+    width: 100%;
+
+}
+input[type=text]:-ms-clear{
+    display: none;
+}
+
+#searchclear {
+    position: absolute;
+    right: 3px;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    height: 14px;
+    margin: auto;
+    font-size: 12px;
+    cursor: pointer;
+    color: #ccc;
+    background-color: #fff;
+}

@@ -1064,3 +1064,14 @@ fieldset, img {
 .pagingAndBtn a.next:before {
     right: 14px;
 }
+
+.letspler_Re .top .favorite.active
+.letspler_Re .top .topFavorite.active{
+    background-size: 14px;
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-full.5a5209416a8859031c9099b5540c281a.svg);
+}
+
+.top .favorite:hover,
+.top .topFavorite:hover{
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-hover.03f7a2966e132a098a985cdc42f83b46.svg);
+}

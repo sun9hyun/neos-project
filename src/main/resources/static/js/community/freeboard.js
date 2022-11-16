@@ -56,9 +56,11 @@ $commentButton.on("click",function () {
 
 
 /*댓글*/
+// textarea 부모클래스                              택스트애리아 클래스
 $(".replyComponent_reply__3l-Wc").on("keyup", ".replyTextArea",function (e) {
         let content = $(this).val();
         if (content.length == 0 || content == "") {
+            //텍스트애리아 로부터 숫자바뀌는거 span 태그 찾는작업
             $(this).parent().next().find(".replyTextCount").text("0");
         } else {
             $(this).parent().next().find(".replyTextCount").text(content.length);

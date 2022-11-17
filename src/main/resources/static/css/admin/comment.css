@@ -1,16 +1,5 @@
 @charset "UTF-8";
 
-@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
-
-
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
 @font-face {
     font-family: 'SpoqaHanSansNeo-Regular';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff') format('woff');
@@ -18,12 +7,11 @@
     font-style: normal;
 }
 
-
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
 body {
-    font-family: GmarketSansMedium,SpoqaHanSansNeo-Regular;
+    font-family: SpoqaHanSansNeo-Regular;
 }
-
 
 .menubar-pin #base {
     padding-left: 230px;
@@ -191,44 +179,4 @@ section {
     vertical-align: middle;
     background-color: #777777;
     border-radius: 10px;
-    padding-top: 5px;
-}
-
-.badgeSuccess{
-    display: inline-block;
-    min-width: 10px;
-    padding: 3px 7px;
-    font-weight: bold;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    background-color: #1a7cff;
-    border-radius: 10px;
-    padding-top: 5px;
-}
-
-.dropdown-menu_list_1j:hover{
-    background-color: #e7e7e7 !important;
-}
-
-
-button.register_1j, button.update_1j{
-    background-color: #808080;
-    height: 15px;
-    border: solid 2px #808080;
-    border-radius: 12px;
-}
-
-button.register_1j{
-    position: relative;
-    top: -8px;
-    left: 88rem;
-
-}
-button.update_1j {
-    position: relative;
-    top: -26px;
-    left: 93rem;
 }

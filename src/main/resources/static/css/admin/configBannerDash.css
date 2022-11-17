@@ -21132,3 +21132,25 @@ a[data-toggle="popover"]:focus {
 .board_thumb.dash-board-thumb {
     width: 196px;
 }
+
+.postCategory{
+    max-width: 172px !important;
+}
+.postTitle{
+    max-width: 262px !important;
+}
+.postNick{
+    max-width: 108px !important;
+}
+
+.postDate{
+    max-width: 206px !important;
+}
+
+.postLike{
+    max-width: 111px !important;
+}
+
+.action{
+    max-width: 30px !important;
+}

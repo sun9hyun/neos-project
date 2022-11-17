@@ -193,3 +193,7 @@ section {
     background-color: #777777;
     border-radius: 10px;
 }
+
+.dropdown-menu a:hover{
+    background-color: #e7e7e7 !important;
+}

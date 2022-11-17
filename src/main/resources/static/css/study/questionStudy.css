@@ -36,6 +36,8 @@ section {
     background-color: #fff;
 }
 
+textarea:focus{outline: none}
+input::placeholder{color: #b1b1b1a8}
 
 /* -----------------------------상단부------------------------------- */
 .projectPageHeaderWrap {

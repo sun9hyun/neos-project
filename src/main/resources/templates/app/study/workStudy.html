@@ -51,10 +51,6 @@
                     <div class="projectTabMenu clearfix">
                         <ul>
                             <li><a name="#info" class="">정보</a></li>
-                            <li><a name="member" class="">스토리(
-                                <!-- -->0
-                                <!-- -->)
-                            </a></li>
                             <li><a name="question" class="">질문(
                                 <!-- -->0
                                 <!-- -->)
@@ -70,8 +66,8 @@
                         <div class="projectTab projectWorkContents active">
                             <div class="workTabMenu" style="margin-top: 15px;">
                                 <ul>
-                                    <li class="active"><a>할일 관리</a></li>
-                                    <li class=""><a>목표/마일스톤</a></li>
+                                    <li class="workMag active"><a>할일 관리</a></li>
+                                    <li class="milestoneMag"><a>목표/마일스톤</a></li>
                                 </ul>
                             </div>
                             <div class="taskTab active">
@@ -343,4 +339,6 @@
 
     <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/study/workStudy.js"></script>
 </html>

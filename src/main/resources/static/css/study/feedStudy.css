@@ -32,6 +32,7 @@ body, button, input, select, td, textarea, th {
 }
 
 textarea:focus{outline: none}
+input::placeholder{color: #b1b1b1a8}
 
 section {
     width: 100%;

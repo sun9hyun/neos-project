@@ -40,6 +40,9 @@ section {
     width: 100%;
 }
 
+textarea:focus{outline: none}
+input::placeholder{color: #b1b1b1a8}
+
 .commonContentViewHeader {
     padding: 40px 10px 24px;
     -webkit-box-sizing: border-box;

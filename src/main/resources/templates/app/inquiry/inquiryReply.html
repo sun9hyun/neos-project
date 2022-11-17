@@ -5,6 +5,7 @@
     <title>문의하기 답변</title>
     <link rel="stylesheet" href="/css/inquiry/inquiryReply.css">
     <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
 <header th:replace="/app/fix/header.html :: header"></header>
@@ -49,10 +50,10 @@
             <section class="grayBg secretNote">
                 <div class="projectFeedContents mypage">
                     <p class="tit">나의 문의함(Q&amp;A)&nbsp; <span>(1)</span></p>
-                    <div class="communiWrap"><textarea placeholder="네오스에 궁금한게 있으신가요? 궁굼한 사항을 작성해 주세요!" rows="2"
+                    <div class="communiWrap"><textarea class="text123" placeholder="네오스에 궁금한게 있으신가요? 궁굼한 사항을 작성해 주세요!" rows="2"
                                                        maxlength="1000"></textarea>
                         <div class="buttonCountWrap">
-                            <p class="count"><span>2</span>/<span>500</span></p><button>등록</button>
+                            <p class="count"><span class="spanCount">0</span>/<span>500</span></p><button>등록</button>
                         </div>
                     </div>
                     <div class="section feedUploadedSection">
@@ -69,20 +70,21 @@
                                         </p><span>22.11.09 16:51</span>
                                     </div>
                                 </div>
-                                <div class="feedContents"><textarea maxlength="1000"
-                                                                    style="font-size: 0.875rem; height: 62px !important;"
-                                                                    disabled="">의대에 관심있는데 안과전공한 사람들의 스터디에 들어가고싶은데 어케 들어가여?</textarea></div>
-                                <div class="btnWrap"><button class="txtBtn">수정</button>
+                                <div class="feedContents"><textarea class="textarea2" maxlength="1000"
+                                                                    style="font-size: 0.875rem; height: 62px !important; white:100%"
+                                                                    disabled="" >의대에 관심있는데 안과전공한 사람들의 스터디에 들어가고싶은데 어케 들어가여?</textarea></div>
+                                <div class="btnWrap"><button class="txtBtn" id="updateBtn">수정</button>
+<!--                                     <button class="txtBtn" id="resetBtn" style="display: none">등록</button>-->
                                     <div class="divider"></div><button class="txtBtn">삭제</button>
                                 </div>
-                                <div class="bottom"><a class="">댓글 닫기</a><span class="replayCount">0</span></div>
+                                <div class="bottom"><a class="">댓글 닫기</a><span class="replayCount">1</span></div>
                             </div>
                             <div class="replyWrap ">
                                 <div class="replyWrapContent">
                                     <div class="top">
                                         <div class="left"><a href="/people/민쇼니" target="_blank">
                                             <div class="profileThumb"><img loading="lazy"
-                                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png"
+                                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/SIM.jpg"
                                                                            alt="민쇼니"></div>
                                         </a></div>
                                         <div class="right">
@@ -111,4 +113,43 @@
 
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+<script>
+
+
+
+    $(".text123").keyup(function(e) {
+        //console.log("키업!");
+        var content = $(this).val();
+        $(".spanCount").text( content.length  ); //실시간 글자수 카운팅
+        if (content.length > 500) {
+            $(this).val(content.substring(0, 500));
+            $('.spanCount').text("(45 / 최대 45자)");
+        }
+    });
+
+
+    $(document).ready(function() {
+        var disabled = false;
+        $('#updateBtn').click(function() {
+            if (disabled) {
+                $(".textarea2").prop('disabled', false);       // 비활성화된 경우 활성화
+            }
+            else {
+                $(".textarea2").prop('disabled', true);        // 활성화된 경우 비활성화
+            }
+            disabled = !disabled;
+        })
+    });
+
+    // $("#updateBtn").on("click" , function () {
+    //     $("#resetBtn").css("display" , "block")
+    //
+    // } )
+
+</script>
+
+
+
 </html>

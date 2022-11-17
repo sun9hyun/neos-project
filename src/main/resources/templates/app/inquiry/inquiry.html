@@ -5,6 +5,7 @@
     <title>문의하기</title>
     <link rel="stylesheet" href="/css/inquiry/inquiry.css">
     <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
 
@@ -54,8 +55,13 @@
                 <section class="grayBg secretNote">
                     <div class="projectFeedContents mypage">
                         <p class="tit">나의 문의함(Q&amp;A)&nbsp; <span>(1)</span></p>
-                        <div class="communiWrap"><textarea placeholder="네오스 궁금한것이 있나요? " rows="2"
-                                                           maxlength="1000"></textarea></div>
+
+                        <div class="communiWrap"><textarea  class="textarea1" placeholder="네오스 궁금한것이 있나요? " rows="2"
+                                                           maxlength="1000"></textarea>
+                            <div class="buttonCountWrap">
+                            <p class="count"><span class="countSpan">0</span>/<span>500</span></p><button>등록</button>
+                        </div>
+                        </div>
                         <div class="section feedUploadedSection">
                             <div class="feedUploadWrap">
                                 <div class="feedContentsWrap">
@@ -71,15 +77,15 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <div class="feedContents"><textarea disabled="" maxlength="1000"
+                                    <div class="feedContents"><textarea class="textarea1"  disabled="" maxlength="1000"
                                                                         style="font-size: 0.875rem; height: 62px !important;">의대에 관심있는데 안과전공한 사람들의 스터디에 들어가고싶은데 어케 들어가여?</textarea>
                                     </div>
-                                    <div class="btnWrap"><button class="txtBtn">수정</button>
+                                    <div class="btnWrap"><button id="upbtn" class="txtBtn">수정</button>
                                         <div class="divider"></div><button class="txtBtn">삭제</button>
                                     </div>
-                                    <div class="bottom">
-                                        <span
-                                            class="replayCount">0</span>
+
+                                    <div class="bottom"><a class="">댓글 닫기</a><span class="replayCount">0</span></div>
+
                                     </div>
                                 </div>
                             </div>
@@ -94,4 +100,40 @@
 
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<!--<script src="/js/inquiry/inquiry.js"></script>-->
+
+
+<script>
+
+
+
+        $(".textarea1").keyup(function(e) {
+            //console.log("키업!");
+            var content = $(this).val();
+            $(".countSpan").text( content.length  ); //실시간 글자수 카운팅
+            if (content.length > 500) {
+                $(this).val(content.substring(0, 500));
+                $('.countSpan').text("(45 / 최대 45자)");
+            }
+        });
+
+
+        $(document).ready(function() {
+            var disabled = false;
+            $('#upbtn').click(function() {
+                if (disabled) {
+                    $(".textarea1").prop('disabled', false);       // 비활성화된 경우 활성화
+                }
+                else {
+                    $(".textarea1").prop('disabled', true);        // 활성화된 경우 비활성화
+                }
+                disabled = !disabled;
+            })
+        });
+
+
+
+</script>
+
 </html>

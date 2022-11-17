@@ -5,6 +5,7 @@
     <title>로그인 모달</title>
     <link rel="stylesheet" href="/css/loginAndJoin/login.css">
     <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
 <nav>
@@ -19,12 +20,13 @@
     <div class="loginWrap">
         <div class="searchWrap">
             <a class="searchIc"><span>검색</span>
-                <img class="pcSearch" src="	https://letspl.me/assets/images/ic-search-white.png" alt="검색하기">
+                <img class="pcSearch" src="	https://letspl.me/assets/images/ic-search-white.png"  alt="검색하기">
             </a>
         </div>
         <div class="joinAndLoginWrap">
             <a class="joinAndLogin">가입</a>
             <a class="login" style="font-size: 14px; color: #666; cursor: pointer " >로그인</a>
+
         </div>
     </div>
 </nav>
@@ -32,7 +34,7 @@
 <!--회원 가입 모달-->
 <div class="modalWrapOpen">
     <div class="loginModal"><p class="modalTit">로그인</p>
-                <button class="closeBtn"><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" style="cursor: pointer;"></button>
+                <button class="closeBtn" onclick="closeModal()" ><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" style="cursor: pointer;"></button>
                 <button class="loginBtn naver" style="cursor: pointer;">네이버 아이디로 로그인<!-- --> </button>
                 <button class="loginBtn kakao" style="cursor: pointer;">카카오 계정으로 로그인</button>
                 <button class="loginBtn google" style="cursor: pointer;">구글 계정으로 로그인</button>
@@ -44,7 +46,7 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/js/loginAndJoin/join.js"></script>
+<script src="/js/loginAndJoin/login.js"></script>
 
 <script>
         /* 회원 가입 누르면 모달  */

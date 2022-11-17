@@ -22,7 +22,8 @@ dl, li, menu, ol, ul {
 }
 
 .chattingWrap2 {
-    right: -150px;
+    right: -8%;
+    height: 11%;
     max-width: 300px;
     display: block;
 }
@@ -174,9 +175,9 @@ blockquote, body, button, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4,
 .chattingWrap .chattingContentWrap .chattingSection .list .emptyList button.redBtn {
     font-size: .75rem;
     color: #fff;
-    background-color: #ea6560;
+    background-color: #1A7CFF;
     padding: 8px 26px;
-    border: 1px solid #ea6560;
+    border: 1px solid #1A7CFF;
     border-radius: 2px;
     margin-top: 20px;
 }
@@ -353,6 +354,7 @@ a, button, input, select, textarea {
     justify-content: center;
     border: 0.5px solid #ced2d4;
     box-sizing: border-box;
+    background-color: #fff;
 }
 
 .chattingWrap .chattingContentWrap .chattingSection .list ul li .thumb img {
@@ -704,7 +706,7 @@ button, input, select, textarea {
     height: 100%;
     left: -12px;
     top: 0;
-    background-color: rgba(234,101,96,.7);
+    background-color: rgba(26, 124, 255,.7);
     z-index: 1;
 }
 
@@ -715,7 +717,7 @@ button, input, select, textarea {
     height: 100%;
     left: -12px;
     top: 0;
-    background-color: rgba(234,101,96,.4);
+    background-color: rgba(26, 124, 255,.4);
     z-index: 1;
 }
 

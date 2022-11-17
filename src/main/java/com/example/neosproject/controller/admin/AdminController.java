@@ -37,7 +37,61 @@ public class AdminController {
     //고민상담게시판관리
     @GetMapping("/counseling")
     public String counselingManage(){return "app/admin/counselingBoardManagement";}
-    //문의글 관리
+
+    //자료상점 게시판 관리
+    @GetMapping("/shop")
+    public String shopManage(){return "app/admin/freeShopBoardManagement";}
+
+    //문의글 관리 - 미완
     @GetMapping("/inquiry")
     public String inquiryManage(){return "app/admin/inquiryList";}
+
+    @GetMapping("/inquiryAdmin")
+    public String inquiryManagement(){
+        return "app/admin/inquiry";
+    }
+
+
+    //스터디 댓글관리
+    @GetMapping("/study-comment")
+    public String studyComment(){return "app/admin/studyComment";}
+    //자유게시판 댓글관리
+    @GetMapping("/free-comment")
+    public String freeComment(){return "app/admin/freeBoardComment";}
+    //고민상담 게시판 댓글관리
+    @GetMapping("/counseling-comment")
+    public String counselingComment(){return "app/admin/counComment";}
+    //자유 상점 게시판 댓글관리
+    @GetMapping("/shop-comment")
+    public String shopComment(){return "app/admin/shopComment";}
+
+
+    //사용자 목록
+
+    //사용자 상세
+
+    //대학교 목록
+
+    //대학교 등록
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

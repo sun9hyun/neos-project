@@ -41,13 +41,13 @@
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/alarm_menu.css?1648796493">
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/fonts/fontello/src/css/fontello.css?1657576838">
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/bootstrap-theme-dashboard.css?1618365623">
-<!--    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/dashboard.css?1663833898">-->
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
+    <!--<link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/dashboard.css?1663833898">-->
     <link rel="stylesheet" href="/css/admin/configBannerDash.css">
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/select2.css?1590627710">
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/accordion.css?1653367465">
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/regularly.css?1658818153">
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/tailwind.css?1664422527">
-    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
     <script src="https://vendor-cdn.imweb.me/js/jquery.js?1627517460"></script>
     <script src="https://vendor-cdn.imweb.me/js/jquery.browser.js?1577682292"></script>
     <script src="https://vendor-cdn.imweb.me/js/jquery-ui.min.js?1577682292"></script>
@@ -57,16 +57,19 @@
     <script src="https://vendor-cdn.imweb.me/js/tinycolor-min.js?1577682292"></script>
     <script src="https://vendor-cdn.imweb.me/js/common.js?1661221108"></script>
     <script src="https://vendor-cdn.imweb.me/js/table_list.js?1633057104"></script>
-    <link rel="stylesheet" href="/css/admin/inquiryList.css">
-    <link rel="stylesheet" href="/css/admin/adminPaging.css">
+    <link rel="stylesheet" href="/css/admin/contentManagement.css">
     <link rel="stylesheet" href="/css/admin/adminTotalCss.css">
+    <link rel="stylesheet" href="/css/admin/adminPaging.css">
+    <link rel="stylesheet" href="/css/admin/ghost.css">
 </head>
 
 <body class="menubar-hoverable header-fixed menubar-pin menubar-visible">
 <!-- START BASE -->
 <div id="base">
+
+
     <!-- START HEADER -->
-    <header class="top_header" id="default_header">
+    <header class="top_header" id="default_header" >
         <div class="headerbar">
             <div class="headerbar-left">
                 <ul class="header-nav header-nav-options">
@@ -78,21 +81,22 @@
                     <li class="header-nav-brand">
                         <div class="brand-holder">
 								<span class="location_text">
-									<a href="#">문의글 관리</a>	<!-- 동일 페이지로 재이동 -->
+									<a href="#">자유 상점 게시물 관리</a>	<!-- 동일 페이지로 재이동 -->
 								</span>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
-    </header> <!-- END HEADER -->
-
+    </header>
+    <!--  END HEADER-->
     <!-- START MENUBAR HEADER -->
     <div th:replace="/app/admin/adminNavBar.html :: adminMenuBarHeader"></div>
     <!-- END MENUBAR HEADER -->
     <!-- BEGIN MENUBAR-->
     <div th:replace="/app/admin/adminNavBar.html ::  adminMenu"></div>
     <!--END MENUBAR&ndash;&gt;-->
+
 
     <!-- START MAIN CONTENT -->
 
@@ -131,7 +135,7 @@
                                 <div class="col-md-2 hidden-xs">
                                     <div class="card">
                                         <div class="companyDelete">
-                                            <a href="#modal;" rel="modal:open">선택 문의글 삭제</a>
+                                            <a href="#modal;" rel="modal:open">선택 게시물 삭제</a>
                                             <span>
 													<!-- <button type="button" class="button" style="display:none";></button> -->
 												</span>
@@ -143,8 +147,8 @@
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-head" id="card-head">
-                                            <header class="small">전체 문의글
-                                                <span class="text-primary" id="total-member-count">2</span>
+                                            <header class="small">전체 게시물
+                                                <span class="text-primary" id="total-member-count">3</span>
                                             </header>
                                         </div>
 
@@ -158,10 +162,11 @@
                                                             </label>
                                                         </div>
                                                     </li>
-                                                    <li class="inquiryTitle">제목</li>
-                                                    <li class="inquiryNick">작성자</li>
-                                                    <li class="inquiryDate">작성일</li>
-                                                    <li class="inquiryState">진행 상태</li>
+                                                    <li class="postCategory">분류</li>
+                                                    <li class="postTitle">제목</li>
+                                                    <li class="postNick">작성자</li>
+                                                    <li class="postDate">작성일</li>
+                                                    <li class="postLike">좋아요 수</li>
                                                     <li class="action"></li>
                                                 </ul>
 
@@ -175,10 +180,11 @@
                                                         </div>
                                                     </li>
 
-                                                    <li class="inquiryTitle"><a href="#">새 게시글 작성은 어떻게 할 수 있나요?</a></li> <!-- 작성한 문의글 페이지 이동 -->
-                                                    <li class="inquiryNick"><a href="#">성윤성윤</a></li><!-- 작성사 상세 페이지 이동 -->
-                                                    <li class="inquiryDate">2022-11-16 15:30</li>
-                                                    <li class="inquiryState"> <span class="badge">답변 작성 중</span></li>	<!-- 조건에 따른 토글 클래스로 색상 변경, 기본 badge -->
+                                                    <li class="postCategory">자유상점 게시판</li>
+                                                    <li class="postTitle"><a href="#">자바 자료 팝니다</a></li> <!-- 작성한 게시글 페이지 이동 -->
+                                                    <li class="postDate"><a href="#">성윤성윤</a></li><!-- 작성사 상세 페이지 이동 -->
+                                                    <li class="postDate">2022-11-10 15:30</li>
+                                                    <li class="postLike">1</li>
 
                                                     <li class="action">
                                                         <div class="dropdown">
@@ -187,19 +193,21 @@
                                                             </button>
                                                             <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
                                                                 <li>
-                                                                    <a href="javascript:;" class="dropdown-menu_list_1j">
-                                                                        답변 달기
+                                                                    <a href="javascript:;" onclick="adminMember.openDeleteMember('[{member_code\:m20220929a41c742d48942,delete_old_auth_log\:false}]')">
+                                                                        자료 보기
                                                                     </a>
-
-                                                                        <a href="javascript:;" class="dropdown-menu_list_1j">
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;" onclick="adminMember.openDeleteMember('[{member_code\:m20220929a41c742d48942,delete_old_auth_log\:false}]')">
                                                                         삭제
-                                                                        </a>
+                                                                    </a>
                                                                 </li>
                                                             </ul>
                                                         </div>
                                                     </li>
                                                 </ul>
-                                                <ul class="content _tbody" id="member_item_m20220929a41c742d489423" data-nick="관리자" data-app="">
+
+                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
                                                     <li class="check">
                                                         <div class="checkbox checkbox-styled no-margin">
                                                             <label>
@@ -209,10 +217,11 @@
                                                         </div>
                                                     </li>
 
-                                                    <li class="inquiryTitle"><a href="#">고민상담게시판은 어떻게 이용하나요?</a></li> <!-- 작성한 문의글 페이지 이동 -->
-                                                    <li class="inquiryNick"><a href="#">종우종우</a></li><!-- 작성사 상세 페이지 이동 -->
-                                                    <li class="inquiryDate">2022-11-16 15:30</li>
-                                                    <li class="inquiryState"> <span class="badgeSuccess">답변 완료</span></li>	<!-- 조건에 따른 토글 클래스로 색상 변경, 기본 badge -->
+                                                    <li class="postCategory">자유상점 게시판</li>
+                                                    <li class="postTitle"><a href="#">퍼블리싱 관련 자료 팝니다</a></li> <!-- 작성한 게시글 페이지 이동 -->
+                                                    <li class="postDate"><a href="#">로사로사</a></li><!-- 작성사 상세 페이지 이동 -->
+                                                    <li class="postDate">2022-11-10 15:30</li>
+                                                    <li class="postLike">123</li>
 
                                                     <li class="action">
                                                         <div class="dropdown">
@@ -221,10 +230,12 @@
                                                             </button>
                                                             <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
                                                                 <li>
-                                                                    <a href="javascript:;" class="dropdown-menu_list_1j">
-                                                                        답변 달기
+                                                                    <a href="javascript:;" onclick="adminMember.openDeleteMember('[{member_code\:m20220929a41c742d48942,delete_old_auth_log\:false}]')">
+                                                                        자료 보기
                                                                     </a>
-                                                                    <a href="javascript:;" class="dropdown-menu_list_1j">
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;" onclick="adminMember.openDeleteMember('[{member_code\:m20220929a41c742d48942,delete_old_auth_log\:false}]')">
                                                                         삭제
                                                                     </a>
                                                                 </li>
@@ -232,15 +243,7 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-                                                <ul class="content _tbody"  data-nick="관리자" data-app="">
-                                                    <textarea class="replyComponent_replyInput__2vKhX inquiry_textArea" maxlength="1000" placeholder="댓글을 입력해주세요."
-                                                              style="height: 40px !important;resize: none; width: 1000%;padding-top: 23%;position: relative;left: 19rem;height: 45px !important;resize: none;top: 1.5rem;border: 1px solid gray;" oninput='this.style.height = "40px"; this.style.height = this.scrollHeight + "px"'></textarea>
-                                                    <button class="register_1j">등 록</button>
-                                                    <button class="update_1j">취 소</button>
-                                                </ul>
-
-
-                                                <ul class="content _tbody" data-nick="관리자" data-app="">
+                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
                                                     <li class="check">
                                                         <div class="checkbox checkbox-styled no-margin">
                                                             <label>
@@ -250,10 +253,11 @@
                                                         </div>
                                                     </li>
 
-                                                    <li class="inquiryTitle"><a href="#">고민상담게시판은 어떻게 이용하나요?</a></li> <!-- 작성한 문의글 페이지 이동 -->
-                                                    <li class="inquiryNick"><a href="#">종우종우</a></li><!-- 작성사 상세 페이지 이동 -->
-                                                    <li class="inquiryDate">2022-11-16 15:30</li>
-                                                    <li class="inquiryState"> <span class="badgeSuccess">답변 완료</span></li>	<!-- 조건에 따른 토글 클래스로 색상 변경, 기본 badge -->
+                                                    <li class="postCategory">자유상점 게시판</li>
+                                                    <li class="postTitle"><a href="#">수업 자료 팝니다 </a></li> <!-- 작성한 게시글 페이지 이동 -->
+                                                    <li class="postDate"><a href="#">종우종우</a></li><!-- 작성사 상세 페이지 이동 -->
+                                                    <li class="postDate">2022-11-10 15:30</li>
+                                                    <li class="postLike">123</li>
 
                                                     <li class="action">
                                                         <div class="dropdown">
@@ -262,10 +266,48 @@
                                                             </button>
                                                             <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
                                                                 <li>
-                                                                    <a href="javascript:;" class="dropdown-menu_list_1j">
-                                                                        답변 달기
+                                                                    <a href="javascript:;" onclick="adminMember.openDeleteMember('[{member_code\:m20220929a41c742d48942,delete_old_auth_log\:false}]')">
+                                                                        자료 보기
                                                                     </a>
-                                                                    <a href="javascript:;" class="dropdown-menu_list_1j">
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;" onclick="adminMember.openDeleteMember('[{member_code\:m20220929a41c742d48942,delete_old_auth_log\:false}]')">
+                                                                        삭제
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
+                                                    <li class="check">
+                                                        <div class="checkbox checkbox-styled no-margin">
+                                                            <label>
+                                                                <input type="checkbox" class="terms">
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="postCategory">자유상점 게시판</li>
+                                                    <li class="postTitle"><a href="#">수업 자료 팝니다 </a></li> <!-- 작성한 게시글 페이지 이동 -->
+                                                    <li class="postDate"><a href="#">종우종우</a></li><!-- 작성사 상세 페이지 이동 -->
+                                                    <li class="postDate">2022-11-10 15:30</li>
+                                                    <li class="postLike">123</li>
+
+                                                    <li class="action">
+                                                        <div class="dropdown">
+                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
+                                                                <i class="zmdi zmdi-more"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
+                                                                <li>
+                                                                    <a href="javascript:;" onclick="adminMember.openDeleteMember('[{member_code\:m20220929a41c742d48942,delete_old_auth_log\:false}]')">
+                                                                        자료 보기
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;" onclick="adminMember.openDeleteMember('[{member_code\:m20220929a41c742d48942,delete_old_auth_log\:false}]')">
                                                                         삭제
                                                                     </a>
                                                                 </li>
@@ -285,8 +327,8 @@
                 </div>
             </div>
         </section>
-        <section th:replace="/app/admin/adminPaging.html :: adminPaging">
-        </section>
+
+        <section th:replace="/app/admin/adminPaging.html :: adminPaging"></section>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
@@ -306,7 +348,7 @@
     // $(function(){
     //     SADMIN_MENU_ALERT.openAlert();
     // });
-    //
+
     // 좌측 슬라이드 배너 작동
     $('.gui-folder').click(function(){
         $(this).toggleClass('expanded'); /* expanded가 없으면 생성, 있으면 삭제, 따라서 gui-folder은 계속 유지 */
@@ -314,41 +356,39 @@
     });
 
     // 검색기능 활용
-    // $(document).ready(function() {
-    //     $("input[name='keyword']").on("keyup", function (key) {
-    //         if (key.keyCode === 13) {
-    //             searchUser();
-    //         }
-    //     });
-    // });
-    //
-    // function searchUser() {
-    //     var qs = MEMBER_DATA.getUrlParams();
-    //     var url = '/admin/member/list?';
-    //     if (qs.member_group) {
-    //         url += ('&member_group=' + qs.member_group);
-    //     }
-    //
-    //     if ($("input[name='keyword']").val()) {
-    //         url += ('&keyword=' + $("input[name='keyword']").val());
-    //     }
-    //
-    //     MEMBER_DATA.changeUrl(null, null, url, 'search', qs.member_group ?? null);
-    // }
-    //
-    // $(window).on("keyup", function(e){
-    //     if ( $.cocoaDialog.isOpen() ) {
-    //         $.cocoaDialog.modalControl(e);
-    //     }
-    //     return false;
-    // });
+    $(document).ready(function() {
+        $("input[name='keyword']").on("keyup", function (key) {
+            if (key.keyCode === 13) {
+                searchUser();
+            }
+        });
+    });
+
+    function searchUser() {
+        var qs = MEMBER_DATA.getUrlParams();
+        var url = '/admin/member/list?';
+        if (qs.member_group) {
+            url += ('&member_group=' + qs.member_group);
+        }
+
+        if ($("input[name='keyword']").val()) {
+            url += ('&keyword=' + $("input[name='keyword']").val());
+        }
+
+        MEMBER_DATA.changeUrl(null, null, url, 'search', qs.member_group ?? null);
+    }
+
+    $(window).on("keyup", function(e){
+        if ( $.cocoaDialog.isOpen() ) {
+            $.cocoaDialog.modalControl(e);
+        }
+        return false;
+    });
 
     // 체크박스
     const $all = $(".term");
     const $terms = $(".terms");
 
-    console.log($all)
-    console.log($terms)
 
     // 전체 체크박스 선택
     $all.on("click", function(){
@@ -363,4 +403,5 @@
 
 
 </script>
+<script src="/js/admin/freeShop.js"></script>
 </html>

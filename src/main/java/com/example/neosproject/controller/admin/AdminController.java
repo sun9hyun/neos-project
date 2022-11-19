@@ -13,23 +13,23 @@ public class AdminController {
     }
 
     /*배너 관리 클릭시*/
-    @GetMapping("/configBanner")
+    @GetMapping("/config-banner")
     public String configBanner(){
         return "app/admin/configBanner";
     }
 
     //    배너 등록
-    @GetMapping("/bannerEditer")
+    @GetMapping("/banner-edit")
     public String bannerEditer(){
         return "app/admin/bannerEdit";
     }
 
     // 공지사항
-    @GetMapping("/noticePost")
+    @GetMapping("/notice-post")
     public String noticePost(){return "app/admin/noticePost";}
 
     //게시글관리
-    @GetMapping("/content")
+    @GetMapping("/study")
     public String studyManage(){return "app/admin/studyManagement";}
     //자유게시판관리
     @GetMapping("/free")
@@ -42,14 +42,9 @@ public class AdminController {
     @GetMapping("/shop")
     public String shopManage(){return "app/admin/freeShopBoardManagement";}
 
-    //문의글 관리 - 미완
+    //문의글 관리
     @GetMapping("/inquiry")
     public String inquiryManage(){return "app/admin/inquiryList";}
-
-    @GetMapping("/inquiryAdmin")
-    public String inquiryManagement(){
-        return "app/admin/inquiry";
-    }
 
 
     //스터디 댓글관리
@@ -67,13 +62,18 @@ public class AdminController {
 
 
     //사용자 목록
+    @GetMapping("/user-list")
+    public String userList(){return "app/admin/userList";}
 
     //사용자 상세
-
+    @GetMapping("/user-detail")
+    public String userDetail(){return "app/admin/userDetail";}
     //대학교 목록
-
+    @GetMapping("/universe-list")
+    public String universeList(){return "app/admin/universeList";}
     //대학교 등록
-
+    @GetMapping("/universe-register")
+    public String universeRegister(){return "app/admin/universeDetail";}
 
 
 

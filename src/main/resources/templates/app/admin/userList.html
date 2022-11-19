@@ -41,8 +41,7 @@
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/alarm_menu.css?1648796493">
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/fonts/fontello/src/css/fontello.css?1657576838">
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/bootstrap-theme-dashboard.css?1618365623">
-    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
-    <!--<link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/dashboard.css?1663833898">-->
+<!--    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/dashboard.css?1663833898">-->
     <link rel="stylesheet" href="/css/admin/configBannerDash.css">
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/select2.css?1590627710">
     <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/accordion.css?1653367465">
@@ -57,19 +56,34 @@
     <script src="https://vendor-cdn.imweb.me/js/tinycolor-min.js?1577682292"></script>
     <script src="https://vendor-cdn.imweb.me/js/common.js?1661221108"></script>
     <script src="https://vendor-cdn.imweb.me/js/table_list.js?1633057104"></script>
-    <link rel="stylesheet" href="/css/admin/contentManagement.css">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
+    <link rel="stylesheet" href="/css/admin/userList.css">
     <link rel="stylesheet" href="/css/admin/adminTotalCss.css">
     <link rel="stylesheet" href="/css/admin/adminPaging.css">
     <link rel="stylesheet" href="/css/admin/modal.css">
+    <style>
+        .badge {
+            display: inline-block;
+            min-width: 10px;
+            padding: 3px 7px;
+            font-weight: bold;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            background-color: #777777;
+            border-radius: 10px;
+            padding-top: 5px;
+        }
+    </style>
 </head>
 
 <body class="menubar-hoverable header-fixed menubar-pin menubar-visible">
 <!-- START BASE -->
 <div id="base">
-
-
     <!-- START HEADER -->
-    <header class="top_header" id="default_header" >
+    <header class="top_header" id="default_header">
         <div class="headerbar">
             <div class="headerbar-left">
                 <ul class="header-nav header-nav-options">
@@ -81,15 +95,14 @@
                     <li class="header-nav-brand">
                         <div class="brand-holder">
 								<span class="location_text">
-									<a href="#">고민 게시판 게시물 관리</a>	<!-- 동일 페이지로 재이동 -->
+									<a href="#">사용자 목록</a>	<!-- 동일 페이지로 재이동 -->
 								</span>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
-    </header>
-    <!--  END HEADER-->
+    </header> <!-- END HEADER -->
     <!-- START MENUBAR HEADER -->
     <div th:replace="/app/admin/adminNavBar.html :: adminMenuBarHeader"></div>
     <!-- END MENUBAR HEADER -->
@@ -98,10 +111,10 @@
     <!--END MENUBAR&ndash;&gt;-->
     <div class="modalWrapOpen">
         <div class="commonModal">
-            <p class="modalTit" style="font-size: 18px;margin-bottom: 15px">게시글 삭제 확인</p><button class="closeBtn"><img
+            <p class="modalTit" style="font-size: 18px;margin-bottom: 15px">유저 삭제 확인</p><button class="closeBtn"><img
                 src="/images/admin/closeBtn.png" alt="close"></button>
             <div class="commonModalContent">
-                <p style="font-size: 12px;margin-bottom: 12px;">해당 게시글을 삭제하시겠습니까?</p>
+                <p style="font-size: 12px;margin-bottom: 12px;">해당 유저를 삭제하시겠습니까?</p>
             </div>
             <div class="btnWrap doubleBtnWrap"><button class="btn whiteBtn" style="font-size: 12px;line-height: 3;">아니오</button><button
                     class="btn redBtn" style="font-size: 12px;line-height: 3;">예</button></div>
@@ -110,10 +123,10 @@
 
     <div class="modalWrapOpen2">
         <div class="commonModal2">
-            <p class="modalTit2" style="font-size: 18px;margin-bottom: 15px">게시글 삭제 확인</p><button class="closeBtn2"><img
+            <p class="modalTit2" style="font-size: 18px;margin-bottom: 15px">유저 삭제 확인</p><button class="closeBtn2"><img
                 src="/images/admin/closeBtn.png" alt="close"></button>
             <div class="commonModalContent2">
-                <p style="font-size: 12px;margin-bottom: 12px;">하나 이상의 게시글을 체크해야 합니다.</p>
+                <p style="font-size: 12px;margin-bottom: 12px;">한명 이상의 유저를 체크해야 합니다.</p>
             </div>
 
         </div>
@@ -122,16 +135,17 @@
     <!-- START MAIN CONTENT -->
 
     <div id="content">
-        <section>
+        <div id="alertBox" class="alert__wrap"></div>
+        <section class="content">
             <div class="section-body">
                 <div class="tab-pane" id="daily">
                     <div class="row">
                         <div class="col-md-9 col-xl-10">
                             <div class="row">
-                                <div class="col-md-10">
+                                <div class="col-md-10"> <!-- START 검색창 -->
                                     <div class="card">
                                         <div class="card-body no-padding">
-                                            <div class="company-search" id="companySearch">
+                                            <div class="user-search" id="userSearch">
                                                 <div class="form-group">
                                                     <a class="icon_set left" href="javascript:;" onclick="searchUser()">
                                                         <i class="btl bt-search"></i>
@@ -151,12 +165,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
+                                </div> <!-- END 검색창 -->
                                 <div class="col-md-2 hidden-xs">
                                     <div class="card">
-                                        <div class="companyDelete">
-                                            <a href="#modal;" rel="modal:open">선택 게시물 삭제</a>
+                                        <div class="memberDelete">
+                                            <a href="#" >선택 사용자 삭제</a>
                                             <span>
 													<!-- <button type="button" class="button" style="display:none";></button> -->
 												</span>
@@ -164,13 +177,34 @@
                                     </div>
                                 </div>
 
+<!--                                &lt;!&ndash; 사용자 삭제 모달 시작 &ndash;&gt;-->
+<!--                                <div class="modal" id="modal">-->
+<!--                                    <div class="modal-dialog">-->
+<!--                                        <div class="modal-content">-->
+<!--                                            <div class="modal-header">-->
+<!--                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="btm bt-times"></i></button>-->
+<!--                                                <h3 class="modal-title" id="formModalLabel">사용자 삭제</h3>-->
+<!--                                            </div>-->
+<!--                                            <div class="modal-body">-->
+<!--                                                %1명의 사용자를 삭제하시겠습니까? 삭제된 사용자는 복원할 수 없습니다.				</div>-->
+<!--                                            <div class="modal-footer">-->
+<!--                                                <button type="button" class="btn btn-primary btn-flat" data-dismiss="modal">취소</button>-->
+<!--                                                <button type="button" class="btn btn-primary btn-flat">삭제</button>-->
+<!--                                            </div>-->
+
+<!--                                        </div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+<!--                                    </div>&lt;!&ndash; /.modal-dialog &ndash;&gt;-->
+<!--                                </div>&lt;!&ndash; /.modal &ndash;&gt;-->
+<!--                                &lt;!&ndash; 모달 끝 &ndash;&gt;-->
+
 
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-head" id="card-head">
-                                            <header class="small">전체 게시물
-                                                <span class="text-primary" id="total-member-count">3</span>
+                                            <header class="small">전체 사용자
+                                                <span class="text-primary" id="total-member-count">6</span>명
                                             </header>
+
                                         </div>
 
                                         <div class="card-body no-padding">
@@ -183,16 +217,19 @@
                                                             </label>
                                                         </div>
                                                     </li>
-                                                    <li class="postCategory">분류</li>
-                                                    <li class="postTitle">제목</li>
-                                                    <li class="postNick">작성자</li>
-                                                    <li class="postDate">작성일</li>
-                                                    <li class="postLike">좋아요 수</li>
+                                                    <li class="nick"><a href="#">닉네임</a></li>
+                                                    <li class="account">계정</li>
+                                                    <li class="dateJoin">가입일</li>
+                                                    <li class="participationProject">자료 상점</li>
+                                                    <li class="participationStudy">스터디</li>
+                                                    <li class="countPost">게시글</li>
+                                                    <li class="countComment">댓글</li>
+                                                    <li class="countQuestion">문의</li>
                                                     <li class="action"></li>
                                                 </ul>
 
                                                 <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
-                                                    <li class="check">
+                                                    <li class="check"> <!-- CHECKBOX -->
                                                         <div class="checkbox checkbox-styled no-margin">
                                                             <label>
                                                                 <input type="checkbox" class="terms">
@@ -201,11 +238,20 @@
                                                         </div>
                                                     </li>
 
-                                                    <li class="postCategory">고민상담 게시판</li>
-                                                    <li class="postTitle"><a href="#">자바 공부 달릴 사람!!</a></li> <!-- 작성한 게시글 페이지 이동 -->
-                                                    <li class="postDate"><a href="#">성윤성윤</a></li><!-- 작성사 상세 페이지 이동 -->
-                                                    <li class="postDate">2022-11-10 15:30</li>
-                                                    <li class="postLike">1</li>
+                                                    <li class="nick">
+                                                        <a href="#" onclick="">
+                                                            NEOS    <span class="badge">운영자</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="account">slions1113@gmail.com</li>
+                                                    <li class="dateJoin">2022-11-01</li>
+                                                    <li class="participationProject">3</li>
+                                                    <li class="participationStudy">8</li>
+                                                    <li class="countPost">
+                                                        <a href="#" onclick="">5</a> <!-- 마이페이지 내 게시글로 이동 -->
+                                                    </li>
+                                                    <li class="countComment">0</li>
+                                                    <li class="countQuestion">0</li>
 
                                                     <li class="action">
                                                         <div class="dropdown">
@@ -224,7 +270,7 @@
                                                 </ul>
 
                                                 <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
-                                                    <li class="check">
+                                                    <li class="check"> <!-- CHECKBOX -->
                                                         <div class="checkbox checkbox-styled no-margin">
                                                             <label>
                                                                 <input type="checkbox" class="terms">
@@ -233,11 +279,18 @@
                                                         </div>
                                                     </li>
 
-                                                    <li class="postCategory">고민상담 게시판</li>
-                                                    <li class="postTitle"><a href="#">기획 전부 확인해드립니다. 가져만 오세요</a></li> <!-- 작성한 게시글 페이지 이동 -->
-                                                    <li class="postDate"><a href="#">로사로사</a></li><!-- 작성사 상세 페이지 이동 -->
-                                                    <li class="postDate">2022-11-10 15:30</li>
-                                                    <li class="postLike">123</li>
+                                                    <li class="nick">
+                                                        <a href="#" onclick="">성현성현</a>
+                                                    </li>
+                                                    <li class="account">neos01@gmail.com</li>
+                                                    <li class="dateJoin">2022-10-09</li>
+                                                    <li class="participationProject">5</li>
+                                                    <li class="participationStudy">7</li>
+                                                    <li class="countPost">
+                                                        <a href="#" onclick="">6</a> <!-- 마이페이지 내 게시글로 이동 -->
+                                                    </li>
+                                                    <li class="countComment">0</li>
+                                                    <li class="countQuestion">1</li>
 
                                                     <li class="action">
                                                         <div class="dropdown">
@@ -254,8 +307,9 @@
                                                         </div>
                                                     </li>
                                                 </ul>
+
                                                 <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
-                                                    <li class="check">
+                                                    <li class="check"> <!-- CHECKBOX -->
                                                         <div class="checkbox checkbox-styled no-margin">
                                                             <label>
                                                                 <input type="checkbox" class="terms">
@@ -264,11 +318,18 @@
                                                         </div>
                                                     </li>
 
-                                                    <li class="postCategory">고민상담 게시판</li>
-                                                    <li class="postTitle"><a href="#">타도 부팀장 고민상담 </a></li> <!-- 작성한 게시글 페이지 이동 -->
-                                                    <li class="postDate"><a href="#">종우종우</a></li><!-- 작성사 상세 페이지 이동 -->
-                                                    <li class="postDate">2022-11-10 15:30</li>
-                                                    <li class="postLike">123</li>
+                                                    <li class="nick">
+                                                        <a href="#" onclick="">종우종우</a>
+                                                    </li>
+                                                    <li class="account">neos1127@gmail.com</li>
+                                                    <li class="dateJoin">2022-10-09</li>
+                                                    <li class="participationProject">3</li>
+                                                    <li class="participationStudy">8</li>
+                                                    <li class="countPost">
+                                                        <a href="#" onclick="">5</a> <!-- 마이페이지 내 게시글로 이동 -->
+                                                    </li>
+                                                    <li class="countComment">0</li>
+                                                    <li class="countQuestion">0</li>
 
                                                     <li class="action">
                                                         <div class="dropdown">
@@ -285,6 +346,124 @@
                                                         </div>
                                                     </li>
                                                 </ul>
+
+                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
+                                                    <li class="check"> <!-- CHECKBOX -->
+                                                        <div class="checkbox checkbox-styled no-margin">
+                                                            <label>
+                                                                <input type="checkbox" class="terms">
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="nick">
+                                                        <a href="#" onclick="">호근호근</a>
+                                                    </li>
+                                                    <li class="account">neos1127@gmail.com</li>
+                                                    <li class="dateJoin">2022-10-09</li>
+                                                    <li class="participationProject">3</li>
+                                                    <li class="participationStudy">0</li>
+                                                    <li class="countPost">
+                                                        <a href="#" onclick="">5</a> <!-- 마이페이지 내 게시글로 이동 -->
+                                                    </li>
+                                                    <li class="countComment">2</li>
+                                                    <li class="countQuestion">1</li>
+
+                                                    <li class="action">
+                                                        <div class="dropdown">
+                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
+                                                                <i class="zmdi zmdi-more"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
+                                                                <li>
+                                                                    <a href="javascript:;" onclick="modalUp()">
+                                                                        삭제
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+
+                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
+                                                    <li class="check"> <!-- CHECKBOX -->
+                                                        <div class="checkbox checkbox-styled no-margin">
+                                                            <label>
+                                                                <input type="checkbox" class="terms">
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="nick">
+                                                        <a href="#" onclick="">민성민성</a>
+                                                    </li>
+                                                    <li class="account">neos1157@gmail.com</li>
+                                                    <li class="dateJoin">2022-10-09</li>
+                                                    <li class="participationProject">3</li>
+                                                    <li class="participationStudy">8</li>
+                                                    <li class="countPost">
+                                                        <a href="#" onclick="">5</a> <!-- 마이페이지 내 게시글로 이동 -->
+                                                    </li>
+                                                    <li class="countComment">0</li>
+                                                    <li class="countQuestion">0</li>
+
+                                                    <li class="action">
+                                                        <div class="dropdown">
+                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
+                                                                <i class="zmdi zmdi-more"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
+                                                                <li>
+                                                                    <a href="javascript:;" onclick="modalUp()">
+                                                                        삭제
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+
+                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
+                                                    <li class="check"> <!-- CHECKBOX -->
+                                                        <div class="checkbox checkbox-styled no-margin">
+                                                            <label>
+                                                                <input type="checkbox" class="terms">
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="nick">
+                                                        <a href="#" onclick="">로사로사</a>
+                                                    </li>
+                                                    <li class="account">neos@gmail.com</li>
+                                                    <li class="dateJoin">2022-10-09</li>
+                                                    <li class="participationProject">3</li>
+                                                    <li class="participationStudy">8</li>
+                                                    <li class="countPost">
+                                                        <a href="#" onclick="">5</a> <!-- 마이페이지 내 게시글로 이동 -->
+                                                    </li>
+                                                    <li class="countComment">0</li>
+                                                    <li class="countQuestion">0</li>
+
+                                                    <li class="action">
+                                                        <div class="dropdown">
+                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
+                                                                <i class="zmdi zmdi-more"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
+                                                                <li>
+                                                                    <a href="javascript:;" onclick="modalUp()">
+                                                                        삭제
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+
                                             </div>
                                             <nav class="text-center" id="paginate"></nav>
                                         </div>
@@ -296,26 +475,27 @@
                 </div>
             </div>
         </section>
-        <section th:replace="/app/admin/adminPaging.html :: adminPaging">
-    </div>
+        <section th:replace="/app/admin/adminPaging.html :: adminPaging"></section>
+
+    </div><!--end #content-->
+
+    <!-- END MAIN CONTENT -->
+</div> <!-- END BASE -->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
     // base.html
 
     // 문서로드 완료 후 자바 스크립트 진행
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     const alertBox = document.querySelector('#alertBox');
-    //     const contentArea = document.querySelector('#content');
-    //
-    //     alertBox.classList.remove('alert__wrap-fixed');
-    //     alertBox.classList.add('alert__wrap');
-    //     contentArea.prepend(alertBox);
-    // });
-    //
-    // $(function(){
-    //     SADMIN_MENU_ALERT.openAlert();
-    // });
+    document.addEventListener('DOMContentLoaded', function() {
+        const alertBox = document.querySelector('#alertBox');
+        const contentArea = document.querySelector('#content');
+
+        alertBox.classList.remove('alert__wrap-fixed');
+        alertBox.classList.add('alert__wrap');
+        contentArea.prepend(alertBox);
+    });
+
 
     // 좌측 슬라이드 배너 작동
     $('.gui-folder').click(function(){
@@ -328,6 +508,8 @@
     const $all = $(".term");
     const $terms = $(".terms");
 
+    console.log($all)
+    console.log($terms)
 
     // 전체 체크박스 선택
     $all.on("click", function(){
@@ -341,7 +523,7 @@
     });
     const $deleteModal = $(".modalWrapOpen");
     const $alertModal = $(".modalWrapOpen2")
-    const $deleteBtn = $(".companyDelete a");
+    const $deleteBtn = $(".memberDelete a");
     const $cancelBtn = $(".whiteBtn");
     const $closeBtn = $(".closeBtn")
     const $closeBtn2 = $(".closeBtn2")
@@ -367,7 +549,5 @@
     function modalUp(){
         $deleteModal.show();
     }
-
-
 </script>
 </html>

@@ -23,8 +23,6 @@
 body {
     font-family: GmarketSansMedium,SpoqaHanSansNeo-Regular;
 }
-
-
 .menubar-pin #base {
     padding-left: 230px;
 }
@@ -130,120 +128,23 @@ section.content {
     width: 100%;
 }
 
-section {
+section.content {
     max-width: 1200px;
     margin: 0 auto;
     right: 0px;
-}
-
-
-
-.company-search .form-group {
-    margin: 0;
-}
-
-.company-search .form-group .icon_set {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
-    z-index: 1;
-}
-
-.company-search .form-group .icon_set.left {
-    left: 18px;
-}
-
-.company-search .form-group .form-control {
-    border: none;
-    height: 48px;
-    padding-left: 64px;
-    padding-right: 50px;
-    width: 100%;
 }
 
 .li_table > ul {
     text-align: center;
 }
 
-
-
-.companyAdd, .companyDelete {
+.memberDelete{
     height: 48px;
 }
 
-.companyAdd a, .companyDelete a {
+.memberDelete a {
     display: block;
     text-align: center;
     height: 48px;
     line-height: 48px;
 }
-
-.badge {
-    display: inline-block;
-    min-width: 10px;
-    padding: 3px 7px;
-    font-weight: bold;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    background-color: #777777;
-    border-radius: 10px;
-    padding-top: 5px;
-}
-
-.badgeSuccess{
-    display: inline-block;
-    min-width: 10px;
-    padding: 3px 7px;
-    font-weight: bold;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    background-color: #1a7cff;
-    border-radius: 10px;
-    padding-top: 5px;
-}
-
-.dropdown-menu_list_1j:hover{
-    background-color: #e7e7e7 !important;
-}
-
-
-button.register_1j, button.update_1j{
-    background-color: #808080;
-    height: 15px;
-    border: solid 2px #808080;
-    border-radius: 12px;
-}
-
-button.register_1j{
-    background-color: #fff;
-    position: relative;
-    top: -4px;
-    left: 94rem;
-    border:none;
-
-}
-button.update_1j {
-    background-color: #fff;
-    position: relative;
-    top: -22.5px;
-    left: 98.5rem;
-    border:none;
-}
-.inquiry_textArea{
-    border:none !important;
-}
-
-/*
-.apply_inquiry_data{
-    display: none !important;
-}*/
-/*._tbody > li{*/
-/*    border-top:0.5px solid #E0E0E0;*/
-/*}*/

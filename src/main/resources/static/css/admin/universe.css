@@ -23,8 +23,6 @@
 body {
     font-family: GmarketSansMedium,SpoqaHanSansNeo-Regular;
 }
-
-
 .menubar-pin #base {
     padding-left: 230px;
 }
@@ -166,6 +164,9 @@ section {
     text-align: center;
 }
 
+.col-md-10 {
+    width: 66.6666666%;
+}
 
 
 .companyAdd, .companyDelete {
@@ -179,71 +180,15 @@ section {
     line-height: 48px;
 }
 
-.badge {
-    display: inline-block;
-    min-width: 10px;
-    padding: 3px 7px;
-    font-weight: bold;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    background-color: #777777;
-    border-radius: 10px;
-    padding-top: 5px;
+.logo_wrapper{
+    width: 50px;
 }
 
-.badgeSuccess{
-    display: inline-block;
-    min-width: 10px;
-    padding: 3px 7px;
-    font-weight: bold;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    background-color: #1a7cff;
-    border-radius: 10px;
-    padding-top: 5px;
+.logo_wrapper img{
+    width: 100%;
+    height: 100%;
 }
-
-.dropdown-menu_list_1j:hover{
-    background-color: #e7e7e7 !important;
+.universeLogo{
+    display: flex !important;
+    justify-content: center !important;
 }
-
-
-button.register_1j, button.update_1j{
-    background-color: #808080;
-    height: 15px;
-    border: solid 2px #808080;
-    border-radius: 12px;
-}
-
-button.register_1j{
-    background-color: #fff;
-    position: relative;
-    top: -4px;
-    left: 94rem;
-    border:none;
-
-}
-button.update_1j {
-    background-color: #fff;
-    position: relative;
-    top: -22.5px;
-    left: 98.5rem;
-    border:none;
-}
-.inquiry_textArea{
-    border:none !important;
-}
-
-/*
-.apply_inquiry_data{
-    display: none !important;
-}*/
-/*._tbody > li{*/
-/*    border-top:0.5px solid #E0E0E0;*/
-/*}*/

@@ -59,6 +59,8 @@
     <link rel="stylesheet" href="/css/admin/comment.css">
     <link rel="stylesheet" href="/css/admin/adminPaging.css">
     <link rel="stylesheet" href="/css/admin/adminTotalCss.css">
+    <link rel="stylesheet" href="/css/admin/modal.css">
+
 </head>
 
 <body class="menubar-hoverable header-fixed menubar-pin menubar-visible">
@@ -91,7 +93,28 @@
     <!-- BEGIN MENUBAR-->
     <div th:replace="/app/admin/adminNavBar.html ::  adminMenu"></div>
     <!--END MENUBAR&ndash;&gt;-->
+    <div class="modalWrapOpen">
+        <div class="commonModal">
+            <p class="modalTit" style="font-size: 18px;margin-bottom: 15px">댓글 삭제 확인</p><button class="closeBtn"><img
+                src="/images/admin/closeBtn.png" alt="close"></button>
+            <div class="commonModalContent">
+                <p style="font-size: 12px;margin-bottom: 12px;">해당 댓글을 삭제하시겠습니까?</p>
+            </div>
+            <div class="btnWrap doubleBtnWrap"><button class="btn whiteBtn" style="font-size: 12px;line-height: 3;">아니오</button><button
+                    class="btn redBtn" style="font-size: 12px;line-height: 3;">예</button></div>
+        </div>
+    </div>
 
+    <div class="modalWrapOpen2">
+        <div class="commonModal2">
+            <p class="modalTit2" style="font-size: 18px;margin-bottom: 15px">댓글 삭제 확인</p><button class="closeBtn2"><img
+                src="/images/admin/closeBtn.png" alt="close"></button>
+            <div class="commonModalContent2">
+                <p style="font-size: 12px;margin-bottom: 12px;">하나 이상의 댓글을 체크해야 합니다.</p>
+            </div>
+
+        </div>
+    </div>
 
     <!-- START MAIN CONTENT -->
 
@@ -186,7 +209,7 @@
                                                             </button>
                                                             <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
                                                                 <li>
-                                                                    <a href="javascript:;" onclick="adminMember.openDeleteMember('[{member_code\:m20220929a41c742d48942,delete_old_auth_log\:false}]')">
+                                                                    <a href="javascript:;" onclick="modalUp()">
                                                                         삭제
                                                                     </a>
                                                                 </li>
@@ -236,6 +259,33 @@
 
     });
 
+    const $deleteModal = $(".modalWrapOpen");
+    const $alertModal = $(".modalWrapOpen2")
+    const $deleteBtn = $(".companyDelete a");
+    const $cancelBtn = $(".whiteBtn");
+    const $closeBtn = $(".closeBtn")
+    const $closeBtn2 = $(".closeBtn2")
+    $deleteBtn.click(function () {
+        if($terms.filter(":checked").length==0){
+            $alertModal.show();
+            return;
+        }
+        $deleteModal.show();
+    })
 
+    $cancelBtn.click(function () {
+        $deleteModal.hide();
+    })
+
+    $closeBtn.click(function () {
+        $deleteModal.hide();
+    })
+    $closeBtn2.click(function () {
+        $alertModal.hide();
+    })
+
+    function modalUp(){
+        $deleteModal.show();
+    }
 </script>
 </html>

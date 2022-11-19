@@ -15,7 +15,7 @@ public class MoveController {
         return "app/community/fragmentTest";
     }
 
-    @GetMapping("/freeBoard")
+    @GetMapping("/free-board")
     public String freeboard(){
         return "app/community/freeboard";
     }
@@ -27,7 +27,7 @@ public class MoveController {
 
     @GetMapping("header")
     public String header(){
-        return "app/fix/header";
+        return "app/community/headerghost";
     }
 
     @GetMapping("footer")

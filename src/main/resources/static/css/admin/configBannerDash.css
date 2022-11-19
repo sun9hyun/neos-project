@@ -12870,7 +12870,7 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 .li_table > ul.content:hover { background-color:#fafafa}
 .li_table > ul.content.no-border:hover { background-color:transparent}
 .li_table > ul.subject li{font-size:13px; color:#757575;}
-.li_table > ul > li {padding:13px 8px;font-size:14px; list-style: none; display: table-cell; border-bottom:1px solid #E0E0E0; margin: 0;min-width: 60px;
+.li_table > ul > li {padding:13px 8px;font-size:14px; list-style: none; display: table-cell;  border-bottom:0.5px solid #E0E0E0; margin: 0;min-width: 60px;
     word-break: break-word;}
 .li_table > ul > li > a:hover, .li_table > ul > li > a:active, .li_table > ul > li > a:focus {text-decoration:none;}
 .li_table > ul > li:first-child {padding-left:24px;}

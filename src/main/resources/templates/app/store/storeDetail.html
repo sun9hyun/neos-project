@@ -35,7 +35,7 @@
                             <div class="idHoverMenu">
                                 <ul>
                                     <li>
-                                        <a href="/people/%EC%B6%94%EC%B6%94%EC%B6%94">프로필 상세</a>
+                                        <a>프로필 상세</a>
                                     </li>
                                     <li>
                                         <a>1:1 대화</a>
@@ -61,7 +61,6 @@
                 <div class="projectTabMenu clearfix">
                     <ul>
                         <li><a name="#info" class="active">정보</a></li>
-                        <li><a name="member" class="">&nbsp</a></li>
                         <li><a name="question" class="">&nbsp</a></li>
                         <li><a name="work" class="">&nbsp</a></li>
                         <li><a name="feed" class="">&nbsp</a></li>
@@ -111,7 +110,13 @@
 
 [참여기준] : 모두가 참여 할 수 있는 공간입니다 많은 참여 바랍니다!🤗
 
-[첨부파일 등록] : 첨부파일은 img, pdf, ppt, excel, word, hwp 등 가능합니다!
+[첨부파일 등록] : 첨부파일은 hwp, pdf, png, jpg, jpeg, png, pptx, xlsx, xls, docx, txt가 가능합니다!
+
+
+
+
+
+
 
 
                             </textarea>
@@ -195,8 +200,17 @@
             </div>
 
 
+        </div>
     </section>
 
     <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
+<script>
+    $('textarea').each(function () {
+        this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+    }).on('input', function () {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+    });
+</script>
 </html>

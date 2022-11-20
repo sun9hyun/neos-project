@@ -25,17 +25,17 @@
             <div class="answer purpose">
                 <p class="subTit">유형</p>
                 <div class="checkWrap">
-                    <label for="" class="checkBox">
+                    <label for="step1_radio" class="checkBox">
                         <span class="txt">무료🔓</span>
-                        <input type="radio" name="step2_radio" value="01" checked="" class="checkFree">
+                        <input type="radio" id="step1_radio" name="free_radio" value="01" checked class="checkFree">
                         <span class="checkmark"></span>
                     </label>
-                    <label for="" class="checkBox">
+                    <label for="step2_radio" class="checkBox">
                         <span class="txt">유료🔒</span>
-                        <input type="radio" name="step2_radio" value="02" class="checkCash">
+                        <input type="radio" id="step2_radio" name="free_radio" value="02" class="checkCash">
                         <span class="checkmark"></span>
                     </label>
-                    <input class="cashCheck" type="text" placeholder="포인트를 입력해주세요 (숫자만)" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    <input class="cashCheck" type="text" placeholder="포인트를 입력해주세요 (숫자만)" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); disabled">
                 </div>
             </div>
             <div class="answer titWrap">
@@ -46,35 +46,38 @@
                 <div class="thumbnailWrap">
                     <div class="thumbnailBox">
                         <img class="thumbnailImage2"
-                             src="https://letspl.me/assets/images/ic-camera-alt-24-px.png" alt="story_image"><input type="file"
-                                                                                                                    accept="image/*" style="display: none;"></div>
+                             src="https://letspl.me/assets/images/ic-camera-alt-24-px.png" alt="story_image">
+<!--                        <input type="file" accept="image/*" style="display: none;">-->
+                    </div>
                     <div class="uploadBox">
                         <label for="file1">파일 업로드</label>
                         <input type="file" name="file" class="file" id="file1">
                         <ul>
-                            <li>저작권에 위배되지 않는 <br>파일만 업로드해주세요.</li>
+                            <li class="fileText">저작권에 위배되지 않는 &nbsp&nbsp 파일만 업로드해주세요.</li>
                         </ul>
                     </div>
                     <div class="thumbnailBox">
                         <img class="thumbnailImage2"
-                             src="https://letspl.me/assets/images/ic-camera-alt-24-px.png" alt="story_image"><input type="file"
-                                                                                                                    accept="image/*" style="display: none;"></div>
+                             src="https://letspl.me/assets/images/ic-camera-alt-24-px.png" alt="story_image">
+<!--                        <input type="file" accept="image/*" style="display: none;">-->
+                    </div>
                     <div class="uploadBox">
                         <label for="file2">파일 업로드</label>
                         <input type="file" name="file" class="file" id="file2">
                         <ul>
-                            <li>저작권에 위배되지 않는 <br>파일만 업로드해주세요.</li>
+                            <li>저작권에 위배되지 않는 &nbsp&nbsp 파일만 업로드해주세요.</li>
                         </ul>
                     </div>
                     <div class="thumbnailBox">
                         <img class="thumbnailImage2"
-                             src="https://letspl.me/assets/images/ic-camera-alt-24-px.png" alt="story_image"><input type="file"
-                                                                                                                    accept="image/*" style="display: none;"></div>
+                             src="https://letspl.me/assets/images/ic-camera-alt-24-px.png" alt="story_image">
+<!--                        <input type="file" accept="image/*" style="display: none;">-->
+                    </div>
                     <div class="uploadBox">
                         <label for="file3">파일 업로드</label>
                         <input type="file" name="file" class="file" id="file3">
                         <ul>
-                            <li>저작권에 위배되지 않는 <br>파일만 업로드해주세요.</li>
+                            <li>저작권에 위배되지 않는 &nbsp&nbsp 파일만 업로드해주세요.</li>
                         </ul>
                     </div>
                 </div>
@@ -114,15 +117,6 @@
         });
     });
 
-    var $file = $(".file");
-
-    $file.on('change',function(){
-        console.log($(this));
-        console.log($(this).val());
-        console.log($file);
-        console.log($(this).next().children($("li")));
-        var fileName = $(this).val();
-        $(this).next().children($("li")).text(fileName);
-    });
 </script>
+<script src="/js/store/storeCreate.js"></script>
 </html>

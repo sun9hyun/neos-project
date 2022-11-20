@@ -108,7 +108,7 @@
 
 .projectPageHeaderWrap .projectLeaderWrap .userIdWrap .confirmPhoneTxt {
     font-size: 13px;
-    color: #ea6560;
+    color: #1A7CFF;
 }
 
 .projectPageHeaderWrap .projectLeaderWrap .userIdWrap .lastLoginTxt {
@@ -388,7 +388,9 @@
     height: 405px !important;
     font-family: 'GmarketSansMedium' !important;
 }
-
+.projectTextArea::-webkit-scrollbar{
+    display: none;
+}
 .infoWrap{
     padding-bottom: 8px !important;
 }

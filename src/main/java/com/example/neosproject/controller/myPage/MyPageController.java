@@ -36,4 +36,9 @@ public class MyPageController {
     public String myPageFavorite(){
         return "app/myPage/myPageFavorite";
     }
+
+    @GetMapping("/my")
+    public String my(){
+        return "app/myPage/my";
+    }
 }

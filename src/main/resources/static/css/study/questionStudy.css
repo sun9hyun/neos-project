@@ -1048,3 +1048,52 @@ button {
     justify-content: space-between;
     margin-bottom: 13px;
 }
+
+
+.top .favorite.active,
+.top .topFavorite.active {
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-full.5a5209416a8859031c9099b5540c281a.svg);
+}
+
+/* 오른쪽 배너 기능 추가*/
+.basicInfoWrap .leaderInfo .userIdWrap .rightBox .userIdTxt .idHoverMenu ul li:hover,
+.basicInfoWrap .leaderInfo .userIdWrap .rightBox .userIdTxt .idHoverMenu ul li a:hover {
+    background-color: #1A7CFF;
+    color: #fff !important;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li:last-child .hoverName {
+    right: 0;
+}
+
+.watchedLetsplerWrap ul li .hoverName:after {
+    top: 100%;
+    left: 50%;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border: 5px solid rgba(136,183,213,0);
+    border-top-color: rgba(0,0,0,.8);
+    margin-left: 14px;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li:first-child .hoverName:after {
+    margin-left: -35px;
+}
+
+/*---------------------------------기능 추가--------------------------------------*/
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li:hover,
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li a:hover {
+    background-color: #1A7CFF;
+    color: #fff;
+}
+
+/* 유저네임 호버 시, 리스트 출력 관련*/
+
+.letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu li:hover,
+.letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu li a:hover {
+    color: #fff;
+    background-color: #1A7CFF;
+}

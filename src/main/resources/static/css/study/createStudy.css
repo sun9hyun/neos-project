@@ -35,6 +35,8 @@ section {
 }
 
 textarea:focus{outline: none}
+input:focus{outline: none}
+select:focus{outline: none}
 input::placeholder{color: #b1b1b1a8}
 
 .buildStudyTitWrap {

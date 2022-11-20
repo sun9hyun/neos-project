@@ -881,13 +881,13 @@ fieldset, img {
     width: 100%;
 }
 
-.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name p.profileName {
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name h2.profileName {
     font-size: 1rem;
     color: #42495b;
     cursor: pointer;
 }
 
-.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name p.profileName .hoverView {
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name h2.profileName .hoverView {
     position: absolute;
     display: none;
     width: 120px;
@@ -1097,7 +1097,8 @@ button {
     transform: rotate(0deg);
 }
 
-.projectFeedContents .feedUploadedSection .feedUploadWrap .bottom a.active:after, .projectFeedContents .feedUploadedSection .feedUploadWrap .bottom a:after {
+.projectFeedContents .feedUploadedSection .feedUploadWrap .bottom a.active:after,
+.projectFeedContents .feedUploadedSection .feedUploadWrap .bottom a:after {
     content: " ";
     width: 14px;
     height: 14px;
@@ -1106,6 +1107,12 @@ button {
     background-image: url(https://letspl.me/_next/static/media/option-triangle.2abb88b721408916136ac6048ff74b95.svg);
     background-repeat: no-repeat;
     background-position: 50%;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .bottom a:after {
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    transform: rotate(-180deg);
 }
 
 .projectFeedContents .feedUploadedSection .feedUploadWrap .bottom .replayCount {
@@ -1135,10 +1142,11 @@ button {
     -moz-transition: all .2s;
     transition: all .2s;
     display: -moz-box;
-    display: flex;
+    /*display: flex;*/
     -moz-box-orient: vertical;
     -moz-box-direction: normal;
     flex-direction: column;
+    display: none;
 }
 
 .feedUploadWrap .replyWrap .replyWrapContent {
@@ -1350,4 +1358,181 @@ button {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+
+/* 오른쪽 배너 기능 추가*/
+.basicInfoWrap .leaderInfo .userIdWrap .rightBox .userIdTxt .idHoverMenu ul li:hover,
+.basicInfoWrap .leaderInfo .userIdWrap .rightBox .userIdTxt .idHoverMenu ul li a:hover {
+    background-color: #1A7CFF;
+    color: #fff !important;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li:last-child .hoverName {
+    right: 0;
+}
+
+.watchedLetsplerWrap ul li .hoverName:after {
+    top: 100%;
+    left: 50%;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border: 5px solid rgba(136,183,213,0);
+    border-top-color: rgba(0,0,0,.8);
+    margin-left: 14px;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li:first-child .hoverName:after {
+    margin-left: -35px;
+}
+
+/*---------------------------------기능 추가--------------------------------------*/
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li:hover,
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li a:hover {
+    background-color: #1A7CFF;
+    color: #fff;
+}
+
+/* 유저네임 호버 시, 리스트 출력 관련*/
+
+.letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu li:hover,
+.letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu li a:hover,
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name h2.profileName .hoverView ul li:hover,
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name h2.profileName .hoverView ul li a:hover,
+.feedUploadWrap .replyWrap .top .right .profileName .hoverView ul li:hover,
+.feedUploadWrap .replyWrap .top .right .profileName .hoverView ul li a:hover {
+    color: #fff;
+    background-color: #1A7CFF;
+}
+
+/*호버 CSS*/
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name .profileName .hoverView,
+.feedUploadWrap .replyWrap .top .right .profileName .hoverView {
+    position: absolute;
+    display: none;
+    width: 120px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    -moz-box-shadow: 2px 2px 5px 0 rgba(0,0,0,.2);
+    box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    z-index: 10;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name .profileName .hoverView ul li,
+.feedUploadWrap .replyWrap .top .right .profileName .hoverView ul li {
+    width: 100%;
+}
+
+dl, li, menu, ol, ul {
+    list-style: none;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name .profileName .hoverView ul li a,
+.feedUploadWrap .replyWrap .top .right .profileName .hoverView ul li a{
+    display: block;
+    padding: 10px 15px;
+    font-weight: 400;
+    letter-spacing: -1.1px;
+    font-size: .875rem;
+    color: #333;
+}
+
+/*게시글 작성 카운팅, 버튼 DIV*/
+.projectFeedContents .feedInputSection .btnWrap,
+.projectFeedContents .feedInputSection .btnWrap .count {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+.projectFeedContents .feedInputSection .btnWrap {
+    width: 100%;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    margin: 0!important;
+    display: none;
+}
+
+.projectFeedContents .feedInputSection .btnWrap .count {
+    font-size: 14px;
+    color: #b1b1b1;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+body, button, input, select, td, textarea, th {
+    line-height: 1.5;
+    color: #333;
+}
+
+.projectFeedContents .feedInputSection .btnWrap .count span:first-child {
+    color: #333;
+}
+
+.projectFeedContents .feedInputSection button {
+    padding: 7px 27px!important;
+}
+
+.btnWrap button.whiteBtn {
+    background-color: #fff;
+    color: #000;
+    font-size: .75rem;
+    padding: 11px 35px;
+    border-radius: 4px;
+    width: 240px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+}
+
+.projectDetailWrap button.whiteBtn {
+    background-color: #fff;
+    border: 1px solid #e2e2e2;
+    width: auto!important;
+}
+
+
+input {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    border: none;
+    height: 46px;
+    font-size: 13px;
+    padding: 4px 0 0;
+}
+
+.projectFeedContents .feedInputSection button {
+    padding: 7px 27px!important;
+}
+
+.projectDetailWrap button.blackBtn {
+    padding: 7px 21px 6px;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+    font-size: 13px;
+    color: #222;
+}
+
+.projectDetailWrap button:last-child {
+    margin-left: 12px;
+}
+
+button, input[type=button], input[type=file], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    border-radius: 0;
+}
+
+.projectDetailWrap button, .projectDetailWrap button.black {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: .75rem;
+    line-height: 1rem;
 }

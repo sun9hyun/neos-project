@@ -36,7 +36,7 @@ $(".favorite").on("click", function () {
 
 $(".favorite2").click(function(){
     if($(this).hasClass("off")) {
-        $(".modalWrapOpen").css("display", "block");
+        $(".subModal").css("display", "block");
     } else {
         $(this).removeClass('active2');
         $(this).addClass('off');
@@ -44,16 +44,16 @@ $(".favorite2").click(function(){
     }
 });
 
-$(".modalWrapOpen .commonModal .btnWrap button.whiteBtn").on("click", function () {
-    $(".modalWrapOpen").css("display", "none");
+$(".commonModal .btnWrap button.whiteBtn").on("click", function () {
+    $(".subModal").css("display", "none");
 })
 
-$(".modalWrapOpen .commonModal .closeBtn img").on("click", function () {
-    $(".modalWrapOpen").css("display", "none");
+$(".commonModal .closeBtn img").on("click", function () {
+    $(".subModal").css("display", "none");
 })
 
-$(".modalWrapOpen .commonModal .btnWrap button.redBtn").on("click", function () {
-    $(".modalWrapOpen").css("display", "none");
+$(".subModal .commonModal .btnWrap button.redBtn").on("click", function () {
+    $(".subModal").css("display", "none");
     $(".top .favorite2").addClass('active2');
     $(".top .favorite2").addClass('on');
     $(".top .favorite2").removeClass('off');
@@ -63,19 +63,19 @@ $(".modalWrapOpen .commonModal .btnWrap button.redBtn").on("click", function () 
 /* 스터디 초대 눌렀을 때 초대 가능하면 나오는 모달 관련*/
 
 $(".blackBtn").click(function(){
-    $(".modalBg").css("display", "block");
+    $(".invitationModal").css("display", "block");
 });
 
-$(".modalBg .modal .closeBtn.imgBtn img").on("click", function () {
-    $(".modalBg").css("display", "none");
+$(".modal .closeBtn.imgBtn img").on("click", function () {
+    $(".invitationModal").css("display", "none");
 })
 
-$(".modalBg .modal .btnWrap button.redWhiteBtn").on("click", function () {
-    $(".modalBg").css("display", "none");
+$(".modal .btnWrap button.redWhiteBtn").on("click", function () {
+    $(".invitationModal").css("display", "none");
 })
 
 $(".inviteYesBtn").on("click", function () {
-    $(".modalBg").css("display", "none");
+    $(".invitationModal").css("display", "none");
     $(".okModal").css("display", "block");
 })
 
@@ -96,13 +96,20 @@ $(".commonModal .closeBtn img").on("click", function () {
 //     $(".noModal").css("display", "block");
 // });
 
-$(".noModal .commonModal .closeBtn").on("click", function () {
+$(".commonModal .closeBtn").on("click", function () {
     $(".noModal").css("display", "none");
 })
 
 $(".commonModal .btnWrap.singleBtnWrap button").on("click", function () {
     $(".noModal").css("display", "none");
 })
+
+
+/* 제일 밑에 프로필에서 스터디 초대 눌렀을 때 초대 가능 하다면 */
+
+$(".invite").click(function(){
+    $(".invitationModal").css("display", "block");
+});
 
 
 

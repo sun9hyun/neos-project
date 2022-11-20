@@ -18,19 +18,24 @@ public class NeosUserController {
         return "app/neosUser/neosListAfter";
     }
 
-    @GetMapping("/info")
-    public String info(){
-        return "app/neosUser/userInfo";
+    @GetMapping("/infoYes")
+    public String infoYes(){
+        return "app/neosUser/userInfoYes";
     }
 
-    @GetMapping("/info2")
-    public String info2(){
-        return "app/neosUser/userInfo2";
+    @GetMapping("/infoNoLogin")
+    public String infoNoLogin(){
+        return "app/neosUser/userInfoNoLogin";
     }
 
-    @GetMapping("/infoAllNo")
-    public String infoAllNo(){
-        return "app/neosUser/userInfoAllNo";
+    @GetMapping("/userInfoNotInvite")
+    public String userInfoNotInvite(){
+        return "app/neosUser/userInfoNotInvite";
+    }
+
+    @GetMapping("/myInfo")
+    public String myInfo(){
+        return "app/neosUser/myInfo";
     }
 
     @GetMapping("/chat")
@@ -41,6 +46,11 @@ public class NeosUserController {
     @GetMapping("/chatAll")
     public String chatAll(){
         return "app/fix/chattingAll";
+    }
+
+    @GetMapping("/modal")
+    public String modal(){
+        return "app/neosUser/modalList";
     }
 
 

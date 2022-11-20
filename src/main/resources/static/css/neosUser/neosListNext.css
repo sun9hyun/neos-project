@@ -783,6 +783,325 @@ a {
     background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-hover.03f7a2966e132a098a985cdc42f83b46.svg);
 }
 
+button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+
+    .commonContentViewHeader {
+        padding: 20px 10px 16px;
+        box-sizing: border-box;
+    }
+
+    .commonContentViewHeader h1 .bgTxt {
+        font-size: 1.25rem;
+    }
+
+    .todayLetspler {
+        box-sizing: border-box;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .letspler_TopList .tit, .peopleSearchOption .tit, .peopleView .peopleRecommendWrap .subTit, .todayLetspler .tit, .userNote.lounge .loungeWrap .tit p {
+        color: #333;
+        font-size: 1.125rem !important;
+        margin-bottom: 12px;
+    }
+
+    .todayLetsplerWrap {
+        flex-direction: column;
+    }
+
+    .todayLetsplerWrap .imgWrap {
+        margin-right: 0;
+        max-width: 100%;
+        height: 180px;
+    }
+
+    .todayLetsplerWrap .imgWrap img {
+        width: 100%;
+        height: 180px;
+    }
+
+    .todayLetsplerWrap .txtWrap {
+        padding-right: 16px;
+        padding-left: 16px;
+        margin-top: 10px;
+    }
+
+    .todayLetsplerWrap .txtWrap .top {
+        justify-content: flex-start;
+        margin-bottom: 20px;
+    }
+
+    .peopleSearchOption {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .commonContentViewHeader .searchOption {
+        display: grid!important;
+        grid-template-columns: repeat(3,1fr);
+        border: none !important;
+    }
+
+    .commonContentViewHeader .searchOption {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: row;
+        border: 1px solid #e3e3e3!important;
+        border: none !important;
+    }
+
+    .commonContentViewHeader .searchOption {
+        grid-template-columns: repeat(3,1fr)!important;
+        grid-column-gap: 4px;
+    }
+
+    .commonContentViewHeader .searchOption .smSelect {
+        border: 1px solid #e3e3e3!important;
+        max-width: 100%;
+        border-radius: 8px!important;
+    }
+
+    .peopleView .peopleGrid {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .peopleGrid {
+        padding: 16px 0;
+    }
+
+    .peopleView .peopleGrid ul.peopleGridList {
+        grid-column-gap: 12px;
+    }
+
+    .peopleGrid ul.peopleGridList {
+        width: 100%;
+        grid-template-columns: repeat(1,1fr);
+    }
+
+    .letspler_Re, .peopleView .peopleGrid ul.peopleGridList .letspler_Re {
+        width: 100%;
+        max-width: 100%;
+        transition: all .2s;
+    }
+
+    .letspler_TopList {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .letspler_TopList .tit {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .letspler_TopList .topList .top3listWrap .top3 {
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .letspler_TopList .topList .top3listWrap .top3 .left {
+        margin-bottom: 14px;
+    }
+
+    .letspler_TopList .topList .top3listWrap .top3 .left {
+        margin-bottom: 14px;
+    }
+
+    .letspler_TopList .topList .top10listWrap {
+        flex-direction: column;
+    }
+
+    .letspler_TopList .topList .top10listWrap .top10 {
+        width: 100%;
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .letspler_TopList .topList .top10listWrap .top10 .left {
+        margin-bottom: 14px;
+    }
+
+    .letspler_TopList .topList .top10listWrap .top10 .right {
+        max-width: 100%;
+    }
+
+    .todayLetsplerWrap {
+        height: 33rem;
+    }
+
+    .peopleSearchOption .tit {
+        margin-bottom: -20px;
+    }
+
+
+
+
+    .chattingWrap .chattingContentWrap {
+        height: 90vh !important;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingHeader {
+        box-shadow: 0 3px 24px 0 rgb(0 0 0 / 6%);
+    }
+
+    .leftBody {
+        display: none;
+    }
+
+    .leftHead {
+        display: none;
+    }
+
+
+    .rightHead {
+        display: none;
+    }
+
+    .rightBody {
+        display: none;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .list, .chattingWrap .chattingContentWrap .left {
+        max-width: 100%;
+    }
+
+
+    .chattingWrap .chattingContentWrap .chattingHeader .left p {
+        padding: 20px 0 !important;
+        text-align: left;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingHeader .right.active {
+        padding: 16px 0 !important;
+    }
+
+    .chattingWrap.listOff .chattingContentWrap .chattingHeader .right .backBtn {
+        display: inline-block;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingHeader .right .userIdAndTimeInfo {
+        width: 54%;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingHeader .right .userIdAndTimeInfo .morAndFoldBtnWrap {
+        right: 60px !important;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingHeader .right .userIdAndTimeInfo .morAndFoldBtnWrap .moreBtn {
+        margin-right: 5px;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingHeader .foldChatBtn {
+        right: 20px !important;
+        left: auto !important;
+        top: 22px !important;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .list ul li {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .list ul li .chatInfo {
+        width: 100%;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chattingRoomWrap {
+        margin-top: 0;
+        height: calc(100vh - 200px)!important;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chatInputArea {
+        width: 100%;
+        display: flex;
+        box-sizing: border-box;
+        align-items: flex-end;
+        background-color: #fff;
+        padding: 0 12px;
+        align-items: center;
+        box-shadow: 0 3px 20px 0 rgb(0 0 0 / 12%);
+        z-index: 1;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chattingRoomWrap {
+        margin-top: 0;
+        height: calc(100vh - 200px)!important;
+    }
+
+    .chattingWrap {
+        z-index: 9997!important;
+        position: fixed;
+        left: 50%;
+        right: 0!important;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        bottom: 0;
+        transform: translateX(-50%);
+        display: block;
+        text-align: right;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chatInputArea {
+        width: 100%;
+        display: flex;
+        box-sizing: border-box;
+        align-items: flex-end;
+        background-color: #fff;
+        padding: 0 12px;
+        align-items: center;
+        box-shadow: 0 3px 20px 0 rgb(0 0 0 / 12%);
+        z-index: 1;
+    }
+
+    .chattingWrap2 {
+        right: -140px !important;
+        height: 70px !important;
+        max-width: 300px !important;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chattingRoomWrap .dayInfo p:after {
+        content: "";
+        width: 100px !important;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chattingRoomWrap .dayInfo p:before {
+        content: "";
+        width: 100px !important;
+    }
+
+
+
+
+
+
+
+
+
+
+
+}
 
 
 

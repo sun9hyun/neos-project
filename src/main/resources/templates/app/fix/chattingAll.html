@@ -14,15 +14,14 @@
     <div class="chattingWrap listOff" id="chattingList">
         <div class="chattingContentWrap ">
             <div class="chattingHeader">
-                <div class="left"><p>대화 목록</p></div>
-                <div class="right active"><a class="backBtn"></a>
+                <div class="left leftHead"><p>대화 목록</p></div>
+                <div class="right active rightHead"><a class="backBtn"></a>
                     <div class="thumbWrap">
                         <div class="thumb"><img loading="lazy" src="/images/fix/favicon.png"
                                                 alt="chat_image"></div>
                     </div>
-                    <div class="userIdAndTimeInfo"><p class="userId">렛플 - 오픈 챗&nbsp;(636)</p>
+                    <div class="userIdAndTimeInfo"><p class="userId">NEOS - 오픈 챗&nbsp;(636)</p>
                         <div class="morAndFoldBtnWrap">
-                            <div class="alarmOnBtn"></div>
                             <div class="moreBtn"></div>
                         </div>
                     </div>
@@ -30,8 +29,22 @@
                 <div class="foldChatBtn"></div>
             </div>
             <div class="chattingSection">
-                <div class="list left">
+                <div class="list left leftBody">
                     <ul>
+                        <li class="active">
+                            <div class="thumb"><img
+                                    src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"
+                                    alt="chat_image"></div>
+                            <div class="chatInfo">
+                                <div class="userIdAndBeforeTime">
+                                    <div class="right"><span class="userId">ROSA</span></div>
+                                    <span class="beforeTime">방금 전</span>
+                                </div>
+                                <p class="chatInfoTxt">
+                                    로사 하이 채팅방 테스트 중
+                                </p>
+                                <p class="endTime">종료 :&nbsp;22.12.02 18:08</p></div>
+                        </li>
                         <li class="active">
                             <div class="thumb"><img loading="lazy" src="/images/fix/favicon.png"
                                                     alt="chat_image"></div>
@@ -46,13 +59,14 @@
                         </li>
                     </ul>
                 </div>
-                <div class="chattingRoom right active">
+                <div class="chattingRoom right active rightBody">
                     <div class="chattingRoomWrap" style="height: 490px;">
                         <div class="dayInfo"><p>22.10.24 월요일</p></div>
 
                         <div class="opponent">
                             <div class="thumb"><a href="/people/엔잡쏘" target="_blank"><img
-                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png" alt="chat_image"></a></div>
+                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png"
+                                    alt="chat_image"></a></div>
                             <div class="userIdChatTxt"><span class="userId">심민성</span>
                                 <div class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">한 사람을&nbsp;</a></span>
                                     <div class="timeWrap"><span class="time">오후 5:03</span></div>
@@ -133,6 +147,36 @@
             </div>
         </div>
     </div>
+
+    <div class="chatExitModal">
+        <div class="commonModal chatExit">
+            <p class="modalTit">NEOS - 오픈챗</p>
+            <p class="modalTit">채팅방을 나가시겠습니까?</p>
+            <button class="closeBtn"><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close">
+            </button>
+            <div class="commonModalContent"><p>원하실때 다시 들어올 수 있습니다</p>
+                <p>기다리고 있을게요</p></div>
+            <div class="btnWrap doubleBtnWrap">
+                <button class="btn whiteBtn">아니오</button>
+                <button class="btn redBtn">예</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="request_chat">
+        <div class="commonModal">
+            <p class="modalTit">1 네오력</p>
+            <p class="modalTit">사용하시겠습니까?</p>
+            <button class="closeBtn"><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close"></button>
+            <div class="commonModalContent"><p>예를 누르시면,</p>
+                <p> 추추추님과 대화를 시작합니다!</p></div>
+            <div class="btnWrap doubleBtnWrap">
+                <button class="btn whiteBtn">아니오</button>
+                <button class="btn redBtn chatStart">예</button>
+            </div>
+        </div>
+    </div>
+
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

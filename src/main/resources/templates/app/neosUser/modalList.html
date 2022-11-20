@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/neosUser/modalList.css">
+</head>
+<body>
+<div class="modalSpace" th:fragment="modalSpace">
+    <div class="subModal allModal off">
+        <div class="commonModal"><p class="modalTit">spring boot 팀프로젝트를</p>
+            <p class="modalTit">구독하시겠습니까?</p>
+            <button class="closeBtn"><img loading="lazy" src="http://letspl.me/assets/icon/ic-close.svg" alt="close"></button>
+            <div class="commonModalContent"><p>구독하시면, 관련된 정보나</p>
+                <p>홍보 컨텐츠가 SMS/이메일/푸쉬을 통해 정기적으로 배송되며</p>
+                <p>자동으로 NEOS 광고수신동의가 이루어집니다</p></div>
+            <div class="btnWrap doubleBtnWrap">
+                <button class="btn whiteBtn">아니오</button>
+                <button class="btn redBtn">예</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="noLoginModal allModal">
+        <div class="commonModal">
+            <p class="modalTit">로그인이 필요합니다</p>
+            <button class="closeBtn"><img loading="lazy" src="http://letspl.me/assets/icon/ic-close.svg" alt="close">
+            </button>
+            <div class="commonModalContent">
+                <p>로그인 하시겠습니까?</p>
+                <div class="btnWrap doubleBtnWrap">
+                    <button class="btn whiteBtn">아니오</button>
+                    <button class="btn redBtn">예</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="notPossibleInviteModal allModal">
+        <div class="commonModal"><p class="modalTit">스터디 초대가 불가능합니다</p>
+            <button class="closeBtn"><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close"></button>
+            <div class="commonModalContent"><p>현재 참여하고 있는 프로젝트/스터디&amp;네트워킹이 없습니다</p></div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn redBtn">확인</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="invitationModal allModal">
+        <div class="requestModal modal">
+            <button class="imgBtn closeBtn"><img loading="lazy" src="https://letspl.me/assets/images/ic-close.svg"
+                                                 alt="close"></button>
+            <p class="tit">sun9hyun님께 초대장을 보내시겠습니까?</p><label>프로젝트/스터디&amp;네트워킹</label><select name="" id="">
+            <option value="630">[스터디&amp;네트워킹] test</option>
+        </select><label>초대 사유</label>
+            <textarea type="text" placeholder="최대 50자까지 작성가능합니다" maxlength="50"
+                      style="width: 100%; height: 100px; border: 1px solid rgb(151, 150, 167); border-radius: 4px; font-size: 0.75rem; color: rgb(34, 34, 34);
+                  padding: 10px 8px; box-sizing: border-box; resize: none;">한분만 오시면 이제 모두 세팅됩니다</textarea>
+            <div class="btnWrap">
+                <button class="redWhiteBtn">아니오</button>
+                <button class="redBtn inviteYesBtn">예</button>
+            </div>
+            <label>예를 누르시면, 유저에게 초대 메일이 발송됩니다!</label>
+        </div>
+    </div>
+
+
+    <div class="okModal allModal">
+        <div class="commonModal"><p class="modalTit">스터디 초대완료</p>
+            <button class="closeBtn"><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close">
+            </button>
+            <div class="commonModalContent"><p>스터디 초대를 성공적으로 완료했습니다</p></div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn redBtn okBtn">확인</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="noModal allModal">
+        <div class="commonModal"><p class="modalTit">스터디 초대가 불가능합니다</p>
+            <button class="closeBtn"><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close"></button>
+            <div class="commonModalContent"><p>현재 참여하고 있는 프로젝트/스터디&amp;네트워킹이 없습니다</p></div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn redBtn">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

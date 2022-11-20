@@ -7,7 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NEOS | 네오스인</title>
     <link rel="stylesheet" href="/css/neosUser/userInfo.css">
+    <link rel="stylesheet" href="/css/neosUser/modalList.css">
     <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/chatting.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
@@ -34,10 +36,10 @@
                                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
                                      alt="렛플렙">&nbsp;<!-- -->sun9hyun</h2>
                 <p class="introduction">마지막 로그인 :<!-- --> 1일전</p>
-                <div class="topBtnWrap btnWrap">
-                    <button class="pinkBtn">1:1 대화</button>
-                    <button class="blackBtn">모임 초대</button>
-                </div>
+<!--                <div class="topBtnWrap btnWrap">-->
+<!--                    <button class="pinkBtn">1:1 대화</button>-->
+<!--                    <button class="blackBtn">스터디 초대</button>-->
+<!--                </div>-->
             </div>
             <div class="myTabWrapContainer">
                 <div class="myTabWrap"><a class="active">정보</a><a class="">문의(<!-- --> 1<!-- --> )</a><a class="">스토리(
@@ -193,9 +195,9 @@
                                               alt="렛플렙">
                                         <h2 class="userName">ROSA
                                             <ul class="idHoverMenu">
-                                                <li><a>프로필 상세</a></li>
-                                                <li><a>1:1 대화</a></li>
-                                                <li><a>모임 초대</a></li>
+                                                <li><a class="detail">프로필 상세</a></li>
+                                                <li><a class="chat">1:1 대화</a></li>
+                                                <li><a class="invite">스터디 초대</a></li>
                                             </ul>
                                         </h2>
                                         <div class="certiWrap"><img loading="lazy" class="userCertIcon"
@@ -226,9 +228,9 @@
                                               alt="렛플렙">
                                         <h2 class="userName">ROSA
                                             <ul class="idHoverMenu">
-                                                <li><a>프로필 상세</a></li>
-                                                <li><a>1:1 대화</a></li>
-                                                <li><a>모임 초대</a></li>
+                                                <li><a class="detail">프로필 상세</a></li>
+                                                <li><a class="chat">1:1 대화</a></li>
+                                                <li><a class="invite">스터디 초대</a></li>
                                             </ul>
                                         </h2>
                                         <div class="certiWrap"></div>
@@ -257,9 +259,9 @@
                                               alt="렛플렙">
                                         <h2 class="userName">ROSA
                                             <ul class="idHoverMenu">
-                                                <li><a>프로필 상세</a></li>
-                                                <li><a>1:1 대화</a></li>
-                                                <li><a>모임 초대</a></li>
+                                                <li><a class="detail">프로필 상세</a></li>
+                                                <li><a class="chat">1:1 대화</a></li>
+                                                <li><a class="invite">스터디 초대</a></li>
                                             </ul>
                                         </h2>
                                         <div class="certiWrap"><img loading="lazy" class="userCertIcon"
@@ -290,9 +292,9 @@
                                               alt="렛플렙">
                                         <h2 class="userName">ROSA
                                             <ul class="idHoverMenu">
-                                                <li><a>프로필 상세</a></li>
-                                                <li><a>1:1 대화</a></li>
-                                                <li><a>모임 초대</a></li>
+                                                <li><a class="detail">프로필 상세</a></li>
+                                                <li><a class="chat">1:1 대화</a></li>
+                                                <li><a class="invite">스터디 초대</a></li>
                                             </ul>
                                         </h2>
                                         <div class="certiWrap"><img loading="lazy" class="userCertIcon"
@@ -325,9 +327,9 @@
                                               alt="렛플렙">
                                         <h2 class="userName">ROSA
                                             <ul class="idHoverMenu">
-                                                <li><a>프로필 상세</a></li>
-                                                <li><a>1:1 대화</a></li>
-                                                <li><a>모임 초대</a></li>
+                                                <li><a class="detail">프로필 상세</a></li>
+                                                <li><a class="chat">1:1 대화</a></li>
+                                                <li><a class="invite">스터디 초대</a></li>
                                             </ul>
                                         </h2>
                                         <div class="certiWrap"><img loading="lazy" class="userCertIcon"
@@ -360,9 +362,9 @@
                                               alt="렛플렙">
                                         <h2 class="userName">ROSA
                                             <ul class="idHoverMenu">
-                                                <li><a>프로필 상세</a></li>
-                                                <li><a>1:1 대화</a></li>
-                                                <li><a>모임 초대</a></li>
+                                                <li><a class="detail">프로필 상세</a></li>
+                                                <li><a class="chat">1:1 대화</a></li>
+                                                <li><a class="invite">스터디 초대</a></li>
                                             </ul>
                                         </h2>
                                         <div class="certiWrap"><img loading="lazy" class="userCertIcon"
@@ -387,23 +389,12 @@
 </section>
 
 
-<div class="modalWrapOpen">
-    <div class="commonModal"><p class="modalTit">spring boot 팀프로젝트를</p>
-        <p class="modalTit">구독하시겠습니까?</p>
-        <button class="closeBtn"><img loading="lazy" src="http://letspl.me/assets/icon/ic-close.svg" alt="close"></button>
-        <div class="commonModalContent"><p>구독하시면, 관련된 정보나</p>
-            <p>홍보 컨텐츠가 SMS/이메일/푸쉬을 통해 정기적으로 배송되며</p>
-            <p>자동으로 NEOS 광고수신동의가 이루어집니다</p></div>
-        <div class="btnWrap doubleBtnWrap">
-            <button class="btn whiteBtn">아니오</button>
-            <button class="btn redBtn">예</button>
-        </div>
-    </div>
-</div>
 
-
+<div th:replace="/app/neosUser/modalList.html :: modalSpace"></div>
+<div th:replace="/app/fix/chattingAll.html :: chattingAll"></div>
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/neosUser/userInfo.js"></script>
+<script src="/js/fix/chatting.js"></script>
 </html>

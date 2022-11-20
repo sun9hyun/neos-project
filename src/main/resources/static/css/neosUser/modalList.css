@@ -1,0 +1,242 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'GmarketSansMedium';
+}
+
+blockquote, body, button, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, pre, select, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+}
+
+dl, li, menu, ol, ul {
+    list-style: none;
+}
+
+input, textarea, select {
+    font-family: inherit;
+}
+
+.subModal {
+    display: none;
+}
+
+.noLoginModal {
+    display: none;
+}
+
+.notPossibleInviteModal {
+    display: none;
+}
+
+.invitationModal {
+    display: none;
+}
+
+.okModal {
+    display: none;
+}
+
+.noModal {
+    display: none;
+}
+
+
+
+.allModal {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+}
+
+.commonModal {
+    padding: 45px 30px 15px;
+    background-color: #fff;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    border-radius: 8px;
+    max-width: 406px;
+    min-width: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all .2s;
+    z-index: 999999;
+}
+
+.commonModal .modalTit {
+    font-size: 1.125rem;
+    color: #42495b;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.25rem;
+}
+
+.commonModal .closeBtn {
+    width: 22px;
+    height: 22px;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 24px;
+}
+
+.commonModal .closeBtn img {
+    width: 100%;
+}
+
+.commonModal .commonModalContent p {
+    font-size: .75rem;
+    color: #8e8ea2;
+    text-align: center;
+    line-height: 1rem;
+}
+
+.commonModal .btnWrap {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btnWrap {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.commonModal .btnWrap button.whiteBtn {
+    border: 1px solid #1A7CFF !important;
+    color: #1A7CFF;
+    background-color: #fff;
+}
+
+.commonModal .btnWrap.doubleBtnWrap button {
+    height: 44px;
+    width: 49%;
+    border: none;
+    box-sizing: border-box;
+    font-size: .75rem;
+    padding: 0;
+    border-radius: 4px;
+}
+
+.commonModal .btnWrap button.redBtn {
+    border: 1px solid #1A7CFF;
+    background-color: #1A7CFF;
+    color: #fff;
+}
+
+.commonModal .btnWrap.singleBtnWrap button {
+    height: 44px;
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+    font-size: .75rem;
+}
+
+.modalBg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+    z-index: 99999;
+}
+
+.modal {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 48px 40px 24px;
+    display: inline-block;
+    max-width: 406px;
+    width: 100%;
+}
+
+.modal .closeBtn {
+    width: 22px;
+    height: 22px;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 24px;
+}
+
+.modal .closeBtn.imgBtn img {
+    width: 100%;
+}
+
+.modal p.tit {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.modal label {
+    font-size: .75rem;
+    color: #696980;
+    margin-bottom: 6px;
+}
+
+.modal select {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #9796a7;
+    font-size: .75rem;
+    color: #222;
+    box-sizing: border-box;
+    padding: 10px 0 8px 5px;
+}
+
+.modal .btnWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.modal .btnWrap button.redBtn {
+    background-color: #1A7CFF;
+    border: 1px solid #1A7CFF;
+    color: #fff;
+}
+
+.modal .btnWrap button.redWhiteBtn {
+    border: 1px solid #1A7CFF;
+    color: #1A7CFF;
+    background-color: #fff;
+}
+
+.modal .btnWrap button:first-child {
+    margin-right: 6px;
+}
+
+.modal .btnWrap button {
+    font-size: .75rem;
+    padding: 13px 0;
+    width: 160px;
+    border-radius: 4px;
+}

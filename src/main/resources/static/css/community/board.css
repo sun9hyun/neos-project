@@ -391,3 +391,8 @@ a.searchIc {
 .postBtn span{
     color:#fff;
 }
+@media screen and (max-width: 1024px) {
+    nav img.logo{
+        height: 100%;
+    }
+}

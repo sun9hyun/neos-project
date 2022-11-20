@@ -1,4 +1,4 @@
-/*--큰 탭메뉴 이동--------------------------------------------------------*/
+
 var $tabMenu = $(".myTabMenu>ul>li");
 var $myTabContents = $(".myTabContents");
 
@@ -85,4 +85,5 @@ $file.change(function(e){
             console.log($userImg.attr('src', $tempTr));
         }
     };
+
 });

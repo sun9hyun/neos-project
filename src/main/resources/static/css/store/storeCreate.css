@@ -38,7 +38,7 @@ section {
     font-size: 30px;
     line-height: 30px;
     font-weight: bold;
-    color: #e44d47;
+    color: #475ae4;
 }
 
 .writeSection .storyWriteTit span {
@@ -55,14 +55,14 @@ section {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border: 1px solid #f5b4b2;
-    background-color: snow;
+    border: 1px solid #b2bbf5;
+    background-color: #fafaff;
     margin-top: 24px;
 }
 
 .writeSection .storyWriteTit .writeNotice p {
     font-size: 14px;
-    color: #ea6560;
+    color: #1A7CFF;
     line-height: 14px;
     padding: 16px 24px;
     font-weight: 500;
@@ -142,7 +142,7 @@ section {
 }
 
 .checkBox input:checked~.checkmark {
-    background-color: #ea6560;
+    background-color: #1A7CFF;
     border: none;
 }
 
@@ -294,7 +294,7 @@ input {
 
 .buildProjectContents .answer .thumbnailWrap .uploadBox ul li:before {
     content: "*";
-    color: #ea6560;
+    color: #1A7CFF;
 }
 
 .writeSection .btnWrap {
@@ -307,7 +307,7 @@ input {
 }
 
 .btnWrap button.pinkBtn {
-    background-color: #ea6560;
+    background-color: #1A7CFF;
 }
 
 .btnWrap button.grayBtn, .btnWrap button.pinkBtn {

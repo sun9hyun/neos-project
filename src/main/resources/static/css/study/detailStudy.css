@@ -167,7 +167,7 @@ fieldset, img {
     border: 0;
 }
 
-.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .userIdTxt {
+.userIdWrap .userIdTxt {
     font-size: 14px;
     color: #666;
     margin-left: 11.5px;
@@ -176,17 +176,17 @@ fieldset, img {
     display: inline-block;
 }
 
-.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .confirmPhoneTxt {
+.userIdWrap .confirmPhoneTxt {
     font-size: 13px;
     color: #1A7CFF;
 }
 
-.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .lastLoginTxt {
+.userIdWrap .lastLoginTxt {
     font-size: 13px;
     color: #b7b7c7;
 }
 
-.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu {
+.idHoverMenu {
     display: none;
     position: absolute;
     width: 120px;
@@ -198,11 +198,12 @@ fieldset, img {
     box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
 }
 
-.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li {
+
+.idHoverMenu ul li {
     width: 100%;
 }
 
-.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li a {
+.idHoverMenu ul li a {
     display: block;
     padding: 10px 15px;
     font-weight: 400;
@@ -955,7 +956,7 @@ button {
     -moz-box-direction: normal;
     flex-direction: column;
     border: 1px solid #ddd;
-    position: sticky;
+    /*position: sticky;*/
     top: 74px;
     margin-bottom: 20px;
     border-radius: 4px;
@@ -1173,6 +1174,10 @@ button {
     position: relative;
 }
 
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .heartWrap .favorite.active {
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-full.5a5209416a8859031c9099b5540c281a.svg);
+}
+
 .projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .shareWrap img {
     width: 16px;
     height: auto;
@@ -1341,4 +1346,83 @@ button {
     width: 62px;
     height: 62px;
     object-fit: cover;
+}
+
+/*---------------------------------기능 추가--------------------------------------*/
+
+.letspler_Re .bottom .chatBtn:hover {
+    background-color: #1A7CFF;
+    color: #fff;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li:hover,
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li a:hover {
+    background-color: #1A7CFF;
+    color: #fff;
+}
+
+/* 유저네임 호버 시, 리스트 출력 관련*/
+
+.letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu li:hover,
+.letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu li a:hover {
+    color: #fff;
+    background-color: #1A7CFF;
+}
+
+
+.letspler_Re .top .favorite:hover {
+    background-size: 14px;
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-hover.03f7a2966e132a098a985cdc42f83b46.svg);
+}
+
+
+.top .favorite {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* ------모집현황 버튼 활성화 여부에 따른 CSS 변화------*/
+/*모집완료의 경우, 버튼 비활성화*/
+
+.projectInfoTabContents .section.statusSection ul li button.disabledBtn:hover {
+    cursor: not-allowed;
+}
+
+/*모집 중인 경우의 버튼*/
+/*.projectInfoTabContents .section.statusSection ul li button:hover {*/
+/*    background-color: #42495b;*/
+/*    border: 1px solid #42495b;*/
+/*    color: #fff;*/
+/*}*/
+
+
+/* 오른쪽 배너 기능 추가*/
+.basicInfoWrap .leaderInfo .userIdWrap .rightBox .userIdTxt .idHoverMenu ul li:hover,
+.basicInfoWrap .leaderInfo .userIdWrap .rightBox .userIdTxt .idHoverMenu ul li a:hover {
+    background-color: #1A7CFF;
+    color: #fff !important;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li:last-child .hoverName {
+    right: 0;
+}
+
+.watchedLetsplerWrap ul li .hoverName:after {
+    top: 100%;
+    left: 50%;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border: 5px solid rgba(136,183,213,0);
+    border-top-color: rgba(0,0,0,.8);
+    margin-left: 14px;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li:first-child .hoverName:after {
+    margin-left: -35px;
 }

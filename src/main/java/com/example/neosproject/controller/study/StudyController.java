@@ -20,7 +20,7 @@ public class StudyController {
 
     @GetMapping("/detail")
     public String detail(){
-        return "app/study/detailStudy";
+        return "app/study/detail-study";
     }
 
     @GetMapping("/question")

@@ -29,9 +29,9 @@ blockquote, body, button, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4,
     position: sticky;
     background-color: #fff;
     top: 0;
-    -webkit-box-shadow: 0 3px 27px 0 rgb(0 0 0 / 2%);
-    -moz-box-shadow: 0 3px 27px 0 rgba(0,0,0,.02);
-    box-shadow: 0 3px 27px 0 rgb(0 0 0 / 2%);
+    /*-webkit-box-shadow: 0 3px 27px 0 rgb(0 0 0 / 2%);*/
+    /*-moz-box-shadow: 0 3px 27px 0 rgba(0,0,0,.02);*/
+    /*box-shadow: 0 3px 27px 0 rgb(0 0 0 / 2%);*/
     z-index: 9995;
 }
 
@@ -310,8 +310,9 @@ a {
 }
 
 .chattingWrap2 {
-    right: -150px;
+    right: -109px;
     max-width: 300px;
+    top: 848px;
 }
 
 .chattingWrap, .chattingWrap2 {
@@ -660,7 +661,7 @@ em.pinkColor {
     border-radius: 2px;
     background-color: #fdf4f3;
     color: #ea6560;
-    font-size: 13x;
+    font-size: 13px;
     margin-right: 7px;
 }
 
@@ -791,3 +792,395 @@ section {
     margin-bottom: -7px;
 
 }
+.loginWrap .mobileLogin {
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    nav {
+        display: -moz-box;
+        display: flex;
+        -moz-box-orient: vertical;
+        -moz-box-direction: normal;
+        flex-direction: column;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 10px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    nav .logo {
+        margin-right: auto;
+        padding: 12px 0;
+    }
+
+    nav .Navbar {
+        margin-left: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    nav .Navbar a, nav .Navbar li {
+        padding: 13px 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        text-align: center;
+        -moz-box-flex: 1;
+        flex: 1 1;
+    }
+
+    nav .Navbar li {
+        -moz-box-orient: horizontal;
+        -moz-box-direction: normal;
+        flex-direction: row;
+        -moz-box-pack: center;
+        justify-content: center;
+        -moz-box-align: center;
+        align-items: center;
+    }
+
+    nav .Navbar a {
+        font-size: .875rem;
+    }
+
+    .loginWrap .searchWrap {
+        margin-right: 0;
+    }
+
+    .loginWrap .searchWrap .searchIc {
+        margin-right: 6px;
+        padding-top: 0;
+    }
+
+    .loginWrap .searchWrap .searchIc {
+        padding: 2px;
+        border-radius: 2px;
+        background-color: #fff;
+    }
+
+    .loginWrap .searchWrap .searchIc span {
+        display: none;
+    }
+
+    .loginWrap .searchWrap .searchIc .pcSearch {
+        display: none;
+    }
+
+    .loginWrap .searchWrap .searchIc .mobileSearch {
+        display: block;
+        width: 30px;
+        height: auto;
+    }
+
+    .loginWrap .joinAndLoginWrap {
+        display: none;
+    }
+
+    .loginWrap .mobileLogin {
+        display: block;
+    }
+
+    .loginWrap .mobileLogin a {
+        display: -moz-box;
+        display: flex;
+        -moz-box-orient: horizontal;
+        -moz-box-direction: normal;
+        flex-direction: row;
+        -moz-box-align: center;
+        align-items: center;
+    }
+
+    .loginWrap .searchWrap .searchIc .mobileSearch {
+        display: block;
+        width: 30px;
+        height: auto;
+    }
+
+    .loginWrap .mobileLogin {
+        display: block;
+    }
+
+    .loginWrap .mobileLogin a {
+        display: -moz-box;
+        display: flex;
+        -moz-box-orient: horizontal;
+        -moz-box-direction: normal;
+        flex-direction: row;
+        -moz-box-align: center;
+        align-items: center;
+    }
+
+    .loginWrap .mobileLogin a img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .loginWrap {
+        position: absolute;
+        right: 10px;
+        width: -moz-calc(100% - 120px);
+        width: calc(100% - 120px);
+    }
+
+    @media screen and (max-width: 1024px) {
+        .bottom, .Footer .footerContentBottom .wrap {
+            -moz-box-orient: vertical;
+            -moz-box-direction: reverse;
+            flex-direction: column-reverse;
+        }
+
+        .bottom, .Footer .footerContentBottom .wrap {
+            -moz-box-orient: vertical;
+            -moz-box-direction: reverse;
+            flex-direction: column-reverse;
+        }
+
+        .Footer .footerContent .bottom, .Footer .footerContent .top, .Footer .footerContentBottom .wrap {
+            padding: 10px 20px;
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            flex-direction: column;
+        }
+
+        .chattingWrap2 {
+            right: 428px;
+            max-width: 300px;
+            top: 1983px;
+        }
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .hotProjectContentWrap .hotProjectContent {
+        width: 330px;
+        -webkit-transition: all .2s;
+        -moz-transition: all .2s;
+        transition: all .2s;
+        overflow-x: auto
+    }
+
+    .hotPeopleWrap .hotPeopleContentWrap .hotPeopleContent .letspler {
+        width: 250px;
+        -webkit-transition: all .2s;
+        -moz-transition: all .2s;
+        transition: all .2s
+    }
+
+    @media screen and (max-width: 750px) {
+        .hotProjectContentWrap {
+            grid-template-columns: repeat(4, 1fr);
+            display: grid
+        }
+
+        .hotProjectContentWrap .hotProjectContent {
+            width: 340px;
+            margin-right: 10px
+        }
+
+        .hotProjectContentWrap .hotProjectContent:last-child {
+            margin-right: 0
+        }
+
+        section.bannerSection2 .bannerWrap2 img.pcBanner {
+            display: none
+        }
+
+        section.bannerSection2 .bannerWrap2 img.mbBanner {
+            display: block
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        .hotProjectContentWrap {
+            grid-template-columns: repeat(2, 1fr);
+            display: grid
+        }
+
+        .hotProjectContentWrap .hotProjectContent {
+            width: 300px
+        }
+
+        .hotPeopleWrap .hotPeopleContentWrap .hotPeopleContent {
+            grid-template-columns: repeat(2, 1fr)
+        }
+
+        .hotPeopleWrap .hotPeopleContentWrap .hotPeopleContent .letspler {
+            width: 300px
+        }
+    }
+
+    @media screen and (max-width: 640px) {
+        .hotProjectWrap {
+            padding: 20px 10px 10px;
+        }
+
+        .hotProjectContentWrap {
+            grid-template-columns: repeat(1, 1fr);
+            display: grid
+        }
+
+        .hotProjectContentWrap .hotProjectContent {
+            width: 500px
+        }
+
+        .buildProjectContents .answer ul li.checkBoxWrap.selectPurpose {
+            grid-template-columns: repeat(4, 1fr)
+        }
+
+        .hotPeopleWrap .hotPeopleContentWrap .hotPeopleContent .letspler {
+            width: 260px
+        }
+
+        .buildProjectContents .answer .thumbnailWrap .thumbnailBox {
+            width: 100%;
+            height: 200px;
+            margin-right: 0
+        }
+
+        .buildProjectContents .answer .thumbnailWrap {
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            flex-direction: column
+        }
+
+        .buildProjectContents .answer .thumbnailWrap .uploadBox {
+            margin-top: 20px;
+            display: block
+        }
+
+        .buildProjectContents .answer .thumbnailSelectBox ul li {
+            width: 95px;
+            height: 60px
+        }
+
+        .buildProjectContents .confirmBtnWrap .previewBtn, .buildProjectContents .confirmBtnWrap .saveBtn {
+            padding: 11px 19px !important
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .hotPeopleWrap .hotPeopleContentWrap .hotPeopleContent .letspler {
+            width: 220px
+        }
+
+        .buildProjectContents .answer ul li.checkBoxWrap.selectPurpose {
+            grid-template-columns: repeat(3, 1fr)
+        }
+
+        .buildProjectContents .answer ul li .inputWrap input {
+            font-size: 14px;
+            padding: 12px 8px
+        }
+
+        .buildProjectContents .answer ul li .inputWrap input::-webkit-input-placeholder {
+            font-size: 14px
+        }
+
+        .buildProjectContents .answer ul li .inputWrap input::-moz-placeholder {
+            font-size: 14px
+        }
+
+        .buildProjectContents .answer ul li .inputWrap input:-ms-input-placeholder {
+            font-size: 14px
+        }
+
+        .buildProjectContents .answer ul li .inputWrap input::placeholder {
+            font-size: 14px
+        }
+
+        .buildProjectContents .answer .addMemberBtnWrap button {
+            padding: 10px 30px
+        }
+
+        .buildProjectContents .answer5 ul li .inputWrap .css-1stwjcq-container input {
+            padding: 11.5px 10px
+        }
+
+        .buildProjectContents .answer5 ul li .inputWrap .imageBtn {
+            width: 10px;
+            height: 10px
+        }
+
+        .imageBtn.minus, .imageBtn.plus {
+            background-size: 10px 10px
+        }
+
+        .buildProjectContents .answer5 ul li .inputWrap .countNumber {
+            margin: 0 4px;
+            font-size: 12px
+        }
+
+        .buildProjectContents .answer5 ul li .inputWrap .css-1stwjcq-container input::-webkit-input-placeholder {
+            font-size: 10px
+        }
+
+        .buildProjectContents .answer5 ul li .inputWrap .css-1stwjcq-container input::-moz-placeholder {
+            font-size: 10px
+        }
+
+        .buildProjectContents .answer5 ul li .inputWrap .css-1stwjcq-container input:-ms-input-placeholder {
+            font-size: 10px
+        }
+
+        .buildProjectContents .answer5 ul li .inputWrap .css-1stwjcq-container input::placeholder {
+            font-size: 10px
+        }
+
+        .signUpSelectWrap .selectWrap .wrap .left {
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            flex-direction: column;
+            -moz-box-align: center;
+            align-items: center;
+            margin-right: 0
+        }
+
+        .signUpSelectWrap .selectWrap .wrap .left .symbolImg {
+            margin-bottom: 24px
+        }
+
+        .signUpSelectWrap .selectWrap .wrap .left .txtAndBtnWrap {
+            margin-left: 0;
+            -moz-box-align: center;
+            align-items: center
+        }
+
+        @media screen and (max-height: 667px) {
+            .headerCommonLayout {
+                height: 360px !important;
+                padding-left: 32px;
+                padding-right: 10px
+            }
+        }
+    }
+
+    @media screen and (max-width: 420px) {
+        .hotProjectContentWrap { /* display:grid; */
+            align-content: stretch;
+            justify-items: center;
+            justify-content: start;
+        }
+
+        .hotPeopleWrap .hotPeopleContentWrap .hotPeopleContent, .hotProjectContentWrap {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .hotPeopleWrap .hotPeopleContentWrap .hotPeopleContent .letspler, .hotProjectContentWrap .hotProjectContent {
+            width: 340px
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+

@@ -309,59 +309,59 @@ a {
     margin-bottom: 25px;
 }
 
-.chattingWrap2 {
-    right: -109px;
-    max-width: 300px;
-    top: 848px;
-}
+/*.chattingWrap2 {*/
+/*    right: -109px;*/
+/*    max-width: 300px;*/
+/*    top: 848px;*/
+/*}*/
 
-.chattingWrap, .chattingWrap2 {
-    position: fixed;
-    width: 100%;
-    margin: 0 auto;
-    z-index: 6999;
-    bottom: 0;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    transform: translateX(-50%);
-    display: block;
-    text-align: right;
-}
+/*.chattingWrap, .chattingWrap2 {*/
+/*    position: fixed;*/
+/*    width: 100%;*/
+/*    margin: 0 auto;*/
+/*    z-index: 6999;*/
+/*    bottom: 0;*/
+/*    -webkit-transform: translateX(-50%);*/
+/*    -moz-transform: translateX(-50%);*/
+/*    transform: translateX(-50%);*/
+/*    display: block;*/
+/*    text-align: right;*/
+/*}*/
 
-.chattingWrap2 .chattingToggle {
-    width: auto;
-    display: -moz-box;
-    -moz-box-orient: horizontal;
-    -moz-box-direction: normal;
-    flex-direction: row;
-    -moz-box-align: center;
-    align-items: center;
-    display: flex;
-    -moz-box-pack: end;
-    justify-content: flex-end;
-    width: 58px;
-    margin-left: auto;
-    position: relative;
-}
+/*.chattingWrap2 .chattingToggle {*/
+/*    width: auto;*/
+/*    display: -moz-box;*/
+/*    -moz-box-orient: horizontal;*/
+/*    -moz-box-direction: normal;*/
+/*    flex-direction: row;*/
+/*    -moz-box-align: center;*/
+/*    align-items: center;*/
+/*    display: flex;*/
+/*    -moz-box-pack: end;*/
+/*    justify-content: flex-end;*/
+/*    width: 58px;*/
+/*    margin-left: auto;*/
+/*    position: relative;*/
+/*}*/
 
-.chattingWrap2 .chattingToggle.callChatNormal:after, .chattingWrap2 .chattingToggle.callChatRequest:after, .chattingWrap2 .chattingToggle.liveChat:after, .chattingWrap2 .chattingToggle:after {
-    background-image: url(	https://letspl.me/_next/static/media/ic_chatting.15e3dffd8b339e28846d7ab7827b7b92.svg);
-}
+/*.chattingWrap2 .chattingToggle.callChatNormal:after, .chattingWrap2 .chattingToggle.callChatRequest:after, .chattingWrap2 .chattingToggle.liveChat:after, .chattingWrap2 .chattingToggle:after {*/
+/*    background-image: url(	https://letspl.me/_next/static/media/ic_chatting.15e3dffd8b339e28846d7ab7827b7b92.svg);*/
+/*}*/
 
-.chattingWrap2 .chattingToggle:after {
-    content: " ";
-    display: -moz-inline-box;
-    display: inline-flex;
-    width: 58px;
-    border-radius: 100%;
-    height: 58px;
-    background-color: #f6f6f6;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: 55px auto;
-    z-index: 99;
-    border: 1px solid #eaeaea;
-}
+/*.chattingWrap2 .chattingToggle:after {*/
+/*    content: " ";*/
+/*    display: -moz-inline-box;*/
+/*    display: inline-flex;*/
+/*    width: 58px;*/
+/*    border-radius: 100%;*/
+/*    height: 58px;*/
+/*    background-color: #f6f6f6;*/
+/*    background-position: 50%;*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: 55px auto;*/
+/*    z-index: 99;*/
+/*    border: 1px solid #eaeaea;*/
+/*}*/
 
 .carousel .slider-wrapper {
     overflow: hidden;

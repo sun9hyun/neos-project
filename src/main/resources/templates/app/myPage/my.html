@@ -88,7 +88,7 @@
                     <div class="labelSelect labelSelectThird">
                         <label>본 캐릭터 대학교/전공/학년</label>
                         <div class="rightWrap selectFour">
-                            <select>
+                            <select class=" KRUni">
                                 <option value="KR00">지역 미지정</option>
                                 <option value="KR01">서울특별시</option>
                                 <option value="KR02">경기도</option>
@@ -108,7 +108,7 @@
                                 <option value="KR16">제주특별자치도</option>
                                 <option value="KR17">세종특별자치시</option>
                             </select>
-                            <select class="Univer">
+                            <select class="selectUni Univer">
                                 <option selected="" value="02">대학교</option>
                                 <option value="03">가톨릭대학교</option>
                                 <option value="04">건국대학교</option>
@@ -400,7 +400,7 @@
                                 <option value="284">한양여자대학교</option>
                                 <option value="285">한국폴리텍Ⅰ대학</option>
                             </select>
-                            <select>
+                            <select class="selectUni">
                                 <option selected="" value="0201">전공</option>
                                 <option value="0202">인문계열</option>
                                 <option value="0203">사회계열</option>
@@ -412,7 +412,7 @@
                                 <option value="0209">IT계열</option>
                                 <option value="0210">기타계열</option>
                             </select>
-                            <select>
+                            <select class="selectUni">
                                 <option value="01">학년</option>
                                 <option value="02">1학년</option>
                                 <option value="03">2학년</option>
@@ -421,11 +421,14 @@
                             </select>
 
                         </div>
-                        <label for="uni_radio" class="checkBox">
-                            <span class="txt">선택 안함</span>
-                            <input type="radio" id="uni_radio" name="free_radio" value="01" class="checkFree">
-                            <span class="checkmark"></span>
-                        </label>
+                        <div style="display: flex; margin: 15px 0;">
+                            <input type="text" class="uniEmail" placeholder="대학교 이메일 인증">
+                            <button type="button" class="uniButton">인증전송</button>
+                        </div>
+                        <div class="checkboxs">
+                            <input type="checkbox" id="uni_radio" style="width: 20px; height: 20px; margin: 8px; margin-left: 0;">
+                            <label for="uni_radio" style="padding: 0; margin: 0; line-height: 1px; font-size: 12.5px; color: #6e6e6e;">선택 안함</label>
+                        </div>
                     </div>
 
                     <div class="labelSelect">
@@ -524,7 +527,7 @@
                                 <option value="INFJ">INFJ</option>
                                 <option value="INTJ">INTJ</option>
                                 <option value="ISTP">ISTP</option>
-                                <option value="ISFP" selected="selected">ISFP</option>
+                                <option value="ISFP">ISFP</option>
                                 <option value="INTP">INTP</option>
                                 <option value="INFP">INFP</option>
                                 <option value="ESTP">ESTP</option>
@@ -533,18 +536,18 @@
                                 <option value="ENFP">ENFP</option>
                                 <option value="ESTJ">ESTJ</option>
                                 <option value="ESFJ">ESFJ</option>
-                                <option value="ENTJ">ENTJ</option>
+                                <option value="ENTJ" selected="selected">ENTJ</option>
                                 <option value="ENFJ">ENFJ</option>
                             </select>
                         </div>
-                        <span class="mbtiText">온화하고 겸손하며 삶의 여유를 만끽합니다</span>
+                        <span class="mbtiText">철저한 준비를 하며 활동적입니다. 통솔력이 있으며 단호합니다.</span>
                     </div>
                 </div>
 
                 <div class="labelTextarea">
                     <label>자세한 소개</label>
                     <div class="rightWrap">
-                        <textarea placeholder="최대 250자까지 작성가능합니다" maxlength="250" style="height: 49px !important;"></textarea>
+                        <textarea maxlength="250" placeholder="최대 250자까지 작성 가능합니다." style="height: 49px !important; overflow: hidden;" oninput='this.style.height = "49px"; this.style.height = this.scrollHeight + "px"'></textarea>
                     </div>
                 </div>
 
@@ -558,6 +561,22 @@
             </div>
         </div>
     </div>
+
+<!--  업데이트 완료 모달  -->
+<!--    <div class="modalWrapOpen">-->
+<!--        <div class="commonModal">-->
+<!--            <p class="modalTit">업데이트 완료</p>-->
+<!--            <button class="closeBtn">-->
+<!--                <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close">-->
+<!--            </button>-->
+<!--            <div class="commonModalContent">-->
+<!--                <p></p>-->
+<!--            </div>-->
+<!--            <div class="btnWrap singleBtnWrap">-->
+<!--                <button class="btn redBtn">확인</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
     <!--  스터디  -->
     <div class="myTabContents myProjectTab ">

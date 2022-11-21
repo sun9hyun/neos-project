@@ -43,3 +43,11 @@ header.addEventListener("mouseover", function (event) {
 header.addEventListener("mouseout", function(event){
     event.target.style.color = "white";
 }, false)
+
+
+var swiper2 = new Swiper2(".mySwiper", {
+    scrollbar: {
+        el: ".swiper-scrollbar",
+        hide: false
+    }
+});

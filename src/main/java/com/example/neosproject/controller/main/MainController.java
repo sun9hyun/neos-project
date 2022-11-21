@@ -11,7 +11,7 @@ public class MainController {
     public String login(){
         return "app/main/main";
     }
-    @GetMapping("/loginMain")
+    @GetMapping("/login-main")
     public String loginMain(){
         return "app/main/loginMain";
     }

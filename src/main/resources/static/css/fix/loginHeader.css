@@ -1614,52 +1614,6 @@ section {
         -moz-box-direction: normal;
         flex-direction: column;
     }
-}
-
-@media screen and (max-width: 640px) {
-    .hotProjectWrap {
-        padding: 20px 10px 10px;
-    }
-}
-    @media screen and (max-width: 1024px) {
-        .hotPeopleWrap, .hotProjectWrap, .reviewContentWrap {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-            .hotProjectWrap {
-                padding: 60px 10px 0;
-            }
-        .mainWrap h1 {
-            text-align: left!important;
-            margin-bottom: 12px!important;
-            padding-bottom: 0!important;
-        }
 
 
-
-        }
-
-@media screen and (max-width: 420px) {
-    .hotPeopleWrap .hotPeopleContentWrap .hotPeopleContent, .hotProjectContentWrap {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-
-}
-
-@media screen and (max-width: 780px) {
-    .hotProjectWrap .hotProjectContentWrap .projectGridWrap {
-        max-width: 280px!important;
-    }
-}
-
-.hotProjectWrap .hotProjectContentWrap {
-    overflow-x: auto;
-    display: -moz-box;
-    display: flex;
-    -moz-box-orient: horizontal;
-    -moz-box-direction: normal;
-    flex-direction: row;
 }

@@ -1538,14 +1538,20 @@
     var $ipt = $('.searchInput'),
         $clearIpt = $('.inputDelBtn');
 
+    // var $look = $('.inputSearchBtn');
+
     $ipt.keyup(function(){
         $(".inputDelBtn").toggle(Boolean($(this).val()));
+        // $(".inputSearchBtn").toggle(Boolean($(this).val()));
     });
 
     $clearIpt.toggle(Boolean($ipt.val()));
+    // $look.toggle(Boolean($ipt.val()));
+
     $clearIpt.click(function(){
         $(".searchInput").val('').focus();
         $(this).hide();
+        // $look.hide();
     });
 
 

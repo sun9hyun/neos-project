@@ -159,7 +159,7 @@ a {
     margin-bottom: 20px;
 }
 
-.userProfileSection button.pinkBtn {
+.userProfileSection button.pinkBtn, .already_chat_btn {
     border-radius: 4px;
     font-size: .75rem;
     color: #fff;
@@ -168,11 +168,11 @@ a {
     background-color: #1A7CFF;
 }
 
-.btnWrap button.pinkBtn {
+.btnWrap button.pinkBtn, .already_chat_btn {
     background-color: #1A7CFF;
 }
 
-.btnWrap button.grayBtn, .btnWrap button.pinkBtn {
+.btnWrap button.grayBtn, .btnWrap button.pinkBtn, .already_chat_btn {
     color: #fff;
     font-size: .75rem;
     padding: 11px 35px;
@@ -276,6 +276,8 @@ button, select {
     font-size: 1rem;
     color: #424251;
     width: 100%;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ededed;
 }
 
 .userProfileSection .summaryInfo ul li.userInfoTit:first-child {
@@ -420,7 +422,6 @@ b, strong {
 
 .projectInfo .projectInfoWrap .subTit {
     font-size: 22px !important;
-    margin-bottom: 20px !important;
     color: #42495b !important;
     font-weight: 700 !important;
 }
@@ -646,6 +647,8 @@ b, strong {
 .projectInfo.subscriberWrap {
     margin-top: 20px;
     margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ededed;
 }
 
 .userOption.watchedLetspler {
@@ -872,7 +875,7 @@ b, strong {
 .projectInfo .morePeopleView .peopleRecommendContents .box .bottom p {
     font-size: 11px;
     color: #333;
-    padding: 3.8px 11.7px 6.2px 12.3px;
+    padding: 6.2px 11.7px 5.2px 12.3px;
     border-radius: 13px;
     border: 1px solid #e8e8e8;
     box-sizing: border-box;
@@ -964,11 +967,6 @@ b, strong {
     margin: 0;
     position: relative;
     cursor: pointer;
-}
-
-.userProfileSection .summaryInfo ul li.userMbti .Alpha p:before {
-    background-color: #e7f7f7;
-    opacity: .5;
 }
 
 .userProfileSection .summaryInfo ul li.userMbti .mbType p:before {

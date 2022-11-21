@@ -852,6 +852,17 @@ body, button, input, select, td, textarea, th {
     display: none;
 }
 
+.already_chat {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+    display: none;
+}
+
 
 
 

@@ -8,32 +8,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/neosUser/*")
 public class NeosUserController {
 
-    @GetMapping("/listBefore")
+    @GetMapping("/list-before")
     public String listBefore(){
         return "app/neosUser/neosListBefore";
     }
 
-    @GetMapping("/listAfter")
+    @GetMapping("/list-after")
     public String listAfter(){
         return "app/neosUser/neosListAfter";
     }
 
-    @GetMapping("/infoYes")
+    @GetMapping("/info-yes")
     public String infoYes(){
         return "app/neosUser/userInfoYes";
     }
 
-    @GetMapping("/infoNoLogin")
+    @GetMapping("/info-no-login")
     public String infoNoLogin(){
         return "app/neosUser/userInfoNoLogin";
     }
 
-    @GetMapping("/userInfoNotInvite")
+    @GetMapping("/user-info-not-invite")
     public String userInfoNotInvite(){
         return "app/neosUser/userInfoNotInvite";
     }
 
-    @GetMapping("/myInfo")
+    @GetMapping("/my-info")
     public String myInfo(){
         return "app/neosUser/myInfo";
     }
@@ -43,7 +43,7 @@ public class NeosUserController {
         return "app/fix/chattingBase";
     }
 
-    @GetMapping("/chatAll")
+    @GetMapping("/chat-all")
     public String chatAll(){
         return "app/fix/chattingAll";
     }

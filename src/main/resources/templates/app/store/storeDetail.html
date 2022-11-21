@@ -70,7 +70,11 @@
                 <div class="projectDetailWrap">
                     <div class="projectTab projectInfoTabContents active">
                         <div class="section statusSection">
-                            <h1 class="tabTit">첨부파일</h1>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <h1 class="tabTit" style="padding: 0 !important;">첨부파일</h1>
+                                <button type="button" class="cashButton">결제하기</button>
+                            </div>
+
                             <ul class="fileList">
                                 <li>
                                     <a>
@@ -179,19 +183,19 @@
                     </div>
                     <div class="qrImg" style="text-align: center;">
                         <a href="javascript:;" style="font-size: 0;">
-                            <img src="/images/store/qrDetail.jpg" style="width: 80%; height: 80%;">
+                            <img class="blur" src="/images/store/qrDetail.jpg" style="cursor: default; width: 80%; height: 80%;">
                         </a>
                         <p class="checkboxTit">neos.pdf</p>
                     </div>
                     <div class="qrImg" style="text-align: center;">
                         <a href="javascript:;" style="font-size: 0;">
-                            <img src="/images/store/qrDetail.jpg" style="width: 80%; height: 80%;">
+                            <img class="" src="/images/store/qrDetail.jpg" style="cursor: default; width: 80%; height: 80%;">
                         </a>
                         <p class="checkboxTit">자료상점 이용방법.ppt</p>
                     </div>
                     <div class="qrImg qrLast" style="text-align: center;">
                         <a href="javascript:;" style="font-size: 0;">
-                            <img src="/images/store/qrDetail.jpg" style="width: 80%; height: 80%;">
+                            <img class="" src="/images/store/qrDetail.jpg" style="cursor: default; width: 80%; height: 80%;">
                         </a>
                         <p class="checkboxTit">neos기능.word</p>
                     </div>
@@ -205,12 +209,4 @@
 
     <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
-<script>
-    $('textarea').each(function () {
-        this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
-    }).on('input', function () {
-        this.style.height = 'auto';
-        this.style.height = (this.scrollHeight) + 'px';
-    });
-</script>
 </html>

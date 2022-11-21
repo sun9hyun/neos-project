@@ -312,7 +312,7 @@ input {
 
 .btnWrap button.grayBtn, .btnWrap button.pinkBtn {
     color: #fff;
-    font-size: 14px;
+    font-size: 15px;
     padding: 11px 35px;
     border-radius: 4px;
     font-weight: bold;
@@ -339,6 +339,7 @@ input {
     border-radius: 4px;
     margin-bottom: 10px;
     cursor: pointer;
+    display: none;
 }
 
 .uploadBox input[type="file"] {
@@ -348,4 +349,25 @@ input {
     padding: 0;
     overflow: hidden;
     border: 0;
+    display: none;
+}
+
+.uploadBox .fileButton{
+    border: 1px solid #9796a7;
+    color: #9796a7;
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 7px 20px;
+    border-radius: 4px;
+    margin-bottom: 10px !important;
+    cursor: pointer;
+    display: none;
+}
+/*------------------------------------------------------------------------------*/
+.uploadBox input[type="file"].active, .uploadBox label.active, .uploadBox .fileButton.active{
+    display: block;
 }

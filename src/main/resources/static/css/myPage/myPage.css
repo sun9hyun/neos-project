@@ -414,12 +414,15 @@
 .btnWrap button.redBtn {
     color: #fff;
     background-color: #1A7CFF;
-    padding: 8px 26px;
-    border: 1px #1A7CFF;
-    border-radius: 3px;
-    height: 45px;
+    font-size: 15px;
+    padding: 11px 35px;
+    border-radius: 4px;
     font-weight: bold;
-    cursor: pointer;
+    width: 130px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
 }
 
 
@@ -871,4 +874,88 @@ table {
 .paymentHistoryTab .payTabContents .payTable table tr td:nth-child(3) {
     text-align: left;
     padding-left: 60px;
+}
+
+/*----- 대학 ----------------------------------------------------------------------------------------*/
+label.checkBox {
+    margin-right: 16px;
+    position: relative;
+    -moz-box-align: center;
+    align-items: center;
+    height: 20px;
+    cursor: pointer;
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.checkBox .txt {
+    font-size: 12px !important;
+    color: #696980 !important;
+    margin-top: 4px !important;
+    width: 100px;
+    position: absolute;
+    margin-left: 35px !important;
+}
+label.checkBox input {
+    width: 100%;
+    height: 100%;
+    left: 0;
+}
+.checkBox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+input[type=checkbox], input[type=radio] {
+    margin: 4px 0 0;
+    margin-top: 1px\9;
+    line-height: normal;
+}
+.writeSection .checkWrap label.checkBox .checkmark {
+    top: 54%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.checkBox input:checked~.checkmark {
+    background-color: #1A7CFF;
+    border: none;
+}
+.checkmark {
+    top: 0;
+    background-color: #eee;
+    border-radius: 4px;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid #bcbccb;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.checkBox input:checked~.checkmark:after {
+    display: block;
+}
+
+.checkBox .checkmark:after {
+    left: 6px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
 }

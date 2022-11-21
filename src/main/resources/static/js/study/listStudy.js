@@ -21,7 +21,7 @@ var swiper = new Swiper(".mySwiper", {
 
 // 하트 활성화 선택
 $('.topFavorite').click(function(){
-    $(this).children().toggleClass('active'); /* active가 없으면 생성, 있으면 삭제*/
+    $(this).toggleClass('active'); /* active가 없으면 생성, 있으면 삭제*/
 });
 
 $(".favorite").on("click", function () {

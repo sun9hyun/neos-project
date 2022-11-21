@@ -628,8 +628,7 @@ fieldset, img {
     margin-top: 0;
     -moz-box-align: end;
     align-items: flex-end;
-    /*     overflow-x: auto; */
-    overflow-x: hidden;
+    overflow-x: auto;
     white-space: nowrap;
     padding-top: 24px;
     padding-bottom: 15px;
@@ -924,7 +923,7 @@ fieldset, img {
     width: 100%;
     border: 1px solid #9796a7;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 10px 0;
     border-radius: 4px;
 }
 
@@ -1334,7 +1333,7 @@ button {
     padding: 7px 21px 6px;
     border-radius: 4px;
     background-color: #f2f2f2;
-    font-size: 13px;
+    font-size: .75rem;
     color: #222;
 }
 
@@ -1397,7 +1396,6 @@ button {
 }
 
 /* 유저네임 호버 시, 리스트 출력 관련*/
-
 .letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu li:hover,
 .letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu li a:hover,
 .projectFeedContents .feedUploadedSection .feedUploadWrap .top .name h2.profileName .hoverView ul li:hover,
@@ -1508,20 +1506,8 @@ input {
     padding: 4px 0 0;
 }
 
-.projectFeedContents .feedInputSection button {
-    padding: 7px 27px!important;
-}
-
-.projectDetailWrap button.blackBtn {
-    padding: 7px 21px 6px;
-    border-radius: 4px;
-    background-color: #f2f2f2;
-    font-size: 13px;
-    color: #222;
-}
-
 .projectDetailWrap button:last-child {
-    margin-left: 12px;
+    margin-left: 8px;
 }
 
 button, input[type=button], input[type=file], input[type=reset], input[type=submit] {
@@ -1536,3 +1522,4 @@ button, input[type=button], input[type=file], input[type=reset], input[type=subm
     font-size: .75rem;
     line-height: 1rem;
 }
+

@@ -70,14 +70,11 @@
                         <div class="section feedInputSection">
                             <div class="feedInputWrap"><textarea class="textarea" placeholder="모임에 공유할 소식을 올려주세요"
                                                                  rows="2" maxlength="1000"></textarea></div>
-                            <div class="btnWrap">
+                            <div class="feed btnWrap">
                                 <p class="count"><span>5</span>/<span>500</span></p>
                                 <div>
-                                    <button class="whiteBtn">첨부</button>
-                                    <input type="file" multiple=""
-                                           accept="image/*, .pdf, .pptx,.ppt,.docx,.doc,.hwp,.hwpx,.xls,.xlsx"
-                                           style="display: none;">
-                                    <button class="blackBtn">등록</button>
+                                    <button class="blackBtn">취소</button>
+                                    <button class="whiteBtn">등록</button>
                                 </div>
                             </div>
                             <div class="fileWrap"></div>
@@ -102,17 +99,13 @@
                                         </div>
                                     </div>
                                     <div class="feedContents"><textarea disabled="" maxlength="1000"
-                                                                        style="font-size: 0.875rem; height: 62px !important;">테스트</textarea>
-                                        <div class="imgWrap">
-                                            <div class="imgThumb"><a><img loading="lazy"
-                                                                          src="https://letspl.s3.ap-northeast-2.amazonaws.com/%20project/624/4472/cosmos.jpg"
-                                                                          alt="attachment_image"></a></div>
-                                        </div>
+                                                                        style="font-size: 0.875rem; height: 62px !important;">조성현님 문제 출제 부탁드립니다.</textarea>
+
                                     </div>
                                     <div class="btnWrap">
-                                        <button class="txtBtn">수정</button>
+                                        <button class="feedBtn txtBtn">수정</button>
                                         <div class="divider"></div>
-                                        <button class="txtBtn">삭제</button>
+                                        <button class="feedBtn txtBtn">삭제</button>
                                     </div>
                                     <div class="bottom"><a class="feedReply active">댓글 열기</a><span
                                             class="replayCount">2</span></div>
@@ -175,14 +168,16 @@
                                         </div>
                                         <div class="bottom">
                                             <div class="left"></div>
-                                            <div class="txtWrap"><textarea disabled="" maxlength="500"
-                                                                           style="font-size: 0.875rem; height: 45px !important;">마우스를 클릭하세요
-오른쪽을 한번 누르면 클릭
-                                                    </textarea></div>
+                                            <div class="txtWrap">
+                                                <textarea maxlength="500"
+                                                          style="font-size: 0.875rem; height: 42px !important;"
+                                                          disabled="">마우스를 클릭하세요
+오른쪽을 한번 누르면 클릭</textarea>
+                                            </div>
                                             <div class="btnWrap">
-                                                <button class="txtBtn">수정</button>
+                                                <button class="replyBtn txtBtn">수정</button>
                                                 <div class="divider"></div>
-                                                <button class="txtBtn">삭제</button>
+                                                <button class="replyBtn txtBtn">삭제</button>
                                             </div>
                                         </div>
                                     </div>
@@ -192,9 +187,10 @@
                                                                        alt="user_image"></div>
                                         <div class="txtInput"><textarea type="text" placeholder="댓글을 작성해주세요."
                                                                         rows="4" maxlength="500"></textarea>
-                                            <button
-                                                    class="blackBtn">등록
-                                            </button>
+                                            <div class="btnWrap">
+                                                <button class="whiteBtn">취소</button>
+                                                <button class="whiteBtn" style="margin-left: 8px">등록</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -220,13 +216,13 @@
                                         </div>
                                     </div>
                                     <div class="feedContents"><textarea disabled="" maxlength="1000"
-                                                                        style="font-size: 0.875rem; height: 62px !important;">테스트용</textarea>
+                                                                        style="font-size: 0.875rem; height: 62px !important;">여러분 함께 열심히 공부해봅시다!</textarea>
                                         <div class="imgWrap"></div>
                                     </div>
                                     <div class="btnWrap">
-                                        <button class="txtBtn">수정</button>
+                                        <button class="feedBtn txtBtn">수정</button>
                                         <div class="divider"></div>
-                                        <button class="txtBtn">삭제</button>
+                                        <button class="feedBtn txtBtn">삭제</button>
                                     </div>
                                     <div class="bottom"><a class="feedReply active">댓글 열기</a><span
                                             class="replayCount">0</span></div>
@@ -238,7 +234,10 @@
                                                                        alt="user_image"></div>
                                         <div class="txtInput"><textarea type="text" placeholder="댓글을 작성해주세요." rows="4"
                                                                         maxlength="500"></textarea>
-                                            <button class="blackBtn">등록</button>
+                                            <div class="btnWrap">
+                                                <button class="whiteBtn">취소</button>
+                                                <button class="whiteBtn" style="margin-left: 8px">등록</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -286,7 +285,7 @@
                                         <span>80</span></a>
                                         <a class="heartWrap">
                                             <div class="favoriteSymbol">
-                                                <div class="favorite active"></div>
+                                                <div class="favorite"></div>
                                             </div>
                                             <span class="favoriteNumber">2</span>
                                         </a>
@@ -350,5 +349,8 @@
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="/js/study/feedStudy.js"></script>
+<script src="/js/study/feed-study.js"></script>
+<script>
+    console.log("들어옴");
+</script>
 </html>

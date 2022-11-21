@@ -1,6 +1,8 @@
-/**
+/*
  *
  */
+
+console.log("스터디 피드 들어옴");
 
 // 프로필 호버 DIV
 /*상세보기 상단 작성자*/
@@ -71,6 +73,60 @@ $(".feedReply").on("click", function () {
         $(this).parents('.feedUploadWrap').children('.replyWrap').css("display", "flex");
     }
 
+})
+
+// 댓글 수정
+let $replyText;
+$(".replyBtn").on("click", function () {
+    if($(this).text()=="수정"){
+        $replyText = $(this).closest('.bottom').find("textarea").text();
+        $(this).text("등록");
+        $(this).next().next().text("취소");
+        $(this).closest('.bottom').find("textarea").attr("disabled", false)
+            .css("height", "127px");
+    }
+    if($(this).text()=="취소"){
+        $(this).text("삭제");
+        $(this).prev().prev().text("수정");
+        $(this).closest('.bottom').find("textarea").val($replyText);
+        $(this).closest('.bottom').find("textarea").attr("disabled", true)
+            .css("height", "42px");
+    }
+})
+
+// 댓글 작성 중 취소
+$('.whiteBtn').on("click", function () {
+    if($(this).text()=="취소"){
+        $(this).parents('.txtInput').children("textarea").val("");
+    }
+})
+
+// 피드 작성 중 취소
+// let $feedContent=
+$('.blackBtn').on("click", function () {
+    $(this).parents('.feedInputSection').children('.feedInputWrap').children("textarea").val("")
+        .attr("rows", 2);
+    $(".feed").css("display", "none");
+
+})
+
+// 피드 수정
+let $feedText;
+$(".feedBtn").on("click", function () {
+    if($(this).text()=="수정"){
+        $feedText = $(this).parents('.feedContentsWrap').children('.feedContents').children("textarea").text();
+        $(this).text("등록");
+        $(this).next().next().text("취소");
+        $(this).parents('.feedContentsWrap').children('.feedContents').children("textarea").attr("disabled", false)
+            .css("height", "127px");
+    }
+    if($(this).text()=="취소"){
+        $(this).text("삭제");
+        $(this).prev().prev().text("수정");
+        $(this).parents('.feedContentsWrap').children('.feedContents').children("textarea").val($feedText);
+        $(this).parents('.feedContentsWrap').children('.feedContents').children("textarea").attr("disabled", true)
+            .css("height", "62px");
+    }
 })
 
 

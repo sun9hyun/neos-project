@@ -72,9 +72,8 @@
                                 </div>
                                 <div class="feedContents"><textarea class="textarea2" maxlength="1000"
                                                                     style="font-size: 0.875rem; height: 62px !important; white:100%"
-                                                                    disabled="" >의대에 관심있는데 안과전공한 사람들의 스터디에 들어가고싶은데 어케 들어가여?</textarea></div>
+                                                                    disabled=""  >의대에 관심있는데 안과전공한 사람들의 스터디에 들어가고싶은데 어케 들어가여?</textarea></div>
                                 <div class="btnWrap"><button class="txtBtn" id="updateBtn">수정</button>
-<!--                                     <button class="txtBtn" id="resetBtn" style="display: none">등록</button>-->
                                     <div class="divider"></div><button class="txtBtn">삭제</button>
                                 </div>
                                 <div class="bottom"><a class="">댓글 닫기</a><span class="replayCount">1</span></div>
@@ -130,23 +129,21 @@
     });
 
 
-    $(document).ready(function() {
-        var disabled = false;
-        $('#updateBtn').click(function() {
-            if (disabled) {
-                $(".textarea2").prop('disabled', false);       // 비활성화된 경우 활성화
-            }
-            else {
-                $(".textarea2").prop('disabled', true);        // 활성화된 경우 비활성화
-            }
-            disabled = !disabled;
-        })
-    });
+    let check=false;
+    $('#updateBtn').click(function () {
+        // console.log(this);
 
-    // $("#updateBtn").on("click" , function () {
-    //     $("#resetBtn").css("display" , "block")
-    //
-    // } )
+        if(!check){
+            $(this).closest('.feedContentsWrap').find(".textarea2").attr('disabled', false);
+            $(this).text('등록')
+            check=true;
+        }else{
+            $(this).closest('.feedContentsWrap').find(".textarea2").attr('disabled', true);
+            $(this).text('수정')
+            check=false;
+        }
+        // $(this).parent().parent().find("textarea").prop('disabled',true);
+    })
 
 </script>
 

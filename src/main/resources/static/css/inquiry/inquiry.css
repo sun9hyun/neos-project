@@ -652,7 +652,7 @@ ul {
     color: #222;
 }
 
-.mypage.projectFeedContents .communiWrap textarea {
+.mypage.projectFeedContents .communiWrap textarea #textUp {
     padding: 13px 0;
     font-size: 14px;
     border-radius: 4px;
@@ -666,6 +666,8 @@ ul {
     width: 100%;
     outline: none;
     resize: none;
+    margin : 4px;
+    border-color: #1A7CFF;
 
 }
 
@@ -679,4 +681,5 @@ ul {
     -moz-box-align: center;
     align-items: center;
 }
+
 

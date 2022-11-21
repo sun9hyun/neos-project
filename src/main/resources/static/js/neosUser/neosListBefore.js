@@ -41,3 +41,32 @@ $(".whiteBtn").on("click", function () {
     $(".noLoginModal").css("display", "none");
 })
 
+
+
+
+
+
+/* 지역 선택시 대학 선택 셀렉박스 보이게 하기 */
+$(document).ready(function() {
+    $('.locationSelect').change(function() {
+        var result = $('.locationSelect option:selected').val();
+        if (result == '00') {
+            $('.universitySelect').hide();
+        } else {
+            $('.universitySelect').show();
+        }
+    });
+});
+
+
+
+/* 네오챗 마우스 오버하면 이미지도 하얀걸로 바뀌기 */
+$(".letspler_Re .bottom .chatBtn").on("mouseover", function () {
+    console.log("1");
+    $(this).find('img').attr('src', '/images/neosUser/chatting-icon-hover.png');
+})
+
+$(".letspler_Re .bottom .chatBtn").on("mouseout", function () {
+    $(this).find('img').attr('src', '/images/neosUser/chatting-icon.png');
+})
+

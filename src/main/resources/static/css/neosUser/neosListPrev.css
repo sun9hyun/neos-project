@@ -191,7 +191,7 @@ img {
     color: #696980;
     margin-right: 10px;
     padding-left: 20px;
-    background-image: url(https://lestpl.me/_next/static/media/ic_option_arrow.556e891….svg);
+    background-image: url(https://letspl.me/_next/static/media/ic_option_arrow.556e891f4497a2dc76c8a33607a31937.svg);
     background-position: 90%;
     background-size: 10px 5px;
     background-repeat: no-repeat;
@@ -210,7 +210,7 @@ img {
     color: #696980;
     margin-right: 10px;
     padding-left: 20px;
-    background-image: url(https://lestpl.me/_next/static/media/ic_option_arrow.556e891….svg);
+    background-image: url(https://letspl.me/_next/static/media/ic_option_arrow.556e891f4497a2dc76c8a33607a31937.svg);
     background-position: 90%;
     background-size: 10px 5px;
     background-repeat: no-repeat;
@@ -268,7 +268,7 @@ img {
     margin: 0 auto;
 }
 
-.peopleGrid .moreBtn {
+.peopleGrid .bigMoreBtn {
     box-sizing: border-box;
     border: 1px solid #81839c;
     margin-top: 38px;
@@ -279,15 +279,15 @@ img {
     margin-bottom: 28px;
 }
 
-.moreBtn:hover {
+.bigMoreBtn:hover {
     background-color: #1A7CFF;
 }
 
-.peopleGrid .moreBtn a:hover {
+.peopleGrid .bigMoreBtn a:hover {
     color: #fff;
 }
 
-.peopleGrid .moreBtn a {
+.peopleGrid .bigMoreBtn a {
     display: inline-block;
     font-size: 1rem;
     color: #81839c;
@@ -419,8 +419,8 @@ img {
 }
 
 .letspler_Re .top .profileTxt .coffeAndHeart div img {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
 }
 
 .letspler_Re .top .profileTxt .coffeAndHeart div {

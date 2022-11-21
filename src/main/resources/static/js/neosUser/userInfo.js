@@ -35,6 +35,12 @@ $(".favorite").on("click", function () {
 /*스터디 누르면 나오는 모달 + 하트 불 들어오고 나가고*/
 
 $(".favorite2").click(function(){
+    let name = $(this).closest(".projectInfo").find(".studyName").text();
+    let text = "";
+    text += `<p class="modalTit">` + name + `를</p>`
+    text += `<p class="modalTit">구독하시겠습니까?</p>`
+    $(".subModal .commonModal .textSpace").html(text);
+
     if($(this).hasClass("off")) {
         $(".subModal").css("display", "block");
     } else {
@@ -63,6 +69,11 @@ $(".subModal .commonModal .btnWrap button.redBtn").on("click", function () {
 /* 스터디 초대 눌렀을 때 초대 가능하면 나오는 모달 관련*/
 
 $(".blackBtn").click(function(){
+    let name = $(this).closest(".profileInfoTxt").find(".name").text();
+    let text = "";
+    text += `<span class="inviteHead">` + name + `님께 초대장을 보내시겠습니까?</span>`
+    $(".invitationModal .requestModal .tit").html(text);
+
     $(".invitationModal").css("display", "block");
 });
 

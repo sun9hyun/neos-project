@@ -247,3 +247,24 @@ button.update_1j {
 /*._tbody > li{*/
 /*    border-top:0.5px solid #E0E0E0;*/
 /*}*/
+
+.reply_textarea{
+    border: none !important;
+    position: relative;
+    left: 81px;
+    top: -7px;
+}
+
+.Btnwrapper_1j{
+    position: relative;
+    top: -17px;
+    left: 82px;
+}
+
+.Btnwrapper_1j button{
+    background: none;
+}
+
+.inquiryReplyContent{
+    display: none;
+}

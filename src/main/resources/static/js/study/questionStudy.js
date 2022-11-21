@@ -101,7 +101,7 @@ $('.whiteBtn').on("click", function () {
 $('.blackBtn').on("click", function () {
     $(this).parents('.feedInputSection').children('.feedInputWrap').children("textarea").val("")
         .attr("rows", 2);
-    $("feed").css("display", "none");
+    $(this).parents('.feed').css("display", "none");
 
 })
 

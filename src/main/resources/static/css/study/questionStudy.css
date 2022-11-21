@@ -923,7 +923,7 @@ fieldset, img {
     width: 100%;
     border: 1px solid #9796a7;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 10px 0;
     border-radius: 4px;
 }
 

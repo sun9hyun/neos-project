@@ -53,7 +53,7 @@
                     <div class="communiWrap"><textarea class="text123" placeholder="네오스에 궁금한게 있으신가요? 궁굼한 사항을 작성해 주세요!" rows="2"
                                                        maxlength="1000"></textarea>
                         <div class="buttonCountWrap">
-                            <p class="count"><span class="spanCount">0</span>/<span>500</span></p><button>등록</button>
+                            <p class="count"><span class="spanCount">0</span>/<span>500</span></p><button class="registration" style="margin-left: 834px; display: none"   >등록</button> <button class="cance">취소</button>
                         </div>
                     </div>
                     <div class="section feedUploadedSection">
@@ -76,18 +76,18 @@
                                 <div class="btnWrap"><button class="txtBtn" id="updateBtn">수정</button>
                                     <div class="divider"></div><button class="txtBtn">삭제</button>
                                 </div>
-                                <div class="bottom"><a class="">댓글 닫기</a><span class="replayCount">1</span></div>
+                                <div class="bottom"><a class="feedReply active">댓글 열기</a><span class="replayCount">1</span></div>
                             </div>
-                            <div class="replyWrap ">
+                            <div class=" replyWrap" style="display: none">
                                 <div class="replyWrapContent">
                                     <div class="top">
                                         <div class="left"><a href="/people/민쇼니" target="_blank">
                                             <div class="profileThumb"><img loading="lazy"
                                                                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/SIM.jpg"
-                                                                           alt="민쇼니"></div>
+                                                                           alt="민쇼니"   style="    width: 44px;height: 53px;"></div>
                                         </a></div>
                                         <div class="right">
-                                            <h4 class="profileName">GM 심슨<div class="hoverView">
+                                            <h4 class="profileName">NM심슨<div class="hoverView">
                                             </div>
                                             </h4>
                                             <p class="dateTxt">22.11.12 18:35</p>
@@ -96,7 +96,7 @@
                                     <div class="bottom">
                                         <div class="left"></div>
                                         <div class="txtWrap"><textarea disabled="" maxlength="500"
-                                                                       style="font-size: 0.875rem; height: 42px !important;">공부를 굉장히 열심히 하면 됩니다</textarea>
+                                                                       style="font-size: 0.875rem; height: 42px !important;">스터디 모집에 들어가시면 굉장히 많아요</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +116,7 @@
 
 <script>
 
-
+    /* 텍스트 글자수 카운팅 */
 
     $(".text123").keyup(function(e) {
         //console.log("키업!");
@@ -128,7 +128,7 @@
         }
     });
 
-
+    /* 수정 등록  */
     let check=false;
     $('#updateBtn').click(function () {
         // console.log(this);
@@ -136,14 +136,63 @@
         if(!check){
             $(this).closest('.feedContentsWrap').find(".textarea2").attr('disabled', false);
             $(this).text('등록')
+            $(this).next().next().text('취소')
             check=true;
         }else{
             $(this).closest('.feedContentsWrap').find(".textarea2").attr('disabled', true);
             $(this).text('수정')
+            $(this).next().next().text('삭제')
             check=false;
         }
         // $(this).parent().parent().find("textarea").prop('disabled',true);
     })
+
+
+
+    /*댓글 열기*/
+    $(".feedReply").on("click", function () {
+       /* 댓글 열기 두번째 클래스*/
+        $(this).toggleClass('active');
+        if($(this).hasClass('active')){
+            $(this).text("댓글 열기");
+            $(this).parents('.feedUploadWrap').children
+         /*   댓글전체 클래스*/
+            ('.replyWrap').css("display", "none");
+        }else{
+            $(this).text("댓글 닫기");
+            $(this).parents('.feedUploadWrap').children('.replyWrap').css("display", "flex");
+        }
+
+    })
+
+    /* 글 취소 버튼 누를떄 초기화 */
+
+    var $ipt = $('.text123');
+
+   var  $clearIpt = $('.cance');
+   var  $registrationPt = $('.registration');
+
+
+    $ipt.keyup(function(){
+        $(".cance").toggle(Boolean($(this).val()));
+        $(".registration").toggle(Boolean($(this).val()));
+    });
+
+    $clearIpt.toggle(Boolean($ipt.val()));
+    // $registrationPt.toggle(Boolean($ipt.val()));
+
+    $clearIpt.click(function(){
+        $(".text123").val('').focus();
+        $(this).hide();
+        $registrationPt.hide();
+    });
+
+
+
+
+
+
+
 
 </script>
 

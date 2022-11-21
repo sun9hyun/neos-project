@@ -344,6 +344,7 @@ section {
     border-radius: 4px;
     resize: none;
     border: none;!important;
+    margin-top: 1px;
 }
 
 .secretNote .projectFeedContents.mypage .feedUploadedSection .feedUploadWrap {
@@ -662,13 +663,15 @@ ul {
 
 }
 
-.textarea1{
+.textarea1 {
     width: 100%;
     outline: none;
     resize: none;
-    margin : 4px;
+    margin-top: -8px;
     border-color: #1A7CFF;
-
+    margin-left: 8px;
+    padding-top: 5px;
+    padding-left: 7px;
 }
 
 .projectFeedContents .feedUploadedSection .bottom, .projectFeedContents .feedUploadedSection .feedUploadWrap .btnWrap {

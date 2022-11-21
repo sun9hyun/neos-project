@@ -210,7 +210,7 @@
                                                             </button>
                                                             <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
                                                                 <li>
-                                                                    <a href="javascript:;" class="dropdown-menu_list_1j showTextarea_1j">
+                                                                    <a href="javascript:;" class="dropdown-menu_list_1j showTextarea_1j" onclick="replyOn()">
                                                                         답변 달기
                                                                     </a>
 
@@ -222,12 +222,7 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-                                                <ul class="content _tbody apply_inquiry_data" style="display: none;" data-nick="관리자" data-app="">
-                                                    <textarea class="replyComponent_replyInput__2vKhX inquiry_textArea" maxlength="1000" placeholder="답변을 입력해주세요."
-                                                              style="resize: none; width: 1000%;position: relative;left: 19rem;height: 23px !important;resize: none;top: 2.5rem;border: 1px solid gray;" oninput='this.style.height = "23px"; this.style.height = this.scrollHeight + "px"'></textarea>
-                                                    <button class="register_1j">등 록</button>
-                                                    <button class="update_1j">취 소</button>
-                                                </ul>
+
                                                 <!--여기까지 한개-->
 
                                                 <ul class="content _tbody" id="member_item_m20220929a41c742d489423" data-nick="관리자" data-app="">
@@ -252,7 +247,7 @@
                                                             </button>
                                                             <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
                                                                 <li>
-                                                                    <a href="javascript:;" class="dropdown-menu_list_1j showTextarea_1j">
+                                                                    <a href="javascript:;" class="dropdown-menu_list_1j showTextarea_1j" onclick="replyOn()">
                                                                         답변 달기
                                                                     </a>
                                                                     <a href="javascript:;" class="dropdown-menu_list_1j" onclick="modalUp()">
@@ -263,12 +258,7 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-                                                <ul class="content _tbody apply_inquiry_data" style="display: none;" data-nick="관리자" data-app="">
-                                                    <textarea class="replyComponent_replyInput__2vKhX inquiry_textArea" maxlength="1000" placeholder="답변을 입력해주세요."
-                                                              style="resize: none; width: 1000%;position: relative;left: 19rem;height: 23px !important;resize: none;top: 2.5rem;border: 1px solid gray;" oninput='this.style.height = "23px"; this.style.height = this.scrollHeight + "px"'></textarea>
-                                                    <button class="register_1j">등 록</button>
-                                                    <button class="update_1j">취 소</button>
-                                                </ul>
+
 
 
                                                 <ul class="content _tbody" data-nick="관리자" data-app="">
@@ -293,7 +283,7 @@
                                                             </button>
                                                             <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
                                                                 <li>
-                                                                    <a href="javascript:;" class="dropdown-menu_list_1j showTextarea_1j">
+                                                                    <a href="javascript:;" class="dropdown-menu_list_1j showTextarea_1j" onclick="replyOn()">
                                                                         답변 달기
                                                                     </a>
                                                                     <a href="javascript:;" class="dropdown-menu_list_1j" onclick="modalUp()">
@@ -304,15 +294,38 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-                                                <ul class="content _tbody apply_inquiry_data" style="display: none;" data-nick="관리자" data-app="">
-                                                    <textarea class="replyComponent_replyInput__2vKhX inquiry_textArea" maxlength="1000" placeholder="답변을 입력해주세요."
-                                                              style="resize: none; width: 1000%;position: relative;left: 19rem;height: 23px !important;resize: none;top: 2.5rem;border: 1px solid gray;" oninput='this.style.height = "23px"; this.style.height = this.scrollHeight + "px"'></textarea>
-                                                    <button class="register_1j">등 록</button>
-                                                    <button class="update_1j">취 소</button>
-                                                </ul>
+
 
                                             </div>
                                             <nav class="text-center" id="paginate"></nav>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 inquiryReplyContent">
+                                    <div class="card">
+                                        <div class="card-head" id="card-head ">
+                                            <header class="small"><span class="inquiryNumber">n</span>번 문의 답변</header>
+                                            <header class="card-exit" style="float: right;cursor: pointer;">닫기</header>
+                                        </div>
+                                        <div class="card-body no-padding">
+                                            <div class="li_table" id="UI_TABLE ">
+
+                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
+                                                    <li class="postCategory">
+                                                        <input type="hidden" name="inquiryNumber">
+                                                        <textarea class="replyComponent_replyInput__2vKhX reply_textarea" maxlength="1000" placeholder="답변을 입력해주세요."
+                                                                  style="resize: none; width: 100%;height: 23px !important;
+                                                                  resize: none;border: 1px solid gray;"
+                                                                  oninput='this.style.height = "23px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                                    </li>
+                                                    <li class="replyOk">
+                                                        <div class="Btnwrapper_1j">
+                                                        <button class="replyRegister">등록</button>
+                                                        <button class="replyCancel">취소</button>
+                                                    </div></li> <!-- 작성한 게시글 페이지 이동 -->
+                                                </ul>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

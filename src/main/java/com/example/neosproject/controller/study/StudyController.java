@@ -30,7 +30,7 @@ public class StudyController {
 
     @GetMapping("/feed")
     public String feed(){
-        return "app/study/feedStudy";
+        return "app/study/feed-study";
     }
 
     @GetMapping("/management")

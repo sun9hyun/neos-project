@@ -1,6 +1,7 @@
 /**
  *
  */
+console.log("들어옴");
 
 // 프로필 호버 DIV
 $('.userIdWrap').on("mouseover",function(){

@@ -167,7 +167,6 @@ div {
 .noticeSection .noticeViewWrap .btnWrap .whiteBtn {
     background-color: #fff;
     color: #000;
-    padding: 11px 35px;
     width: auto;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -177,7 +176,6 @@ div {
 }
 
 .noticeSection .noticeViewWrap .btnWrap button {
-    padding: 8px 29px !important;
     -webkit-transition: all .2s;
     -moz-transition: all .2s;
     transition: all .2s;
@@ -196,6 +194,7 @@ div {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     border: none;
+    margin-top: 15px;
 }
 
 .noticeSection .noticeViewWrap .beforeNextFeedWrap {

@@ -349,16 +349,16 @@ div.form ul li .inputWrap {
 }
 
 div.form ul li .threeInput .threeInTwoInput {
-    width: 66%;
+    width: 100%;
     -moz-box-align: center;
     align-items: center;
 }
 
 
-div.form ul li .threeInput .threeInTwoInput select {
-    width: 50%;
+/*div.form ul li .threeInput .threeInTwoInput select {
+    width: 100%;
     margin: 0;
-}
+}*/
 
 option {
     font-weight: normal;
@@ -380,11 +380,11 @@ option {
     -moz-box-flex: 1;
     flex: 1 1;
 }
-
+/*
 div.form ul li .threeInput .threeInTwoInput select:last-child {
     margin-left: 2% !important;
     margin-right: 2% !important;
-}
+}*/
 
 .btnWrap {
     text-align: center;
@@ -422,4 +422,9 @@ div.form ul li .threeInput .threeInTwoInput select:last-child {
 
 .btnWrap button.grayBtn {
     background-color: #9796a7;
+}
+
+.checkBtn{
+    margin: 0px auto;
+
 }

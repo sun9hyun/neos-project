@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org>
 <head>
-    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8" ">
     <title>회원가입 페이지</title>
     <link rel="stylesheet" href="/css/loginAndJoin/joinPage.css">
     <link rel="stylesheet" href="/css/fix/header.css">
@@ -53,11 +53,18 @@
 
 
                     <div class="inputWrap threeInput row">
-                        <div class="threeInTwoInput"><select>
+                        <div class="threeInTwoInput">
+                            <select class="checkBtn">
+                                <option value="01">지역 구분</option>
+                                <option value="02">경상남도</option>
+                            </select>
+
+
+                            <select class="checkBtn">
                             <option selected="" value="02">대학교</option>
                             <option value="03">가톨릭대학교</option>
                             <option value="04">건국대학교</option>
-                            <option value="05">경기대학교</option>
+                          <!--  <option value="05">경기대학교</option>
                             <option value="06">고려대학교</option>
                             <option value="07">광운대학교</option>
                             <option value="08">국민대학교</option>
@@ -343,8 +350,8 @@
                             <option value="282">한영대학교</option>
                             <option value="283">한국승강기대학교</option>
                             <option value="284">한양여자대학교</option>
-                            <option value="285">한국폴리텍Ⅰ대학</option>
-                        </select><select>
+                            <option value="285">한국폴리텍Ⅰ대학</option>-->
+                        </select><select class="checkBtn">
                             <option selected="" value="0201">전공</option>
                             <option value="0202">인문계열</option>
                             <option value="0203">사회계열</option>
@@ -355,17 +362,18 @@
                             <option value="0208">교육계열</option>
                             <option value="0209">IT계열</option>
                             <option value="0210">기타계열</option>
-                        </select></div><select>
+                        </select><select class="checkBtn">
                         <option value="01">학년</option>
                         <option value="02">1학년</option>
                         <option value="03">2학년</option>
                         <option value="04">3학년</option>
                         <option value="05">4학년</option>
                     </select>
+                        </div>
                     </div>
                 </li>
                 <div class="checkboxs">
-                    <input type="checkbox" />
+                    <input id="checkB" type="checkbox" />
                     <label for="coding">해당사항 없음</label>
                 </div>
 
@@ -376,4 +384,27 @@
 </section>
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+
+    /* 해당사항 없음 체크 할때 본 캐릭터 설정 막아줌 */
+    $('#checkB').on('click', function(){
+        var cancelBtn = document.getElementById('checkB');
+
+        if( cancelBtn.checked ){
+             $('.checkBtn').attr('disabled',true)
+        } else{
+            $('.checkBtn').removeAttr('disabled')
+        }
+    })
+
+
+
+
+
+
+</script>
+
 </html>

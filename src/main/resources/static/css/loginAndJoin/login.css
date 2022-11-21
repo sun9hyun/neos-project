@@ -127,22 +127,32 @@ fieldset, img {
 
 
 
-.loginModal {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(56, 61, 61, 0.8);
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.25s ease-in-out;
-
-}
 
 .loginModal.open {
     opacity: 1;
     visibility: visible;
-    margin-top: 21%;
-    border: solid 1px black;
+    /*margin-top: 21%;*/
+    /*border: solid 1px black;*/
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 48px 40px 60px;
+    display: inline-block;
+    max-width: 406px;
+    width: 100%;
+}
+
+.modalWrapOpen {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+    z-index: 99999;
+    display: none;
 }

@@ -29,7 +29,7 @@
                             <span style="cursor: pointer">ENTP</span>
                         </div>
                         <div class="modifyBtn" style="cursor: pointer"><img src="https://letspl.me/assets/images/ic-profile-modify.png"
-                                                    alt="수정"></div>
+                                                                            alt="수정"></div>
                     </div>
                     <h2 class="tit"><img class="userLv"
                                          src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png"
@@ -56,11 +56,11 @@
                     <div class="projectFeedContents mypage">
                         <p class="tit">나의 문의함(Q&amp;A)&nbsp; <span>(1)</span></p>
 
-                        <div class="communiWrap"><textarea  class="textarea1" placeholder="네오스 궁금한것이 있나요? " rows="2"
-                                                           maxlength="1000"></textarea>
+                        <div class="communiWrap"><textarea  class="textarea1" id="textId" placeholder="네오스 궁금한것이 있나요? " rows="2"
+                                                            maxlength="1000"></textarea>
                             <div class="buttonCountWrap">
-                            <p class="count"><span class="countSpan">0</span>/<span>500</span></p><button>등록</button>
-                        </div>
+                                <p class="count"><span class="countSpan">0</span>/<span>500</span></p><button>등록</button>
+                            </div>
                         </div>
                         <div class="section feedUploadedSection">
                             <div class="feedUploadWrap">
@@ -77,8 +77,8 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <div class="feedContents"><textarea class="textarea1"  disabled="" maxlength="1000"
-                                                                        style="font-size: 0.875rem; height: 62px !important;">의대에 관심있는데 안과전공한 사람들의 스터디에 들어가고싶은데 어케 들어가여?</textarea>
+                                    <div class="feedContents"><textarea  class="textarea1" id="textUp" disabled="" maxlength="1000"
+                                                                         style="font-size: 0.875rem; height: 62px !important;">의대에 관심있는데 안과전공한 사람들의 스터디에 들어가고싶은데 어케 들어가여?</textarea>
                                     </div>
                                     <div class="btnWrap"><button id="upbtn" class="txtBtn">수정</button>
                                         <div class="divider"></div><button class="txtBtn">삭제</button>
@@ -86,15 +86,15 @@
 
                                     <div class="bottom"><a class="">댓글 닫기</a><span class="replayCount">0</span></div>
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
             </div>
-        </div>
     </section>
+</div>
+</div>
+</section>
 </div>
 <div th:replace="/app/fix/footer.html :: footer"></div>
 
@@ -107,30 +107,36 @@
 <script>
 
 
+    /* 글자 카운터  */
+    $("#textId").keyup(function(e) {
+        //console.log("키업!");
+        var content = $(this).val();
+        $(".countSpan").text( content.length  ); //실시간 글자수 카운팅
+        if (content.length > 500) {
+            $(this).val(content.substring(0, 500));
+            $('.countSpan').text("(45 / 최대 45자)");
+        }
+    });
 
-        $(".textarea1").keyup(function(e) {
-            //console.log("키업!");
-            var content = $(this).val();
-            $(".countSpan").text( content.length  ); //실시간 글자수 카운팅
-            if (content.length > 500) {
-                $(this).val(content.substring(0, 500));
-                $('.countSpan').text("(45 / 최대 45자)");
-            }
-        });
+    /* 나의 문의 수정 수정완료 */
+
+    let check=false;
+    $('#upbtn').click(function () {
+        // console.log(this);
+
+        if(!check){
+            $(this).closest('.feedContentsWrap').find(".textarea1").attr('disabled', false);
+            $(this).text('등록')
+            check=true;
+        }else{
+            $(this).closest('.feedContentsWrap').find(".textarea1").attr('disabled', true);
+            $(this).text('수정')
+            check=false;
+        }
+        // $(this).parent().parent().find("textarea").prop('disabled',true);
+    })
 
 
-        $(document).ready(function() {
-            var disabled = false;
-            $('#upbtn').click(function() {
-                if (disabled) {
-                    $(".textarea1").prop('disabled', false);       // 비활성화된 경우 활성화
-                }
-                else {
-                    $(".textarea1").prop('disabled', true);        // 활성화된 경우 비활성화
-                }
-                disabled = !disabled;
-            })
-        });
 
 
 

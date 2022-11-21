@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8" >
     <title>회원가입 모달</title>
     <link rel="stylesheet" href="/css/loginAndJoin/join.css">
     <link rel="stylesheet" href="/css/fix/header.css">
@@ -60,11 +60,11 @@
     <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/js/loginAndJoin/join.js"></script>
+<!--<script src="/js/loginAndJoin/join.js"></script>-->
 
 <script>
 /* 회원 가입 누르면 모달  */
-    $(document).ready(function() {
+  /*  $(document).ready(function() {
         console.log("들어왔다");
         $('.joinAndLogin').on('click', function() {
             console.log("또들어왔넴")
@@ -74,11 +74,29 @@
         console.log("한번더 들어왔따")
     });
 
-    /* 모달 닫기 할 떄 닫힘*/
+    /!* 모달 닫기 할 떄 닫힘*!/
     function closeModal() {
         $('.joinModal').toggleClass();
         window.location.reload();
-    };
+    };*/
+
+$(".joinAndLogin").on("click", function () {
+    $(".modalWrapOpen").css("display", "block");
+})
+
+$(".closeBtn").on("click", function () {
+    $(".modalWrapOpen").css("display", "none");
+})
+
+$(".signupBtn").on("click", function () {
+    $(".modalWrapOpen").css("display", "none");
+})
+
+
+
+
+
+
 
 </script>
 

@@ -830,6 +830,9 @@ element.style {
     resize: none;
     width: 100%;
     outline: none;
+    border-color: #1A7CFF;
+    padding: 6px;
+    margin: 10px;
 }
 
 .projectFeedContents .feedUploadedSection .feedUploadWrap .top .thumb img {

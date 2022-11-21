@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>NEOS | 마이페이지</title>
+
     <link rel="stylesheet" href="/css/neosUser/neosListPrev.css">
     <link rel="stylesheet" href="/css/study/listStudy.css">
     <link rel="stylesheet" href="/css/store/storeList.css">
@@ -45,15 +46,16 @@
             </li>
         </ul>
     </div>
-<!--  정보  -->
+    <!--  정보  -->
     <div class="myTabContents myProfileTab active">
         <div class="myProfileWrap">
             <div class="left">
                 <div class="profileImg">
-                    <img loading="lazy" src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif" alt="user_image">
-                    <input type="file" accept="image/*" style="display: none;">
+                    <img class="userImg"  src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif" alt="user_image">
                 </div>
-                <button class="changeImgBtn"></button>
+                <label for="ImgBtn"></label>
+                <input type="file" accept="image/*" class="changeImgBtn" id="ImgBtn">
+
             </div>
             <div class="right">
                 <div class="profileInputWrap firstProfileInputWrap">
@@ -87,6 +89,26 @@
                         <label>본 캐릭터 대학교/전공/학년</label>
                         <div class="rightWrap selectFour">
                             <select>
+                                <option value="KR00">지역 미지정</option>
+                                <option value="KR01">서울특별시</option>
+                                <option value="KR02">경기도</option>
+                                <option value="KR03">부산광역시</option>
+                                <option value="KR04">인천광역시</option>
+                                <option value="KR05">대구광역시</option>
+                                <option value="KR06">경상남도</option>
+                                <option value="KR07">경상북도</option>
+                                <option value="KR08">대전광역시</option>
+                                <option value="KR09">충청남도</option>
+                                <option value="KR10">충청북도</option>
+                                <option value="KR11">전라남도</option>
+                                <option value="KR12">전라북도</option>
+                                <option value="KR13">광주광역시</option>
+                                <option value="KR14">강원도</option>
+                                <option value="KR15">울산광역시</option>
+                                <option value="KR16">제주특별자치도</option>
+                                <option value="KR17">세종특별자치시</option>
+                            </select>
+                            <select class="Univer">
                                 <option selected="" value="02">대학교</option>
                                 <option value="03">가톨릭대학교</option>
                                 <option value="04">건국대학교</option>
@@ -397,18 +419,24 @@
                                 <option value="04">3학년</option>
                                 <option value="05">4학년</option>
                             </select>
+
                         </div>
+                        <label for="uni_radio" class="checkBox">
+                            <span class="txt">선택 안함</span>
+                            <input type="radio" id="uni_radio" name="free_radio" value="01" class="checkFree">
+                            <span class="checkmark"></span>
+                        </label>
                     </div>
 
                     <div class="labelSelect">
                         <label>대화 포인트</label>
                         <div class="rightWrap">
                             <select>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5 </option>
+                                <option value="1000">1,000</option>
+                                <option value="2000">2,000</option>
+                                <option value="3000">3,000</option>
+                                <option value="4000">4,000</option>
+                                <option value="5000">5,000</option>
                             </select>
                         </div>
                         <span>상대방이 나에게 대화를 요청할 때, 필요한 포인트입니다.</span>
@@ -520,20 +548,6 @@
                     </div>
                 </div>
 
-<!--                <div class="labelAddInput column">-->
-<!--                    <label style="color: rgb(34, 34, 34); font-size: 14px; line-height: 16px; margin-bottom: 16px; display: inline-block;">포트폴리오 링크</label>-->
-<!--                    <div class="rightWrap ">-->
-<!--                        <div class="inputBtnWrap">-->
-<!--                            <div class="inputBtn">-->
-<!--                                <input placeholder="URL을 입력해주세요" value="">-->
-<!--                                <button class="blackBtn">추가</button>-->
-<!--                            </div>-->
-<!--                            <span></span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-
                 <div class="btnWrap">
                     <button class="redBtn">업데이트</button>
                 </div>
@@ -545,7 +559,7 @@
         </div>
     </div>
 
-<!--  스터디  -->
+    <!--  스터디  -->
     <div class="myTabContents myProjectTab ">
         <h3 class="tabCommonTit">지원 현황</h3>
         <div class="noProject"><p>지원한 모임이 없습니다.</p></div>
@@ -562,7 +576,7 @@
                     </div>
                     <div class="favorite "></div>
                 </div>
-                <div class="projectThumb"><img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_11.png" alt="커뮤니티 연계 교통 정보 어플"></div>
+                <div class="projectThumb"><img  src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_11.png" alt="커뮤니티 연계 교통 정보 어플"></div>
             </div>
             <div class="projectBottomInfo">
                 <div class="txtWrap projectWrap">
@@ -573,7 +587,7 @@
             <div class="projectInfo2">
                 <div class="middleWrap">
                     <div class="left">
-                        <div class="heartCount"><img loading="lazy" src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>3</span></div>
+                        <div class="heartCount"><img  src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>3</span></div>
                     </div>
                     <div class="right">
                     </div>
@@ -591,7 +605,7 @@
 
     </div>
 
-<!--  자료상점  -->
+    <!--  자료상점  -->
     <div class="myTabContents storySection ">
         <h3 class="tabCommonTit">내 자료상점</h3>
         <div class="storyContentsWrap">
@@ -641,7 +655,7 @@
         </div>
     </div>
 
-<!--  구독  -->
+    <!--  구독  -->
     <div class="myTabContents favoriteTab ">
         <div class="workTabMenu">
             <ul>
@@ -653,7 +667,7 @@
                 </li>
             </ul>
         </div>
-<!--    스터디 구독    -->
+        <!--    스터디 구독    -->
         <div class="projectContentWrap favoriteTable active">
             <div class="projectGridWrap" style="margin-right:10px">
                 <div class="projectTopInfo">
@@ -666,7 +680,7 @@
                         </div>
                         <div class="favorite "></div>
                     </div>
-                    <div class="projectThumb"><img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_11.png" alt="커뮤니티 연계 교통 정보 어플"></div>
+                    <div class="projectThumb"><img  src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_11.png" alt="커뮤니티 연계 교통 정보 어플"></div>
                 </div>
                 <div class="projectBottomInfo">
                     <div class="txtWrap projectWrap">
@@ -677,7 +691,7 @@
                 <div class="projectInfo2">
                     <div class="middleWrap">
                         <div class="left">
-                            <div class="heartCount"><img loading="lazy" src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>3</span></div>
+                            <div class="heartCount"><img  src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>3</span></div>
                         </div>
                         <div class="right">
                         </div>
@@ -691,7 +705,7 @@
             </div>
         </div>
 
-<!--    네오스인 구독    -->
+        <!--    네오스인 구독    -->
         <div class="peopleGrid favoriteTable ">
             <ul class="peopleGridList">
 
@@ -702,7 +716,7 @@
                             <a class="favorite "></a>
                         </div>
                         <div class="profileTxt">
-                            <div class="idWrap"><img loading="lazy" class="userLv" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_8.png" alt="렛플렙">
+                            <div class="idWrap"><img  class="userLv" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_8.png" alt="렛플렙">
                                 <h2 class="userName">추추추
                                     <ul class="idHoverMenu">
                                         <li><a>프로필 상세</a></li>
@@ -710,11 +724,11 @@
                                         <li><a>모임 초대</a></li>
                                     </ul>
                                 </h2>
-                                <div class="certiWrap"><img loading="lazy" class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-gray.png" alt="휴대폰인증"></div>
+                                <div class="certiWrap"><img  class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-gray.png" alt="휴대폰인증"></div>
                             </div>
                             <div class="coffeAndHeart">
-                                <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>1</span></div>
-                                <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>3</span></div>
+                                <div><img  src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>1</span></div>
+                                <div><img  src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>3</span></div>
                             </div>
                         </div>
                     </div>
@@ -730,7 +744,7 @@
                         <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
                         <div class="userInfoTagWrap"></div>
                         <a class="chatBtn">
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>Coffee
+                            <div><img  src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>Coffee
                                     Chat</span></div>
                         </a>
                     </div>
@@ -743,7 +757,7 @@
                             <a class="favorite "></a>
                         </div>
                         <div class="profileTxt">
-                            <div class="idWrap"><img loading="lazy" class="userLv" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_11.png" alt="렛플렙">
+                            <div class="idWrap"><img  class="userLv" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_11.png" alt="렛플렙">
                                 <h2 class="userName">Alex
                                     <ul class="idHoverMenu">
                                         <li><a>프로필 상세</a></li>
@@ -751,11 +765,11 @@
                                         <li><a>모임 초대</a></li>
                                     </ul>
                                 </h2>
-                                <div class="certiWrap"><img loading="lazy" class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-red.png" alt="실명인증"></div>
+                                <div class="certiWrap"><img  class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-red.png" alt="실명인증"></div>
                             </div>
                             <div class="coffeAndHeart">
-                                <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>1</span></div>
-                                <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>3</span></div>
+                                <div><img  src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>1</span></div>
+                                <div><img  src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>3</span></div>
                             </div>
                         </div>
                     </div>
@@ -781,7 +795,7 @@
                             </div>
                         </div>
                         <a class="chatBtn">
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>Coffee
+                            <div><img src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>Coffee
                                     Chat</span></div>
                         </a>
                     </div>
@@ -791,7 +805,7 @@
         </div>
     </div>
 
-<!--  알림  -->
+    <!--  알림  -->
     <div class="myTabContents noticeTab ">
         <h3 class="tabCommonTit">알림내역</h3>
 
@@ -897,7 +911,7 @@
         </div>
     </div>
 
-<!--  포인트  -->
+    <!--  포인트  -->
     <div class="myTabContents paymentHistoryTab ">
         <div class="payTabmenu">
             <ul>
@@ -962,7 +976,7 @@
 
     </div>
 
-<!--  네오력  -->
+    <!--  네오력  -->
     <div class="myTabContents paymentHistoryTab ">
         <h3 class="tabCommonTit">네오력 L<!-- -->2<!-- --> (<!-- -->280<!-- -->) - 다음까지&nbsp;<!-- -->20</h3>
         <div class="payTabmenu"></div>
@@ -1001,11 +1015,12 @@
 
 
 
-
 </section>
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
+
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="/js/myPage/my.js"></script>
+<script src="/js/myPage/myPage.js"></script>
+<script src="/js/study/listStudy.js"></script>
 <script src="/js/store/storeList.js"></script>
 </html>

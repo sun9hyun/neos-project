@@ -284,7 +284,7 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 15px 24px 15px 0;
+    padding: 15px 0 15px 0;
 }
 
 .projectInfoTabContents .section {
@@ -302,7 +302,7 @@
 }
 
 .projectInfoTabContents .section.statusSection ul {
-    margin-top: 16px;
+    margin-top: 26px;
 }
 
 .projectInfoTabContents .section.statusSection ul li {
@@ -414,6 +414,7 @@
 .fileList img{
     width: 140px;
     height: 140px;
+    cursor: pointer;
 }
 
 /*---------------------------------------------------------------------------------------------------------------*/
@@ -658,4 +659,25 @@
     margin-right: 2px;
     background-image: url(https://letspl.me/_next/static/media/ico_comment.66b0e87a88ad24dc805cabc6e2ca41af.svg);
 }
+/*---------------------------------------------------------------------------------------------------------------*/
+.cashButton {
+    color: #fff;
+    cursor: pointer;
+    font-family: 'GmarketSansMedium';
+    height: 40px;
+    background-color: #1A7CFF;
+    font-size: 15px;
+    padding: 11px 35px;
+    border-radius: 4px;
+    font-weight: bold;
+    width: 130px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+}
 
+.blur{
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}

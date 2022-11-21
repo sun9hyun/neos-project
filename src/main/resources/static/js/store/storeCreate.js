@@ -26,7 +26,7 @@ $tempTr = $userImg.attr('src');
 
 $file.on('change',function(e){
     var $fileName = $(this).val();
-    var $fileNameText = $(this).next().children($("li"));
+    var $fileNameText = $(this).next().next().children($("li"));
 
     var $img = $(this).parent(".uploadBox").prev(".thumbnailBox").find($userImg);
     var $imgBox = $(this).parent(".uploadBox").prev(".thumbnailBox");
@@ -53,7 +53,11 @@ $file.on('change',function(e){
         $img.css('height', '');
         $imgBox.css('background-color', '#f5f5f5');
     }else {
-        $(this).next().children($("li")).text($fileName);
+        $(this).next().next().children($("li")).text($fileName);
+
+        $(this).toggleClass("active");
+        $(this).prev("label").toggleClass("active");
+        $(this).next(".fileButton").toggleClass("active");
 
         //썸네일 변경
         if(ext == 'hwp' || ext =='docx'){
@@ -82,4 +86,25 @@ $file.on('change',function(e){
         $img.css('height', '90%');
         $imgBox.css('background-color', '#fff');
     }
+
+});
+
+var $cancel = $(".cancel");
+
+$cancel.on("click", function () {
+    var $fileNameText = $(this).next().children($("li"));
+
+    var $img = $(this).parent(".uploadBox").prev(".thumbnailBox").find($userImg);
+    var $imgBox = $(this).parent(".uploadBox").prev(".thumbnailBox");
+
+    $(this).toggleClass("active");
+    $(this).prev().prev("label").toggleClass("active");
+    $(this).prev(".file").toggleClass("active");
+
+    $fileNameText.text($fileText);
+
+    $img.attr('src', $tempTr);
+    $img.css('width', '');
+    $img.css('height', '');
+    $imgBox.css('background-color', '#f5f5f5');
 });

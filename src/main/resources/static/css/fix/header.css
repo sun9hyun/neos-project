@@ -946,11 +946,11 @@ section {
             flex-direction: column;
         }
 
-        .chattingWrap2 {
-            right: 428px;
-            max-width: 300px;
-            top: 1983px;
-        }
+        /*.chattingWrap2 {*/
+        /*    right: 428px;*/
+        /*    max-width: 300px;*/
+        /*    top: 1983px;*/
+        /*}*/
     }
 }
 
@@ -1157,30 +1157,119 @@ section {
             }
         }
     }
-
-    @media screen and (max-width: 420px) {
-        .hotProjectContentWrap { /* display:grid; */
-            align-content: stretch;
-            justify-items: center;
-            justify-content: start;
+}
+@media screen and (max-width: 640px) {
+    .hotProjectWrap {
+        padding: 20px 10px 10px !important;
+    }
+}
+    @media screen and (max-width: 1024px) {
+        .hotPeopleWrap, .hotProjectWrap, .reviewContentWrap {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
         }
+    }
 
-        .hotPeopleWrap .hotPeopleContentWrap .hotPeopleContent, .hotProjectContentWrap {
-            grid-template-columns: repeat(1, 1fr);
-        }
-
-        .hotPeopleWrap .hotPeopleContentWrap .hotPeopleContent .letspler, .hotProjectContentWrap .hotProjectContent {
-            width: 340px
-        }
+@media screen and (max-width: 1024px) {
+    .mainWrap h1 {
+        text-align: left !important;
+        margin-bottom: 12px !important;
+        padding-bottom: 0 !important;
+    }
+    .mainWrap h1 span.bigTxt, .reviewContentWrap .reviewWrap h1 {
+        font-size: 1.125rem !important;
+        line-height: 1.125rem !important;
+        margin-bottom: 12px;
     }
 }
 
 
+@media screen and (max-width: 420px) {
+    .hotPeopleWrap .hotPeopleContentWrap .hotPeopleContent, .hotProjectContentWrap {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+    @media screen and (max-width: 420px){
+        .hotProjectContentWrap {
+            /* display: grid; */
+            align-content: stretch;
+            justify-items: center;
+            justify-content: start;
+        }
+    }
+        @media screen and (max-width: 640px){
+            .hotProjectContentWrap {
+                grid-template-columns: repeat(1, 1fr);
+                display: grid;
+            }
+        }
+            @media screen and (max-width: 700px) {
+                .hotProjectContentWrap {
+                    grid-template-columns: repeat(2, 1fr);
+                    display: grid;
+                }
+            }
+                @media screen and (max-width: 750px){
+                    .hotProjectContentWrap {
+                        grid-template-columns: repeat(4, 1fr);
+                        display: grid;
+                    }
+                }
+                    @media screen and (max-width: 950px){
+                        .hotProjectContentWrap {
+                            grid-template-columns: repeat(3, 1fr);
+                            display: grid;
+                        }
+                    }
+                        @media screen and (max-width: 1024px) {
+                            .hotProjectContentWrap {
+                                grid-template-columns: repeat(4, 1fr);
+                                -webkit-box-sizing: border-box;
+                                -moz-box-sizing: border-box;
+                                box-sizing: border-box;
+                            }
+                        }
+
+@media screen and (max-width: 780px) {
+    .hotProjectWrap {
+        max-width: 280px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .hotProjectWrap{
+        padding: 20px 20px 12px;
+    }
 
 
+@media screen and (max-width: 420px) {
+    .hotProjectContentWrap {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+    @media screen and (max-width: 780px){
+        .hotProjectContentWrap{
+            grid-template-columns: repeat(1,1fr);
+            display: grid;
+        }
+        .projectGridWrap{
+            width: 100% !important;
+        }
+    }
+        @media screen and (max-width: 950px) {
+            .hotProjectContentWrap {
+                grid-template-columns: repeat(1, 1fr);
+                display: grid;
+                grid-row-gap: 5px;
+                grid-column-gap: 5px;
+            }
 
-
-
-
-
+        }
+@media screen and (max-width: 780px){
+    .projectGridWrap {
+        width: 100% !important;
+        max-width: 353px;
+    }
+}
 

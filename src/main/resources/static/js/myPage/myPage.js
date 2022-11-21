@@ -39,16 +39,48 @@ $pTabMenu.click(function () {
     $payTable.eq($pTabNumber).siblings().removeClass("active");
 })
 
+/*--정보 대학교 선택-----------------------------------------------------*/
+var $KRUni = $(".KRUni");
+
+$('.selectUni').attr('disabled',true);
+$('.uniEmail').attr('disabled',true);
+$('.uniButton').attr('disabled',true);
+
+$KRUni.on("change", function() {
+    var $KR = $(this).val();
+
+    if($KR == "KR00"){
+        $('.selectUni').attr('disabled',true);
+        $('.uniEmail').attr('disabled',true);
+        $('.uniButton').attr('disabled',true);
+    }else{
+        $('.selectUni').removeAttr('disabled');
+        $('.uniEmail').removeAttr('disabled');
+        $('.uniButton').removeAttr('disabled');
+    }
+});
 
 
 /*--정보 대학교 선택 안함-----------------------------------------------------*/
-$(function(){
-    $("#uni_radio").change(function(){
-        if($("#uni_radio").is(":checked")){
-            $(".selectFour").attr("disabled", true);
-        };
-    });
+$("#uni_radio").on('click', function(){
+    console.log("check들어옴");
+    // var $cancelBtn = $("#uni_radio");
+    var cancelBtn = document.getElementById('uni_radio');
+
+    if(cancelBtn.checked){
+        $('.KRUni').attr('disabled',true);
+        $('.selectUni').attr('disabled',true);
+        $('.uniEmail').attr('disabled',true);
+        $('.uniButton').attr('disabled',true);
+
+    } else{
+        $('.KRUni').removeAttr('disabled');
+        $('.selectUni').removeAttr('disabled');
+        $('.uniEmail').removeAttr('disabled');
+        $('.uniButton').removeAttr('disabled');
+    }
 });
+
 
 
 /*--정보 관심태그 선택-----------------------------------------------------*/
@@ -123,10 +155,10 @@ $mbtiSelect.on("change", function() {
         $mbtiText.text("사람에 대한 관심이 많으며 친절하며 동정심이 많습니다.");
     }
     if($mbti == "ENFJ"){
-        $mbtiText.text("사교적이고 타인의 의견을 존중하며, 비판을 받으면 예민하게 반응하기도합니다.");
+        $mbtiText.text("사교적이고 타인의 의견을 존중하며, 비판을 받으면 예민하게 반응하기도 합니다.");
     }
     if($mbti == "ENTJ"){
-        $mbtiText.text("철저한 준비를 하며 활동적입니다.통솔력이 있으며 단호합니다.");
+        $mbtiText.text("철저한 준비를 하며 활동적입니다. 통솔력이 있으며 단호합니다.");
     }
 
 });

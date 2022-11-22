@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -145,8 +145,21 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label text-right" for="user_name">이름</label>
-                                                <span class="form-control-static col-md-9">박종우</span>
+                                                <label class="col-sm-3 control-label text-right" for="">이름</label>
+                                                <span class="form-control-static col-md-9 user_name">박종우</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label text-right" for="">대학교</label>
+                                                <span class="form-control-static col-md-9 college_name">서울대학교</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label text-right" for="">대학교 이메일</label>
+                                                <span class="form-control-static col-md-9 college_logo">neos@seoul.kr</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label text-right" for="">대학교 로고</label>
+                                                <span class="form-control-static col-md-9 college_logo"><img style="width: 50px" src="/images/admin/college/seoulCollege.png"
+                                                                                                             alt=""></span>
                                             </div>
                                         </form>
                                     </div>

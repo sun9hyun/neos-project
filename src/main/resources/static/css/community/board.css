@@ -170,7 +170,7 @@
 }
 
 .loungeTrendComponents_LoungeTrendContainer__1xnsy {
-    background: #e7e7e7 !important
+    background: #f5f5f5 !important
 }
 
 .centerSectionBox {
@@ -390,4 +390,106 @@ a.searchIc {
 
 .postBtn span{
     color:#fff;
+}
+
+.allModal {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+}
+
+.commonModal {
+    padding: 45px 30px 15px;
+    background-color: #fff;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    border-radius: 8px;
+    max-width: 406px;
+    min-width: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all .2s;
+    z-index: 999999;
+}
+.commonModal .modalTit {
+    font-size: 1.125rem;
+    color: #42495b;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.25rem;
+}
+
+.commonModal .closeBtn {
+    width: 22px;
+    height: 22px;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 24px;
+}
+
+.commonModal .closeBtn img {
+    width: 100%;
+}
+
+.commonModal .commonModalContent p {
+    font-size: .75rem;
+    color: #8e8ea2;
+    text-align: center;
+    line-height: 1rem;
+}
+
+.commonModal .btnWrap {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.btnWrap {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.commonModal .btnWrap button.whiteBtn {
+    border: 1px solid #1A7CFF !important;
+    color: #1A7CFF;
+    background-color: #fff;
+}
+
+.commonModal .btnWrap.doubleBtnWrap button {
+    height: 44px;
+    width: 49%;
+    border: none;
+    box-sizing: border-box;
+    font-size: .75rem;
+    padding: 0;
+    border-radius: 4px;
+}
+
+.commonModal .btnWrap button.redBtn {
+    border: 1px solid #1A7CFF;
+    background-color: #1A7CFF;
+    color: #fff;
+}
+
+.commonModal .btnWrap.singleBtnWrap button {
+    height: 44px;
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+    font-size: .75rem;
+}
+
+.noLoginModal {
+    display: none;
 }

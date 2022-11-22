@@ -14,7 +14,7 @@
     <div class="chattingWrap listOff" id="chattingList">
         <div class="chattingContentWrap ">
             <div class="chattingHeader">
-                <div class="left leftHead"><p>대화 목록</p></div>
+                <div class="left"><p>대화 목록</p></div>
                 <div class="right active rightHead"><a class="backBtn"></a>
                     <div class="thumbWrap">
                         <div class="thumb"><img loading="lazy" src="/images/fix/favicon.png"
@@ -29,7 +29,7 @@
                 <div class="foldChatBtn"></div>
             </div>
             <div class="chattingSection">
-                <div class="list left leftBody">
+                <div class="list left">
                     <ul>
                         <li class="active leftChattingList">
                             <div class="thumb"><img
@@ -132,12 +132,12 @@
                     </div>
                     <div class="chatInputArea">
                         <div class="mentions mentions--multiLine"
-                             style="position: relative; overflow-y: visible; height: 24px;">
+                             style="position: relative; overflow-y: visible;">
                             <div class="mentions__control">
                                 <div class="mentions__highlighter"
                                      style="position: relative; box-sizing: border-box; width: 100%; color: transparent; overflow: hidden; white-space: pre-wrap; overflow-wrap: break-word; border: 1px solid transparent; text-align: start;"></div>
-                                <textarea placeholder="@으로 상대방 지정이 가능합니다." rows="5" cols="40" class="mentions__input"
-                                          style="display: block; width: 100%; position: absolute; margin: 0px; top: 0px; left: 0px; box-sizing: border-box; background-color: transparent; font-family: inherit; font-size: inherit; letter-spacing: inherit; height: 100%; bottom: 0px; overflow: hidden; resize: none; padding-top: 6px; outline: none;"></textarea>
+                                <textarea placeholder="@으로 상대방 지정이 가능합니다." rows="10" cols="40" class="mentions__input"
+                                          style="display: block; width: 100%; position: absolute; margin: 0px; top: 0px; left: 0px; box-sizing: border-box; background-color: transparent; font-family: inherit; font-size: inherit; letter-spacing: inherit; height: 100%; bottom: 0px; overflow: hidden; resize: none; padding-top: 6px; outline: none; max-height: 150px;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
                             </div>
                         </div>
                         <button class="buttonComponents_button__1hvQa buttonComponents_circle__2iQ3w buttonComponents_blueBlack__2HIFu  buttonComponents_lgImg__2-hZO ">

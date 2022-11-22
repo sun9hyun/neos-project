@@ -631,17 +631,6 @@ button, input, select, textarea {
     margin: 1em 0;
 }
 
-.mentions--multiLine .mentions__control, .mentions--multiLine .mentions__input {
-    border: 0;
-    min-height: 24px!important;
-    height: 24px;
-    font-size: .8125rem;
-    margin-left: 12px;
-    flex: 1 1;
-    margin-right: 8px;
-    resize: none;
-}
-
 .mentions--multiLine .mentions__control {
     max-width: 310px!important;
     width: 100%;
@@ -650,7 +639,7 @@ button, input, select, textarea {
 .mentions--multiLine .mentions__highlighter, .mentions--singleLine .mentions__highlighter {
     left: -4px;
     min-height: 24px!important;
-    height: 24px;
+    /*height: 24px;*/
     font-size: .8125rem;
 }
 
@@ -664,7 +653,7 @@ button, input, select, textarea {
 .mentions--multiLine .mentions__control, .mentions--multiLine .mentions__input {
     border: 0;
     min-height: 24px!important;
-    height: 24px;
+    max-height: 150px;
     font-size: .8125rem;
     margin-left: 12px;
     flex: 1 1;

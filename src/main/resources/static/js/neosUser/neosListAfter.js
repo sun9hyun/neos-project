@@ -87,19 +87,20 @@ $(".letspler_Re .bottom .chatBtn").on("mouseout", function () {
 
 
 /* 반응형 관련 */
+var mql = window.matchMedia("screen and (max-width: 1024px)");
 
-$(".rightHead .backBtn").on("click", function () {
-    $(".leftHead").css("display", "block");
-    $(".leftBody").css("display", "block");
-    $(".chattingWrap .chattingContentWrap .chattingHeader .right.active").css("display", "none");
-    $(".chattingWrap .chattingContentWrap .chattingSection .chattingRoom.right.active").css("display", "none");
-})
+if(mql.matches) {
+    $(".rightHead .backBtn").on("click", function () {
+        $(".chattingHeader .left").removeClass("leftHead");
+        $(".chattingSection .list.left").removeClass("leftBody");
+        $(".chattingHeader .right.active").addClass("rightHead");
+        $(".chattingSection .right.active").addClass("rightBody");
+    })
 
-$(".leftChattingList").on("click", function () {
-    $(".leftHead").css("display", "none");
-    $(".leftBody").css("display", "none");
-    $(".chattingWrap .chattingContentWrap .chattingHeader .right.active").css("display", "inline-flex");
-    $(".chattingWrap .chattingContentWrap .chattingSection .chattingRoom.right.active").css("display", "inline-flex");
-})
-
-
+    $(".leftChattingList").on("click", function () {
+        $(".chattingHeader .left").addClass("leftHead");
+        $(".chattingSection .list.left").addClass("leftBody");
+        $(".chattingHeader .right.active").removeClass("rightHead");
+        $(".chattingSection .right.active").removeClass("rightBody");
+    })
+}

@@ -114,7 +114,7 @@ $(".commonModal .btnWrap.singleBtnWrap button").on("click", function () {
 
 /* 제일 밑에 프로필에서 스터디 초대 눌렀을 때 초대 불가능 하다면 */
 
-$(".invite").click(function(){
+$(".inviteMini").click(function(){
     $(".noModal").css("display", "block");
 });
 

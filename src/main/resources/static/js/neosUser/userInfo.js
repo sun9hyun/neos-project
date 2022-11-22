@@ -118,7 +118,12 @@ $(".commonModal .btnWrap.singleBtnWrap button").on("click", function () {
 
 /* 제일 밑에 프로필에서 스터디 초대 눌렀을 때 초대 가능 하다면 */
 
-$(".invite").click(function(){
+$(".inviteMini").click(function(){
+    let name = $(this).closest(".right").find(".nameMini").text();
+    let text = "";
+    text += `<span class="inviteHead">` + name + `님께 초대장을 보내시겠습니까?</span>`
+    $(".invitationModal .requestModal .tit").html(text);
+
     $(".invitationModal").css("display", "block");
 });
 

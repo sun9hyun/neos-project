@@ -965,22 +965,6 @@ button {
         box-shadow: 0 3px 24px 0 rgb(0 0 0 / 6%);
     }
 
-    .leftBody {
-        display: block;
-    }
-
-    .leftHead {
-        display: block;
-    }
-
-    .rightHead {
-        display: none;
-    }
-
-    .rightBody {
-        display: none;
-    }
-
     .chattingWrap .chattingContentWrap .chattingSection .list, .chattingWrap .chattingContentWrap .left {
         max-width: 100%;
     }

@@ -17,13 +17,37 @@
         display: none;
     }
 
+    .chattingHeader .right.active {
+        display: inline-flex;
+    }
+
+    .chattingSection .right.active {
+        display: inline-flex;
+    }
+
+    .chattingHeader .left {
+        display: block;
+    }
+
+    .chattingSection .list.left {
+        display: block;
+    }
+
     @media screen and (max-width: 1024px) {
-        .chattingWrap .chattingContentWrap .chattingSection .chattingRoom.right.active {
-            display: none;
+        .rightHead {
+            display: none !important;
         }
 
-        .chattingWrap .chattingContentWrap .chattingHeader .right, .chattingWrap .chattingContentWrap .chattingHeader .right.active{
-            display: none;
+        .rightBody {
+            display: none !important;
+        }
+
+        .leftHead {
+            display: none !important;
+        }
+
+        .leftBody {
+            display: none !important;
         }
     }
 

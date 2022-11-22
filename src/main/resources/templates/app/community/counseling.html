@@ -8,7 +8,7 @@
     <title>고민상담 게시판</title>
 <!--    <link rel="preload" href="https://letspl.me/_next/static/css/7d968ad404afc29f3247.css" as="style">-->
 <!--    <link rel="preload" href="https://letspl.me/_next/static/css/be51bda88f366bdbe307.css" as="style">-->
-    <link rel="stylesheet" href="https://letspl.me/_next/static/css/0920a29ba7232a2c7623.css">
+<!--    <link rel="stylesheet" href="https://letspl.me/_next/static/css/0920a29ba7232a2c7623.css">-->
     <link rel="stylesheet" href="/css/community/board2.css">
     <link rel="stylesheet" href="/css/community/board3.css">
     <link rel="stylesheet" href="/css/community/board4.css">
@@ -17,6 +17,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/summernote/summernote-lite.css">
     <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/chatting.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
     <script src="/js/community/summernote-lite.js"></script>
     <script src="/js/community/summernote-ko-KR.js"></script>
@@ -28,12 +29,12 @@
         src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
         font-weight: normal;
         font-style: normal;
+        font-size: 16px !important;
     }
 
     * {
         font-family: 'GmarketSansMedium' !important;
     }
-
     @media screen and (max-width: 1024px) {
         nav img.logo{
             height: 100%;
@@ -45,12 +46,77 @@
             font-size: 14px;
         }
     }
+
+
+    .chattingWrap .chattingContentWrap .chattingHeader .left p{
+        font-size: 16px;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingHeader .right .userIdAndTimeInfo .userId{
+        font-size: 13px;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .list ul li .chatInfo .userIdAndBeforeTime .userId{
+        font-size: 12.8px;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .list ul li .chatInfo .chatInfoTxt{
+        font-size: 11.2px;
+    }
+    .chattingWrap .chattingContentWrap .chattingSection .list ul li .chatInfo .userIdAndBeforeTime .beforeTime{
+        font-size: 11.2px;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .list ul li .chatInfo .endTime{
+        font-size: 10.4px;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chattingRoomWrap .dayInfo p{
+        font-size: 10.4px;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chattingRoomWrap .opponent .userIdChatTxt .userId{
+        font-size: 12.8px;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chattingRoomWrap .opponent .userIdChatTxt .chatTxt{
+        font-size: 12.8px;
+    }
+
+    .mentions--multiLine .mentions__control, .mentions--multiLine .mentions__input{
+        font-size: 12.8px;
+    }
+    .commonModal .modalTit{
+        font-size: 18px;
+    }
+    .commonModal .btnWrap.doubleBtnWrap button{
+        font-size: 12px;
+    }
+    .updatePost_1j {
+        display: none;
+    }
+
 </style>
 
 <body>
 
 
 <div th:replace="/app/fix/header.html :: header"></div>
+<div class="noLoginModal allModal">
+    <div class="commonModal">
+        <p class="modalTit">로그인이 필요합니다</p>
+        <button class="closeBtn"><img loading="lazy" src="http://letspl.me/assets/icon/ic-close.svg" alt="close">
+        </button>
+        <div class="commonModalContent">
+            <p>로그인 하시겠습니까?</p>
+            <div class="btnWrap doubleBtnWrap">
+                <button class="btn whiteBtn">아니오</button>
+                <button class="btn redBtn">예</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modalWrapOpen">
     <div class="commonModal">
         <p class="modalTit" style="font-size: 18px;margin-bottom: 15px">글 삭제 확인</p><button class="closeBtn"><img loading="lazy"
@@ -270,11 +336,12 @@
                                                                 </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.10 08:46</span>
                                                             </div>
                                                             <div class="userInformationComponents_profileRightGroup__3Ro_j">
-                                                                <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH">
-                                                                    <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ">
-                                                                        <button
-                                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button
-                                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>
+                                                                <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH"><button
+                                                                        class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                                      src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                                                    <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ"><button
+                                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyUpdate">수정</button><button
+                                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyDelete">삭제</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1556,6 +1623,7 @@
 <!--<div class="chattingWrap2">-->
 <!--    <div class="active writingBtn" style="cursor: pointer"></div>-->
 <!--</div>-->
+<div th:replace="/app/fix/chattingAll.html :: chattingAll"></div>
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
 <!-- ghostTest -->
@@ -1621,5 +1689,22 @@
         });
     }
 </script>
+<script>
+    const $noLoginModal = $(".noLoginModal");
+    const $closeBtn =$(".noLoginModal .whiteBtn");
+    const $yesBtn =$(".noLoginModal .redBtn");
 
+    const $xBtn = $(".noLoginModal .closeBtn")
+    $closeBtn.click(function(){
+        $noLoginModal.hide();
+    })
+    $yesBtn.click(function(){
+        $noLoginModal.hide();
+    })
+    $xBtn.click(function(){
+        $noLoginModal.hide();
+    })
+
+</script>
+<script src="/js/fix/chatting.js"></script>
 </html>

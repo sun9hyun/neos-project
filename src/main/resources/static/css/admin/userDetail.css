@@ -190,3 +190,9 @@ section{
 .col-xs-3 {
     width: 50%;
 } */
+.college_logo img{
+    width: 60px;
+    position: relative;
+    left: -8px;
+    top: -7px;
+}

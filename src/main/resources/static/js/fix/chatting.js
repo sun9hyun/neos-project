@@ -4,7 +4,6 @@ $(".chattingWrap2").on("click", function () {
     $("#chattingList").css("display", "block");
 })
 
-
 /* 채팅창 닫기 누르면 다시 원상복귀 */
 $(".foldChatBtn").on("click", function () {
     $("#chattingList").css("display", "none");
@@ -127,11 +126,8 @@ $(".whiteBtn").on("click", function () {
 })
 
 
-
-$(".mentions__control").on("keyup",function(key){
-    if(key.keyCode==13) {
-        $(".mentions--multiLine").attr("style",)
-    }
-});
-
-
+/* 채팅창 textarea 관련 */
+const $textarea = $(".mentions__input")
+$textarea.on("input", function(e) {
+    $(".mentions__control").css("height", this.scrollHeight + "px");
+})

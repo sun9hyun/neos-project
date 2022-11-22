@@ -56,11 +56,11 @@ $(".pinkBtn").click(function(){
 
 /* 화면 밑 프로필에서 1:1 대화 스터디 초대 부분*/
 
-$(".chat").click(function(){
+$(".chatMini").click(function(){
     $(".noLoginModal").css("display", "block");
 });
 
-$(".invite").click(function(){
+$(".inviteMini").click(function(){
     $(".noLoginModal").css("display", "block");
 });
 

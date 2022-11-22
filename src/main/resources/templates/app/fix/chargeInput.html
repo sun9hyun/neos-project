@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>NEOS | 충전</title>
     <link rel="stylesheet" href="/css/fix/charge.css">
+    <link rel="stylesheet" href="/css/fix/chatting.css">
     <link rel="stylesheet" href="/css/fix/loginHeader.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
@@ -74,9 +75,12 @@
     </section>
 </div>
 
+<div th:replace="/app/fix/chattingAll.html :: chattingAll"></div>
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/login.js"></script>
+<script src="/js/fix/chatting.js"></script>
 <script>
     var $value = $("input[type=radio][name=price]:checked").val();
     var $input = $("input[type=text][name=point]:checked").val();

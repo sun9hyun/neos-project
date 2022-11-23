@@ -501,6 +501,7 @@ ul {
     -moz-transition: all .2s;
     transition: all .2s;
     font-size: .75rem;
+    margin-top: 3px;
 }
 
 
@@ -839,4 +840,42 @@ element.style {
     width: 54px;
     height: 54px;
     object-fit: cover;
+
+}
+
+.statusCircle{
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 3px 13px!important;
+    border-radius: 100px;
+    display: -moz-inline-box;
+    display: inline-flex;
+    background-color: #1A7CFF;
+    margin-right: 18px;
+
+}
+
+
+.modalWrapOpen .commonModal {
+    padding: 60px 20px 40px;
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    border-radius: 8px;
+    max-width: 406px;
+    min-width: 300px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+    z-index: 999999;
 }

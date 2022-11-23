@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" >
-    <title>회원가입 모달</title>
+    <title></title>
     <link rel="stylesheet" href="/css/loginAndJoin/join.css">
     <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
@@ -51,7 +51,7 @@
         <a target="_blank" href="/tnc/payment_policy">전자금융거래약관</a>
         에 동의함으로 처리됩니다
     </p>
-    <a class="signupBtn" style="cursor: pointer">로그인</a>
+    <a class="signupBtn" style="cursor: pointer"></a>
 </div>
     </div>
 
@@ -60,30 +60,6 @@
     <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!--<script src="/js/loginAndJoin/join.js"></script>-->
-
-<script>
-
-/* 회원 가입 시 모달창 */
-$(".joinAndLogin").on("click", function () {
-    $(".modalWrapOpen").css("display", "block");
-})
-
-$(".closeBtn").on("click", function () {
-    $(".modalWrapOpen").css("display", "none");
-})
-
-$(".signupBtn").on("click", function () {
-    $(".modalWrapOpen").css("display", "none");
-})
-
-
-
-
-
-
-
-</script>
-
+<script src="/js/loginAndJoin/join.js"></script>
 </html>
 

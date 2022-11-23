@@ -2,11 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>문의하기</title>
+    <title>NEOS | 내 프로필</title>
     <link rel="stylesheet" href="/css/inquiry/inquiry.css">
     <link rel="stylesheet" href="/css/admin/modal.css">
     <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
+    <link rel="stylesheet" href="/css/admin/modal.css">
 
 
 </head>
@@ -47,22 +48,19 @@
                         초대</button></div>
                 </div>
                 <div class="myTabWrapContainer">
-                    <div class="myTabWrap"><a class="">정보</a><a class="active">나의 문의함(
-                        <!-- -->1
-                        <!-- -->)
-                    </a><a class="">스토리(
-                        <!-- -->0
-                        <!-- -->)
-                    </a></div>
+                    <div class="myTabWrap"><a class="">정보</a><a class="active">문의(1)</a>
+                    </div>
                 </div>
                 <section class="grayBg secretNote">
                     <div class="projectFeedContents mypage">
-                        <p class="tit">나의 문의함(Q&amp;A)&nbsp; <span>(1)</span></p>
+                        <div class="tit">나의 문의함(Q&amp;A)&nbsp; <span>(1)</span></div>
 
-                        <div class="communiWrap"><textarea  class="textarea1" id="textId" placeholder="네오스 궁금한것이 있나요? " rows="2"
+                        <div class="communiWrap"><textarea  class="textarea1" id="textId" placeholder="네오스에 궁금한게 있으신가요? 궁굼한 사항을 작성해 주세요! " rows="2"
                                                             maxlength="1000"></textarea>
                             <div class="buttonCountWrap">
-                                <p class="count"  style="margin-left: 8px;" ><span class="countSpan">0</span>/<span>500</span></p><button style="margin-left: 834px; display: none" class="registration"  >등록</button> <button class="cance">취소</button>
+                                <p class="count"  style="margin-left: 8px;" ><span class="countSpan">0</span> <span>/</span> <span>500</span></p>
+                                <button style="margin-left: 891px; position: absolute; display: none" class="registration">등록</button>
+                                <button class="cance">취소</button>
                             </div>
                         </div>
                         <div class="section feedUploadedSection">
@@ -83,8 +81,9 @@
                                     <div class="feedContents"><textarea  class="textarea1" id="textUp" disabled="" maxlength="1000"
                                                                          style="font-size: 0.875rem; height: 62px !important;">의대에 관심있는데 안과전공한 사람들의 스터디에 들어가고싶은데 어케 들어가여?</textarea>
                                     </div>
-                                    <div class="btnWrap"><button id="upbtn" class="txtBtn">수정</button>
-                                        <div class="divider"></div><button class="txtBtn">삭제</button>
+                                    <div class="btnWrap">
+                                        <div class="statusCircle"><span style="font-size: .75rem!important;color: #fff!important;">답변 대기</span></div>
+                                        <button class="txtBtn" onclick="modalUp()">삭제</button>
                                     </div>
 
                                     <div class="bottom"><a class="">댓글 닫기</a><span class="replayCount">0</span></div>
@@ -112,70 +111,44 @@
 </div>
 <div th:replace="/app/fix/footer.html :: footer"></div>
 
-
+<!-- 삭제 버튼 모달 -->
+<div class="modalWrapOpen">
+    <div class="commonModal">
+        <p class="modalTit" style="font-size: 18px;margin-bottom: 15px">문의 삭제 확인</p><button class="closeBtn"><img
+            src="/images/admin/closeBtn.png" alt="close"></button>
+        <div class="commonModalContent">
+            <p style="font-size: 12px;margin-bottom: 12px;">해당 문의 글을 삭제하시겠습니까?</p>
+        </div>
+        <div class="btnWrap doubleBtnWrap"><button class="btn whiteBtn" style="font-size: 12px;line-height: 3;">아니오</button><button
+                class="btn redBtn" style="font-size: 12px;line-height: 3;">예</button></div>
+    </div>
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<!--<script src="/js/inquiry/inquiry.js"></script>-->
-
-
+<script src="/js/inquiry/inquirys.js"></script>
 <script>
 
+    const $deleteModal = $(".modalWrapOpen");
+    const $alertModal = $(".modalWrapOpen2")
+    const $deleteBtn = $(".companyDelete a");
+    const $cancelBtn = $(".whiteBtn");
+    const $closeBtn = $(".closeBtn")
+    const $closeBtn2 = $(".closeBtn2")
 
-    /* 글자 카운터  */
-    $("#textId").keyup(function(e) {
-        //console.log("키업!");
-        var content = $(this).val();
-        $(".countSpan").text( content.length  ); //실시간 글자수 카운팅
-        if (content.length > 500) {
-            $(this).val(content.substring(0, 500));
-
-        }
-    });
-
-    /* 나의 문의 수정 수정완료 */
-
-    let check=false;
-    $('#upbtn').click(function () {
-        // console.log(this);
-
-        if(!check){
-            $(this).closest('.feedContentsWrap').find(".textarea1").attr('disabled', false);
-            $(this).text('등록')
-            check=true;
-        }else{
-            $(this).closest('.feedContentsWrap').find(".textarea1").attr('disabled', true);
-            $(this).text('수정')
-            check=false;
-        }
-
-        // $(this).parent().parent().find("textarea").prop('disabled',true);
+    $cancelBtn.click(function () {
+        $deleteModal.hide();
     })
 
+    $closeBtn.click(function () {
+        $deleteModal.hide();
+    })
+    $closeBtn2.click(function () {
+        $alertModal.hide();
+    })
 
-    /* 등록 수정글 */
-    var $ipt = $('.textarea1');
-
-    var  $clearIpt = $('.cance');
-    var  $registrationPt = $('.registration');
-
-
-    $ipt.keyup(function(){
-        $(".cance").toggle(Boolean($(this).val()));
-        $(".registration").toggle(Boolean($(this).val()));
-    });
-
-    $clearIpt.toggle(Boolean($ipt.val()));
-    // $registrationPt.toggle(Boolean($ipt.val()));
-
-    $clearIpt.click(function(){
-        $(".textarea1").val('').focus();
-        $(this).hide();
-        $registrationPt.hide();
-    });
-
-
-
-
+    function modalUp(){
+        $deleteModal.show();
+    }
 
 </script>
 

@@ -51,3 +51,21 @@ var swiper2 = new Swiper2(".mySwiper", {
         hide: false
     }
 });
+
+var mql = window.matchMedia("screen and (max-width: 1024px)");
+
+if(mql.matches) {
+    $(".rightHead .backBtn").on("click", function () {
+        $(".chattingHeader .left").removeClass("leftHead");
+        $(".chattingSection .list.left").removeClass("leftBody");
+        $(".chattingHeader .right.active").addClass("rightHead");
+        $(".chattingSection .right.active").addClass("rightBody");
+    })
+
+    $(".leftChattingList").on("click", function () {
+        $(".chattingHeader .left").addClass("leftHead");
+        $(".chattingSection .list.left").addClass("leftBody");
+        $(".chattingHeader .right.active").removeClass("rightHead");
+        $(".chattingSection .right.active").removeClass("rightBody");
+    })
+}

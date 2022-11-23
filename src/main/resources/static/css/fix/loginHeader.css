@@ -8,6 +8,7 @@
     font-style: normal;
 }
 
+html, body { max-width: 100%; overflow-x: hidden; }
 body{
     font-family: 'GmarketSansMedium';
 }
@@ -921,12 +922,6 @@ button, input, optgroup, select, textarea {
     margin-bottom: 25px;
 }
 
-.chattingWrap2 {
-    right: -109px;
-    max-width: 300px;
-    top: 848px;
-}
-
 .chattingWrap, .chattingWrap2 {
     position: fixed;
     width: 100%;
@@ -1574,11 +1569,7 @@ section {
         width : 35px;
     }
 
-    .chattingWrap2 {
-        right: 428px;
-        max-width: 300px;
-        top: 1983px;
-    }
+
     .chattingWrap2 .chattingToggle:after {
         content: " ";
         display: -moz-inline-box;
@@ -2094,3 +2085,5 @@ section {
 .banners_active{
     display: none;
 }
+
+

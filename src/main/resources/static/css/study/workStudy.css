@@ -862,11 +862,13 @@ dl, li, menu, ol, ul {
     display: none;
 }
 
-.projectWorkContents .taskTab .milestoneSection {
+.projectWorkContents .taskTab .meetingPlace,
+.projectWorkContents .taskTab .place{
     width: 100%;
     height: auto;
-    display: -moz-box;
-    display: flex;
+/*    display: -moz-box;
+    display: flex;*/
+    display: none;
     -moz-box-orient: vertical;
     -moz-box-direction: normal;
     flex-direction: column;
@@ -879,9 +881,15 @@ dl, li, menu, ol, ul {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding: 20px 24px;
+    margin-top: 15px;
 }
 
-.projectWorkContents .taskTab .milestoneSection .top {
+/*.projectWorkContents .taskTab .active{
+    display: flex;
+}*/
+
+.projectWorkContents .taskTab .meetingPlace .top,
+.projectWorkContents .taskTab .place .top {
     display: -moz-inline-box;
     display: inline-flex;
     -moz-box-orient: vertical;
@@ -889,18 +897,23 @@ dl, li, menu, ol, ul {
     flex-direction: column;
 }
 
-.projectWorkContents .taskTab .milestoneSection .top .dateWrap {
+.projectWorkContents .taskTab .meetingPlace .top .addMeetingButton{
+    position: absolute;
+    right: 44px;
+}
+
+.projectWorkContents .taskTab .meetingPlace .top .dateWrap {
     margin-bottom: 5px;
     line-height: 1.3125rem;
 }
 
-.projectWorkContents .taskTab .milestoneSection .top .dateWrap span {
+.projectWorkContents .taskTab .meetingPlace .top .dateWrap span {
     font-size: .875rem;
     line-height: 1.3125rem;
     color: #8e8ea2;
 }
 
-.projectWorkContents .taskTab .milestoneSection .top .titWrap {
+.projectWorkContents .taskTab .meetingPlace .top .titWrap {
     display: -moz-inline-box;
     display: inline-flex;
     -moz-box-orient: horizontal;
@@ -913,13 +926,14 @@ dl, li, menu, ol, ul {
     width: 100%;
 }
 
-.projectWorkContents .taskTab .milestoneSection .top .titWrap p {
+.projectWorkContents .taskTab .meetingPlace .top .titWrap p {
     font-size: 1rem;
     color: #696980;
     font-weight: 700;
 }
 
-.projectWorkContents .taskTab .milestoneSection .top .titWrap a.active:after, .projectWorkContents .taskTab .milestoneSection .top .titWrap a:after {
+.projectWorkContents .taskTab .meetingPlace .top .titWrap a.active:after,
+.projectWorkContents .taskTab .meetingPlace .top .titWrap a:after {
     content: " ";
     width: 14px;
     height: 14px;
@@ -930,26 +944,25 @@ dl, li, menu, ol, ul {
     background-position: 50%;
 }
 
-.projectWorkContents .taskTab .milestoneSection .top .titWrap a:after {
+.projectWorkContents .taskTab .meetingPlace .top .titWrap a:after {
     -webkit-transform: rotate(-180deg);
     -moz-transform: rotate(-180deg);
     transform: rotate(-180deg);
 }
 
-.projectWorkContents .taskTab .milestoneSection .bottom.active {
-    height: auto;
-}
 
-.projectWorkContents .taskTab .milestoneSection .bottom {
-    margin-top: 6px;
+
+.projectWorkContents .taskTab .meetingPlace .bottom,
+.projectWorkContents .taskTab .place .bottom{
+    margin-top: 10px;
     -webkit-transition: all .2s;
     -moz-transition: all .2s;
     transition: all .2s;
-    height: 0;
-    overflow: hidden;
+    height: 150px;
+    vertical-align: middle;
 }
 
-.projectWorkContents .taskTab .milestoneSection .bottom p {
+.projectWorkContents .taskTab .meetingPlace .bottom p {
     font-size: .875rem;
     color: #8e8ea2;
     line-height: 1.25rem;
@@ -966,6 +979,20 @@ dl, li, menu, ol, ul {
 
 .projectWorkContents .taskTab .taskInputSection .taskInput input {
     width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 12px 24px;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    font-size: .875rem;
+    color: #222;
+    line-height: 1.1875rem;
+}
+
+.projectWorkContents .taskTab .meetingPlace .top input,
+.projectWorkContents .taskTab .place .top input {
+    width: 87%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -1082,11 +1109,12 @@ input {
     width: 1px;
 }
 
-.projectWorkContents .taskTab .taskInputSection .addTaskPosition {
+.projectWorkContents .taskTab .taskInputSection .addTaskAssign {
     right: 270px;
 }
 
-.projectWorkContents .taskTab .taskInputSection .addTaskAssign, .projectWorkContents .taskTab .taskInputSection .addTaskButton, .projectWorkContents .taskTab .taskInputSection .addTaskPosition {
+.projectWorkContents .taskTab .taskInputSection .addTaskAssign, .projectWorkContents .taskTab .taskInputSection .addTaskButton,
+.projectWorkContents .taskTab .taskInputSection .addTaskPosition {
     position: absolute;
 }
 
@@ -1127,7 +1155,7 @@ input {
     color: #333;
 }
 
-.projectWorkContents .taskTab .taskInputSection .addTaskAssign {
+.projectWorkContents .taskTab .taskInputSection .addTaskPosition {
     right: 92px;
 }
 
@@ -1397,6 +1425,39 @@ projectWorkContents .memberTaskSection .memberTaskWrap .donetaskContentsWrap, .p
     color: #c9c9d9;
 }
 
+/* 진행 완료 버튼 */
+.projectWorkContents .memberTaskSection .memberTaskWrap .taskContentsWrap .btnWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    position: absolute;
+    right: 20px;
+}
+
+.projectWorkContents .memberTaskSection .memberTaskWrap .taskContentsWrap .btnWrap .statusCircle {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 3px 13px!important;
+    border-radius: 100px;
+    display: -moz-inline-box;
+    display: inline-flex;
+    background-color: #1A7CFF;
+    margin-right: 8px;
+}
+
+.projectWorkContents .memberTaskSection .memberTaskWrap .taskContentsWrap .btnWrap .statusCircle span {
+    font-size: .75rem!important;
+    color: #fff!important;
+}
+
+
+
+
 .projectWorkContents .memberTaskSection {
     margin-top: 30px;
 }
@@ -1479,6 +1540,15 @@ projectWorkContents .memberTaskSection .memberTaskWrap .donetaskContentsWrap, .p
     margin-bottom: 0;
 }
 
+.projectWorkContents .memberTaskSection .memberTaskWrap .taskContentsWrap .placeWrap{
+    margin-top: 10px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+    height: 150px;
+    vertical-align: middle;
+}
+
 /* ----------------목표/마일스톤 DIV ------------------*/
 .projectWorkContents .mileStoneTab {
     display: none;
@@ -1537,10 +1607,6 @@ projectWorkContents .memberTaskSection .memberTaskWrap .donetaskContentsWrap, .p
     color: #222;
     border: 1px solid #f2f2f2;
     width: auto;
-}
-
-.projectDetailWrap button:last-child {
-    margin-left: 12px;
 }
 
 .projectDetailWrap button {
@@ -1608,13 +1674,23 @@ input[type=password], input[type=search], input[type=submit], input[type=text] {
     -webkit-text-fill-color: #8e8ea2;
 }
 
+.projectWorkContents .mileStoneTab .mileStoneContentsWrap .mileStoneTxt textarea {
+    width: 100%;
+    resize: none;
+    background-color: #fff;
+    border: none;
+    color: #8e8ea2;
+    font-size: .825rem;
+}
+
 .projectWorkContents .mileStoneTab .mileStoneContentsWrap .top .date {
     font-size: 13px;
     color: #ccc;
     margin-right: 5px;
 }
 
-.projectWorkContents .mileStoneTab .mileStoneContentsWrap.completedMilestoneWrap .mileStoneTxt {
+.projectWorkContents .mileStoneTab .mileStoneContentsWrap.completedMilestoneWrap .mileStoneTxt,
+.projectWorkContents .mileStoneTab .mileStoneContentsWrap .mileStoneTxt{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -1636,7 +1712,7 @@ input[type=password], input[type=search], input[type=submit], input[type=text] {
 
 .projectWorkContents .mileStoneTab .mileStoneContentsWrap .top .statusCircle span {
     font-size: .75rem!important;
-    color: #c9c9d9!important;
+    color: #fff!important;
 }
 
 .projectWorkContents .mileStoneTab .mileStoneContentsWrap .top button {
@@ -1710,11 +1786,21 @@ input[type=password], input[type=search], input[type=submit], input[type=text] {
     color: #fff;
 }
 
-/* 유저네임 호버 시, 리스트 출력 관련*/
+/* 유저네임 호버 시, 리스트 출력 관련 */
 
 .letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu li:hover,
 .letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu li a:hover {
     color: #fff;
     background-color: #1A7CFF;
 }
+
+/* 하트 버튼 */
+.top .favorite.active,
+.top .topFavorite.active {
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-full.5a5209416a8859031c9099b5540c281a.svg);
+}
+
+/* 모든 멤버일 경우, 온오프, 선택 가능 */
+
+
 

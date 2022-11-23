@@ -7,7 +7,7 @@
     font-weight: normal;
     font-style: normal;
 }
-
+html, body { max-width: 100%; overflow-x: hidden; }
 body{
     font-family: 'GmarketSansMedium';
 }
@@ -1430,3 +1430,40 @@ section {
 .banners_active{
     display: none;
 }
+
+.chattingHeader .right.active {
+    display: inline-flex;
+}
+
+.chattingSection .right.active {
+    display: inline-flex;
+}
+
+.chattingHeader .left {
+    display: block;
+}
+
+.chattingSection .list.left {
+    display: block;
+}
+
+@media screen and (max-width: 1024px) {
+    .rightHead {
+        display: none !important;
+    }
+
+    .rightBody {
+        display: none !important;
+    }
+
+    .leftHead {
+        display: none !important;
+    }
+
+    .leftBody {
+        display: none !important;
+    }
+
+}
+
+

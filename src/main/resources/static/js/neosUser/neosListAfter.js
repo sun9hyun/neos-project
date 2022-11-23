@@ -10,7 +10,7 @@ $(".userName").on("mouseout", function () {
     $(this).children('.idHoverMenu').css("display", "none");
 })
 
-$(".favorite").on("click", function () {
+$(".heart").on("click", function () {
     $(this).toggleClass('active');
 })
 

@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <title>NEOS | 마이페이지</title>
 
-    <link rel="stylesheet" href="/css/neosUser/neosListPrev.css">
+    <link rel="stylesheet" href="/css/neosUser/neosListNext.css">
     <link rel="stylesheet" href="/css/study/listStudy.css">
     <link rel="stylesheet" href="/css/store/storeList.css">
     <link rel="stylesheet" href="/css/myPage/myPage.css">
-    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/loginHeader.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
-<header th:replace="/app/fix/header.html :: header"></header>
+<header th:replace="/app/fix/loginHeader.html :: header"></header>
 <section class="mypage">
     <div class="commonContentViewHeader">
         <h1>
@@ -90,7 +90,7 @@
                         <div class="rightWrap selectFour">
                             <select class=" KRUni">
                                 <option value="KR00">지역 미지정</option>
-                                <option value="KR01">서울특별시</option>
+                                <option value="KR01" selected="selected">서울특별시</option>
                                 <option value="KR02">경기도</option>
                                 <option value="KR03">부산광역시</option>
                                 <option value="KR04">인천광역시</option>
@@ -251,7 +251,7 @@
                                 <option value="145">신경대학교</option>
                                 <option value="146">신한대학교</option>
                                 <option value="147">상지대학교</option>
-                                <option value="148">서울대학교</option>
+                                <option value="148" selected="selected">서울대학교</option>
                                 <option value="149">서원대학교</option>
                                 <option value="150">세명대학교</option>
                                 <option value="151">상명대학교</option>
@@ -422,8 +422,8 @@
 
                         </div>
                         <div style="display: flex; margin: 15px 0;">
-                            <input type="text" class="uniEmail" placeholder="대학교 이메일 인증">
-                            <button type="button" class="uniButton">인증전송</button>
+                            <input type="text" class="uniEmail" placeholder="대학교 이메일">
+                            <p class="uniEmailText" style="line-height: 44px;">@snu.ac.kr</p>
                         </div>
                         <div class="checkboxs">
                             <input type="checkbox" id="uni_radio" style="width: 20px; height: 20px; margin: 8px; margin-left: 0;">
@@ -527,7 +527,7 @@
                                 <option value="INFJ">INFJ</option>
                                 <option value="INTJ">INTJ</option>
                                 <option value="ISTP">ISTP</option>
-                                <option value="ISFP">ISFP</option>
+                                <option value="ISFP" selected="selected">ISFP</option>
                                 <option value="INTP">INTP</option>
                                 <option value="INFP">INFP</option>
                                 <option value="ESTP">ESTP</option>
@@ -536,7 +536,7 @@
                                 <option value="ENFP">ENFP</option>
                                 <option value="ESTJ">ESTJ</option>
                                 <option value="ESFJ">ESFJ</option>
-                                <option value="ENTJ" selected="selected">ENTJ</option>
+                                <option value="ENTJ">ENTJ</option>
                                 <option value="ENFJ">ENFJ</option>
                             </select>
                         </div>
@@ -697,7 +697,7 @@
                                 <img src="/images/study/inha.png">
                             </div>
                         </div>
-                        <div class="favorite "></div>
+                        <div class="favorite active"></div>
                     </div>
                     <div class="projectThumb"><img  src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_11.png" alt="커뮤니티 연계 교통 정보 어플"></div>
                 </div>
@@ -731,40 +731,57 @@
                 <li class="letspler_Re">
                     <div class="top">
                         <div class="profilePicWrap">
-                            <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png" alt="추추추"></div>
-                            <a class="favorite "></a>
+                            <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png" alt="아무무"></div>
+                            <a class="favorite heart active"></a>
                         </div>
                         <div class="profileTxt">
-                            <div class="idWrap"><img  class="userLv" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_8.png" alt="렛플렙">
-                                <h2 class="userName">추추추
+                            <div class="idWrap"><img loading="lazy" class="userLv" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_7.png" alt="렛플렙">
+                                <h2 class="userName">
+                                    <span class="name">아무무</span>
                                     <ul class="idHoverMenu">
-                                        <li><a>프로필 상세</a></li>
-                                        <li><a>1:1 대화</a></li>
-                                        <li><a>모임 초대</a></li>
+                                        <li><a class="detail">프로필 상세</a></li>
+                                        <li><a class="chat">1:1대화</a></li>
+                                        <li><a class="invite">스터디 초대</a></li>
                                     </ul>
                                 </h2>
-                                <div class="certiWrap"><img  class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-gray.png" alt="휴대폰인증"></div>
+                                <div class="certiWrap"><img loading="lazy" class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-red.png" alt="실명인증"></div>
                             </div>
                             <div class="coffeAndHeart">
-                                <div><img  src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>1</span></div>
-                                <div><img  src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>3</span></div>
+                                <div><img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="커피포인트"><span>3</span></div>
+                                <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>0</span></div>
                             </div>
                         </div>
                     </div>
                     <div class="bottom">
                         <ul class="userFavorite">
                             <li>
-                                <h3><span>[본캐]&nbsp;웹 서버</span><span> 초심자</span></h3>
+                                <h3><span>[대학]&nbsp;<span class="university"> 순천대학교</span></span><span> 3학년</span></h3>
                             </li>
                             <li>
-                                <h3><span> [부캐]&nbsp;미입력</span><span></span></h3>
+                                <h3><span> [전공]&nbsp;<span class="major"> 사회복지학과</span></span><span></span></h3>
                             </li>
                         </ul>
-                        <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
-                        <div class="userInfoTagWrap"></div>
+                        <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
+                        <div class="userInfoTagWrap">
+                            <div>
+                                <h3>#FLUTTER</h3>
+                            </div>
+                            <div>
+                                <h3>#ANDROID</h3>
+                            </div>
+                            <div>
+                                <h3>#웹앱</h3>
+                            </div>
+                            <div>
+                                <h3>#앱개발자</h3>
+                            </div>
+                            <div>
+                                <h3>#대기업</h3>
+                            </div>
+                        </div>
                         <a class="chatBtn">
-                            <div><img  src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>Coffee
-                                    Chat</span></div>
+                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="커피포인트"><span>NEO
+                                    CHAT</span></div>
                         </a>
                     </div>
                 </li>
@@ -772,50 +789,45 @@
                 <li class="letspler_Re">
                     <div class="top">
                         <div class="profilePicWrap">
-                            <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png" alt="Alex"></div>
-                            <a class="favorite "></a>
+                            <div class="profilePic"><img src="https://k.kakaocdn.net/dn/7ZJ2p/btrCwaZdmw8/5h3vTtKUE3Lm2QRWQ3Q761/img_640x640.jpg" alt="김기명"></div>
+                            <a class="favorite heart active"></a>
                         </div>
                         <div class="profileTxt">
-                            <div class="idWrap"><img  class="userLv" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_11.png" alt="렛플렙">
-                                <h2 class="userName">Alex
+                            <div class="idWrap"><img loading="lazy" class="userLv" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_7.png" alt="렛플렙">
+                                <h2 class="userName">
+                                    <span class="name">김기명</span>
                                     <ul class="idHoverMenu">
-                                        <li><a>프로필 상세</a></li>
-                                        <li><a>1:1 대화</a></li>
-                                        <li><a>모임 초대</a></li>
+                                        <li><a class="detail">프로필 상세</a></li>
+                                        <li><a class="chat">1:1대화</a></li>
+                                        <li><a class="invite">스터디 초대</a></li>
                                     </ul>
                                 </h2>
-                                <div class="certiWrap"><img  class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-red.png" alt="실명인증"></div>
+                                <div class="certiWrap"><img loading="lazy" class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-red.png" alt="실명인증"></div>
                             </div>
                             <div class="coffeAndHeart">
-                                <div><img  src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>1</span></div>
-                                <div><img  src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>3</span></div>
+                                <div><img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="커피포인트"><span>1</span></div>
+                                <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>2</span></div>
                             </div>
                         </div>
                     </div>
                     <div class="bottom">
                         <ul class="userFavorite">
                             <li>
-                                <h3><span>[본캐]&nbsp;웹 서버</span><span> 중수</span></h3>
+                                <h3><span>[대학]&nbsp;<span class="university"> 남해도립대학교</span></span><span> 1학년</span></h3>
                             </li>
                             <li>
-                                <h3><span> [부캐]&nbsp;미입력</span><span></span></h3>
+                                <h3><span> [전공]&nbsp;<span class="major"> 호텔조리학과</span></span><span></span></h3>
                             </li>
                         </ul>
-                        <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>3</span>개 있습니다</p>
+                        <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
                         <div class="userInfoTagWrap">
                             <div>
-                                <h3>#끈기</h3>
-                            </div>
-                            <div>
-                                <h3>#집중력</h3>
-                            </div>
-                            <div>
-                                <h3>#체력</h3>
+                                <h3>#영업 #초보 #렛플</h3>
                             </div>
                         </div>
                         <a class="chatBtn">
-                            <div><img src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>Coffee
-                                    Chat</span></div>
+                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="커피포인트"><span>NEO
+                                    CHAT</span></div>
                         </a>
                     </div>
                 </li>
@@ -1039,7 +1051,9 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/login.js"></script>
 <script src="/js/myPage/myPage.js"></script>
 <script src="/js/study/listStudy.js"></script>
+<script src="/js/neosUser/neosListAfter.js"></script>
 <script src="/js/store/storeList.js"></script>
 </html>

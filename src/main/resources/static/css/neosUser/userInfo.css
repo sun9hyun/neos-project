@@ -495,11 +495,11 @@ b, strong {
     background-color: #594bba;
 }
 
-.top .badgeWrap .badge {
-    box-sizing: border-box;
-    padding: 4px 10px;
-    margin-right: 4px;
-}
+/*.top .badgeWrap .badge {*/
+/*    box-sizing: border-box;*/
+/*    padding: 4px 10px;*/
+/*    margin-right: 4px;*/
+/*}*/
 
 .top .badgeWrap .badge h2, .top .badgeWrap .badge span {
     color: #fff;
@@ -515,6 +515,7 @@ b, strong {
     background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-white.b1db0e3e169a5cf61afa41daf5bfdc15.svg);
     background-repeat: no-repeat;
     background-size: contain;
+    margin-top: -20px;
 }
 
 .top .favorite2.active2 {
@@ -1114,7 +1115,26 @@ b, strong {
     cursor: pointer;
 }
 
+.badge > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
+.badge {
+    display: block;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+}
+
+.projectGridWrap .projectTopInfo .projectThumb img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
 
 
 

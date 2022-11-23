@@ -35,7 +35,7 @@ $(".favorite").on("click", function () {
 /*스터디 누르면 나오는 모달 + 하트 불 들어오고 나가고*/
 
 $(".favorite2").click(function(){
-    let name = $(this).closest(".projectInfo").find(".studyName").text();
+    let name = $(this).closest(".projectInfo").find(".projectWrap .tit").text();
     let text = "";
     text += `<p class="modalTit">` + name + `를</p>`
     text += `<p class="modalTit">구독하시겠습니까?</p>`

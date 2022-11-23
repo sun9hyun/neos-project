@@ -49,6 +49,14 @@ input, textarea, select {
     display: none;
 }
 
+.updateOkModal {
+    display: none;
+}
+
+.quitModal {
+    display: none;
+}
+
 
 
 .allModal {

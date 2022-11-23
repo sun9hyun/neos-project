@@ -188,3 +188,33 @@ $file.change(function(e){
         }
     };
 });
+
+
+/*--모달 관련-----------------------------------------------------*/
+$(".updateBtn").on("click", function () {
+    $(".updateOkModal").css("display", "block");
+})
+
+$(".quitBtn").on("click", function () {
+    $(".quitModal").css("display", "block");
+})
+
+$(".closeBtn").on("click", function () {
+    $(".updateOkModal").css("display", "none");
+})
+
+$(".okBtn").on("click", function () {
+    $(".updateOkModal").css("display", "none");
+})
+
+$(".closeBtn").on("click", function () {
+    $(".quitModal").css("display", "none");
+})
+
+$(".redBtn").on("click", function () {
+    $(".quitModal").css("display", "none");
+})
+
+$(".whiteBtn").on("click", function () {
+    $(".quitModal").css("display", "none");
+})

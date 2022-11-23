@@ -5,6 +5,7 @@
     <title>NEOS | 마이페이지</title>
 
     <link rel="stylesheet" href="/css/neosUser/neosListNext.css">
+    <link rel="stylesheet" href="/css/neosUser/modalList.css">
     <link rel="stylesheet" href="/css/study/listStudy.css">
     <link rel="stylesheet" href="/css/store/storeList.css">
     <link rel="stylesheet" href="/css/myPage/myPage.css">
@@ -552,10 +553,10 @@
                 </div>
 
                 <div class="btnWrap">
-                    <button class="redBtn">업데이트</button>
+                    <button class="redBtn updateBtn">업데이트</button>
                 </div>
                 <p class="secessionTxt" style="font-size: 14px; color: gray; margin-top: 50px; margin-bottom: 20px;">👉 렛플을 탈퇴하려면
-                    <a style="color: #1A7CFF; text-decoration: underline; margin-left: 4px; cursor: pointer">여기</a>
+                    <a class="quitBtn" style="color: #1A7CFF; text-decoration: underline; margin-left: 4px; cursor: pointer">여기</a>
                     를 눌러주세요.
                 </p>
             </div>
@@ -1047,6 +1048,7 @@
 
 
 </section>
+<div th:replace="/app/neosUser/modalList.html :: modalSpace"></div>
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
 

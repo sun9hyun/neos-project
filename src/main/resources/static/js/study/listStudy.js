@@ -27,3 +27,21 @@ $('.topFavorite').click(function(){
 $(".favorite").on("click", function () {
     $(this).toggleClass('active');
 })
+
+/*--정보 대학교 선택-----------------------------------------------------*/
+var $citySelect = $(".citySelect");
+
+$('.uniSelect').attr('disabled',true);
+// $('.fieldSelect').attr('disabled',true);
+
+$citySelect.on("change", function() {
+    var $city = $(this).val();
+
+    if($city == "KR00"){
+        $('.uniSelect').attr('disabled',true);
+        // $('.fieldSelect').attr('disabled',true);
+    }else{
+        $('.uniSelect').removeAttr('disabled');
+        // $('.fieldSelect').removeAttr('disabled');
+    }
+});

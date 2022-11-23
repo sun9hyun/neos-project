@@ -133,6 +133,22 @@ dl, li, menu, ol, ul {
     border-radius: 4px!important;
 }
 
+.buildStudyContents .answer div .inputWrap select,
+.selectBox select,
+.selectBoxLeft select{
+    background-color: #fff;
+    background-image: url(https://letspl.me/_next/static/media/option-triangle.2abb88b721408916136ac6048ff74b95.svg);
+    background-position: 99%;
+    background-repeat: no-repeat;
+    -webkit-appearance: none!important;
+
+}
+
+.onOffSelect, .onOffResult  {
+    background-position: 97.8% !important;
+}
+
+
 .selectBox select   {
     width: 100%;
     padding: 12px 10px;

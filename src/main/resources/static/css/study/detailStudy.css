@@ -399,12 +399,41 @@ fieldset, img {
     font-weight: 400;
 }
 
-.projectInfoTabContents .section.statusSection ul li .positionNum2 {
+.projectInfoTabContents .section.statusSection ul li span {
     font-size: 15px;
     line-height: 1.3125rem;
     color: #424251;
     margin-right: 34px;
+    width: 40px;
 }
+
+.projectInfoTabContents .section.statusSection ul li .active {
+    font-size: 15px;
+    line-height: 1.3125rem;
+    color: #1A7CFF !important;
+    margin-right: 34px;
+}
+
+/* 모집 중인 경우, 모집 현황*/
+.projectInfoTabContents .section.statusSection ul li button {
+    font-size: .75rem;
+    color: #81839c;
+    padding: 5px 30px!important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #81839c;
+    border-radius: 2px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
+
+.projectInfoTabContents .section.statusSection ul li button:hover{
+    background-color: #81839c;
+    color : #fff;
+}
+
 
 .projectInfoTabContents .section.statusSection ul li button:disabled {
     background-color: #1A7CFF;
@@ -686,7 +715,7 @@ button {
 }
 
 .letspler_Re {
-    max-width: 285px;
+    max-width: 264px;
     width: 100%;
     border-radius: 10px;
     border: 1px solid #e5e5e5;
@@ -910,7 +939,7 @@ button {
     justify-content: center;
     padding: 6px;
     font-size: 13px;
-    margin-top: 10px;
+    margin-top: 15px;
     -moz-box-align: center;
     align-items: center;
     cursor: pointer;

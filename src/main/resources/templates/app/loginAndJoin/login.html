@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" >
-    <title>로그인 모달</title>
+    <title></title>
     <link rel="stylesheet" href="/css/loginAndJoin/login.css">
     <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
@@ -25,20 +25,20 @@
         </div>
         <div class="joinAndLoginWrap">
             <a class="joinAndLogin">가입</a>
-            <a class="login" style="font-size: 14px; color: #666; cursor: pointer " >로그인</a>
+            <a class="login logingbutton" style="font-size: 14px; color: #666; cursor: pointer " >로그인</a>
 
         </div>
     </div>
 </nav>
 
 <!--회원 가입 모달-->
-<div class="modalWrapOpen">
+<div class="modalWrapOpen loginModal1">
     <div class="loginModal"><p class="modalTit">로그인</p>
-                <button class="closeBtn" onclick="closeModal()" ><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" style="cursor: pointer;"></button>
+                <button class="closeBtn closeButton" onclick="closeModal()" ><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" style="cursor: pointer;"></button>
                 <button class="loginBtn naver" style="cursor: pointer;">네이버 아이디로 로그인<!-- --> </button>
                 <button class="loginBtn kakao" style="cursor: pointer;">카카오 계정으로 로그인</button>
                 <button class="loginBtn google" style="cursor: pointer;">구글 계정으로 로그인</button>
-                <a class="signupBtn" style="cursor: pointer;">회원 가입하기</a></div>
+                <a class="signupBtn signupButton" style="cursor: pointer;"></a></div>
 </div>
 
 <div th:replace="/app/fix/footer.html :: footer"></div>
@@ -49,34 +49,7 @@
 <script src="/js/loginAndJoin/login.js"></script>
 
 <script>
-        // /* 회원 가입 누르면 모달  */
-        // $(document).ready(function() {
-        // console.log("들어왔다");
-        // $('.login').on('click', function() {
-        // console.log("또들어왔넴")
-        // $('.loginModal').toggleClass('open');
-        // return false;
-        // });
-        // console.log("한번더 들어왔따")
-        // });
-        //
-        // /* 모달 닫기 할 떄 닫힘*/
-        // function closeModal() {
-        // $('.loginModal').toggleClass();
-        // window.location.reload();
-        // };
 
-        $(".login").on("click", function () {
-            $(".modalWrapOpen").css("display", "block");
-        })
-
-        $(".closeBtn").on("click", function () {
-            $(".modalWrapOpen").css("display", "none");
-        })
-
-        $(".signupBtn").on("click", function () {
-            $(".modalWrapOpen").css("display", "none");
-        })
 
 </script>
 

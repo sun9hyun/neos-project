@@ -16,23 +16,25 @@ public class JoinController {
 
 
     /*회원 가입 페이지*/
-    @GetMapping("/joinPageDetails")
+    @GetMapping("/join-page-details")
     public String joinPage(){
         return "app/loginAndJoin/joinPage";
     }
 
     /*이용약관*/
-    @GetMapping("/edragonClauselist")
+    @GetMapping("/use-clause-list")
     public String edragonClause(){
         return "app/loginAndJoin/edragonClause";
     }
+
     /*전자 금융 약관*/
-    @GetMapping("/electronicFinanceClauselist")
+    @GetMapping("/electronic-finance-clause-list")
     public String electronicFinanceClause(){
         return "app/loginAndJoin/electronicFinanceClause";
     }
+
     /*개인 정보 약관 */
-    @GetMapping("/individualClauselist")
+    @GetMapping("/individual-clause-list")
     public String individualClause(){
         return "app/loginAndJoin/individualClause";
     }

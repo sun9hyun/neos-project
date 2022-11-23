@@ -12,7 +12,7 @@ body {
     font-family: 'GmarketSansMedium';
 }
 
-.modalWrapOpen .loginModal {
+.loginModal1 .loginModal {
     max-width: 384px;
     width: 100%;
     border-radius: 8px;
@@ -29,18 +29,18 @@ body {
     position: relative;
 }
 
-.modalWrapOpen .loginModal p.modalTit {
+.loginModal1 .loginModal p.modalTit {
     margin-bottom: 32px;
 }
 
-.modalWrapOpen .loginModal p {
+.loginModal1 .loginModal p {
     font-size: 1.5rem;
     color: #333;
     font-weight: 700;
     position: relative;
 }
 
-.modalWrapOpen .loginModal .closeBtn {
+.loginModal1 .loginModal .closeButton {
     width: 36px;
     height: 36px;
     background: none;
@@ -54,7 +54,7 @@ fieldset, img {
     border: 0;
 }
 
-.modalWrapOpen .loginModal .loginBtn.naver {
+.loginModal1 .loginModal .loginBtn.naver {
     background-color: #1eb400;
     color: #fff;
     background-image: url(https://letspl.s3.ap-northeast-2.amazonaws.com/images/icon/Ic-sns-naver.png);
@@ -63,7 +63,7 @@ fieldset, img {
     background-repeat: no-repeat;
 }
 
-.modalWrapOpen .loginModal .loginBtn {
+.loginModal1 .loginModal .loginBtn {
     width: 100%;
     border: none;
     border-radius: 4px;
@@ -76,7 +76,7 @@ fieldset, img {
     margin-bottom: 6px;
 }
 
-.modalWrapOpen .loginModal .loginBtn.naver:after {
+.loginModal1 .loginModal .loginBtn.naver:after {
     content: "";
     height: 100%;
     position: absolute;
@@ -90,7 +90,7 @@ fieldset, img {
     box-shadow: 0 3px 12px 0 rgb(0 0 0 / 20%);
 }
 
-.modalWrapOpen .loginModal .loginBtn.kakao {
+.loginModal1 .loginModal .loginBtn.kakao {
     background-color: #f7e317;
     color: #3e201e;
     background-image: url(https://letspl.s3.ap-northeast-2.amazonaws.com/images/icon/ic-sns-kk.png);
@@ -100,7 +100,7 @@ fieldset, img {
 }
 
 
-.modalWrapOpen .loginModal .loginBtn.google {
+.loginModal1 .loginModal .loginBtn.google {
     background-color: #fff;
     border: 1px solid #888;
     color: #444;
@@ -110,7 +110,7 @@ fieldset, img {
     background-repeat: no-repeat;
 }
 
-.modalWrapOpen .loginModal .signupBtn {
+.loginModal1 .loginModal .signupButton {
     font-size: .75rem;
     color: #8e8ea2;
     text-decoration: none;
@@ -146,7 +146,7 @@ fieldset, img {
     width: 100%;
 }
 
-.modalWrapOpen {
+.loginModal1 {
     position: fixed;
     left: 0;
     top: 0;

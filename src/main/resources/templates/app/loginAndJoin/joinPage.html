@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org>
 <head>
     <meta charset="UTF-8" ">
-    <title>회원가입 페이지</title>
+    <title></title>
     <link rel="stylesheet" href="/css/loginAndJoin/joinPage.css">
     <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
@@ -40,11 +40,15 @@
                             class="smTxt"></span>
                     </div>
                 </li>
+
+
+
+
+
                 <li><label for="">닉네임</label>
                     <div class="inputWrap threeInput row"><input type="text" id="user_nickname" name="user_nickname"
                                                                  class="midInput" value="" autocomplete="on" minlength="3" maxlength="10"
-                                                                 placeholder="3~10자리 이내로 적어주세요!"><span class="smTxt" style="color:#1A7CFF;">닉네임에 특수문자는
-                                사용이 불가능합니다</span></div>
+                                                                 placeholder="3~10자리 이내로 적어주세요!" style="width: 100%; outline: none"></div>
                 </li>
 
                 <li class="fourSelect"><label for=""> 본 캐릭터 설정 </label>
@@ -54,17 +58,33 @@
 
                     <div class="inputWrap threeInput row">
                         <div class="threeInTwoInput">
-                            <select class="checkBtn">
-                                <option value="01">지역 구분</option>
-                                <option value="02">경상남도</option>
+                            <select class="checkBtn KRUni">
+                                <option value="KR00">지역 미지정</option>
+                                <option value="KR01">서울특별시</option>
+                                <option value="KR02">경기도</option>
+                                <option value="KR03">부산광역시</option>
+                                <option value="KR04">인천광역시</option>
+                                <option value="KR05">대구광역시</option>
+                                <option value="KR06">경상남도</option>
+                                <option value="KR07">경상북도</option>
+                                <option value="KR08">대전광역시</option>
+                                <option value="KR09">충청남도</option>
+                                <option value="KR10">충청북도</option>
+                                <option value="KR11">전라남도</option>
+                                <option value="KR12">전라북도</option>
+                                <option value="KR13">광주광역시</option>
+                                <option value="KR14">강원도</option>
+                                <option value="KR15">울산광역시</option>
+                                <option value="KR16">제주특별자치도</option>
+                                <option value="KR17">세종특별자치시</option>
                             </select>
 
 
-                            <select class="checkBtn">
+                            <select class="checkBtn selectUni">
                             <option selected="" value="02">대학교</option>
                             <option value="03">가톨릭대학교</option>
                             <option value="04">건국대학교</option>
-                          <!--  <option value="05">경기대학교</option>
+                            <option value="05">경기대학교</option>
                             <option value="06">고려대학교</option>
                             <option value="07">광운대학교</option>
                             <option value="08">국민대학교</option>
@@ -350,8 +370,8 @@
                             <option value="282">한영대학교</option>
                             <option value="283">한국승강기대학교</option>
                             <option value="284">한양여자대학교</option>
-                            <option value="285">한국폴리텍Ⅰ대학</option>-->
-                        </select><select class="checkBtn">
+                            <option value="285">한국폴리텍Ⅰ대학</option>
+                        </select><select class="checkBtn selectUni">
                             <option selected="" value="0201">전공</option>
                             <option value="0202">인문계열</option>
                             <option value="0203">사회계열</option>
@@ -362,7 +382,7 @@
                             <option value="0208">교육계열</option>
                             <option value="0209">IT계열</option>
                             <option value="0210">기타계열</option>
-                        </select><select class="checkBtn">
+                        </select><select class="checkBtn selectUni">
                         <option value="01">학년</option>
                         <option value="02">1학년</option>
                         <option value="03">2학년</option>
@@ -372,9 +392,22 @@
                         </div>
                     </div>
                 </li>
-                <div class="checkboxs">
-                    <input id="checkB" type="checkbox" />
-                    <label for="coding">해당사항 없음</label>
+
+                <!-- 대학 인증 -->
+                <li><label style="width: 109px;" >대학 이메일 </label>
+                    <div class="inputWrap " style="display: flex; margin: 15px 0;  position: relative;">
+                        <input class="checkBtn unEmail" type="text" placeholder="대학교 이메일을 적어주세요 !" style="width: 50%; outline: none; padding: 10px;">
+                        <p class="uniEmailText" style="line-height: 44px; position: absolute; margin-left: 547px;">@snu.ac.kr</p>
+
+
+                    </div>
+
+                </li>
+
+
+                <div class="checkboxs" style="position: relative;">
+                    <input id="checkB" type="checkbox" style="width: 20px; height: 20px; margin: 8px; margin-left: 0;" />
+                    <label  style="position: absolute; margin-top: 9px; font-size: 12.5px; color: #6e6e6e;">해당사항 없음</label>
                 </div>
 
                 <div class="btnWrap"><button value="가입완료" class="grayBtn" disabled="">가입완료</button></div>
@@ -385,26 +418,7 @@
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/loginAndJoin/joinPage.js"></script>
 
-<script>
-
-
-    /* 해당사항 없음 체크 할때 본 캐릭터 설정 막아줌 */
-    $('#checkB').on('click', function(){
-        var cancelBtn = document.getElementById('checkB');
-
-        if( cancelBtn.checked ){
-             $('.checkBtn').attr('disabled',true)
-        } else{
-            $('.checkBtn').removeAttr('disabled')
-        }
-    })
-
-
-
-
-
-
-</script>
 
 </html>

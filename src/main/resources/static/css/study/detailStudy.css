@@ -19,6 +19,7 @@ html {
 body {
     background: #fff;
     -webkit-text-size-adjust: none;
+    overflow: unset;
 }
 
 blockquote, body, button, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, pre, select, td, textarea, th, ul {

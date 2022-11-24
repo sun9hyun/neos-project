@@ -1,0 +1,23 @@
+package com.app.neosproject.controller.notice;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/notice/*")
+public class NoticeController {
+    @GetMapping("/list")
+    public String notice(){
+        return "app/notice/notice";
+    }
+
+    @GetMapping("/details")
+    public String noticeDetails(){
+        return "app/notice/noticeDetails";
+    }
+
+
+
+
+}

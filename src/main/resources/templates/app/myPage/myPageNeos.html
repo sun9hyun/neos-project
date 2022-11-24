@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NEOS | 마이페이지</title>
+    <link rel="stylesheet" href="/css/myPage/myPageNeos.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
+</head>
+<body>
+    <header th:replace="/app/fix/header.html :: header"></header>
+    <section class="mypage">
+        <div class="commonContentViewHeader">
+            <h1>
+                <span class="smTxt">LET'S see</span>
+                <span class="bgTxt">마이페이지</span>
+            </h1>
+        </div>
+
+        <div class="myTabMenu">
+            <ul>
+                <li class="">
+                    <a name="info">정보</a>
+                </li>
+                <li class="">
+                    <a name="project">스터디(1)</a>
+                </li>
+                <li class="">
+                    <a name="story">자료상점(1)</a>
+                </li>
+                <li class="">
+                    <a name="favorite">구독(3)</a>
+                </li>
+                <li class="">
+                    <a name="alarm">알림(6)</a>
+                </li>
+                <li class="">
+                    <a name="payment">포인트</a>
+                </li>
+                <li class="active">
+                    <a name="exp">네오력</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="myTabContents paymentHistoryTab active">
+            <h3 class="tabCommonTit">네오력 L<!-- -->2<!-- --> (<!-- -->280<!-- -->) - 다음까지&nbsp;<!-- -->20</h3>
+            <div class="payTabmenu"></div>
+
+            <div class="payTabContents">
+              <div class="payTable chargeTable active">
+                  <table>
+                      <thead>
+                      <tr>
+                          <th>날짜</th>
+                          <th>네오력</th>
+                          <th>상세</th>
+                      </tr>
+                      </thead>
+
+                      <tbody>
+                      <tr><td>22.11.15  00:45</td><td>10</td><td>일일 로그인 완료</td></tr>
+                      <tr><td>22.11.14  17:10</td><td>-50</td><td>스터디&amp;네트워킹 구독 취소</td></tr>
+                      <tr><td>22.11.14  17:09</td><td>50</td><td>스터디&amp;네트워킹 구독</td></tr>
+                      <tr><td>22.11.14  17:09</td><td>-50</td><td>스터디&amp;네트워킹 구독 취소</td></tr>
+                      <tr><td>22.11.14  17:09</td><td>30</td><td>네오스인 구독</td></tr>
+                      <tr><td>22.11.14  01:54</td><td>10</td><td>일일 로그인 완료</td></tr>
+                      <tr><td>22.11.13  22:00</td><td>30</td><td>댓글 등록</td></tr>
+                      <tr><td>22.11.13  18:06</td><td>10</td><td>일일 로그인 완료</td></tr>
+                      <tr><td>22.11.11  08:26</td><td>50</td><td>스터디&amp;네트워킹 구독</td></tr>
+                      <tr><td>22.11.11  08:21</td><td>10</td><td>일일 로그인 완료</td></tr>
+                      <tr><td>22.11.08  19:40</td><td>50</td><td>노트 글 작성</td></tr>
+                      <tr><td>22.11.08  17:49</td><td>30</td><td>네오스인 구독</td></tr>
+                      </tbody>
+
+
+                  </table>
+              </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <div th:replace="/app/fix/footer.html :: footer"></div>
+
+</body>
+</html>

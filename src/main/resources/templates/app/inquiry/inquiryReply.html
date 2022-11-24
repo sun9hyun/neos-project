@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NEOS | 내 프로필</title>
+    <link rel="stylesheet" href="/css/inquiry/inquiryReply.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
+    <link rel="stylesheet" href="/css/admin/modal.css">
+</head>
+<body>
+<header th:replace="/app/fix/header.html :: header"></header>
+<section class="userProfileSection">
+    <div class="profileInfo">
+        <div class="pic">
+            <div class="picWrap"><img
+                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png"
+                    alt="민쇼니"></div><a class="favoriteSymbol">
+            <div class="favorite active"></div>
+        </a>
+        </div>
+        <div class="profileInfoTxt">
+            <div class="profileInfoTxtFirst">
+                <div class="profileStatusSection">
+                    <div class="userTag grayTag"><span>번호미인증</span></div>
+                    <div class="userTag" style="background-color:#50a9ab;border:1px solid#50a9ab"><span>ENTP</span>
+                    </div>
+                    <div class="modifyBtn"><img src="https://letspl.me/assets/images/ic-profile-modify.png"
+                                                alt="수정"></div>
+                </div>
+                <h2 class="tit"><img class="userLv"
+                                     src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png"
+                                     alt="렛플렙">&nbsp;
+                    <!-- -->민쇼니
+                </h2>
+                <p class="introduction">마지막 로그인 :
+                    <!-- --> 오늘
+                </p>
+                <div class="topBtnWrap btnWrap"><button class="pinkBtn">1:1 대화</button><button class="blackBtn">모임
+                    초대</button></div>
+            </div>
+            <div class="myTabWrapContainer">
+                <div class="myTabWrap"><a class="">정보</a><a class="active">문의(
+                    <!-- -->1
+                    <!-- -->)
+                </a><a class="">
+
+                </a></div>
+            </div>
+            <section class="grayBg secretNote">
+                <div class="projectFeedContents mypage">
+                    <p class="tit">나의 문의함(Q&amp;A)&nbsp; <span>(1)</span></p>
+                    <div class="communiWrap"><textarea class="text123" placeholder="네오스에 궁금한게 있으신가요? 궁굼한 사항을 작성해 주세요!" rows="2"
+                                                       maxlength="1000"></textarea>
+                        <div class="buttonCountWrap">
+                            <p class="count"><span class="spanCount">0</span>/<span>500</span></p>
+                            <button class="registration" style="margin-left: 891px; position: absolute; display: none">등록</button>
+                            <button class="cance">취소</button>
+                        </div>
+                    </div>
+                    <div class="section feedUploadedSection">
+                        <div class="feedUploadWrap">
+                            <div class="feedContentsWrap">
+                                <div class="top"><a href="/people/민쇼니" target="_blank">
+                                    <div class="thumb"><img loading="lazy"
+                                                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png"
+                                                            alt="user_image"></div>
+                                </a>
+                                    <div class="name">
+                                        <p class="profileName">민쇼니
+
+                                        </p><span>22.11.09 16:51</span>
+                                    </div>
+                                </div>
+                                <div class="feedContents"><textarea class="textarea2" maxlength="1000"
+                                                                    style="font-size: 0.875rem; height: 62px !important; white:100%"
+                                                                    disabled=""  >의대에 관심있는데 안과전공한 사람들의 스터디에 들어가고싶은데 어케 들어가여?</textarea></div>
+
+                                <div class="btnWrap">
+                                    <div class="statusCircle"><span style="font-size: .75rem!important;color: #fff!important;">답변 완료</span></div>
+                                    <button class="txtBtn" onclick="modalUp()">삭제</button>
+                                </div>
+                                <div class="bottom"><a class="feedReply active">댓글 열기</a><span class="replayCount">1</span></div>
+                            </div>
+                            <div class=" replyWrap" style="display: none">
+                                <div class="replyWrapContent">
+                                    <div class="top">
+                                        <div class="left"><a href="/people/민쇼니" target="_blank">
+                                            <div class="profileThumb"><img loading="lazy"
+                                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/SIM.jpg"
+                                                                           alt="민쇼니"   style="    width: 44px;height: 53px;"></div>
+                                        </a></div>
+                                        <div class="right">
+                                            <h4 class="profileName">NM심슨<div class="hoverView">
+                                            </div>
+                                            </h4>
+                                            <p class="dateTxt">22.11.12 18:35</p>
+                                        </div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="left"></div>
+                                        <div class="txtWrap"><textarea disabled="" maxlength="500"
+                                                                       style="font-size: 0.875rem; height: 42px !important;">스터디 모집에 들어가시면 굉장히 많아요</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+<div th:replace="/app/fix/footer.html :: footer"></div>
+
+<!-- 삭제 버튼 모달 -->
+<div class="modalWrapOpen">
+    <div class="commonModal">
+        <p class="modalTit" style="font-size: 18px;margin-bottom: 15px">문의 삭제 확인</p><button class="closeBtn"><img
+            src="/images/admin/closeBtn.png" alt="close"></button>
+        <div class="commonModalContent">
+            <p style="font-size: 12px;margin-bottom: 12px;">해당 문의 글을 삭제하시겠습니까?</p>
+        </div>
+        <div class="btnWrap doubleBtnWrap"><button class="btn whiteBtn" style="font-size: 12px;line-height: 3;">아니오</button><button
+                class="btn redBtn" style="font-size: 12px;line-height: 3;">예</button></div>
+    </div>
+</div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/inquiry/inquiryReply.js"></script>
+
+<script>
+    const $deleteModal = $(".modalWrapOpen");
+    const $alertModal = $(".modalWrapOpen2")
+    const $deleteBtn = $(".companyDelete a");
+    const $cancelBtn = $(".whiteBtn");
+    const $closeBtn = $(".closeBtn")
+    const $closeBtn2 = $(".closeBtn2")
+
+    $cancelBtn.click(function () {
+        $deleteModal.hide();
+    })
+
+    $closeBtn.click(function () {
+        $deleteModal.hide();
+    })
+    $closeBtn2.click(function () {
+        $alertModal.hide();
+    })
+
+    function modalUp(){
+        $deleteModal.show();
+    }
+
+
+</script>
+
+
+
+</html>

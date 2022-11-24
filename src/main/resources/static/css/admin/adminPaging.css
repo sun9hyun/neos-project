@@ -1,0 +1,115 @@
+/* ---------------------------------------------------------------------------- */
+
+.pagingAndBtn {
+    margin-top: 20px;
+    position: relative;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.pagingAndBtn>span {
+    display: inline-block;
+}
+
+.pagingAndBtn a.btn_paging {
+    position: relative;
+}
+
+.pagingAndBtn a:first-child {
+    margin-left: 0;
+}
+
+.pagingAndBtn a {
+    float: left;
+    font-size: 100%;
+    color: #4d4f5c;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border: 1px solid #e8e9ec;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 5px;
+    font-size: .75rem;
+    border-radius: 4px;
+}
+
+.pagingAndBtn a.prev:before {
+    left: 14px;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+
+.pagingAndBtn a.next_all:after, .pagingAndBtn a.prev:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -5px;
+    width: 8px;
+    height: 8px;
+    border-bottom: 1px solid #666;
+    border-right: 1px solid #666;
+}
+
+.pagingAndBtn a.active {
+    background-color: #81839c;
+    color: #fff;
+}
+
+.pagingAndBtn a {
+    float: left;
+    font-size: 100%;
+    color: #4d4f5c;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border: 1px solid #e8e9ec;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 5px;
+    font-size: .75rem;
+    border-radius: 4px;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.pagingAndBtn a.next:before, .pagingAndBtn a.next_all:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -5px;
+    width: 8px;
+    height: 8px;
+    border-bottom: 1px solid #666;
+    border-right: 1px solid #666;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.pagingAndBtn a.next:before {
+    right: 14px;
+}
+
+.paging:hover{
+    background-color: #81839c;
+    color: #fff;
+}
+/* ---------------------------------------------------------------------------- */

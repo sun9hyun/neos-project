@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NEOS | 자료상점 글쓰기</title>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/store/storeCreate.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
+</head>
+<body>
+    <header th:replace="/app/fix/header.html :: header"></header>
+
+    <section class="buildProject storySection writeSection">
+        <div class="storyWriteTit">
+            <p><span>방구석에서 쓰는 소소한 글,</span>나만의 노하우를 알려주마💡</p>
+            <div class="writeNotice">
+                <p>Tip. 작성된 게시글은 마이페이지에서 확인 하실 수 있습니다.
+                    <span>단, 문제(저작권 등)소지가 있는 글일 경우 관리자 판단하에 글을 내릴 수 있습니다.</span>
+                </p>
+            </div>
+        </div>
+        <div class="buildProjectContents storyContentsWrap">
+            <div class="answer purpose">
+                <p class="subTit">유형</p>
+                <div class="checkWrap">
+                    <label for="step1_radio" class="checkBox">
+                        <span class="txt">무료🔓</span>
+                        <input type="radio" id="step1_radio" name="free_radio" value="01" checked class="checkFree">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label for="step2_radio" class="checkBox">
+                        <span class="txt">유료🔒</span>
+                        <input type="radio" id="step2_radio" name="free_radio" value="02" class="checkCash">
+                        <span class="checkmark"></span>
+                    </label>
+                    <input class="cashCheck" type="text" placeholder="포인트를 입력해주세요 (숫자만)" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); disabled">
+                </div>
+            </div>
+            <div class="answer titWrap">
+                <p class="subTit">제목</p>
+                <input class="textInput" type="text" placeholder="최대 30자까지 입력가능합니다" maxlength="30" value="">
+            </div>
+            <div class="answer">
+                <div class="thumbnailWrap">
+                    <div class="thumbnailBox">
+                        <img class="thumbnailImage2"
+                             src="https://letspl.me/assets/images/ic-camera-alt-24-px.png" alt="story_image">
+                    </div>
+                    <div class="uploadBox">
+                        <label for="file1" class="active">파일 업로드</label>
+                        <input type="file" name="file" class="file active" id="file1">
+                        <button type="button" class="fileButton cancel ">취소</button>
+                        <ul>
+                            <li class="fileText">저작권에 위배되지 않는 &nbsp&nbsp 파일만 업로드해주세요.</li>
+                        </ul>
+                    </div>
+                    <div class="thumbnailBox">
+                        <img class="thumbnailImage2"
+                             src="https://letspl.me/assets/images/ic-camera-alt-24-px.png" alt="story_image">
+                    </div>
+                    <div class="uploadBox">
+                        <label for="file2" class="active">파일 업로드</label>
+                        <input type="file" name="file" class="file active" id="file2">
+                        <button type="button" class="fileButton cancel ">취소</button>
+                        <ul>
+                            <li>저작권에 위배되지 않는 &nbsp&nbsp 파일만 업로드해주세요.</li>
+                        </ul>
+                    </div>
+                    <div class="thumbnailBox">
+                        <img class="thumbnailImage2"
+                             src="https://letspl.me/assets/images/ic-camera-alt-24-px.png" alt="story_image">
+                    </div>
+                    <div class="uploadBox">
+                        <label for="file3" class="active">파일 업로드</label>
+                        <input type="file" name="file" class="file active" id="file3">
+                        <button type="button" class="fileButton cancel ">취소</button>
+                        <ul>
+                            <li>저작권에 위배되지 않는 &nbsp&nbsp 파일만 업로드해주세요.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <form method="post">
+                <textarea id="summernote" name="editordata" placeholder=""> </textarea>
+            </form>
+
+            <div class="btnWrap">
+                <div><button class="pinkBtn">게시</button></div>
+            </div>
+        </div>
+    </section>
+
+    <div th:replace="/app/fix/footer.html :: footer"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            // airMode: true,
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    editorText = f_SkipTags_html(contents);
+                    editorText = editorText.replace(/\s/gi,""); //줄바꿈 제거
+                    editorText = editorText.replace(/&nbsp;/gi, ""); //공백제거
+                    $("#letter-length").text(editorText.length);
+                },
+                onImageUpload : function(files, editor){
+                    console.log(files);
+                }
+            }
+        });
+    });
+
+</script>
+<script src="/js/store/storeCreate.js"></script>
+</html>

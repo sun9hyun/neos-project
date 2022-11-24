@@ -1,0 +1,1080 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'GmarketSansMedium'!important;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    font-size: 16px;
+    display: block;
+}
+
+body, section {
+    background: #fff;
+    display: block;
+}
+
+blockquote, body, button, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, pre, select, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body, button, input, select, td, textarea, th {
+    line-height: 1.5;
+    color: #333;
+}
+
+dl, li, menu, ol, ul {
+    list-style: none;
+}
+
+section {
+    width: 100%;
+}
+
+textarea:focus{outline: none}
+input::placeholder{color: #b1b1b1a8}
+
+.commonContentViewHeader {
+    padding: 40px 10px 24px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.commonContentViewHeader h1 {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+}
+
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.commonContentViewHeader h1 .smTxt {
+    color: #1A7CFF;
+    font-size: .875rem;
+}
+
+.commonContentViewHeader h1 .bgTxt {
+    color: #42495b;
+    font-size: 1.75rem;
+    line-height: 1.5;
+}
+
+.projectGrayBg {
+    background-color: #fbfbfb;
+}
+
+.projectLayoutRow {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.projectLayoutRowFlex1 {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    max-width: 590px;
+    width: 100%;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
+
+/* -------------------------------슬라이드 배너 ------------------------------*/
+
+.projectLayoutRowFlex1 {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    max-width: 590px;
+    width: 100%;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
+
+.projectTopleftWrap {
+    margin-right: 20px;
+}
+
+.projectLayoutRow h1 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #333;
+}
+
+.carousel-root {
+    outline: none;
+}
+
+.carousel.carousel-slider {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.newProjectTopWrap {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -moz-box-pack: center;
+    justify-content: center;
+    -moz-box-align: center;
+    align-items: center;
+    width: 100%;
+    max-width: 518px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.newProjectTopWrap .projectThumbInfo, .newProjectTopWrap .projectThumbInfo .top {
+    width: 100%;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.newProjectTopWrap .projectThumbInfo {
+    max-width: 518px;
+    background-color: #eee;
+    border: 1px solid #ebebeb;
+    border-radius: 8px;
+    overflow: hidden;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-pack: center;
+    justify-content: center;
+    position: relative;
+    height: 0;
+    padding-top: 23%;
+    padding-bottom: 23%;
+}
+
+.newProjectTopWrap .projectThumbInfo .projectThumb img {
+    width: 100%;
+}
+
+.carousel .slide img {
+    width: 100%;
+    vertical-align: top;
+    border: 0;
+}
+
+.carousel img {
+    width: 100%;
+    display: inline-block;
+    pointer-events: none;
+}
+
+.newProjectTopWrap .projectThumbInfo .top {
+    position: absolute;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 9px;
+    padding-left: 12px;
+    padding-right: 12px;
+    top: 0;
+    display: -moz-box;
+    display: flex;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+}
+
+.newProjectTopWrap .projectThumbInfo, .newProjectTopWrap .projectThumbInfo .top {
+    width: 100%;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.top .badgeWrap, .top .badgeWrap .badge {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+}
+
+.top .topFavorite {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    background-image: url(https://letspl.me/assets/images/ic-favorite-empty-white.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.newProjectTopWrap .txtWrap, .newProjectTopWrap .txtWrap .left {
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -moz-box-align: start;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.newProjectTopWrap .txtWrap {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 12px;
+    display: -moz-box;
+    display: flex;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+}
+
+.newProjectTopWrap .txtWrap .left {
+    display: -moz-inline-box;
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.newProjectTopWrap .txtWrap, .newProjectTopWrap .txtWrap .left {
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -moz-box-align: start;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.newProjectTopWrap .txtWrap .left .categoryTxt {
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: normal;
+    text-align: left;
+    color: #b1b1b1;
+    font-weight: 400;
+}
+
+.newProjectTopWrap .txtWrap .left .tit {
+    font-size: 15px;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 16px;
+    letter-spacing: normal;
+    text-align: left;
+    margin-top: 6px;
+    margin-bottom: 8px;
+}
+
+.newProjectTopWrap .txtWrap .left .recruitTxt {
+    font-size: 12px;
+    line-height: 16px;
+    color: #8a8a8a;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-align: left;
+    width: 100%;
+    font-weight: 400;
+}
+
+.newProjectTopWrap .txtWrap .right, .newProjectTopWrap .txtWrap .right .heartCount {
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.newProjectTopWrap .txtWrap .right {
+    display: -moz-box;
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+}
+
+.newProjectTopWrap .txtWrap .right .heartCount {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-pack: end;
+    justify-content: flex-end;
+}
+
+.newProjectTopWrap .txtWrap .right .heartCount img {
+    width: 13px;
+    height: auto;
+}
+
+.carousel img {
+    width: 100%;
+    display: inline-block;
+    pointer-events: none;
+}
+
+.newProjectTopWrap .txtWrap .right .heartCount span {
+    font-size: 12px;
+    line-height: 14px;
+    color: #888;
+    margin-left: 4px;
+}
+
+.newProjectTopWrap .txtWrap .right .gatherTxt {
+    position: relative;
+    cursor: pointer;
+}
+
+.newProjectTopWrap .txtWrap .right .gatherTxt div {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.newProjectTopWrap .txtWrap .right .gatherTxt div span:first-child {
+    margin-right: 4px;
+    font-weight: 400;
+}
+
+.newProjectTopWrap .txtWrap .right .gatherTxt div span {
+    font-size: 13px;
+    color: #666;
+    font-weight: 400;
+}
+
+.newProjectTopWrap .txtWrap .right .gatherTxt div span {
+    font-size: 13px;
+    color: #666;
+    font-weight: 400;
+}
+
+.newProjectTopWrap .txtWrap .right .gatherTxt div .ic-arrow {
+    margin-left: 6px;
+}
+
+.newProjectTopWrap .txtWrap .right .gatherTxt div {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+top
+
+
+
+    /* ------------------------------- 슬라이드 배너 API ------------------------------*/
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    width: calc(var(--swiper-navigation-size)/ 44 * 27);
+    height: var(--swiper-navigation-size);
+    margin-top: calc(0px - (var(--swiper-navigation-size)/ 2));
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* color: var(--swiper-navigation-color,var(--swiper-theme-color)); */
+    color: gray;
+}
+
+:root {
+    --swiper-navigation-size: 20px;
+}
+
+
+
+
+
+
+
+/* -------------------------------사이드 스터디 ------------------------------*/
+.projectLayoutRowFlex1 {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    max-width: 590px;
+    width: 100%;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
+
+.projectLayoutRow h1 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #333;
+}
+
+.recommendProjectlist, .recommendProjectlist .projectThumbWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+.recommendProjectlist {
+    width: 100%;
+    padding: 16px 24px 15px 20px;
+    border-radius: 8px;
+    border: 1px solid #ebebeb;
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-align: center;
+    align-items: center;
+    margin-bottom: 12px;
+    position: relative;
+    cursor: pointer;
+}
+
+.recommendProjectlist .projectThumbWrap {
+    width: 104px;
+    height: 64px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #f3f3f4;
+    background-color: #eee;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.recommendProjectlist, .recommendProjectlist .projectThumbWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+.recommendProjectlist .projectThumbWrap img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+.recommendProjectlist .txtWrap .desTxt, .recommendProjectlist .txtWrap h2.tit {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.recommendProjectlist .txtWrap h2.tit {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    width: 95%;
+    color: #000;
+    -webkit-line-clamp: 1;
+}
+
+.recommendProjectlist .txtWrap .desTxt {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #999;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+}
+
+.recommendProjectlist .txtWrap .desTxt, .recommendProjectlist .txtWrap h2.tit {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.recommendProjectlist .txtWrap .typeTxt {
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: normal;
+    text-align: left;
+    color: #666;
+    font-weight: 400;
+}
+
+.recommendProjectlist .heartCount {
+    position: absolute;
+    right: 24px;
+    top: 16px;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.recommendProjectlist .heartCount img {
+    width: 12.5px;
+    height: auto;
+}
+
+.recommendProjectlist .heartCount span {
+    font-size: 12px;
+    color: #888;
+    margin-left: 4px;
+}
+
+/* ---------------------------스터디 목록 상단 ------------------------------*/
+.projectView {
+    max-width: 1200px;
+    width: 100%;
+    margin: 30px auto 0 auto;
+}
+
+.projectAllGridView {
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.projectAllGridView h1 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.searchOption {
+    display: -moz-box;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.searchOption .smSelect {
+    max-width: 140px;
+    width: 100%;
+    border: 1px solid #bcbccb;
+    border-radius: 4px;
+    height: 40px;
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: .6875rem;
+    color: #696980;
+    margin-right: 10px;
+    padding-left: 20px;
+    background-image: url(https://letspl.me/_next/static/media/ic_option_arrow.556e891f4497a2dc76c8a33607a31937.svg);
+    background-position: 90%;
+    background-size: 10px 5px;
+    background-repeat: no-repeat;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+option {
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+
+.searchOption .checkBox {
+    position: relative;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: reverse;
+    flex-direction: row-reverse;
+    -moz-box-align: center;
+    align-items: center;
+    margin-left: 25px;
+}
+
+button, input, select, textarea {
+    font-size: 100%;
+    vertical-align: middle;
+}
+
+/* ---------------------------스터디 리스트 ------------------------------*/
+.projectGridView {
+    grid-template-columns: repeat(4,1fr);
+    display: grid;
+    place-items: center;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+}
+
+body, button, input, select, td, textarea, th {
+    line-height: 1.5;
+    color: #333;
+}
+
+.projectGridWrap, .projectGridWrap .top {
+    position: relative;
+}
+
+.projectGridWrap {
+    max-width: 285px;
+    width: 100%;
+    height: 290px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 0 12px;
+    border-radius: 8px;
+    border: 1px solid #ebebeb;
+    background-color: #fff;
+    overflow: hidden;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    margin-bottom: 10px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.projectGridWrap .projectTopInfo {
+    display: -moz-inline-box;
+    display: inline-flex;
+    overflow: hidden;
+}
+
+.projectGridWrap .projectTopInfo .projectThumb, .projectGridWrap .projectTopInfo .top {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.projectGridWrap .projectTopInfo .top {
+    position: absolute;
+    padding-top: 12px;
+    padding-left: 10px;
+    padding-right: 12px;
+    top: 0;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.top .badgeWrap, .top .badgeWrap .badge {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+}
+
+.top .badgeWrap .badge.black {
+    background-color: white;
+}
+
+.top .badgeWrap .badge {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-right: 4px;
+}
+
+.top .badgeWrap, .top .badgeWrap .badge {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+}
+
+.top .badgeWrap .badge h2 {
+    font-weight: 400;
+}
+
+.top .badgeWrap .badge h2, .top .badgeWrap .badge span {
+    color: #fff;
+    font-size: 12px;
+    line-height: 19px;
+}
+
+.top .favorite {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-white.b1db0e3e169a5cf61afa41daf5bfdc15.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.projectGridWrap .projectTopInfo .projectThumb {
+    background: transparent;
+    display: -moz-inline-box;
+    display: inline-flex;
+    overflow: hidden;
+    max-height: 120px;
+    height: 100%;
+}
+
+.projectGridWrap .projectTopInfo .projectThumb, .projectGridWrap .projectTopInfo .top {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.projectGridWrap .projectTopInfo .projectThumb img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+.projectGridWrap .projectBottomInfo {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 14px;
+}
+
+.projectGridWrap .projectBottomInfo .txtWrap .category {
+    font-size: 12px;
+    line-height: 12px;
+    color: #b1b1b1;
+    font-weight: 400;
+}
+
+.projectGridWrap .projectBottomInfo .txtWrap .tit {
+    font-size: 14px;
+    color: #000;
+    line-height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    margin-top: 12px;
+    height: 24px;
+    font-weight: 400;
+    width: 100%;
+}
+
+.projectGridWrap .projectInfo2 {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.projectGridWrap .projectInfo2 .middleWrap, .projectGridWrap .projectInfo2 .middleWrap .left .heartCount {
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.projectGridWrap .projectInfo2 .middleWrap {
+    display: -moz-box;
+    display: flex;
+    width: 100%;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.projectGridWrap .projectInfo2 .middleWrap .left .heartCount {
+    display: -moz-inline-box;
+    display: inline-flex;
+}
+
+.projectGridWrap .projectInfo2 .middleWrap .left .heartCount img {
+    width: 12.5px;
+    height: auto;
+    margin-right: 4px;
+}
+
+.projectGridWrap .projectInfo2 .bottomWrap {
+    border-top: 1px solid #f6f6f6;
+    line-height: 14px;
+    padding-top: 9px;
+    padding-bottom: 12px;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+}
+
+.projectGridWrap .projectInfo2 .bottomWrap .gatherTxt {
+    display: -moz-inline-box;
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.projectGridWrap .projectInfo2 .bottomWrap .gatherTxt div {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.projectGridWrap .projectInfo2 .bottomWrap .gatherTxt div span:first-child {
+    margin-right: 4px;
+}
+
+.projectGridWrap .projectInfo2 .bottomWrap .gatherTxt div span {
+    font-size: 12px;
+    color: #666;
+    font-weight: 400;
+}
+
+.projectGridWrap .projectInfo2 .middleWrap .left .heartCount span,
+.projectGridWrap .projectInfo2 .middleWrap .right p {
+    font-size: 12px;
+    color: #888;
+}
+
+.projectGridWrap .projectTopInfo .projectThumb {
+    background: transparent;
+    display: -moz-inline-box;
+    display: inline-flex;
+    overflow: hidden;
+    max-height: 120px;
+    height: 100%;
+}
+
+.badge{
+    display: block;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+}
+
+.badge > img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.favorite {
+    margin-top: -20px;
+}
+
+.pagingAndBtn {
+    margin-top: 20px;
+    position: relative;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.pagingAndBtn>span {
+    display: inline-block;
+}
+
+.pagingAndBtn a.btn_paging {
+    position: relative;
+}
+
+
+.pagingAndBtn a:first-child {
+    margin-left: 0;
+}
+
+.pagingAndBtn a {
+    float: left;
+    font-size: 100%;
+    color: #4d4f5c;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border: 1px solid #e8e9ec;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 5px;
+    font-size: .75rem;
+    border-radius: 4px;
+}
+
+.pagingAndBtn a.active {
+    background-color: #81839c;
+    color: #fff;
+}
+
+.pagingAndBtn a.prev::before {
+    left: 14px;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+
+.pagingAndBtn a.next_all::after,
+.pagingAndBtn a.prev::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    width: 8px;
+    height: 8px;
+    border-bottom: 1px solid #666;
+    border-right: 1px solid #666;
+}
+
+.pagingAndBtn a.next::before,
+.pagingAndBtn a.next_all::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -5px;
+    width: 8px;
+    height: 8px;
+    border-bottom: 1px solid #666;
+    border-right: 1px solid #666;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.pagingAndBtn a.next:before {
+    right: 14px;
+}
+
+/*.letspler_Re .top .favorite.active*/
+/*.letspler_Re .top .topFavorite.active{*/
+/*    background-size: 14px;*/
+/*    background-image: url(https://letspl.me/_next/static/media/ic-favorite-full.5a5209416a8859031c9099b5540c281a.svg);*/
+/*}*/
+
+.top .favorite:hover,
+.top .topFavorite:hover{
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-hover.03f7a2966e132a098a985cdc42f83b46.svg);
+}
+
+.top .favorite.active,
+.top .topFavorite.active {
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-full.5a5209416a8859031c9099b5540c281a.svg);
+}

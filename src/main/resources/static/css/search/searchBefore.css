@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    font-family: 'GmarketSansMedium';
+}
+
+.searchResultSection {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+blockquote, body, button, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, pre, select, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+}
+
+.searchResultSection .searchInputWrap {
+    position: relative;
+    margin-bottom: 100px;
+}
+
+.searchResultSection .searchInputWrap .searchInput, .searchResultSection .searchInputWrap .searchInput:focus {
+    padding-left: 20px;
+    padding-right: 36px;
+    text-overflow: ellipsis;
+}
+
+.searchResultSection .searchInputWrap .searchInput {
+    font-size: 24px;
+    height: 70px;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 0;
+    margin-top: 40px;
+    display: block;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 16px;
+    position: relative;
+}
+
+input[type=password], input[type=search], input[type=submit], input[type=text] {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+input {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    border: none;
+    height: 46px;
+    font-size: 13px;
+    padding: 4px 0 0;
+}
+
+.searchResultSection .searchInputWrap .inputBtnWrap {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
+    display: -moz-box;
+    display: flex;
+    -moz-box-align: center;
+    align-items: center;
+    right: 2%;
+}
+
+
+.searchResultSection .searchInputWrap .inputBtnWrap .inputDelBtn, .searchResultSection .searchInputWrap .inputBtnWrap .inputSearchBtn {
+    display: -moz-inline-box;
+    display: inline-flex;
+}
+
+.searchResultSection .searchInputWrap .inputBtnWrap .inputSearchBtn {
+    margin-left: 12px;
+}
+
+.searchResultSection .searchInputWrap .inputBtnWrap .inputSearchBtn img {
+    width: 50px;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+button {
+    border: 0;
+    background-color: transparent;
+    /* cursor: pointer; */
+}
+
+button, input, select, textarea {
+    font-size: 90%;
+    vertical-align: middle;
+    margin: -197px;
+}
+button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: 'GmarketSansMedium';
+}
+

@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고민상담 게시판</title>
+<!--    <link rel="preload" href="https://letspl.me/_next/static/css/7d968ad404afc29f3247.css" as="style">-->
+<!--    <link rel="preload" href="https://letspl.me/_next/static/css/be51bda88f366bdbe307.css" as="style">-->
+<!--    <link rel="stylesheet" href="https://letspl.me/_next/static/css/0920a29ba7232a2c7623.css">-->
+    <link rel="stylesheet" href="/css/community/board2.css">
+    <link rel="stylesheet" href="/css/community/board3.css">
+    <link rel="stylesheet" href="/css/community/board4.css">
+    <link rel="stylesheet" href="/css/community/board.css">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/summernote/summernote-lite.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/chatting.css">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
+    <script src="/js/community/summernote-lite.js"></script>
+    <script src="/js/community/summernote-ko-KR.js"></script>
+
+</head>
+<style>
+    @font-face {
+        font-family: 'GmarketSansMedium';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-size: 16px !important;
+    }
+
+    * {
+        font-family: 'GmarketSansMedium' !important;
+    }
+    @media screen and (max-width: 1024px) {
+        nav img.logo{
+            height: 100%;
+        }
+        nav .Navbar a, nav .Navbar li {
+            padding: 16px 0;
+        }
+        nav .Navbar a {
+            font-size: 14px;
+        }
+    }
+
+
+    .chattingWrap .chattingContentWrap .chattingHeader .left p{
+        font-size: 16px;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingHeader .right .userIdAndTimeInfo .userId{
+        font-size: 13px;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .list ul li .chatInfo .userIdAndBeforeTime .userId{
+        font-size: 12.8px;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .list ul li .chatInfo .chatInfoTxt{
+        font-size: 11.2px;
+    }
+    .chattingWrap .chattingContentWrap .chattingSection .list ul li .chatInfo .userIdAndBeforeTime .beforeTime{
+        font-size: 11.2px;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .list ul li .chatInfo .endTime{
+        font-size: 10.4px;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chattingRoomWrap .dayInfo p{
+        font-size: 10.4px;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chattingRoomWrap .opponent .userIdChatTxt .userId{
+        font-size: 12.8px;
+    }
+
+    .chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chattingRoomWrap .opponent .userIdChatTxt .chatTxt{
+        font-size: 12.8px;
+    }
+
+    .mentions--multiLine .mentions__control, .mentions--multiLine .mentions__input{
+        font-size: 12.8px;
+    }
+    .commonModal .modalTit{
+        font-size: 18px;
+    }
+    .commonModal .btnWrap.doubleBtnWrap button{
+        font-size: 12px;
+    }
+    .updatePost_1j {
+        display: none;
+    }
+
+</style>
+
+<body>
+
+
+<div th:replace="/app/fix/header.html :: header"></div>
+<div class="noLoginModal allModal">
+    <div class="commonModal">
+        <p class="modalTit">로그인이 필요합니다</p>
+        <button class="closeBtn"><img loading="lazy" src="http://letspl.me/assets/icon/ic-close.svg" alt="close">
+        </button>
+        <div class="commonModalContent">
+            <p>로그인 하시겠습니까?</p>
+            <div class="btnWrap doubleBtnWrap">
+                <button class="btn whiteBtn">아니오</button>
+                <button class="btn redBtn">예</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modalWrapOpen">
+    <div class="commonModal">
+        <p class="modalTit" style="font-size: 18px;margin-bottom: 15px">글 삭제 확인</p><button class="closeBtn"><img loading="lazy"
+                                                                                                                 src="https://letspl.me/assets/icon/ic-close.svg" alt="close"></button>
+        <div class="commonModalContent">
+            <p style="font-size: 12px;margin-bottom: 12px;">해당 글을 삭제하시겠습니까?</p>
+        </div>
+        <div class="btnWrap doubleBtnWrap"><button class="btn whiteBtn" style="font-size: 12px;line-height: 3;">아니오</button><button
+                class="btn redBtn" style="font-size: 12px;line-height: 3;">예</button></div>
+    </div>
+</div>
+<section class="loungeSection_new">
+    <div class="editorMdoal">
+        <div class="editor">
+            <div class="closeButtonBox"><button
+                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                  src="https://letspl.me/assets/images/ic-close.svg"></button></div>
+            <div class="editorTop">
+                <div class="editorTitle"><input type="text" placeholder="제목을 입력하세요.(최대 30자, 미입력시 본문사용) " maxlength="30"
+                                                value=""></div>
+                <div class=" tagMultiSelectAnser">
+                    <div class=" css-1stwjcq-container">
+                        <div class=" css-1luw0me-control">
+
+                            <div class=" css-1wy0on6"></div>
+                        </div>
+                        <div><input name="loungeTag" type="hidden"></div>
+                    </div>
+                </div>
+
+            </div>
+            <!--섬머노트-->
+            <form action="#" method="post">
+                <textarea id="summernote" name="editordata"></textarea>
+            </form>
+
+            <div class="editorWrapButtonBox">
+                <div class="editorWrapButtonBoxLeft"><button
+                        class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_md__26Zib ">취소</button>
+                </div>
+                <div class="editorWrapButtonBoxRight"><button
+                        class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_red__3SLsc  buttonComponents_md__26Zib updatePost_1j">수정</button>
+                    <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_red__3SLsc  buttonComponents_md__26Zib registerPost_1j">등록</button>
+                </div>
+            </div><input type="file" multiple="" accept="image/*" style="display: none;">
+        </div>
+    </div>
+    <div class="centerSection">
+        <div class="loungeTab"><button
+                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    buttonComponents_categoryActive__31E3q">고민상담
+            게시판</button><button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    ">자유
+            게시판</button>
+            <div class="postWrap">
+                <div class="postBtn">
+                    <span>새 글쓰기</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="centerSectionBox">
+            <!--수정중-->
+            <div class="loungeCard" style="margin-bottom: -10px;">
+
+                <div class="loungeCardContents">
+                    <div class="loungeCardContentsComponents_loungeContents__262-A">
+                        <div class="loungeCardContentsComponents_loungeContentsTagMoreBox__1oKkG">
+                            <div class="undefined">
+                                <div class="tag_tag__2gh0s tag_typeDefault__3U6Rz tag_sizeDefault__2V2-5">
+                                            <span>네오스인
+                                                고민</span>
+                                </div>
+                            </div>
+                            <div class="loungeCardContentsComponents_loungeContentsRight__14cdz">
+                                <div class="loungeCardContentsComponents_loungeContentsMore__2AXVI"><button
+                                        class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
+                                        class="buttonComponents_mdImg__G1pNE" src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                    <div class="loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo"><button
+                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postUpdate_1j">수정</button><button
+                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postDelete_1j">삭제</button></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="loungeCardContentsComponents_loungeContentsTitleBox__2NtjH">
+                            <div class="loungeCardContentsComponents_loungeContentsTitleDate__1-Xd2">
+                                <h3 class="loungeCardContentsComponents_title__1s8RE">고민이야≫ 콘텐츠 마케팅이 뭐야?⇒
+                                    숏폼(릴스/쇼츠</h3><span class="loungeCardContentsComponents_date__3pY5X">21시간
+                                            전</span>
+                            </div>
+                        </div>
+                        <div class="loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4"><img
+                                width="90%" height="auto"
+                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/images_temp/4463/%EB%AA%A8%EB%B0%94%EC%9D%BC%EB%B0%B0%EB%84%882_%EB%A7%88%EC%BC%80%ED%8C%85%20%EA%B8%B0%EB%B0%98%20%EB%A9%80%ED%8B%B0%EB%AF%B8%EB%94%94%EC%96%B4%EC%BD%98%ED%85%90%EC%B8%A0%20%ED%81%AC%EB%A6%AC%EC%97%90%EC%9D%B4%ED%84%B0.jpg">
+                            <p style="font-size: 14px"><strong>■ 고민이야</strong><br><strong>≫ 콘텐츠 마케팅이
+                                뭐야?</strong><br>⇒ 숏폼(릴스/쇼츠/틱톡/모먼트), 라이브커머스, 유튜브 같이 영상 매체를 통한 마케팅
+                                방법이야!<br><strong>≫ 요즘 잘나가는 1인 크리에이터가 되고 싶은데 방법을 모르겠어</strong><br>⇒ 실제 업계에 계시는 현업
+                                강사로 구성되어 기획부터 홍보, 영상촬영, 편집까지 알려줄게!<br><strong>≫ 배우고 싶은데 교육비가
+                                    비쌀거같은데https://letspl.me</strong><br>⇒ 교육비 무료에 중식비 지원까지! 금액 걱정없이 학습에
+                                집중만해~<br><strong>≫ 나는
+                                    콘텐츠 마케터가 되고싶은데?</strong><br>⇒ 1인 크리에이터 뿐만 아니라 매칭데이를 통해 콘텐츠 마케터 취업 코스까지
+                                준비해줄게!<br><br>&nbsp;</p>
+                            <p style="font-size: 14px"><strong>■ 과정 안내</strong><br><strong>≫ SeSAC DT 마케팅 기반
+                                멀티미디어 콘텐츠 크리에이터 양성 과정</strong></p>
+                            <p style="font-size: 14px"><br><br><strong>■ 접수 안내</strong><br><strong>● 접수
+                                기간</strong><br><strong>≫ 2022.10.06(목) ~ 2022.11.20(일)</strong>&nbsp;/~23:59
+                                까지</p>
+                            <p style="font-size: 14px"><br><strong>● 접수 대상</strong><br><strong>≫ 신청일 기준 만 15세
+                                이상의 서울거주 시민</strong><br>⇒ 재직자는 신청이 어렵습니다</p>
+                            <p style="font-size: 14px"><br><strong>● 접수 방법</strong><br><strong>≫</strong><a
+                                    target="_blank" rel="noopener noreferrer nofollow"
+                                    style="text-decoration: underline"
+                                    href="https://sesac.seoul.kr/course/active/detail.do?courseActiveSeq=1520&amp;srchCategoryTypeCd=&amp;courseMasterSeq=283&amp;currentMenuId=900002001">홈페이지
+                                바로가기</a><br>⇒ [1] 상단 홈페이지로 이동하여 수강 신청을 한다.<br>⇒ [2] 홈페이지 과정 내 교육 개요의 접수 방법의
+                                구글 폼 링크를 통해 신청서를 작성한다.<br><strong>※ [1],[2] 과정 모두 완료 해주셔야 정상 접수 처리됩니다.</strong>
+                            </p>
+                            <p style="font-size: 14px"><br><br><strong>■ 교육 안내</strong><br><strong>● 교육
+                                기간</strong><br><strong>≫ 2022.11.30(수) ~2023.02.23(목)</strong></p>
+                            <p style="font-size: 14px"><br><strong>● 교육 시간</strong><br><strong>≫ 매주 월~금/
+                                09:00~18:00</strong></p>
+                            <p style="font-size: 14px"><br><strong>● 교육 장소</strong><br><strong>≫ 서울특별시 강서구
+                                공항대로61길 29 / SBA 국제유통센터</strong></p>
+                            <p style="font-size: 14px"><br><strong>● 교육 비용</strong><br><strong>≫ 전액
+                                무료</strong><br>⇒ 단, 예치금 10만원 선납후 수료이후 전액 반환</p>
+                            <p style="font-size: 14px"><br><br><strong>■
+                                해택</strong><br><strong>●교육해택</strong><br><strong>≫ 교육비
+                                전액무료</strong><br><strong>≫ 점심 식비 지원</strong><br><strong>≫ 취업을 위한 교육 운영 담당
+                                매니저의 취업 컨설팅 진행</strong><br><strong>≫ 현업에 있는 전문 강사진을 통한 꿀팁
+                                전수!</strong><br><strong>≫ 콘텐츠 마케터가 되기 위한 기업 매칭데이 진행</strong><br><strong>≫
+                                전문적인 스튜디오/장비를 활용한 실제 방송체험 제공</strong></p>
+                            <p style="font-size: 14px"><br><br><strong>■ 문의
+                                안내</strong><br><strong>●문의처</strong><br><strong>≫
+                                0505-150-7799</strong><br><strong>≫&nbsp;</strong><a target="_blank"
+                                                                                     rel="noopener noreferrer nofollow" style="text-decoration: underline"
+                                                                                     href="mailto:sesac.villain@gmail.com"><strong>sesac.villain@gmail.com</strong></a>
+                            </p>
+                        </div>
+                        <div class="loungeCardContentsComponents_loungeContentsMoreButtonWrap__1LR4v"><button
+                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU   ">펼치기</button>
+                        </div>
+                        <div class="replyComponent_reply__3l-Wc">
+                            <div class="replyComponent_replyButtonBox__2O3ME">
+                                <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 button_heart_1ljw5">
+                                    <img class="" src="https://letspl.me/assets/images/ic-letspler-heart-empty.png">0</button>
+                                <div class="replyComponent_replyOnOff__QKoso">
+                                    <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU   ">
+                                        <span class="buttonComponents_gray__1blI9">첫번째 댓글을 달아주세요</span>
+                                        <img class="buttonComponents_smMdImg__2IOAr" src="https://letspl.me/assets/images/ic-arrow-up.svg"></button>
+                                </div>
+                            </div>
+                            <div class="replyComponent_replyFilter__10kow">
+                                <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_black__3vMzB   ">
+                                    <img class="buttonComponents_smImg__1vYDM" src="/images/community/bluedot.png">등록순</button>
+                                <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_gray__1blI9   ">최신순</button>
+                            </div>
+                            <div class="replyComponent_replyInputBox__2yLKK">
+                                <div class="replyComponent_replyInputContainer__3TJW8">
+                                    <textarea class="replyComponent_replyInput__2vKhX replyTextArea" maxlength="1000" placeholder="댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                </div>
+                                <div class="replyComponent_replyButtonGroup__2i0ow">
+                                    <div class="replyComponent_replyButtonGroupCount__j0XkV">
+                                        <span class="replyTextCount">0</span>
+                                        <span>/</span>
+                                        <span>1000</span>
+                                    </div>
+                                    <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>
+                                </div>
+                            </div>
+                            <div class="replyComponent_replyBox__1duHS">
+                                <div class="replyComponent_replyContainer__3dxJZ">
+                                    <div style="border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;">
+                                        <div class="userInformationComponents_userReplySection__3ty7Q">
+                                            <div class="userInformationComponents_profile__2pr8a">
+                                                <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                    <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                        <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                class="userInformationComponents_smImg__2uLTY"
+                                                                src="https://letspl.me/assets/images/prof-no-img.png" alt="박종우"></div>
+                                                        <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                        <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA"></div>
+                                                    </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.09 20:44</span>
+                                                </div>
+                                                <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                    <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH"><button
+                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                          src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                                        <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ"><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyUpdate">수정</button><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyDelete">삭제</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="replyComponent_replyContent__3iS4J">
+                                            <p class="replyContent_content_1j">안녕하세요</p>
+                                            <div class="replyComponent_replyOpenAndLikeButtonGroup__3r9hv"><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                  src="https://letspl.me/assets/images/ic_talk_up.svg"></button><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_lightGray__cqa_C rereplyButton_1j">대댓글쓰기</button>
+                                            </div>
+                                            <div>
+                                                <div class="replyComponent_replyContainer__3dxJZ">
+                                                    <div class="userInformationComponents_userReplySection__3ty7Q">
+                                                        <div class="userInformationComponents_profile__2pr8a">
+                                                            <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                                <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                                    <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                            class="userInformationComponents_smImg__2uLTY"
+                                                                            src="https://letspl.me/assets/images/prof-no-img.png" alt="아니그웃"></div>
+                                                                    <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                            class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                                    <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA">
+                                                                        <div class="tag_tag__2gh0s tag_typeGray__3-1Ag tag_sizeDefault__2V2-5" style="text-align: center;margin-left:4px;">
+                                                                            <span style="margin-top: 3px;">작성자</span></div>
+                                                                    </div>
+                                                                </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.10 08:46</span>
+                                                            </div>
+                                                            <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                                <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH"><button
+                                                                        class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                                      src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                                                    <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ"><button
+                                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyUpdate">수정</button><button
+                                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyDelete">삭제</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="replyComponent_replyContent__3iS4J">
+                                                        <p class="replyContent_content_1j">안녕하세요</p>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+                                                <div class="replyComponent_replyContainer__3dxJZ rereplyContainer__3x">
+                                                    <div class="replyComponent_replyOfCommentContainer__2bLgx">
+                                                        <textarea class="replyComponent_replyInput__2vKhX rereply_textarea" maxlength="1000" placeholder="대댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                                        <div class="replyComponent_replyButtonGroup__2i0ow">
+                                                            <div class="replyComponent_replyButtonGroupCount__j0XkV">
+                                                                <span class="rereplyTextCount">0</span><span>/</span><span>1000</span></div>
+                                                            <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;">
+                                        <div class="userInformationComponents_userReplySection__3ty7Q">
+                                            <div class="userInformationComponents_profile__2pr8a">
+                                                <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                    <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                        <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                class="userInformationComponents_smImg__2uLTY"
+                                                                src="https://letspl.me/assets/images/prof-no-img.png" alt="박종우"></div>
+                                                        <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                        <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA"></div>
+                                                    </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.09 20:44</span>
+                                                </div>
+                                                <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                    <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH"><button
+                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                          src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                                        <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ"><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="replyComponent_replyContent__3iS4J">
+                                            <p class="replyContent_content_1j">안녕하세요</p>
+                                            <div class="replyComponent_replyOpenAndLikeButtonGroup__3r9hv"><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                  src="https://letspl.me/assets/images/ic_talk_up.svg"></button><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_lightGray__cqa_C rereplyButton_1j">대댓글쓰기</button>
+                                            </div>
+                                            <div>
+                                                <div class="replyComponent_replyContainer__3dxJZ">
+                                                    <div class="userInformationComponents_userReplySection__3ty7Q">
+                                                        <div class="userInformationComponents_profile__2pr8a">
+                                                            <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                                <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                                    <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                            class="userInformationComponents_smImg__2uLTY"
+                                                                            src="https://letspl.me/assets/images/prof-no-img.png" alt="아니그웃"></div>
+                                                                    <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                            class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                                    <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA">
+                                                                        <div class="tag_tag__2gh0s tag_typeGray__3-1Ag tag_sizeDefault__2V2-5" style="text-align: center;margin-left: 4px">
+                                                                            <span style="margin-top: 3px;">작성자</span></div>
+                                                                    </div>
+                                                                </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.10 08:46</span>
+                                                            </div>
+                                                            <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                                <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH">
+                                                                    <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ">
+                                                                        <button
+                                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button
+                                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="replyComponent_replyContent__3iS4J">
+                                                        <p class="replyContent_content_1j">안녕하세요</p>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+                                                <div class="replyComponent_replyContainer__3dxJZ rereplyContainer__3x">
+                                                    <div class="replyComponent_replyOfCommentContainer__2bLgx">
+                                                        <textarea class="replyComponent_replyInput__2vKhX rereply_textarea" maxlength="1000" placeholder="대댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                                        <div class="replyComponent_replyButtonGroup__2i0ow">
+                                                            <div class="replyComponent_replyButtonGroupCount__j0XkV">
+                                                                <span class="rereplyTextCount">0</span><span>/</span><span>1000</span></div>
+                                                            <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--수정중-->
+            <!--수정중-->
+            <div class="loungeCard" style="margin-bottom: -10px;">
+
+                <div class="loungeCardContents">
+                    <div class="loungeCardContentsComponents_loungeContents__262-A">
+                        <div class="loungeCardContentsComponents_loungeContentsTagMoreBox__1oKkG">
+                            <div class="undefined">
+                                <div class="tag_tag__2gh0s tag_typeDefault__3U6Rz tag_sizeDefault__2V2-5">
+                                            <span>네오스인
+                                                고민</span>
+                                </div>
+                            </div>
+                            <div class="loungeCardContentsComponents_loungeContentsRight__14cdz">
+                                <div class="loungeCardContentsComponents_loungeContentsMore__2AXVI"><button
+                                        class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
+                                        class="buttonComponents_mdImg__G1pNE" src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                    <div class="loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo"><button
+                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postUpdate_1j">수정</button><button
+                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postDelete_1j">삭제</button></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="loungeCardContentsComponents_loungeContentsTitleBox__2NtjH">
+                            <div class="loungeCardContentsComponents_loungeContentsTitleDate__1-Xd2">
+                                <h3 class="loungeCardContentsComponents_title__1s8RE">고민이야≫ 콘텐츠 마케팅이 뭐야?⇒
+                                    숏폼(릴스/쇼츠</h3><span class="loungeCardContentsComponents_date__3pY5X">21시간
+                                            전</span>
+                            </div>
+                        </div>
+                        <div class="loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4">
+                            <p style="font-size: 14px"><strong>■ 고민이야</strong><br><strong>≫ 콘텐츠 마케팅이
+                                뭐야?</strong><br>⇒ 숏폼(릴스/쇼츠/틱톡/모먼트), 라이브커머스, 유튜브 같이 영상 매체를 통한 마케팅
+                                방법이야!<br><strong>≫ 요즘 잘나가는 1인 크리에이터가 되고 싶은데 방법을 모르겠어</strong><br>⇒ 실제 업계에 계시는 현업
+                                강사로 구성되어 기획부터 홍보, 영상촬영, 편집까지 알려줄게!</p>
+                            </p>
+                        </div>
+                        <div class="loungeCardContentsComponents_loungeContentsMoreButtonWrap__1LR4v"><button
+                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU   ">펼치기</button>
+                        </div>
+                        <div class="replyComponent_reply__3l-Wc">
+                            <div class="replyComponent_replyButtonBox__2O3ME">
+                                <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 button_heart_1ljw5">
+                                    <img class="" src="https://letspl.me/assets/images/ic-letspler-heart-empty.png">0</button>
+                                <div class="replyComponent_replyOnOff__QKoso">
+                                    <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU   ">
+                                        <span class="buttonComponents_gray__1blI9">첫번째 댓글을 달아주세요</span>
+                                        <img class="buttonComponents_smMdImg__2IOAr" src="https://letspl.me/assets/images/ic-arrow-up.svg"></button>
+                                </div>
+                            </div>
+                            <div class="replyComponent_replyFilter__10kow">
+                                <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_black__3vMzB   ">
+                                    <img class="buttonComponents_smImg__1vYDM" src="/images/community/bluedot.png">등록순</button>
+                                <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_gray__1blI9   ">최신순</button>
+                            </div>
+                            <div class="replyComponent_replyInputBox__2yLKK">
+                                <div class="replyComponent_replyInputContainer__3TJW8">
+                                    <textarea class="replyComponent_replyInput__2vKhX replyTextArea" maxlength="1000" placeholder="댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                </div>
+                                <div class="replyComponent_replyButtonGroup__2i0ow">
+                                    <div class="replyComponent_replyButtonGroupCount__j0XkV">
+                                        <span class="replyTextCount">0</span>
+                                        <span>/</span>
+                                        <span>1000</span>
+                                    </div>
+                                    <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>
+                                </div>
+                            </div>
+                            <div class="replyComponent_replyBox__1duHS">
+                                <div class="replyComponent_replyContainer__3dxJZ">
+                                    <div style="border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;">
+                                        <div class="userInformationComponents_userReplySection__3ty7Q">
+                                            <div class="userInformationComponents_profile__2pr8a">
+                                                <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                    <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                        <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                class="userInformationComponents_smImg__2uLTY"
+                                                                src="https://letspl.me/assets/images/prof-no-img.png" alt="박종우"></div>
+                                                        <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                        <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA"></div>
+                                                    </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.09 20:44</span>
+                                                </div>
+                                                <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                    <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH"><button
+                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                          src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                                        <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ"><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyUpdate">수정</button><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyDelete">삭제</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="replyComponent_replyContent__3iS4J">
+                                            <p class="replyContent_content_1j">안녕하세요</p>
+                                            <div class="replyComponent_replyOpenAndLikeButtonGroup__3r9hv"><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                  src="https://letspl.me/assets/images/ic_talk_up.svg"></button><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_lightGray__cqa_C rereplyButton_1j">대댓글쓰기</button>
+                                            </div>
+                                            <div>
+                                                <div class="replyComponent_replyContainer__3dxJZ">
+                                                    <div class="userInformationComponents_userReplySection__3ty7Q">
+                                                        <div class="userInformationComponents_profile__2pr8a">
+                                                            <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                                <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                                    <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                            class="userInformationComponents_smImg__2uLTY"
+                                                                            src="https://letspl.me/assets/images/prof-no-img.png" alt="아니그웃"></div>
+                                                                    <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                            class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                                    <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA">
+                                                                        <div class="tag_tag__2gh0s tag_typeGray__3-1Ag tag_sizeDefault__2V2-5" style="text-align: center;margin-left:4px;">
+                                                                            <span style="margin-top: 3px;">작성자</span></div>
+                                                                    </div>
+                                                                </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.10 08:46</span>
+                                                            </div>
+                                                            <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                                <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH">
+                                                                    <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ">
+                                                                        <button
+                                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button
+                                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="replyComponent_replyContent__3iS4J">
+                                                        <p class="replyContent_content_1j">안녕하세요</p>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+                                                <div class="replyComponent_replyContainer__3dxJZ rereplyContainer__3x">
+                                                    <div class="replyComponent_replyOfCommentContainer__2bLgx">
+                                                        <textarea class="replyComponent_replyInput__2vKhX rereply_textarea" maxlength="1000" placeholder="대댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                                        <div class="replyComponent_replyButtonGroup__2i0ow">
+                                                            <div class="replyComponent_replyButtonGroupCount__j0XkV">
+                                                                <span class="rereplyTextCount">0</span><span>/</span><span>1000</span></div>
+                                                            <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;">
+                                        <div class="userInformationComponents_userReplySection__3ty7Q">
+                                            <div class="userInformationComponents_profile__2pr8a">
+                                                <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                    <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                        <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                class="userInformationComponents_smImg__2uLTY"
+                                                                src="https://letspl.me/assets/images/prof-no-img.png" alt="박종우"></div>
+                                                        <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                        <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA"></div>
+                                                    </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.09 20:44</span>
+                                                </div>
+                                                <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                    <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH"><button
+                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                          src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                                        <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ"><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="replyComponent_replyContent__3iS4J">
+                                            <p class="replyContent_content_1j">안녕하세요</p>
+                                            <div class="replyComponent_replyOpenAndLikeButtonGroup__3r9hv"><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                  src="https://letspl.me/assets/images/ic_talk_up.svg"></button><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_lightGray__cqa_C rereplyButton_1j">대댓글쓰기</button>
+                                            </div>
+                                            <div>
+                                                <div class="replyComponent_replyContainer__3dxJZ">
+                                                    <div class="userInformationComponents_userReplySection__3ty7Q">
+                                                        <div class="userInformationComponents_profile__2pr8a">
+                                                            <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                                <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                                    <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                            class="userInformationComponents_smImg__2uLTY"
+                                                                            src="https://letspl.me/assets/images/prof-no-img.png" alt="아니그웃"></div>
+                                                                    <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                            class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                                    <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA">
+                                                                        <div class="tag_tag__2gh0s tag_typeGray__3-1Ag tag_sizeDefault__2V2-5" style="text-align: center;margin-left: 4px">
+                                                                            <span style="margin-top: 3px;">작성자</span></div>
+                                                                    </div>
+                                                                </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.10 08:46</span>
+                                                            </div>
+                                                            <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                                <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH">
+                                                                    <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ">
+                                                                        <button
+                                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button
+                                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="replyComponent_replyContent__3iS4J">
+                                                        <p class="replyContent_content_1j">안녕하세요</p>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+                                                <div class="replyComponent_replyContainer__3dxJZ rereplyContainer__3x">
+                                                    <div class="replyComponent_replyOfCommentContainer__2bLgx">
+                                                        <textarea class="replyComponent_replyInput__2vKhX rereply_textarea" maxlength="1000" placeholder="대댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                                        <div class="replyComponent_replyButtonGroup__2i0ow">
+                                                            <div class="replyComponent_replyButtonGroupCount__j0XkV">
+                                                                <span class="rereplyTextCount">0</span><span>/</span><span>1000</span></div>
+                                                            <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="loungeCard" style="margin-bottom: -10px;">
+
+                <div class="loungeCardContents">
+                    <div class="loungeCardContentsComponents_loungeContents__262-A">
+                        <div class="loungeCardContentsComponents_loungeContentsTagMoreBox__1oKkG">
+                            <div class="undefined">
+                                <div class="tag_tag__2gh0s tag_typeDefault__3U6Rz tag_sizeDefault__2V2-5">
+                                            <span>네오스인
+                                                고민</span>
+                                </div>
+                            </div>
+                            <div class="loungeCardContentsComponents_loungeContentsRight__14cdz">
+                                <div class="loungeCardContentsComponents_loungeContentsMore__2AXVI"><button
+                                        class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
+                                        class="buttonComponents_mdImg__G1pNE" src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                    <div class="loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo"><button
+                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postUpdate_1j">수정</button><button
+                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postDelete_1j">삭제</button></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="loungeCardContentsComponents_loungeContentsTitleBox__2NtjH">
+                            <div class="loungeCardContentsComponents_loungeContentsTitleDate__1-Xd2">
+                                <h3 class="loungeCardContentsComponents_title__1s8RE">고민이야≫ 콘텐츠 마케팅이 뭐야?⇒
+                                    숏폼(릴스/쇼츠</h3><span class="loungeCardContentsComponents_date__3pY5X">21시간
+                                            전</span>
+                            </div>
+                        </div>
+                        <div class="loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4"><img
+                                width="90%" height="auto"
+                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/images_temp/4463/%EB%AA%A8%EB%B0%94%EC%9D%BC%EB%B0%B0%EB%84%882_%EB%A7%88%EC%BC%80%ED%8C%85%20%EA%B8%B0%EB%B0%98%20%EB%A9%80%ED%8B%B0%EB%AF%B8%EB%94%94%EC%96%B4%EC%BD%98%ED%85%90%EC%B8%A0%20%ED%81%AC%EB%A6%AC%EC%97%90%EC%9D%B4%ED%84%B0.jpg">
+                            <p style="font-size: 14px"><strong>■ 고민이야</strong><br><strong>≫ 콘텐츠 마케팅이
+                                뭐야?</strong><br>⇒ 숏폼(릴스/쇼츠/틱톡/모먼트), 라이브커머스, 유튜브 같이 영상 매체를 통한 마케팅
+                                방법이야!<br><strong>≫ 요즘 잘나가는 1인 크리에이터가 되고 싶은데 방법을 모르겠어</strong><br>⇒ 실제 업계에 계시는 현업
+                                강사로 구성되어 기획부터 홍보, 영상촬영, 편집까지 알려줄게!<br><strong>≫ 배우고 싶은데 교육비가
+                                    비쌀거같은데https://letspl.me</strong><br>⇒ 교육비 무료에 중식비 지원까지! 금액 걱정없이 학습에
+                                집중만해~<br><strong>≫ 나는
+                                    콘텐츠 마케터가 되고싶은데?</strong><br>⇒ 1인 크리에이터 뿐만 아니라 매칭데이를 통해 콘텐츠 마케터 취업 코스까지
+                                준비해줄게!<br><br>&nbsp;</p>
+                            <p style="font-size: 14px"><strong>■ 과정 안내</strong><br><strong>≫ SeSAC DT 마케팅 기반
+                                멀티미디어 콘텐츠 크리에이터 양성 과정</strong></p>
+                            <p style="font-size: 14px"><br><br><strong>■ 접수 안내</strong><br><strong>● 접수
+                                기간</strong><br><strong>≫ 2022.10.06(목) ~ 2022.11.20(일)</strong>&nbsp;/~23:59
+                                까지</p>
+                            <p style="font-size: 14px"><br><strong>● 접수 대상</strong><br><strong>≫ 신청일 기준 만 15세
+                                이상의 서울거주 시민</strong><br>⇒ 재직자는 신청이 어렵습니다</p>
+                            <p style="font-size: 14px"><br><strong>● 접수 방법</strong><br><strong>≫</strong><a
+                                    target="_blank" rel="noopener noreferrer nofollow"
+                                    style="text-decoration: underline"
+                                    href="https://sesac.seoul.kr/course/active/detail.do?courseActiveSeq=1520&amp;srchCategoryTypeCd=&amp;courseMasterSeq=283&amp;currentMenuId=900002001">홈페이지
+                                바로가기</a><br>⇒ [1] 상단 홈페이지로 이동하여 수강 신청을 한다.<br>⇒ [2] 홈페이지 과정 내 교육 개요의 접수 방법의
+                                구글 폼 링크를 통해 신청서를 작성한다.<br><strong>※ [1],[2] 과정 모두 완료 해주셔야 정상 접수 처리됩니다.</strong>
+                            </p>
+                            <p style="font-size: 14px"><br><br><strong>■ 교육 안내</strong><br><strong>● 교육
+                                기간</strong><br><strong>≫ 2022.11.30(수) ~2023.02.23(목)</strong></p>
+                            <p style="font-size: 14px"><br><strong>● 교육 시간</strong><br><strong>≫ 매주 월~금/
+                                09:00~18:00</strong></p>
+                            <p style="font-size: 14px"><br><strong>● 교육 장소</strong><br><strong>≫ 서울특별시 강서구
+                                공항대로61길 29 / SBA 국제유통센터</strong></p>
+                            <p style="font-size: 14px"><br><strong>● 교육 비용</strong><br><strong>≫ 전액
+                                무료</strong><br>⇒ 단, 예치금 10만원 선납후 수료이후 전액 반환</p>
+                            <p style="font-size: 14px"><br><br><strong>■
+                                해택</strong><br><strong>●교육해택</strong><br><strong>≫ 교육비
+                                전액무료</strong><br><strong>≫ 점심 식비 지원</strong><br><strong>≫ 취업을 위한 교육 운영 담당
+                                매니저의 취업 컨설팅 진행</strong><br><strong>≫ 현업에 있는 전문 강사진을 통한 꿀팁
+                                전수!</strong><br><strong>≫ 콘텐츠 마케터가 되기 위한 기업 매칭데이 진행</strong><br><strong>≫
+                                전문적인 스튜디오/장비를 활용한 실제 방송체험 제공</strong></p>
+                            <p style="font-size: 14px"><br><br><strong>■ 문의
+                                안내</strong><br><strong>●문의처</strong><br><strong>≫
+                                0505-150-7799</strong><br><strong>≫&nbsp;</strong><a target="_blank"
+                                                                                     rel="noopener noreferrer nofollow" style="text-decoration: underline"
+                                                                                     href="mailto:sesac.villain@gmail.com"><strong>sesac.villain@gmail.com</strong></a>
+                            </p>
+                        </div>
+                        <div class="loungeCardContentsComponents_loungeContentsMoreButtonWrap__1LR4v"><button
+                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU   ">펼치기</button>
+                        </div>
+                        <div class="replyComponent_reply__3l-Wc">
+                            <div class="replyComponent_replyButtonBox__2O3ME">
+                                <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 button_heart_1ljw5">
+                                    <img class="" src="https://letspl.me/assets/images/ic-letspler-heart-empty.png">0</button>
+                                <div class="replyComponent_replyOnOff__QKoso">
+                                    <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU   ">
+                                        <span class="buttonComponents_gray__1blI9">첫번째 댓글을 달아주세요</span>
+                                        <img class="buttonComponents_smMdImg__2IOAr" src="https://letspl.me/assets/images/ic-arrow-up.svg"></button>
+                                </div>
+                            </div>
+                            <div class="replyComponent_replyFilter__10kow">
+                                <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_black__3vMzB   ">
+                                    <img class="buttonComponents_smImg__1vYDM" src="/images/community/bluedot.png">등록순</button>
+                                <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_gray__1blI9   ">최신순</button>
+                            </div>
+                            <div class="replyComponent_replyInputBox__2yLKK">
+                                <div class="replyComponent_replyInputContainer__3TJW8">
+                                    <textarea class="replyComponent_replyInput__2vKhX replyTextArea" maxlength="1000" placeholder="댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                </div>
+                                <div class="replyComponent_replyButtonGroup__2i0ow">
+                                    <div class="replyComponent_replyButtonGroupCount__j0XkV">
+                                        <span class="replyTextCount">0</span>
+                                        <span>/</span>
+                                        <span>1000</span>
+                                    </div>
+                                    <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>
+                                </div>
+                            </div>
+                            <div class="replyComponent_replyBox__1duHS">
+                                <div class="replyComponent_replyContainer__3dxJZ">
+                                    <div style="border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;">
+                                        <div class="userInformationComponents_userReplySection__3ty7Q">
+                                            <div class="userInformationComponents_profile__2pr8a">
+                                                <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                    <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                        <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                class="userInformationComponents_smImg__2uLTY"
+                                                                src="https://letspl.me/assets/images/prof-no-img.png" alt="박종우"></div>
+                                                        <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                        <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA"></div>
+                                                    </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.09 20:44</span>
+                                                </div>
+                                                <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                    <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH"><button
+                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                          src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                                        <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ"><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyUpdate">수정</button><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyDelete">삭제</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="replyComponent_replyContent__3iS4J">
+                                            <p class="replyContent_content_1j">안녕하세요</p>
+                                            <div class="replyComponent_replyOpenAndLikeButtonGroup__3r9hv"><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                  src="https://letspl.me/assets/images/ic_talk_up.svg"></button><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_lightGray__cqa_C rereplyButton_1j">대댓글쓰기</button>
+                                            </div>
+                                            <div>
+                                                <div class="replyComponent_replyContainer__3dxJZ">
+                                                    <div class="userInformationComponents_userReplySection__3ty7Q">
+                                                        <div class="userInformationComponents_profile__2pr8a">
+                                                            <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                                <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                                    <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                            class="userInformationComponents_smImg__2uLTY"
+                                                                            src="https://letspl.me/assets/images/prof-no-img.png" alt="아니그웃"></div>
+                                                                    <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                            class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                                    <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA">
+                                                                        <div class="tag_tag__2gh0s tag_typeGray__3-1Ag tag_sizeDefault__2V2-5" style="text-align: center;margin-left:4px;">
+                                                                            <span style="margin-top: 3px;">작성자</span></div>
+                                                                    </div>
+                                                                </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.10 08:46</span>
+                                                            </div>
+                                                            <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                                <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH">
+                                                                    <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ">
+                                                                        <button
+                                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button
+                                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="replyComponent_replyContent__3iS4J">
+                                                        <p class="replyContent_content_1j">안녕하세요</p>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+                                                <div class="replyComponent_replyContainer__3dxJZ rereplyContainer__3x">
+                                                    <div class="replyComponent_replyOfCommentContainer__2bLgx">
+                                                        <textarea class="replyComponent_replyInput__2vKhX rereply_textarea" maxlength="1000" placeholder="대댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                                        <div class="replyComponent_replyButtonGroup__2i0ow">
+                                                            <div class="replyComponent_replyButtonGroupCount__j0XkV">
+                                                                <span class="rereplyTextCount">0</span><span>/</span><span>1000</span></div>
+                                                            <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;">
+                                        <div class="userInformationComponents_userReplySection__3ty7Q">
+                                            <div class="userInformationComponents_profile__2pr8a">
+                                                <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                    <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                        <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                class="userInformationComponents_smImg__2uLTY"
+                                                                src="https://letspl.me/assets/images/prof-no-img.png" alt="박종우"></div>
+                                                        <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                        <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA"></div>
+                                                    </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.09 20:44</span>
+                                                </div>
+                                                <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                    <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH"><button
+                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                          src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                                        <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ"><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="replyComponent_replyContent__3iS4J">
+                                            <p class="replyContent_content_1j">안녕하세요</p>
+                                            <div class="replyComponent_replyOpenAndLikeButtonGroup__3r9hv"><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                  src="https://letspl.me/assets/images/ic_talk_up.svg"></button><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_lightGray__cqa_C rereplyButton_1j">대댓글쓰기</button>
+                                            </div>
+                                            <div>
+                                                <div class="replyComponent_replyContainer__3dxJZ">
+                                                    <div class="userInformationComponents_userReplySection__3ty7Q">
+                                                        <div class="userInformationComponents_profile__2pr8a">
+                                                            <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                                <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                                    <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                            class="userInformationComponents_smImg__2uLTY"
+                                                                            src="https://letspl.me/assets/images/prof-no-img.png" alt="아니그웃"></div>
+                                                                    <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                            class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                                    <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA">
+                                                                        <div class="tag_tag__2gh0s tag_typeGray__3-1Ag tag_sizeDefault__2V2-5" style="text-align: center;margin-left: 4px">
+                                                                            <span style="margin-top: 3px;">작성자</span></div>
+                                                                    </div>
+                                                                </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.10 08:46</span>
+                                                            </div>
+                                                            <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                                <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH">
+                                                                    <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ">
+                                                                        <button
+                                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button
+                                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="replyComponent_replyContent__3iS4J">
+                                                        <p class="replyContent_content_1j">안녕하세요</p>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+                                                <div class="replyComponent_replyContainer__3dxJZ rereplyContainer__3x">
+                                                    <div class="replyComponent_replyOfCommentContainer__2bLgx">
+                                                        <textarea class="replyComponent_replyInput__2vKhX rereply_textarea" maxlength="1000" placeholder="대댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                                        <div class="replyComponent_replyButtonGroup__2i0ow">
+                                                            <div class="replyComponent_replyButtonGroupCount__j0XkV">
+                                                                <span class="rereplyTextCount">0</span><span>/</span><span>1000</span></div>
+                                                            <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="loungeCard" style="margin-bottom: -10px;">
+
+                <div class="loungeCardContents">
+                    <div class="loungeCardContentsComponents_loungeContents__262-A">
+                        <div class="loungeCardContentsComponents_loungeContentsTagMoreBox__1oKkG">
+                            <div class="undefined">
+                                <div class="tag_tag__2gh0s tag_typeDefault__3U6Rz tag_sizeDefault__2V2-5">
+                                            <span>네오스인
+                                                고민</span>
+                                </div>
+                            </div>
+                            <div class="loungeCardContentsComponents_loungeContentsRight__14cdz">
+                                <div class="loungeCardContentsComponents_loungeContentsMore__2AXVI"><button
+                                        class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
+                                        class="buttonComponents_mdImg__G1pNE" src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                    <div class="loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo"><button
+                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postUpdate_1j">수정</button><button
+                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postDelete_1j">삭제</button></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="loungeCardContentsComponents_loungeContentsTitleBox__2NtjH">
+                            <div class="loungeCardContentsComponents_loungeContentsTitleDate__1-Xd2">
+                                <h3 class="loungeCardContentsComponents_title__1s8RE">고민이야≫ 콘텐츠 마케팅이 뭐야?⇒
+                                    숏폼(릴스/쇼츠</h3><span class="loungeCardContentsComponents_date__3pY5X">21시간
+                                            전</span>
+                            </div>
+                        </div>
+                        <div class="loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4"><img
+                                width="90%" height="auto"
+                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/images_temp/4463/%EB%AA%A8%EB%B0%94%EC%9D%BC%EB%B0%B0%EB%84%882_%EB%A7%88%EC%BC%80%ED%8C%85%20%EA%B8%B0%EB%B0%98%20%EB%A9%80%ED%8B%B0%EB%AF%B8%EB%94%94%EC%96%B4%EC%BD%98%ED%85%90%EC%B8%A0%20%ED%81%AC%EB%A6%AC%EC%97%90%EC%9D%B4%ED%84%B0.jpg">
+                            <p style="font-size: 14px"><strong>■ 고민이야</strong><br><strong>≫ 콘텐츠 마케팅이
+                                뭐야?</strong><br>⇒ 숏폼(릴스/쇼츠/틱톡/모먼트), 라이브커머스, 유튜브 같이 영상 매체를 통한 마케팅
+                                방법이야!<br><strong>≫ 요즘 잘나가는 1인 크리에이터가 되고 싶은데 방법을 모르겠어</strong><br>⇒ 실제 업계에 계시는 현업
+                                강사로 구성되어 기획부터 홍보, 영상촬영, 편집까지 알려줄게!<br><strong>≫ 배우고 싶은데 교육비가
+                                    비쌀거같은데https://letspl.me</strong><br>⇒ 교육비 무료에 중식비 지원까지! 금액 걱정없이 학습에
+                                집중만해~<br><strong>≫ 나는
+                                    콘텐츠 마케터가 되고싶은데?</strong><br>⇒ 1인 크리에이터 뿐만 아니라 매칭데이를 통해 콘텐츠 마케터 취업 코스까지
+                                준비해줄게!<br><br>&nbsp;</p>
+                            <p style="font-size: 14px"><strong>■ 과정 안내</strong><br><strong>≫ SeSAC DT 마케팅 기반
+                                멀티미디어 콘텐츠 크리에이터 양성 과정</strong></p>
+                            <p style="font-size: 14px"><br><br><strong>■ 접수 안내</strong><br><strong>● 접수
+                                기간</strong><br><strong>≫ 2022.10.06(목) ~ 2022.11.20(일)</strong>&nbsp;/~23:59
+                                까지</p>
+                            <p style="font-size: 14px"><br><strong>● 접수 대상</strong><br><strong>≫ 신청일 기준 만 15세
+                                이상의 서울거주 시민</strong><br>⇒ 재직자는 신청이 어렵습니다</p>
+                            <p style="font-size: 14px"><br><strong>● 접수 방법</strong><br><strong>≫</strong><a
+                                    target="_blank" rel="noopener noreferrer nofollow"
+                                    style="text-decoration: underline"
+                                    href="https://sesac.seoul.kr/course/active/detail.do?courseActiveSeq=1520&amp;srchCategoryTypeCd=&amp;courseMasterSeq=283&amp;currentMenuId=900002001">홈페이지
+                                바로가기</a><br>⇒ [1] 상단 홈페이지로 이동하여 수강 신청을 한다.<br>⇒ [2] 홈페이지 과정 내 교육 개요의 접수 방법의
+                                구글 폼 링크를 통해 신청서를 작성한다.<br><strong>※ [1],[2] 과정 모두 완료 해주셔야 정상 접수 처리됩니다.</strong>
+                            </p>
+                            <p style="font-size: 14px"><br><br><strong>■ 교육 안내</strong><br><strong>● 교육
+                                기간</strong><br><strong>≫ 2022.11.30(수) ~2023.02.23(목)</strong></p>
+                            <p style="font-size: 14px"><br><strong>● 교육 시간</strong><br><strong>≫ 매주 월~금/
+                                09:00~18:00</strong></p>
+                            <p style="font-size: 14px"><br><strong>● 교육 장소</strong><br><strong>≫ 서울특별시 강서구
+                                공항대로61길 29 / SBA 국제유통센터</strong></p>
+                            <p style="font-size: 14px"><br><strong>● 교육 비용</strong><br><strong>≫ 전액
+                                무료</strong><br>⇒ 단, 예치금 10만원 선납후 수료이후 전액 반환</p>
+                            <p style="font-size: 14px"><br><br><strong>■
+                                해택</strong><br><strong>●교육해택</strong><br><strong>≫ 교육비
+                                전액무료</strong><br><strong>≫ 점심 식비 지원</strong><br><strong>≫ 취업을 위한 교육 운영 담당
+                                매니저의 취업 컨설팅 진행</strong><br><strong>≫ 현업에 있는 전문 강사진을 통한 꿀팁
+                                전수!</strong><br><strong>≫ 콘텐츠 마케터가 되기 위한 기업 매칭데이 진행</strong><br><strong>≫
+                                전문적인 스튜디오/장비를 활용한 실제 방송체험 제공</strong></p>
+                            <p style="font-size: 14px"><br><br><strong>■ 문의
+                                안내</strong><br><strong>●문의처</strong><br><strong>≫
+                                0505-150-7799</strong><br><strong>≫&nbsp;</strong><a target="_blank"
+                                                                                     rel="noopener noreferrer nofollow" style="text-decoration: underline"
+                                                                                     href="mailto:sesac.villain@gmail.com"><strong>sesac.villain@gmail.com</strong></a>
+                            </p>
+                        </div>
+                        <div class="loungeCardContentsComponents_loungeContentsMoreButtonWrap__1LR4v"><button
+                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU   ">펼치기</button>
+                        </div>
+                        <div class="replyComponent_reply__3l-Wc">
+                            <div class="replyComponent_replyButtonBox__2O3ME">
+                                <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 button_heart_1ljw5">
+                                    <img class="" src="https://letspl.me/assets/images/ic-letspler-heart-empty.png">0</button>
+                                <div class="replyComponent_replyOnOff__QKoso">
+                                    <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU   ">
+                                        <span class="buttonComponents_gray__1blI9">첫번째 댓글을 달아주세요</span>
+                                        <img class="buttonComponents_smMdImg__2IOAr" src="https://letspl.me/assets/images/ic-arrow-up.svg"></button>
+                                </div>
+                            </div>
+                            <div class="replyComponent_replyFilter__10kow">
+                                <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_black__3vMzB   ">
+                                    <img class="buttonComponents_smImg__1vYDM" src="/images/community/bluedot.png">등록순</button>
+                                <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_gray__1blI9   ">최신순</button>
+                            </div>
+                            <div class="replyComponent_replyInputBox__2yLKK">
+                                <div class="replyComponent_replyInputContainer__3TJW8">
+                                    <textarea class="replyComponent_replyInput__2vKhX replyTextArea" maxlength="1000" placeholder="댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                </div>
+                                <div class="replyComponent_replyButtonGroup__2i0ow">
+                                    <div class="replyComponent_replyButtonGroupCount__j0XkV">
+                                        <span class="replyTextCount">0</span>
+                                        <span>/</span>
+                                        <span>1000</span>
+                                    </div>
+                                    <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>
+                                </div>
+                            </div>
+                            <div class="replyComponent_replyBox__1duHS">
+                                <div class="replyComponent_replyContainer__3dxJZ">
+                                    <div style="border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;">
+                                        <div class="userInformationComponents_userReplySection__3ty7Q">
+                                            <div class="userInformationComponents_profile__2pr8a">
+                                                <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                    <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                        <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                class="userInformationComponents_smImg__2uLTY"
+                                                                src="https://letspl.me/assets/images/prof-no-img.png" alt="박종우"></div>
+                                                        <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                        <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA"></div>
+                                                    </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.09 20:44</span>
+                                                </div>
+                                                <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                    <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH"><button
+                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                          src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                                        <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ"><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyUpdate">수정</button><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyDelete">삭제</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="replyComponent_replyContent__3iS4J">
+                                            <p class="replyContent_content_1j">안녕하세요</p>
+                                            <div class="replyComponent_replyOpenAndLikeButtonGroup__3r9hv"><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                  src="https://letspl.me/assets/images/ic_talk_up.svg"></button><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_lightGray__cqa_C rereplyButton_1j">대댓글쓰기</button>
+                                            </div>
+                                            <div>
+                                                <div class="replyComponent_replyContainer__3dxJZ">
+                                                    <div class="userInformationComponents_userReplySection__3ty7Q">
+                                                        <div class="userInformationComponents_profile__2pr8a">
+                                                            <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                                <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                                    <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                            class="userInformationComponents_smImg__2uLTY"
+                                                                            src="https://letspl.me/assets/images/prof-no-img.png" alt="아니그웃"></div>
+                                                                    <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                            class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                                    <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA">
+                                                                        <div class="tag_tag__2gh0s tag_typeGray__3-1Ag tag_sizeDefault__2V2-5" style="text-align: center;margin-left:4px;">
+                                                                            <span style="margin-top: 3px;">작성자</span></div>
+                                                                    </div>
+                                                                </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.10 08:46</span>
+                                                            </div>
+                                                            <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                                <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH">
+                                                                    <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ">
+                                                                        <button
+                                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button
+                                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="replyComponent_replyContent__3iS4J">
+                                                        <p class="replyContent_content_1j">안녕하세요</p>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+                                                <div class="replyComponent_replyContainer__3dxJZ rereplyContainer__3x">
+                                                    <div class="replyComponent_replyOfCommentContainer__2bLgx">
+                                                        <textarea class="replyComponent_replyInput__2vKhX rereply_textarea" maxlength="1000" placeholder="대댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                                        <div class="replyComponent_replyButtonGroup__2i0ow">
+                                                            <div class="replyComponent_replyButtonGroupCount__j0XkV">
+                                                                <span class="rereplyTextCount">0</span><span>/</span><span>1000</span></div>
+                                                            <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;">
+                                        <div class="userInformationComponents_userReplySection__3ty7Q">
+                                            <div class="userInformationComponents_profile__2pr8a">
+                                                <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                    <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                        <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                class="userInformationComponents_smImg__2uLTY"
+                                                                src="https://letspl.me/assets/images/prof-no-img.png" alt="박종우"></div>
+                                                        <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                        <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA"></div>
+                                                    </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.09 20:44</span>
+                                                </div>
+                                                <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                    <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH"><button
+                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                          src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                                        <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ"><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="replyComponent_replyContent__3iS4J">
+                                            <p class="replyContent_content_1j">안녕하세요</p>
+                                            <div class="replyComponent_replyOpenAndLikeButtonGroup__3r9hv"><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                  src="https://letspl.me/assets/images/ic_talk_up.svg"></button><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_lightGray__cqa_C rereplyButton_1j">대댓글쓰기</button>
+                                            </div>
+                                            <div>
+                                                <div class="replyComponent_replyContainer__3dxJZ">
+                                                    <div class="userInformationComponents_userReplySection__3ty7Q">
+                                                        <div class="userInformationComponents_profile__2pr8a">
+                                                            <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                                <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                                    <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                            class="userInformationComponents_smImg__2uLTY"
+                                                                            src="https://letspl.me/assets/images/prof-no-img.png" alt="아니그웃"></div>
+                                                                    <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                            class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                                    <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA">
+                                                                        <div class="tag_tag__2gh0s tag_typeGray__3-1Ag tag_sizeDefault__2V2-5" style="text-align: center;margin-left: 4px">
+                                                                            <span style="margin-top: 3px;">작성자</span></div>
+                                                                    </div>
+                                                                </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.10 08:46</span>
+                                                            </div>
+                                                            <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                                <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH">
+                                                                    <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ">
+                                                                        <button
+                                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button
+                                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="replyComponent_replyContent__3iS4J">
+                                                        <p class="replyContent_content_1j">안녕하세요</p>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+                                                <div class="replyComponent_replyContainer__3dxJZ rereplyContainer__3x">
+                                                    <div class="replyComponent_replyOfCommentContainer__2bLgx">
+                                                        <textarea class="replyComponent_replyInput__2vKhX rereply_textarea" maxlength="1000" placeholder="대댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                                        <div class="replyComponent_replyButtonGroup__2i0ow">
+                                                            <div class="replyComponent_replyButtonGroupCount__j0XkV">
+                                                                <span class="rereplyTextCount">0</span><span>/</span><span>1000</span></div>
+                                                            <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="loungeCard" style="margin-bottom: -10px;">
+
+                <div class="loungeCardContents">
+                    <div class="loungeCardContentsComponents_loungeContents__262-A">
+                        <div class="loungeCardContentsComponents_loungeContentsTagMoreBox__1oKkG">
+                            <div class="undefined">
+                                <div class="tag_tag__2gh0s tag_typeDefault__3U6Rz tag_sizeDefault__2V2-5">
+                                            <span>네오스인
+                                                고민</span>
+                                </div>
+                            </div>
+                            <div class="loungeCardContentsComponents_loungeContentsRight__14cdz">
+                                <div class="loungeCardContentsComponents_loungeContentsMore__2AXVI"><button
+                                        class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
+                                        class="buttonComponents_mdImg__G1pNE" src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                    <div class="loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo"><button
+                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postUpdate_1j">수정</button><button
+                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postDelete_1j">삭제</button></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="loungeCardContentsComponents_loungeContentsTitleBox__2NtjH">
+                            <div class="loungeCardContentsComponents_loungeContentsTitleDate__1-Xd2">
+                                <h3 class="loungeCardContentsComponents_title__1s8RE">고민이야≫ 콘텐츠 마케팅이 뭐야?⇒
+                                    숏폼(릴스/쇼츠</h3><span class="loungeCardContentsComponents_date__3pY5X">21시간
+                                            전</span>
+                            </div>
+                        </div>
+                        <div class="loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4"><img
+                                width="90%" height="auto"
+                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/images_temp/4463/%EB%AA%A8%EB%B0%94%EC%9D%BC%EB%B0%B0%EB%84%882_%EB%A7%88%EC%BC%80%ED%8C%85%20%EA%B8%B0%EB%B0%98%20%EB%A9%80%ED%8B%B0%EB%AF%B8%EB%94%94%EC%96%B4%EC%BD%98%ED%85%90%EC%B8%A0%20%ED%81%AC%EB%A6%AC%EC%97%90%EC%9D%B4%ED%84%B0.jpg">
+                            <p style="font-size: 14px"><strong>■ 고민이야</strong><br><strong>≫ 콘텐츠 마케팅이
+                                뭐야?</strong><br>⇒ 숏폼(릴스/쇼츠/틱톡/모먼트), 라이브커머스, 유튜브 같이 영상 매체를 통한 마케팅
+                                방법이야!<br><strong>≫ 요즘 잘나가는 1인 크리에이터가 되고 싶은데 방법을 모르겠어</strong><br>⇒ 실제 업계에 계시는 현업
+                                강사로 구성되어 기획부터 홍보, 영상촬영, 편집까지 알려줄게!<br><strong>≫ 배우고 싶은데 교육비가
+                                    비쌀거같은데https://letspl.me</strong><br>⇒ 교육비 무료에 중식비 지원까지! 금액 걱정없이 학습에
+                                집중만해~<br><strong>≫ 나는
+                                    콘텐츠 마케터가 되고싶은데?</strong><br>⇒ 1인 크리에이터 뿐만 아니라 매칭데이를 통해 콘텐츠 마케터 취업 코스까지
+                                준비해줄게!<br><br>&nbsp;</p>
+                            <p style="font-size: 14px"><strong>■ 과정 안내</strong><br><strong>≫ SeSAC DT 마케팅 기반
+                                멀티미디어 콘텐츠 크리에이터 양성 과정</strong></p>
+                            <p style="font-size: 14px"><br><br><strong>■ 접수 안내</strong><br><strong>● 접수
+                                기간</strong><br><strong>≫ 2022.10.06(목) ~ 2022.11.20(일)</strong>&nbsp;/~23:59
+                                까지</p>
+                            <p style="font-size: 14px"><br><strong>● 접수 대상</strong><br><strong>≫ 신청일 기준 만 15세
+                                이상의 서울거주 시민</strong><br>⇒ 재직자는 신청이 어렵습니다</p>
+                            <p style="font-size: 14px"><br><strong>● 접수 방법</strong><br><strong>≫</strong><a
+                                    target="_blank" rel="noopener noreferrer nofollow"
+                                    style="text-decoration: underline"
+                                    href="https://sesac.seoul.kr/course/active/detail.do?courseActiveSeq=1520&amp;srchCategoryTypeCd=&amp;courseMasterSeq=283&amp;currentMenuId=900002001">홈페이지
+                                바로가기</a><br>⇒ [1] 상단 홈페이지로 이동하여 수강 신청을 한다.<br>⇒ [2] 홈페이지 과정 내 교육 개요의 접수 방법의
+                                구글 폼 링크를 통해 신청서를 작성한다.<br><strong>※ [1],[2] 과정 모두 완료 해주셔야 정상 접수 처리됩니다.</strong>
+                            </p>
+                            <p style="font-size: 14px"><br><br><strong>■ 교육 안내</strong><br><strong>● 교육
+                                기간</strong><br><strong>≫ 2022.11.30(수) ~2023.02.23(목)</strong></p>
+                            <p style="font-size: 14px"><br><strong>● 교육 시간</strong><br><strong>≫ 매주 월~금/
+                                09:00~18:00</strong></p>
+                            <p style="font-size: 14px"><br><strong>● 교육 장소</strong><br><strong>≫ 서울특별시 강서구
+                                공항대로61길 29 / SBA 국제유통센터</strong></p>
+                            <p style="font-size: 14px"><br><strong>● 교육 비용</strong><br><strong>≫ 전액
+                                무료</strong><br>⇒ 단, 예치금 10만원 선납후 수료이후 전액 반환</p>
+                            <p style="font-size: 14px"><br><br><strong>■
+                                해택</strong><br><strong>●교육해택</strong><br><strong>≫ 교육비
+                                전액무료</strong><br><strong>≫ 점심 식비 지원</strong><br><strong>≫ 취업을 위한 교육 운영 담당
+                                매니저의 취업 컨설팅 진행</strong><br><strong>≫ 현업에 있는 전문 강사진을 통한 꿀팁
+                                전수!</strong><br><strong>≫ 콘텐츠 마케터가 되기 위한 기업 매칭데이 진행</strong><br><strong>≫
+                                전문적인 스튜디오/장비를 활용한 실제 방송체험 제공</strong></p>
+                            <p style="font-size: 14px"><br><br><strong>■ 문의
+                                안내</strong><br><strong>●문의처</strong><br><strong>≫
+                                0505-150-7799</strong><br><strong>≫&nbsp;</strong><a target="_blank"
+                                                                                     rel="noopener noreferrer nofollow" style="text-decoration: underline"
+                                                                                     href="mailto:sesac.villain@gmail.com"><strong>sesac.villain@gmail.com</strong></a>
+                            </p>
+                        </div>
+                        <div class="loungeCardContentsComponents_loungeContentsMoreButtonWrap__1LR4v"><button
+                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU   ">펼치기</button>
+                        </div>
+                        <div class="replyComponent_reply__3l-Wc">
+                            <div class="replyComponent_replyButtonBox__2O3ME">
+                                <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 button_heart_1ljw5">
+                                    <img class="" src="https://letspl.me/assets/images/ic-letspler-heart-empty.png">0</button>
+                                <div class="replyComponent_replyOnOff__QKoso">
+                                    <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU   ">
+                                        <span class="buttonComponents_gray__1blI9">첫번째 댓글을 달아주세요</span>
+                                        <img class="buttonComponents_smMdImg__2IOAr" src="https://letspl.me/assets/images/ic-arrow-up.svg"></button>
+                                </div>
+                            </div>
+                            <div class="replyComponent_replyFilter__10kow">
+                                <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_black__3vMzB   ">
+                                    <img class="buttonComponents_smImg__1vYDM" src="/images/community/bluedot.png">등록순</button>
+                                <button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_gray__1blI9   ">최신순</button>
+                            </div>
+                            <div class="replyComponent_replyInputBox__2yLKK">
+                                <div class="replyComponent_replyInputContainer__3TJW8">
+                                    <textarea class="replyComponent_replyInput__2vKhX replyTextArea" maxlength="1000" placeholder="댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                </div>
+                                <div class="replyComponent_replyButtonGroup__2i0ow">
+                                    <div class="replyComponent_replyButtonGroupCount__j0XkV">
+                                        <span class="replyTextCount">0</span>
+                                        <span>/</span>
+                                        <span>1000</span>
+                                    </div>
+                                    <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>
+                                </div>
+                            </div>
+                            <div class="replyComponent_replyBox__1duHS">
+                                <div class="replyComponent_replyContainer__3dxJZ">
+                                    <div style="border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;">
+                                        <div class="userInformationComponents_userReplySection__3ty7Q">
+                                            <div class="userInformationComponents_profile__2pr8a">
+                                                <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                    <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                        <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                class="userInformationComponents_smImg__2uLTY"
+                                                                src="https://letspl.me/assets/images/prof-no-img.png" alt="박종우"></div>
+                                                        <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                        <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA"></div>
+                                                    </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.09 20:44</span>
+                                                </div>
+                                                <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                    <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH"><button
+                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                          src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                                        <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ"><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyUpdate">수정</button><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyDelete">삭제</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="replyComponent_replyContent__3iS4J">
+                                            <p class="replyContent_content_1j">안녕하세요</p>
+                                            <div class="replyComponent_replyOpenAndLikeButtonGroup__3r9hv"><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                  src="https://letspl.me/assets/images/ic_talk_up.svg"></button><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_lightGray__cqa_C rereplyButton_1j">대댓글쓰기</button>
+                                            </div>
+                                            <div>
+                                                <div class="replyComponent_replyContainer__3dxJZ">
+                                                    <div class="userInformationComponents_userReplySection__3ty7Q">
+                                                        <div class="userInformationComponents_profile__2pr8a">
+                                                            <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                                <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                                    <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                            class="userInformationComponents_smImg__2uLTY"
+                                                                            src="https://letspl.me/assets/images/prof-no-img.png" alt="아니그웃"></div>
+                                                                    <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                            class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                                    <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA">
+                                                                        <div class="tag_tag__2gh0s tag_typeGray__3-1Ag tag_sizeDefault__2V2-5" style="text-align: center;margin-left:4px;">
+                                                                            <span style="margin-top: 3px;">작성자</span></div>
+                                                                    </div>
+                                                                </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.10 08:46</span>
+                                                            </div>
+                                                            <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                                <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH">
+                                                                    <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ">
+                                                                        <button
+                                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button
+                                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="replyComponent_replyContent__3iS4J">
+                                                        <p class="replyContent_content_1j">안녕하세요</p>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+                                                <div class="replyComponent_replyContainer__3dxJZ rereplyContainer__3x">
+                                                    <div class="replyComponent_replyOfCommentContainer__2bLgx">
+                                                        <textarea class="replyComponent_replyInput__2vKhX rereply_textarea" maxlength="1000" placeholder="대댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                                        <div class="replyComponent_replyButtonGroup__2i0ow">
+                                                            <div class="replyComponent_replyButtonGroupCount__j0XkV">
+                                                                <span class="rereplyTextCount">0</span><span>/</span><span>1000</span></div>
+                                                            <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;">
+                                        <div class="userInformationComponents_userReplySection__3ty7Q">
+                                            <div class="userInformationComponents_profile__2pr8a">
+                                                <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                    <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                        <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                class="userInformationComponents_smImg__2uLTY"
+                                                                src="https://letspl.me/assets/images/prof-no-img.png" alt="박종우"></div>
+                                                        <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                        <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA"></div>
+                                                    </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.09 20:44</span>
+                                                </div>
+                                                <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                    <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH"><button
+                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                          src="https://letspl.me/assets/images/ic-more.svg"></button>
+                                                        <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ"><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button
+                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="replyComponent_replyContent__3iS4J">
+                                            <p class="replyContent_content_1j">안녕하세요</p>
+                                            <div class="replyComponent_replyOpenAndLikeButtonGroup__3r9hv"><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
+                                                                                                                                  src="https://letspl.me/assets/images/ic_talk_up.svg"></button><button
+                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_lightGray__cqa_C rereplyButton_1j">대댓글쓰기</button>
+                                            </div>
+                                            <div>
+                                                <div class="replyComponent_replyContainer__3dxJZ">
+                                                    <div class="userInformationComponents_userReplySection__3ty7Q">
+                                                        <div class="userInformationComponents_profile__2pr8a">
+                                                            <div class="userInformationComponents_profileLeftGroup__1lq6K">
+                                                                <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">
+                                                                    <div class="userInformationComponents_profileImg__3qJcX"><img
+                                                                            class="userInformationComponents_smImg__2uLTY"
+                                                                            src="https://letspl.me/assets/images/prof-no-img.png" alt="아니그웃"></div>
+                                                                    <p class="userInformationComponents_profileName__3l0ya"><i
+                                                                            class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>
+                                                                    <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA">
+                                                                        <div class="tag_tag__2gh0s tag_typeGray__3-1Ag tag_sizeDefault__2V2-5" style="text-align: center;margin-left: 4px">
+                                                                            <span style="margin-top: 3px;">작성자</span></div>
+                                                                    </div>
+                                                                </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.10 08:46</span>
+                                                            </div>
+                                                            <div class="userInformationComponents_profileRightGroup__3Ro_j">
+                                                                <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH">
+                                                                    <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ">
+                                                                        <button
+                                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button
+                                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="replyComponent_replyContent__3iS4J">
+                                                        <p class="replyContent_content_1j">안녕하세요</p>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+                                                <div class="replyComponent_replyContainer__3dxJZ rereplyContainer__3x">
+                                                    <div class="replyComponent_replyOfCommentContainer__2bLgx">
+                                                        <textarea class="replyComponent_replyInput__2vKhX rereply_textarea" maxlength="1000" placeholder="대댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                                        <div class="replyComponent_replyButtonGroup__2i0ow">
+                                                            <div class="replyComponent_replyButtonGroupCount__j0XkV">
+                                                                <span class="rereplyTextCount">0</span><span>/</span><span>1000</span></div>
+                                                            <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--댓글쓰기 눌럿을때-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--      2번  -->
+        </div>
+
+        <div class="moreButtonBox"><button
+                class="buttonComponents_button__1hvQa buttonComponents_radius__2l9SM   buttonComponents_md__26Zib ">더
+            보기</button></div>
+    </div>
+    <div class="rightSection" style="max-width: 300px;">
+        <div class="rightSectionBox">
+            <div class="loungeTrendComponents_LoungeTrendBox__2LuCJ" style="display: none;">
+                <h4>조회 급상승 모임</h4>
+                <ul class="loungeTrendComponents_LoungeTrendContainer__1xnsy">
+                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
+                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">1</span><button
+                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
+                            class="buttonComponents_lgImg__2-hZO"
+                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/undefined/images/rn_image_picker_lib_temp_b398ec73-e178-4289-a927-3a052fc56f91.jpg"><span
+                            class="">대학 동아리 플랫폼 App</span></button></li>
+                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
+                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">2</span><button
+                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
+                            class="buttonComponents_lgImg__2-hZO"
+                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_01.png"><span
+                            class="">근무시간 관리 어플리케이션 팀원모집</span></button></li>
+                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
+                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">3</span><button
+                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><span
+                            class="">스타트업, zero to one</span></button></li>
+                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
+                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">4</span><button
+                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
+                            class="buttonComponents_lgImg__2-hZO"
+                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_08.png"><span
+                            class="">유튜버들의 소재 탐색 자동화 솔루션</span></button></li>
+                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
+                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">5</span><button
+                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
+                            class="buttonComponents_lgImg__2-hZO"
+                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/3616/images/KakaoTalk_Photo_2022-09-05-16-42-32%20001.jpeg"><span
+                            class="">대학교 카풀 앱 제작팀(모든 직군!)</span></button></li>
+                </ul>
+            </div>
+            <div class="loungeTrendComponents_LoungeTrendBox__2LuCJ" style="width: 300px;">
+                <h4>지금 인기 렛플인</h4>
+                <ul class="loungeTrendComponents_LoungeTrendContainer__1xnsy"
+                    style="width: 300px !important; max-width:300px !important">
+                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
+                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">1</span><button
+                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
+                            class="buttonComponents_lgImg__2-hZO"
+                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png"><span
+                            class="">민쇼니</span></button></li>
+                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
+                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">2</span><button
+                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
+                            class="buttonComponents_lgImg__2-hZO"
+                            src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png"><span
+                            class="">sun9hyun</span></button></li>
+                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
+                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">3</span><button
+                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
+                            class="buttonComponents_lgImg__2-hZO"
+                            src="https://letspl.me/assets/images/prof-no-img.png"><span
+                            class="">추추추</span></button></li>
+                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
+                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">4</span><button
+                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
+                            class="buttonComponents_lgImg__2-hZO"
+                            src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"><span
+                            class="">ROSA</span></button></li>
+                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
+                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">5</span><button
+                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
+                            class="buttonComponents_lgImg__2-hZO"
+                            src="https://k.kakaocdn.net/dn/cjVEIE/btrKqQE6Q8C/NSvM3RRa6GDvHJXurHgxmK/img_640x640.jpg"><span
+                            class="">sojoo</span></button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--<div class="chattingWrap2">-->
+<!--    <div class="active writingBtn" style="cursor: pointer"></div>-->
+<!--</div>-->
+<div th:replace="/app/fix/chattingAll.html :: chattingAll"></div>
+<div th:replace="/app/fix/footer.html :: footer"></div>
+</body>
+<!-- ghostTest -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script src="/js/community/freeboard.js"></script>
+<script>
+    $(document).ready(function() {
+        // $('#summernote').summernote({
+        //     height: 150,
+        //     lang: "ko-KR"
+        // });
+        $('#summernote').summernote({
+            height: 150,
+            lang: "ko-KR",
+            toolbar: [
+                // [groupName, [list of button]]
+                ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
+                ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+                ['color', ['forecolor','color']],
+                ['table', ['table']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['view', ['fullscreen']]
+            ],
+            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+            fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+            callbacks: {	//여기 부분이 이미지를 첨부하는 부분
+                onImageUpload : function(files) {
+                    uploadSummernoteImageFile(files[0],this);
+                },
+                onPaste: function (e) {
+                    var clipboardData = e.originalEvent.clipboardData;
+                    if (clipboardData && clipboardData.items && clipboardData.items.length) {
+                        var item = clipboardData.items[0];
+                        if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
+                            e.preventDefault();
+                        }
+                    }
+                }
+            }
+        });
+    });
+
+    /**
+     * 이미지 파일 업로드
+     */
+    function uploadSummernoteImageFile(file, editor) {
+        data = new FormData();
+        data.append("file", file);
+        $.ajax({
+            data : data,
+            type : "POST",
+            url : "/uploadSummernoteImageFile",
+            contentType : false,
+            processData : false,
+            success : function(data) {
+                //항상 업로드된 파일의 url이 있어야 한다.
+                $(editor).summernote('insertImage', data.url);
+            }
+        });
+    }
+</script>
+<script>
+    const $noLoginModal = $(".noLoginModal");
+    const $closeBtn =$(".noLoginModal .whiteBtn");
+    const $yesBtn =$(".noLoginModal .redBtn");
+
+    const $xBtn = $(".noLoginModal .closeBtn")
+    $closeBtn.click(function(){
+        $noLoginModal.hide();
+    })
+    $yesBtn.click(function(){
+        $noLoginModal.hide();
+    })
+    $xBtn.click(function(){
+        $noLoginModal.hide();
+    })
+
+</script>
+<script src="/js/fix/chatting.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="/js/fix/login.js"></script>
+</html>

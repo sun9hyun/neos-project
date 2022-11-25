@@ -1,5 +1,32 @@
 package com.app.neosproject.entity.banner;
 
+import com.app.neosproject.entity.period.Period;
+import com.app.neosproject.type.banner.BannerStatus;
+import lombok.*;
 
-public class Banner {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TBL_BANNER")
+@Getter @ToString
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Banner extends Period {
+    @Id @GeneratedValue
+    private Long bannerId;
+
+   private String bannerTitle;
+   private String bannerUrl;
+   private String fileName;
+   private BannerStatus bannerStatus;
+
+    @Builder
+    public Banner(String bannerTitle, String bannerUrl, String fileName, BannerStatus bannerStatus) {
+        this.bannerTitle = bannerTitle;
+        this.bannerUrl = bannerUrl;
+        this.fileName = fileName;
+        this.bannerStatus = bannerStatus;
+    }
 }

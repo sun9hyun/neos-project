@@ -15,6 +15,7 @@ public class StudyMember extends Created {
     @Id @GeneratedValue
     private Long studyMemberId;
 
+    @Enumerated(EnumType.STRING)
    private StudyMemberStatus studyMemberStatus;
 
    @ManyToOne(fetch = FetchType.LAZY)

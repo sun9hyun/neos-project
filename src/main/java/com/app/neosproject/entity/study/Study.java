@@ -20,6 +20,7 @@ public class Study extends Period {
     private Long studyId;
 
    private String studyTitle;
+
    @Embedded
    private StudyField studyField;
 
@@ -28,8 +29,10 @@ public class Study extends Period {
 
    private Integer studySupport;
 
-
+   @Enumerated(EnumType.STRING)
    private StudyRecruitStatus studyRecruitStatus;
+
+   @Enumerated(EnumType.STRING)
    private StudyStatus studyStatus;
 
    private String studyContent;

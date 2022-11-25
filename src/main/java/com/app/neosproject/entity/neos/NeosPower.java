@@ -18,6 +18,8 @@ public class NeosPower extends Created {
     private Long neosPowerId;
 
     private Integer neosPowerAbility;
+
+    @Enumerated(EnumType.STRING)
     private NeosPowerContent neosPowerContent;
 
     @ManyToOne(fetch = FetchType.LAZY)

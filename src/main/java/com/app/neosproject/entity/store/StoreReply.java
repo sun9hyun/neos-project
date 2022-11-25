@@ -16,6 +16,8 @@ public class StoreReply extends Period {
     private Long storeReplyId;
 
     private String storeReplyContent;
+
+    @Enumerated(EnumType.STRING)
     private StoreReplySecret storeReplySecret;
 
     @ManyToOne(fetch = FetchType.LAZY)

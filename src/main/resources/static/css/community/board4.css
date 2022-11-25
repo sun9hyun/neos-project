@@ -762,8 +762,6 @@ h3, ul {
 }
 
 .loginWrap .loginLogout .hoverMenu .pointWrap button {
-    background-color: #ea6560;
-    border-radius: 4px
 }
 
 .loginWrap .loginLogout .hoverMenu .pointWrap button span {
@@ -1045,7 +1043,6 @@ nav .Navbar {
 }
 
 nav .Navbar a.active, nav .Navbar a:hover {
-    color: #ea6560
 }
 
 header h1 {

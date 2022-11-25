@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "TBL_STUDY_QUESTION_REPLY")
-@Getter @ToString(exclude = {"studyQuestionReplyWriter", "studyQuestion "})
+@Getter @ToString(exclude = {"studyQuestionReplyWriter", "studyQuestion"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyQuestionReply extends Period {
     @Id @GeneratedValue

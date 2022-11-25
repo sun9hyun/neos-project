@@ -4,10 +4,7 @@ import com.app.neosproject.entity.period.Period;
 import com.app.neosproject.type.banner.BannerStatus;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="TBL_BANNER")
@@ -20,6 +17,8 @@ public class Banner extends Period {
    private String bannerTitle;
    private String bannerUrl;
    private String fileName;
+
+   @Enumerated(EnumType.STRING)
    private BannerStatus bannerStatus;
 
     @Builder

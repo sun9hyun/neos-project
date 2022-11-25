@@ -16,6 +16,7 @@ public class StudySupporter extends Created {
     @Id @GeneratedValue
     private Long studySupporterId;
 
+    @Enumerated(EnumType.STRING)
     private StudySupporterStatus studySupporterStatus;
 
     //지원자

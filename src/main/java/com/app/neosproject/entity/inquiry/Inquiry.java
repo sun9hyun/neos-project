@@ -17,6 +17,8 @@ public class Inquiry extends Period {
 
     private String inquiryContent;
     private String inquiryReply;
+
+    @Enumerated(EnumType.STRING)
     private InquiryStatus inquiryStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -4,6 +4,8 @@ import com.app.neosproject.type.user.UserCollegeMajor;
 import lombok.*;
 
 import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Embeddable
 @Getter
@@ -13,6 +15,8 @@ import javax.persistence.Embeddable;
 public class UserCollegeInfo {
     private boolean userCollegeCertify;
     private Integer userCollegeYear;
+
+    @Enumerated(EnumType.STRING)
     private UserCollegeMajor userCollegeMajor;
 
     @Builder

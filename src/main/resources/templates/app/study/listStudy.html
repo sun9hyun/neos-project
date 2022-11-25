@@ -5,21 +5,22 @@
     <title>NEOS | 스터디 모임 찾기</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/css/study/listStudy.css">
+    <link rel="stylesheet" href="/css/study/studyModal.css">
     <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
     <header th:replace="/app/fix/header.html :: header"></header>
-
+    <!-- 리스트 메인 START-->
     <div id="_next">
         <section>
             <div class="commonContentViewHeader">
-                <h1 class="projectView"><span class="smTxt">NEOS</span><span class="bgTxt">스터디 모임</span></h1>
+                <h1 class="projectView" style="padding: 0 !important"><span class="smTxt">NEOS</span><span class="bgTxt">스터디 모임</span></h1>
             </div>
             <div class="projectGrayBg">
                 <div class="projectLayoutRow projectView">
                     <div class="projectTopleftWrap projectLayoutRowFlex1">
-                        <h1>신규 프로젝트</h1>
+                        <h1 style="padding: 0 !important">신규 프로젝트</h1>
                         <div class="sliderWrap swiper mySwiper">
                             <div class="swiper-wrapper carousel-root">
                                 <div class="swiper-slide carousel carousel-slider">
@@ -30,7 +31,7 @@
                                                     alt="취약계층 지원 AI서비스 플랫폼"></div>
                                             <div class="top">
                                                 <div class="badgeWrap"></div>
-                                                <div class="topFavorite"></div>
+                                                <div class="favorite" style="margin-top: 0"></div>
                                             </div>
                                         </div>
                                         <div class="txtWrap">
@@ -85,7 +86,7 @@
                                                     alt="대학 동아리 플랫폼 App"></div>
                                             <div class="top">
                                                 <div class="badgeWrap"></div>
-                                                <div class="topFavorite"></div>
+                                                <div class="favorite" style="margin-top: 0"></div>
                                             </div>
                                         </div>
                                         <div class="txtWrap">
@@ -176,7 +177,7 @@
                                                     alt="프로덕트헌트_ 스타트업 제품런칭플랫폼"></div>
                                             <div class="top">
                                                 <div class="badgeWrap"></div>
-                                                <div class="topFavorite"></div>
+                                                <div class="favorite" style="margin-top: 0"></div>
                                             </div>
                                         </div>
                                         <div class="txtWrap">
@@ -216,7 +217,7 @@
                                                     alt="대학 동아리 플랫폼 App"></div>
                                             <div class="top">
                                                 <div class="badgeWrap"></div>
-                                                <div class="topFavorite"></div>
+                                                <div class="favorite" style="margin-top: 0"></div>
                                             </div>
                                         </div>
                                         <div class="txtWrap">
@@ -249,7 +250,7 @@
                         </div>
                     </div>
                     <div class="projectToplRightWrap projectLayoutRowFlex1">
-                        <h1>주목할만한 스터디</h1>
+                        <h1 style="padding: 0 !important">주목할만한 스터디</h1>
                         <div class="recommendProjectlist">
                             <div class="projectThumbWrap"><img
                                     src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/113/images/1.png"
@@ -376,7 +377,7 @@
                 </div>
             </div>
             <div class="projectView projectAllGridView">
-                <h1>전체 스터디</h1>
+                <h1 style="padding: 0 !important">전체 스터디</h1>
                 <div class="searchOption"><select class="citySelect smSelect">
                     <option value="KR00">지역 미지정</option>
                     <option value="KR01">서울특별시</option>
@@ -1125,6 +1126,30 @@
             </div>
         </section>
     </div>
+    <!-- 리스트 메인 END-->
+
+    <!-- 관련 모달 START-->
+    <div class="modalWrapOpen">
+        <!--임시저장 버튼 클리 시-->
+        <div class="modalWrap modal1">
+            <p class="modalTit studyTit">삶에 활력을 주는 Done List을</p>
+            <p class="modalTit">구독하시겠습니까?</p>
+            <button class="closeBtn">
+                <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
+            </button>
+            <div class="modalContent">
+                <p>구독하시면, 관련된 정보나</p>
+                <p>홍보 컨텐츠가 SMS/이메일/푸쉬을 통해 정기적으로 배송됩니다</p>
+                <p>자동으로 NEOS 광고수신동의가 이루어집니다</p>
+            </div>
+            <div class="btnWrap doubleBtnWrap">
+                <button class="btn whiteBtn">아니요</button>
+                <button class="btn blueBtn">예</button>
+            </div>
+        </div>
+
+    </div>
+    <!-- 관련 모달 END-->
 
     <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>

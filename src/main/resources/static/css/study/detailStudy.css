@@ -19,7 +19,7 @@ html {
 body {
     background: #fff;
     -webkit-text-size-adjust: none;
-    overflow: unset;
+    overflow: unset !important;
 }
 
 blockquote, body, button, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, pre, select, td, textarea, th, ul {
@@ -168,7 +168,7 @@ fieldset, img {
     border: 0;
 }
 
-.userIdWrap .userIdTxt {
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .userIdTxt {
     font-size: 14px;
     color: #666;
     margin-left: 11.5px;
@@ -986,7 +986,7 @@ button {
     -moz-box-direction: normal;
     flex-direction: column;
     border: 1px solid #ddd;
-    /*position: sticky;*/
+    position: sticky;
     top: 74px;
     margin-bottom: 20px;
     border-radius: 4px;
@@ -1335,6 +1335,7 @@ button {
     background-color: #1A7CFF;
     color: #fff;
     border: 1px solid #1A7CFF;
+    display: block
 }
 
 
@@ -1350,6 +1351,7 @@ button {
     padding: 10px 0;
     border-radius: 4px;
     font-size: 14px;
+    display: none;
 }
 
 .projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li .imgWrap {

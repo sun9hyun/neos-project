@@ -7,7 +7,134 @@
     font-style: normal;
 }
 
+fieldset, img {
+    border: 0;
+}
 
+button, input[type=button], input[type=file], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    border-radius: 0;
+}
 
+button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
 
 /*------------------스터디 모집글 생성 관련------------------*/
+.modalWrapOpen {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+    display: none;
+}
+
+.modalWrapOpen .modalWrap {
+    padding: 60px 20px 40px;
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    display: none;
+    border-radius: 8px;
+    max-width: 406px;
+    min-width: 300px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+    z-index: 999999;
+}
+
+.modalWrapOpen .modalWrap .modalTit {
+    font-size: 1.125rem;
+    color: #42495b;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.25rem;
+}
+
+.modalWrapOpen .modalWrap .closeBtn {
+    width: 22px;
+    height: 22px;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 24px;
+}
+
+.modalWrapOpen .modalWrap .closeBtn img {
+    width: 100%;
+}
+
+.modalWrapOpen .modalWrap .modalContent p,
+.modalWrapOpen .modalWrap .modalContent span {
+    font-size: .75rem;
+    color: #8e8ea2;
+    text-align: center;
+    line-height: 1rem;
+}
+
+.modalWrapOpen .modalWrap .btnWrap {
+    display: -moz-box;
+    display: flex;
+    width: 100%;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+}
+
+.btnWrap {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.modalWrapOpen .modalWrap .btnWrap.doubleBtnWrap button {
+    height: 44px;
+    width: 49%;
+    border: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: .75rem;
+    padding: 0;
+    border-radius: 4px;
+}
+
+.modalWrapOpen .modalWrap .btnWrap button.blueBtn {
+    border: 1px solid #1A7CFF;
+    background-color: #1A7CFF;
+    color: #fff;
+}
+
+.modalWrapOpen .modalWrap .btnWrap.singleBtnWrap button {
+    height: 44px;
+    width: 100%;
+    border: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: .75rem;
+}
+
+.modalWrapOpen .modalWrap .btnWrap button.whiteBtn {
+    border: 1px solid #1A7CFF;
+    color: #1A7CFF;
+    background-color: #fff;
+}
+

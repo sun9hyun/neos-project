@@ -145,3 +145,11 @@ $(".textarea").on("propertychange change keyup paste input", function () {
 $(".textarea").on("keyup", function () {
     $("p.count").children(":first").text($(this).val().length);
 })
+
+// 피드 작성자 채팅
+$(".chatList").on("click",function(){
+    let name = $(this).parents(".profileName").text().split(" ")[0];
+    $(".modal1").children(".modalContent").children(".modalName").text(name + "님과 대화를 시작합니다.");
+    $(".modalWrapOpen").show();
+    $(".modal1").css('display','inline-block');
+});

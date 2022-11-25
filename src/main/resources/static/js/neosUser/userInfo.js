@@ -33,9 +33,22 @@ $(".favorite").on("click", function () {
 
 
 /*스터디 누르면 나오는 모달 + 하트 불 들어오고 나가고*/
+function modalOk(heart) {
+    $(".subModal .commonModal .btnWrap button.redBtn").on("click", function () {
+        $(".subModal").css("display", "none");
+        $(heart).addClass('active2');
+        $(heart).addClass('on');
+        $(heart).removeClass('off');
+    })
+}
 
-$(".favorite2").click(function(){
-    let name = $(this).closest(".projectInfo").find(".projectWrap .tit").text();
+$(".favorite2.off").click(function(){
+    let name = $(this).closest(".projectGridWrap").find(".projectWrap .tit").text();
+    const heart = $(this);
+    if($(this).hasClass("off")) {
+        heart.addClass('click');
+    }
+
     let text = "";
     text += `<p class="modalTit">` + name + `를</p>`
     text += `<p class="modalTit">구독하시겠습니까?</p>`
@@ -43,11 +56,19 @@ $(".favorite2").click(function(){
 
     if($(this).hasClass("off")) {
         $(".subModal").css("display", "block");
+        $(".subModal .commonModal .btnWrap button.redBtn").on("click", function () {
+            $(".subModal").css("display", "none");
+            $(".click").addClass('active2');
+            $(".click").addClass('on');
+            $(".click").removeClass('off');
+            $(".click").removeClass('click');
+        })
     } else {
         $(this).removeClass('active2');
         $(this).addClass('off');
         $(this).removeClass('on');
     }
+
 });
 
 $(".commonModal .btnWrap button.whiteBtn").on("click", function () {
@@ -58,12 +79,6 @@ $(".commonModal .closeBtn img").on("click", function () {
     $(".subModal").css("display", "none");
 })
 
-$(".subModal .commonModal .btnWrap button.redBtn").on("click", function () {
-    $(".subModal").css("display", "none");
-    $(".top .favorite2").addClass('active2');
-    $(".top .favorite2").addClass('on');
-    $(".top .favorite2").removeClass('off');
-})
 
 
 /* 스터디 초대 눌렀을 때 초대 가능하면 나오는 모달 관련*/

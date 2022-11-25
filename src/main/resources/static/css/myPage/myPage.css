@@ -811,6 +811,7 @@ table {
 .paymentHistoryTab .payTabContents .payTable table tr td:nth-child(3) {
     text-align: left;
     padding-left: 60px;
+    border-right: none;
 }
 .paymentHistoryTab .payTabContents .payTable table tr td:nth-child(4) {
     border-right: none;
@@ -871,10 +872,12 @@ table {
     font-size: .75rem;
 }
 
-.paymentHistoryTab .payTabContents .payTable table tr td:nth-child(3) {
-    text-align: left;
-    padding-left: 60px;
+
+.paymentHistoryTab .payTabContents .payTable table tr th:nth-child(3) {
+    border-right: none;
 }
+
+
 
 /*----- 대학 ----------------------------------------------------------------------------------------*/
 label.checkBox {
@@ -972,3 +975,96 @@ input[type=checkbox], input[type=radio] {
     margin-right: 15px;
 }
 /*----- 업데이트 모달 ----------------------------------------------------------------------------------------*/
+
+
+
+
+/*-----네오력 설명-------------------------------------------------------------------------------------------*/
+.badges{
+    width: 60px;
+}
+
+.method{
+    /*list-style-type: disc;*/
+}
+
+.neoTable{
+    border-top: 2px solid #42495b;
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 90px;
+}
+
+.neoTable tr td{
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 11px 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 15px;
+}
+
+.neoTr{
+    border-bottom: 1.5px solid #e5e5e5;
+    font-size: 15px;
+}
+
+.neoTr th{
+    border-right: 1px solid #e5e5e5;
+    height: 34px;
+}
+
+.powerContent {
+    border: 1px solid #e5e5e5;
+    margin-left: 58px;
+    width: 50%;
+    height: 392px;
+    margin-top: 17px;
+    font-size: 20px;
+}
+
+.neosT{
+    margin-top: -15px;
+}
+
+.methods{
+    margin-bottom: 10px;
+    font-size: 20px;
+    margin-left: 30px;
+    margin-top: 32px;
+
+}
+
+.method{
+    font-size: 15px;
+    list-style-type: disc;
+    margin-bottom: 6px;
+}
+
+
+.methodUl{
+    margin-left: 70px;
+}
+
+.paymentHistoryTab .payTabContents .payTable table tr th:nth-child(3) {
+    border-right: none;
+}
+
+
+.borderNone{
+    border-right: none!important;
+}
+
+
+
+
+
+
+
+
+
+
+
+

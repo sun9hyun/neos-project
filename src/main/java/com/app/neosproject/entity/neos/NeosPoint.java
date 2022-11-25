@@ -18,6 +18,8 @@ public class NeosPoint extends Created {
     private Long neosPointId;
 
     private Integer neosPointMoney;
+
+    @Enumerated(EnumType.STRING)
     private NeosPointContent neosPointContent;
 
     @ManyToOne(fetch = FetchType.LAZY)

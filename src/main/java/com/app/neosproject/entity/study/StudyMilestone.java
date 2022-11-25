@@ -18,6 +18,8 @@ public class StudyMilestone extends Period {
 
     private String studyMileStoneTitle;
     private String studyMileStoneContent;
+
+    @Enumerated(EnumType.STRING)
     private StudyMilestoneStatus studyMilestoneStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -16,6 +16,7 @@ public class Store extends Period {
     @Id @GeneratedValue
     private Long storeId;
 
+    @Enumerated(EnumType.STRING)
     private StoreStatus storeStatus;
     private Integer storePoint;
     private String storeTitle;

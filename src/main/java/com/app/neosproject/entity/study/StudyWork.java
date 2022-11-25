@@ -21,7 +21,11 @@ public class StudyWork extends Period {
     private String studyWorkContent;
     private LocalDateTime studyWorkTargetDate;
     private String studyWorkLocation;
+
+    @Enumerated(EnumType.STRING)
     private StudyLocationStatus studyLocationStatus;
+
+    @Enumerated(EnumType.STRING)
     private StudyWorkStatus studyWorkStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)

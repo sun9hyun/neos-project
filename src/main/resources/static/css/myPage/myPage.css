@@ -982,6 +982,7 @@ input[type=checkbox], input[type=radio] {
 /*-----네오력 설명-------------------------------------------------------------------------------------------*/
 .badges{
     width: 60px;
+    vertical-align: middle;
 }
 
 .method{
@@ -1020,7 +1021,7 @@ input[type=checkbox], input[type=radio] {
     border: 1px solid #e5e5e5;
     margin-left: 58px;
     width: 50%;
-    height: 392px;
+    height: 370px;
     margin-top: 17px;
     font-size: 20px;
 }
@@ -1033,7 +1034,7 @@ input[type=checkbox], input[type=radio] {
     margin-bottom: 10px;
     font-size: 20px;
     margin-left: 30px;
-    margin-top: 32px;
+    margin-top: 25px;
 
 }
 

@@ -123,20 +123,24 @@
                             </textarea>
                         </div>
 
-                        <div class="projectDetailWrap">
+                        <div class="projectDetailWrap" style="padding: 0;">
                             <div class="projectTab projectFeedContents active">
-                                <div class="section feedInputSection">
+                                <div class="section feedInputSection ">
                                     <div class="feedInputWrap"><textarea class="textarea" placeholder="궁금하신 점이 있다면 댓글을 달아주세요!" rows="2" maxlength="1000"></textarea></div>
                                     <div class="feed btnWrap" style="display: none;">
                                         <p class="count"><span>0</span>/<span>500</span></p>
-                                        <div>
-                                            <button class="blackBtn">취소</button>
+                                        <div style="display: flex">
+                                            <div class="checkboxs" style="display: flex; vertical-align: middle; align-items: center;">
+                                                <input type="checkbox" id="secert" style="width: 20px; height: 20px; margin: 8px; margin-left: 0;">
+                                                <label for="secert" class="name">비밀 댓글 🔒</label>
+                                            </div>
                                             <button class="whiteBtn">등록</button>
+                                            <button class="whiteBtn blackBtn">취소</button>
                                         </div>
                                     </div>
                                     <div class="fileWrap"></div>
                                 </div>
-                                <div class="section feedUploadedSection">
+                                <div class="section feedUploadedSection replySection">
                                     <div class="feedUploadWrap">
                                         <div class="feedContentsWrap">
                                             <div class="top">
@@ -156,7 +160,7 @@
                                             <div class="feedContents"><textarea disabled="" maxlength="1000" style="font-size: 0.875rem; height: 62px !important;">조성현님 문제 출제 부탁드립니다.</textarea>
 
                                             </div>
-                                            <div class="btnWrap" style="display: none;">
+                                            <div class="btnWrap" style="">
                                                 <button class="feedBtn txtBtn">수정</button>
                                                 <div class="divider"></div>
                                                 <button class="feedBtn txtBtn">삭제</button>
@@ -211,12 +215,10 @@
                                                 <div class="bottom">
                                                     <div class="left"></div>
                                                     <div class="txtWrap">
-                                                <textarea maxlength="500" style="font-size: 0.875rem; height: 42px !important;" disabled="">
-                                                    마우스를 클릭하세요
-                                                    오른쪽을 한번 누르면 클릭
+                                                <textarea maxlength="500" style="font-size: 0.875rem; height: 42px !important;" disabled="">마우스를 클릭하세요 오른쪽을 한번 누르면 클릭
                                                 </textarea>
                                                     </div>
-                                                    <div class="btnWrap" style="display: none;">
+                                                    <div class="btnWrap" style="">
                                                         <button class="replyBtn txtBtn">수정</button>
                                                         <div class="divider"></div>
                                                         <button class="replyBtn txtBtn">삭제</button>
@@ -226,20 +228,22 @@
                                             <div class="replayInput">
                                                 <div class="profileThumb"><img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image"></div>
                                                 <div class="txtInput"><textarea type="text" placeholder="댓글을 작성해주세요." rows="4" maxlength="500"></textarea>
-                                                    <div class="btnWrap" style="display: none;">
-                                                        <button class="whiteBtn">취소</button>
-                                                        <button class="whiteBtn" style="margin-left: 8px">등록</button>
+                                                    <div class="btnWrap" style="">
+                                                        <button class="whiteBtn" >등록</button>
+                                                        <button class="whiteBtn" style="margin-left: 8px">취소</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="section feedUploadedSection">
+                                <div class="section feedUploadedSection replySection">
                                     <div class="feedUploadWrap">
                                         <div class="feedContentsWrap">
-                                            <div class="top">
-                                                <div class="thumb"><img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image"></div>
+                                            <div class="top secret">
+                                                <div class="thumb">
+                                                    <img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image">
+                                                </div>
                                                 <div class="name">
                                                     <h2 class="profileName">추추추
                                                         <div class="hoverView" style="display: none">
@@ -255,7 +259,7 @@
                                             <div class="feedContents"><textarea disabled="" maxlength="1000" style="font-size: 0.875rem; height: 62px !important;">여러분 함께 열심히 공부해봅시다!</textarea>
                                                 <div class="imgWrap"></div>
                                             </div>
-                                            <div class="btnWrap" style="display: none;">
+                                            <div class="btnWrap" style="">
                                                 <button class="feedBtn txtBtn">수정</button>
                                                 <div class="divider"></div>
                                                 <button class="feedBtn txtBtn">삭제</button>
@@ -266,9 +270,122 @@
                                             <div class="replayInput">
                                                 <div class="profileThumb"><img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image"></div>
                                                 <div class="txtInput"><textarea type="text" placeholder="댓글을 작성해주세요." rows="4" maxlength="500"></textarea>
-                                                    <div class="btnWrap" style="display: none;">
-                                                        <button class="whiteBtn">취소</button>
-                                                        <button class="whiteBtn" style="margin-left: 8px">등록</button>
+                                                    <div class="btnWrap" style="">
+                                                        <button class="whiteBtn" >등록</button>
+                                                        <button class="whiteBtn" style="margin-left: 8px">취소</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="section feedUploadedSection replySection">
+                                    <!--  비밀 댓글 다른 유저가 볼 때  -->
+                                    <div class="secret feedUploadWrap">
+                                        <div class="feedContentsWrap">
+                                            <div class="top secret">
+                                                <div class="name" style="margin-top: 14px; margin-bottom: 14px;">
+                                                    <h2 class="profileName">비밀 댓글 입니다.
+                                                    </h2>
+                                                    <span>22.11.08 17:37</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="section feedUploadedSection replySection">
+                                    <!--  비밀 댓글 다른 유저가 볼 때  -->
+                                    <div style="display:none;" class="secret feedUploadWrap">
+                                        <div class="feedContentsWrap">
+                                            <div class="top secret">
+                                                <div class="name" style="margin-top: 14px;">
+                                                    <h2 class="profileName">비밀 댓글 입니다.
+                                                    </h2>
+                                                    <span>22.11.08 17:37</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  비밀 댓글 작성자, 게시글 작성자가 볼때  -->
+                                    <div  class="basic feedUploadWrap">
+                                        <div class="feedContentsWrap">
+                                            <div class="top ">
+                                                <div class="thumb">
+                                                    <img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image">
+                                                </div>
+                                                <div class="name">
+                                                    <h2 class="profileName">추추추 🔒
+                                                        <div class="hoverView" style="display: none">
+                                                            <ul>
+                                                                <li><a href="/people/추추추" target="_blank">프로필 상세</a></li>
+                                                                <li><a>1:1 대화</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </h2>
+                                                    <span>22.11.08 17:37</span>
+                                                </div>
+                                            </div>
+                                            <div class="feedContents"><textarea disabled="" maxlength="1000" style="font-size: 0.875rem; height: 62px !important;">여러분 함께 열심히 공부해봅시다!</textarea>
+                                                <div class="imgWrap"></div>
+                                            </div>
+                                            <div class="btnWrap" style="">
+                                                <button class="feedBtn txtBtn">수정</button>
+                                                <div class="divider"></div>
+                                                <button class="feedBtn txtBtn">삭제</button>
+                                            </div>
+                                            <div class="bottom"><a class="feedReply active">댓글 열기</a><span class="replayCount">0</span></div>
+                                        </div>
+                                        <div class="replyWrap">
+                                            <div class="replayInput">
+                                                <div class="profileThumb"><img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image"></div>
+                                                <div class="txtInput"><textarea type="text" placeholder="댓글을 작성해주세요." rows="4" maxlength="500"></textarea>
+                                                    <div class="btnWrap" style="">
+                                                        <button class="whiteBtn" >등록</button>
+                                                        <button class="whiteBtn" style="margin-left: 8px">취소</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--  일반 댓글  -->
+                                    <div  style="display:none;" class="basic feedUploadWrap">
+                                        <div class="feedContentsWrap">
+                                            <div class="top ">
+                                                <div class="thumb">
+                                                    <img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image">
+                                                </div>
+                                                <div class="name">
+                                                    <h2 class="profileName">추추추
+                                                        <div class="hoverView" style="display: none">
+                                                            <ul>
+                                                                <li><a href="/people/추추추" target="_blank">프로필 상세</a></li>
+                                                                <li><a>1:1 대화</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </h2>
+                                                    <span>22.11.08 17:37</span>
+                                                </div>
+                                            </div>
+                                            <div class="feedContents"><textarea disabled="" maxlength="1000" style="font-size: 0.875rem; height: 62px !important;">여러분 함께 열심히 공부해봅시다!</textarea>
+                                                <div class="imgWrap"></div>
+                                            </div>
+                                            <div class="btnWrap" style="">
+                                                <button class="feedBtn txtBtn">수정</button>
+                                                <div class="divider"></div>
+                                                <button class="feedBtn txtBtn">삭제</button>
+                                            </div>
+                                            <div class="bottom"><a class="feedReply active">댓글 열기</a><span class="replayCount">0</span></div>
+                                        </div>
+                                        <div class="replyWrap">
+                                            <div class="replayInput">
+                                                <div class="profileThumb"><img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image"></div>
+                                                <div class="txtInput"><textarea type="text" placeholder="댓글을 작성해주세요." rows="4" maxlength="500"></textarea>
+                                                    <div class="btnWrap" style="">
+                                                        <button class="whiteBtn" >등록</button>
+                                                        <button class="whiteBtn" style="margin-left: 8px">취소</button>
                                                     </div>
                                                 </div>
                                             </div>

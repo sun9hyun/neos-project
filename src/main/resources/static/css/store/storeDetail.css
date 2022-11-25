@@ -473,7 +473,7 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 15px 24px;
+    padding: 20px 24px;
     border-top: 1px solid #ededed;
 }
 .feedUploadedSection .feedUploadWrap .top {
@@ -586,7 +586,8 @@
     margin-bottom: 13px;
     margin-top: 13px;
     width: 100%;
-    border: 1px solid #9796a7;
+    /*border: 1px solid #9796a7;*/
+    border: 1px solid #e3e3e3;
     box-sizing: border-box;
     padding: 10px;
     border-radius: 4px;
@@ -606,7 +607,6 @@
 .feedUploadedSection .bottom {
     -moz-box-pack: justify;
     justify-content: space-between;
-    margin-bottom: 13px;
 }
 
 .feedUploadedSection .feedUploadWrap .bottom a {
@@ -791,6 +791,7 @@
     border-radius: 4px;
     resize: none;
     overflow: hidden;
+    border: 1px solid #e3e3e3;
 }
 
 
@@ -852,6 +853,7 @@
     padding: 7px 27px!important;
     margin-left: 0;
     margin-top: 12px;
+    cursor: pointer;
 }
 
 .projectDetailWrap button.blackBtn {
@@ -861,6 +863,7 @@
     font-size: .75rem;
     color: #222;
     border: 1px solid #e2e2e2;
+    cursor: pointer;
 }
 
 .feedUploadWrap .replyWrap .bottom .txtWrap textarea:disabled {
@@ -892,7 +895,7 @@
     cursor: pointer;
 }
 
-.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name h2.profileName .hoverView {
+.hoverView {
     position: absolute;
     display: none;
     width: 120px;
@@ -903,6 +906,27 @@
     box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
     z-index: 10;
 }
+.hoverView ul li {
+    width: 100%;
+}
+.hoverView ul li a {
+    display: block;
+    padding: 10px 15px;
+    font-weight: 400;
+    font-size: .875rem;
+    color: #333;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.hoverView ul li:hover,
+.hoverView ul li a:hover {
+    color: #fff;
+    background-color: #1A7CFF;
+}
+
 /* 오른쪽 배너 기능 추가*/
 .idHoverMenu ul li:hover,
 .idHoverMenu ul li a:hover {
@@ -938,6 +962,7 @@
 body, button, input, select, td, textarea, th {
     line-height: 1.5;
     color: #333;
+    font-family: 'GmarketSansMedium';
 }
 
 .projectFeedContents .feedInputSection .btnWrap .count span:first-child {
@@ -965,6 +990,7 @@ body, button, input, select, td, textarea, th {
     background-color: #fff;
     border: 1px solid #e2e2e2;
     width: auto!important;
+    cursor: pointer;
 }
 
 
@@ -992,4 +1018,53 @@ button, input[type=button], input[type=file], input[type=reset], input[type=subm
     box-sizing: border-box;
     font-size: .75rem;
     line-height: 1rem;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .btnWrap {
+    -moz-box-pack: end;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+.btnWrap {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .btnWrap button.txtBtn {
+    border: none;
+    background-color: rgba( 255, 255, 255, 0);
+    flex-shrink: 0;
+    cursor: pointer;
+    padding: 0!important;
+    border-radius: 0!important;
+    margin: 0;
+    color: #81839c;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+    font-size: .75rem;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .btnWrap .divider {
+    width: 1px;
+    height: 10px;
+    background-color: #d8d8d8;
+    margin: 0 12px;
+}
+
+.replySection{
+    margin-bottom: 0 !important;
+}
+
+.name{
+    line-height: 18.5px;
+    padding: 0;
+    margin: 0;
+    font-size: 12.5px;
+    vertical-align: middle;
+    color: #6e6e6e;
+    margin-right: 15px;
+    padding-top: 1.5px;
 }

@@ -278,3 +278,17 @@ $(".redBtn").on("click", function () {
 $(".whiteBtn").on("click", function () {
     $(".quitModal").css("display", "none");
 })
+
+
+/*--정보 선호 지역 설정-----------------------------------------------------*/
+var $otoo= $(".otoo");
+
+$otoo.on("change", function() {
+    var $online = $(this).val();
+
+    if($online == "01"){
+        $('.areaSort').attr('disabled',true);
+    }else{
+        $('.areaSort').removeAttr('disabled');
+    }
+});

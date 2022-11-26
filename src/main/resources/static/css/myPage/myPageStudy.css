@@ -1,0 +1,151 @@
+@charset "UTF-8";
+
+.mypage {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.commonContentViewHeader {
+    padding: 40px 10px 24px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.commonContentViewHeader h1 {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+}
+
+.commonContentViewHeader h1 .smTxt {
+    color: #ea6560;
+    font-size: .875rem;
+}
+
+.commonContentViewHeader h1 .bgTxt {
+    color: #42495b;
+    font-size: 1.75rem;
+    line-height: 1.5;
+}
+
+.mypage .myTabMenu {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.mypage .myTabMenu ul {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.mypage .myTabMenu ul li {
+    -moz-box-flex: 1;
+    flex: 1 1;
+}
+
+.mypage .myTabMenu ul li a {
+    display: flex;
+    font-size: 1rem;
+    color: #8e8ea2;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 13px 0;
+    -moz-box-align: center;
+    align-items: center;
+    display: -moz-box;
+    -moz-box-pack: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.mypage .myTabMenu ul li.active a, .mypage .myTabMenu ul li:hover a {
+    color: #333;
+    border-bottom: 2px solid #000;
+}
+
+.mypage .myTabContents.active {
+    display: block;
+}
+
+.mypage .myTabContents h3 {
+    font-size: 20px;
+    line-height: 23px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 18px;
+}
+
+/*v-------------------------------------------------------------------------------------------*/
+.mypage .myTabContents.favoriteTab .noProject, .mypage .myTabContents.myProfileTab .noProject, .mypage .myTabContents.myProjectTab .noProject, .mypage .myTabContents.noticeTab .noProject {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 25px 0;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.mypage .myTabContents.favoriteTab .noProject p, .mypage .myTabContents.myProjectTab .noProject p, .mypage .myTabContents.noticeTab .noProject p {
+    font-size: 1rem;
+    color: #c9c9c9;
+}
+
+/*v-------------------------------------------------------------------------------------------*/
+.projectGridWrap {
+    max-width: 285px;
+    width: 100%;
+    height: 290px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 0 12px;
+    border-radius: 8px;
+    border: 1px solid #ebebeb;
+    background-color: #fff;
+    overflow: hidden;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    margin-bottom: 20px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+body, button, input, select, td, textarea, th {
+    line-height: normal;
+}
+
+.Box {
+    border: 1px solid #e6e6e6;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+    min-width: 180px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.top .favorite:hover {
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-hover.03f7a2966e132a098a985cdc42f83b46.svg);
+}

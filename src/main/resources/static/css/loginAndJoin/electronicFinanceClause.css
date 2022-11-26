@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'GmarketSansMedium';
+    font-size: 14px;
+}
+
+blockquote,
+body,
+button,
+code,
+dd,
+div,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+legend,
+li,
+ol,
+p,
+pre,
+select,
+td,
+textarea,
+th,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+.policySection {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.policySection .verAndstart {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+.policySection .startDate,
+.policySection .verNum {
+    font-size: .875rem;
+    font-weight: 700;
+    color: #ea6560;
+}
+
+.policySection .policyWrap {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+.policySection .policyWrap h1 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #000;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.policySection .policyWrap h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #000;
+    font-size: 1.24rem;
+}
+
+.policySection .policyWrap p {
+    font-size: .845rem;
+    margin-bottom: 4px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+
+.policySection .policyWrap table {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    table-layout: fixed;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.policySection .policyWrap table thead th {
+    padding: 14px 0;
+    text-align: center;
+    background-color: #ddd;
+    font-weight: 700;
+}
+
+.policySection .policyWrap table tbody td {
+    padding: 12px 0;
+    text-align: center;
+    font-size: 87.5%;
+}
+
+body,
+button,
+input,
+select,
+td,
+textarea,
+th {
+    line-height: 1.5;
+    color: #333;
+}

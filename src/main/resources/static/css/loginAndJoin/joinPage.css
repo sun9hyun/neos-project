@@ -1,0 +1,459 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'GmarketSansMedium';
+    font-size: 14px;
+}
+
+section {
+    width: 100%;
+}
+
+section {
+    background-color: #fff;
+}
+
+.signupWrap {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 80px 0 140px;
+}
+
+.signupWrap h3 .smTxt {
+    font-size: .875rem;
+    color: #ea6560;
+    line-height: 1rem;
+    display: block;
+}
+
+.signupWrap h3 .bigTxt {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #42495b;
+    display: block;
+}
+
+.signupWrap div.form {
+    padding-top: 28px;
+}
+
+.signupWrap .form {
+    max-width: 1080px;
+    width: 100%;
+    margin: auto;
+}
+
+dl,
+li,
+menu,
+ol,
+ul {
+    list-style: none;
+}
+
+.signupWrap .form ul li {
+    width: 100%;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+}
+
+div.form ul li {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.signupWrap .form ul li label {
+    font-size: 14px;
+    color: #222;
+    margin-bottom: 14px;
+}
+
+div.form ul li label {
+    width: 95px;
+    font-size: .6875rem;
+    color: #696980;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 10px;
+    flex-shrink: 0;
+}
+
+div.form ul li .threeInput.row,
+div.form ul li .threeInput .threeInTwoInput {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+div.form ul li .threeInput.row {
+    -moz-box-pack: start;
+    justify-content: flex-start;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.signupWrap .form ul li .inputWrap {
+    width: 100% !important;
+    -moz-box-pack: justify !important;
+    justify-content: space-between !important;
+}
+
+.signupWrap .form ul li .inputWrap .css-1yoqljf-container {
+    width: 88% !important;
+}
+
+.css-1yoqljf-container {
+    pointer-events: none;
+    position: relative;
+    box-sizing: border-box;
+    width: 49%;
+    height: 40px;
+    padding: 1px;
+}
+
+.css-ou3ob2-control {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: hsl(0, 0%, 95%);
+    border-color: hsl(0, 0%, 90%);
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    cursor: default;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    min-height: 38px;
+    outline: 0 !important;
+    position: relative;
+    -webkit-transition: all 100ms;
+    transition: all 100ms;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+}
+
+.signupWrap .firstSignForm li:first-child .css-rqvngq-ValueContainer {
+    padding-left: 6px;
+}
+
+
+
+
+.css-rqvngq-ValueContainer {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    font-size: 0.8rem;
+}
+
+.css-25h44v-placeholder {
+    color: hsl(0, 0%, 50%);
+    margin-left: 2px;
+    margin-right: 2px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    box-sizing: border-box;
+    font-size: 0.7rem;
+}
+
+.css-1ag7u5m-Input {
+    margin: 0;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    visibility: visible;
+    color: hsl(0, 0%, 20%);
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    padding: 0;
+}
+
+element.style {
+    box-sizing: content-box;
+    width: 2px;
+    background: 0px center;
+    border: 0px;
+    font-size: inherit;
+    opacity: 1;
+    outline: 0px;
+    padding: 0px;
+    color: inherit;
+}
+
+div.form ul li input,
+div.form ul li select {
+    border: 1px solid #bcbccb;
+    border-radius: 4px;
+    height: 40px;
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 13px;
+    color: #696980;
+}
+
+element.style {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    visibility: hidden;
+    height: 0px;
+    overflow: scroll;
+    white-space: pre;
+    font-size: 12.8px;
+    font-family: "Noto Sans KR", Lato, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: normal;
+    text-transform: none;
+}
+
+.css-1hb7zxy-IndicatorsContainer {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+
+.txtBtn.gray,
+.txtBtn.pink {
+    font-size: .75rem;
+    height: 40px;
+    padding: 0 33px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.txtBtn.gray {
+    background-color: #f2f2f2;
+    color: #222;
+}
+
+.signupWrap button {
+    border: none;
+    border-radius: 4px;
+    font-size: .75rem;
+}
+
+div.form ul li .threeInput.row .smTxt {
+    position: absolute;
+    font-size: 15PX;
+    left: 446px;
+    bottom: 30px;
+    color: #1A7CFF;
+    margin-left: 5px;
+}
+
+
+.signupWrap .firstSignForm li:nth-child(2) input {
+    border-radius: 4px;
+    padding-left: 6px;
+    font-size: 13px;
+}
+
+div.form ul li input.midInput,
+div.form ul li input.smInput {
+    width: 204px;
+}
+
+div.checkboxs {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+input {
+    -moz-box-flex: 1;
+    border: none;
+    height: 12px;
+    font-size: 13px;
+    padding: 4px 0 0;
+
+}
+
+div.form ul li label {
+    width: 95px;
+    font-size: .6875rem;
+    color: #696980;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 10px;
+    flex-shrink: 0;
+}
+
+div.form ul li .inputWrap {
+    width: 414px;
+}
+
+div.form ul li .threeInput .threeInTwoInput {
+    width: 100%;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+
+/*div.form ul li .threeInput .threeInTwoInput select {
+    width: 100%;
+    margin: 0;
+}*/
+
+option {
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+
+.signupWrap .firstSignForm .threeInput select {
+    margin-right: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 6px;
+    outline: none;
+    background-color: #fff;
+    background-image: url(https://letspl.me/_next/static/media/option-triangle.2abb88b721408916136ac6048ff74b95.svg);
+    background-position: 97%;
+    background-repeat: no-repeat;
+    -webkit-appearance: none!important;
+}
+
+.signupWrap .firstSignForm select {
+    -moz-box-flex: 1;
+    flex: 1 1;
+}
+/*
+div.form ul li .threeInput .threeInTwoInput select:last-child {
+    margin-left: 2% !important;
+    margin-right: 2% !important;
+}*/
+
+.btnWrap {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.signupWrap .btnWrap {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.signupWrap .btnWrap button:first-child {
+    margin-right: 8px;
+}
+
+.btnWrap button.grayBtn,
+.btnWrap button.pinkBtn {
+    color: #fff;
+    font-size: .75rem;
+    padding: 11px 35px;
+    border-radius: 4px;
+    width: 240px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+}
+
+.btnWrap button.grayBtn {
+    background-color: #9796a7;
+}
+
+/*.checkBtn{*/
+/*    margin: 0px auto;*/
+
+/*}*/
+
+.uniButton {
+    background-color: #f2f2f2;
+    font-size: 15px;
+    padding: 11px 20px;
+    border-radius: 4px;
+    width: 130px;
+    height: 44px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+}
+
+.uniEmail {
+    box-sizing: border-box!important;
+    padding: 10px!important;
+    border-radius: 4px!important;
+    border: 1px solid #e3e3e3!important;
+    max-width: 100%;
+    width: 655px;
+    height: 44px;
+    font-size: 13px;
+    margin-right: 15px;
+}

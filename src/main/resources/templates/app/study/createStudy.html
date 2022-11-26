@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NEOS | 스터디 모임 생성</title>
+    <link rel="stylesheet" href="/css/study/createStudy.css">
+    <link rel="stylesheet" href="/css/study/studyModal.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
+</head>
+<body>
+    <header th:replace="/app/fix/header.html :: header"></header>
+    <!-- 스터디 작성 페이지 START-->
+    <div>
+        <section class="bulidStudy">
+            <!-- 화면 상단부 -->
+            <div class="buildStudyTitWrap">
+                <div class="titContents">
+                    <h3>모임 생성</h3>
+                    <p>함께 하고 싶은 스터디 주제가 있다면 NEOS와 같이 하나씩 시작해봐요!</p>
+                </div>
+            </div>
+
+            <!-- 화면 내용부 -->
+            <div class="buildStudyWrap">
+                <div class="buildStudyContents">
+
+                    <!-- 질문, 답변 div 반복 -->
+                    <div class="question">
+                        <p>* 스터디 주제
+                            <span>&nbsp; 진행하고자 하는 스터디 주제를 제목으로 정해주세요</span>
+                        </p>
+                    </div>
+
+                    <div class="answer">
+                        <ul>
+                            <li>
+                                <div class="inputWrap studyTitle row">
+                                    <input class="studyTitleInput" placeholder="3~20글자로 적어주세요 예)유체역학 : 레이놀드 수송이론"
+                                           minlength="3" maxlength="20"
+                                           autocomplete="on"
+                                           value="">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="question">
+                        <p>* 스터디 분야/키워드<span>&nbsp;스터디 키워드를 입력해주세요</span></p>
+                    </div>
+
+                    <div class="answer">
+                        <div>
+                            <div class="inputWrap studyTitle row">
+                                <select id="studySubjectSelect">
+                                    <option>전공 과목</option>
+                                    <option>교양 과목</option>
+                                    <option>공통 과목</option>
+                                </select>
+                            </div>
+                            <div class="answer">
+                                <input class="studyKeywordInput" type="text" id="studySubject2"
+                                       placeholder="예) 재료역학, 수리역학, 철근콘크리트, 강구조설계"
+                                       minlength="3"
+                                       maxlength="20" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>* 대학교 정보
+                            <span>&nbsp; 기존에 입력된 정보로 기본 설정됩니다.</span>
+                        </p>
+                    </div>
+
+                    <div class="answer">
+                        <ul>
+                            <li>
+                                <div class="inputWrap studyTitle row">
+                                    <input class="studyTitleInput" placeholder="재학 중인 대학교명을 작성해주세요." minlength="3"
+                                           maxlength="20"
+                                           autocomplete="on"
+                                           value="서울대학교" readonly>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="question">
+                        <p>* 지역<span>&nbsp;온/오프라인 여부와 장소를 선택해주세요.</span></p>
+                    </div>
+
+                    <div class="answer">
+                        <div class="selectBoxWrap">
+                            <div class="selectBoxLeft">
+                                <select class="onOffSelect" id="onOffSelect">
+                                    <option value="00">온라인/오프라인 모두 가능</option>
+                                    <option value="01">온라인만 가능</option>
+                                    <option value="02">오프라인만 가능</option>
+                                </select>
+                            </div>
+                            <div class="selectBox">
+                                <select class="onOffResult" id="onOffResult">
+                                    <option>상관없음</option>
+                                    <option>서울특별시</option>
+                                    <option>경기도</option>
+                                    <option>부산광역시</option>
+                                    <option>인천광역시</option>
+                                    <option>대구광역시</option>
+                                    <option>경상남도</option>
+                                    <option>경상북도</option>
+                                    <option>충청남도</option>
+                                    <option>충청북도</option>
+                                    <option>전라남도</option>
+                                    <option>전라북도</option>
+                                    <option>광주광역시</option>
+                                    <option>강원도</option>
+                                    <option>울산광역시</option>
+                                    <option>제주특별자치도</option>
+                                    <option>세종특별자치시</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="question">
+                        <p>* 모집인원<span>&nbsp;3~4명을 추천합니다.(최대 9명, 추후변경가능)</span></p>
+                    </div>
+
+                    <div class="answer">
+                        <div class="selectBoxWrap">
+                            <div class="selectBox">
+                                <select id="maxCount">
+                                    <option value="2">2명</option>
+                                    <option value="3">3명</option>
+                                    <option value="4">4명</option>
+                                    <option value="5">5명</option>
+                                    <option value="6">6명</option>
+                                    <option value="7">7명</option>
+                                    <option value="8">8명</option>
+                                    <option value="9">9명</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>* 스터디 설명
+                            <span>스터디 참여조건에 대해서 기재해주세요</span>
+                        </p>
+                    </div>
+
+                    <div class="answer">
+                <textarea id="contents" placeholder="●  스터디 목표 및 진행방식
+
+[목표] : ( 예: 레이놀드 방정식을 마스터하고자 합니다)
+
+[진행방식] : (예: 매주마다 다음주의 목표를 설정하고, 이에 대한 공부 후 실제 프로토타입)
+
+[장소/횟수] : (예: 정기적으로 오프라인 주말 1회 혹은 zoom 1회 토론 등)
+
+[기간] :  (예 : 3달 정도 진행하고자 합니다)
+
+
+●  참여 조건
+
+[지식수준] :  (예 :해당 과목에 대한 지식이 조금 있으셨으면 합니다. )
+
+[참여회비] (예 : 매 모임마다 1만원의 회비가 있습니다)
+
+[기타]  ( 예: 인천 거주하시는 분이시면 더욱 좋겠습니다)">
+●  스터디 목표 및 진행방식
+
+[목표] : ( 예: 레이놀드 방정식을 마스터하고자 합니다)
+
+[진행방식] : (예: 매주마다 다음주의 목표를 설정하고, 이에 대한 공부 후 실제 프로토타입)
+
+[장소/횟수] : (예: 정기적으로 오프라인 주말 1회 혹은 zoom 1회 토론 등)
+
+[기간] :  (예 : 3달 정도 진행하고자 합니다)
+
+
+●  참여 조건
+
+[지식수준] :  (예 :해당 과목에 대한 지식이 조금 있으셨으면 합니다. )
+
+[참여회비] (예 : 매 모임마다 1만원의 회비가 있습니다)
+
+[기타]  ( 예: 인천 거주하시는 분이시면 더욱 좋겠습니다)</textarea>
+                    </div>
+
+
+                    <div class="confirmBtnWrap btnWrap">
+                        <button value="임시저장" class="grayBtn saveBtn">임시저장</button>
+                        <button value="완료" class="pinkBtn confirmBtn">작성완료</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- 스터디 작성 페이지 END-->
+
+    <!-- 관련 모달 START-->
+    <div class="modalWrapOpen">
+        <!--임시저장 버튼 클리 시-->
+        <div class="modalWrap modal1"><p class="modalTit">임시저장 성공</p>
+            <button class="closeBtn"><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close"
+                                          class="closeBtnImg"></button>
+            <div class="modalContent"><p>임시저장을 완료했습니다</p>
+                <p>미리보기가 가능합니다</p></div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn blueBtn">확인</button>
+            </div>
+        </div>
+        <!--작성완료_제목 조건 미충족-->
+        <div class="modalWrap modal2"><p class="modalTit">스터디 주제를 적어주세요</p>
+            <button class="closeBtn"><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close"
+                                          class="closeBtnImg"></button>
+            <div class="modalContent"><p>스터디 주제를 3~15자 이내로 적어주세요</p></div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn blueBtn">확인</button>
+            </div>
+        </div>
+        <!--작성완료_키워드 조건 미충족-->
+        <div class="modalWrap modal3"><p class="modalTit">스터디 키워드를 적어주세요</p>
+            <button class="closeBtn"><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close"
+                                          class="closeBtnImg"></button>
+            <div class="modalContent"><p>한개 이상의 키워드가 필요합니다</p></div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn blueBtn">확인</button>
+            </div>
+        </div>
+        <!--작성완료_내용 조건 미충족-->
+        <div class="modalWrap modal4"><p class="modalTit">원하는 내용으로 스터디 설명을 바꿔주세요</p>
+            <button class="closeBtn"><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close"
+                                          class="closeBtnImg"></button>
+            <div class="modalContent"><p></p></div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn blueBtn">확인</button>
+            </div>
+        </div>
+        <!--작성완료-->
+        <div class="modalWrap modal5"><p class="modalTit">스터디 등록 성공</p>
+            <button class="closeBtn"><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close"
+                                          class="closeBtnImg"></button>
+            <div class="modalContent"><p>스터디가 게재되었습니다.</p></div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn blueBtn">확인</button>
+            </div>
+        </div>
+
+    </div>
+    <!-- 관련 모달 END-->
+
+    <div th:replace="/app/fix/footer.html :: footer"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/study/createStudy.js"></script>
+</html>

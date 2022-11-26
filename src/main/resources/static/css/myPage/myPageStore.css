@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+.mypage {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.commonContentViewHeader {
+    padding: 40px 10px 24px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.commonContentViewHeader h1 {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+}
+
+.commonContentViewHeader h1 .smTxt {
+    color: #ea6560;
+    font-size: .875rem;
+}
+
+.commonContentViewHeader h1 .bgTxt {
+    color: #42495b;
+    font-size: 1.75rem;
+    line-height: 1.5;
+}
+
+.mypage .myTabMenu {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.mypage .myTabMenu ul {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.mypage .myTabMenu ul li {
+    -moz-box-flex: 1;
+    flex: 1 1;
+}
+
+.mypage .myTabMenu ul li a {
+    display: flex;
+    font-size: 1rem;
+    color: #8e8ea2;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 13px 0;
+    -moz-box-align: center;
+    align-items: center;
+    display: -moz-box;
+    -moz-box-pack: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.mypage .myTabMenu ul li.active a, .mypage .myTabMenu ul li:hover a {
+    color: #333;
+    border-bottom: 2px solid #000;
+}
+
+.mypage .myTabContents.active {
+    display: block;
+}
+
+.mypage .myTabContents h3 {
+    font-size: 20px;
+    line-height: 23px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 18px;
+}
+
+/*v-------------------------------------------------------------------------------------------*/
+.storySection {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.storySection .contents {
+    max-width: 1200px;
+    padding: 0;
+}
+
+.contents, .projectTabMenu {
+    width: 100%;
+    background-color: #fff;
+}
+
+.contents {
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+.storySection .contents .noStoryWrap {
+    background-color: #f7f7f7;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 15px 0;
+    text-align: center;
+    display: block;
+}
+
+

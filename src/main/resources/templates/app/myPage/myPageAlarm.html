@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NEOS | 마이페이지</title>
+    <link rel="stylesheet" href="/css/myPage/myPageAlarm.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
+</head>
+<body>
+<header th:replace="/app/fix/header.html :: header"></header>
+<section class="mypage">
+    <div class="commonContentViewHeader">
+        <h1>
+            <span class="smTxt">LET'S see</span>
+            <span class="bgTxt">마이페이지</span>
+        </h1>
+    </div>
+
+    <div class="myTabMenu">
+        <ul>
+            <li class="">
+                <a name="info">정보</a>
+            </li>
+            <li class="">
+                <a name="project">스터디(1)</a>
+            </li>
+            <li class="">
+                <a name="story">자료상점(1)</a>
+            </li>
+            <li class="">
+                <a name="favorite">구독(3)</a>
+            </li>
+            <li class="active">
+                <a name="alarm">알림(6)</a>
+            </li>
+            <li class="">
+                <a name="payment">포인트</a>
+            </li>
+            <li class="">
+                <a name="exp">네오력</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="myTabContents noticeTab active">
+        <h3 class="tabCommonTit">알림내역</h3>
+
+        <div class="noticeListWrap">
+            <ul class="noticeListTimeLine">
+                <li class="noticeDayWrap">
+                    <span class="day">22.11.15</span>
+                    <ul>
+                        <li class="noticeContentWrap">
+                            <div class="left">
+                                <p class="categoryAndDate">
+                                    <span>[스터디&amp;네트워킹]</span>
+                                    <span>22.11.15</span>
+                                </p>
+                                <p class="noticeContent">오메가호근몬님이 스터디&amp;네트워킹 test에 초대하였습니다.</p>
+                            </div>
+                            <div class="btnWrap right">
+                                <a href="javascript:;">프로필 가기</a>
+                                <a href="javascript:;">스터디&amp;네트워킹 가기</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="noticeDayWrap">
+                    <span class="day">22.11.14</span>
+                    <ul>
+                        <li class="noticeContentWrap">
+                            <div class="left">
+                                <p class="categoryAndDate">
+                                    <span>[소셜]</span>
+                                    <span>22.11.14</span>
+                                </p>
+                                <p class="noticeContent">오메가호근몬님이 회원님을 구독하기 시작했습니다.</p>
+                            </div>
+                            <div class="btnWrap right">
+                                <a href="javascript:;">프로필 가기</a>
+                            </div>
+                        </li>
+                        <li class="noticeContentWrap">
+                            <div class="left">
+                                <p class="categoryAndDate">
+                                    <span>[스터디&amp;네트워킹]</span>
+                                    <span>22.11.14</span>
+                                </p>
+                                <p class="noticeContent">추추추님이 스터디&amp;네트워킹 spring  boot 팀프로젝트에 문의 글을 등록하셨습니다.</p>
+                            </div>
+                            <div class="btnWrap right">
+                                <a href="javascript:;">프로필 가기</a>
+                                <a href="javascript:;">스터디&amp;네트워킹 가기</a>
+                            </div>
+                        </li>
+                        <li class="noticeContentWrap">
+                            <div class="left">
+                                <p class="categoryAndDate">
+                                    <span>[스터디&amp;네트워킹]</span>
+                                    <span>22.11.14</span>
+                                </p>
+                                <p class="noticeContent">추추추님이 스터디&amp;네트워킹 spring  boot 팀프로젝트에 문의 글을 등록하셨습니다.</p>
+                            </div>
+                            <div class="btnWrap right">
+                                <a href="javascript:;">프로필 가기</a>
+                                <a href="javascript:;">스터디&amp;네트워킹 가기</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="noticeDayWrap">
+                    <span class="day">22.11.10</span>
+                    <ul>
+                        <li class="noticeContentWrap">
+                            <div class="left">
+                                <p class="categoryAndDate">
+                                    <span>[스터디&amp;네트워킹]</span>
+                                    <span>22.11.10</span>
+                                </p>
+                                <p class="noticeContent">회원님을 찾는 스터디 프로덕트헌트_ 스타트업 제품런칭플랫폼가 게시되었습니다.</p>
+                            </div>
+                            <div class="btnWrap right">
+                                <a href="javascript:;">스터디 가기</a>
+                            </div>
+                        </li>
+                        <li class="noticeContentWrap">
+                            <div class="left">
+                                <p class="categoryAndDate">
+                                    <span>[스터디&amp;네트워킹]</span>
+                                    <span>22.11.10</span>
+                                </p>
+                                <p class="noticeContent">회원님을 찾는 스터디 취약계층 지원 AI서비스 플랫폼가 게시되었습니다.</p>
+                            </div>
+                            <div class="btnWrap right">
+                                <a href="javascript:;">스터디 가기</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+
+
+
+        </div>
+    </div>
+
+
+</section>
+
+
+<div th:replace="/app/fix/footer.html :: footer"></div>
+</body>
+</html>

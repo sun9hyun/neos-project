@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEOS | 메인 </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="/css/study/listStudy.css">
+    <link rel="stylesheet" href="/css/store/storeList.css">
+    <link rel="stylesheet" href="/css/neosUser/neosListNext.css">
+    <link rel="stylesheet" href="/css/fix/chatting.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
+</head>
+
+<body>
+<header th:replace="/app/fix/header.html :: header"></header>
+
+<div id="next">
+<!--    <header class="Header">-->
+<!--        <nav>-->
+<!--            <img src="/images/main/logo.png" alt="letspl_logo" class="logo">-->
+<!--            <ul class="Navbar">-->
+<!--                <li><a class="click" href="">네오스인</a></li>-->
+<!--                <li><a class="click" href="">스터디</a></li>-->
+<!--                <li><a class="click" href="">자료상점</a></li>-->
+<!--                <li><a class="click" href="">커뮤니티</a></li>-->
+<!--                <li><a class="click" href="">공지사항</a></li>-->
+<!--            </ul>-->
+<!--            <div class="loginWrap">-->
+<!--                <div class="searchWrap">-->
+<!--                    <a class="searchIc"><span>검색</span>-->
+<!--                        <img class="pcSearch" src="	https://letspl.me/assets/images/ic-search-white.png" alt="검색하기">-->
+<!--                        <img class="mobileSearch" src="	https://letspl.me/assets/images/ic-search.png" alt="검색하기">-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div class="joinAndLoginWrap">-->
+<!--                    <a class="joinAndLogin">가입</a>-->
+<!--                    <a class="joinAndLogin">로그인</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </nav>-->
+<!--    </header>-->
+    <!-- 배너 -->
+    <div class=banners>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img class="banner1" src="/images/main/banner1.png"></div>
+                <div class="swiper-slide"><img class="banner2" src="/images/main/banner2.png"></div>
+                <!-- <div class="swiper-slide"><img class="banner1"
+                src="banner3.jpg"></div> -->
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <div class=banners_active>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img class="banner1" src="/images/main/banner_active1.png"></div>
+                <div class="swiper-slide"><img class="banner2" src="/images/main/banner_active2.png"></div>
+                <!-- <div class="swiper-slide"><img class="banner1"
+                src="banner3.jpg"></div> -->
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <!--스터디-->
+    <div class="hotProjectWrap wrap mainWrap">
+        <h1><span class="bigTxt">새로운<em class="pinkColor">' </em>스터디</span></h1>
+
+        <div class="hotProjectContentWrap">
+
+            <div class="projectGridWrap"  style="margin-right:10px">
+                <div class="projectTopInfo">
+                    <div class="top">
+                        <div class="badgeWrap">
+                            <div class="badge black">
+                                <!-- <h2>사이드프로젝트</h2> -->
+                                <img src="/images/study/inha.png">
+                            </div>
+                        </div>
+                        <div class="favorite "></div>
+                    </div>
+                    <div class="projectThumb"><img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png" alt="커뮤니티 연계 교통 정보 어플"></div>
+                </div>
+                <div class="projectBottomInfo">
+                    <div class="txtWrap projectWrap">
+                        <h3 class="category">전공과목</h3>
+                        <h2 class="tit">공업수학_라플라스 변환</h2>
+                        <!--                                 <div class="iconWrap2"><img loading="lazy"
+                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                                alt="Figma"></div> -->
+
+                    </div>
+                </div>
+                <div class="projectInfo2">
+                    <div class="middleWrap">
+                        <div class="left">
+                            <div class="heartCount"><img loading="lazy" src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>3</span></div>
+                        </div>
+                        <div class="right">
+                            <!-- <p><span> 44</span><span> (-) </span></p> -->
+                        </div>
+                    </div>
+                    <div class="bottomWrap">
+                        <div class="gatherTxt">
+                            <div><span>모집완료</span><span>0/4</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projectGridWrap" style="margin-right:10px" >
+                <div class="projectTopInfo">
+                    <div class="top">
+                        <div class="badgeWrap">
+                            <div class="badge black">
+                                <!-- <h2>사이드프로젝트</h2> -->
+                                <img src="/images/study/inha.png">
+                            </div>
+                        </div>
+                        <div class="favorite "></div>
+                    </div>
+                    <div class="projectThumb"><img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png" alt="커뮤니티 연계 교통 정보 어플"></div>
+                </div>
+                <div class="projectBottomInfo">
+                    <div class="txtWrap projectWrap">
+                        <h3 class="category">전공과목</h3>
+                        <h2 class="tit">공업수학_라플라스 변환</h2>
+                        <!--                                 <div class="iconWrap2"><img loading="lazy"
+                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                                alt="Figma"></div> -->
+
+                    </div>
+                </div>
+                <div class="projectInfo2">
+                    <div class="middleWrap">
+                        <div class="left">
+                            <div class="heartCount"><img loading="lazy" src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>3</span></div>
+                        </div>
+                        <div class="right">
+                            <!-- <p><span> 44</span><span> (-) </span></p> -->
+                        </div>
+                    </div>
+                    <div class="bottomWrap">
+                        <div class="gatherTxt">
+                            <div><span>모집완료</span><span>0/4</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projectGridWrap" style="margin-right:10px">
+                <div class="projectTopInfo">
+                    <div class="top">
+                        <div class="badgeWrap">
+                            <div class="badge black">
+                                <!-- <h2>사이드프로젝트</h2> -->
+                                <img src="/images/study/inha.png">
+                            </div>
+                        </div>
+                        <div class="favorite "></div>
+                    </div>
+                    <div class="projectThumb"><img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png" alt="커뮤니티 연계 교통 정보 어플"></div>
+                </div>
+                <div class="projectBottomInfo">
+                    <div class="txtWrap projectWrap">
+                        <h3 class="category">전공과목</h3>
+                        <h2 class="tit">공업수학_라플라스 변환</h2>
+                        <!--                                 <div class="iconWrap2"><img loading="lazy"
+                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                                alt="Figma"></div> -->
+
+                    </div>
+                </div>
+                <div class="projectInfo2">
+                    <div class="middleWrap">
+                        <div class="left">
+                            <div class="heartCount"><img loading="lazy" src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>3</span></div>
+                        </div>
+                        <div class="right">
+                            <!-- <p><span> 44</span><span> (-) </span></p> -->
+                        </div>
+                    </div>
+                    <div class="bottomWrap">
+                        <div class="gatherTxt">
+                            <div><span>모집완료</span><span>0/4</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projectGridWrap"  style="margin-right:10px">
+                <div class="projectTopInfo">
+                    <div class="top">
+                        <div class="badgeWrap">
+                            <div class="badge black">
+                                <!-- <h2>사이드프로젝트</h2> -->
+                                <img src="/images/study/inha.png">
+                            </div>
+                        </div>
+                        <div class="favorite "></div>
+                    </div>
+                    <div class="projectThumb"><img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png" alt="커뮤니티 연계 교통 정보 어플"></div>
+                </div>
+                <div class="projectBottomInfo">
+                    <div class="txtWrap projectWrap">
+                        <h3 class="category">전공과목</h3>
+                        <h2 class="tit">공업수학_라플라스 변환</h2>
+                        <!--                                 <div class="iconWrap2"><img loading="lazy"
+                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                                alt="Figma"></div> -->
+
+                    </div>
+                </div>
+                <div class="projectInfo2">
+                    <div class="middleWrap">
+                        <div class="left">
+                            <div class="heartCount"><img loading="lazy" src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>3</span></div>
+                        </div>
+                        <div class="right">
+                            <!-- <p><span> 44</span><span> (-) </span></p> -->
+                        </div>
+                    </div>
+                    <div class="bottomWrap">
+                        <div class="gatherTxt">
+                            <div><span>모집완료</span><span>0/4</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--자료상점-->
+
+    <section class="storySection">
+
+        <div class="storyContentsWrap">
+            <div class="contents highLanking">
+                <h1><span class="bigTxt">핫한<em class="pinkColor">' </em>자료</span></h1>
+                <div class="contetnsGrid">
+
+                    <div class="Box free">
+                        <a class="storyGridBox" href="javascript:;" target="_self">
+                            <!-- <div class="top up">
+                                <img src="img/qr.jpg" alt="">
+                            </div> -->
+                            <div class="top">
+                                <img src="/images/store/storeNeos.png" alt="">
+                            </div>
+                            <div class="bottom">
+                                <div class="titWrap">
+                                    <h2 class="titTxt">[특집#5] 할일관리/Todo에 집중한 프로젝트</h2>
+                                    <h3 class="category">렛플운영자</h3>
+                                </div>
+                                <div class="viewWrap">
+                                    <p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M8 2.48901C6.27297 2.48988 4.58622 3.01069 3.15934 3.98365C1.73246 4.9566 0.631569 6.33661 0 7.94401C0.630962 9.55179 1.73172 10.9321 3.15875 11.9051C4.58577 12.878 6.27285 13.3985 8 13.3985C9.72715 13.3985 11.4142 12.878 12.8413 11.9051C14.2683 10.9321 15.369 9.55179 16 7.94401C15.3684 6.33661 14.2675 4.9566 12.8407 3.98365C11.4138 3.01069 9.72703 2.48988 8 2.48901V2.48901ZM8 11.58C7.28087 11.58 6.57788 11.3668 5.97995 10.9672C5.38201 10.5677 4.91597 9.99984 4.64077 9.33545C4.36557 8.67106 4.29357 7.93998 4.43386 7.23466C4.57416 6.52935 4.92046 5.88148 5.42896 5.37297C5.93746 4.86447 6.58534 4.51817 7.29065 4.37788C7.99597 4.23758 8.72704 4.30959 9.39144 4.58479C10.0558 4.85999 10.6237 5.32602 11.0232 5.92396C11.4228 6.5219 11.636 7.22488 11.636 7.94401C11.6355 8.90818 11.2522 9.8327 10.5705 10.5145C9.88869 11.1962 8.96416 11.5795 8 11.58ZM8 5.76201C7.56844 5.76201 7.14657 5.88999 6.78775 6.12975C6.42892 6.36951 6.14925 6.71029 5.9841 7.109C5.81894 7.50771 5.77573 7.94643 5.85993 8.3697C5.94412 8.79297 6.15194 9.18176 6.45709 9.48692C6.76225 9.79208 7.15105 9.99989 7.57431 10.0841C7.99758 10.1683 8.43631 10.1251 8.83502 9.95992C9.23372 9.79477 9.57451 9.5151 9.81427 9.15627C10.054 8.79744 10.182 8.37557 10.182 7.94401C10.1824 7.65736 10.1262 7.37344 10.0167 7.10853C9.90719 6.84362 9.74648 6.60292 9.54379 6.40023C9.34109 6.19753 9.10039 6.03682 8.83548 5.9273C8.57057 5.81779 8.28666 5.76162 8 5.76201Z" fill="#A4A4B4"></path>
+                                        </svg>
+                                        <span class="number">508</span>
+                                    </p>
+                                    <p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M13.6 2H2.4C2.02991 2.00185 1.67561 2.15017 1.41457 2.41252C1.15353 2.67487 1.007 3.02991 1.007 3.4L1 16L3.8 13.2H13.6C13.9713 13.2 14.3274 13.0525 14.5899 12.7899C14.8525 12.5274 15 12.1713 15 11.8V3.4C15 3.0287 14.8525 2.6726 14.5899 2.41005C14.3274 2.1475 13.9713 2 13.6 2V2ZM5.9 8.3H4.5V6.9H5.9V8.3ZM8.7 8.3H7.3V6.9H8.7V8.3ZM11.5 8.3H10.1V6.9H11.5V8.3Z" fill="#9D9DAC"></path>
+                                        </svg>
+                                        <span class="number">0</span>
+                                    </p>
+                                    <p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M0.614014 14.3H3.27501V6.322H0.614014V14.3ZM15.249 6.987C15.248 6.63459 15.1075 6.29691 14.8583 6.04771C14.6091 5.79852 14.2714 5.65806 13.919 5.657H9.71901L10.351 2.617L10.371 2.404C10.3704 2.1395 10.2651 1.886 10.078 1.699L9.37501 1L4.99801 5.384C4.87301 5.506 4.77387 5.65193 4.70652 5.81309C4.63917 5.97425 4.60499 6.14733 4.60601 6.322V12.974C4.60707 13.3264 4.74753 13.6641 4.99673 13.9133C5.24592 14.1625 5.5836 14.3029 5.93601 14.304H11.923C12.1845 14.305 12.4404 14.2284 12.6583 14.0838C12.8762 13.9393 13.0463 13.7333 13.147 13.492L15.156 8.8C15.2175 8.64535 15.2491 8.48043 15.249 8.314V7.047L15.242 7.04L15.249 6.987Z" fill="#A4A4B4"></path>
+                                        </svg>
+                                        <span class="number">0</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="shopLink"><a href="javascript:;" class="shopDetail">상세보기</a></div>
+                    </div>
+
+                    <div class="Box lock">
+                        <a class="storyGridBox" href="javascript:;" target="_self">
+                            <div class="top" style="filter: brightness(1);">
+                                <img src="/images/store/storeNeos.png" alt="">
+                            </div>
+                            <div class="bottom">
+                                <div class="titWrap">
+                                    <h2 class="titTxt">MATE 팀의 문서 작성기</h2>
+                                    <h3 class="category">[프로젝트] 대학교 카풀 앱 제작팀(모든 직군!)</h3>
+                                </div>
+                                <div class="viewWrap">
+                                    <p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M8 2.48901C6.27297 2.48988 4.58622 3.01069 3.15934 3.98365C1.73246 4.9566 0.631569 6.33661 0 7.94401C0.630962 9.55179 1.73172 10.9321 3.15875 11.9051C4.58577 12.878 6.27285 13.3985 8 13.3985C9.72715 13.3985 11.4142 12.878 12.8413 11.9051C14.2683 10.9321 15.369 9.55179 16 7.94401C15.3684 6.33661 14.2675 4.9566 12.8407 3.98365C11.4138 3.01069 9.72703 2.48988 8 2.48901V2.48901ZM8 11.58C7.28087 11.58 6.57788 11.3668 5.97995 10.9672C5.38201 10.5677 4.91597 9.99984 4.64077 9.33545C4.36557 8.67106 4.29357 7.93998 4.43386 7.23466C4.57416 6.52935 4.92046 5.88148 5.42896 5.37297C5.93746 4.86447 6.58534 4.51817 7.29065 4.37788C7.99597 4.23758 8.72704 4.30959 9.39144 4.58479C10.0558 4.85999 10.6237 5.32602 11.0232 5.92396C11.4228 6.5219 11.636 7.22488 11.636 7.94401C11.6355 8.90818 11.2522 9.8327 10.5705 10.5145C9.88869 11.1962 8.96416 11.5795 8 11.58ZM8 5.76201C7.56844 5.76201 7.14657 5.88999 6.78775 6.12975C6.42892 6.36951 6.14925 6.71029 5.9841 7.109C5.81894 7.50771 5.77573 7.94643 5.85993 8.3697C5.94412 8.79297 6.15194 9.18176 6.45709 9.48692C6.76225 9.79208 7.15105 9.99989 7.57431 10.0841C7.99758 10.1683 8.43631 10.1251 8.83502 9.95992C9.23372 9.79477 9.57451 9.5151 9.81427 9.15627C10.054 8.79744 10.182 8.37557 10.182 7.94401C10.1824 7.65736 10.1262 7.37344 10.0167 7.10853C9.90719 6.84362 9.74648 6.60292 9.54379 6.40023C9.34109 6.19753 9.10039 6.03682 8.83548 5.9273C8.57057 5.81779 8.28666 5.76162 8 5.76201Z" fill="#A4A4B4"></path>
+                                        </svg>
+                                        <span class="number">172</span>
+                                    </p>
+                                    <p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M13.6 2H2.4C2.02991 2.00185 1.67561 2.15017 1.41457 2.41252C1.15353 2.67487 1.007 3.02991 1.007 3.4L1 16L3.8 13.2H13.6C13.9713 13.2 14.3274 13.0525 14.5899 12.7899C14.8525 12.5274 15 12.1713 15 11.8V3.4C15 3.0287 14.8525 2.6726 14.5899 2.41005C14.3274 2.1475 13.9713 2 13.6 2V2ZM5.9 8.3H4.5V6.9H5.9V8.3ZM8.7 8.3H7.3V6.9H8.7V8.3ZM11.5 8.3H10.1V6.9H11.5V8.3Z" fill="#9D9DAC"></path>
+                                        </svg>
+                                        <span class="number">1</span>
+                                    </p>
+                                    <p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M0.614014 14.3H3.27501V6.322H0.614014V14.3ZM15.249 6.987C15.248 6.63459 15.1075 6.29691 14.8583 6.04771C14.6091 5.79852 14.2714 5.65806 13.919 5.657H9.71901L10.351 2.617L10.371 2.404C10.3704 2.1395 10.2651 1.886 10.078 1.699L9.37501 1L4.99801 5.384C4.87301 5.506 4.77387 5.65193 4.70652 5.81309C4.63917 5.97425 4.60499 6.14733 4.60601 6.322V12.974C4.60707 13.3264 4.74753 13.6641 4.99673 13.9133C5.24592 14.1625 5.5836 14.3029 5.93601 14.304H11.923C12.1845 14.305 12.4404 14.2284 12.6583 14.0838C12.8762 13.9393 13.0463 13.7333 13.147 13.492L15.156 8.8C15.2175 8.64535 15.2491 8.48043 15.249 8.314V7.047L15.242 7.04L15.249 6.987Z" fill="#A4A4B4"></path>
+                                        </svg>
+                                        <span class="number">0</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="shopLink">
+                            <a href="javascript:;" class="lockCash shopDetail">결제하기</a>
+                            <a href="javascript:;" class="lockDetail shopDetail">상세보기</a>
+                        </div>
+                    </div>
+
+                    <div class="Box free">
+                        <a class="storyGridBox" href="javascript:;" target="_self">
+                            <div class="top">
+                                <img src="/images/store/storeNeos.png" alt="">
+                            </div>
+                            <div class="bottom">
+                                <div class="titWrap">
+                                    <h2 class="titTxt">[특집#7] 기록(일기)을 도와주는 프로젝트-2</h2>
+                                    <h3 class="category">렛플운영자</h3>
+                                </div>
+                                <div class="viewWrap">
+                                    <p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M8 2.48901C6.27297 2.48988 4.58622 3.01069 3.15934 3.98365C1.73246 4.9566 0.631569 6.33661 0 7.94401C0.630962 9.55179 1.73172 10.9321 3.15875 11.9051C4.58577 12.878 6.27285 13.3985 8 13.3985C9.72715 13.3985 11.4142 12.878 12.8413 11.9051C14.2683 10.9321 15.369 9.55179 16 7.94401C15.3684 6.33661 14.2675 4.9566 12.8407 3.98365C11.4138 3.01069 9.72703 2.48988 8 2.48901V2.48901ZM8 11.58C7.28087 11.58 6.57788 11.3668 5.97995 10.9672C5.38201 10.5677 4.91597 9.99984 4.64077 9.33545C4.36557 8.67106 4.29357 7.93998 4.43386 7.23466C4.57416 6.52935 4.92046 5.88148 5.42896 5.37297C5.93746 4.86447 6.58534 4.51817 7.29065 4.37788C7.99597 4.23758 8.72704 4.30959 9.39144 4.58479C10.0558 4.85999 10.6237 5.32602 11.0232 5.92396C11.4228 6.5219 11.636 7.22488 11.636 7.94401C11.6355 8.90818 11.2522 9.8327 10.5705 10.5145C9.88869 11.1962 8.96416 11.5795 8 11.58ZM8 5.76201C7.56844 5.76201 7.14657 5.88999 6.78775 6.12975C6.42892 6.36951 6.14925 6.71029 5.9841 7.109C5.81894 7.50771 5.77573 7.94643 5.85993 8.3697C5.94412 8.79297 6.15194 9.18176 6.45709 9.48692C6.76225 9.79208 7.15105 9.99989 7.57431 10.0841C7.99758 10.1683 8.43631 10.1251 8.83502 9.95992C9.23372 9.79477 9.57451 9.5151 9.81427 9.15627C10.054 8.79744 10.182 8.37557 10.182 7.94401C10.1824 7.65736 10.1262 7.37344 10.0167 7.10853C9.90719 6.84362 9.74648 6.60292 9.54379 6.40023C9.34109 6.19753 9.10039 6.03682 8.83548 5.9273C8.57057 5.81779 8.28666 5.76162 8 5.76201Z" fill="#A4A4B4"></path>
+                                        </svg>
+                                        <span class="number">119</span>
+                                    </p>
+                                    <p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M13.6 2H2.4C2.02991 2.00185 1.67561 2.15017 1.41457 2.41252C1.15353 2.67487 1.007 3.02991 1.007 3.4L1 16L3.8 13.2H13.6C13.9713 13.2 14.3274 13.0525 14.5899 12.7899C14.8525 12.5274 15 12.1713 15 11.8V3.4C15 3.0287 14.8525 2.6726 14.5899 2.41005C14.3274 2.1475 13.9713 2 13.6 2V2ZM5.9 8.3H4.5V6.9H5.9V8.3ZM8.7 8.3H7.3V6.9H8.7V8.3ZM11.5 8.3H10.1V6.9H11.5V8.3Z" fill="#9D9DAC"></path>
+                                        </svg>
+                                        <span class="number">0</span>
+                                    </p>
+                                    <p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M0.614014 14.3H3.27501V6.322H0.614014V14.3ZM15.249 6.987C15.248 6.63459 15.1075 6.29691 14.8583 6.04771C14.6091 5.79852 14.2714 5.65806 13.919 5.657H9.71901L10.351 2.617L10.371 2.404C10.3704 2.1395 10.2651 1.886 10.078 1.699L9.37501 1L4.99801 5.384C4.87301 5.506 4.77387 5.65193 4.70652 5.81309C4.63917 5.97425 4.60499 6.14733 4.60601 6.322V12.974C4.60707 13.3264 4.74753 13.6641 4.99673 13.9133C5.24592 14.1625 5.5836 14.3029 5.93601 14.304H11.923C12.1845 14.305 12.4404 14.2284 12.6583 14.0838C12.8762 13.9393 13.0463 13.7333 13.147 13.492L15.156 8.8C15.2175 8.64535 15.2491 8.48043 15.249 8.314V7.047L15.242 7.04L15.249 6.987Z" fill="#A4A4B4"></path>
+                                        </svg>
+                                        <span class="number">0</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="shopLink"><a href="javascript:;" class="shopDetail">상세보기</a></div>
+                    </div>
+
+                    <div class="Box free">
+                        <a class="storyGridBox" href="javascript:;" target="_self">
+                            <div class="top">
+                                <img src="/images/store/storeNeos.png" alt="어게인 레벨테스트가 V2로 돌아왔습니다 :)">
+                            </div>
+                            <div class="bottom">
+                                <div class="titWrap">
+                                    <h2 class="titTxt">어게인 레벨테스트가 V2로 돌아왔습니다 :)</h2>
+                                    <h3 class="category">[프로젝트] 어게인 입양자 자격 레벨테스트</h3>
+                                </div>
+                                <div class="viewWrap">
+                                    <p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M8 2.48901C6.27297 2.48988 4.58622 3.01069 3.15934 3.98365C1.73246 4.9566 0.631569 6.33661 0 7.94401C0.630962 9.55179 1.73172 10.9321 3.15875 11.9051C4.58577 12.878 6.27285 13.3985 8 13.3985C9.72715 13.3985 11.4142 12.878 12.8413 11.9051C14.2683 10.9321 15.369 9.55179 16 7.94401C15.3684 6.33661 14.2675 4.9566 12.8407 3.98365C11.4138 3.01069 9.72703 2.48988 8 2.48901V2.48901ZM8 11.58C7.28087 11.58 6.57788 11.3668 5.97995 10.9672C5.38201 10.5677 4.91597 9.99984 4.64077 9.33545C4.36557 8.67106 4.29357 7.93998 4.43386 7.23466C4.57416 6.52935 4.92046 5.88148 5.42896 5.37297C5.93746 4.86447 6.58534 4.51817 7.29065 4.37788C7.99597 4.23758 8.72704 4.30959 9.39144 4.58479C10.0558 4.85999 10.6237 5.32602 11.0232 5.92396C11.4228 6.5219 11.636 7.22488 11.636 7.94401C11.6355 8.90818 11.2522 9.8327 10.5705 10.5145C9.88869 11.1962 8.96416 11.5795 8 11.58ZM8 5.76201C7.56844 5.76201 7.14657 5.88999 6.78775 6.12975C6.42892 6.36951 6.14925 6.71029 5.9841 7.109C5.81894 7.50771 5.77573 7.94643 5.85993 8.3697C5.94412 8.79297 6.15194 9.18176 6.45709 9.48692C6.76225 9.79208 7.15105 9.99989 7.57431 10.0841C7.99758 10.1683 8.43631 10.1251 8.83502 9.95992C9.23372 9.79477 9.57451 9.5151 9.81427 9.15627C10.054 8.79744 10.182 8.37557 10.182 7.94401C10.1824 7.65736 10.1262 7.37344 10.0167 7.10853C9.90719 6.84362 9.74648 6.60292 9.54379 6.40023C9.34109 6.19753 9.10039 6.03682 8.83548 5.9273C8.57057 5.81779 8.28666 5.76162 8 5.76201Z" fill="#A4A4B4"></path>
+                                        </svg>
+                                        <span class="number">164</span>
+                                    </p>
+                                    <p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M13.6 2H2.4C2.02991 2.00185 1.67561 2.15017 1.41457 2.41252C1.15353 2.67487 1.007 3.02991 1.007 3.4L1 16L3.8 13.2H13.6C13.9713 13.2 14.3274 13.0525 14.5899 12.7899C14.8525 12.5274 15 12.1713 15 11.8V3.4C15 3.0287 14.8525 2.6726 14.5899 2.41005C14.3274 2.1475 13.9713 2 13.6 2V2ZM5.9 8.3H4.5V6.9H5.9V8.3ZM8.7 8.3H7.3V6.9H8.7V8.3ZM11.5 8.3H10.1V6.9H11.5V8.3Z" fill="#9D9DAC"></path>
+                                        </svg>
+                                        <span class="number">1</span>
+                                    </p>
+                                    <p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M0.614014 14.3H3.27501V6.322H0.614014V14.3ZM15.249 6.987C15.248 6.63459 15.1075 6.29691 14.8583 6.04771C14.6091 5.79852 14.2714 5.65806 13.919 5.657H9.71901L10.351 2.617L10.371 2.404C10.3704 2.1395 10.2651 1.886 10.078 1.699L9.37501 1L4.99801 5.384C4.87301 5.506 4.77387 5.65193 4.70652 5.81309C4.63917 5.97425 4.60499 6.14733 4.60601 6.322V12.974C4.60707 13.3264 4.74753 13.6641 4.99673 13.9133C5.24592 14.1625 5.5836 14.3029 5.93601 14.304H11.923C12.1845 14.305 12.4404 14.2284 12.6583 14.0838C12.8762 13.9393 13.0463 13.7333 13.147 13.492L15.156 8.8C15.2175 8.64535 15.2491 8.48043 15.249 8.314V7.047L15.242 7.04L15.249 6.987Z" fill="#A4A4B4"></path>
+                                        </svg>
+                                        <span class="number">0</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="shopLink"><a href="javascript:;" class="shopDetail">상세보기</a></div>
+                    </div>
+
+
+                </div>
+    </section>
+
+    <!- 중앙 배너 -->
+    <section class="bannerSection">
+        <div>
+            <div class="carousel-root">
+                <div class="carousel carousel-slider" style="width: 100%;">
+                    <ul class="control-dots">
+                        <li class="dot selected" value="0" role="button" tabindex="0" aria-label="slide item 1">
+                        </li>
+                    </ul><button type="button" aria-label="previous slide / item"
+                                 class="control-arrow control-prev control-disabled"></button>
+                    <div class="slider-wrapper axis-horizontal">
+                        <ul class="slider animated"
+                            style="transform: translate3d(0px, 0px, 0px); transition-duration: 100ms;">
+                            <li class="slide selected previous">
+                                <div class="bannerWrap">
+                                    <p class="lgTxt">NEOS - 스터디</p>
+                                    <p class="smTxt">함께 스터디 할 인원을 모집해보세요!</p><a>스터디 모집하기</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><button type="button" aria-label="next slide / item"
+                                  class="control-arrow control-next control-disabled"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--커뮤니티-->
+    <section>
+        <div class="reviewContentWrap">
+            <div class="reviewWrap"><h1><span class="bigTxt">새로운<em style="color:#1A7CFF; ">'</em> 커뮤니티 <a class="checkLook" href="">더보기</a><img class="lookImage" src="/images/main/look.png"></span>
+
+            </h1>
+                <div class="scroll">
+                    <div class="reviewCard">
+                        <div class="top">
+                            <div class="profileImgAndId">
+                                <div class="imgThumb"><img loading="lazy"
+                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/569/images/SCS_Symbol_1.jpg"
+                                                           alt="스마트차징솔루션"></div>
+                                <h3>스마트차징솔루션<span></span></h3></div>
+                            <h2 class="descTxt">사이드 프로젝트를 진행하면서 팀원을 구하는데 렛플을 많이 이용하고 있습니다. 개발자 이외에 디자이너, 기획 등 다양한 분야의
+                                사람들을 만날 수 있는 유용한 사이트인 것 같습니다. 렛플을 통해 좋은 사람들을 만나서 즐겁게 프로젝트 진행하고 있습니다.</h2></div>
+                        <!--                        <div class="bottom"><p><span>프로젝트</span>전기차 충전운영 플랫폼 개발</p>-->
+                        <!--                            <button>프로필 바로가기</button>-->
+                        <!--                        </div>-->
+                    </div>
+                    <div class="reviewCard">
+                        <div class="top">
+                            <div class="profileImgAndId">
+                                <div class="imgThumb"><img loading="lazy"
+                                                           src="https://letspl.me/assets/images/prof-no-img.png"
+                                                           alt="유민규"></div>
+                                <h3>유민규<span></span></h3></div>
+                            <h2 class="descTxt">누구나에게 꿈은 있으리라 판단이 됩니다. 다만 현실과의 간극 때문에 이를 꿈으로만 남겨두는 경우가 다수인데요.렛플은 그 꿈을
+                                현실로써 이룰 수 있는 가장 좋은 도구라 생각합니다. 나와 비슷한 상황에 내가 부족한 부분을 채워줄 수 있는 훌륭하신 분들이 많아 너무나 좋았습니다.</h2>
+                        </div>
+                        <!--                        <div class="bottom"><p><span>프로젝트</span>AI 기반 보험을 부탁해</p>-->
+                        <!--                            <button>프로필 바로가기</button>-->
+                        <!--                        </div>-->
+                    </div>
+                    <div class="reviewCard">
+                        <div class="top">
+                            <div class="profileImgAndId">
+                                <div class="imgThumb"><img loading="lazy"
+                                                           src="https://phinf.pstatic.net/contact/20210415_49/1618468308135NXly5_JPEG/20200826_195603.jpg"
+                                                           alt="fitQA"></div>
+                                <h3>fitQA<span></span></h3></div>
+                            <h2 class="descTxt">새로 팀원들을 구인하는데 우연한 계기로 사이드프로젝트에 대해서 알게 됐습니다. 생각보다 많은 분들이 지원해주셔서 놀랐고, 다른
+                                사이트들보다 구성원들이 열의가 있어서 좋았습니다!! </h2></div>
+                        <!--                        <div class="bottom"><p><span>프로젝트</span>헬스 피드백 플랫폼</p>-->
+                        <!--                            <button>프로필 바로가기</button>-->
+                        <!--                        </div>-->
+                    </div>
+                    <div class="reviewCard">
+                        <div class="top">
+                            <div class="profileImgAndId">
+                                <div class="imgThumb"><img loading="lazy"
+                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/3/images/icon.png"
+                                                           alt="pp391zzk"></div>
+                                <h3>pp391zzk<span></span></h3></div>
+                            <h2 class="descTxt">팀원분들이 갑자기 나가면 다시 구인하는게 너무 힘들었습니다. 렛플은 간단하게 모집마감/추가모집이 가능하고, 많은 분들이 빨리
+                                지원해주셔서 쉽게 팀원을 보강할 수 있어서, 프로젝트를 성공리에 할 수 있었습니다.</h2></div>
+                        <!--                        <div class="bottom"><p><span>프로젝트</span>와라와라편의점리뉴얼</p>-->
+                        <!--                            <button>프로필 바로가기</button>-->
+                        <!--                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--네오스인-->
+    <div class="hotProjectWrap wrap mainWrap">
+        <h1><span class="bigTxt">핫한<em class="pinkColor">' </em>네오스인</span></h1>
+        <div class="hotProjectContentWrap" >
+            <li class="letspler_Re" style="margin-right:10px"><img loading="lazy" class="newMark" src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png" alt="민쇼니"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png" alt="렛플렙">
+                            <h2 class="userName">민쇼니
+                                <ul class="idHoverMenu" style="display: none;">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-red.png" alt="실명인증"></div>
+                            <div class="certiWrap"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>3</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>3</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;UI/UX기획</span><span> 중수</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;미입력</span><span></span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
+                    <div class="userInfoTagWrap"></div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re" style="margin-right:10px"><img loading="lazy" class="newMark" src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png" alt="박종우"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png" alt="렛플렙">
+                            <h2 class="userName">박종우
+                                <ul class="idHoverMenu" style="display: none;">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-red.png" alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>3</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>0</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;DB/빅데이터/DS</span><span> 초심자</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;미입력</span><span></span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
+                    <div class="userInfoTagWrap"></div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+            <li class="letspler_Re" style="margin-right:10px"><img loading="lazy" class="newMark" src="https://letspl.me/assets/images/ic-badge_project_update.png" alt="업데이트이력이 있는 렛플인">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png" alt="추추추"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_8.png" alt="렛플렙">
+                            <h2 class="userName">추추추
+                                <ul class="idHoverMenu" style="display: none;">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-gray.png" alt="휴대폰인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>1</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>3</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;웹 서버</span><span> 초심자</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;미입력</span><span></span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
+                    <div class="userInfoTagWrap"></div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+
+            <li class="letspler_Re" style="margin-right:10px"><img loading="lazy" class="newMark" src="https://letspl.me/assets/images/ic-badge_project_update.png" alt="업데이트이력이 있는 렛플인">
+                <div class="top">
+                    <div class="profilePicWrap">
+                        <div class="profilePic"><img src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif" alt="ROSA"></div>
+                        <a class="favorite "></a>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="idWrap"><img loading="lazy" class="userLv" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png" alt="렛플렙">
+                            <h2 class="userName">ROSA
+                                <ul class="idHoverMenu" style="display: none;">
+                                    <li><a>프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
+                                    <li><a>모임 초대</a></li>
+                                </ul>
+                            </h2>
+                            <div class="certiWrap"><img loading="lazy" class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-red.png" alt="실명인증"></div>
+                        </div>
+                        <div class="coffeAndHeart">
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>1</span></div>
+                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>2</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul class="userFavorite">
+                        <li>
+                            <h3><span>[본캐]&nbsp;웹 서버</span><span> 초보</span></h3>
+                        </li>
+                        <li>
+                            <h3><span> [부캐]&nbsp;UI/UX기획</span><span>초보</span></h3>
+                        </li>
+                    </ul>
+                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
+                    <div class="userInfoTagWrap"></div>
+                    <a class="chatBtn">
+                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>Coffee
+                                    Chat</span></div>
+                    </a>
+                </div>
+            </li>
+        </div>
+    </div>
+</div>
+<!-- 푸터 -->
+
+<!--<div class="Footer">-->
+<!--    <div class="footerContentBottom">-->
+<!--        <div class="wrap">-->
+<!--            <div class="left">-->
+<!--                <ul>-->
+<!--                    &lt;!&ndash; <li>개빠사크루</li> &ndash;&gt;-->
+<!--                    <li>사업등록번호 : 782-99-06054</li>-->
+<!--                    <li>대표 : 심민성</li>-->
+<!--                    <li><a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=6193900615&amp;apv_perm_no="-->
+<!--                           target="_blank">통신판매신고번호 : 제 2022-서울강남-3477호</a></li>-->
+<!--                    <li>주소 : 경상남도 창원시 소답동 청학아파트 304호</li>-->
+<!--                    <li><a href="tel:070-4111-6054">TEL : 070.4111.6054</a></li>-->
+<!--                    <li>개인정보담당자 : 김로사<a href="mailto:help@lespl.me">&nbsp;ro@neos.me</a></li>-->
+<!--                </ul>-->
+<!--                <p>Copyright ⓒ 2022 NEOS. All rights reserved.</p>-->
+<!--                <ul class="mbWrap">-->
+<!--                    <li><a href="/tnc/service_policy">서비스 이용약관</a></li>-->
+<!--                    <li><a href="/tnc/privacy_policy">개인정보취급방침</a></li>-->
+<!--                    <li><a href="/tnc/payment_policy">전자금융거래약관</a></li>-->
+<!--                    <li><a href="/tnc/refund_policy">결제/환불약관</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<div th:replace="/app/fix/footer.html :: footer"></div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="/js/fix/login.js"></script>
+<script src="/js/neosUser/neosList.js"></script>
+<script src="/js/store/storeList.js"></script>
+<script src="/js/study/listStudy.js"></script>
+<script src="/js/fix/chatting.js"></script>
+
+</html>

@@ -1,0 +1,1526 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'GmarketSansMedium'!important;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    font-size: 16px;
+}
+
+body {
+    background: #fff;
+    -webkit-text-size-adjust: none;
+    overflow: unset;
+}
+
+blockquote, body, button, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, pre, select, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body, button, input, select, td, textarea, th {
+    line-height: 1.5;
+    color: #333;
+}
+
+textarea:focus{outline: none}
+input::placeholder{color: #b1b1b1a8}
+
+section {
+    width: 100%;
+    background-color: #fff;
+}
+
+
+/* -----------------------------상단부------------------------------- */
+.projectPageHeaderWrap {
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 40px 0 44px;
+    position: relative;
+    background-size: cover;
+}
+
+.projectPageHeaderWrap .projectPurposeWrap {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.projectPageHeaderWrap .projectPurposeWrap div {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 8px 27px;
+    border-radius: 2px;
+    background-color: #f9f8ff;
+    display: inline-block;
+    background-color: #1A7CFF;
+}
+
+.projectPageHeaderWrap .projectPurposeWrap {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.projectPageHeaderWrap .projectPurposeWrap div h2 {
+    color: #594bba;
+    font-size: 14px;
+    line-height: 15px;
+    font-weight: 400;
+    padding: 5px 0;
+    color: #fff;
+}
+
+.projectPageHeaderWrap .projectPageHeaderContent {
+    max-width: 1040px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.projectPageHeaderWrap .projectTit {
+    text-align: center;
+    color: #222;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 34px;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: center;
+    justify-content: center;
+    margin-top: 28px;
+    margin-bottom: 12px;
+}
+
+dl, li, menu, ol, ul {
+    list-style: none;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap {
+    cursor: pointer;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-align: center;
+    align-items: center;
+    position: relative;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .leaderImg, .projectPageHeaderWrap .projectLeaderWrap .userIdWrap .leaderImg a {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .leaderImg {
+    width: 37px;
+    height: 37px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+a, button, input, select, textarea {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+a, a:active, a:hover {
+    text-decoration: none;
+}
+
+a {
+    color: #333;
+    background-color: transparent;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .leaderImg a img {
+    width: 37px;
+    height: 37px;
+    object-fit: cover;
+    aspect-ratio: auto 20 / 20;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .userIdTxt {
+    font-size: 14px;
+    color: #666;
+    margin-left: 11.5px;
+    margin-right: 6.5px;
+    font-weight: 400;
+    display: inline-block;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .confirmPhoneTxt {
+    font-size: 13px;
+    color: #1A7CFF;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .lastLoginTxt {
+    font-size: 13px;
+    color: #b7b7c7;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu {
+    display: none;
+    position: absolute;
+    width: 120px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    z-index: 555;
+    -webkit-box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    -moz-box-shadow: 2px 2px 5px 0 rgba(0,0,0,.2);
+    box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li {
+    width: 100%;
+}
+
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li a {
+    display: block;
+    padding: 10px 15px;
+    font-weight: 400;
+    font-size: .875rem;
+    color: #333;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.projectPageHeaderWrap .statusTagWrap {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+}
+
+.projectPageHeaderWrap .statusTagWrap .statusTag.gray {
+    background-color: #f2f2f2;
+}
+
+.projectPageHeaderWrap .statusTagWrap .statusTag {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 3px 9px;
+    color: #333;
+    border-radius: 100px;
+    margin-right: 6px;
+    font-size: .7rem;
+}
+
+.projectPageHeaderWrap .statusTagWrap .statusTag.white {
+    background-color: #fff;
+    border: 1px solid #e8e8e8;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* -----------------------------내용 TAB------------------------------- */
+
+.projectPageWrap {
+    max-width: 1200px;
+    width: 100%;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.projectPageWrap .contents {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 0 40px;
+    position: relative;
+    max-width: 840px;
+    margin: 0;
+}
+
+.contents, .projectTabMenu {
+    width: 100%;
+    background-color: #fff;
+}
+
+.projectTabMenu {
+    margin-bottom: 15px;
+    /* position: sticky; */
+    top: 55px;
+    z-index: 500;
+}
+
+.projectTabMenu>ul {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.projectTabMenu>ul li {
+    font-size: 15px;
+    color: #42495b;
+    -moz-box-flex: 1;
+    flex: 1 1;
+}
+
+.projectTabMenu>ul li a.active,
+.projectTabMenu>ul li a:hover {
+    color: #42495b;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-bottom: none;
+    padding: 12px 0;
+}
+
+.projectTabMenu>ul li a {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 11.5px 0;
+    -moz-box-align: center;
+    align-items: center;
+    display: -moz-box;
+    display: flex;
+    -moz-box-pack: center;
+    justify-content: center;
+    border-top: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #000;
+    color: #8e8ea2;
+    cursor: pointer;
+    background-color: #fcfcfc;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* --------------------------오른쪽 네비------------------------ */
+
+.projectPageWrap .projectRightInfoContetns {
+    max-width: 300px;
+    width: 100%;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 20px;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    position: sticky;
+    top: 74px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap {
+    border-bottom: 1px solid #e6e6e6;
+    padding: 20px 0;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap {
+    padding-top: 0;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .userIdWrap, .projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap .checkboxTit {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap .checkboxTit {
+    font-size: 1.125rem;
+    color: #000;
+    font-weight: 500;
+    -moz-box-align: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .leaderImg {
+    width: 54px;
+    height: 54px;
+    margin-right: 24px;
+    flex-shrink: 0;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: start;
+    align-items: flex-start;
+    -moz-box-pack: center;
+    justify-content: center;
+    position: relative;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .leaderImg .leaderImgWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .leaderImg img {
+    width: 54px;
+    height: 54px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .rightBox .userIdTxt {
+    font-size: 15px;
+    line-height: 16px;
+    font-weight: 400;
+    color: #000;
+    position: relative;
+    width: auto;
+    display: -moz-inline-box;
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .rightBox .userIdTxt:before {
+    content: "";
+    position: absolute;
+    width: 102%;
+    left: -1%;
+    height: 0;
+    background-color: rgba(97,180,199,.5);
+    bottom: 2px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .idHoverMenu {
+    display: none;
+    position: absolute;
+    width: 120px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    z-index: 555;
+    top: 16px;
+    -webkit-box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    -moz-box-shadow: 2px 2px 5px 0 rgba(0,0,0,.2);
+    box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .idHoverMenu ul li {
+    width: 100%;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .idHoverMenu ul li a {
+    display: block;
+    padding: 10px 15px;
+    font-weight: 400;
+    font-size: .875rem;
+    color: #333;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .rightBox .confirmPhoneTxt {
+    font-size: 12px;
+    line-height: 14px;
+    color: #8e8ea2;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .rightBox span {
+    display: block;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .rightBox .proejctReactionRateTxt {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .rightBox .proejctReactionRateTxt span {
+    display: inline;
+    font-size: 14px;
+    line-height: 14px;
+    color: #424251;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: end;
+    justify-content: flex-end;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .heartWrap, .projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .shareWrap {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    font-size: 13px;
+    line-height: 14px;
+    cursor: pointer;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .heartWrap {
+    margin-right: 6px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .heartWrap.viewCount svg {
+    margin-right: 4px;
+    width: 14px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .basicInfoWrap .leaderInfo .rightBox span {
+    display: block;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .heartWrap .favoriteSymbol {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .heartWrap .favoriteNumber {
+    margin-left: 5px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap span {
+    font-size: 13px;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .heartWrap .favorite {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-white.b1db0e3e169a5cf61afa41daf5bfdc15.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .shareWrap img {
+    width: 16px;
+    height: auto;
+}
+
+
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.projectPageWrap .projectRightInfoContetns
+.projectRightInfoWrap .basicInfoWrap .leaderInfo .userIdWrap, .projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap .checkboxTit {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap .checkboxTit {
+    font-size: 1.125rem;
+    color: #000;
+    font-weight: 500;
+    -moz-box-align: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.projectPageWrap .projectRightInfoContetns .infoWrap .tabTxt {
+    font-size: 14px;
+    line-height: 14px;
+    color: #333;
+    font-weight: 400;
+}
+
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .infoWrap:last-child .checkboxTit {
+    margin-bottom: 12px;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    margin-top: 0;
+    -moz-box-align: end;
+    align-items: flex-end;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-top: 24px;
+    padding-bottom: 15px;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-right: -20px;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li:first-child .hoverName {
+    right: -52px!important;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li .hoverName {
+    width: 114px;
+    height: 28px;
+    background-color: rgba(0,0,0,.8);
+    -webkit-box-sizing: 0 3px 24px 0 rgba(0,0,0,.2);
+    -moz-box-sizing: 0 3px 24px 0 rgba(0,0,0,.2);
+    box-sizing: 0 3px 24px 0 rgba(0,0,0,.2);
+    position: absolute;
+    top: -24px;
+    right: -10px;
+    border-radius: 4px;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    z-index: 99;
+    display: none;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li p {
+    width: 100%;
+    text-align: center;
+    line-height: 1;
+    position: relative;
+    top: 3px;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li:first-child {
+    margin-left: 0;
+    margin-right: 0;
+    left: 0;
+    right: 0;
+    display: inline-block;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li span:first-child {
+    font-size: 12px!important;
+    color: #1A7CFF!important;
+    margin-right: 4px!important;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li span:last-child {
+    font-size: 12px!important;
+    color: #fff!important;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li:nth-child(2) {
+    margin-left: -20px;
+}
+
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap .subscribeBtn.active {
+    background-color: #1A7CFF;
+    color: #fff;
+    border: 1px solid #1A7CFF;
+}
+
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap .subscribeBtn {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 0!important;
+    background-color: #f2f2f2;
+    padding: 10px 0;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li .imgWrap {
+    max-width: 62px;
+    width: 62px;
+    height: 62px;
+    border-radius: 100px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li img {
+    width: 62px;
+    height: 62px;
+    object-fit: cover;
+}
+
+/* ------------------------------내용부----------------------------------- */
+
+.projectDetailWrap {
+    position: relative;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+.projectFeedContents.active {
+    display: block;
+}
+
+.projectFeedContents {
+    display: none;
+    padding: 0;
+}
+
+.projectFeedContents .tabTit.qna {
+    font-size: 22px;
+    margin-top: 15px;
+    margin-bottom: 32px;
+    line-height: 28px;
+}
+
+.projectFeedContents .feedInputSection {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #fff;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #e3e3e3;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 20px 12px 0 20px;
+}
+
+.projectFeedContents .feedInputSection .feedInputWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    margin-bottom: 12px;
+}
+
+
+.projectFeedContents .feedInputSection .fileWrap,
+.projectFeedContents .feedUploadedSection .feedUploadWrap .feedContentsWrap .fileBtn {
+    width: 100%;
+    display: block!important;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    -moz-box-align: center;
+    align-items: center;
+    display: block;
+}
+
+.projectFeedContents .feedInputSection .feedInputWrap textarea,
+.projectFeedContents .feedInputSection .feedInputWrap textarea.on {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-flex: 1;
+    flex: 1 1;
+    padding: 0;
+    border: 0;
+    font-size: 14px;
+    resize: none;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .feedContentsWrap {
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 15px 24px;
+    border-top: 1px solid #ededed;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .thumb {
+    width: 54px;
+    height: 54px;
+    margin-right: 20px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #e3e3e3;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .thumb img {
+    width: 54px;
+    height: 54px;
+    object-fit: cover;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    -moz-box-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name h2.profileName {
+    font-size: 1rem;
+    color: #42495b;
+    cursor: pointer;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name h2.profileName .hoverView {
+    position: absolute;
+    display: none;
+    width: 120px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    -moz-box-shadow: 2px 2px 5px 0 rgba(0,0,0,.2);
+    box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    z-index: 10;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name span {
+    font-size: .75rem;
+    color: #c9c9d9;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .feedContents {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 5px;
+    margin-bottom: 12px;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .feedContents textarea {
+    height: auto;
+    resize: none;
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color: #222;
+    margin-bottom: 13px;
+    margin-top: 13px;
+    width: 100%;
+    border: 1px solid #9796a7;
+    box-sizing: border-box;
+    padding: 10px 0;
+    border-radius: 4px;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .feedContents textarea:disabled {
+    height: auto;
+    resize: none;
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    color: #222;
+    margin-bottom: 13px;
+    width: 100%;
+    font-size: .875rem;
+    opacity: 1;
+    -webkit-text-fill-color: #222;
+}
+
+button, input, select, textarea {
+    font-size: 100%;
+    vertical-align: middle;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .imgWrap {
+    width: 100%;
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    margin-top: 17px;
+    overflow: auto;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .imgThumb:first-child {
+    margin-left: 12px;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .imgThumb {
+    height: 230px;
+    width: 200px;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-pack: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    margin-right: 14px;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .imgThumb a {
+    height: 230px;
+    width: 200px;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .imgThumb img {
+    height: 230px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .btnWrap {
+    -moz-box-pack: end;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+.projectFeedContents .feedUploadedSection .bottom,
+.projectFeedContents .feedUploadedSection .feedUploadWrap .btnWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    width: 100%;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.btnWrap {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .btnWrap button:first-child {
+    color: #42495b;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .btnWrap button.txtBtn {
+    flex-shrink: 0;
+    padding: 0!important;
+    border-radius: 0!important;
+    margin: 0;
+    color: #81839c;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+    font-size: .75rem;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .btnWrap .divider {
+    width: 1px;
+    height: 10px;
+    background-color: #d8d8d8;
+    margin: 0 12px;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .btnWrap button.txtBtn {
+    flex-shrink: 0;
+    padding: 0!important;
+    border-radius: 0!important;
+    margin: 0;
+    color: #81839c;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+    font-size: .75rem;
+}
+
+button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.projectFeedContents .feedUploadedSection .bottom,
+.projectFeedContents .feedUploadedSection .feedUploadWrap .btnWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    width: 100%;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.projectFeedContents .feedUploadedSection .bottom {
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 13px;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .bottom a {
+    cursor: pointer;
+    font-size: .75rem;
+    color: #c9c9d9;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .bottom a.active:after {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .bottom a.active:after,
+.projectFeedContents .feedUploadedSection .feedUploadWrap .bottom a:after {
+    content: " ";
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-left: 2px;
+    background-image: url(https://letspl.me/_next/static/media/option-triangle.2abb88b721408916136ac6048ff74b95.svg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .bottom a:after {
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .bottom .replayCount {
+    font-size: .75rem;
+    color: #42495b;
+    display: -moz-inline-box;
+    display: inline-flex;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .bottom .replayCount:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 2px;
+    background-image: url(https://letspl.me/_next/static/media/ico_comment.66b0e87a88ad24dc805cabc6e2ca41af.svg);
+}
+
+/* -----------------------------------댓글-------------------------------------- */
+.feedUploadWrap .replyWrap {
+    background-color: #f8f8f8;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 16px 34px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+    display: -moz-box;
+    /*display: flex;*/
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    display: none;
+}
+
+.feedUploadWrap .replyWrap .replyWrapContent {
+    margin-bottom: 14px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.feedUploadWrap .replyWrap .top .left {
+    margin-right: 16px;
+    flex-shrink: 0;
+}
+
+.feedUploadWrap .replyWrap .top .left .profileThumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e3e3e3;
+}
+
+.feedUploadWrap .replyWrap .top .left .profileThumb a {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.feedUploadWrap .replyWrap .top .left .profileThumb img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+}
+
+.feedUploadWrap .replyWrap .top .right {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    -moz-box-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.feedUploadWrap .replyWrap .top .right .profileName {
+    font-size: 1rem;
+    color: #42495b;
+    line-height: 1.125rem;
+}
+
+.feedUploadWrap .replyWrap .top .right .dateTxt {
+    font-size: .75rem;
+}
+
+.feedUploadWrap .replyWrap .bottom {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -moz-box-align: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+.feedUploadWrap .replyWrap .bottom .left {
+    width: 44px;
+    margin-right: 16px;
+}
+
+.feedUploadWrap .replyWrap .bottom .txtWrap,
+.feedUploadWrap .replyWrap .bottom .txtWrap textarea {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.feedUploadWrap .replyWrap .bottom .txtWrap {
+    display: -moz-inline-box;
+    display: inline-flex;
+    margin-right: 14px;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.feedUploadWrap .replyWrap .bottom .txtWrap textarea:disabled {
+    background: none;
+    border: none;
+    font-size: .875rem;
+    color: #222;
+    -moz-box-flex: 1;
+    flex: 1 1;
+    padding: 0;
+    resize: none;
+    opacity: 1;
+    -webkit-text-fill-color: #222;
+    margin-bottom: 20px;
+}
+
+.feedUploadWrap .replyWrap .bottom .txtWrap textarea {
+    background: #fff;
+    font-size: .875rem;
+    color: #222;
+    padding: 10px;
+    border-radius: 4px;
+    resize: none;
+    overflow: hidden;
+}
+
+.feedUploadWrap .replyWrap .bottom .txtWrap, .feedUploadWrap .replyWrap .bottom .txtWrap textarea {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.feedUploadWrap .replyWrap .replayInput {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: start;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.feedUploadWrap .replyWrap .replayInput .profileThumb {
+    width: 44px;
+    height: 44px;
+    margin-right: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e3e3e3;
+}
+
+.feedUploadWrap .replyWrap .replayInput .profileThumb img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+}
+
+.feedUploadWrap .replyWrap .replayInput .txtInput {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    display: -moz-box;
+    display: flex;
+    width: 100%;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -moz-box-align: end;
+    align-items: flex-end;
+}
+
+.feedUploadWrap .replyWrap .replayInput .txtInput textarea {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    font-size: .8rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 11px 16px;
+    border-radius: 4px;
+    resize: none;
+    border: 1px solid #e3e3e3;
+    color: #222;
+}
+
+.feedUploadWrap .replyWrap .replayInput .txtInput button {
+    padding: 7px 27px!important;
+    margin-left: 0;
+    margin-top: 12px;
+}
+
+.projectDetailWrap button.blackBtn {
+    padding: 7px 21px 6px;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+    font-size: .75rem;
+    color: #222;
+}
+
+.feedUploadWrap .replyWrap .bottom .txtWrap textarea:disabled {
+    background: none;
+    border: none;
+    font-size: .875rem;
+    color: #222;
+    -moz-box-flex: 1;
+    flex: 1 1;
+    padding: 0;
+    resize: none;
+    opacity: 1;
+    -webkit-text-fill-color: #222;
+    margin-bottom: 20px;
+}
+
+.feedUploadWrap .replyWrap .bottom .txtWrap, .feedUploadWrap .replyWrap .bottom .txtWrap textarea {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/* 오른쪽 배너 기능 추가*/
+.basicInfoWrap .leaderInfo .userIdWrap .rightBox .userIdTxt .idHoverMenu ul li:hover,
+.basicInfoWrap .leaderInfo .userIdWrap .rightBox .userIdTxt .idHoverMenu ul li a:hover {
+    background-color: #1A7CFF;
+    color: #fff !important;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li:last-child .hoverName {
+    right: 0;
+}
+
+.watchedLetsplerWrap ul li .hoverName:after {
+    top: 100%;
+    left: 50%;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border: 5px solid rgba(136,183,213,0);
+    border-top-color: rgba(0,0,0,.8);
+    margin-left: 14px;
+}
+
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li:first-child .hoverName:after {
+    margin-left: -35px;
+}
+
+/*---------------------------------기능 추가--------------------------------------*/
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li:hover,
+.projectPageHeaderWrap .projectLeaderWrap .userIdWrap .idHoverMenu ul li a:hover {
+    background-color: #1A7CFF;
+    color: #fff;
+}
+
+/* 유저네임 호버 시, 리스트 출력 관련*/
+.letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu li:hover,
+.letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu li a:hover,
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name h2.profileName .hoverView ul li:hover,
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name h2.profileName .hoverView ul li a:hover,
+.feedUploadWrap .replyWrap .top .right .profileName .hoverView ul li:hover,
+.feedUploadWrap .replyWrap .top .right .profileName .hoverView ul li a:hover {
+    color: #fff;
+    background-color: #1A7CFF;
+}
+
+/*호버 CSS*/
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name .profileName .hoverView,
+.feedUploadWrap .replyWrap .top .right .profileName .hoverView {
+    position: absolute;
+    display: none;
+    width: 120px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    -moz-box-shadow: 2px 2px 5px 0 rgba(0,0,0,.2);
+    box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
+    z-index: 10;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name .profileName .hoverView ul li,
+.feedUploadWrap .replyWrap .top .right .profileName .hoverView ul li {
+    width: 100%;
+}
+
+dl, li, menu, ol, ul {
+    list-style: none;
+}
+
+.projectFeedContents .feedUploadedSection .feedUploadWrap .top .name .profileName .hoverView ul li a,
+.feedUploadWrap .replyWrap .top .right .profileName .hoverView ul li a{
+    display: block;
+    padding: 10px 15px;
+    font-weight: 400;
+    letter-spacing: -1.1px;
+    font-size: .875rem;
+    color: #333;
+}
+
+/*게시글 작성 카운팅, 버튼 DIV*/
+.projectFeedContents .feedInputSection .btnWrap,
+.projectFeedContents .feedInputSection .btnWrap .count {
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+}
+
+.projectFeedContents .feedInputSection .btnWrap {
+    width: 100%;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    margin: 0!important;
+    display: none;
+}
+
+.projectFeedContents .feedInputSection .btnWrap .count {
+    font-size: 14px;
+    color: #b1b1b1;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+body, button, input, select, td, textarea, th {
+    line-height: 1.5;
+    color: #333;
+}
+
+.projectFeedContents .feedInputSection .btnWrap .count span:first-child {
+    color: #333;
+}
+
+.projectFeedContents .feedInputSection button {
+    padding: 7px 27px!important;
+}
+
+.btnWrap button.whiteBtn {
+    background-color: #fff;
+    color: #000;
+    font-size: .75rem;
+    padding: 11px 35px;
+    border-radius: 4px;
+    width: 240px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+}
+
+.projectDetailWrap button.whiteBtn {
+    background-color: #fff;
+    border: 1px solid #e2e2e2;
+    width: auto!important;
+}
+
+
+input {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    border: none;
+    height: 46px;
+    font-size: 13px;
+    padding: 4px 0 0;
+}
+
+.projectDetailWrap button:last-child {
+    margin-left: 8px;
+}
+
+button, input[type=button], input[type=file], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    border-radius: 0;
+}
+
+.projectDetailWrap button, .projectDetailWrap button.black {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: .75rem;
+    line-height: 1rem;
+}
+

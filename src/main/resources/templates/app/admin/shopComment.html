@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/bootstrap.css?1630317764">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/jquery-ui.css?1577682282">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/ii.css?1577682282">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/db-icons.css?1577682282"> <!-- 아이콘 필수 -->
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/material-design-iconic-font.min.css?1577682282">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/bootstrap-datepicker.css?1577682282">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/black-tie.css?1608189400">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/simple-line-icons.css?1608179394">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/fonts/im-icon/style.css?1656383913">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/fonts/froala-emoji-tap/style.css?1660095148">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/preloader.css?1577682282">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/owl.carousel2.css?1577682282">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/slick.css?1577682282">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/animate.css?1577682282">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/nprogress.css?1577682282">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/trackpad-scroll-emulator.css?1577682282">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/font-awesome.min.css?1626931454">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/font-awesome5.min.css?1660780829">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/froala_311/css/froala_editor.pkgd.css?1660095140">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/froala_311/css/froala_style.min.css?1660095060">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/emoji.css?1660095097">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/froala/custom-theme-v3.css?1663833898">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/colorpicker.css?1577682282">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/codemirror.css?1577682282">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/bootstrap-spinner.css?1577682282">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/chosen.css?1617331870">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/fullcalendar.min.css?1577682282">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/morris.core.css?1577682282">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/lightgallery.min.css?1596596378">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/im_component.css?1636689958">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/admin.css?1590627710">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/toastr.css?1593569516">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/alarm_menu.css?1648796493">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/fonts/fontello/src/css/fontello.css?1657576838">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/bootstrap-theme-dashboard.css?1618365623">
+<!--    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/dashboard.css?1663833898">-->
+    <link rel="stylesheet" href="/css/admin/configBannerDash.css">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/select2.css?1590627710">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/site/admin/accordion.css?1653367465">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/regularly.css?1658818153">
+    <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/tailwind.css?1664422527">
+    <script src="https://vendor-cdn.imweb.me/js/jquery.js?1627517460"></script>
+    <script src="https://vendor-cdn.imweb.me/js/jquery.browser.js?1577682292"></script>
+    <script src="https://vendor-cdn.imweb.me/js/jquery-ui.min.js?1577682292"></script>
+    <script src="https://vendor-cdn.imweb.me/js/bootstrap.min.js?1630317768"></script>
+    <script src="https://vendor-cdn.imweb.me/js/floating-ui-core@1.0.1.js?1662343131"></script>
+    <script src="https://vendor-cdn.imweb.me/js/floating-ui-dom@1.0.1.js?1662343131"></script>
+    <script src="https://vendor-cdn.imweb.me/js/tinycolor-min.js?1577682292"></script>
+    <script src="https://vendor-cdn.imweb.me/js/common.js?1661221108"></script>
+    <script src="https://vendor-cdn.imweb.me/js/table_list.js?1633057104"></script>
+    <link rel="stylesheet" href="/css/admin/comment.css">
+    <link rel="stylesheet" href="/css/admin/adminPaging.css">
+    <link rel="stylesheet" href="/css/admin/adminTotalCss.css">
+    <link rel="stylesheet" href="/css/admin/modal.css">
+
+</head>
+
+<body class="menubar-hoverable header-fixed menubar-pin menubar-visible">
+<!-- START BASE -->
+<div id="base">
+    <!-- START HEADER -->
+    <header class="top_header" id="default_header">
+        <div class="headerbar">
+            <div class="headerbar-left">
+                <ul class="header-nav header-nav-options">
+                    <li class="hidden-lg hidden-md">
+                        <a class="btn btn-icon-toggle menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+                            <i class="btl bt-bars"></i>
+                        </a>
+                    </li>
+                    <li class="header-nav-brand">
+                        <div class="brand-holder">
+								<span class="location_text">
+									<a href="#">자유상점 댓글 관리</a>	<!-- 동일 페이지로 재이동 -->
+								</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header> <!-- END HEADER -->
+    <!-- START MENUBAR HEADER -->
+    <div th:replace="/app/admin/adminNavBar.html :: adminMenuBarHeader"></div>
+    <!-- END MENUBAR HEADER -->
+    <!-- BEGIN MENUBAR-->
+    <div th:replace="/app/admin/adminNavBar.html ::  adminMenu"></div>
+    <!--END MENUBAR&ndash;&gt;-->
+    <div class="modalWrapOpen">
+        <div class="commonModal">
+            <p class="modalTit" style="font-size: 18px;margin-bottom: 15px">댓글 삭제 확인</p><button class="closeBtn"><img
+                src="/images/admin/closeBtn.png" alt="close"></button>
+            <div class="commonModalContent">
+                <p style="font-size: 12px;margin-bottom: 12px;">해당 댓글을 삭제하시겠습니까?</p>
+            </div>
+            <div class="btnWrap doubleBtnWrap"><button class="btn whiteBtn" style="font-size: 12px;line-height: 3;">아니오</button><button
+                    class="btn redBtn" style="font-size: 12px;line-height: 3;">예</button></div>
+        </div>
+    </div>
+
+    <div class="modalWrapOpen2">
+        <div class="commonModal2">
+            <p class="modalTit2" style="font-size: 18px;margin-bottom: 15px">댓글 삭제 확인</p><button class="closeBtn2"><img
+                src="/images/admin/closeBtn.png" alt="close"></button>
+            <div class="commonModalContent2">
+                <p style="font-size: 12px;margin-bottom: 12px;">하나 이상의 댓글을 체크해야 합니다.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- START MAIN CONTENT -->
+
+    <div id="content">
+        <section>
+            <div class="section-body">
+                <div class="tab-pane" id="daily">
+                    <div class="row">
+                        <div class="col-md-9 col-xl-10">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="card">
+                                        <div class="card-body no-padding">
+                                            <div class="company-search" id="companySearch">
+                                                <div class="form-group">
+                                                    <a class="icon_set left" href="javascript:;" onclick="searchUser()">
+                                                        <i class="btl bt-search"></i>
+                                                    </a>
+
+                                                    <div id="prefetch">
+															<span class="twitter-typeahead" >
+																<input type="hidden" name="q" value="YToxOntzOjEwOiJqb2luX29yZGVyIjtzOjQ6ImRlc2MiO30=" class="form-control typeahead">
+																<input type="text" class="form-control typeahead tt-input searchBar" id="keyword_search1" name="keyword" placeholder="검색" autocomplete="off" spellcheck="false" dir="auto" value="">
+																<pre class="bar" aria-hidden="true"></pre>
+																<div class="tt-menu">
+																	<div class="tt-dataset tt-dataset-users"></div>
+																</div>
+															</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2 hidden-xs">
+                                    <div class="card">
+                                        <div class="companyDelete">
+                                            <a href="#modal;" rel="modal:open">선택 댓글 삭제</a>
+                                            <span>
+													<!-- <button type="button" class="button" style="display:none";></button> -->
+												</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-head" id="card-head">
+                                            <header class="small">전체 댓글
+                                                <span class="text-primary" id="total-member-count">1</span>
+                                            </header>
+                                        </div>
+
+                                        <div class="card-body no-padding">
+                                            <div class="li_table" id="UI_TABLE">
+                                                <ul class="subject _thead" id="table-header" >
+                                                    <li class="check">
+                                                        <div class="checkbox checkbox-styled no-margin">
+                                                            <label>
+                                                                <input type="checkbox" value="" class="_all_check term" name="term"><span></span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <li class="commentNick">작성자</li>
+                                                    <li class="comment">내용</li>
+                                                    <li class="commentPost">작성 게시글</li>
+                                                    <li class="commentDate">작성일</li>
+                                                    <li class="action"></li>
+                                                </ul>
+
+                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
+                                                    <li class="check">
+                                                        <div class="checkbox checkbox-styled no-margin">
+                                                            <label>
+                                                                <input type="checkbox" class="terms">
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="commentNick"><a href="#">종우종우</a></li><!-- 작성사 상세 페이지 이동 -->
+                                                    <li class="comment">NEOS 화이팅! 앞으로도 힘냅시다! 2팀짱</li>
+                                                    <li class="commentPost"><a href="#">[자유상점] 게시글 테스트입니다</a></li> <!-- 작성한 게시글 페이지 이동 -->
+                                                    <li class="commentDate">2022-11-17 15:17</li>
+
+                                                    <li class="action">
+                                                        <div class="dropdown">
+                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
+                                                                <i class="zmdi zmdi-more"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
+                                                                <li>
+                                                                    <a href="javascript:;" onclick="modalUp()">
+                                                                        삭제
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <nav class="text-center" id="paginate"></nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:replace="/app/admin/adminPaging.html :: adminPaging">
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+    // base.html
+
+    // 좌측 슬라이드 배너 작동
+    $('.gui-folder').click(function(){
+        $(this).toggleClass('expanded'); /* expanded가 없으면 생성, 있으면 삭제, 따라서 gui-folder은 계속 유지 */
+        $(this).parent().children('.expanded').not(this).removeClass('expanded');
+    });
+
+    // 체크박스
+    const $all = $(".term");
+    const $terms = $(".terms");
+
+    console.log($all)
+    console.log($terms)
+
+    // 전체 체크박스 선택
+    $all.on("click", function(){
+        $terms.prop("checked", $(this).is(":checked"));
+    });
+
+    // 각각의 체크박스 선택
+    $terms.on("click", function(){
+        $all.prop("checked", $terms.filter(":checked").length == $terms.length);
+
+    });
+
+    const $deleteModal = $(".modalWrapOpen");
+    const $alertModal = $(".modalWrapOpen2")
+    const $deleteBtn = $(".companyDelete a");
+    const $cancelBtn = $(".whiteBtn");
+    const $closeBtn = $(".closeBtn")
+    const $closeBtn2 = $(".closeBtn2")
+    $deleteBtn.click(function () {
+        if($terms.filter(":checked").length==0){
+            $alertModal.show();
+            return;
+        }
+        $deleteModal.show();
+    })
+
+    $cancelBtn.click(function () {
+        $deleteModal.hide();
+    })
+
+    $closeBtn.click(function () {
+        $deleteModal.hide();
+    })
+    $closeBtn2.click(function () {
+        $alertModal.hide();
+    })
+
+    function modalUp(){
+        $deleteModal.show();
+    }
+
+
+</script>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 전 헤더</title>
+    <link rel="stylesheet" href="/css/fix/header.css">
+
+</head>
+<body>
+<header class="Header" th:fragment="header">
+    <nav>
+        <img src="/images/fix/logo.png" alt="letspl_logo" class="logo">
+        <ul class="Navbar">
+            <li><a class="click" href="">네오스인</a></li>
+            <li><a class="click" href="">스터디</a></li>
+            <li><a class="click" href="">자료상점</a></li>
+            <li><a class="click" href="">커뮤니티</a></li>
+            <li><a class="click" href="">공지사항</a></li>
+        </ul>
+        <div th:if="${session.loginUser == null}" class="loginWrap">
+            <div class="searchWrap">
+                <a class="searchIc"><span>검색</span>
+                    <img class="pcSearch" src="	https://letspl.me/assets/images/ic-search-white.png" alt="검색하기">
+                    <img class="mobileSearch" src="	https://letspl.me/assets/images/ic-search.png" alt="검색하기">
+                </a>
+            </div>
+            <div class="joinAndLoginWrap">
+                <a class="joinAndLogin" onclick="joinShow()">가입</a>
+                <a class="joinAndLogin" onclick="loginShow()">로그인</a>
+            </div>
+            <div class="mobileLogin">
+                <a><img loading="lazy" src="https://letspl.me/assets/images/ic-login.png" alt="로그인"></a>
+            </div>
+        </div>
+
+        <div th:if="${session.loginUser != null}" class="loginWrap">
+            <div class="loginLogout">
+                <div class="newDot">
+                    <div class="redDot"></div>
+                </div>
+                <div class="searchWrap">
+                    <a class="searchIc"><span>검색</span>
+                        <img class="pcSearch" src="	https://letspl.me/assets/images/ic-search-white.png"
+                             alt="검색하기">
+                        <img class="mobileSearch" src="	https://letspl.me/assets/images/ic-search.png" alt="검색하기">
+
+                    </a>
+                </div>
+                <a class="navBtn buildProject">
+                    <span>모임 or 스토리 생성</span>
+                    <img class="mobileBuild" src="https://letspl.me/assets/images/ic-project-new.png" alt="모임/스토리 만들기">
+                </a>
+                <div class="profile" onclick="hoverShow()">
+                    <img
+                            src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png">
+                </div>
+
+                <!--  팝업창  -->
+                <div class="hoverMenu ">
+                    <div class="profileSummary clearfix">
+                        <div class="left prifileInfo"><a href="/people/sun9hyun"><img loading="lazy"
+                                                                                      src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png"></a>
+                        </div>
+                        <div class="right idInfo">
+                            <div class="lvAndLogout">
+                                <div class="lv"><img loading="lazy" class="userLv"
+                                                     src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
+                                                     alt="렛플렙"></div><a class="logOut">로그아웃</a>
+                            </div><a href="/people/sun9hyun">
+                            <p class="userId">sun9hyun</p>
+                        </a><a href="/people/sun9hyun">
+                            <p class="positionTxt"><span>본캐 : 웹 서버</span><span>/&nbsp;초심자</span></p>
+                        </a>
+                        </div>
+                    </div>
+                    <div class="pointWrap">
+                        <div class="pointTxt"><span>8 P</span></div><button><span>충전</span></button>
+                    </div>
+                    <div class="navLIst">
+                        <div><a class="popClick" href="/people/sun9hyun">내 프로필</a></div>
+                        <div><a class="popClick" href="/my?tab=info">마이페이지</a></div>
+                        <div><a class="popClick" href="/my?tab=project">모임 현황</a></div>
+                    </div>
+                    <div class="alarmList">
+                        <ul>
+                            <li class="alarmTit">내 모임 (1)</li>
+                            <li class="alarmContent"><a class="popClick" href="/project/624">
+                                <p>[스터디&amp;네트워킹] spring boot 팀프로젝트</p><span class="dateInfo">22.11.08
+                                                부터 참여중</span><span class="newTag"></span>
+                            </a></li>
+                        </ul>
+                        <ul>
+                            <li class="alarmTit">신규 알림 (1)</li>
+                            <li class="alarmContent"><a class="popClick" href="/my?tab=alarm">
+                                <p>회원님을 찾는 프로젝트 대학 동아리 플랫폼 App가 게시되었습니다.</p><span class="dateInfo">22.11.09
+                                                09:08</span><span class="newTag"></span>
+                            </a></li>
+                            <li class="moreAlarm">
+                                <p>이 외 <em>0</em>건의 메시지가 있습니다.</p><a class="popClick" href="/my?tab=alarm">확인하러 가기</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+<!--  로그인 모달-->
+    <div class="modalWrapOpenByHeader loginModal1">
+        <div class="loginModal"><p class="modalTit">로그인</p>
+            <button class="closeBtn closeButton" onclick="loginHide()" ><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" style="cursor: pointer;"></button>
+            <button class="loginBtn naver" style="cursor: pointer;">네이버 아이디로 로그인<!-- --> </button>
+            <button class="loginBtn kakao" style="cursor: pointer;">카카오 계정으로 로그인</button>
+            <button class="loginBtn google" style="cursor: pointer;">구글 계정으로 로그인</button>
+            <a class="signupBtn signupButton" style="cursor: pointer;"></a></div>
+    </div>
+    <!--회원 가입 모달-->
+    <div class="modalWrapOpenByHeader joinModal1">
+        <div class="joinModal">
+            <p class="modalTit">회원 가입하기</p><button class="closeBtn" onclick="joinHide()">
+            <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" style="cursor: pointer" >
+
+        </button>
+            <button class="joinBtn naver" style="cursor: pointer">네이버 아이디로 가입</button>
+
+            <button class="joinBtn kakao" style="cursor: pointer">카카오 계정으로 가입</button>
+            <button class="joinBtn google" style="cursor: pointer">구글 계정으로 가입</button>
+            <p class="loginNoticeTxt">소셜 로그인으로 가입 시
+                <a target="_blank" href="/tnc/service_policy">이용약관,&nbsp;</a>
+
+                <a target="_blank" href="/tnc/privacy_policy">개인정보처리방침,&nbsp;</a>
+                <a target="_blank" href="/tnc/payment_policy">전자금융거래약관</a>
+                에 동의함으로 처리됩니다
+            </p>
+            <a class="signupBtn" style="cursor: pointer"></a>
+        </div>
+    </div>
+</header>
+</body>
+</html>

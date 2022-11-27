@@ -886,8 +886,8 @@ button {
 }
 
 .letspler_Re .top .profileTxt .coffeAndHeart div img {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
 }
 
 .letspler_Re .top .profileTxt .coffeAndHeart div span {
@@ -1457,4 +1457,29 @@ button {
 
 .projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li:first-child .hoverName:after {
     margin-left: -35px;
+}
+
+
+.projectTabMenu>ul li a.disabled:hover {
+    color: #8e8ea2;
+    padding: 11.5px 0;
+    background-color: #fbfbfb;
+    border: 1px solid #e6e6e6;
+    border-bottom-color: #000;
+    border-left: none;
+}
+
+.projectTabMenu>ul li a.disabled {
+    cursor: not-allowed;
+}
+
+.projectTabMenu>ul li a.disabled:after {
+    content: "";
+    background-image: url(https://letspl.me/_next/static/media/ic_lock.b284a07036757b388f197a7b1b93524b.svg);
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: contain;
+    margin-left: 10px;
 }

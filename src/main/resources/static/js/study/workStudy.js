@@ -40,12 +40,8 @@ $('.favoriteSymbol').on("mouseout", function () {
 })
 
 // 작은 하트 활성화 선택
-$('.favoriteSymbol').click(function(){
-    $(this).toggleClass('active'); /* active가 없으면 생성, 있으면 삭제*/
-});
-
-$(".favorite").on("click", function () {
-    $(this).toggleClass('active');
+$(".favoriteUser").on("click", function () {
+    $(this).toggleClass("active");
 })
 
 // 내용부 상단 탭 작동
@@ -119,4 +115,35 @@ $(".mileBtn").on("click", function () {
         $(this).parents('.nowMilestoneWrap').children('.mileStoneTxt').children("textarea").attr("disabled", true)
             .attr("rows", 1);
     }
+})
+
+
+// 할일 완료 처리
+$(".statusCircle").on("click",function () {
+    if($(this).children().text() == "완료") {
+        let name = $(this).parents(".taskContentsWrap").children(".tastContent").children(".taskTxt").text().split("]")[1];
+        $(".modal1").children(".modalContent").children(".modalName").text("[" + name + " ]");
+        $(".modalWrapOpen").show();
+        $(".modal1").css('display', 'inline-block');
+    }
+})
+
+// 목표 등록 할 때,
+$(".grayBtn").on("click",function () {
+    if($(".mileStoneTit").val().length < 1){ // 제목이 작성되지 않은 경우
+        $(".modalWrapOpen").show();
+        $(".modal4").css('display','inline-block');
+    }else if($(".mileStoneTxt").val().length < 1){ // 내용이 작성되지 않은 경우
+        $(".modalWrapOpen").show();
+        $(".modal4").css('display','inline-block');
+    }else if($(".mileBtn")){ // 이전 목표 완료 처리가 되지 않은 경우
+        $(".modalWrapOpen").show();
+        $(".modal3").css('display', 'inline-block');
+    }
+})
+
+// 목표 완료 처리 버튼 클릭 시
+$(".mileBtn").on("click",function () {
+        $(".modalWrapOpen").show();
+        $(".modal5").css('display', 'inline-block');
 })

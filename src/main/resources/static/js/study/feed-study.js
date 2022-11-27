@@ -53,13 +53,8 @@ $('.favoriteSymbol').on("mouseout", function () {
     $(this).children('.active').css("background-image", "url(https://letspl.me/_next/static/media/ic-favorite-full.5a5209416a8859031c9099b5540c281a.svg)")
 })
 
-// 작은 하트 활성화 선택
-$('.favoriteSymbol').click(function(){
-    $(this).toggleClass('active'); /* active가 없으면 생성, 있으면 삭제*/
-});
-
-$(".favorite").on("click", function () {
-    $(this).toggleClass('active');
+$(".favoriteUser").on("click", function () {
+    $(this).toggleClass("active");
 })
 
 // 댓글 열기, 닫기
@@ -73,6 +68,14 @@ $(".feedReply").on("click", function () {
         $(this).parents('.feedUploadWrap').children('.replyWrap').css("display", "flex");
     }
 
+})
+
+// 본인이 작성한 댓글, 피드 삭제
+$(".txtBtn").on("click",function () {
+    if($(this).text() == "삭제") {
+        $(".modalWrapOpen").show();
+        $(".modal1").css('display', 'inline-block');
+    }
 })
 
 // 댓글 수정
@@ -109,6 +112,7 @@ $('.blackBtn').on("click", function () {
     $(this).parents('.feed').css("display", "none");
 
 })
+
 
 // 피드 수정
 let $feedText;
@@ -153,3 +157,4 @@ $(".chatList").on("click",function(){
     $(".modalWrapOpen").show();
     $(".modal1").css('display','inline-block');
 });
+

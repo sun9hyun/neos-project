@@ -1581,12 +1581,12 @@ textarea {
 
 
 
-.btnWrap button.pinkBtn {
+.btnWrap button.btnBlue {
     background-color: #1A7CFF;
 }
 
 .btnWrap button.blackBtn,
-.btnWrap button.pinkBtn {
+.btnWrap button.btnBlue {
     color: #fff;
     font-size: .75rem;
     padding: 11px 35px;

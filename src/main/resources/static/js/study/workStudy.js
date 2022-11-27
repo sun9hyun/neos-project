@@ -93,6 +93,14 @@ $(".placePick").on("click", function() {
     }
 });
 
+// 목표 완료 처리 버튼 클릭 시
+$(".mileBtn").on("click",function () {
+    if($(this).text() == "완료") {
+        $(".modalWrapOpen").show();
+        $(".modal5").css('display', 'inline-block');
+    }
+})
+
 // 마일스톤 목표 수정
 let $milestoneTitle;
 let $milestoneText;
@@ -142,8 +150,3 @@ $(".grayBtn").on("click",function () {
     }
 })
 
-// 목표 완료 처리 버튼 클릭 시
-$(".mileBtn").on("click",function () {
-        $(".modalWrapOpen").show();
-        $(".modal5").css('display', 'inline-block');
-})

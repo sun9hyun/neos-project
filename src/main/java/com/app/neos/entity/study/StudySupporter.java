@@ -29,6 +29,14 @@ public class StudySupporter extends Created {
     @JoinColumn(name="STUDY_ID")
     private Study study;
 
+    public void changeUser(User user){
+        this.user = user;
+    }
+
+    public void changeStudy(Study study){
+        this.study = study;
+    }
+
     @Builder
     public StudySupporter(@NonNull StudySupporterStatus studySupporterStatus) {
         this.studySupporterStatus = studySupporterStatus;

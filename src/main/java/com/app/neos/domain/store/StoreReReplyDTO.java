@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class StoreReReplyDTO {
     private Long storeReReplyId;
-    private Long storeReReplyContent;
+    private String storeReReplyContent;
     private User user;
     private StoreReply storeReply;
 
@@ -23,7 +23,7 @@ public class StoreReReplyDTO {
                .build();
    }
     @QueryProjection
-    public StoreReReplyDTO(Long storeReReplyId, Long storeReReplyContent, User user, StoreReply storeReply) {
+    public StoreReReplyDTO(Long storeReReplyId, String storeReReplyContent, User user, StoreReply storeReply) {
         this.storeReReplyId = storeReReplyId;
         this.storeReReplyContent = storeReReplyContent;
         this.user = user;

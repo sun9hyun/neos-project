@@ -15,7 +15,7 @@ public class StoreReReply extends Period {
     @Id @GeneratedValue @NonNull
     private Long storeReReplyId;
     @NonNull
-    private Long storeReReplyContent;
+    private String storeReReplyContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
@@ -34,7 +34,7 @@ public class StoreReReply extends Period {
     }
 
     @Builder
-    public StoreReReply(@NonNull Long storeReReplyContent) {
+    public StoreReReply(@NonNull String storeReReplyContent) {
         this.storeReReplyContent = storeReReplyContent;
     }
     public void update(StoreReReplyDTO storeReReplyDTO){

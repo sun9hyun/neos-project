@@ -12,7 +12,7 @@ $(".foldChatBtn").on("click", function () {
 
 
 /* 대화방 나가기 버튼을 누르면 나오는 모달 */
-$(".moreBtn").on("click", function () {
+$(".exitBtn").on("click", function () {
     let name = $(this).closest("#chattingList").find(".chattingRoomName").text();
     let text = "";
     text += `<p class="modalTit">` + name + `</p>`

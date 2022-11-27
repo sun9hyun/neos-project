@@ -3,15 +3,19 @@ package com.app.neos.entity.user;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.college.College;
 import com.app.neos.repository.college.CollegeRepository;
-import com.app.neos.repository.user.UserInterestRepository;
-import com.app.neos.repository.user.UserRepository;
+import com.app.neos.repository.user.*;
 import com.app.neos.type.user.UserCollegeMajor;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
+
+import static com.app.neos.entity.user.QUser.user;
 
 @SpringBootTest
 @Slf4j
@@ -24,7 +28,10 @@ public class UserEntityTest {
     UserInterestRepository userInterestRepository;
     @Autowired
     CollegeRepository collegeRepository;
-
+    @Autowired
+    JPAQueryFactory jpaQueryFactory;
+    @Autowired
+    UserCustomRepository userCustomRepository;
     @Test
     public void collegeSave(){
         College college = College.builder().collegeCity("서울").collegeLogoFile("1").collegeEmailDomain("1").collegeName("서울대학교").build();
@@ -85,5 +92,64 @@ public class UserEntityTest {
         userRepository.deleteById(2l);
     }
 
+    @Test
+    public void findAllTesT(){
+        userRepository.findAll().stream().map(User::toString).forEach(log::info);
+    }
 
+    @Test
+    public void findAllTest2(){
+        UserDTO userDTO = new UserDTO();
+//        jpaQueryFactory.selectFrom(user).fetch().stream().map(User::toString).forEach(log::info);
+        jpaQueryFactory.selectFrom(user).fetch().stream().map(User::toString).forEach(log::info);
+
+    }
+
+    @Test
+    public void findByNameTest(){
+        jpaQueryFactory.selectFrom(user).where(user.userNickName.eq("박종dd우")).orderBy(user.userId.desc()).fetch()
+                .stream().map(User::toString).forEach(log::info);
+    }
+
+    @Test
+    public void updateTest(){
+        jpaQueryFactory.update(user).set(user.userNickName,"박종우").where(user.userId.eq(3l)).execute();
+    }
+
+    @Test
+    public void deleteTest(){
+        jpaQueryFactory.delete(user).where(user.userId.eq(5l)).execute();
+    }
+
+    @Test
+    public void pageTest(){
+        Pageable pageable = PageRequest.of(0,1);
+        userCustomRepository.findAllPage(pageable).getContent().stream().map(User::toString).forEach(log::info);
+    }
+
+    @Test
+    public void queryTesT(){
+        Search search = new Search();
+        search.setUserNickName("박종우");
+        userCustomRepository.findAllSearch(search).stream().map(User::toString).forEach(log::info);
+    }
+    @Test
+    public void queryTest(){
+        Search search = new Search();
+        search.setUserNickName("박종우");
+        search.setUserOAuthId("22222");
+        userCustomRepository.findAllSearch(search).stream().map(User::toString).forEach(log::info);
+    }
+    @Test
+    public void queryTest3(){
+        Search search = new Search();
+        search.setUserOAuthId("22222");
+        userCustomRepository.findAllSearch(search).stream().map(User::toString).forEach(log::info);
+    }
+
+    @Test
+    public void queryTest4(){
+        Search search = new Search();
+        userCustomRepository.findAllSearch(search).stream().map(User::toString).forEach(log::info);
+    }
 }

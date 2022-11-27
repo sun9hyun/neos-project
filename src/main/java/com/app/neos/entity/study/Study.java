@@ -40,7 +40,8 @@ public class Study extends Period {
    private String studyContent;
    @NonNull
    private int studyView;
-   @NonNull
+
+
    private LocalDateTime studyEndDate;
 
 //   작성자
@@ -53,7 +54,7 @@ public class Study extends Period {
    }
 
    @Builder
-   public Study(@NonNull String studyTitle, @NonNull StudyField studyField, @NonNull StudyOnlineWhether studyOnlineWhether, @NonNull Integer studySupport, @NonNull StudyRecruitStatus studyRecruitStatus, @NonNull StudyStatus studyStatus, @NonNull String studyContent, @NonNull LocalDateTime studyEndDate) {
+   public Study(@NonNull String studyTitle, @NonNull StudyField studyField, @NonNull StudyOnlineWhether studyOnlineWhether, @NonNull Integer studySupport, @NonNull StudyRecruitStatus studyRecruitStatus, @NonNull StudyStatus studyStatus, @NonNull String studyContent, LocalDateTime studyEndDate) {
       this.studyTitle = studyTitle;
       this.studyField = studyField;
       this.studyOnlineWhether = studyOnlineWhether;

@@ -22,7 +22,7 @@ public class StudyWork extends Period {
     private String studyWorkContent;
     @NonNull
     private LocalDateTime studyWorkTargetDate;
-    @NonNull
+
     private String studyWorkLocation;
 
     @Enumerated(EnumType.STRING) @NonNull
@@ -57,7 +57,7 @@ public class StudyWork extends Period {
     }
 
     @Builder
-    public StudyWork(@NonNull String studyWorkContent, @NonNull LocalDateTime studyWorkTargetDate, @NonNull String studyWorkLocation, @NonNull StudyLocationStatus studyLocationStatus, @NonNull StudyWorkStatus studyWorkStatus) {
+    public StudyWork(@NonNull String studyWorkContent, @NonNull LocalDateTime studyWorkTargetDate, String studyWorkLocation, @NonNull StudyLocationStatus studyLocationStatus, @NonNull StudyWorkStatus studyWorkStatus) {
         this.studyWorkContent = studyWorkContent;
         this.studyWorkTargetDate = studyWorkTargetDate;
         this.studyWorkLocation = studyWorkLocation;

@@ -1,6 +1,6 @@
 package com.app.neos.domain.chatting;
 
-import com.app.neos.entity.chatting.Chatting;
+
 import com.app.neos.entity.user.User;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
@@ -15,7 +15,6 @@ public class ChattingDTO {
     private Long chattingId;
     private User myId;
     private User receiverId;
-
 
 
     @QueryProjection

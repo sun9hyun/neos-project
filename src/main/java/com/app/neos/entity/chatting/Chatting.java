@@ -24,6 +24,12 @@ public class Chatting extends Created {
     @JoinColumn(name="RECEIVER_ID_USER_ID")
     private User receiverId;
 
+    @Builder
+    public Chatting(User myId, User receiverId) {
+        this.myId = myId;
+        this.receiverId = receiverId;
+    }
+
 
     public void changeMyId(User myId){
         this.myId = myId;

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href='/css/study/detailStudy.css'>
     <link rel="stylesheet" href="/css/study/studyModal.css">
     <link rel="stylesheet" href='/css/fix/header.css'>
+    <link rel="stylesheet" href="/css/fix/chatting.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
@@ -60,7 +61,7 @@
                             </a></li>
                             <li><a name="work" class="">일감</a></li>
                             <li><a name="feed" class="">피드</a></li>
-                            <li><a name="mgmt" class="">관리</a></li>
+                            <li><a name="mgmt" class="disabled">관리</a></li>
                         </ul>
                     </div>
                     <div class="projectDetailWrap">
@@ -182,7 +183,7 @@
                                                         <div class="certiWrap"><img loading="lazy" class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-gray.png" alt="휴대폰인증"></div>
                                                     </div>
                                                     <div class="coffeAndHeart">
-                                                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>1</span></div>
+                                                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"><span>1</span></div>
                                                         <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>3</span></div>
                                                     </div>
                                                 </div>
@@ -233,7 +234,7 @@
                                                         <div class="certiWrap"><img loading="lazy" class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-red.png" alt="실명인증"></div>
                                                     </div>
                                                     <div class="coffeAndHeart">
-                                                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>1</span></div>
+                                                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"><span>1</span></div>
                                                         <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>2</span></div>
                                                     </div>
                                                 </div>
@@ -282,7 +283,7 @@
                                                         <div class="certiWrap"><img loading="lazy" class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-red.png" alt="실명인증"></div>
                                                     </div>
                                                     <div class="coffeAndHeart">
-                                                        <div><img loading="lazy" src="https://letspl.me/assets/images/ic-pro-coffee.png" alt="커피포인트"><span>1</span></div>
+                                                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"><span>1</span></div>
                                                         <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>2</span></div>
                                                     </div>
                                                 </div>
@@ -474,9 +475,11 @@
     </div>
     <!-- 관련 모달 END-->
 
+    <div th:replace="/app/fix/chattingAll.html :: chattingAll"></div>
     <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="/js/study/detailStudy.js"></script>
 <script src="/js/study/modalStudy.js"></script>
+<script src="/js/fix/chatting.js"></script>
 </html>

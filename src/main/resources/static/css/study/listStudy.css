@@ -660,9 +660,105 @@ option {
     margin-left: 25px;
 }
 
+.checkBox .txt {
+    font-size: 1rem;
+    color: #696980;
+    margin-left: 30px;
+}
+
+.projectAllGridView .searchOption .checkBox .txt {
+    margin-left: 10px;
+}
+
+input:checked[type=checkbox] {
+    background-color: #666;
+    -webkit-appearance: checkbox;
+}
+
+[type=checkbox], [type=radio] {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.checkBox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+input {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    border: none;
+    height: 46px;
+    font-size: 13px;
+    padding: 4px 0 0;
+}
+
+.checkBox input:checked~.checkmark {
+    background-color: #1A7CFF;
+    border: none;
+}
+
+.searchOption .checkBox .checkmark {
+    position: relative;
+    top: 0;
+}
+
+.checkmark {
+    top: 0;
+    background-color: #eee;
+    border-radius: 4px;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid #bcbccb;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.checkBox input:checked~.checkmark:after {
+    display: block;
+}
+
+.checkBox .checkmark:after {
+    left: 8px;
+    top: 3px;
+    width: 4px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
 button, input, select, textarea {
     font-size: 100%;
     vertical-align: middle;
+}
+
+.projectGridWrap .top .topBadge {
+    position: absolute;
+    left: -2px;
+    top: -2px;
+}
+
+.projectGridWrap .top .topBadge img {
+    width: 37px;
+    height: 37px;
 }
 
 /* ---------------------------스터디 리스트 ------------------------------*/
@@ -988,6 +1084,13 @@ fieldset, img {
     margin-left: 0;
 }
 
+.pagingAndBtn a:first-child:hover,
+.pagingAndBtn a.btn_paging:hover {
+    background-color: #81839c;
+    color: #fff;
+}
+
+
 .pagingAndBtn a {
     float: left;
     font-size: 100%;
@@ -1043,6 +1146,7 @@ fieldset, img {
     -moz-transform: rotate(-45deg);
     transform: rotate(-45deg);
 }
+
 
 .clearfix:after {
     content: "";

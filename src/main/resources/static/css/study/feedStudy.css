@@ -579,6 +579,11 @@ fieldset, img {
     position: relative;
 }
 
+.projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .heartWrap .favorite.active {
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-full.5a5209416a8859031c9099b5540c281a.svg);
+}
+
+
 .projectPageWrap .projectRightInfoContetns .projectRightInfoWrap .heartAndShareWrap .shareWrap img {
     width: 16px;
     height: auto;
@@ -706,6 +711,7 @@ fieldset, img {
     background-color: #1A7CFF;
     color: #fff;
     border: 1px solid #1A7CFF;
+    display: block;
 }
 
 
@@ -721,6 +727,7 @@ fieldset, img {
     padding: 10px 0;
     border-radius: 4px;
     font-size: 14px;
+    display: none;
 }
 
 .projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li .imgWrap {
@@ -1524,3 +1531,27 @@ button, input[type=button], input[type=file], input[type=reset], input[type=subm
     line-height: 1rem;
 }
 
+
+.projectTabMenu>ul li a.disabled:hover {
+    color: #8e8ea2;
+    padding: 11.5px 0;
+    background-color: #fbfbfb;
+    border: 1px solid #e6e6e6;
+    border-bottom-color: #000;
+    border-left: none;
+}
+
+.projectTabMenu>ul li a.disabled {
+    cursor: not-allowed;
+}
+
+.projectTabMenu>ul li a.disabled:after {
+    content: "";
+    background-image: url(https://letspl.me/_next/static/media/ic_lock.b284a07036757b388f197a7b1b93524b.svg);
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: contain;
+    margin-left: 10px;
+}

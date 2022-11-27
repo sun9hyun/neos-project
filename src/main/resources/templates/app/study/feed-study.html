@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/study/feedStudy.css">
     <link rel="stylesheet" href="/css/study/studyModal.css">
     <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/chatting.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
@@ -104,9 +105,9 @@
 
                                         </div>
                                         <div class="btnWrap">
-                                            <button class="feedBtn txtBtn">수정</button>
+                                            <button class="feedBtn txtBtn" >수정</button>
                                             <div class="divider"></div>
-                                            <button class="feedBtn txtBtn">삭제</button>
+                                            <button class="feedBtn txtBtn" >삭제</button>
                                         </div>
                                         <div class="bottom"><a class="feedReply active">댓글 열기</a><span
                                                 class="replayCount">2</span></div>
@@ -173,7 +174,7 @@
                                                     <textarea maxlength="500"
                                                               style="font-size: 0.875rem; height: 42px !important;"
                                                               disabled="">마우스를 클릭하세요
-    오른쪽을 한번 누르면 클릭</textarea>
+오른쪽을 한번 누르면 클릭</textarea>
                                                 </div>
                                                 <div class="btnWrap">
                                                     <button class="replyBtn txtBtn">수정</button>
@@ -350,15 +351,14 @@
 
     <!-- 관련 모달 START-->
     <div class="modalWrapOpen">
-        <!--1:1 대화 클릭 시-->
+        <!--본인이 작성한 댓글, 피드 삭제-->
         <div class="modalWrap modal1">
-            <p class="modalTit">1000 네오 포인트 사용하시겠습니까?</p>
+            <p class="modalTit">적성하신 글의 삭제를 확인합니다</p>
             <button class="closeBtn">
                 <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
             </button>
             <div class="modalContent">
-                <p>예를 누르시면,</p>
-                <p class="modalName"> sun9hyun님과 대화를 시작합니다!</p>
+                <p>작성하신 글을 삭제하시겠습니까?</p>
             </div>
             <div class="btnWrap doubleBtnWrap">
                 <button class="btn whiteBtn">아니요</button>
@@ -366,7 +366,7 @@
             </div>
         </div>
 
-        <!--스터디 구독 버튼 클리 시-->
+        <!--스터디 구독 버튼 클리 시, 상세보기 전체 공통으로 삭제 X-->
         <div class="modalWrap modal2">
             <p class="modalTit studyTit">삶에 활력을 주는 Done List을</p>
             <p class="modalTit">구독하시겠습니까?</p>
@@ -387,12 +387,11 @@
       </div>
     <!-- 관련 모달 END-->
 
+    <div th:replace="/app/fix/chattingAll.html :: chattingAll"></div>
     <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="/js/study/feed-study.js"></script>
 <script src="/js/study/modalStudy.js"></script>
-<script>
-    console.log("들어옴");
-</script>
+<script src="/js/fix/chatting.js"></script>
 </html>

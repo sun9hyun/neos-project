@@ -52,8 +52,8 @@ $('.favoriteSymbol').on("mouseout", function () {
 })
 
 // 작은 하트 활성화 선택
-$(".favorite").on("click", function () {
-    $(this).toggleClass('active');
+$(".favoriteUser").on("click", function () {
+    $(this).toggleClass("active");
 })
 
 
@@ -68,6 +68,14 @@ $(".feedReply").on("click", function () {
         $(this).parents('.feedUploadWrap').children('.replyWrap').css("display", "flex");
     }
 
+})
+
+// 본인이 작성한 댓글, 피드 삭제
+$(".txtBtn").on("click",function () {
+    if($(this).text() == "삭제") {
+        $(".modalWrapOpen").show();
+        $(".modal1").css('display', 'inline-block');
+    }
 })
 
 // 댓글 수정

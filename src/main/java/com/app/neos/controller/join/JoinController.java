@@ -3,6 +3,7 @@ package com.app.neos.controller.join;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/join/*")
@@ -40,7 +41,7 @@ public class JoinController {
     }
 
     @GetMapping("/kakao")
-    public String kakaoJoin(){
-        return null;
+    public RedirectView kakaoJoin(){
+        return new RedirectView("/join/join-page-details");
     }
 }

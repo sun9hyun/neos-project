@@ -1,5 +1,6 @@
 $profile = $("div.profile");
 
+
 $hoverMenu = $("div.hoverMenu");
 profileCheck = -1;
 $profile.click(function () {

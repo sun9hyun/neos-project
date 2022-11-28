@@ -4,6 +4,7 @@ import com.app.neos.domain.inquiry.InquiryDTO;
 import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.inquiry.InquiryStatus;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,13 +17,13 @@ public class Inquiry extends Period {
     @Id @GeneratedValue
     private Long inquiryId;
 
-    @NonNull
+    @NotNull
     private String inquiryContent;
-    @NonNull
+    @NotNull
     private String inquiryReply;
 
     @Enumerated(EnumType.STRING)
-    @NonNull
+    @NotNull
     private InquiryStatus inquiryStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -34,7 +35,7 @@ public class Inquiry extends Period {
     }
 
     @Builder
-    public Inquiry(@NonNull String inquiryContent, @NonNull String inquiryReply, @NonNull InquiryStatus inquiryStatus) {
+    public Inquiry(@NotNull String inquiryContent, @NotNull String inquiryReply, @NotNull InquiryStatus inquiryStatus) {
         this.inquiryContent = inquiryContent;
         this.inquiryReply = inquiryReply;
         this.inquiryStatus = inquiryStatus;

@@ -8,6 +8,7 @@ import com.app.neos.embeddable.user.UserMBTI;
 import com.app.neos.embeddable.user.UserNeosPower;
 import com.app.neos.entity.college.College;
 import com.app.neos.entity.period.Period;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,29 +18,29 @@ import javax.persistence.*;
 @Getter @ToString(exclude = "college")
 @NoArgsConstructor/*(access = AccessLevel.PROTECTED)*/
 public class User extends Period {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long userId;
-    @NonNull
+    @NotNull
     private String userNickName;
-    @NonNull
+    @NotNull
     private String userOAuthId;
-    @NonNull
+    @NotNull
     private String userOAuthEmail;
 
     private String userCollegeEmail;
     private String userPhoneNumber;
 
-    @NonNull
+    @NotNull
     private boolean userCollegeCertify;
 
     @Embedded
     private UserCollegeInfo userCollegeInfo;
 
-    @Embedded @NonNull
+    @Embedded @NotNull
     private UserNeosPower userNeosPower;
-    @NonNull
+    @NotNull
     private Integer userNeosPoint;
-    @NonNull
+    @NotNull
     private Integer userChattingPoint;
 
     @Embedded
@@ -47,7 +48,7 @@ public class User extends Period {
 
     @Embedded
     private UserMBTI userMBTI;
-    @NonNull
+    @NotNull
     private String userIntroduce;
 
     private String userFile;
@@ -60,7 +61,7 @@ public class User extends Period {
        this.college =college;
    }
    @Builder
-    public User(@NonNull String userNickName, @NonNull String userOAuthId, @NonNull String userOAuthEmail, String userCollegeEmail, String userPhoneNumber, @NonNull boolean userCollegeCertify, UserCollegeInfo userCollegeInfo, @NonNull UserNeosPower userNeosPower, @NonNull Integer userNeosPoint, @NonNull Integer userChattingPoint, UserLike userLike, UserMBTI userMBTI, @NonNull String userIntroduce, String userFile) {
+    public User(@NotNull String userNickName, @NotNull String userOAuthId, @NotNull String userOAuthEmail, String userCollegeEmail, String userPhoneNumber, @NotNull boolean userCollegeCertify, UserCollegeInfo userCollegeInfo, @NotNull UserNeosPower userNeosPower, @NotNull Integer userNeosPoint, @NotNull Integer userChattingPoint, UserLike userLike, UserMBTI userMBTI, @NotNull String userIntroduce, String userFile) {
         this.userNickName = userNickName;
         this.userOAuthId = userOAuthId;
         this.userOAuthEmail = userOAuthEmail;

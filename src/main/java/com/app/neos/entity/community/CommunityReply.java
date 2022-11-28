@@ -3,6 +3,7 @@ package com.app.neos.entity.community;
 import com.app.neos.domain.community.CommunityReplyDTO;
 import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,11 +15,11 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CommunityReply extends Period {
 
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long communityReplyId;
-    @NonNull
+    @NotNull
     private String communityReplyContent;
-    @NonNull
+    @NotNull
     private int communityReplyLikeCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -38,7 +39,7 @@ public class CommunityReply extends Period {
 
     }
     @Builder
-    public CommunityReply(@NonNull String communityReplyContent, @NonNull int communityReplyLikeCount) {
+    public CommunityReply(@NotNull String communityReplyContent, @NotNull int communityReplyLikeCount) {
         this.communityReplyContent = communityReplyContent;
         this.communityReplyLikeCount = communityReplyLikeCount;
     }

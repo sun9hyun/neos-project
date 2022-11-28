@@ -3,6 +3,7 @@ package com.app.neos.entity.store;
 import com.app.neos.domain.store.StoreReReplyDTO;
 import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,9 +13,9 @@ import javax.persistence.*;
 @Getter @ToString(exclude = {"user", "storeReply"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StoreReReply extends Period {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long storeReReplyId;
-    @NonNull
+    @NotNull
     private String storeReReplyContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -34,7 +35,7 @@ public class StoreReReply extends Period {
     }
 
     @Builder
-    public StoreReReply(@NonNull String storeReReplyContent) {
+    public StoreReReply(@NotNull String storeReReplyContent) {
         this.storeReReplyContent = storeReReplyContent;
     }
     public void update(StoreReReplyDTO storeReReplyDTO){

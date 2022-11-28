@@ -3,6 +3,7 @@ package com.app.neos.entity.neos;
 import com.app.neos.entity.period.Created;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.point.NeosPointContent;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,14 +15,14 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class NeosPoint extends Created {
     @Id
-    @GeneratedValue @NonNull
+    @GeneratedValue
     private Long neosPointId;
 
-    @NonNull
+    @NotNull
     private Integer neosPointMoney;
 
     @Enumerated(EnumType.STRING)
-    @NonNull
+    @NotNull
     private NeosPointContent neosPointContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -33,7 +34,7 @@ public class NeosPoint extends Created {
     }
 
     @Builder
-    public NeosPoint(@NonNull Integer neosPointMoney, @NonNull NeosPointContent neosPointContent) {
+    public NeosPoint(@NotNull Integer neosPointMoney, @NotNull NeosPointContent neosPointContent) {
         this.neosPointMoney = neosPointMoney;
         this.neosPointContent = neosPointContent;
     }

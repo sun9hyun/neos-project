@@ -1,6 +1,7 @@
 package com.app.neos.entity.notice;
 
 import com.app.neos.entity.period.Period;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -13,15 +14,15 @@ import javax.persistence.Table;
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Notice extends Period {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long noticeId;
-    @NonNull
+    @NotNull
     private String noticeTitle;
-    @NonNull
+    @NotNull
     private String noticeContent;
 
     @Builder
-    public Notice(@NonNull String noticeTitle, @NonNull String noticeContent) {
+    public Notice(@NotNull String noticeTitle, @NotNull String noticeContent) {
         this.noticeTitle = noticeTitle;
         this.noticeContent = noticeContent;
     }

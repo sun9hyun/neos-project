@@ -38,4 +38,9 @@ public class JoinController {
     public String individualClause(){
         return "app/loginAndJoin/individualClause";
     }
+
+    @GetMapping("/kakao")
+    public String kakaoJoin(){
+        return null;
+    }
 }

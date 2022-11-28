@@ -3,6 +3,7 @@ package com.app.neos.entity.study;
 import com.app.neos.domain.study.StudyFeedDTO;
 import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,9 +13,9 @@ import javax.persistence.*;
 @Getter @ToString(exclude = {"studyFeedWriter","study"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyFeed extends Period {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long studyFeedId;
-    @NonNull
+    @NotNull
     private String studyFeedContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -35,7 +36,7 @@ public class StudyFeed extends Period {
     }
 
     @Builder
-    public StudyFeed(@NonNull String studyFeedContent) {
+    public StudyFeed(@NotNull String studyFeedContent) {
         this.studyFeedContent = studyFeedContent;
     }
 

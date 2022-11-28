@@ -152,4 +152,6 @@ public class UserEntityTest {
         Search search = new Search();
         userCustomRepository.findAllSearch(search).stream().map(User::toString).forEach(log::info);
     }
+
+
 }

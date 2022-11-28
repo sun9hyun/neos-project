@@ -9,7 +9,9 @@
 <body>
 <header class="Header" th:fragment="header">
     <nav>
+        <a th:href="@{/main/main}">
         <img src="/images/fix/logo.png" alt="letspl_logo" class="logo">
+        </a>
         <ul class="Navbar">
             <li><a class="click" href="">네오스인</a></li>
             <li><a class="click" href="">스터디</a></li>
@@ -25,8 +27,8 @@
                 </a>
             </div>
             <div class="joinAndLoginWrap">
-                <a class="joinAndLogin" onclick="joinShow()">가입</a>
-                <a class="joinAndLogin" onclick="loginShow()">로그인</a>
+                <a class="joinAndLogin" style="font-size: 14px;" onclick="joinShow()">가입</a>
+                <a class="joinAndLogin"  style="font-size: 14px;" onclick="loginShow()">로그인</a>
             </div>
             <div class="mobileLogin">
                 <a><img loading="lazy" src="https://letspl.me/assets/images/ic-login.png" alt="로그인"></a>

@@ -3,6 +3,7 @@ package com.app.neos.entity.chatting;
 
 import com.app.neos.entity.period.Created;
 import com.app.neos.entity.user.User;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,9 +13,9 @@ import javax.persistence.*;
 @ToString(exclude = {"my", "receiver", "chatting"}) @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ChattingContent extends Created {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long chattingContentId;
-    @NonNull
+    @NotNull
     private String chattingContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -41,7 +42,7 @@ public class ChattingContent extends Created {
     }
 
     @Builder
-    public ChattingContent(@NonNull String chattingContent) {
+    public ChattingContent(@NotNull String chattingContent) {
         this.chattingContent = chattingContent;
     }
 }

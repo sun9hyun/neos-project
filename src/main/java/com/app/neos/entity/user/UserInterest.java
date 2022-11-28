@@ -2,6 +2,7 @@ package com.app.neos.entity.user;
 
 import com.app.neos.domain.user.UserInterestDTO;
 import com.app.neos.entity.period.Period;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,9 +12,9 @@ import javax.persistence.*;
 @Getter @ToString(exclude = "user")
 @NoArgsConstructor/*(access = AccessLevel.PROTECTED)*/
 public class UserInterest extends Period {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long userInterestId;
-    @NonNull
+    @NotNull
     private String interestField;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -25,7 +26,7 @@ public class UserInterest extends Period {
     }
 
     @Builder
-    public UserInterest(@NonNull String interestField) {
+    public UserInterest(@NotNull String interestField) {
         this.interestField = interestField;
     }
 

@@ -920,6 +920,7 @@ fieldset, img {
 }
 
 .projectFeedContents .feedUploadedSection .feedUploadWrap .feedContents textarea {
+    border: 1px solid #e3e3e3;
     height: auto;
     resize: none;
     background-color: #fff;
@@ -929,9 +930,8 @@ fieldset, img {
     margin-bottom: 13px;
     margin-top: 13px;
     width: 100%;
-    border: 1px solid #9796a7;
     box-sizing: border-box;
-    padding: 10px 0;
+    padding: 10px;
     border-radius: 4px;
 }
 
@@ -1260,6 +1260,7 @@ button {
 }
 
 .feedUploadWrap .replyWrap .bottom .txtWrap textarea {
+    border: 1px solid #e3e3e3;
     background: #fff;
     font-size: .875rem;
     color: #222;

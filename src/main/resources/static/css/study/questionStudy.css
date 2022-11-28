@@ -928,9 +928,9 @@ fieldset, img {
     margin-bottom: 13px;
     margin-top: 13px;
     width: 100%;
-    border: 1px solid #9796a7;
+    border: 1px solid #e3e3e3;
     box-sizing: border-box;
-    padding: 10px 0;
+    padding: 10px;
     border-radius: 4px;
 }
 
@@ -1441,6 +1441,7 @@ dl, li, menu, ol, ul {
     padding: 10px;
     border-radius: 4px;
     resize: none;
+    border: 1px solid #e3e3e3;
 }
 
 

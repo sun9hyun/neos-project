@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="/css/fix/loginHeader.css">
     <link rel="stylesheet" href="/css/study/listStudy.css">
     <link rel="stylesheet" href="/css/fix/chatting.css">
+    <link rel="stylesheet" href="/css/neosUser/modalList.css">
+    <link rel="stylesheet" href="/css/study/studyModal.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 
@@ -67,7 +69,7 @@
                                 <img src="/images/study/inha.png">
                             </div>
                         </div>
-                        <div class="favorite listFavorite off click"></div>
+                        <div class="favorite listFavorite off"></div>
                     </div>
                     <div class="projectThumb"><img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png" alt="커뮤니티 연계 교통 정보 어플"></div>
                 </div>
@@ -109,7 +111,7 @@
                                 <img src="/images/study/inha.png">
                             </div>
                         </div>
-                        <div class="favorite listFavorite off click"></div>
+                        <div class="favorite listFavorite off"></div>
                     </div>
                     <div class="projectThumb"><img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png" alt="커뮤니티 연계 교통 정보 어플"></div>
                 </div>
@@ -649,6 +651,28 @@
     </div>
 </div>
 
+<!-- 관련 모달 START-->
+<div class="modalWrapOpen">
+    <!--임시저장 버튼 클리 시-->
+    <div class="modalWrap modal1">
+        <p class="modalTit studyTit"></p>
+        <p class="modalTit">구독하시겠습니까?</p>
+        <button class="closeBtn">
+            <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
+        </button>
+        <div class="modalContent">
+            <p>구독하시면, 관련된 정보나</p>
+            <p>홍보 컨텐츠가 SMS/이메일/푸쉬을 통해 정기적으로 배송됩니다</p>
+            <p>자동으로 NEOS 광고수신동의가 이루어집니다</p>
+        </div>
+        <div class="btnWrap doubleBtnWrap">
+            <button class="btn whiteBtn">아니요</button>
+            <button class="btn blueBtn">예</button>
+        </div>
+    </div>
+
+</div>
+<!-- 관련 모달 END-->
 
 <!-- 푸터 -->
 
@@ -687,11 +711,10 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="/js/study/listStudy.js"></script>
 <script src="/js/fix/login.js"></script>
 <script src="/js/neosUser/neosListAfter.js"></script>
 <script src="/js/store/storeList.js"></script>
-<script src="/js/study/listStudy.js"></script>
 <script src="/js/fix/chatting.js"></script>
-
 
 </html>

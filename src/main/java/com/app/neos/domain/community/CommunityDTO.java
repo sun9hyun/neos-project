@@ -17,10 +17,11 @@ public class CommunityDTO {
     private int communityLikeCount;
     private User user;
 
-    private Community toEntity(){
+    public Community toEntity(){
         return Community.builder()
                 .communityTitle(communityTitle)
                 .communityContent(communityContent)
+                .communityLikeCount(communityLikeCount)
                 .build();
     }
 

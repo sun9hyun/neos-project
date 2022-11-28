@@ -31,9 +31,10 @@ public class Community extends Period {
     }
 
     @Builder
-    public Community(@NonNull String communityTitle, @NonNull String communityContent) {
+    public Community(@NonNull String communityTitle, @NonNull String communityContent, @NonNull int communityLikeCount) {
         this.communityTitle = communityTitle;
         this.communityContent = communityContent;
+        this.communityLikeCount = communityLikeCount;
     }
 
     public void updateCommunityLikeCount(CommunityDTO communityDTO){
@@ -43,6 +44,7 @@ public class Community extends Period {
     public void update(CommunityDTO communityDTO){
         this.communityTitle = communityDTO.getCommunityTitle();
         this.communityContent = communityDTO.getCommunityContent();
+        this.communityLikeCount = communityDTO.getCommunityLikeCount();
     }
 
 

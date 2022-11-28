@@ -14,7 +14,7 @@ public class MoveController {
         return "app/community/fragmentTest";
     }
 
-    @GetMapping("/free-board")
+    @GetMapping("/community")
     public String freeboard(){
         return "app/community/freeboard";
     }

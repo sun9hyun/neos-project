@@ -15,7 +15,6 @@ public class CounselingDTO {
     private Long counselingId;
     private String counselingTitle;
     private String counselingContent;
-    private int counselingLikeCount;
     private User user;
 
     public Counseling toEntity(){
@@ -26,11 +25,10 @@ public class CounselingDTO {
     }
 
     @QueryProjection
-    public CounselingDTO(Long counselingId, String counselingTitle, String counselingContent, int counselingLikeCount, User user) {
+    public CounselingDTO(Long counselingId, String counselingTitle, String counselingContent, User user) {
         this.counselingId = counselingId;
         this.counselingTitle = counselingTitle;
         this.counselingContent = counselingContent;
-        this.counselingLikeCount = counselingLikeCount;
         this.user = user;
     }
 }

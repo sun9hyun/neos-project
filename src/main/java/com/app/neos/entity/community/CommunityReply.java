@@ -1,6 +1,6 @@
 package com.app.neos.entity.community;
 
-
+import com.app.neos.domain.community.CommunityReplyDTO;
 import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
 import lombok.*;
@@ -18,6 +18,8 @@ public class CommunityReply extends Period {
     private Long communityReplyId;
     @NonNull
     private String communityReplyContent;
+    @NonNull
+    private int communityReplyLikeCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
@@ -36,11 +38,17 @@ public class CommunityReply extends Period {
 
     }
     @Builder
-    public CommunityReply(@NonNull String communityReplyContent) {
+    public CommunityReply(@NonNull String communityReplyContent, @NonNull int communityReplyLikeCount) {
         this.communityReplyContent = communityReplyContent;
+        this.communityReplyLikeCount = communityReplyLikeCount;
     }
 
-    public void update(CommunityReply communityReply){
+    public void updateCommunityLikeCount(CommunityReplyDTO communityReplyDTO){
+        this.communityReplyLikeCount = communityReplyDTO.getCommunityReplyLikeCount();
+    }
+
+    public void update(CommunityReplyDTO communityReply){
         this.communityReplyContent = communityReply.getCommunityReplyContent();
+        this.communityReplyLikeCount = communityReply.getCommunityReplyLikeCount();
     }
 }

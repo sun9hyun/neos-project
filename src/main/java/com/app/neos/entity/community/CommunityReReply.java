@@ -30,6 +30,7 @@ public class CommunityReReply extends Period {
     public void changeUser(User user){
         this.user =user;
     }
+
     public void changeCommunityReply(CommunityReply communityReply){
         this.communityReply =communityReply;
 

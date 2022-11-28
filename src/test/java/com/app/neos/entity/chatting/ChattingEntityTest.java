@@ -31,7 +31,7 @@ public class ChattingEntityTest {
     @Test
     public void saveTest(){
         ChattingDTO chattingDTO = new ChattingDTO();
-        Chatting chatting = Chatting.builder().myId(userRepository.findById(2l).get()).receiverId(userRepository.findById(3l).get()).build();
+        Chatting chatting = Chatting.builder().myId(userRepository.findById(2l).get()).receiverId(userRepository.findById(4l).get()).build();
         chatting.builder();
         chattingRepository.save(chatting);
 

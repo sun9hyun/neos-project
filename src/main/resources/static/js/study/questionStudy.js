@@ -105,7 +105,6 @@ $('.whiteBtn').on("click", function () {
 })
 
 // 피드 작성 중 취소
-// let $feedContent=
 $('.blackBtn').on("click", function () {
     $(this).parents('.feedInputSection').children('.feedInputWrap').children("textarea").val("")
         .attr("rows", 2);
@@ -137,10 +136,10 @@ $(".feedBtn").on("click", function () {
 /*버튼, 카운팅 div display*/
 $(".textarea").on("propertychange change keyup paste input", function () {
     if (!$(this).val()) {
-        $("div.btnWrap").css("display", "none");
+        $("div.feed").css("display", "none");
         $(this).attr("rows", 2);
     } else {
-        $("div.btnWrap").css("display", "inline-flex");
+        $("div.feed").css("display", "inline-flex");
         $(this).attr("rows", 5);
     }
 })

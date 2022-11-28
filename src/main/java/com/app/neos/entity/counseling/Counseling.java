@@ -19,8 +19,6 @@ public class Counseling extends Period {
     private String counselingTitle;
     @NonNull
     private String counselingContent;
-    @NonNull
-    private int counselingLikeCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
@@ -36,9 +34,6 @@ public class Counseling extends Period {
         this.counselingContent = counselingContent;
     }
 
-    public void updateCounselingLikeCount(CounselingDTO counselingDTO){
-        this.counselingLikeCount = counselingDTO.getCounselingLikeCount();
-    }
 
     public void update(CounselingDTO counselingDTO){
         this.counselingTitle = counselingDTO.getCounselingTitle();

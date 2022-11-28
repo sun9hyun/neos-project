@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="TBL_FOLLOW")
 @Getter @ToString(exclude = {"myId","followingId"})
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor/*(access = AccessLevel.PROTECTED)*/
 public class Follow  extends Created {
     @Id @GeneratedValue
     private Long followId;
@@ -22,6 +22,14 @@ public class Follow  extends Created {
     @JoinColumn(name="FOLLOWING_ID_USER_ID")
     private User followingId;
 
+    @Builder
+    public Follow(User myId , User followingId){
+        this.myId = myId;
+        this.followingId = followingId;
+
+    }
+
+
    public void changeMyId(User myId){
         this.myId = myId;
     }
@@ -29,6 +37,7 @@ public class Follow  extends Created {
    public void changeFollowingId(User followingId){
         this.followingId = followingId;
     }
+
 
 
 }

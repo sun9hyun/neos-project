@@ -72,19 +72,19 @@ $(".favoriteUser").on("click", function () {
 // });
 
 // 상세보기 정보 채팅
-$(".chatBtn").on("click",function(){
-    let name = $(this).parents(".letspler_Re").children(".top").children(".profileTxt").children(".idWrap").children(".userName").text().split(" ")[0];
-    $(".modal1").children(".modalContent").children(".modalName").text(name + "님과 대화를 시작합니다.");
-    $(".modalWrapOpen").show();
-    $(".modal1").css('display','inline-block');
-});
+// $(".neosBtn").on("click",function(){
+//     let name = $(this).parents(".letspler_Re").children(".top").children(".profileTxt").children(".idWrap").children(".userName").text().split(" ")[0];
+//     $(".modal1").children(".modalContent").children(".modalName").text(name + "님과 대화를 시작합니다.");
+//     $(".modalWrapOpen").show();
+//     $(".modal1").css('display','inline-block');
+// });
 
-$(".chatList").on("click",function(){
-    let name = $(this).parents(".userName").text().split(" ")[0];
-    $(".modal1").children(".modalContent").children(".modalName").text(name + "님과 대화를 시작합니다.");
-    $(".modalWrapOpen").show();
-    $(".modal1").css('display','inline-block');
-});
+// $(".chatList").on("click",function(){
+//     let name = $(this).parents(".userName").text().split(" ")[0];
+//     $(".modal1").children(".modalContent").children(".modalName").text(name + "님과 대화를 시작합니다.");
+//     $(".modalWrapOpen").show();
+//     $(".modal1").css('display','inline-block');
+// });
 
 // 지원하기 버튼 클릭
 $(".postionApplyBtn").on("click",function () {

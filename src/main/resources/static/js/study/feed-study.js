@@ -138,10 +138,10 @@ $(".feedBtn").on("click", function () {
 /*버튼, 카운팅 div display*/
 $(".textarea").on("propertychange change keyup paste input", function () {
     if (!$(this).val()) {
-        $("div.btnWrap").css("display", "none");
+        $("div.feed").css("display", "none");
         $(this).attr("rows", 2);
     } else {
-        $("div.btnWrap").css("display", "inline-flex");
+        $("div.feed").css("display", "inline-flex");
         $(this).attr("rows", 5);
     }
 })
@@ -150,11 +150,11 @@ $(".textarea").on("keyup", function () {
     $("p.count").children(":first").text($(this).val().length);
 })
 
-// 피드 작성자 채팅
-$(".chatList").on("click",function(){
-    let name = $(this).parents(".profileName").text().split(" ")[0];
-    $(".modal1").children(".modalContent").children(".modalName").text(name + "님과 대화를 시작합니다.");
-    $(".modalWrapOpen").show();
-    $(".modal1").css('display','inline-block');
-});
+// // 피드 작성자 채팅
+// $(".chatList").on("click",function(){
+//     let name = $(this).parents(".profileName").text().split(" ")[0];
+//     $(".modal1").children(".modalContent").children(".modalName").text(name + "님과 대화를 시작합니다.");
+//     $(".modalWrapOpen").show();
+//     $(".modal1").css('display','inline-block');
+// });
 

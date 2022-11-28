@@ -48,7 +48,7 @@ $(".pinkBtn").on("click", function () {
     let name = $(this).closest(".profileInfoTxt").find(".name").text();
     let text = "";
     text += `<p>예를 누르시면,</p>`
-    text += `<p>` + name + `님과 대화를 시작합니다!` + `</p>`
+    text += `<p>` + name + ` 님과 대화를 시작합니다!` + `</p>`
     $(".request_chat .commonModal .commonModalContent").html(text);
     $(".request_chat").css("display", "block");
 })
@@ -75,7 +75,7 @@ $(".chat").on("click", function () {
     let name = $(this).closest(".letspler_Re").find(".name").text();
     let text = "";
     text += `<p>예를 누르시면,</p>`
-    text += `<p>` + name + `님과 대화를 시작합니다!` + `</p>`
+    text += `<p>` + name + ` 님과 대화를 시작합니다!` + `</p>`
     $(".request_chat .commonModal .commonModalContent").html(text);
     $(".request_chat").css("display", "block");
 })
@@ -84,7 +84,7 @@ $(".letspler_Re .bottom .chatBtn").on("click", function () {
     let name = $(this).closest(".letspler_Re").find(".name").text();
     let text = "";
     text += `<p>예를 누르시면,</p>`
-    text += `<p>` + name + `님과 대화를 시작합니다!` + `</p>`
+    text += `<p>` + name + ` 님과 대화를 시작합니다!` + `</p>`
     $(".request_chat .commonModal .commonModalContent").html(text);
     $(".request_chat").css("display", "block");
 })
@@ -93,11 +93,69 @@ $(".chatMini").on("click", function () {
     let name = $(this).closest(".right").find(".nameMini").text();
     let text = "";
     text += `<p>예를 누르시면,</p>`
-    text += `<p>` + name + `님과 대화를 시작합니다!` + `</p>`
+    text += `<p>` + name + ` 님과 대화를 시작합니다!` + `</p>`
     $(".request_chat .commonModal .commonModalContent").html(text);
     $(".request_chat").css("display", "block");
 })
 
+// 탑 작성자 채팅
+$(".chatTop").on("click",function(){
+    let name = $(this).parents(".userId").children(".userIdTxt").text();
+    let text = "";
+    text += `<p>예를 누르시면,</p>`
+    text += `<p>` + name + ` 님과 대화를 시작합니다!` + `</p>`
+    $(".request_chat .commonModal .commonModalContent").html(text);
+    $(".request_chat").css("display", "block");
+});
+
+// 오른쪽 리더 채팅
+$(".chatReader").on("click",function(){
+    let name = $(this).parents(".rightBox").children(".userIdTxt").text().split(" ")[0];
+    let text = "";
+    text += `<p>예를 누르시면,</p>`
+    text += `<p>` + name + `님과 대화를 시작합니다!` + `</p>`
+    $(".request_chat .commonModal .commonModalContent").html(text);
+    $(".request_chat").css("display", "block");
+});
+
+// 상세보기 정보 채팅
+$(".neosBtn").on("click",function(){
+    let name = $(this).parents(".letspler_Re").children(".top").children(".profileTxt").children(".idWrap").children(".userName").text().split(" ")[0];
+    let text = "";
+    text += `<p>예를 누르시면,</p>`
+    text += `<p>` + name + `님과 대화를 시작합니다!` + `</p>`
+    $(".request_chat .commonModal .commonModalContent").html(text);
+    $(".request_chat").css("display", "block");
+});
+
+$(".questionChat").on("click",function(){
+    let name = $(this).parents(".profileName").text().split(" ")[0];
+    let text = "";
+    text += `<p>예를 누르시면,</p>`
+    text += `<p>` + name + `님과 대화를 시작합니다!` + `</p>`
+    $(".request_chat .commonModal .commonModalContent").html(text);
+    $(".request_chat").css("display", "block");
+});
+
+// 피드 작성자 채팅
+$(".chatList").on("click",function(){
+    let name = $(this).parents(".profileName").text().split(" ")[0];
+    let text = "";
+    text += `<p>예를 누르시면,</p>`
+    text += `<p>` + name + `님과 대화를 시작합니다!` + `</p>`
+    $(".request_chat .commonModal .commonModalContent").html(text);
+    $(".request_chat").css("display", "block");
+});
+
+// 멤버관리 지원자 채팅
+$(".managementBtn").on("click",function(){
+    let name = $(this).parents(".userName").text().split(" ")[0];
+    let text = "";
+    text += `<p>예를 누르시면,</p>`
+    text += `<p>` + name + `님과 대화를 시작합니다!` + `</p>`
+    $(".request_chat .commonModal .commonModalContent").html(text);
+    $(".request_chat").css("display", "block");
+});
 
 
 /* 이미 대화중일 때 뜨는 모달 */

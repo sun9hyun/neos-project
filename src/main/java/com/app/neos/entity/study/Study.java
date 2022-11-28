@@ -7,6 +7,7 @@ import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.study.StudyRecruitStatus;
 import com.app.neos.type.study.StudyStatus;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,28 +18,28 @@ import java.time.LocalDateTime;
 @Getter @ToString(exclude = "user")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Study extends Period {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long studyId;
-   @NonNull
+   @NotNull
    private String studyTitle;
 
-   @Embedded @NonNull
+   @Embedded @NotNull
    private StudyField studyField;
 
-   @Embedded @NonNull
+   @Embedded @NotNull
    private StudyOnlineWhether studyOnlineWhether;
 
-   @NonNull
+   @NotNull
    private Integer studySupport;
 
-   @Enumerated(EnumType.STRING) @NonNull
+   @Enumerated(EnumType.STRING) @NotNull
    private StudyRecruitStatus studyRecruitStatus;
 
-   @Enumerated(EnumType.STRING) @NonNull
+   @Enumerated(EnumType.STRING) @NotNull
    private StudyStatus studyStatus;
-   @NonNull
+   @NotNull
    private String studyContent;
-   @NonNull
+   @NotNull
    private int studyView;
 
 
@@ -54,7 +55,7 @@ public class Study extends Period {
    }
 
    @Builder
-   public Study(@NonNull String studyTitle, @NonNull StudyField studyField, @NonNull StudyOnlineWhether studyOnlineWhether, @NonNull Integer studySupport, @NonNull StudyRecruitStatus studyRecruitStatus, @NonNull StudyStatus studyStatus, @NonNull String studyContent, LocalDateTime studyEndDate) {
+   public Study(@NotNull String studyTitle, @NotNull StudyField studyField, @NotNull StudyOnlineWhether studyOnlineWhether, @NotNull Integer studySupport, @NotNull StudyRecruitStatus studyRecruitStatus, @NotNull StudyStatus studyStatus, @NotNull String studyContent, LocalDateTime studyEndDate) {
       this.studyTitle = studyTitle;
       this.studyField = studyField;
       this.studyOnlineWhether = studyOnlineWhether;

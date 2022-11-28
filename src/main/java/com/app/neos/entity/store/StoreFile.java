@@ -1,6 +1,7 @@
 package com.app.neos.entity.store;
 
 import com.app.neos.entity.period.Period;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,13 +11,13 @@ import javax.persistence.*;
 @Getter @ToString(exclude = "store")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StoreFile extends Period {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long storeFileId;
-    @NonNull
+    @NotNull
     private String storeFileName;
-    @NonNull
+    @NotNull
     private String storeFilePath;
-    @NonNull
+    @NotNull
     private String storeFileQR;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -29,7 +30,7 @@ public class StoreFile extends Period {
     }
 
     @Builder
-    public StoreFile(@NonNull String storeFileName, @NonNull String storeFilePath, @NonNull String storeFileQR) {
+    public StoreFile(@NotNull String storeFileName, @NotNull String storeFilePath, @NotNull String storeFileQR) {
         this.storeFileName = storeFileName;
         this.storeFilePath = storeFilePath;
         this.storeFileQR = storeFileQR;

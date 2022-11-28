@@ -4,6 +4,7 @@ import com.app.neos.domain.store.StoreDTO;
 import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.store.StoreStatus;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,16 +16,16 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Store extends Period {
 
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long storeId;
 
-    @Enumerated(EnumType.STRING) @NonNull
+    @Enumerated(EnumType.STRING) @NotNull
     private StoreStatus storeStatus;
-    @NonNull
+    @NotNull
     private Integer storePoint;
-    @NonNull
+    @NotNull
     private String storeTitle;
-    @NonNull
+    @NotNull
     private String storeContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -43,7 +44,7 @@ public class Store extends Period {
     }
 
     @Builder
-    public Store(@NonNull StoreStatus storeStatus, @NonNull Integer storePoint, @NonNull String storeTitle, @NonNull String storeContent) {
+    public Store(@NotNull StoreStatus storeStatus, @NotNull Integer storePoint, @NotNull String storeTitle, @NotNull String storeContent) {
         this.storeStatus = storeStatus;
         this.storePoint = storePoint;
         this.storeTitle = storeTitle;

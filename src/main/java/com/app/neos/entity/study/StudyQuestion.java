@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter @ToString(exclude = {"studyQuestionWriter", "study"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyQuestion extends Period {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long studyQuestionId;
     @NonNull
     private String studyQuestionContent;

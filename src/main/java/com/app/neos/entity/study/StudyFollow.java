@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter @ToString(exclude = {"study","user"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyFollow extends Created {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long studyFollowId;
 
 //    스터디번호

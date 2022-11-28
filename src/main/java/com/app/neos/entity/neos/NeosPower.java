@@ -4,6 +4,7 @@ package com.app.neos.entity.neos;
 import com.app.neos.entity.period.Created;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.point.NeosPowerContent;
+import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
@@ -15,12 +16,12 @@ import javax.persistence.*;
 @Table(name="TBL_NEOS_POWER")
 @Getter @ToString(exclude = "user")
 public class NeosPower extends Created {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long neosPowerId;
-    @NonNull
+    @NotNull
     private Integer neosPowerAbility;
 
-    @Enumerated(EnumType.STRING) @NonNull
+    @Enumerated(EnumType.STRING) @NotNull
     private NeosPowerContent neosPowerContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -32,7 +33,7 @@ public class NeosPower extends Created {
     }
 
     @Builder
-    public NeosPower(@NonNull Integer neosPowerAbility, @NonNull NeosPowerContent neosPowerContent) {
+    public NeosPower(@NotNull Integer neosPowerAbility, @NotNull NeosPowerContent neosPowerContent) {
         this.neosPowerAbility = neosPowerAbility;
         this.neosPowerContent = neosPowerContent;
     }

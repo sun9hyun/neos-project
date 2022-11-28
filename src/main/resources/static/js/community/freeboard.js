@@ -244,6 +244,10 @@ const $replyUpdateBtn = $(".userInformationComponents_userReplySection__3ty7Q").
 let replyText = '';
 let replyCommentCheck = false;
 $replyUpdateBtn.click(function () {
+    if(replyCommentCheck){
+        alert("해당 댓글 수정을 완료 해주세요.")
+        return;
+    }
     if(!replyCommentCheck){
         var text = $(this).closest(".userInformationComponents_userReplySection__3ty7Q").next().children().eq(0).text();
         replyText = text;
@@ -296,3 +300,15 @@ $replyDeleteBtn.click(function () {
     $(".modalTit").text("댓글 삭제 확인");
     $(".commonModalContent p").text("해당 댓글을 삭제하시겠습니까?");
 });
+
+//좋아요 버튼
+const $likeBtn = $(".replyComponent_replyOpenAndLikeButtonGroup__3r9hv img")
+$likeBtn.on("click",function () {
+    if($(this).attr("src")=='https://letspl.me/assets/images/ic_talk_up.svg'){
+        $(this).attr("src","/images/community/blueLike.png")
+        $(this).after(`<span class="replyLikeCount">1</span>`)
+    }else{
+        $(this).attr("src",'https://letspl.me/assets/images/ic_talk_up.svg')
+        $(this).parent().find('.replyLikeCount').remove();
+    }
+})

@@ -6,6 +6,7 @@ import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.study.work.StudyLocationStatus;
 import com.app.neos.type.study.work.StudyWorkStatus;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,19 +17,19 @@ import java.time.LocalDateTime;
 @Getter @ToString(exclude = {"studyWorkWriter", "studyWorkChoiceMember","study"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyWork extends Period {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long studyWorkId;
-    @NonNull
+    @NotNull
     private String studyWorkContent;
-    @NonNull
+    @NotNull
     private LocalDateTime studyWorkTargetDate;
 
     private String studyWorkLocation;
 
-    @Enumerated(EnumType.STRING) @NonNull
+    @Enumerated(EnumType.STRING) @NotNull
     private StudyLocationStatus studyLocationStatus;
 
-    @Enumerated(EnumType.STRING) @NonNull
+    @Enumerated(EnumType.STRING) @NotNull
     private StudyWorkStatus studyWorkStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -57,7 +58,7 @@ public class StudyWork extends Period {
     }
 
     @Builder
-    public StudyWork(@NonNull String studyWorkContent, @NonNull LocalDateTime studyWorkTargetDate, String studyWorkLocation, @NonNull StudyLocationStatus studyLocationStatus, @NonNull StudyWorkStatus studyWorkStatus) {
+    public StudyWork(@NotNull String studyWorkContent, @NotNull LocalDateTime studyWorkTargetDate, String studyWorkLocation, @NotNull StudyLocationStatus studyLocationStatus, @NotNull StudyWorkStatus studyWorkStatus) {
         this.studyWorkContent = studyWorkContent;
         this.studyWorkTargetDate = studyWorkTargetDate;
         this.studyWorkLocation = studyWorkLocation;

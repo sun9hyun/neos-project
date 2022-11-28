@@ -4,6 +4,7 @@ package com.app.neos.entity.counseling;
 import com.app.neos.domain.counseling.CounselingReplyDTO;
 import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,9 +14,9 @@ import javax.persistence.*;
 @Getter @ToString(exclude = {"user", "counseling"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CounselingReply extends Period {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long counselingReplyId;
-    @NonNull
+    @NotNull
     private String counselingReplyContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -35,7 +36,7 @@ public class CounselingReply extends Period {
     }
 
     @Builder
-    public CounselingReply(@NonNull String counselingReplyContent) {
+    public CounselingReply(@NotNull String counselingReplyContent) {
         this.counselingReplyContent = counselingReplyContent;
     }
 

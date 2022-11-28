@@ -3,6 +3,7 @@ package com.app.neos.entity.study;
 import com.app.neos.entity.period.Created;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.study.member.StudyMemberStatus;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,10 +13,10 @@ import javax.persistence.*;
 @Getter @ToString(exclude = {"user","study"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyMember extends Created {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long studyMemberId;
 
-    @Enumerated(EnumType.STRING) @NonNull
+    @Enumerated(EnumType.STRING) @NotNull
    private StudyMemberStatus studyMemberStatus;
 
    @ManyToOne(fetch = FetchType.LAZY)
@@ -35,7 +36,7 @@ public class StudyMember extends Created {
    }
 
    @Builder
-    public StudyMember(@NonNull StudyMemberStatus studyMemberStatus) {
+    public StudyMember(@NotNull StudyMemberStatus studyMemberStatus) {
         this.studyMemberStatus = studyMemberStatus;
     }
 }

@@ -1,6 +1,7 @@
 package com.app.neos.entity.college;
 
 import com.app.neos.domain.college.CollegeDTO;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -13,15 +14,15 @@ import javax.persistence.Table;
 @Getter @ToString
 @NoArgsConstructor/*(access = AccessLevel.PROTECTED)*/
 public class College {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long collegeId;
-    @NonNull
+    @NotNull
     private String collegeCity;
-    @NonNull
+    @NotNull
     private String collegeName;
-    @NonNull
+    @NotNull
     private String collegeLogoFile;
-    @NonNull
+    @NotNull
     private String collegeEmailDomain;
 
 

@@ -4,6 +4,7 @@ import com.app.neos.domain.store.StoreReplyDTO;
 import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.store.StoreReplySecret;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,12 +14,12 @@ import javax.persistence.*;
 @Getter @ToString(exclude = {"user", "store"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StoreReply extends Period {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long storeReplyId;
-    @NonNull
+    @NotNull
     private String storeReplyContent;
 
-    @Enumerated(EnumType.STRING) @NonNull
+    @Enumerated(EnumType.STRING) @NotNull
     private StoreReplySecret storeReplySecret;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -38,7 +39,7 @@ public class StoreReply extends Period {
     }
 
     @Builder
-    public StoreReply(@NonNull String storeReplyContent, @NonNull StoreReplySecret storeReplySecret) {
+    public StoreReply(@NotNull String storeReplyContent, @NotNull StoreReplySecret storeReplySecret) {
         this.storeReplyContent = storeReplyContent;
         this.storeReplySecret = storeReplySecret;
     }

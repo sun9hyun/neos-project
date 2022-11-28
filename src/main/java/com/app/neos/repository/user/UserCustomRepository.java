@@ -12,4 +12,6 @@ public interface UserCustomRepository {
     public Page<User> findAllPage(Pageable pageable);
 
     public List<User> findAllSearch(Search search);
+
+
 }

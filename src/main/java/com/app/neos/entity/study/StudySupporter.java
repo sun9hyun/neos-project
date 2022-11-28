@@ -5,6 +5,7 @@ import com.app.neos.domain.study.StudySupporterDTO;
 import com.app.neos.entity.period.Created;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.study.supporter.StudySupporterStatus;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,7 +18,7 @@ public class StudySupporter extends Created {
     @Id @GeneratedValue
     private Long studySupporterId;
 
-    @Enumerated(EnumType.STRING) @NonNull
+    @Enumerated(EnumType.STRING) @NotNull
     private StudySupporterStatus studySupporterStatus;
 
     //지원자
@@ -38,7 +39,7 @@ public class StudySupporter extends Created {
     }
 
     @Builder
-    public StudySupporter(@NonNull StudySupporterStatus studySupporterStatus) {
+    public StudySupporter(@NotNull StudySupporterStatus studySupporterStatus) {
         this.studySupporterStatus = studySupporterStatus;
     }
 

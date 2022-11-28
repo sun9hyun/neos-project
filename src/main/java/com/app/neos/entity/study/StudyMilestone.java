@@ -5,6 +5,7 @@ import com.app.neos.domain.study.StudyMilestoneDTO;
 import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.study.milestone.StudyMilestoneStatus;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,15 +15,15 @@ import javax.persistence.*;
 @Getter @ToString(exclude = {"mileStoneWriter","study"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyMilestone extends Period {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long studyMileStoneId;
 
-    @NonNull
+    @NotNull
     private String studyMileStoneTitle;
-    @NonNull
+    @NotNull
     private String studyMileStoneContent;
 
-    @Enumerated(EnumType.STRING) @NonNull
+    @Enumerated(EnumType.STRING) @NotNull
     private StudyMilestoneStatus studyMilestoneStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -42,7 +43,7 @@ public class StudyMilestone extends Period {
     }
 
     @Builder
-    public StudyMilestone(@NonNull String studyMileStoneTitle, @NonNull String studyMileStoneContent, @NonNull StudyMilestoneStatus studyMilestoneStatus) {
+    public StudyMilestone(@NotNull String studyMileStoneTitle, @NotNull String studyMileStoneContent, @NotNull StudyMilestoneStatus studyMilestoneStatus) {
         this.studyMileStoneTitle = studyMileStoneTitle;
         this.studyMileStoneContent = studyMileStoneContent;
         this.studyMilestoneStatus = studyMilestoneStatus;

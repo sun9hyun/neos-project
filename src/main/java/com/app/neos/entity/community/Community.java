@@ -4,6 +4,7 @@ package com.app.neos.entity.community;
 import com.app.neos.domain.community.CommunityDTO;
 import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,13 +14,13 @@ import javax.persistence.*;
 @Getter @ToString(exclude = "user")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Community extends Period {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long communityId;
-    @NonNull
+    @NotNull
     private String communityTitle;
-    @NonNull
+    @NotNull
     private String communityContent;
-    @NonNull
+    @NotNull
     private int communityLikeCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,7 +32,7 @@ public class Community extends Period {
     }
 
     @Builder
-    public Community(@NonNull String communityTitle, @NonNull String communityContent, @NonNull int communityLikeCount) {
+    public Community(@NotNull String communityTitle, @NotNull String communityContent, @NotNull int communityLikeCount) {
         this.communityTitle = communityTitle;
         this.communityContent = communityContent;
         this.communityLikeCount = communityLikeCount;

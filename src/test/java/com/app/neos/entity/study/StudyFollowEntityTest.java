@@ -1,7 +1,5 @@
 package com.app.neos.entity.study;
 
-import com.app.neos.domain.study.StudyFollowDTO;
-import com.app.neos.entity.notice.Notice;
 import com.app.neos.repository.study.StudyFollowRepository;
 import com.app.neos.repository.study.StudyRepository;
 import com.app.neos.repository.user.UserRepository;

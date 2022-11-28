@@ -13,7 +13,7 @@ import javax.persistence.*;
 @ToString(exclude = {"myId","receiverId"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Chatting extends Created {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long chattingId;
 
     @ManyToOne(fetch = FetchType.LAZY)

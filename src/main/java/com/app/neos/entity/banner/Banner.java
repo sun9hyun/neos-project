@@ -3,6 +3,7 @@ package com.app.neos.entity.banner;
 import com.app.neos.domain.banner.BannerDTO;
 import com.app.neos.entity.period.Period;
 import com.app.neos.type.banner.BannerStatus;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,16 +13,16 @@ import javax.persistence.*;
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Banner extends Period {
-    @Id @GeneratedValue @NonNull
+    @Id @GeneratedValue
     private Long bannerId;
-    @NonNull
+    @NotNull
     private String bannerTitle;
-    @NonNull
+    @NotNull
     private String bannerUrl;
-    @NonNull
+    @NotNull
     private String fileName;
 
-   @Enumerated(EnumType.STRING) @NonNull
+   @Enumerated(EnumType.STRING) @NotNull
    private BannerStatus bannerStatus;
 
     @Builder

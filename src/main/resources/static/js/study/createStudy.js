@@ -36,6 +36,9 @@ $(".confirmBtn").on("click",function(){
     }else if($placeholder == $("#contents").val()){ // 내용 조건 미충족
         $(".modalWrapOpen").show();
         $(".modal4").css('display','inline-block');
+    }else if($("#contents").val().length < 1){ // 내용 조건 미충족
+        $(".modalWrapOpen").show();
+        $(".modal4").css('display','inline-block');
     }else{  // 작성 완료
         $(".modalWrapOpen").show();
         $(".modal5").css('display','inline-block');

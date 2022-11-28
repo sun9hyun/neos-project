@@ -128,6 +128,17 @@ $(".neosBtn").on("click",function(){
     $(".request_chat").css("display", "block");
 });
 
+// 상세정보 페이지 채팅
+$(".detailChat").on("click",function(){
+    let name = $(this).parents(".userName").text().split(" ")[0];
+    let text = "";
+    text += `<p>예를 누르시면,</p>`
+    text += `<p>` + name + `님과 대화를 시작합니다!` + `</p>`
+    $(".request_chat .commonModal .commonModalContent").html(text);
+    $(".request_chat").css("display", "block");
+});
+
+// 질문 페이지 채팅
 $(".questionChat").on("click",function(){
     let name = $(this).parents(".profileName").text().split(" ")[0];
     let text = "";

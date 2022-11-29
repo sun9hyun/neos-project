@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <title>NEOS | 마이페이지</title>
 
+    <link rel="stylesheet" href="/css/study/studyModal.css">
     <link rel="stylesheet" href="/css/neosUser/neosListNext.css">
     <link rel="stylesheet" href="/css/neosUser/modalList.css">
     <link rel="stylesheet" href="/css/study/listStudy.css">
     <link rel="stylesheet" href="/css/store/storeList.css">
+    <link rel="stylesheet" href="/css/fix/chatting.css">
     <link rel="stylesheet" href="/css/myPage/myPage.css">
     <link rel="stylesheet" href="/css/fix/loginHeader.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
@@ -76,12 +78,9 @@
                         </div>
                     </div>
                     <div class="inputAndBtn">
-                        <div class="inputAndBtnWrap">
+                        <div class="inputAndBtnWrap" style="margin-bottom: 20px;">
                             <label>휴대폰번호</label>
                             <input disabled="" value="01036397286">
-                        </div>
-                        <div class="rightLayoutWrap">
-                            <span>인증 완료</span>
                         </div>
                     </div>
                 </div>
@@ -563,21 +562,6 @@
         </div>
     </div>
 
-<!--  업데이트 완료 모달  -->
-<!--    <div class="modalWrapOpen">-->
-<!--        <div class="commonModal">-->
-<!--            <p class="modalTit">업데이트 완료</p>-->
-<!--            <button class="closeBtn">-->
-<!--                <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close">-->
-<!--            </button>-->
-<!--            <div class="commonModalContent">-->
-<!--                <p></p>-->
-<!--            </div>-->
-<!--            <div class="btnWrap singleBtnWrap">-->
-<!--                <button class="btn redBtn">확인</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
 
     <!--  스터디  -->
     <div class="myTabContents myProjectTab ">
@@ -585,31 +569,43 @@
         <div class="noProject"><p>지원한 모임이 없습니다.</p></div>
 
         <h3 class="tabCommonTit">진행 현황</h3>
-        <div class="projectGridWrap" style="margin-right:10px">
+        <div class="projectGridWrap">
             <div class="projectTopInfo">
                 <div class="top">
                     <div class="badgeWrap">
+                        <div class="topBadge purple">
+                            <img loading="lazy" src="https://letspl.me/assets/images/ic-badge_project_story.png">
+                        </div>
                         <div class="badge black">
                             <!-- <h2>사이드프로젝트</h2> -->
                             <img src="/images/study/inha.png">
                         </div>
                     </div>
-                    <div class="favorite "></div>
+                    <div class="favorite listFavorite off "></div>
                 </div>
-                <div class="projectThumb"><img  src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_11.png" alt="커뮤니티 연계 교통 정보 어플"></div>
+                <div class="projectThumb"><img loading="lazy"
+                                               src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
+                                               alt="커뮤니티 연계 교통 정보 어플"></div>
             </div>
             <div class="projectBottomInfo">
                 <div class="txtWrap projectWrap">
                     <h3 class="category">전공과목</h3>
                     <h2 class="tit">공업수학_라플라스 변환</h2>
+                    <!--                                 <div class="iconWrap2"><img loading="lazy"
+                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                            alt="Figma"></div> -->
+
                 </div>
             </div>
             <div class="projectInfo2">
                 <div class="middleWrap">
                     <div class="left">
-                        <div class="heartCount"><img  src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>3</span></div>
+                        <div class="heartCount"><img loading="lazy"
+                                                     src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
+                                                     alt="구독자 수"><span>3</span></div>
                     </div>
                     <div class="right">
+                        <!-- <p><span> 44</span><span> (-) </span></p> -->
                     </div>
                 </div>
                 <div class="bottomWrap">
@@ -693,27 +689,39 @@
                 <div class="projectTopInfo">
                     <div class="top">
                         <div class="badgeWrap">
+                            <div class="topBadge red">
+                                <img loading="lazy" src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="새로운 프로젝트">
+                            </div>
                             <div class="badge black">
                                 <!-- <h2>사이드프로젝트</h2> -->
                                 <img src="/images/study/inha.png">
                             </div>
                         </div>
-                        <div class="favorite active"></div>
+                        <div class="favorite listFavorite on active"></div>
                     </div>
-                    <div class="projectThumb"><img  src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_11.png" alt="커뮤니티 연계 교통 정보 어플"></div>
+                    <div class="projectThumb"><img loading="lazy"
+                                                   src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
+                                                   alt="커뮤니티 연계 교통 정보 어플"></div>
                 </div>
                 <div class="projectBottomInfo">
                     <div class="txtWrap projectWrap">
                         <h3 class="category">전공과목</h3>
                         <h2 class="tit">공업수학_라플라스 변환</h2>
+                        <!--                                 <div class="iconWrap2"><img loading="lazy"
+                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                                alt="Figma"></div> -->
+
                     </div>
                 </div>
                 <div class="projectInfo2">
                     <div class="middleWrap">
                         <div class="left">
-                            <div class="heartCount"><img  src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>3</span></div>
+                            <div class="heartCount"><img loading="lazy"
+                                                         src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
+                                                         alt="구독자 수"><span>3</span></div>
                         </div>
                         <div class="right">
+                            <!-- <p><span> 44</span><span> (-) </span></p> -->
                         </div>
                     </div>
                     <div class="bottomWrap">
@@ -836,6 +844,8 @@
             </ul>
         </div>
     </div>
+
+
 
     <!--  알림  -->
     <div class="myTabContents noticeTab ">
@@ -1090,15 +1100,40 @@
 
 
 </section>
+
+<!-- 관련 모달 START-->
+<div class="modalWrapOpen">
+    <!--임시저장 버튼 클리 시-->
+    <div class="modalWrap modal1">
+        <p class="modalTit studyTit"></p>
+        <p class="modalTit">구독하시겠습니까?</p>
+        <button class="closeBtn">
+            <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
+        </button>
+        <div class="modalContent">
+            <p>구독하시면, 관련된 정보나</p>
+            <p>홍보 컨텐츠가 SMS/이메일/푸쉬을 통해 정기적으로 배송됩니다</p>
+            <p>자동으로 NEOS 광고수신동의가 이루어집니다</p>
+        </div>
+        <div class="btnWrap doubleBtnWrap">
+            <button class="btn whiteBtn">아니요</button>
+            <button class="btn blueBtn">예</button>
+        </div>
+    </div>
+
+</div>
+<!-- 관련 모달 END-->
+<div th:replace="/app/fix/chattingAll.html :: chattingAll"></div>
 <div th:replace="/app/neosUser/modalList.html :: modalSpace"></div>
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/study/listStudy.js"></script>
 <script src="/js/fix/login.js"></script>
 <script src="/js/myPage/myPage.js"></script>
-<script src="/js/study/listStudy.js"></script>
 <script src="/js/neosUser/neosListAfter.js"></script>
+<script src="/js/fix/chatting.js"></script>
 <script src="/js/store/storeList.js"></script>
 <script>
     console.log("emfdjdha");

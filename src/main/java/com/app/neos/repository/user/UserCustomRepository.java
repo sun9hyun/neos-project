@@ -13,5 +13,8 @@ public interface UserCustomRepository {
 
     public List<User> findAllSearch(Search search);
 
+    public List<UserDTO> findAllByOauthId(String oauthId);
+
+    public UserDTO findByOauthId(String oauthId);
 
 }

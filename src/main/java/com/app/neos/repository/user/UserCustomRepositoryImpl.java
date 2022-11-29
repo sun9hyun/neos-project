@@ -1,10 +1,13 @@
 package com.app.neos.repository.user;
 
+import com.app.neos.domain.college.QCollegeDTO;
 import com.app.neos.domain.user.QUserDTO;
 import com.app.neos.domain.user.UserDTO;
+import com.app.neos.entity.college.QCollege;
 import com.app.neos.entity.user.QUser;
 import com.app.neos.entity.user.User;
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -55,7 +58,27 @@ public class UserCustomRepositoryImpl implements UserCustomRepository{
                 ).fetch();
     }
 
+    @Override
+    public List<UserDTO> findAllByOauthId(String oauthId) {
+        return jpaQueryFactory.select(new QUserDTO(user.userNickName,user.userOAuthId,user.userOAuthEmail,user.userCollegeEmail,user.userPhoneNumber,user.userCollegeCertify
+                ,user.userCollegeInfo.userCollegeYear,user.userCollegeInfo.userCollegeMajor,user.userNeosPower.userNeosBadge,user.userNeosPower.userNeosPowerLevel,user.userNeosPower.userNeosPowerAbility,
+                user.userNeosPoint,user.userChattingPoint,user.userLike.userO2o,user.userLike.userCity,user.userLike.userDay,user.userLike.userTime,user.userMBTI.userMbtiName,user.userMBTI.userMbtiColor,
+                user.userIntroduce,user.userFile,user.college.collegeId, user.college.collegeCity,
+                user.college.collegeName, user.college.collegeLogoFile, user.college.collegeEmailDomain))
+                .from(user)
+                .fetch();
+    }
 
+    @Override
+    public UserDTO findByOauthId(String oauthId) {
+        return jpaQueryFactory.select(new QUserDTO(user.userId,user.userNickName,user.userOAuthId,user.userOAuthEmail,user.userCollegeEmail,user.userPhoneNumber,user.userCollegeCertify
+                ,user.userCollegeInfo.userCollegeYear,user.userCollegeInfo.userCollegeMajor,user.userNeosPower.userNeosBadge,user.userNeosPower.userNeosPowerLevel,user.userNeosPower.userNeosPowerAbility,
+                user.userNeosPoint,user.userChattingPoint,user.userLike.userO2o,user.userLike.userCity,user.userLike.userDay,user.userLike.userTime,user.userMBTI.userMbtiName,user.userMBTI.userMbtiColor,
+                user.userIntroduce,user.userFile))
+                .from(user)
+                .where(user.userOAuthId.eq(oauthId))
+                .fetchOne();
+    }
 
 
     private BooleanExpression nameEq(String userNickName){

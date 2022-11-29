@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" ">
+    <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="/css/loginAndJoin/joinPage.css">
     <link rel="stylesheet" href="/css/fix/header.css">
@@ -14,13 +14,19 @@
         <h3><span class="smTxt" style="color: #1A7CFF;">본 캐릭터 설정</span><span class="bigTxt">회원 가입이 바로 완료됩니다</span>
         </h3>
         <div class="form join1">
+            <form method="post" id="joinForm" th:action="@{/join/join}" th:object="${userDTO}">
             <ul class="firstSignForm">
+                <div th:text="${name}"></div>
+                <input type="hidden" name="userFile" th:value="${oAuthUserProfile}">
+                <input type="hidden" name="userOAuthId" th:value="${tokenId}">
+
                 <li><label for="">이메일</label>
                     <div class="inputWrap threeInput row">
                         <div class=" css-1yoqljf-container">
                             <div class=" css-ou3ob2-control">
                                 <div class=" css-rqvngq-ValueContainer">
-                                    <div class=" css-25h44v-placeholder">tlaalstjd15@naver.com</div>
+                                    <div class=" css-25h44v-placeholder" th:text="${oauthEmails}"></div>
+                                    <input type="hidden" name="userOAuthEmail" th:value="${oauthEmails}">
                                     <div class="css-1ag7u5m-Input">
                                         <div class="" style="display:inline-block"><input type="text" disabled=""
                                                                                           autocapitalize="none" autocomplete="off" autocorrect="off"
@@ -28,7 +34,7 @@
                                                                                           aria-autocomplete="list"
                                                                                           style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;">
                                             <div
-                                                    style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 12.8px; font-family: &quot;Noto Sans KR&quot;, Lato, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
+                                                    style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 12.8px; font-family: Noto Sans KR; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
 
                                             </div>
                                         </div>
@@ -45,10 +51,15 @@
 
 
 
-                <li><label for="">닉네임</label>
-                    <div class="inputWrap threeInput row"><input type="text" id="user_nickname" name="user_nickname"
+                <li><label for="user_nickname">닉네임</label>
+                    <div class="inputWrap threeInput row"><input type="text" id="user_nickname" name="userNickName"
                                                                  class="midInput" value="" autocomplete="on" minlength="3" maxlength="10"
-                                                                 placeholder="3~10자리 이내로 적어주세요!" style="width: 100%; outline: none"></div>
+                                                                 placeholder="3~10자리 이내로 적어주세요!" style="width: 100%; outline: none" th:value="${oAuthNickNames}"></div>
+                </li>
+                <li><label for="user_phone">핸드폰 번호</label>
+                    <div class="inputWrap threeInput row"><input type="text" id="user_phone" name="userPhoneNumber"
+                                                                 class="midInput" value="" autocomplete="on" minlength="3" maxlength="11"
+                                                                 placeholder="핸드폰 번호를 입력해주세요!" style="width: 100%; outline: none" ></div>
                 </li>
 
                 <li class="fourSelect"><label for=""> 본 캐릭터 설정 </label>
@@ -58,29 +69,30 @@
 
                     <div class="inputWrap threeInput row">
                         <div class="threeInTwoInput">
-                            <select class="checkBtn KRUni">
+                            <select class="checkBtn KRUni" id="location_1j">
                                 <option value="KR00">지역 미지정</option>
                                 <option value="KR01">서울특별시</option>
-                                <option value="KR02">경기도</option>
-                                <option value="KR03">부산광역시</option>
-                                <option value="KR04">인천광역시</option>
-                                <option value="KR05">대구광역시</option>
-                                <option value="KR06">경상남도</option>
-                                <option value="KR07">경상북도</option>
-                                <option value="KR08">대전광역시</option>
-                                <option value="KR09">충청남도</option>
-                                <option value="KR10">충청북도</option>
-                                <option value="KR11">전라남도</option>
-                                <option value="KR12">전라북도</option>
-                                <option value="KR13">광주광역시</option>
-                                <option value="KR14">강원도</option>
-                                <option value="KR15">울산광역시</option>
-                                <option value="KR16">제주특별자치도</option>
-                                <option value="KR17">세종특별자치시</option>
+<!--                                <option value="KR02">경기도</option>-->
+<!--                                <option value="KR03">부산광역시</option>-->
+<!--                                <option value="KR04">인천광역시</option>-->
+<!--                                <option value="KR05">대구광역시</option>-->
+<!--                                <option value="KR06">경상남도</option>-->
+<!--                                <option value="KR07">경상북도</option>-->
+<!--                                <option value="KR08">대전광역시</option>-->
+<!--                                <option value="KR09">충청남도</option>-->
+<!--                                <option value="KR10">충청북도</option>-->
+<!--                                <option value="KR11">전라남도</option>-->
+<!--                                <option value="KR12">전라북도</option>-->
+<!--                                <option value="KR13">광주광역시</option>-->
+<!--                                <option value="KR14">강원도</option>-->
+<!--                                <option value="KR15">울산광역시</option>-->
+<!--                                <option value="KR16">제주특별자치도</option>-->
+<!--                                <option value="KR17">세종특별자치시</option>-->
+
                             </select>
 
 
-                            <select class="checkBtn selectUni">
+                            <select class="checkBtn selectUni" id="collegeName">
                             <option selected="" value="02">대학교</option>
                             <option value="03">가톨릭대학교</option>
                             <option value="04">건국대학교</option>
@@ -371,7 +383,10 @@
                             <option value="283">한국승강기대학교</option>
                             <option value="284">한양여자대학교</option>
                             <option value="285">한국폴리텍Ⅰ대학</option>
-                        </select><select class="checkBtn selectUni">
+                        </select>
+
+
+                            <select class="checkBtn selectUni" id="collegeMajor">
                             <option selected="" value="0201">전공</option>
                             <option value="0202">인문계열</option>
                             <option value="0203">사회계열</option>
@@ -382,7 +397,11 @@
                             <option value="0208">교육계열</option>
                             <option value="0209">IT계열</option>
                             <option value="0210">기타계열</option>
-                        </select><select class="checkBtn selectUni">
+                        </select>
+
+
+
+                            <select class="checkBtn selectUni" id="collegeGrade">
                         <option value="01">학년</option>
                         <option value="02">1학년</option>
                         <option value="03">2학년</option>
@@ -396,7 +415,8 @@
                 <!-- 대학 인증 -->
                 <li><label style="width: 109px;" >대학 이메일 </label>
                     <div class="inputWrap " style="display: flex; margin: 15px 0;  position: relative;">
-                        <input class="checkBtn unEmail" type="text" placeholder="대학교 이메일을 적어주세요 !" style="width: 50%; outline: none; padding: 10px;">
+                        <input class="checkBtn unEmail" id="collegeEmail" type="text" placeholder="대학교 이메일을 적어주세요 !" style="width: 50%; outline: none; padding: 10px;">
+
                         <p class="uniEmailText" style="line-height: 44px; position: absolute; margin-left: 547px;">@snu.ac.kr</p>
 
 
@@ -407,11 +427,13 @@
 
                 <div class="checkboxs" style="position: relative;">
                     <input id="checkB" type="checkbox" style="width: 20px; height: 20px; margin: 8px; margin-left: 0;" />
+                    <input type="hidden" class="certify_1j" name="userCollegeCertify" value="false">
                     <label  style="position: absolute; margin-top: 9px; font-size: 12.5px; color: #6e6e6e;">해당사항 없음</label>
                 </div>
 
-                <div class="btnWrap"><button value="가입완료" class="grayBtn" disabled="">가입완료</button></div>
-            </ul>
+                <div class="btnWrap"><button type="button" value="가입완료" class="grayBtn joinOkBtn_1j" onclick="joinSubmit()" style="background-color: #1a7cff;cursor: pointer" >가입완료</button></div>
+
+            </ul></form>
         </div>
     </div>
 </section>
@@ -420,5 +442,13 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/loginAndJoin/joinPage.js"></script>
 <script src="/js/fix/login.js"></script>
+<script src="/js/loginAndJoin/joinOk.js"></script>
 
 </html>
+
+
+
+
+
+
+

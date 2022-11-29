@@ -1,6 +1,7 @@
 package com.app.neos.domain.user;
 
 
+import com.app.neos.domain.college.CollegeDTO;
 import com.app.neos.embeddable.user.UserCollegeInfo;
 import com.app.neos.embeddable.user.UserLike;
 import com.app.neos.embeddable.user.UserMBTI;
@@ -27,7 +28,7 @@ public class UserDTO {
     private String userCollegeEmail;
     private String userPhoneNumber;
     //임베디드
-    private boolean userCollegeCertify;
+    private String userCollegeCertify;
     private Integer userCollegeYear;
     private UserCollegeMajor userCollegeMajor;
     //임베디드
@@ -49,7 +50,12 @@ public class UserDTO {
     private String userIntroduce;
     private String userFile;
 
-    private College college;
+    //대학정보
+    private Long collegeId;
+    private String collegeCity;
+    private String collegeName;
+    private String collegeLogoFile;
+    private String collegeEmailDomain;
 
 
 
@@ -78,8 +84,7 @@ public class UserDTO {
     }
 
     @QueryProjection
-
-    public UserDTO(String userNickName, String userOAuthId, String userOAuthEmail, String userCollegeEmail, String userPhoneNumber, boolean userCollegeCertify, Integer userCollegeYear, UserCollegeMajor userCollegeMajor, String userNeosBadge, Integer userNeosPowerLevel, Integer userNeosPowerAbility, Integer userNeosPoint, Integer userChattingPoint, String userO2o, String userCity, String userDay, String userTime, String userMbtiName, String userMbtiColor, String userIntroduce, String userFile, College college) {
+    public UserDTO(String userNickName, String userOAuthId, String userOAuthEmail, String userCollegeEmail, String userPhoneNumber, String userCollegeCertify, Integer userCollegeYear, UserCollegeMajor userCollegeMajor, String userNeosBadge, Integer userNeosPowerLevel, Integer userNeosPowerAbility, Integer userNeosPoint, Integer userChattingPoint, String userO2o, String userCity, String userDay, String userTime, String userMbtiName, String userMbtiColor, String userIntroduce, String userFile, Long collegeId, String collegeCity, String collegeName, String collegeLogoFile, String collegeEmailDomain) {
         this.userNickName = userNickName;
         this.userOAuthId = userOAuthId;
         this.userOAuthEmail = userOAuthEmail;
@@ -101,6 +106,36 @@ public class UserDTO {
         this.userMbtiColor = userMbtiColor;
         this.userIntroduce = userIntroduce;
         this.userFile = userFile;
-        this.college = college;
+        this.collegeId = collegeId;
+        this.collegeCity = collegeCity;
+        this.collegeName = collegeName;
+        this.collegeLogoFile = collegeLogoFile;
+        this.collegeEmailDomain = collegeEmailDomain;
+    }
+
+    @QueryProjection
+    public UserDTO(Long userId, String userNickName, String userOAuthId, String userOAuthEmail, String userCollegeEmail, String userPhoneNumber, String userCollegeCertify, Integer userCollegeYear, UserCollegeMajor userCollegeMajor, String userNeosBadge, Integer userNeosPowerLevel, Integer userNeosPowerAbility, Integer userNeosPoint, Integer userChattingPoint, String userO2o, String userCity, String userDay, String userTime, String userMbtiName, String userMbtiColor, String userIntroduce, String userFile) {
+        this.userId = userId;
+        this.userNickName = userNickName;
+        this.userOAuthId = userOAuthId;
+        this.userOAuthEmail = userOAuthEmail;
+        this.userCollegeEmail = userCollegeEmail;
+        this.userPhoneNumber = userPhoneNumber;
+        this.userCollegeCertify = userCollegeCertify;
+        this.userCollegeYear = userCollegeYear;
+        this.userCollegeMajor = userCollegeMajor;
+        this.userNeosBadge = userNeosBadge;
+        this.userNeosPowerLevel = userNeosPowerLevel;
+        this.userNeosPowerAbility = userNeosPowerAbility;
+        this.userNeosPoint = userNeosPoint;
+        this.userChattingPoint = userChattingPoint;
+        this.userO2o = userO2o;
+        this.userCity = userCity;
+        this.userDay = userDay;
+        this.userTime = userTime;
+        this.userMbtiName = userMbtiName;
+        this.userMbtiColor = userMbtiColor;
+        this.userIntroduce = userIntroduce;
+        this.userFile = userFile;
     }
 }

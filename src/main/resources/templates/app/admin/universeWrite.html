@@ -123,11 +123,11 @@
                                 <div class="card-head">
                                     <header>대학교 정보</header>
                                 </div>
-                                <form th:action="@{/admin/college/write}" th:object="${collegeDTO}" name="collegeWrite" id="dof" method="post" class="form-horizontal form-validate" role="form" target="hidden_frame" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate">
+                                <form th:action="@{/admin/test/write}" th:object="${collegeDTO}" name="collegeWrite" id="dof" method="post" class="form-horizontal form-validate" role="form" target="hidden_frame" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate">
                                 <div class="card-body border-top" style="padding-top: 70px;">
                                     <div class="profile-image text-center margin-bottom-xxl">
                                         <div id="fileupload_profile_img">
-                                            <img class="company mg-circle" src="/images/admin/college/koreaCollege.png" id="profile_img" width="72" height="72" style="height: 100%;">
+                                            <img class="company mg-circle" src="/images/admin/imageSelected.jpg" id="profile_img" width="72" height="72" style="height: 100%;">
                                             <input type="hidden" th:field="*{collegeLogoFile}" id="collegeLogoFile">
                                             <div id="drop_profile_img">
                                                 <input type="file" name="files[]" style="width: 100%" accept="image/jpeg, image/jpg, image/png, image/gif, image/svg+xml" >
@@ -149,57 +149,58 @@
                                         <input type="hidden" name="photo_tmp_idx" value="" id="photo_tmp_idx">
                                         <input type="hidden" name="from_permission" value=""> -->
                                         <!-- 해당 사용자 상세내용 -->
+                                        <div class="form-wrap" style="padding-right: 115px;">
+                                            <div class="_type_form_wrap" style="margin-top: 90px">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label text-right" style="padding-top: 0px; margin-right: 15px;">지역
+                                                        <span class="text-danger">(필수)</span>
+                                                    </label>
+                                                    <!--                                                    <div class="col-md-9">-->
+                                                    <!--                                                        <input type="text" autocomplete="off" required="" name="location" id="user_name" class="form-control" value="" aria-required="true" placeholder="대학교 지역을 입력하세요  예) 서울특별시">-->
+                                                    <!--                                                        <div class="form-control-line"></div>-->
+                                                    <!--                                                    </div>-->
 
-                                        <div class="_type_form_wrap">
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label text-right" style="padding-top: 0px; margin-right: 15px;">지역
-                                                    <span class="text-danger">(필수)</span>
-                                                </label>
-                                                <!--                                                    <div class="col-md-9">-->
-                                                <!--                                                        <input type="text" autocomplete="off" required="" name="location" id="user_name" class="form-control" value="" aria-required="true" placeholder="대학교 지역을 입력하세요  예) 서울특별시">-->
-                                                <!--                                                        <div class="form-control-line"></div>-->
-                                                <!--                                                    </div>-->
-
-                                                <select id="collegeCity" style="width: 100px">
-                                                    <option value="00" >지역 구분</option>
-                                                    <option value="01">서울특별시</option>
-                                                    <option value="02">경기도</option>
-                                                    <option value="03">인천광역시</option>
-                                                    <option value="04">강원도</option>
-                                                    <option value="05">충청남도</option>
-                                                    <option value="06">충청북도</option>
-                                                    <option value="07">대전광역시</option>
-                                                    <option value="08">전라북도</option>
-                                                    <option value="09">전라남도</option>
-                                                    <option value="10">광주광역시</option>
-                                                    <option value="11">경상남도</option>
-                                                    <option value="12">경상북도</option>
-                                                    <option value="13">부산광역시</option>
-                                                    <option value="14">제주특별시</option>
-                                                </select>
-                                                <input th:field="*{collegeCity}" id="collegeCity" type="hidden">
+                                                    <select id="collegeCity" style="width: 100px">
+                                                        <option value="00" >지역 구분</option>
+                                                        <option value="01">서울특별시</option>
+                                                        <option value="02">경기도</option>
+                                                        <option value="03">인천광역시</option>
+                                                        <option value="04">강원도</option>
+                                                        <option value="05">충청남도</option>
+                                                        <option value="06">충청북도</option>
+                                                        <option value="07">대전광역시</option>
+                                                        <option value="08">전라북도</option>
+                                                        <option value="09">전라남도</option>
+                                                        <option value="10">광주광역시</option>
+                                                        <option value="11">경상남도</option>
+                                                        <option value="12">경상북도</option>
+                                                        <option value="13">부산광역시</option>
+                                                        <option value="14">제주특별시</option>
+                                                    </select>
+                                                    <input th:field="*{collegeCity}" id="collegeCity" type="hidden">
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label class="col-sm-3 control-label text-right">대학교 이름
-                                                <span class="text-danger">(필수)</span>
-                                            </label>
-                                            <div class="col-md-9">
-                                                <input type="text" th:field="*{collegeName}" required="required" id="member_item_m20220929a41c742d48942" class="form-control" value="" aria-required="true"
-                                                       style="border-bottom-color: rgba(12, 12, 12, 0.12); border-bottom-style: solid;" placeholder="대학을 입력하세요  예) 고려대학교">
-                                                <div class="form-control-line"></div>
-                                            </div>
-                                        </div>
-
-                                        <div class="_type_form_wrap">
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label text-right">홈페이지
+                                                <label class="col-sm-3 control-label text-right">대학교 이름
                                                     <span class="text-danger">(필수)</span>
                                                 </label>
                                                 <div class="col-md-9">
-                                                    <input type="text" th:field="*{collegeEmailDomain}" autocomplete="off" id="user_name" class="form-control" value="" aria-required="true" placeholder="대학교 링크를 입력하세요  예) https://oku.korea.ac.kr">
+                                                    <input type="text" th:field="*{collegeName}" required="required" id="member_item_m20220929a41c742d48942" class="form-control" value="" aria-required="true"
+                                                           style="border-bottom-color: rgba(12, 12, 12, 0.12); border-bottom-style: solid;" placeholder="대학을 입력하세요  예) 고려대학교">
                                                     <div class="form-control-line"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="_type_form_wrap">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label text-right">홈페이지
+                                                        <span class="text-danger">(필수)</span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <input type="text" th:field="*{collegeEmailDomain}" autocomplete="off" id="user_name" class="form-control" value="" aria-required="true" placeholder="대학교 링크를 입력하세요  예) https://oku.korea.ac.kr">
+                                                        <div class="form-control-line"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

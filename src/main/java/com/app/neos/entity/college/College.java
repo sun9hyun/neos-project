@@ -1,6 +1,7 @@
 package com.app.neos.entity.college;
 
 import com.app.neos.domain.college.CollegeDTO;
+import com.app.neos.entity.period.Period;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "TBL_COLLEGE")
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class College {
+public class College extends Period{
     @Id @GeneratedValue
     private Long collegeId;
     @NotNull

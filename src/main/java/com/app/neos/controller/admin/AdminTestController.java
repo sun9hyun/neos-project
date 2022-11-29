@@ -31,4 +31,8 @@ public class AdminTestController {
 
         return "app/admin/universeList";
     }
+
+//    대학교 목록
+
+
 }

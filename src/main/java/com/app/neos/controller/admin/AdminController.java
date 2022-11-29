@@ -75,6 +75,10 @@ public class AdminController {
     @GetMapping("/universe-register")
     public String universeRegister(){return "app/admin/universeDetail";}
 
+    //대학교 등록
+    @GetMapping("/universe-write")
+    public String universeWrite(){return "app/admin/universeWrite";}
+
 
 
 

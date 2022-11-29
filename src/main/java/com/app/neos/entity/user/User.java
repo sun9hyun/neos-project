@@ -31,7 +31,7 @@ public class User extends Period {
     private String userPhoneNumber;
 
     @NotNull
-    private boolean userCollegeCertify;
+    private String userCollegeCertify;
 
     @Embedded
     private UserCollegeInfo userCollegeInfo;
@@ -61,7 +61,7 @@ public class User extends Period {
        this.college =college;
    }
    @Builder
-    public User(@NotNull String userNickName, @NotNull String userOAuthId, @NotNull String userOAuthEmail, String userCollegeEmail, String userPhoneNumber, @NotNull boolean userCollegeCertify, UserCollegeInfo userCollegeInfo, @NotNull UserNeosPower userNeosPower, @NotNull Integer userNeosPoint, @NotNull Integer userChattingPoint, UserLike userLike, UserMBTI userMBTI, @NotNull String userIntroduce, String userFile) {
+    public User(@NotNull String userNickName, @NotNull String userOAuthId, @NotNull String userOAuthEmail, String userCollegeEmail, String userPhoneNumber, @NotNull String userCollegeCertify, UserCollegeInfo userCollegeInfo, @NotNull UserNeosPower userNeosPower, @NotNull Integer userNeosPoint, @NotNull Integer userChattingPoint, UserLike userLike, UserMBTI userMBTI, @NotNull String userIntroduce, String userFile) {
         this.userNickName = userNickName;
         this.userOAuthId = userOAuthId;
         this.userOAuthEmail = userOAuthEmail;
@@ -82,7 +82,7 @@ public class User extends Period {
 
 
     public void updateCertify(UserDTO userDTO){
-        this.userCollegeCertify = userDTO.isUserCollegeCertify();
+        this.userCollegeCertify = userDTO.getUserCollegeCertify();
     }
 
     public void updatePower(UserDTO userDTO){
@@ -109,6 +109,8 @@ public class User extends Period {
         this.userIntroduce = userDTO.getUserIntroduce();
         this.userMBTI = userMBTI;
     }
+
+
 
 
 }

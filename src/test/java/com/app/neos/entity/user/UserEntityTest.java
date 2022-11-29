@@ -4,6 +4,7 @@ import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.college.College;
 import com.app.neos.repository.college.CollegeRepository;
 import com.app.neos.repository.user.*;
+import com.app.neos.service.login.LoginService;
 import com.app.neos.type.user.UserCollegeMajor;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import static com.app.neos.entity.user.QUser.user;
+import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
 @Slf4j
@@ -32,6 +34,8 @@ public class UserEntityTest {
     JPAQueryFactory jpaQueryFactory;
     @Autowired
     UserCustomRepository userCustomRepository;
+    @Autowired
+    LoginService loginService;
     @Test
     public void collegeSave(){
         College college = College.builder().collegeCity("서울").collegeLogoFile("1").collegeEmailDomain("1").collegeName("서울대학교").build();
@@ -48,7 +52,7 @@ public class UserEntityTest {
         userDTO.setUserCollegeMajor(UserCollegeMajor.MATH);
         userDTO.setUserCollegeYear(4);
         userDTO.setUserCollegeEmail("email@eamil.com");
-        userDTO.setUserCollegeCertify(true);
+        userDTO.setUserCollegeCertify("true");
         userDTO.setUserNeosPowerLevel(1);
         userDTO.setUserNeosPowerAbility(0);
         userDTO.setUserNeosBadge("1");
@@ -58,9 +62,7 @@ public class UserEntityTest {
         userDTO.setUserFile("기본");
 
 
-        userDTO.setCollege(collegeRepository.findById(1l).get());
         User user1 = userDTO.toEntity();
-        user1.changeCollege(userDTO.getCollege());
 
         userRepository.save(user1);
 
@@ -76,7 +78,7 @@ public class UserEntityTest {
         userDTO.setUserCollegeMajor(UserCollegeMajor.MATH);
         userDTO.setUserCollegeYear(4);
         userDTO.setUserCollegeEmail("email@eamil.com");
-        userDTO.setUserCollegeCertify(true);
+        userDTO.setUserCollegeCertify("true");
         userDTO.setUserNeosPowerLevel(1);
         userDTO.setUserNeosPowerAbility(0);
         userDTO.setUserNeosBadge("1");
@@ -153,5 +155,28 @@ public class UserEntityTest {
         userCustomRepository.findAllSearch(search).stream().map(User::toString).forEach(log::info);
     }
 
+    @Test
+    public void findAllByOauthIdTest(){
+        assertThat(userRepository.findAllByUserOAuthId("2546432919k").size()).isEqualTo(1);
+    }
 
+    @Test
+    public void findByOauthIdTest(){
+        log.info("들어옴"+userRepository.findByUserOAuthId("2546432919k").isPresent());
+    }
+
+    @Test
+    public void findByOauthIdTest2(){
+        log.info(userCustomRepository.findByOauthId("2546432919k").toString());
+    }
+
+    @Test
+    public void loginTest(){
+        log.info(loginService.login("2546432919k").toString());
+    }
+
+    @Test
+    public void loginDeniedTest(){
+        assertThat(loginService.login("sd")).isEqualTo(null);
+    }
 }

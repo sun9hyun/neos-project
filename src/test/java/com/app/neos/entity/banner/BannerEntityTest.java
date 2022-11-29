@@ -20,6 +20,7 @@ public class BannerEntityTest {
 
     @Test
     public void saveTest(){
+
         BannerDTO bannerDTO = new BannerDTO();
         bannerDTO.setBannerTitle("11월 이벤트 배너");
         bannerDTO.setBannerStatus(BannerStatus.PROCEEDING);

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/css/store/storeList.css">
     <link rel="stylesheet" href="/css/neosUser/neosListNext.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="stylesheet" href="/css/fix/loginHeader.css">
     <link rel="stylesheet" href="/css/study/listStudy.css">
     <link rel="stylesheet" href="/css/fix/chatting.css">
@@ -21,9 +22,26 @@
 
 
 <body>
-<header th:replace="/app/fix/loginHeader.html :: header"></header>
+<header th:replace="/app/fix/header.html :: header"></header>
 <div id="next">
+    <script th:inline="javascript">
+        const urlParams
+            = new URLSearchParams(window.location.search);
+        if(urlParams.has('check')){
+            alert("이미 회원가입된 회원입니다.")
+        } else if(urlParams.get("login")=='false'){
+            alert("회원가입을 먼저 진행해 주세요.")
+            location.href="https://kauth.kakao.com/oauth/authorize?client_id=e29231bc42552a6803c663f6ba7bad63&redirect_uri=http://localhost:10718/join/kakao&response_type=code"
+        }else if(urlParams.get("login")=='true'){
+            alert("로그인 성공")
+        }else if(urlParams.get("join")=='true'){
+            alert("회원가입 성공")
+        }
 
+
+
+        history.replaceState({}, null, location.pathname);
+    </script>
     <!-- 배너 -->
     <div class=banners>
         <div class="swiper mySwiper">
@@ -54,6 +72,7 @@
     </div>
     <!--스터디-->
     <div class="hotProjectWrap wrap mainWrap">
+        <h1 th:text="${session.loginUser}"></h1>
         <h1><span class="bigTxt">새로운<em class="pinkColor">' </em>스터디</span></h1>
         <div class="hotProjectContentWrap">
 
@@ -713,6 +732,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script src="/js/study/listStudy.js"></script>
 <script src="/js/fix/login.js"></script>
+<script src="/js/fix/header.js"></script>
 <script src="/js/neosUser/neosListAfter.js"></script>
 <script src="/js/store/storeList.js"></script>
 <script src="/js/fix/chatting.js"></script>

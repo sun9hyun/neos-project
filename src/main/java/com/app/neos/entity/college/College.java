@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "TBL_COLLEGE")
 @Getter @ToString
-@NoArgsConstructor/*(access = AccessLevel.PROTECTED)*/
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class College {
     @Id @GeneratedValue
     private Long collegeId;

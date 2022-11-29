@@ -891,12 +891,13 @@ button {
 }
 
 .letspler_Re .top .profileTxt .coffeAndHeart div span {
+    margin-top: 3px;
     font-size: 13px;
     color: #333;
 }
 
 .letspler_Re .bottom .userFavorite li h2, .letspler_Re .bottom .userFavorite li h3 {
-    line-height: normal;
+    /*line-height: normal;*/
     font-size: medium;
     display: -moz-box;
     display: flex;
@@ -960,6 +961,12 @@ button {
     width: 16px;
     margin-right: 6px;
 }
+
+.letspler_Re .bottom .chatBtn div span {
+    cursor: pointer;
+    margin-top: 4px;
+}
+
 
 .projectMemberContents .projectMemberList {
     display: grid;
@@ -1483,3 +1490,4 @@ button {
     background-size: contain;
     margin-left: 10px;
 }
+

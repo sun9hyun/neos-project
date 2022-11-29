@@ -991,6 +991,7 @@ b, strong {
     -webkit-box-shadow: 0 0 24px 0 rgb(0 0 0 / 10%);
     -moz-box-shadow: 0 0 24px 0 rgba(0,0,0,.1);
     box-shadow: 0 0 24px 0 rgb(0 0 0 / 10%);
+    cursor: pointer
 }
 
 .letspler_Re .top .profileTxt, .letspler_Re .top .profileTxt .idWrap {
@@ -1098,6 +1099,7 @@ dl, li, menu, ol, ul {
 }
 
 .letspler_Re .top .profileTxt .coffeAndHeart div span {
+    margin-top: 3px;
     font-size: 13px;
     color: #333;
 }
@@ -1111,7 +1113,7 @@ dl, li, menu, ol, ul {
 
 .letspler_Re .bottom .userFavorite li h2,
 .letspler_Re .bottom .userFavorite li h3 {
-    line-height: normal;
+    /*line-height: normal;*/
     font-size: medium;
     display: -moz-box;
     display: flex;
@@ -1171,6 +1173,7 @@ dl, li, menu, ol, ul {
 
 .letspler_Re .bottom .chatBtn div span {
     cursor: pointer;
+    margin-top: 4px;
 }
 
 .projectDetailWrap button.blackBtn {
@@ -1742,4 +1745,9 @@ textarea {
     display: inline-block;
     background-size: contain;
     margin-left: 10px;
+}
+
+.letspler_Re .top .favorite:hover {
+    background-size: 14px;
+    background-image: url(https://letspl.me/_next/static/media/ic-favorite-empty-hover.03f7a2966e132a098a985cdc42f83b46.svg);
 }

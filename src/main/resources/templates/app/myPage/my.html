@@ -1103,7 +1103,7 @@
 
 <!-- 관련 모달 START-->
 <div class="modalWrapOpen">
-    <!--임시저장 버튼 클리 시-->
+    <!--스터디 구독하기 클리 시-->
     <div class="modalWrap modal1">
         <p class="modalTit studyTit"></p>
         <p class="modalTit">구독하시겠습니까?</p>
@@ -1129,13 +1129,74 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="/js/study/listStudy.js"></script>
+<!--<script src="/js/study/listStudy.js"></script>-->
 <script src="/js/fix/login.js"></script>
 <script src="/js/myPage/myPage.js"></script>
 <script src="/js/neosUser/neosListAfter.js"></script>
 <script src="/js/fix/chatting.js"></script>
 <script src="/js/store/storeList.js"></script>
 <script>
-    console.log("emfdjdha");
+    function modalOk(heart) {
+        $(".modalWrapOpen .modal1 .btnWrap button.blueBtn").on("click", function () {
+            $(".modal1").css('display','none');
+            $(".modalWrapOpen").hide();
+            $(heart).addClass('active2');
+            $(heart).addClass('on');
+            $(heart).removeClass('off');
+        })
+    }
+
+    $(".listFavorite").click(function(){
+        let name = $(this).closest(".projectGridWrap").find(".projectWrap .tit").text();
+        const heart = $(this);
+        if($(this).hasClass("off")) {
+            heart.addClass('click');
+        }
+
+        $(".modal1").children(".studyTit").text(name + "을");
+
+        if($(this).hasClass("off")) {
+            $(".modalWrapOpen").show();
+            $(".modal1").css('display','inline-block');
+            $(".modalWrapOpen .modal1 .btnWrap button.blueBtn").on("click", function () {
+                $(".modal1").css('display','none');
+                $(".modalWrapOpen").hide();
+                $(".click").addClass('active');
+                $(".click").addClass('on');
+                $(".click").removeClass('off');
+                $(".click").removeClass('click');
+            })
+        } else {
+            $(this).removeClass('active');
+            $(this).addClass('off');
+            $(this).removeClass('on');
+        }
+    });
+
+    // $(".listFavorite.on").click(function(){
+    //     const heart = $(this);
+    //     if($(this).hasClass("on")) {
+    //         heart.removeClass('click');
+    //     }
+    //
+    //     $(".modal1").children(".studyTit").text(name + "을");
+    //
+    //     if($(this).hasClass("off")) {
+    //         $(".modalWrapOpen").show();
+    //         $(".modal1").css('display','inline-block');
+    //         $(".modalWrapOpen .modal1 .btnWrap button.blueBtn").on("click", function () {
+    //             $(".modal1").css('display','none');
+    //             $(".modalWrapOpen").hide();
+    //             $(".click").addClass('active');
+    //             $(".click").addClass('on');
+    //             $(".click").removeClass('off');
+    //             $(".click").removeClass('click');
+    //         })
+    //     } else {
+    //         $(this).removeClass('active');
+    //         $(this).addClass('off');
+    //         $(this).removeClass('on');
+    //     }
+    // });
 </script>
 </html>

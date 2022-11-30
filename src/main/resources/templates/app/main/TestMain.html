@@ -1,25 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<form method="get" th:action="@{/send/emailConfirm}">
+    <h1>이메일을 입력하세요</h1>
+    <input type="email" name="email">
+    <button>전송</button>
+</form>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script>
 
-    $.ajax({
-        url: "/user/1",
-        type: "get",
-        success: function (result) {
-           console.log(result);
-
-        },
-        error: function(xhr, status, err){
-            alert("d")
-        }
-    })
-</script>
 </html>

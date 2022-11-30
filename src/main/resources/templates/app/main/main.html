@@ -38,6 +38,12 @@
             alert("회원가입 성공")
         }else if(urlParams.get("logout")=='true'){
             alert("로그아웃 성공")
+        }else if(urlParams.get("join")=='need'){
+            alert("메일을 성공적으로 보냈습니다.")
+        }else if(urlParams.get("certify")=='true'){
+            alert("인증이 완료되었습니다.")
+        }else if(urlParams.get("login")=='need'){
+            alert("인증이 필요합니다.")
         }
 
         history.replaceState({}, null, location.pathname);

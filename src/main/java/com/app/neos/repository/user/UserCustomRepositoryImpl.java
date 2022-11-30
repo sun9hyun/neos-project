@@ -60,7 +60,7 @@ public class UserCustomRepositoryImpl implements UserCustomRepository{
 
     @Override
     public List<UserDTO> findAllByOauthId(String oauthId) {
-        return jpaQueryFactory.select(new QUserDTO(user.userNickName,user.userOAuthId,user.userOAuthEmail,user.userCollegeEmail,user.userPhoneNumber,user.userCollegeCertify
+        return jpaQueryFactory.select(new QUserDTO(user.userId,user.userNickName,user.userOAuthId,user.userOAuthEmail,user.userCollegeEmail,user.userPhoneNumber,user.userCollegeCertify
                 ,user.userCollegeInfo.userCollegeYear,user.userCollegeInfo.userCollegeMajor,user.userNeosPower.userNeosBadge,user.userNeosPower.userNeosPowerLevel,user.userNeosPower.userNeosPowerAbility,
                 user.userNeosPoint,user.userChattingPoint,user.userLike.userO2o,user.userLike.userCity,user.userLike.userDay,user.userLike.userTime,user.userMBTI.userMbtiName,user.userMBTI.userMbtiColor,
                 user.userIntroduce,user.userFile,user.college.collegeId, user.college.collegeCity,
@@ -77,6 +77,28 @@ public class UserCustomRepositoryImpl implements UserCustomRepository{
                 user.userIntroduce,user.userFile))
                 .from(user)
                 .where(user.userOAuthId.eq(oauthId))
+                .fetchOne();
+    }
+
+    @Override
+    public UserDTO findNoCollegeById(Long userId) {
+        return jpaQueryFactory.select(new QUserDTO(user.userId,user.userNickName,user.userOAuthId,user.userOAuthEmail,user.userCollegeEmail,user.userPhoneNumber,user.userCollegeCertify
+                ,user.userCollegeInfo.userCollegeYear,user.userCollegeInfo.userCollegeMajor,user.userNeosPower.userNeosBadge,user.userNeosPower.userNeosPowerLevel,user.userNeosPower.userNeosPowerAbility,
+                user.userNeosPoint,user.userChattingPoint,user.userLike.userO2o,user.userLike.userCity,user.userLike.userDay,user.userLike.userTime,user.userMBTI.userMbtiName,user.userMBTI.userMbtiColor,
+                user.userIntroduce,user.userFile)).from(user).
+                where(user.userId.eq(userId))
+                .fetchOne();
+    }
+
+    @Override
+    public UserDTO findById(Long userId) {
+        return jpaQueryFactory.select(new QUserDTO(user.userId,user.userNickName,user.userOAuthId,user.userOAuthEmail,user.userCollegeEmail,user.userPhoneNumber,user.userCollegeCertify
+                ,user.userCollegeInfo.userCollegeYear,user.userCollegeInfo.userCollegeMajor,user.userNeosPower.userNeosBadge,user.userNeosPower.userNeosPowerLevel,user.userNeosPower.userNeosPowerAbility,
+                user.userNeosPoint,user.userChattingPoint,user.userLike.userO2o,user.userLike.userCity,user.userLike.userDay,user.userLike.userTime,user.userMBTI.userMbtiName,user.userMBTI.userMbtiColor,
+                user.userIntroduce,user.userFile,user.college.collegeId, user.college.collegeCity,
+                user.college.collegeName, user.college.collegeLogoFile, user.college.collegeEmailDomain))
+                .from(user)
+                .where(user.userId.eq(userId))
                 .fetchOne();
     }
 

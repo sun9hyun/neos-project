@@ -32,19 +32,19 @@ public class LoginController {
 
     @GetMapping("/kakao")
     public RedirectView loginOk(@RequestParam String code, HttpServletRequest request){
-        log.info("들어옴");
         String token = kaKaoService.getKaKaoAccessToken(code);
-        log.info(token);
 
         HttpSession session= (HttpSession)request.getSession();
+        session.setAttribute("token",token);
         try {
             Long id = kaKaoService.getKakaoIdByToken(token);
             String realId = id+"k";
-            if(loginService.login(realId) == null){
+            UserDTO userDTO = loginService.login(realId);
+            if(userDTO == null){
                 return new RedirectView("/main/main?login=false");
             }else {
-                UserDTO userDTO = loginService.login(realId);
                 session.setAttribute("loginUser",userDTO.getUserId());
+                session.setAttribute("college",userDTO.getCollegeId());
             }
 
 
@@ -54,5 +54,9 @@ public class LoginController {
         return new RedirectView("/main/main?login=true");
     }
 
+    @GetMapping("testMain")
+    public String test2(){
+        return "app/main/Testmain";
+    }
 
 }

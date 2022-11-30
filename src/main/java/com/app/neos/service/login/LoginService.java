@@ -7,6 +7,7 @@ import com.app.neos.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,8 +16,12 @@ public class LoginService {
     private final UserRepository userRepository;
     private final UserCustomRepository userCustomRepository;
 
+    @Transactional
     public UserDTO login(String readId){
         if(loginOk(readId)){
+            User user = userRepository.findByUserOAuthId(readId).get();
+            user.updateNeosPower(user.getUserNeosPower().getUserNeosPowerAbility()+10);
+            user.levelUp();
             return userCustomRepository.findByOauthId(readId);
         }
         return null;
@@ -25,6 +30,8 @@ public class LoginService {
     public boolean loginOk(String realId){
         return userCustomRepository.findByOauthId(realId) != null;
     }
+
+
 
 
 }

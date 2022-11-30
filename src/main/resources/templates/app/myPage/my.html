@@ -11,11 +11,12 @@
     <link rel="stylesheet" href="/css/store/storeList.css">
     <link rel="stylesheet" href="/css/fix/chatting.css">
     <link rel="stylesheet" href="/css/myPage/myPage.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="stylesheet" href="/css/fix/loginHeader.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
-<header th:replace="/app/fix/loginHeader.html :: header"></header>
+<header th:replace="/app/fix/header.html :: header"></header>
 <section class="mypage">
     <div class="commonContentViewHeader">
         <h1>
@@ -1131,6 +1132,7 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <!--<script src="/js/study/listStudy.js"></script>-->
 <script src="/js/fix/login.js"></script>
+<script src="/js/fix/header.js"></script>
 <script src="/js/myPage/myPage.js"></script>
 <script src="/js/neosUser/neosListAfter.js"></script>
 <script src="/js/fix/chatting.js"></script>
@@ -1173,30 +1175,17 @@
         }
     });
 
-    // $(".listFavorite.on").click(function(){
-    //     const heart = $(this);
-    //     if($(this).hasClass("on")) {
-    //         heart.removeClass('click');
-    //     }
-    //
-    //     $(".modal1").children(".studyTit").text(name + "을");
-    //
-    //     if($(this).hasClass("off")) {
-    //         $(".modalWrapOpen").show();
-    //         $(".modal1").css('display','inline-block');
-    //         $(".modalWrapOpen .modal1 .btnWrap button.blueBtn").on("click", function () {
-    //             $(".modal1").css('display','none');
-    //             $(".modalWrapOpen").hide();
-    //             $(".click").addClass('active');
-    //             $(".click").addClass('on');
-    //             $(".click").removeClass('off');
-    //             $(".click").removeClass('click');
-    //         })
-    //     } else {
-    //         $(this).removeClass('active');
-    //         $(this).addClass('off');
-    //         $(this).removeClass('on');
-    //     }
-    // });
+    // 모달 종료
+    $(".closeBtnImg").on("click",function(){
+        $(".modalWrap").css('display','none');
+        $(".modalWrapOpen").hide();
+    });
+
+    $(".whiteBtn").on("click",function(){
+        $(".modalWrap").css('display','none');
+        $(".modalWrapOpen").hide();
+    });
+
+
 </script>
 </html>

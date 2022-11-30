@@ -155,7 +155,7 @@
                                 <div class="col-md-2 hidden-xs">
                                     <div class="card">
                                         <div class="companyAdd">
-                                            <a th:href="@{universe-register}" >대학교 추가</a>
+                                            <a th:href="@{/admin/test/college/write}" >대학교 추가</a>
                                         </div>
                                     </div>
                                 </div>
@@ -197,192 +197,197 @@
                                                     <li class="action"></li>
                                                 </ul>
                                                 <!--시작-->
-                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
-                                                    <li class="check">
-                                                        <div class="checkbox checkbox-styled no-margin">
-                                                            <label>
-                                                                <input type="checkbox" class="terms">
-                                                                <span></span>
-                                                            </label>
-                                                        </div>
-                                                    </li>
+                                                <tbody>
+                                                    <th:block th:each="college:${colleges}" th:object="${college}">
+                                                        <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
+                                                            <li class="check">
+                                                                <div class="checkbox checkbox-styled no-margin">
+                                                                    <label>
+                                                                        <input type="checkbox" class="terms">
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                            </li>
 
-                                                    <li class="universeName">
-                                                        <a href="#" onclick="">서울대학교</a>
-                                                    </li>
-                                                    <li class="explanation">https://www.snu.ac.kr</li>
-                                                    <li class="universeDateJoin">2022-11-13</li>
-                                                    <li class="universeLogo"><div class="logo_wrapper"><img src="/images/admin/college/seoulCollege.png" alt=""></div></li>
+                                                            <li class="universeName">
+                                                                <a class="detail" th:href="*{collegeName}" onclick="" th:text="*{collegeName}"></a>
+                                                                <input type="hidden" class="collegeId" th:value="*{collegeId}">
+                                                            </li>
+                                                            <li class="explanation" th:text="*{collegeEmailDomain}"></li>
+                                                            <li class="universeDateJoin" th:text="*{createdDate}"></li>
+                                                            <li class="universeLogo"><div class="logo_wrapper"><img th:src="*{collegeLogoFile}" alt=""></div></li>
 
-                                                    <li class="action">
-                                                        <div class="dropdown">
-                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
-                                                                <i class="zmdi zmdi-more"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
-                                                                <li>
-                                                                    <a href="javascript:;" >
-                                                                        수정
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;" onclick="modalUp()">
-                                                                        삭제
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                                            <li class="action">
+                                                                <div class="dropdown">
+                                                                    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
+                                                                        <i class="zmdi zmdi-more"></i>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
+                                                                        <li>
+                                                                            <a href="javascript:;" >
+                                                                                수정
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="javascript:;" onclick="modalUp()">
+                                                                                삭제
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </th:block>
+                                                </tbody>
                                                 <!--끝-->
-                                                <ul class="content _tbody"  data-nick="관리자" data-app="">
-                                                    <li class="check">
-                                                        <div class="checkbox checkbox-styled no-margin">
-                                                            <label>
-                                                                <input type="checkbox" class="terms">
-                                                                <span></span>
-                                                            </label>
-                                                        </div>
-                                                    </li>
+<!--                                                <ul class="content _tbody"  data-nick="관리자" data-app="">-->
+<!--                                                    <li class="check">-->
+<!--                                                        <div class="checkbox checkbox-styled no-margin">-->
+<!--                                                            <label>-->
+<!--                                                                <input type="checkbox" class="terms">-->
+<!--                                                                <span></span>-->
+<!--                                                            </label>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
 
-                                                    <li class="universeName">
-                                                        <a href="#" onclick="">연세대학교</a>
-                                                    </li>
-                                                    <li class="explanation">https://www.yonsei.ac.kr</li>
-                                                    <li class="universeDateJoin">2022-11-13</li>
-                                                    <li class="universeLogo"><div class="logo_wrapper"><img src="/images/admin/college/yenseiCollege.jpg" alt=""></div></li>
+<!--                                                    <li class="universeName">-->
+<!--                                                        <a href="#" onclick="">연세대학교</a>-->
+<!--                                                    </li>-->
+<!--                                                    <li class="explanation">https://www.yonsei.ac.kr</li>-->
+<!--                                                    <li class="universeDateJoin">2022-11-13</li>-->
+<!--                                                    <li class="universeLogo"><div class="logo_wrapper"><img src="/images/admin/college/yenseiCollege.jpg" alt=""></div></li>-->
 
-                                                    <li class="action">
-                                                        <div class="dropdown">
-                                                            <button  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
-                                                                <i class="zmdi zmdi-more"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
-                                                                <li>
-                                                                    <a href="javascript:;" >
-                                                                        수정
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;" onclick="modalUp()">
-                                                                        삭제
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <ul class="content _tbody"  data-nick="관리자" data-app="">
-                                                    <li class="check">
-                                                        <div class="checkbox checkbox-styled no-margin">
-                                                            <label>
-                                                                <input type="checkbox" class="terms">
-                                                                <span></span>
-                                                            </label>
-                                                        </div>
-                                                    </li>
+<!--                                                    <li class="action">-->
+<!--                                                        <div class="dropdown">-->
+<!--                                                            <button  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
+<!--                                                                <i class="zmdi zmdi-more"></i>-->
+<!--                                                            </button>-->
+<!--                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
+<!--                                                                <li>-->
+<!--                                                                    <a href="javascript:;" >-->
+<!--                                                                        수정-->
+<!--                                                                    </a>-->
+<!--                                                                </li>-->
+<!--                                                                <li>-->
+<!--                                                                    <a href="javascript:;" onclick="modalUp()">-->
+<!--                                                                        삭제-->
+<!--                                                                    </a>-->
+<!--                                                                </li>-->
+<!--                                                            </ul>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
+<!--                                                <ul class="content _tbody"  data-nick="관리자" data-app="">-->
+<!--                                                    <li class="check">-->
+<!--                                                        <div class="checkbox checkbox-styled no-margin">-->
+<!--                                                            <label>-->
+<!--                                                                <input type="checkbox" class="terms">-->
+<!--                                                                <span></span>-->
+<!--                                                            </label>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
 
-                                                    <li class="universeName">
-                                                        <a href="#" onclick="">고려대학교</a>
-                                                    </li>
-                                                    <li class="explanation">https://oku.korea.ac.kr</li>
-                                                    <li class="universeDateJoin">2022-11-13</li>
-                                                    <li class="universeLogo"><div class="logo_wrapper"><img src="/images/admin/college/koreaCollege.png" alt=""></div></li>
+<!--                                                    <li class="universeName">-->
+<!--                                                        <a href="#" onclick="">고려대학교</a>-->
+<!--                                                    </li>-->
+<!--                                                    <li class="explanation">https://oku.korea.ac.kr</li>-->
+<!--                                                    <li class="universeDateJoin">2022-11-13</li>-->
+<!--                                                    <li class="universeLogo"><div class="logo_wrapper"><img src="/images/admin/college/koreaCollege.png" alt=""></div></li>-->
 
-                                                    <li class="action">
-                                                        <div class="dropdown">
-                                                            <button  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
-                                                                <i class="zmdi zmdi-more"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        수정
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;" onclick="modalUp()">
-                                                                        삭제
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <ul class="content _tbody"  data-nick="관리자" data-app="">
-                                                    <li class="check">
-                                                        <div class="checkbox checkbox-styled no-margin">
-                                                            <label>
-                                                                <input type="checkbox" class="terms">
-                                                                <span></span>
-                                                            </label>
-                                                        </div>
-                                                    </li>
+<!--                                                    <li class="action">-->
+<!--                                                        <div class="dropdown">-->
+<!--                                                            <button  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
+<!--                                                                <i class="zmdi zmdi-more"></i>-->
+<!--                                                            </button>-->
+<!--                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
+<!--                                                                <li>-->
+<!--                                                                    <a href="javascript:;">-->
+<!--                                                                        수정-->
+<!--                                                                    </a>-->
+<!--                                                                </li>-->
+<!--                                                                <li>-->
+<!--                                                                    <a href="javascript:;" onclick="modalUp()">-->
+<!--                                                                        삭제-->
+<!--                                                                    </a>-->
+<!--                                                                </li>-->
+<!--                                                            </ul>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
+<!--                                                <ul class="content _tbody"  data-nick="관리자" data-app="">-->
+<!--                                                    <li class="check">-->
+<!--                                                        <div class="checkbox checkbox-styled no-margin">-->
+<!--                                                            <label>-->
+<!--                                                                <input type="checkbox" class="terms">-->
+<!--                                                                <span></span>-->
+<!--                                                            </label>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
 
-                                                    <li class="universeName">
-                                                        <a href="#" onclick="">서강대학교</a>
-                                                    </li>
-                                                    <li class="explanation">https://sogang.ac.kr</li>
-                                                    <li class="universeDateJoin">2022-11-13</li>
-                                                    <li class="universeLogo"><div class="logo_wrapper"><img src="/images/admin/college/sogangCollege.png" alt=""></div></li>
+<!--                                                    <li class="universeName">-->
+<!--                                                        <a href="#" onclick="">서강대학교</a>-->
+<!--                                                    </li>-->
+<!--                                                    <li class="explanation">https://sogang.ac.kr</li>-->
+<!--                                                    <li class="universeDateJoin">2022-11-13</li>-->
+<!--                                                    <li class="universeLogo"><div class="logo_wrapper"><img src="/images/admin/college/sogangCollege.png" alt=""></div></li>-->
 
-                                                    <li class="action">
-                                                        <div class="dropdown">
-                                                            <button  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
-                                                                <i class="zmdi zmdi-more"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
-                                                                <li>
-                                                                    <a href="javascript:;" >
-                                                                        수정
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;" onclick="modalUp()">
-                                                                        삭제
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <ul class="content _tbody"  data-nick="관리자" data-app="">
-                                                    <li class="check">
-                                                        <div class="checkbox checkbox-styled no-margin">
-                                                            <label>
-                                                                <input type="checkbox" class="terms">
-                                                                <span></span>
-                                                            </label>
-                                                        </div>
-                                                    </li>
+<!--                                                    <li class="action">-->
+<!--                                                        <div class="dropdown">-->
+<!--                                                            <button  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
+<!--                                                                <i class="zmdi zmdi-more"></i>-->
+<!--                                                            </button>-->
+<!--                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
+<!--                                                                <li>-->
+<!--                                                                    <a href="javascript:;" >-->
+<!--                                                                        수정-->
+<!--                                                                    </a>-->
+<!--                                                                </li>-->
+<!--                                                                <li>-->
+<!--                                                                    <a href="javascript:;" onclick="modalUp()">-->
+<!--                                                                        삭제-->
+<!--                                                                    </a>-->
+<!--                                                                </li>-->
+<!--                                                            </ul>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
+<!--                                                <ul class="content _tbody"  data-nick="관리자" data-app="">-->
+<!--                                                    <li class="check">-->
+<!--                                                        <div class="checkbox checkbox-styled no-margin">-->
+<!--                                                            <label>-->
+<!--                                                                <input type="checkbox" class="terms">-->
+<!--                                                                <span></span>-->
+<!--                                                            </label>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
 
-                                                    <li class="universeName">
-                                                        <a href="#" onclick="">성균관대학교</a>
-                                                    </li>
-                                                    <li class="explanation">https://www.skku.edu/skku</li>
-                                                    <li class="universeDateJoin">2022-11-13</li>
-                                                    <li class="universeLogo"><div class="logo_wrapper"><img src="/images/admin/college/sungkyunkwanCollege.jpg" alt=""></div></li>
+<!--                                                    <li class="universeName">-->
+<!--                                                        <a href="#" onclick="">성균관대학교</a>-->
+<!--                                                    </li>-->
+<!--                                                    <li class="explanation">https://www.skku.edu/skku</li>-->
+<!--                                                    <li class="universeDateJoin">2022-11-13</li>-->
+<!--                                                    <li class="universeLogo"><div class="logo_wrapper"><img src="/images/admin/college/sungkyunkwanCollege.jpg" alt=""></div></li>-->
 
-                                                    <li class="action">
-                                                        <div class="dropdown">
-                                                            <button  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
-                                                                <i class="zmdi zmdi-more"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
-                                                                <li>
-                                                                    <a href="javascript:;" >
-                                                                        수정
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;" onclick="modalUp()">
-                                                                        삭제
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+<!--                                                    <li class="action">-->
+<!--                                                        <div class="dropdown">-->
+<!--                                                            <button  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
+<!--                                                                <i class="zmdi zmdi-more"></i>-->
+<!--                                                            </button>-->
+<!--                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
+<!--                                                                <li>-->
+<!--                                                                    <a href="javascript:;" >-->
+<!--                                                                        수정-->
+<!--                                                                    </a>-->
+<!--                                                                </li>-->
+<!--                                                                <li>-->
+<!--                                                                    <a href="javascript:;" onclick="modalUp()">-->
+<!--                                                                        삭제-->
+<!--                                                                    </a>-->
+<!--                                                                </li>-->
+<!--                                                            </ul>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
                                                 <!--끝-->
                                             </div>
                                             <nav class="text-center" id="paginate"></nav>
@@ -467,6 +472,18 @@
         $deleteModal.show();
     }
 
+    $(".universeDateJoin").ready(function(){
+        $(".universeDateJoin").bind("click", function(){
+            $(this).html($(this).text().slice(0, 10));
+        });
+        $(".universeDateJoin").trigger("click");
+    });
+
+
+    $(".detail").on("click", function(e){
+        e.preventDefault();
+        location.href = "/admin/test/college/detail" + "?collegeId=" + $(".collegeId").attr("value");
+    });
 </script>
 
 </html>

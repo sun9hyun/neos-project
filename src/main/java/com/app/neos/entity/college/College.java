@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "TBL_COLLEGE")
@@ -28,11 +29,12 @@ public class College extends Period{
 
 
     @Builder
-    public College(String collegeCity, String collegeName, String collegeLogoFile, String collegeEmailDomain) {
+    public College(String collegeCity, String collegeName, String collegeLogoFile, String collegeEmailDomain, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.collegeCity = collegeCity;
         this.collegeName = collegeName;
         this.collegeLogoFile = collegeLogoFile;
         this.collegeEmailDomain = collegeEmailDomain;
+
     }
 
     public void update(CollegeDTO collegeDTO){

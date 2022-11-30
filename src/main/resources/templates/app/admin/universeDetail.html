@@ -126,7 +126,7 @@
                                 <div class="card-body border-top">
                                     <div class="profile-image text-center margin-bottom-xxl">
                                         <div id="fileupload_profile_img">
-                                            <img class="company mg-circle" src="/images/admin/college/koreaCollege.png" id="profile_img" width="72" height="72" >
+                                            <img class="company mg-circle" th:src="${college.collegeLogoFile}" id="profile_img" width="72" height="72" >
                                             <div id="drop_profile_img">
                                                 <input type="file" name="files[]" style="width: 100%" accept="image/jpeg, image/jpg, image/png, image/gif, image/svg+xml">
                                             </div>
@@ -139,7 +139,7 @@
                                     </div><!--end.profile-image-->
 
                                     <div class="profile-info">
-                                        <form id="dof" method="post" class="form-horizontal form-validate" role="form" target="hidden_frame" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate">
+                                        <form id="dof" th:action="@{/admin/test/college/update}" th:object="${college}" method="get" class="form-horizontal form-validate" role="form" target="hidden_frame" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate">
                                             <!-- 해당 회사 상세내용 아래 방법으로 코드 작성  -->
                                             <!-- <input type="hidden" name="idx" value="22645265">
                                             <input type="hidden" name="code" value="m20220929a41c742d48942">
@@ -154,7 +154,8 @@
                                                     <span class="text-danger">(필수)</span>
                                                 </label>
                                                 <div class="col-md-9">
-                                                    <input type="text" readonly="" required="required" name="uid" id="member_item_m20220929a41c742d48942" class="form-control" value="고려대학교" data-nick="slions1113@gmail.com" aria-required="true">
+                                                    <input type="text" th:value="*{collegeName}" required="required" name="uid" id="member_item_m20220929a41c742d48942" class="form-control" data-nick="slions1113@gmail.com" aria-required="true">
+                                                    <input type="hidden" class="collegeId" th:value="*{collegeId}">
                                                     <div class="form-control-line"></div>
                                                 </div>
                                             </div>
@@ -165,7 +166,7 @@
                                                         <span class="text-danger">(필수)</span>
                                                     </label>
                                                     <div class="col-md-9">
-                                                        <input type="text" autocomplete="off" required="" name="name" id="user_name" class="form-control" value="https://oku.korea.ac.kr" aria-required="true">
+                                                        <input type="text" th:value="*{collegeEmailDomain}" autocomplete="off" required="" name="name" id="user_name" class="form-control" aria-required="true">
                                                         <div class="form-control-line"></div>
                                                     </div>
                                                 </div>
@@ -187,7 +188,7 @@
                                             <div class="form-group margin-bottom-xxxl">
                                                 <label class="col-sm-3 control-label text-right margin-top-5">등록일</label>
                                                 <div class="col-sm-9">
-                                                    <p class="form-control-static">2022-09-29 00:00</p>
+                                                    <p class="form-control-static createdDate" th:text="${college.createdDate}"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -201,7 +202,7 @@
                                                 <div class="form-control-static col-sm-9">
                                                     <div class="row margin-bottom-12">
                                                         <span style="display:inline-block;" class="col-xs-3">유저수</span>
-                                                        <p>0</p>
+                                                        <p th:text="${count}"></p>
                                                     </div>
 
                                                 </div>
@@ -262,6 +263,13 @@
             let url = e.target.result;
             $(".company").attr("src", url);
         }
+    });
+
+    $(".createdDate").ready(function(){
+        $(".createdDate").bind("click", function(){
+            $(this).html($(this).text().slice(0, 10));
+        });
+        $(".createdDate").trigger("click");
     });
 
 

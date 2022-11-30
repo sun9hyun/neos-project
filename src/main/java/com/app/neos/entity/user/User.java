@@ -80,6 +80,40 @@ public class User extends Period {
 
     //    대학교
 
+    public void updateNeosPower(int power){
+       UserNeosPower userNeosPower = this.userNeosPower;
+       userNeosPower.setUserNeosPowerAbility(power);
+       this.userNeosPower = userNeosPower;
+    }
+
+    public boolean levelUpCheck(){
+       return this.userNeosPower.getUserNeosPowerAbility() % 100 == 0;
+    }
+
+    public void levelUp(){
+        int levelUpSection = 0;
+        int realLevel = 0;
+        if(levelUpCheck()){
+            levelUpSection = this.userNeosPower.getUserNeosPowerAbility() / 100;
+            realLevel = levelUpSection+1;
+            this.userNeosPower.setUserNeosPowerLevel(realLevel);
+            this.userNeosPower.setUserNeosBadge("/images/fix/neosLevel"+realLevel+".png");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void updateCertify(UserDTO userDTO){
         this.userCollegeCertify = userDTO.getUserCollegeCertify();

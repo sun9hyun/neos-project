@@ -84,7 +84,8 @@ public class UserDTO {
     }
 
     @QueryProjection
-    public UserDTO(String userNickName, String userOAuthId, String userOAuthEmail, String userCollegeEmail, String userPhoneNumber, String userCollegeCertify, Integer userCollegeYear, UserCollegeMajor userCollegeMajor, String userNeosBadge, Integer userNeosPowerLevel, Integer userNeosPowerAbility, Integer userNeosPoint, Integer userChattingPoint, String userO2o, String userCity, String userDay, String userTime, String userMbtiName, String userMbtiColor, String userIntroduce, String userFile, Long collegeId, String collegeCity, String collegeName, String collegeLogoFile, String collegeEmailDomain) {
+    public UserDTO(Long userId, String userNickName, String userOAuthId, String userOAuthEmail, String userCollegeEmail, String userPhoneNumber, String userCollegeCertify, Integer userCollegeYear, UserCollegeMajor userCollegeMajor, String userNeosBadge, Integer userNeosPowerLevel, Integer userNeosPowerAbility, Integer userNeosPoint, Integer userChattingPoint, String userO2o, String userCity, String userDay, String userTime, String userMbtiName, String userMbtiColor, String userIntroduce, String userFile, Long collegeId, String collegeCity, String collegeName, String collegeLogoFile, String collegeEmailDomain) {
+        this.userId = userId;
         this.userNickName = userNickName;
         this.userOAuthId = userOAuthId;
         this.userOAuthEmail = userOAuthEmail;

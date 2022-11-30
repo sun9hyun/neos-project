@@ -63,6 +63,7 @@ public class UserEntityTest {
 
 
         User user1 = userDTO.toEntity();
+        user1.changeCollege(collegeRepository.findById(2l).get());
 
         userRepository.save(user1);
 
@@ -178,5 +179,22 @@ public class UserEntityTest {
     @Test
     public void loginDeniedTest(){
         assertThat(loginService.login("sd")).isEqualTo(null);
+    }
+
+    @Test
+    public void updateTest2(){
+        userRepository.findByUserOAuthId("2546432919k").get().updateNeosPower(50);
+    }
+
+    @Test
+    public void updateTest3(){
+        User user = userRepository.findByUserOAuthId("2546432919k").get();
+        user.updateNeosPower(user.getUserNeosPower().getUserNeosPowerAbility()+10);
+        log.info(userCustomRepository.findByOauthId("2546432919k").toString());
+    }
+
+    @Test
+    public void findByIdTest2(){
+        log.info(userCustomRepository.findById(4l).toString());
     }
 }

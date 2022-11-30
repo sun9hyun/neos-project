@@ -11,10 +11,16 @@ import java.util.List;
 public interface UserCustomRepository {
     public Page<User> findAllPage(Pageable pageable);
 
+
+
     public List<User> findAllSearch(Search search);
 
     public List<UserDTO> findAllByOauthId(String oauthId);
 
     public UserDTO findByOauthId(String oauthId);
+
+    public UserDTO findNoCollegeById(Long userId);
+
+    public UserDTO findById(Long userId);
 
 }

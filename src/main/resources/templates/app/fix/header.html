@@ -39,6 +39,8 @@
             <div class="loginLogout">
                 <div class="newDot">
                     <div class="redDot"></div>
+                    <input type="hidden" name="userId" id="userId" th:value="${session.loginUser}">
+                    <input type="hidden" id="userOauthId">
                 </div>
                 <div class="searchWrap">
                     <a class="searchIc"><span>검색</span>
@@ -52,7 +54,7 @@
                     <span>모임 or 스토리 생성</span>
                     <img class="mobileBuild" src="https://letspl.me/assets/images/ic-project-new.png" alt="모임/스토리 만들기">
                 </a>
-                <div class="profile" onclick="hoverShow()">
+                <div class="profile" onclick="show()">
                     <img
                             src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png">
                 </div>
@@ -60,23 +62,23 @@
                 <!--  팝업창  -->
                 <div class="hoverMenu ">
                     <div class="profileSummary clearfix">
-                        <div class="left prifileInfo"><a href="/people/sun9hyun"><img loading="lazy"
+                        <div class="left prifileInfo"><a href="/people/sun9hyun"><img id="userProfileImg"
                                                                                       src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png"></a>
                         </div>
                         <div class="right idInfo">
                             <div class="lvAndLogout">
-                                <div class="lv"><img loading="lazy" class="userLv"
+                                <div class="lv"><img  class="userLv" id = "userLevel"
                                                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
-                                                     alt="렛플렙"></div><a class="logOut">로그아웃</a>
+                                                     alt="렛플렙"></div><a class="logOut" th:href="@{/logout/logout}">로그아웃</a>
                             </div><a href="/people/sun9hyun">
-                            <p class="userId">sun9hyun</p>
+                            <p class="userId" id="userName">sun9hyun</p>
                         </a><a href="/people/sun9hyun">
-                            <p class="positionTxt"><span>본캐 : 웹 서버</span><span>/&nbsp;초심자</span></p>
+                            <p class="positionTxt"><span>본캐 :&nbsp</span><span id="userCollege"></span></p>
                         </a>
                         </div>
                     </div>
                     <div class="pointWrap">
-                        <div class="pointTxt"><span>8 P</span></div><button><span>충전</span></button>
+                        <div class="pointTxt"><span id="neosPoint">8 </span><span>&nbsp P</span></div><button><span>충전</span></button>
                     </div>
                     <div class="navLIst">
                         <div><a class="popClick" href="/people/sun9hyun">내 프로필</a></div>
@@ -136,6 +138,7 @@
             <a class="signupBtn" style="cursor: pointer"></a>
         </div>
     </div>
+
 </header>
 </body>
 </html>

@@ -78,9 +78,15 @@ public class JoinController {
     }
 
     @PostMapping("/join")
-    public RedirectView joinOk(UserDTO userDTO){
+    public RedirectView joinOk(UserDTO userDTO,RedirectAttributes redirectAttributes){
         joinService.join(userDTO);
-        return new RedirectView("/main/main?join=true");
+        if(userDTO.getUserCollegeCertify().equals("noNeed")){
+            return new RedirectView("/main/main?join=true");
+        }
+        redirectAttributes.addAttribute("token", userDTO.getUserOAuthId());
+        redirectAttributes.addAttribute("email",userDTO.getUserCollegeEmail());
+        return new RedirectView("/send/email");
+
     }
 
 

@@ -8,6 +8,7 @@ import com.app.neos.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Slf4j
@@ -38,6 +39,12 @@ public class JoinService {
 
     public boolean duplicateId(String userOauthId){
         return userRepository.findAllByUserOAuthId(userOauthId).size() != 0;
+    }
+
+    @Transactional
+    public void certify(String token){
+        User user = userRepository.findByUserOAuthId(token).get();
+        user.certifyOk("true");
     }
 
 }

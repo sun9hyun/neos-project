@@ -43,6 +43,9 @@ public class LoginController {
             if(userDTO == null){
                 return new RedirectView("/main/main?login=false");
             }else {
+                if(userDTO.getUserCollegeCertify().equals("false")){
+                    return new RedirectView("/main/main?login=need");
+                }
                 session.setAttribute("loginUser",userDTO.getUserId());
                 session.setAttribute("college",userDTO.getCollegeId());
             }

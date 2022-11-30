@@ -95,7 +95,27 @@ public class User extends Period {
         int realLevel = 0;
         if(levelUpCheck()){
             levelUpSection = this.userNeosPower.getUserNeosPowerAbility() / 100;
-            realLevel = levelUpSection+1;
+           if(levelUpSection==0){
+               realLevel=1;
+           }else if(levelUpSection==1){
+               realLevel=2;
+           }else if(levelUpSection==2){
+               realLevel=3;
+           }else if(levelUpSection==3){
+               realLevel=4;
+           }else if(levelUpSection==5){
+               realLevel=5;
+           }else if(levelUpSection==7){
+               realLevel=6;
+           }else if(levelUpSection==9){
+               realLevel=7;
+           }else if(levelUpSection==12){
+               realLevel=8;
+           }else if(levelUpSection==14){
+               realLevel=9;
+           }else if(levelUpSection==20){
+               realLevel=10;
+           }
             this.userNeosPower.setUserNeosPowerLevel(realLevel);
             this.userNeosPower.setUserNeosBadge("/images/fix/neosLevel"+realLevel+".png");
         }
@@ -110,7 +130,9 @@ public class User extends Period {
 
 
 
-
+    public void certifyOk(String certify){
+       this.userCollegeCertify = certify;
+    }
 
 
 

@@ -29,10 +29,10 @@ public class CollegeEntityTest {
     public void saveTest(){
         CollegeDTO collegeDTO = new CollegeDTO();
 
-        collegeDTO.setCollegeCity("서울특별시");
-        collegeDTO.setCollegeName("고려대학교");
-        collegeDTO.setCollegeLogoFile("대학 이미지");
-        collegeDTO.setCollegeEmailDomain("www.naver.com");
+        collegeDTO.setCollegeCity("경상남도");
+        collegeDTO.setCollegeName("문성대학교");
+        collegeDTO.setCollegeLogoFile("/images/college/changwonCollege.jpg");
+        collegeDTO.setCollegeEmailDomain("www.changwon.ac.kr");
 
         College college = collegeDTO.toEntity();
 

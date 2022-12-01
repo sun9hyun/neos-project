@@ -6,6 +6,7 @@ import com.app.neos.service.join.KaKaoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +31,9 @@ public class JoinController {
 
     /*회원 가입 페이지*/
     @GetMapping("/join-page-details")
-    public String joinPage(UserDTO userDTO){
-
+    public String joinPage(UserDTO userDTO, Model model){
+        model.addAttribute("collegeCityList",joinService.getCollegeCityList());
+        model.addAttribute("userMajorList",joinService.getMajorList());
         return "app/loginAndJoin/joinPage";
     }
 

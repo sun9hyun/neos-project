@@ -3,6 +3,7 @@ package com.app.neos.controller.join;
 
 import com.app.neos.service.join.EmailService;
 import com.app.neos.service.join.JoinService;
+import com.app.neos.type.user.UserCollegeMajor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -42,5 +43,10 @@ public class EmailController {
         log.info(token);
         joinService.certify(token);
         return new RedirectView("/main/main?certify=true");
+    }
+
+    @GetMapping("test")
+    public void test(UserCollegeMajor grade){
+        log.info(grade.toString());
     }
 }

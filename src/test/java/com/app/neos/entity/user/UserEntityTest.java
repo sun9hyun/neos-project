@@ -36,6 +36,7 @@ public class UserEntityTest {
     UserCustomRepository userCustomRepository;
     @Autowired
     LoginService loginService;
+
     @Test
     public void collegeSave(){
         College college = College.builder().collegeCity("서울").collegeLogoFile("1").collegeEmailDomain("1").collegeName("서울대학교").build();
@@ -49,7 +50,6 @@ public class UserEntityTest {
         userDTO.setUserNickName("박종우");
         userDTO.setUserOAuthId("22222");
         userDTO.setUserOAuthEmail("oauthemail@emailasd.com");
-        userDTO.setUserCollegeMajor(UserCollegeMajor.MATH);
         userDTO.setUserCollegeYear(4);
         userDTO.setUserCollegeEmail("email@eamil.com");
         userDTO.setUserCollegeCertify("true");
@@ -76,7 +76,6 @@ public class UserEntityTest {
         userDTO.setUserNickName("박종dd우");
         userDTO.setUserOAuthId("22222");
         userDTO.setUserOAuthEmail("oauthemail@emailasd.com");
-        userDTO.setUserCollegeMajor(UserCollegeMajor.MATH);
         userDTO.setUserCollegeYear(4);
         userDTO.setUserCollegeEmail("email@eamil.com");
         userDTO.setUserCollegeCertify("true");

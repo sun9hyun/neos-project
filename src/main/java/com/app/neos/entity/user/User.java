@@ -95,25 +95,25 @@ public class User extends Period {
         int realLevel = 0;
         if(levelUpCheck()){
             levelUpSection = this.userNeosPower.getUserNeosPowerAbility() / 100;
-           if(levelUpSection==0){
+           if(levelUpSection>=0&&levelUpSection<1){
                realLevel=1;
-           }else if(levelUpSection==1){
+           }else if(levelUpSection>=1&&levelUpSection<2){
                realLevel=2;
-           }else if(levelUpSection==2){
+           }else if(levelUpSection>=2&&levelUpSection<3){
                realLevel=3;
-           }else if(levelUpSection==3){
+           }else if(levelUpSection>=3&&levelUpSection<5){
                realLevel=4;
-           }else if(levelUpSection==5){
+           }else if(levelUpSection>=5&&levelUpSection<7){
                realLevel=5;
-           }else if(levelUpSection==7){
+           }else if(levelUpSection>=7&&levelUpSection<9){
                realLevel=6;
-           }else if(levelUpSection==9){
+           }else if(levelUpSection>=9&&levelUpSection<12){
                realLevel=7;
-           }else if(levelUpSection==12){
+           }else if(levelUpSection>=12&&levelUpSection<14){
                realLevel=8;
-           }else if(levelUpSection==14){
+           }else if(levelUpSection>=14&&levelUpSection<20){
                realLevel=9;
-           }else if(levelUpSection==20){
+           }else if(levelUpSection>=20){
                realLevel=10;
            }
             this.userNeosPower.setUserNeosPowerLevel(realLevel);

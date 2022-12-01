@@ -2,16 +2,19 @@
 $(function(){
     if($("#step1_radio").is(":checked")){
         $(".cashCheck").attr("disabled", true);
+        $(".storeStatus").val("FREE")
     };
 
     $("#step1_radio").change(function(){
         if($("#step1_radio").is(":checked")){
             $(".cashCheck").attr("disabled", true);
+            $(".storeStatus").val("FREE")
         };
     });
     $("#step2_radio").change(function(){
         if($("#step2_radio").is(":checked")){
             $(".cashCheck").attr("disabled", false);
+            $(".storeStatus").val("PAY")
         };
     });
 });

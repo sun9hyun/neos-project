@@ -70,6 +70,7 @@ $member.on("change", function() {
         $('.meeting').removeAttr('disabled');
     }else{
         $('.meeting').attr('disabled',true);
+        $('.meetingPlace').css("display", "none");
     }
 });
 
@@ -80,6 +81,10 @@ $meeting.on("change", function() {
         $('.meetingPlace').css("display", "none");
     }
 });
+
+if($member.val() == "01" && $meeting.val() == "02"){
+    $('.meetingPlace').css("display", "flex");
+}
 
 // 진행 중 할일 지도 보이기
 let placeCheck = false;
@@ -137,7 +142,7 @@ $(".statusCircle").on("click",function () {
 })
 
 // 목표 등록 할 때,
-$(".grayBtn").on("click",function () {
+$(".addTaskButton").on("click",function () {
     if($(".mileStoneTit").val().length < 1){ // 제목이 작성되지 않은 경우
         $(".modalWrapOpen").show();
         $(".modal4").css('display','inline-block');

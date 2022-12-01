@@ -23,11 +23,13 @@
             </div>
         </div>
         <div class="buildProjectContents storyContentsWrap">
+            <form method="post" th:action="@{/store/store-create}" th:object="${storeDTO}" id="storeForm" name="storeForm" >
+
             <div class="answer purpose">
                 <p class="subTit">유형</p>
                 <div class="checkWrap">
                     <label for="step1_radio" class="checkBox">
-                        <span class="txt">무료🔓</span>
+                        <span class="txt" >무료🔓</span>
                         <input type="radio" id="step1_radio" name="free_radio" value="01" checked class="checkFree">
                         <span class="checkmark"></span>
                     </label>
@@ -36,12 +38,13 @@
                         <input type="radio" id="step2_radio" name="free_radio" value="02" class="checkCash">
                         <span class="checkmark"></span>
                     </label>
-                    <input class="cashCheck" type="text" placeholder="포인트를 입력해주세요 (숫자만)" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); disabled">
+                    <input type="hidden" th:field="*{storeStatus}" id="storeStatus" class="storeStatus">
+                    <input class="cashCheck" th:field="*{storePoint}" type="text" placeholder="포인트를 입력해주세요 (숫자만)" autocomplete="off" value="0" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); disabled">
                 </div>
             </div>
             <div class="answer titWrap">
                 <p class="subTit">제목</p>
-                <input class="textInput" type="text" placeholder="최대 30자까지 입력가능합니다" maxlength="30" value="">
+                <input  class="textInput" th:field="*{storeTitle}" type="text" placeholder="최대 30자까지 입력가능합니다" maxlength="30" value="">
             </div>
             <div class="answer">
                 <div class="thumbnailWrap">
@@ -86,12 +89,13 @@
             </div>
 
             <form method="post">
-                <textarea id="summernote" name="editordata" placeholder=""> </textarea>
+                <textarea id="summernote" class="storeContent" th:field="*{storeContent}" placeholder=""> </textarea>
             </form>
 
             <div class="btnWrap">
-                <div><button class="pinkBtn">게시</button></div>
+                <div><button type="button" class="pinkBtn" onclick="submit()">게시</button></div>
             </div>
+            </form>
         </div>
     </section>
 
@@ -101,22 +105,68 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script>
+    console.log("들어옴ㄴ")
+
+    // $(document).ready(function() {
+    //     $('#summernote').summernote({
+    //         // airMode: true,
+    //         callbacks: {
+    //             onChange: function(contents, $editable) {
+    //                 editorText = f_SkipTags_html(contents);
+    //                 editorText = editorText.replace(/\s/gi,""); //줄바꿈 제거
+    //                 editorText = editorText.replace(/&nbsp;/gi, ""); //공백제거
+    //                 $("#letter-length").text(editorText.length);
+    //             },
+    //             onImageUpload : function(files, editor){
+    //                 console.log(files);
+    //             }
+    //         }
+    //     });
+    // });
+
     $(document).ready(function() {
+
         $('#summernote').summernote({
-            // airMode: true,
-            callbacks: {
-                onChange: function(contents, $editable) {
-                    editorText = f_SkipTags_html(contents);
-                    editorText = editorText.replace(/\s/gi,""); //줄바꿈 제거
-                    editorText = editorText.replace(/&nbsp;/gi, ""); //공백제거
-                    $("#letter-length").text(editorText.length);
+            height: 600,
+            lang: "ko-KR",
+            toolbar: [
+                // [groupName, [list of button]]
+                ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
+                ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+                ['color', ['forecolor','color']],
+                ['table', ['table']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['view', ['fullscreen']]
+            ],
+            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+            fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+            callbacks: {   //여기 부분이 이미지를 첨부하는 부분
+                onImageUpload : function(files) {
+                    uploadSummernoteImageFile(files[0],this);
                 },
-                onImageUpload : function(files, editor){
-                    console.log(files);
+                onPaste: function (e) {
+                    var clipboardData = e.originalEvent.clipboardData;
+                    if (clipboardData && clipboardData.items && clipboardData.items.length) {
+                        var item = clipboardData.items[0];
+                        if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
+                            e.preventDefault();
+                        }
+                    }
                 }
             }
         });
     });
+
+    function submit() {
+        console.log($(".storeStatus").text());
+        console.log($(".cashCheck").val());
+        console.log($(".textInput").val());
+        console.log($(".storeContent").val());
+        storeForm.submit();
+    }
+
 
 </script>
 <script src="/js/store/storeCreate.js"></script>

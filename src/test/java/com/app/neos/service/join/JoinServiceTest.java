@@ -126,4 +126,9 @@ public class JoinServiceTest {
     public void findByDTO(){
         log.info(userCustomRepository.findById(22l).toString());
     }
+
+    @Test
+    public void findTest(){
+        log.info(userCustomRepository.findNoCollegeById(30l).toString());
+    }
 }

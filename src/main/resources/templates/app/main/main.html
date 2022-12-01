@@ -29,10 +29,18 @@
             = new URLSearchParams(window.location.search);
         if(urlParams.has('check')){
             alert("이미 회원가입된 회원입니다.")
-        } else if(urlParams.get("login")=='false'){
+        }
+        //로그인 리턴값 수정
+        else if(urlParams.get("login")=='KakaoFalse'){
             alert("회원가입을 먼저 진행해 주세요.")
             location.href="https://kauth.kakao.com/oauth/authorize?client_id=e29231bc42552a6803c663f6ba7bad63&redirect_uri=http://localhost:10718/join/kakao&response_type=code"
-        }else if(urlParams.get("login")=='true'){
+        }
+        else if(urlParams.get("login")=='NaverFalse'){
+            alert("회원가입을 먼저 진행해 주세요.")
+            location.href="https://nid.naver.com/oauth2.0/authorize?client_id=mCOGR2PgjWmMz5WHuVwE&response_type=code&redirect_uri=http://localhost:10718/join/naver/navercallback"
+        }
+
+        else if(urlParams.get("login")=='true'){
             alert("로그인 성공")
         }else if(urlParams.get("join")=='true'){
             alert("회원가입 성공")

@@ -5,7 +5,13 @@ $checkBtn.on("click",function () {
     var noCheckedTest = `<input type="hidden" class="certify_1j" name="userCollegeCertify" value="false">`
     if(checked){
         $(this).parent().find(".certify_1j").remove();
+        $("#location_1j").children().eq(0).attr("selected", "selected");
+        $("#collegeName").children().eq(0).attr("selected", "selected");
+        $("#collegeMajor").children().eq(0).attr("selected", "selected");
+        $("#collegeGrade").children().eq(0).attr("selected", "selected");
+        $("#collegeId_1j").remove();
         $(this).after(checkedTest)
+
     }else{
         $(this).parent().find(".certify_1j").remove();
         $(this).after(noCheckedTest)

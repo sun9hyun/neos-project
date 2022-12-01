@@ -5,9 +5,11 @@
     <title>NEOS | 내 프로필</title>
     <link rel="stylesheet" href="/css/inquiry/inquiry.css">
     <link rel="stylesheet" href="/css/admin/modal.css">
-    <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
     <link rel="stylesheet" href="/css/admin/modal.css">
+    <link rel="stylesheet" href="/css/fix/chatting.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/loginHeader.css">
 
 
 </head>
@@ -32,12 +34,9 @@
                         <div class="userTag" style="background-color:#50a9ab;border:1px solid#50a9ab">
                             <span style="cursor: pointer">ENTP</span>
                         </div>
-                        <div class="modifyBtn" style="cursor: pointer"><img src="https://letspl.me/assets/images/ic-profile-modify.png"
-                                                                            alt="수정"></div>
+                        <div class="modifyBtn" style="cursor: pointer"></div>
                     </div>
-                    <h2 class="tit"><img class="userLv"
-                                         src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png"
-                                         alt="렛플렙">&nbsp;
+                    <h2 class="tit">
                         <!-- -->민쇼니
                     </h2>
                     <p class="introduction">마지막 로그인 :
@@ -48,7 +47,7 @@
                         초대</button></div>
                 </div>
                 <div class="myTabWrapContainer">
-                    <div class="myTabWrap"><a class="">정보</a><a class="active">문의(1)</a>
+                    <div class="myTabWrap"><a class="">정보</a><a class="active">문의( 1 )</a>
                     </div>
                 </div>
                 <section class="grayBg secretNote">
@@ -123,9 +122,16 @@
                 class="btn redBtn" style="font-size: 12px;line-height: 3;">예</button></div>
     </div>
 </div>
+
+<div th:replace="/app/fix/chattingAll.html :: chattingAll"></div>
+<div th:replace="/app/neosUser/modalList.html :: modalSpace"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="/js/inquiry/inquirys.js"></script>
+<script src="/js/fix/chatting.js"></script>
+<script src="/js/fix/login.js"></script>
+<script src="/js/fix/header.js"></script>
+
 <script>
 
     const $deleteModal = $(".modalWrapOpen");

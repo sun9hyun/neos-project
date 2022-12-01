@@ -525,7 +525,8 @@
     </div>
     <div class="peopleGrid">
         <ul class="peopleGridList">
-            <li class="letspler_Re"><img loading="lazy" class="newMark"
+            <th:block th:each="user:${users}">
+            <li class="letspler_Re" th:object="${user}"><img loading="lazy" class="newMark"
                                          src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">
                 <div class="top">
                     <div class="profilePicWrap">
@@ -537,9 +538,9 @@
                     <div class="profileTxt">
                         <div class="idWrap"><img loading="lazy" class="userLv"
                                                  src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png"
-                                                 alt="렛플렙">
-                            <div class="userName">
-                                <span class="name">민쇼니</span>
+                                                 alt="렛플렙" >
+                            <div class="userName" >
+                                <span class="name" th:text="*{userNickName}">민쇼니</span>
                                 <ul class="idHoverMenu">
                                     <li><a class="detail">프로필 상세</a></li>
                                     <li><a class="chat">1:1대화</a></li>
@@ -562,10 +563,13 @@
                 <div class="bottom">
                     <ul class="userFavorite">
                         <li>
+                            <h3 th:if="*{collegeName != 'null'} "><span>[대학]&nbsp;<span class="university" th:text="*{collegeName}"> 경상대학교</span></span><span class="grade"th:text="*{userCollegeYear}">4학년</span></h3>
                             <h3><span>[대학]&nbsp;<span class="university"> 경상대학교</span></span><span class="grade">4학년</span></h3>
+                            <h3 th:unless="*{collegeName  == 'null'}"><span>[대학]&nbsp;<span class="university"> 학생</span>  <span class="grade" th:text=""></span> </span></h3>
                         </li>
                         <li>
-                            <h3><span>[전공]&nbsp;<span class="major"> 미입력</span></span><span></span></h3>
+                            <h3 th:if="*{userCollegeMajor != 'null'}"><span>[전공]&nbsp;<span class="major" th:text="*{userCollegeMajor}"> 미입력</span></span><span></span></h3>
+                            <h3 th:unless="*{userCollegeMajor == 'null'}"><span>[전공]&nbsp;<span class="major" th:text="*{userCollegeMajor}"> 미입력</span></span><span></span></h3>
                         </li>
                     </ul>
                     <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
@@ -577,1037 +581,1038 @@
                     </a>
                 </div>
             </li>
-            <li class="letspler_Re"><img loading="lazy" class="newMark"
-                                         src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
-                                                     alt="박종우"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">박종우</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                        alt="실명인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>3</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>0</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 경상대학교</span></span><span> 3학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 사회복지학전공</span></span><span></span></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
-                    <div class="userInfoTagWrap"></div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
-            <li class="letspler_Re"><img loading="lazy" class="newMark"
-                                         src="https://letspl.me/assets/images/ic-badge_project_update.png"
-                                         alt="업데이트이력이 있는 렛플인">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
-                                                     alt="추추추"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_8.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">추추추</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-gray.png"
-                                                        alt="휴대폰인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>1</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>3</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 나사렛대학교</span></span><span> 1학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 물리치료학과</span></span><span></span></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
-                    <div class="userInfoTagWrap"></div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
+            </th:block>
+<!--            <li class="letspler_Re"><img loading="lazy" class="newMark"-->
+<!--                                         src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"-->
+<!--                                                     alt="박종우"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">박종우</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-red.png"-->
+<!--                                                        alt="실명인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>3</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>0</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 경상대학교</span></span><span> 3학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 사회복지학전공</span></span><span></span></h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>-->
+<!--                    <div class="userInfoTagWrap"></div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="letspler_Re"><img loading="lazy" class="newMark"-->
+<!--                                         src="https://letspl.me/assets/images/ic-badge_project_update.png"-->
+<!--                                         alt="업데이트이력이 있는 렛플인">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"-->
+<!--                                                     alt="추추추"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_8.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">추추추</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-gray.png"-->
+<!--                                                        alt="휴대폰인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>1</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>3</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 나사렛대학교</span></span><span> 1학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 물리치료학과</span></span><span></span></h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>-->
+<!--                    <div class="userInfoTagWrap"></div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
 
 
-            <li class="letspler_Re"><img loading="lazy" class="newMark"
-                                         src="https://letspl.me/assets/images/ic-badge_project_update.png"
-                                         alt="업데이트이력이 있는 렛플인">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img
-                                src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"
-                                alt="ROSA"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">ROSA</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                        alt="실명인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>1</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>2</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 서강대학교</span></span><span> 4학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 텍스트디자인학과</span></span></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
-                    <div class="userInfoTagWrap"></div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
-            <li class="letspler_Re"><img loading="lazy" class="newMark"
-                                         src="https://letspl.me/assets/images/ic-badge_project_update.png"
-                                         alt="업데이트이력이 있는 렛플인">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
-                                                     alt="손희성"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">손희성</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                        alt="실명인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>1</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>0</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 인하대학교</span></span><span> 2학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 수학교육학과</span></span><!--<span>초보</span>--></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
-                    <div class="userInfoTagWrap">
-                        <div>
-                            <h3>#BACKEND</h3>
-                        </div>
-                        <div>
-                            <h3>#RUST</h3>
-                        </div>
-                    </div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
+<!--            <li class="letspler_Re"><img loading="lazy" class="newMark"-->
+<!--                                         src="https://letspl.me/assets/images/ic-badge_project_update.png"-->
+<!--                                         alt="업데이트이력이 있는 렛플인">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img-->
+<!--                                src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"-->
+<!--                                alt="ROSA"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">ROSA</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-red.png"-->
+<!--                                                        alt="실명인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>1</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>2</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 서강대학교</span></span><span> 4학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 텍스트디자인학과</span></span></h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>-->
+<!--                    <div class="userInfoTagWrap"></div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="letspler_Re"><img loading="lazy" class="newMark"-->
+<!--                                         src="https://letspl.me/assets/images/ic-badge_project_update.png"-->
+<!--                                         alt="업데이트이력이 있는 렛플인">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"-->
+<!--                                                     alt="손희성"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">손희성</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-red.png"-->
+<!--                                                        alt="실명인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>1</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>0</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 인하대학교</span></span><span> 2학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 수학교육학과</span></span>&lt;!&ndash;<span>초보</span>&ndash;&gt;</h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>-->
+<!--                    <div class="userInfoTagWrap">-->
+<!--                        <div>-->
+<!--                            <h3>#BACKEND</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#RUST</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
 
 
-            <li class="letspler_Re"><img loading="lazy" class="newMark"
-                                         src="https://letspl.me/assets/images/ic-badge_project_update.png"
-                                         alt="업데이트이력이 있는 렛플인">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img
-                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/undefined/images/90E02248-2776-4AC5-88EE-476D9308FD5B.png"
-                                alt="지훈씨"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">지훈씨</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                        alt="실명인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>1</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>0</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 서울외국어대학교</span></span><span> 1학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 영어학과</span></span><!--<span>초보</span>--></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
-                    <div class="userInfoTagWrap">
-                        <div>
-                            <h3>#영어가능</h3>
-                        </div>
-                        <div>
-                            <h3>#스타트업</h3>
-                        </div>
-                        <div>
-                            <h3>#유학생</h3>
-                        </div>
-                        <div>
-                            <h3>#CEO</h3>
-                        </div>
-                        <div>
-                            <h3>#창업</h3>
-                        </div>
-                    </div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
-            <li class="letspler_Re">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img
-                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/3/images/icon.png"
-                                alt="pp391zzk"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_21.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">pp391zzk</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                        alt="실명인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>3</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>14</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 서울사이버대학교</span></span><span> 3학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 정보학과</span></span><!--<span>중수</span>--></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
-                    <div class="userInfoTagWrap">
-                        <div>
-                            <h3>#기획</h3>
-                        </div>
-                        <div>
-                            <h3>#프로젝트매니징</h3>
-                        </div>
-                        <div>
-                            <h3>#모바일앱기획</h3>
-                        </div>
-                        <div>
-                            <h3>#와라와라편의점</h3>
-                        </div>
-                        <div>
-                            <h3>#크로스플랫폼</h3>
-                        </div>
-                    </div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
-            <li class="letspler_Re">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
-                                                     alt="Alex"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_11.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">Alex</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                        alt="실명인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>1</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>3</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 금오공대학교</span></span><span> 3학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 컴퓨터공학과</span></span><span></span></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>3</span>개 있습니다</p>
-                    <div class="userInfoTagWrap">
-                        <div>
-                            <h3>#끈기</h3>
-                        </div>
-                        <div>
-                            <h3>#집중력</h3>
-                        </div>
-                        <div>
-                            <h3>#체력</h3>
-                        </div>
-                    </div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
-            <li class="letspler_Re">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img
-                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/undefined/images/rn_image_picker_lib_temp_8f98b3f1-e6ac-498b-bca9-06eed7e31ae3.jpg"
-                                alt="태리님"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_9.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">태리님</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                        alt="실명인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>1</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>1</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 경상대학교</span></span><span> 3학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 역사학과</span></span><span></span></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
-                    <div class="userInfoTagWrap">
-                        <div>
-                            <h3>#사업기획</h3>
-                        </div>
-                    </div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
-            <li class="letspler_Re">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img
-                                src="https://k.kakaocdn.net/dn/7ZJ2p/btrCwaZdmw8/5h3vTtKUE3Lm2QRWQ3Q761/img_640x640.jpg"
-                                alt="김기명"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_7.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">김기명</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                        alt="실명인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>1</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>2</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 남해도립대학교</span></span><span> 1학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 호텔조리학과</span></span><span></span></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
-                    <div class="userInfoTagWrap">
-                        <div>
-                            <h3>#영업 #초보 #렛플</h3>
-                        </div>
-                    </div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
-            <li class="letspler_Re">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
-                                                     alt="Dokyung"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_7.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">Dokyung</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-gray.png"
-                                                        alt="휴대폰인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>4</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>1</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 나사렛대학교</span></span><span> 2학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 전자공학과</span></span><span></span></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
-                    <div class="userInfoTagWrap"></div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
-            <li class="letspler_Re">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
-                                                     alt="아무무"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_7.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">아무무</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                        alt="실명인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>3</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>0</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 순천대학교</span></span><span> 3학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 사회복지학과</span></span><span></span></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
-                    <div class="userInfoTagWrap">
-                        <div>
-                            <h3>#FLUTTER</h3>
-                        </div>
-                        <div>
-                            <h3>#ANDROID</h3>
-                        </div>
-                        <div>
-                            <h3>#웹앱</h3>
-                        </div>
-                        <div>
-                            <h3>#앱개발자</h3>
-                        </div>
-                        <div>
-                            <h3>#대기업</h3>
-                        </div>
-                    </div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
-            <li class="letspler_Re">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img
-                                src="https://k.kakaocdn.net/dn/bcyvx7/btrMtGBWn0B/EVIedv2DoHzbBIdFvytAgK/img_640x640.jpg"
-                                alt="graycrisp"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">graycrisp</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-gray.png"
-                                                        alt="휴대폰인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>1</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>2</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 순천향대학교</span></span><span> 3학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 유아교육과</span></span><span></span></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
-                    <div class="userInfoTagWrap">
-                        <div>
-                            <h3>#모션그래픽</h3>
-                        </div>
-                        <div>
-                            <h3>#프로덕트디자이너</h3>
-                        </div>
-                        <div>
-                            <h3>#인터렉션</h3>
-                        </div>
-                        <div>
-                            <h3>#비주얼디자인</h3>
-                        </div>
-                        <div>
-                            <h3>#UXUI</h3>
-                        </div>
-                    </div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
-            <li class="letspler_Re">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img
-                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/1884/images/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-31%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%209.51.00.png"
-                                alt="줘니이"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">줘니이</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                        alt="실명인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>1</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>1</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 진주교육대학교</span></span><span> 4학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 교육학과</span></span><span></span></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
-                    <div class="userInfoTagWrap">
-                        <div>
-                            <h3>#ux</h3>
-                        </div>
-                        <div>
-                            <h3>#ui</h3>
-                        </div>
-                        <div>
-                            <h3>#앱</h3>
-                        </div>
-                        <div>
-                            <h3>#디자인</h3>
-                        </div>
-                        <div>
-                            <h3>#사이드프로젝트</h3>
-                        </div>
-                    </div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
-            <li class="letspler_Re">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
-                                                     alt="madol"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">madol</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                        alt="실명인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>1</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>0</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 승강기대학교</span></span><span> 1학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 엘리베이터학과</span></span><span></span></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
-                    <div class="userInfoTagWrap">
-                        <div>
-                            <h3>#GOLANG</h3>
-                        </div>
-                        <div>
-                            <h3>#FLUTTER</h3>
-                        </div>
-                        <div>
-                            <h3>#PHP</h3>
-                        </div>
-                        <div>
-                            <h3>#AWS</h3>
-                        </div>
-                        <div>
-                            <h3>#MYSQL</h3>
-                        </div>
-                    </div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
-            <li class="letspler_Re">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
-                                                     alt="임마누엘"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">임마누엘</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-gray.png"
-                                                        alt="휴대폰인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>3</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>0</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 교통대학교</span></span><span> 3학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="university"> 사회복지학과</span></span><span></span></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
-                    <div class="userInfoTagWrap">
-                        <div>
-                            <h3>#UX</h3>
-                        </div>
-                        <div>
-                            <h3>#UI/UX기획</h3>
-                        </div>
-                    </div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
-            <li class="letspler_Re">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
-                                                     alt="아니그웃"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">아니그웃</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                        alt="실명인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>3</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>0</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 부경대학교</span></span><span> 3학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 경영학과</span></span><span></span></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
-                    <div class="userInfoTagWrap"></div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
-            <li class="letspler_Re">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
-                                                     alt="김민재0"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">김민재0</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                        alt="실명인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>3</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>0</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 진주보건대학교</span></span><span> 1학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 물리치료학과</span></span><span></span></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
-                    <div class="userInfoTagWrap"></div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
+<!--            <li class="letspler_Re"><img loading="lazy" class="newMark"-->
+<!--                                         src="https://letspl.me/assets/images/ic-badge_project_update.png"-->
+<!--                                         alt="업데이트이력이 있는 렛플인">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img-->
+<!--                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/undefined/images/90E02248-2776-4AC5-88EE-476D9308FD5B.png"-->
+<!--                                alt="지훈씨"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">지훈씨</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-red.png"-->
+<!--                                                        alt="실명인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>1</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>0</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 서울외국어대학교</span></span><span> 1학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 영어학과</span></span>&lt;!&ndash;<span>초보</span>&ndash;&gt;</h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>-->
+<!--                    <div class="userInfoTagWrap">-->
+<!--                        <div>-->
+<!--                            <h3>#영어가능</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#스타트업</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#유학생</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#CEO</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#창업</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="letspler_Re">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img-->
+<!--                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/3/images/icon.png"-->
+<!--                                alt="pp391zzk"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_21.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">pp391zzk</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-red.png"-->
+<!--                                                        alt="실명인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>3</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>14</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 서울사이버대학교</span></span><span> 3학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 정보학과</span></span>&lt;!&ndash;<span>중수</span>&ndash;&gt;</h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>-->
+<!--                    <div class="userInfoTagWrap">-->
+<!--                        <div>-->
+<!--                            <h3>#기획</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#프로젝트매니징</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#모바일앱기획</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#와라와라편의점</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#크로스플랫폼</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="letspler_Re">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"-->
+<!--                                                     alt="Alex"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_11.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">Alex</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-red.png"-->
+<!--                                                        alt="실명인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>1</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>3</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 금오공대학교</span></span><span> 3학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 컴퓨터공학과</span></span><span></span></h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>3</span>개 있습니다</p>-->
+<!--                    <div class="userInfoTagWrap">-->
+<!--                        <div>-->
+<!--                            <h3>#끈기</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#집중력</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#체력</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="letspler_Re">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img-->
+<!--                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/undefined/images/rn_image_picker_lib_temp_8f98b3f1-e6ac-498b-bca9-06eed7e31ae3.jpg"-->
+<!--                                alt="태리님"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_9.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">태리님</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-red.png"-->
+<!--                                                        alt="실명인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>1</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>1</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 경상대학교</span></span><span> 3학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 역사학과</span></span><span></span></h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>-->
+<!--                    <div class="userInfoTagWrap">-->
+<!--                        <div>-->
+<!--                            <h3>#사업기획</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="letspler_Re">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img-->
+<!--                                src="https://k.kakaocdn.net/dn/7ZJ2p/btrCwaZdmw8/5h3vTtKUE3Lm2QRWQ3Q761/img_640x640.jpg"-->
+<!--                                alt="김기명"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_7.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">김기명</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-red.png"-->
+<!--                                                        alt="실명인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>1</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>2</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 남해도립대학교</span></span><span> 1학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 호텔조리학과</span></span><span></span></h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>-->
+<!--                    <div class="userInfoTagWrap">-->
+<!--                        <div>-->
+<!--                            <h3>#영업 #초보 #렛플</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="letspler_Re">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"-->
+<!--                                                     alt="Dokyung"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_7.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">Dokyung</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-gray.png"-->
+<!--                                                        alt="휴대폰인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>4</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>1</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 나사렛대학교</span></span><span> 2학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 전자공학과</span></span><span></span></h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>-->
+<!--                    <div class="userInfoTagWrap"></div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="letspler_Re">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"-->
+<!--                                                     alt="아무무"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_7.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">아무무</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-red.png"-->
+<!--                                                        alt="실명인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>3</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>0</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 순천대학교</span></span><span> 3학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 사회복지학과</span></span><span></span></h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>-->
+<!--                    <div class="userInfoTagWrap">-->
+<!--                        <div>-->
+<!--                            <h3>#FLUTTER</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#ANDROID</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#웹앱</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#앱개발자</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#대기업</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="letspler_Re">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img-->
+<!--                                src="https://k.kakaocdn.net/dn/bcyvx7/btrMtGBWn0B/EVIedv2DoHzbBIdFvytAgK/img_640x640.jpg"-->
+<!--                                alt="graycrisp"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">graycrisp</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-gray.png"-->
+<!--                                                        alt="휴대폰인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>1</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>2</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 순천향대학교</span></span><span> 3학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 유아교육과</span></span><span></span></h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>-->
+<!--                    <div class="userInfoTagWrap">-->
+<!--                        <div>-->
+<!--                            <h3>#모션그래픽</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#프로덕트디자이너</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#인터렉션</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#비주얼디자인</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#UXUI</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="letspler_Re">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img-->
+<!--                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/1884/images/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-31%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%209.51.00.png"-->
+<!--                                alt="줘니이"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">줘니이</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-red.png"-->
+<!--                                                        alt="실명인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>1</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>1</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 진주교육대학교</span></span><span> 4학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 교육학과</span></span><span></span></h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>-->
+<!--                    <div class="userInfoTagWrap">-->
+<!--                        <div>-->
+<!--                            <h3>#ux</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#ui</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#앱</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#디자인</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#사이드프로젝트</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="letspler_Re">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"-->
+<!--                                                     alt="madol"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">madol</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-red.png"-->
+<!--                                                        alt="실명인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>1</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>0</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 승강기대학교</span></span><span> 1학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 엘리베이터학과</span></span><span></span></h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>-->
+<!--                    <div class="userInfoTagWrap">-->
+<!--                        <div>-->
+<!--                            <h3>#GOLANG</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#FLUTTER</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#PHP</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#AWS</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#MYSQL</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="letspler_Re">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"-->
+<!--                                                     alt="임마누엘"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">임마누엘</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-gray.png"-->
+<!--                                                        alt="휴대폰인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>3</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>0</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 교통대학교</span></span><span> 3학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="university"> 사회복지학과</span></span><span></span></h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>-->
+<!--                    <div class="userInfoTagWrap">-->
+<!--                        <div>-->
+<!--                            <h3>#UX</h3>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <h3>#UI/UX기획</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="letspler_Re">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"-->
+<!--                                                     alt="아니그웃"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">아니그웃</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-red.png"-->
+<!--                                                        alt="실명인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>3</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>0</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 부경대학교</span></span><span> 3학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 경영학과</span></span><span></span></h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>-->
+<!--                    <div class="userInfoTagWrap"></div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="letspler_Re">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"-->
+<!--                                                     alt="김민재0"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">김민재0</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-red.png"-->
+<!--                                                        alt="실명인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>3</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>0</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 진주보건대학교</span></span><span> 1학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 물리치료학과</span></span><span></span></h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>-->
+<!--                    <div class="userInfoTagWrap"></div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
 
-            <li class="letspler_Re">
-                <div class="top">
-                    <div class="profilePicWrap">
-                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"
-                                                     alt="LeeHyeran"></div>
-                        <a class="favorite heart"></a>
-                    </div>
-                    <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_2.png"
-                                                 alt="렛플렙">
-                            <h2 class="userName">
-                                <span class="name">LeeHyeran</span>
-                                <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
-                                    <li><a class="chat">1:1대화</a></li>
-                                    <li><a class="invite">스터디 초대</a></li>
-                                </ul>
-                            </h2>
-                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                        src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                        alt="실명인증"></div>
-                        </div>
-                        <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>1</span></div>
-                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>0</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <ul class="userFavorite">
-                        <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 한국체육대학교</span></span><span> 2학년</span></h3>
-                        </li>
-                        <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 스포츠재활학과</span></span><span></span></h3>
-                        </li>
-                    </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
-                    <div class="userInfoTagWrap"></div>
-                    <a class="chatBtn">
-                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                    </a>
-                </div>
-            </li>
+<!--            <li class="letspler_Re">-->
+<!--                <div class="top">-->
+<!--                    <div class="profilePicWrap">-->
+<!--                        <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png"-->
+<!--                                                     alt="LeeHyeran"></div>-->
+<!--                        <a class="favorite heart"></a>-->
+<!--                    </div>-->
+<!--                    <div class="profileTxt">-->
+<!--                        <div class="idWrap"><img loading="lazy" class="userLv"-->
+<!--                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_2.png"-->
+<!--                                                 alt="렛플렙">-->
+<!--                            <h2 class="userName">-->
+<!--                                <span class="name">LeeHyeran</span>-->
+<!--                                <ul class="idHoverMenu">-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>-->
+<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="invite">스터디 초대</a></li>-->
+<!--                                </ul>-->
+<!--                            </h2>-->
+<!--                            <div class="certiWrap"><img loading="lazy" class="userCertIcon"-->
+<!--                                                        src="https://letspl.me/assets/images/ic-certi-red.png"-->
+<!--                                                        alt="실명인증"></div>-->
+<!--                        </div>-->
+<!--                        <div class="coffeAndHeart">-->
+<!--                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                      alt="커피포인트"><span>1</span></div>-->
+<!--                            <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"-->
+<!--                                      style="width: 20px; height: 20px;"><span>0</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottom">-->
+<!--                    <ul class="userFavorite">-->
+<!--                        <li>-->
+<!--                            <h3><span>[대학]&nbsp;<span class="university"> 한국체육대학교</span></span><span> 2학년</span></h3>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h3><span> [전공]&nbsp;<span class="major"> 스포츠재활학과</span></span><span></span></h3>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>-->
+<!--                    <div class="userInfoTagWrap"></div>-->
+<!--                    <a class="chatBtn">-->
+<!--                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"-->
+<!--                                  alt="커피포인트"><span>NEO-->
+<!--                                    CHAT</span></div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
         </ul>
         <div class="bigMoreBtn"><a>더 불러오기</a></div>
     </div>

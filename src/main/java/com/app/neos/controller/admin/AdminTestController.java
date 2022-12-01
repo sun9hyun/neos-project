@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.Mapping;
@@ -62,6 +63,17 @@ public class AdminTestController {
         model.addAttribute("college",  adminService.findByCollegeId(collegeId));
         model.addAttribute("count", adminService.countByUser(collegeId));
         return "app/admin/universeDetail";
+    }
+
+//    대학교 수정하기
+    @PostMapping("college/update")
+    @Transactional
+    public RedirectView update(CollegeDTO collegeDTO){
+
+        College college = adminService.findCollegeEntity(collegeDTO.getCollegeId());
+        college.update(collegeDTO);
+
+        return new RedirectView("list");
     }
 
 

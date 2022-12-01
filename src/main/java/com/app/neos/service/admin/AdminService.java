@@ -44,4 +44,10 @@ public class AdminService {
         return collegeCustomRepository.countByUser(collegeId);
     }
 
+
+    //    대학교 엔티티 아이디로 조회
+    public College findCollegeEntity(Long collegeId){
+        return collegeRepository.findById(collegeId).get();
+    }
+
 }

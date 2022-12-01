@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" >
 
 <head>
     <meta charset="UTF-8">
@@ -128,13 +128,13 @@
 <section class="loungeSection_new">
     <!--모달-->
     <div class="editorMdoal">
+        <form th:action="@{/community/community}" th:object="${communityDTO}" name="communityWrite" id="community" method="post" class="form-horizontal form-validate" role="form" target="hidden_frame" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate">
         <div class="editor">
             <div class="closeButtonBox"><button
                     class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
                                                                                                   src="https://letspl.me/assets/images/ic-close.svg"></button></div>
             <div class="editorTop">
-                <div class="editorTitle"><input type="text" placeholder="제목을 입력하세요.(최대 30자, 미입력시 본문사용) " maxlength="30"
-                                                value=""></div>
+                <div class="editorTitle"><input type="text" id="communityTitle" name="cTitle" th:field="*{communityTitle}" placeholder="제목을 입력하세요.(최대 30자) " maxlength="30" value=""></div>
                 <div class=" tagMultiSelectAnser">
                     <div class=" css-1stwjcq-container">
                         <div class=" css-1luw0me-control">
@@ -147,20 +147,20 @@
 
             </div>
            <!--섬머노트-->
-            <form action="#" method="post">
-                <textarea id="summernote" name="editordata"></textarea>
-            </form>
+                <textarea th:field="*{communityContent}" id="summernote" name="cContent"></textarea>
 
             <div class="editorWrapButtonBox">
-                <div class="editorWrapButtonBoxLeft"><button
+                <div class="editorWrapButtonBoxLeft">
+                    <button type="button"
                         class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_md__26Zib ">취소</button>
                 </div>
-                <div class="editorWrapButtonBoxRight"><button
-                        class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_red__3SLsc  buttonComponents_md__26Zib updatePost_1j">수정</button>
-                    <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_red__3SLsc  buttonComponents_md__26Zib registerPost_1j">등록</button>
+                <div class="editorWrapButtonBoxRight">
+                    <button type="button" class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_red__3SLsc  buttonComponents_md__26Zib updatePost_1j">수정</button>
+                    <button type="button" onclick="onsub()" class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_red__3SLsc  buttonComponents_md__26Zib registerPost_1j">등록</button>
                 </div>
-            </div><input type="file" multiple="" accept="image/*" style="display: none;">
+            </div>
         </div>
+        </form>
     </div>
     <!--모달-->
 
@@ -492,10 +492,6 @@
 
 
 
-
-
-
-
             <div class="moreButtonBox"><button
                     class="buttonComponents_button__1hvQa buttonComponents_radius__2l9SM   buttonComponents_md__26Zib ">더
                 보기</button></div>
@@ -588,12 +584,13 @@
 <script src="/js/community/freeboard.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="/js/fix/login.js"></script>
+<script src="/js/fix/header.js"></script>
 
 <script>
     $(document).ready(function() {
 
         $('#summernote').summernote({
-            height: 150,
+            height: 300,
             lang: "ko-KR",
             toolbar: [
                 // [groupName, [list of button]]
@@ -625,24 +622,7 @@
         });
     });
 
-    /**
-     * 이미지 파일 업로드
-     */
-    function uploadSummernoteImageFile(file, editor) {
-        data = new FormData();
-        data.append("file", file);
-        $.ajax({
-            data : data,
-            type : "POST",
-            url : "/uploadSummernoteImageFile",
-            contentType : false,
-            processData : false,
-            success : function(data) {
-                //항상 업로드된 파일의 url이 있어야 한다.
-                $(editor).summernote('insertImage', data.url);
-            }
-        });
-    }
+
 </script>
 <script>
     const $noLoginModal = $(".noLoginModal");
@@ -658,6 +638,31 @@
     $xBtn.click(function(){
         $noLoginModal.hide();
     })
+
+
+
+    function onsub() {
+        var $title = $("#communityTitle");
+        var $content = $("#summernote");
+
+        if($title.val() == ""){
+            alert("제목을 입력해주세요");
+            return;
+        }
+
+        if($content.val() == ""){
+            alert("내용을 입력해주세요");
+            return;
+        }
+
+        communityWrite.submit();
+
+        $(".editorMdoal").attr("style","display:none !important;")
+        $(".editorMdoal").find(".editorTitle input").val("");
+        $(".editorMdoal").find(".note-editable").text("");
+        $(".updatePost_1j").css("display","none");
+
+    }
 
 </script>
 <script src="/js/fix/chatting.js"></script>

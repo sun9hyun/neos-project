@@ -1,8 +1,10 @@
 package com.app.neos.controller.join;
 
 import com.app.neos.domain.user.UserDTO;
+import com.app.neos.service.join.GoogleService;
 import com.app.neos.service.join.JoinService;
 import com.app.neos.service.join.KaKaoService;
+import com.app.neos.service.join.NaverService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -19,7 +21,9 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequiredArgsConstructor
 @Slf4j
 public class JoinController {
-    private  final KaKaoService kaKaoService;
+    private final KaKaoService kaKaoService;
+    private final NaverService naverService;
+    private final GoogleService googleService;
     private final JoinService joinService;
 
     /*회원가입 모달 */
@@ -91,6 +95,44 @@ public class JoinController {
 
     }
 
+    @GetMapping("/naver/navercallback")
+    public RedirectView naverJoin(@RequestParam String code, RedirectAttributes redirectAttributes){
+        String token = naverService.getNaverAccessToken(code);
+        String naverId = null;
+        String naverName = null;
+        String naverPhoneNumber = null;
+        String naverEmail = null;
+        try {
+            naverId =  naverService.getNaverIdByToken(token)+"-naver";
+            naverName = naverService.getNaverNameByToken(token);
+            naverPhoneNumber = naverService.getNaverMobileByToken(token);
+            naverEmail = naverService.getNaverEmailByToken(token);
+            redirectAttributes.addFlashAttribute("oAuthNickNames",naverName);
+            redirectAttributes.addFlashAttribute("oauthEmails",naverEmail);
+            redirectAttributes.addFlashAttribute("tokenId",naverId);
+            redirectAttributes.addFlashAttribute("oAuthUserProfile","/images/fix/userBasic.png");
+            redirectAttributes.addFlashAttribute("phone",naverPhoneNumber);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return new RedirectView("/join/join-page-details");
+    }
+
+    @GetMapping("/google")
+    public RedirectView googleJoin(@RequestParam String code){
+       String token = googleService.getGoogleAccessToken(code);
+//        log.info("토큰:"+token);
+        try {
+            googleService.googleProfile(token);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return new RedirectView("/join/join-page-details");
+    }
 
 
 }

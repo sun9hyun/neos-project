@@ -283,7 +283,7 @@ public class KaKaoService {
     }
 
     public void logoutKakao(String token){
-        String reqURL ="https://kapi.kakao.com/v1/user/logout";
+        String reqURL ="https://kapi.kakao.com/v1/user/unlink";
         try {
             URL url = new URL(reqURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();

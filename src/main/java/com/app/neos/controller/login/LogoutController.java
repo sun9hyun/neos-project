@@ -4,6 +4,7 @@ package com.app.neos.controller.login;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.repository.user.UserCustomRepository;
 import com.app.neos.service.join.KaKaoService;
+import com.app.neos.service.join.NaverService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @Controller
 @Slf4j
@@ -21,11 +24,13 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/logout/*")
 public class LogoutController {
     private final KaKaoService kaKaoService;
+    private final NaverService naverService;
+
     private final UserCustomRepository userCustomRepository;
 
 
     @GetMapping("logout")
-    public RedirectView logout(HttpServletRequest request, RedirectAttributes redirectAttributes){
+    public RedirectView logout(HttpServletRequest request, RedirectAttributes redirectAttributes, HttpServletResponse response){
         HttpSession session = (HttpSession)request.getSession();
           Long id=  (Long)session.getAttribute("loginUser");
         UserDTO userDTO = null;
@@ -37,6 +42,8 @@ public class LogoutController {
                 String oauthId = userDTO.getUserOAuthId();
         if(oauthId.contains("k")){
             kaKaoService.logoutKakao(session.getAttribute("token").toString());
+        }else if(oauthId.endsWith("naver")){
+            naverService.logoutNaver(session.getAttribute("token").toString());
         }
         session.invalidate();
         return new RedirectView("/main/main?logout=true");

@@ -43,7 +43,7 @@
                                 <div class=" css-1hb7zxy-IndicatorsContainer"></div>
                             </div>
                         </div><button value="인증완료" class="txtBtn gray" disabled="">인증완료</button><span
-                            class="smTxt"></span>
+                            class="smTxt"></span>`
                     </div>
                 </li>
 
@@ -59,13 +59,10 @@
                 <li><label for="user_phone">핸드폰 번호</label>
                     <div class="inputWrap threeInput row"><input type="text" id="user_phone" name="userPhoneNumber"
                                                                  class="midInput" value="" autocomplete="on" minlength="3" maxlength="11"
-                                                                 placeholder="핸드폰 번호를 입력해주세요!" style="width: 100%; outline: none" ></div>
+                                                                 placeholder="핸드폰 번호를 입력해주세요!" style="width: 100%; outline: none" th:value="${phone}"></div>
                 </li>
 
                 <li class="fourSelect"><label for=""> 본 캐릭터 설정 </label>
-
-
-
 
                     <div class="inputWrap threeInput row">
                         <div class="threeInTwoInput">

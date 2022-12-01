@@ -4,17 +4,25 @@ $googleBtn = $("button.joinGoogle")
 
 
 $kakaoBtn.on("click",function () {
-    location.href= "https://kauth.kakao.com/oauth/authorize?client_id=e29231bc42552a6803c663f6ba7bad63&redirect_uri=http://localhost:10718/join/kakao&response_type=code&prompt=login";
+    location.href= "https://kauth.kakao.com/oauth/authorize?client_id=e29231bc42552a6803c663f6ba7bad63&redirect_uri=http://localhost:10718/join/kakao&response_type=code";
 })
 $naverBtn.on("click",function () {
     location.href= "https://nid.naver.com/oauth2.0/authorize?client_id=mCOGR2PgjWmMz5WHuVwE&response_type=code&redirect_uri=http://localhost:10718/join/naver/navercallback";
+})
+$googleBtn.on("click",function () {
+    location.href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.metadata.readonly&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=http%3A%2F%2Flocalhost%3A10718%2Fjoin%2Fgoogle&client_id=514426667105-1lnfsvd1qiivml6ajencglio5lpvct8d.apps.googleusercontent.com&service=lso&o2v=2&flowName=GeneralOAuthFlow";
 })
 
 
 
 $KaKaoLoginBtn = $("button.loginKakao");
+$NaverLoginBtn = $("button.loginNaver");
+$GoogleLoginBtn = $("button.loginGoogle");
 $KaKaoLoginBtn.on("click",function () {
-    location.href= "https://kauth.kakao.com/oauth/authorize?client_id=e29231bc42552a6803c663f6ba7bad63&redirect_uri=http://localhost:10718/login/kakao&response_type=code&prompt=login";
+    location.href= "https://kauth.kakao.com/oauth/authorize?client_id=e29231bc42552a6803c663f6ba7bad63&redirect_uri=http://localhost:10718/login/kakao&response_type=code";
+})
+$NaverLoginBtn.on("click",function () {
+    location.href= "https://nid.naver.com/oauth2.0/authorize?client_id=mCOGR2PgjWmMz5WHuVwE&response_type=code&redirect_uri=http://localhost:10718/login/naver/navercallback";
 })
 
 var userId = document.querySelector("#userId").value;
@@ -53,6 +61,7 @@ function getInfo(result){
         $userCollege.text("학생")
     }else{
         $userCollege.text(userCollegeName)
+
     }
 
 }

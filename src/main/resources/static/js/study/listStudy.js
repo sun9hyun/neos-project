@@ -47,15 +47,15 @@ $(".closeBtnImg").on("click",function(){
     $(".modalWrapOpen").hide();
 });
 
-// $(".blueBtn").on("click",function(){
-//     $(".modalWrap").css('display','none');
-//     $(".modalWrapOpen").hide();
-// });
-
 $(".whiteBtn").on("click",function(){
     $(".modalWrap").css('display','none');
     $(".modalWrapOpen").hide();
 });
+
+// $(".blueBtn").on("click",function(){
+//     $(".modalWrap").css('display','none');
+//     $(".modalWrapOpen").hide();
+// });
 
 // 스터디 좋아요 버튼 클릭
 // $(".favorite").on("click",function(){

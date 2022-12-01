@@ -3,13 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>NEOS | 공지사항</title>
+
     <link rel="preload" href="https://letspl.me/_next/static/css/7d968ad404afc29f3247.css" as="style">
     <link rel="stylesheet" href="https://letspl.me/_next/static/css/7d968ad404afc29f3247.css" data-n-g="">
     <link rel="preload" href="https://letspl.me/_next/static/css/bb362d6ee2ef67b1e2f7.css" as="style">
-    <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
-</head>
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/loginHeader.css">
 
+</head>
+<style>
+    @font-face {
+        font-family: 'SpoqaHanSansNeo-Regular';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'GmarketSansMedium';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    * {
+        font-family: 'GmarketSansMedium' !important;
+    }
+</style>
 
 
 
@@ -205,4 +225,8 @@
 </div>
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
+<script src="/js/fix/login.js"></script>
+<script src="/js/fix/header.js"></script>
+
+
 </html>

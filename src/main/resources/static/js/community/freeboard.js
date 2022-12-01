@@ -1,5 +1,4 @@
 
-
 /*const $commentButton = $(".replyComponent_replyOnOff__QKoso").find(
     ".buttonComponents_button__1hvQa"
 );
@@ -211,13 +210,13 @@ $exitBtn.on("click",function(){
     $(".updatePost_1j").css("display","none");
 })
 
-
-$registerBtn.on("click",function(){
-    $(".editorMdoal").attr("style","display:none !important;")
-    $(".editorMdoal").find(".editorTitle input").val("");
-    $(".editorMdoal").find(".note-editable").text("");
-    $(".updatePost_1j").css("display","none");
-})
+//
+// $registerBtn.on("click",function(){
+//     $(".editorMdoal").attr("style","display:none !important;")
+//     $(".editorMdoal").find(".editorTitle input").val("");
+//     $(".editorMdoal").find(".note-editable").text("");
+//     $(".updatePost_1j").css("display","none");
+// })
 
 
 

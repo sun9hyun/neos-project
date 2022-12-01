@@ -127,13 +127,13 @@
 </div>
 <section class="loungeSection_new">
     <div class="editorMdoal">
+        <form th:action="@{/community/counseling}" th:object="${counselingDTO}" name="counselingWrite" id="counseling" method="post" class="form-horizontal form-validate" role="form" target="hidden_frame" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate">
         <div class="editor">
             <div class="closeButtonBox"><button
                     class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""
                                                                                                   src="https://letspl.me/assets/images/ic-close.svg"></button></div>
             <div class="editorTop">
-                <div class="editorTitle"><input type="text" placeholder="제목을 입력하세요.(최대 30자, 미입력시 본문사용) " maxlength="30"
-                                                value=""></div>
+                <div class="editorTitle"><input type="text" id="counselingTitle" name="cTitle" th:field="*{counselingTitle}" placeholder="제목을 입력하세요.(최대 30자) " maxlength="30" value=""></div>
                 <div class=" tagMultiSelectAnser">
                     <div class=" css-1stwjcq-container">
                         <div class=" css-1luw0me-control">
@@ -146,21 +146,22 @@
 
             </div>
             <!--섬머노트-->
-            <form action="#" method="post">
-                <textarea id="summernote" name="editordata"></textarea>
-            </form>
+                <textarea th:field="*{counselingContent}" id="summernote" name="cContent"></textarea>
 
             <div class="editorWrapButtonBox">
                 <div class="editorWrapButtonBoxLeft"><button
                         class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_md__26Zib ">취소</button>
                 </div>
-                <div class="editorWrapButtonBoxRight"><button
-                        class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_red__3SLsc  buttonComponents_md__26Zib updatePost_1j">수정</button>
-                    <button class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_red__3SLsc  buttonComponents_md__26Zib registerPost_1j">등록</button>
+                <div class="editorWrapButtonBoxRight">
+                    <button type="button" class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_red__3SLsc  buttonComponents_md__26Zib updatePost_1j">수정</button>
+                    <button type="button" onclick="onSub()" class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_red__3SLsc  buttonComponents_md__26Zib registerPost_1j">등록</button>
                 </div>
-            </div><input type="file" multiple="" accept="image/*" style="display: none;">
+            </div>
         </div>
+        </form>
     </div>
+
+
     <div class="centerSection">
         <div class="loungeTab"><button
                 class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    buttonComponents_categoryActive__31E3q">고민상담
@@ -174,7 +175,7 @@
         </div>
 
         <div class="centerSectionBox">
-            <!--수정중-->
+            <!--카드-->
             <div class="loungeCard" style="margin-bottom: -10px;">
 
                 <div class="loungeCardContents">
@@ -455,8 +456,6 @@
             </div>
 
 
-
-            <!--      2번  -->
         </div>
 
         <div class="moreButtonBox"><button
@@ -555,7 +554,7 @@
         //     lang: "ko-KR"
         // });
         $('#summernote').summernote({
-            height: 150,
+            height: 300,
             lang: "ko-KR",
             toolbar: [
                 // [groupName, [list of button]]
@@ -587,24 +586,6 @@
         });
     });
 
-    /**
-     * 이미지 파일 업로드
-     */
-    function uploadSummernoteImageFile(file, editor) {
-        data = new FormData();
-        data.append("file", file);
-        $.ajax({
-            data : data,
-            type : "POST",
-            url : "/uploadSummernoteImageFile",
-            contentType : false,
-            processData : false,
-            success : function(data) {
-                //항상 업로드된 파일의 url이 있어야 한다.
-                $(editor).summernote('insertImage', data.url);
-            }
-        });
-    }
 </script>
 <script>
     const $noLoginModal = $(".noLoginModal");
@@ -621,6 +602,29 @@
     $xBtn.click(function(){
         $noLoginModal.hide();
     })
+
+    function onSub() {
+        var $title = $("#counselingTitle");
+        var $content = $("#summernote");
+
+        if($title.val() == ""){
+            alert("제목을 입력해주세요");
+            return;
+        }
+
+        if($content.val() == ""){
+            alert("내용을 입력해주세요");
+            return;
+        }
+
+        counselingWrite.submit();
+
+        $(".editorMdoal").attr("style","display:none !important;")
+        $(".editorMdoal").find(".editorTitle input").val("");
+        $(".editorMdoal").find(".note-editable").text("");
+        $(".updatePost_1j").css("display","none");
+
+    }
 
 </script>
 <script src="/js/fix/chatting.js"></script>

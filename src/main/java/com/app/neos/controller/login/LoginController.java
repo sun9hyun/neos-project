@@ -81,6 +81,7 @@ public class LoginController {
                     return new RedirectView("/main/main?login=need");
                 }
                 session.setAttribute("loginUser",userDTO.getUserId());
+                session.setAttribute("loginUserName",userDTO.getUserNickName());
                 session.setAttribute("college",userDTO.getCollegeId());
                 session.setAttribute("realId",realId);
             }
@@ -107,6 +108,7 @@ public class LoginController {
                     return new RedirectView("/main/main?login=need");
                 }
                 session.setAttribute("loginUser",userDTO.getUserId());
+                session.setAttribute("loginUserName",userDTO.getUserNickName());
                 session.setAttribute("college",userDTO.getCollegeId());
                 session.setAttribute("realId",realId);
             }

@@ -22,13 +22,13 @@ public class LoginService {
             User user = userRepository.findByUserOAuthId(readId).get();
             user.updateNeosPower(user.getUserNeosPower().getUserNeosPowerAbility()+10);
             user.levelUp();
-            return userCustomRepository.findByOauthId(readId);
+            return userRepository.findByUserOAuthId(readId).get().toDTO();
         }
         return null;
     }
 
     public boolean loginOk(String realId){
-        return userCustomRepository.findByOauthId(realId) != null;
+        return userRepository.findByUserOAuthId(realId) != null;
     }
 
 

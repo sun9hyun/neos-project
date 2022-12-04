@@ -39,6 +39,10 @@
             alert("회원가입을 먼저 진행해 주세요.")
             location.href="https://nid.naver.com/oauth2.0/authorize?client_id=mCOGR2PgjWmMz5WHuVwE&response_type=code&redirect_uri=http://localhost:10718/join/naver/navercallback"
         }
+        else if(urlParams.get("login")=='GoogleFalse'){
+            alert("회원가입을 먼저 진행해 주세요.")
+            location.href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.metadata.readonly&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=http%3A%2F%2Flocalhost%3A10718%2Fjoin%2Fgoogle&client_id=514426667105-1lnfsvd1qiivml6ajencglio5lpvct8d.apps.googleusercontent.com&service=lso&o2v=2&flowName=GeneralOAuthFlow";
+        }
 
         else if(urlParams.get("login")=='true'){
             alert("로그인 성공")
@@ -770,6 +774,7 @@
 </div>
 
 </body>
+
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script src="/js/study/listStudy.js"></script>

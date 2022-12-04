@@ -25,13 +25,22 @@ public class StudyDTO {
 //    임베디드2
     private String studyO2o;
     private String studyCity;
-
+//모집인원
     private Integer studySupport;
+//    모집상태
     private StudyRecruitStatus studyRecruitStatus;
+// 준비중 진행중 완료
     private StudyStatus studyStatus;
+
     private String studyContent;
     private int studyView;
     private LocalDateTime studyEndDate;
+
+    private Long collegeId;
+    private String collegeLogoFile;
+    private String collegeName;
+    private Long userId;
+    private String userNickName;
 
     public Study toEntity(){
        StudyField studyField =  StudyField.builder().studyType(studyType).studyKeyword(studyKeyword).build();
@@ -63,5 +72,26 @@ public class StudyDTO {
         this.studyContent = studyContent;
         this.studyView = studyView;
         this.studyEndDate = studyEndDate;
+    }
+
+    @QueryProjection
+    public StudyDTO(Long studyId, String studyTitle, String studyType, String studyKeyword, String studyO2o, String studyCity, Integer studySupport, StudyRecruitStatus studyRecruitStatus, StudyStatus studyStatus, String studyContent, int studyView, LocalDateTime studyEndDate, Long collegeId, String collegeLogoFile, String collegeName, Long userId, String userNickName) {
+        this.studyId = studyId;
+        this.studyTitle = studyTitle;
+        this.studyType = studyType;
+        this.studyKeyword = studyKeyword;
+        this.studyO2o = studyO2o;
+        this.studyCity = studyCity;
+        this.studySupport = studySupport;
+        this.studyRecruitStatus = studyRecruitStatus;
+        this.studyStatus = studyStatus;
+        this.studyContent = studyContent;
+        this.studyView = studyView;
+        this.studyEndDate = studyEndDate;
+        this.collegeId = collegeId;
+        this.collegeLogoFile = collegeLogoFile;
+        this.collegeName = collegeName;
+        this.userId = userId;
+        this.userNickName = userNickName;
     }
 }

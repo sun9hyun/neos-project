@@ -131,4 +131,11 @@ public class JoinServiceTest {
     public void findTest(){
         log.info(userCustomRepository.findNoCollegeById(30l).toString());
     }
+
+    @Test
+    public void findByOauthTest(){
+        log.info(userRepository.findByUserOAuthId("YK-XjKYwHjoePg7-U57-0AX8zoYAHbUaFbiDj-jjqG4-naver").get().toDTO().toString());
+        log.info(userRepository.findByUserOAuthId("2546432919k").get().toDTO().toString());
+    }
+
 }

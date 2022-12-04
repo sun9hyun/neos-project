@@ -83,4 +83,32 @@ public class Study extends Period {
    public void viewUpdate(){
       this.studyView = studyView+1;
    }
+
+
+//   private String collegeName;
+
+   public StudyDTO toDTO(){
+      StudyDTO studyDTO = new StudyDTO();
+      studyDTO.setStudyId(this.studyId);
+      studyDTO.setStudyTitle(this.studyTitle);
+      studyDTO.setStudyType(this.studyField.getStudyType());
+      studyDTO.setStudyKeyword(this.studyField.getStudyKeyword());
+      studyDTO.setStudyO2o(this.studyOnlineWhether.getStudyO2o());
+      studyDTO.setStudyCity(this.studyOnlineWhether.getStudyCity());
+      studyDTO.setStudySupport(this.studySupport);
+      studyDTO.setStudyRecruitStatus(this.studyRecruitStatus);
+      studyDTO.setStudyStatus(this.studyStatus);
+      studyDTO.setStudyContent(this.studyContent);
+      studyDTO.setStudyView(this.studyView);
+      studyDTO.setStudyEndDate(this.studyEndDate);
+      studyDTO.setUserId(this.user.getUserId());
+      studyDTO.setUserNickName(this.user.getUserNickName());
+      studyDTO.setCollegeId(this.user.getCollege().getCollegeId());
+      studyDTO.setCollegeLogoFile(this.user.getCollege().getCollegeLogoFile());
+      studyDTO.setCollegeName(this.user.getCollege().getCollegeLogoFile());
+      return studyDTO;
+
+   }
+
+
 }

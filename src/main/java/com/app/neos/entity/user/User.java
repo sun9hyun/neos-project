@@ -8,6 +8,7 @@ import com.app.neos.embeddable.user.UserMBTI;
 import com.app.neos.embeddable.user.UserNeosPower;
 import com.app.neos.entity.college.College;
 import com.app.neos.entity.period.Period;
+import com.app.neos.type.user.UserCollegeMajor;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -164,6 +165,46 @@ public class User extends Period {
         this.userFile = userDTO.getUserFile();
         this.userIntroduce = userDTO.getUserIntroduce();
         this.userMBTI = userMBTI;
+    }
+
+
+
+    public UserDTO toDTO(){
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUserId(this.userId);
+        userDTO.setUserNickName(this.userNickName);
+        userDTO.setUserOAuthId(this.userOAuthId);
+        userDTO.setUserOAuthEmail(this.userOAuthEmail);
+        userDTO.setUserCollegeEmail(this.userCollegeEmail);
+        userDTO.setUserPhoneNumber(this.userPhoneNumber);
+        userDTO.setUserCollegeCertify(this.userCollegeCertify);
+        userDTO.setUserCollegeYear(this.userCollegeInfo.getUserCollegeYear());
+        userDTO.setUserCollegeMajor(this.userCollegeInfo.getUserCollegeMajor());
+        userDTO.setUserNeosBadge(this.userNeosPower.getUserNeosBadge());
+        userDTO.setUserNeosPowerLevel(this.userNeosPower.getUserNeosPowerLevel());
+        userDTO.setUserNeosPowerAbility(this.userNeosPower.getUserNeosPowerAbility());
+        userDTO.setUserNeosPoint(this.userNeosPoint);
+        userDTO.setUserChattingPoint(this.userChattingPoint);
+        userDTO.setUserIntroduce(this.userIntroduce);
+        if(this.userMBTI != null){
+            userDTO.setUserMbtiName(this.userMBTI.getUserMbtiName());
+            userDTO.setUserMbtiColor(this.userMBTI.getUserMbtiColor());
+        }
+        userDTO.setUserFile(this.userFile);
+        if(this.userLike !=null){
+            userDTO.setUserO2o(this.userLike.getUserO2o());
+            userDTO.setUserCity(this.userLike.getUserCity());
+            userDTO.setUserDay(this.userLike.getUserDay());
+            userDTO.setUserTime(this.userLike.getUserTime());
+        }
+        if(this.college != null){
+            userDTO.setCollegeId(this.college.getCollegeId());
+            userDTO.setCollegeName(this.college.getCollegeName());
+            userDTO.setCollegeCity(this.college.getCollegeCity());
+            userDTO.setCollegeEmailDomain(this.college.getCollegeEmailDomain());
+            userDTO.setCollegeLogoFile(this.college.getCollegeLogoFile());
+        }
+        return userDTO;
     }
 
 

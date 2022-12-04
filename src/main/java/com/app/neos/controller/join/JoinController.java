@@ -112,7 +112,9 @@ public class JoinController {
             redirectAttributes.addFlashAttribute("tokenId",naverId);
             redirectAttributes.addFlashAttribute("oAuthUserProfile","/images/fix/userBasic.png");
             redirectAttributes.addFlashAttribute("phone",naverPhoneNumber);
-
+            if(joinService.duplicateId(naverId)){
+                return new RedirectView("/main/main?check=true");
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -122,11 +124,27 @@ public class JoinController {
     }
 
     @GetMapping("/google")
-    public RedirectView googleJoin(@RequestParam String code){
-       String token = googleService.getGoogleAccessToken(code);
+    public RedirectView googleJoin(@RequestParam String code, RedirectAttributes redirectAttributes){
+       String token = googleService.getGoogleAccessToken(code)[0];
+//       String tokenId =  googleService.getGoogleAccessToken(code)[1];
+        String googleId = null;
+        String googleName = null;
+        String googleProfileImg = null;
+        String googleEmail = null;
 //        log.info("토큰:"+token);
         try {
-            googleService.googleProfile(token);
+            googleId =  googleService.getGoogleIdByToken(token) +"-google";
+            googleName = googleService.getGoogleNameByToken(token);
+            googleProfileImg = googleService.getGoogleProfileImgByToken(token);
+            googleEmail = googleService.getGoogleEmailByToken(token);
+            redirectAttributes.addFlashAttribute("oAuthNickNames",googleName);
+            redirectAttributes.addFlashAttribute("oauthEmails",googleEmail);
+            redirectAttributes.addFlashAttribute("tokenId",googleId);
+            redirectAttributes.addFlashAttribute("oAuthUserProfile",googleProfileImg);
+            if(joinService.duplicateId(googleId)){
+                return new RedirectView("/main/main?check=true");
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

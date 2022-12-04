@@ -13,15 +13,15 @@
         <img src="/images/fix/logo.png" alt="letspl_logo" class="logo">
         </a>
         <ul class="Navbar">
-            <li><a class="click" href="">네오스인</a></li>
-            <li><a class="click" href="">스터디</a></li>
-            <li><a class="click" href="">자료상점</a></li>
-            <li><a class="click" href="">커뮤니티</a></li>
-            <li><a class="click" href="">공지사항</a></li>
+            <li><a class="click" th:href="@{/neosUser/list-after}">네오스인</a></li>
+            <li><a class="click" th:href="@{/study/list}">스터디</a></li>
+            <li><a class="click" th:href="@{/store/store-list}">자료상점</a></li>
+            <li><a class="click" th:href="@{/community/community}">커뮤니티</a></li>
+            <li><a class="click" th:href="@{/notice/list}">공지사항</a></li>
         </ul>
         <div th:if="${session.loginUser == null}" class="loginWrap">
             <div class="searchWrap">
-                <a class="searchIc"><span>검색</span>
+                <a class="searchIc" th:href="@{/search/search-before}"><span>검색</span>
                     <img class="pcSearch" src="	https://letspl.me/assets/images/ic-search-white.png" alt="검색하기">
                     <img class="mobileSearch" src="	https://letspl.me/assets/images/ic-search.png" alt="검색하기">
                 </a>
@@ -43,14 +43,14 @@
                     <input type="hidden" id="userOauthId">
                 </div>
                 <div class="searchWrap">
-                    <a class="searchIc"><span>검색</span>
+                    <a class="searchIc" th:href="@{/search/search-before}"><span>검색</span>
                         <img class="pcSearch" src="	https://letspl.me/assets/images/ic-search-white.png"
                              alt="검색하기">
                         <img class="mobileSearch" src="	https://letspl.me/assets/images/ic-search.png" alt="검색하기">
 
                     </a>
                 </div>
-                <a class="navBtn buildProject">
+                <a class="navBtn buildProject" th:href="@{/study/create}">
                     <span>모임 or 스토리 생성</span>
                     <img class="mobileBuild" src="https://letspl.me/assets/images/ic-project-new.png" alt="모임/스토리 만들기">
                 </a>
@@ -69,7 +69,9 @@
                             <div class="lvAndLogout">
                                 <div class="lv"><img  class="userLv" id = "userLevel"
                                                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
-                                                     alt="렛플렙"></div><a class="logOut" th:href="@{/logout/logout}">로그아웃</a>
+                                                     alt="렛플렙"></div>
+                                <a class="logOut" th:href="@{/logout/logout}">로그아웃</a>
+
                             </div><a href="/people/sun9hyun">
                             <p class="userId" id="userName">sun9hyun</p>
                         </a><a href="/people/sun9hyun">

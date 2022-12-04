@@ -1,5 +1,6 @@
 package com.app.neos.controller.study;
 
+import com.app.neos.domain.study.StudyDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class StudyController {
 
     @GetMapping("/create")
-    public String create(){
+    public String create(StudyDTO studyDTO){
         return "app/study/createStudy";
     }
 

@@ -2,12 +2,16 @@ package com.app.neos.service.neosUser;
 
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.user.User;
+import com.app.neos.repository.neos.NeosUserCustomRepository;
+import com.app.neos.repository.user.UserCustomRepository;
 import com.app.neos.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -15,15 +19,26 @@ import java.util.List;
 public class NeosUserService {
 
     private final UserRepository userRepository;
+    private final UserCustomRepository userCustomRepository;
+    private final NeosUserCustomRepository neosUserCustomRepository;
 
     // 유저 추가
     public void saveUser(User user){
         userRepository.save(user);
     }
 
+
     // 유저 목록
-    public List<User> findUser() {
-        return userRepository.findAll();
+    public List<UserDTO> findUser() {
+        return neosUserCustomRepository.findAll() ;
     }
+
+
+    // 유저 상세보기
+    public UserDTO findByUserId(Long userId){
+        return userCustomRepository.findById(userId);
+
+    }
+
 
 }

@@ -104,3 +104,6 @@ if(mql.matches) {
         $(".chattingSection .right.active").removeClass("rightBody");
     })
 }
+
+
+

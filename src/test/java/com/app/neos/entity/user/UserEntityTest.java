@@ -39,7 +39,8 @@ public class UserEntityTest {
 
     @Test
     public void collegeSave(){
-        College college = College.builder().collegeCity("서울").collegeLogoFile("1").collegeEmailDomain("1").collegeName("서울대학교").build();
+        College college = College.builder().collegeCity("구미").collegeLogoFile("1").collegeEmailDomain("1").collegeName("마다가스카대학교").build();
+
         collegeRepository.save(college);
     }
 

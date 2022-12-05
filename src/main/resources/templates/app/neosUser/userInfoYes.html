@@ -15,12 +15,12 @@
 <body>
 <header th:replace="/app/fix/header.html :: header"></header>
 
+
+<th:block th:object="${user}">
 <section class="userProfileSection">
-    <div class="profileInfo">
+    <div class="profileInfo" >
         <div class="pic">
-            <div class="picWrap"><img
-                    src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png"
-                    alt="sun9hyun"></div>
+            <div class="picWrap"><img th:src="*{userFile}" alt="sun9hyun"></div>
             <a class="favoriteSymbol">
                 <div class="favorite "></div>
             </a></div>
@@ -28,12 +28,12 @@
             <div class="profileInfoTxtFirst">
                 <div class="profileStatusSection">
                     <div class="userTag "><span>본인인증</span></div>
-                    <div class="userTag" style="background-color:#50a9ab;border:1px solid#50a9ab"><span>ISFJ</span>
+                    <div class="userTag" style="background-color:#50a9ab;border:1px solid#50a9ab"><span th:text="*{userMbtiName}"></span>
                     </div>
                 </div>
                 <h2 class="tit"><img class="userLv"
                                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
-                                     alt="렛플렙">&nbsp;<!-- --><span class="name">인천의 왕 박종우</span></h2>
+                                     alt="렛플렙">&nbsp;<!-- --><span class="name" th:text="*{userNickName}"></span></h2>
                 <p class="introduction">마지막 로그인 :<!-- --> 1일전</p>
                 <div class="topBtnWrap btnWrap">
                     <button class="pinkBtn">1:1 대화</button>
@@ -49,14 +49,20 @@
                     <ul>
                         <li class="userInfoTit"><span><strong>[ 본 캐릭터 ]</strong></span><span></span></li>
                         <li class="userCharacter"><span>&nbsp;대학</span>
-                            <h2 class="gray">경상대학교</h2></li>
+
+                            <h2 class="gray" th:text="*{collegeName}"></h2></li>
+
                         <li class="userCharacter"><span>&nbsp;전공</span>
-                            <h2 class="gray">사회복지학전공</h2></li>
+
+                            <h2 class="gray" th:text="*{userCollegeMajor}">사회복지학전공</h2></li>
+
                         <li class="userCharacter"><span>&nbsp;학년</span>
-                            <h2 class="gray">4학년</h2></li>
+
+                            <h2 class="gray" th:text="*{userCollegeYear}"></h2><h2 class="gray">학년</h2></li>
+                        
                         <ul class="userInfoWrap">
                             <li class="userOption"><span class="optionTxt">온/오프라인</span>
-                                <h3>온,오프라인 모두 가능 </h3></li>
+                                <h3 th:text="*{userO2o}">온,오프라인 모두 가능 </h3></li>
                             <li class="userOption"><span class="optionTxt">모임 장소</span><span>상관없음</span></li>
                             <li class="userOption"><span class="optionTxt">모임 시간</span>
                                 <h3>주중,주말 가능<!-- --> /시간대 미정</h3></li>
@@ -405,7 +411,12 @@
                         </li>
                     </ul>
                 </li>
+
             </div>
+        </div>
+    </div>
+
+
             <div class="projectInfo">
                 <div class="morePeopleView peopleRecommendWrap">
                     <div class="peopleRecommendWrapTit"><p>sun9hyun님과 비슷한 프로필을 추천드려요</p></div>
@@ -616,7 +627,7 @@
         </div>
     </div>
 </section>
-
+</th:block>
 
 <div th:replace="/app/neosUser/modalList.html :: modalSpace"></div>
 <div th:replace="/app/fix/chattingAll.html :: chattingAll"></div>

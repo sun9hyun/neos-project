@@ -49,16 +49,16 @@ public class StoreServiceTest {
         User user =userRepository.findById(1l).get();
         user.getUserId();
 
-        StoreDTO storeDTO = new StoreDTO();
-        storeDTO.setStoreStatus(StoreStatus.FREE);
-        storeDTO.setStorePoint(0);
-        storeDTO.setStoreTitle("자료판매 테스트 222");
-        storeDTO.setStoreContent("아주 좋은 자료입니다.");
-        storeDTO.setUser(user);
+//        StoreDTO storeDTO = new StoreDTO();
+//        storeDTO.setStoreStatus(StoreStatus.FREE);
+//        storeDTO.setStorePoint(0);
+//        storeDTO.setStoreTitle("자료판매 테스트 222");
+//        storeDTO.setStoreContent("아주 좋은 자료입니다.");
+//        storeDTO.setUser(user);
 
 //        Store store = storeDTO.toEntity();
-//        store.changeUser(storeDTO.getUser());
-        storeService.saveStore(storeDTO);
+////        store.changeUser(storeDTO.getUser());
+//        storeService.saveStore(storeDTO);
     }
 
     // 스토어 목록 테스트

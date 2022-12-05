@@ -361,3 +361,29 @@ section {
     color: #fff;
 }
 /* ---------------------------------------------------------------------------- */
+.postWrap {
+    display: flex;
+    flex: none;
+    margin-left: auto;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 31px;
+}
+
+.postBtn {
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    padding: 6px 10px;
+    background-color: #1A7CFF;
+    border-radius: 3px;
+    cursor: pointer;
+    height: 2rem;
+}
+
+.postBtn span {
+    color: #fff;
+}

@@ -1,23 +1,70 @@
 // 무료 체크 시 인풋 입력 막기
 $(function(){
     if($("#step1_radio").is(":checked")){
-        $(".cashCheck").attr("disabled", true);
+        $(".cashCheck").attr("readonly", true);
         $(".storeStatus").val("FREE")
     };
 
     $("#step1_radio").change(function(){
         if($("#step1_radio").is(":checked")){
-            $(".cashCheck").attr("disabled", true);
+            $(".cashCheck").attr("readonly", true);
             $(".storeStatus").val("FREE")
+            $(".cashCheck").val("");
         };
     });
     $("#step2_radio").change(function(){
         if($("#step2_radio").is(":checked")){
-            $(".cashCheck").attr("disabled", false);
+            $(".cashCheck").attr("readonly", false);
             $(".storeStatus").val("PAY")
         };
     });
 });
+
+
+/*-------------------------------------------------------------------------------------------------------------*/
+// 모달 종료
+$(".closeBtnImg").on("click",function(){
+    $(".modalWrap").css('display','none');
+    $(".modalWrapOpen").hide();
+});
+
+$(".blueBtn").on("click",function(){
+    $(".modalWrap").css('display','none');
+    $(".modalWrapOpen").hide();
+});
+
+$(".modal4 .blueBtn").on("click",function(){
+    $(".modalWrap").css('display','none');
+    $(".modalWrapOpen").hide();
+    storeForm.submit();
+});
+
+// 작성완료 버튼 클릭
+function submit() {
+    console.log($(".storeStatus").val());
+    console.log($(".cashCheck").val());
+    console.log($(".textInput").val());
+    console.log($(".storeContent").val());
+    console.log($(".cashCheck").val().length);
+
+    if($(".textInput").val().length < 3){ // 제목 조건 미충족
+        $(".modalWrapOpen").show();
+        $(".modal2").css('display','inline-block');
+    }else if($(".storeContent").val().length < 1){ // 내용 조건 미충족
+        $(".modalWrapOpen").show();
+        $(".modal3").css('display','inline-block');
+    }else if($(".storeStatus").val() == "FREE"){  // 작성 완료
+        $(".cashCheck").val("0");
+        $(".modalWrapOpen").show();
+        $(".modal4").css('display','inline-block');
+    }else if($(".cashCheck").val().length < 4){ // 최소 포인트 조건 미충족
+        $(".modalWrapOpen").show();
+        $(".modal1").css('display','inline-block');
+    }else if($(".cashCheck").val().length >= 4){
+        $(".modalWrapOpen").show();
+        $(".modal4").css('display','inline-block');
+    }
+}
 /*-------------------------------------------------------------------------------------------------------------*/
 var $file = $(".file");
 var $fileText = $(".fileText").text();

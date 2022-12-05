@@ -168,47 +168,11 @@ $rereplyButton.on("click",function(){
     }
 })
 
-/*모달*/
-const $writeBtn = $(".postBtn");
-const $cancelBtn = $(".editorWrapButtonBoxLeft").find(".buttonComponents_md__26Zib");
-const $exitBtn = $(".closeButtonBox").find("img");
-const $registerBtn = $(".editorWrapButtonBoxRight").find("button")
-$writeBtn.on("click",function(){
-    $(".editorMdoal").attr("style","display:flex !important;");
-    $(".registerPost_1j").css("display","block");
-})
-
-//취소버튼
-$(document).ready(function(){
-    $cancelBtn.hover(function(){
-        $(this).css('background-color','#1a7cff');
-        $(this).css('border-color','#1a7cff');
-        $(this).css('color','#fff');
-        $(this).css('opacity','0.5')
-    },function(){
-        $(this).css('background-color','#fff');
-        $(this).css('border','1px solid #ced2d4');
-        $(this).css('color','black');
-        $(this).css('opacity','1')
-    })
-
-})
-
-$cancelBtn.on("click",function(){
-    $(".editorMdoal").attr("style","display:none !important;")
-    $(".editorMdoal").find(".editorTitle input").val("");
-    $(".editorMdoal").find(".note-editable").text("");
-    $(".updatePost_1j").css("display","none");
-})
 
 
 
-$exitBtn.on("click",function(){
-    $(".editorMdoal").attr("style","display:none !important;")
-    $(".editorMdoal").find(".editorTitle input").val("");
-    $(".editorMdoal").find(".note-editable").text("");
-    $(".updatePost_1j").css("display","none");
-})
+
+
 
 //
 // $registerBtn.on("click",function(){

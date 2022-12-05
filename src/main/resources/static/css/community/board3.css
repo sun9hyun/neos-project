@@ -523,7 +523,7 @@
     border: 1px solid #dfe3e4;
     border-radius: 4px;
     padding: 8px 6px;
-    left: -43px;
+    left: -25px;
     bottom: -56px;
     grid-gap: 10px;
     gap: 10px;
@@ -552,6 +552,7 @@
 }
 
 .loungeCardContentsComponents_loungeContentsTitleBox__2NtjH {
+    margin-top: 20px;
     display: -moz-box;
     display: flex;
     -moz-box-orient: vertical;
@@ -563,7 +564,8 @@
     font-size: 13px;
     line-height: 13px;
     color: #a5a9ac;
-    margin-bottom: 4px
+    margin-top: -15px;
+    margin-bottom: 5px;
 }
 
 .loungeCardContentsComponents_loungeContentsTitleDate__1-Xd2 {

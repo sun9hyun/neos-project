@@ -163,10 +163,9 @@
 
 
     <div class="centerSection">
-        <div class="loungeTab"><button
-                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    buttonComponents_categoryActive__31E3q">고민상담
-            게시판</button><button class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    ">자유
-            게시판</button>
+        <div class="loungeTab">
+            <a th:href="@{/community/counseling}" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    buttonComponents_categoryActive__31E3q">고민상담 게시판</a>
+            <a th:href="@{/community/community}" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    ">자유 게시판</a>
             <div class="postWrap">
                 <div class="postBtn">
                     <span>새 글쓰기</span>
@@ -176,6 +175,7 @@
 
         <div class="centerSectionBox">
             <!--카드-->
+            <th:block th:each="counseling:${counselings}" th:object="${counseling}">
             <div class="loungeCard" style="margin-bottom: -10px;">
 
                 <div class="loungeCardContents">
@@ -183,8 +183,7 @@
                         <div class="loungeCardContentsComponents_loungeContentsTagMoreBox__1oKkG">
                             <div class="undefined">
                                 <div class="tag_tag__2gh0s tag_typeDefault__3U6Rz tag_sizeDefault__2V2-5">
-                                            <span>네오스인
-                                                고민</span>
+                                            <span>네오스인 고민</span>
                                 </div>
                             </div>
                             <div class="loungeCardContentsComponents_loungeContentsRight__14cdz">
@@ -200,56 +199,12 @@
 
                         <div class="loungeCardContentsComponents_loungeContentsTitleBox__2NtjH">
                             <div class="loungeCardContentsComponents_loungeContentsTitleDate__1-Xd2">
-                                <h3 class="loungeCardContentsComponents_title__1s8RE">고민이야≫ 콘텐츠 마케팅이 뭐야?⇒
-                                    숏폼(릴스/쇼츠</h3><span class="loungeCardContentsComponents_date__3pY5X">21시간
-                                            전</span>
+                                <h3 class="loungeCardContentsComponents_title__1s8RE" th:text="*{counselingTitle}"> </h3>
+                                <span class="loungeCardContentsComponents_date__3pY5X">21시간 전</span>
                             </div>
                         </div>
-                        <div class="loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4"><img
-                                width="90%" height="auto"
-                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/images_temp/4463/%EB%AA%A8%EB%B0%94%EC%9D%BC%EB%B0%B0%EB%84%882_%EB%A7%88%EC%BC%80%ED%8C%85%20%EA%B8%B0%EB%B0%98%20%EB%A9%80%ED%8B%B0%EB%AF%B8%EB%94%94%EC%96%B4%EC%BD%98%ED%85%90%EC%B8%A0%20%ED%81%AC%EB%A6%AC%EC%97%90%EC%9D%B4%ED%84%B0.jpg">
-                            <p style="font-size: 14px"><strong>■ 고민이야</strong><br><strong>≫ 콘텐츠 마케팅이
-                                뭐야?</strong><br>⇒ 숏폼(릴스/쇼츠/틱톡/모먼트), 라이브커머스, 유튜브 같이 영상 매체를 통한 마케팅
-                                방법이야!<br><strong>≫ 요즘 잘나가는 1인 크리에이터가 되고 싶은데 방법을 모르겠어</strong><br>⇒ 실제 업계에 계시는 현업
-                                강사로 구성되어 기획부터 홍보, 영상촬영, 편집까지 알려줄게!<br><strong>≫ 배우고 싶은데 교육비가
-                                    비쌀거같은데https://letspl.me</strong><br>⇒ 교육비 무료에 중식비 지원까지! 금액 걱정없이 학습에
-                                집중만해~<br><strong>≫ 나는
-                                    콘텐츠 마케터가 되고싶은데?</strong><br>⇒ 1인 크리에이터 뿐만 아니라 매칭데이를 통해 콘텐츠 마케터 취업 코스까지
-                                준비해줄게!<br><br>&nbsp;</p>
-                            <p style="font-size: 14px"><strong>■ 과정 안내</strong><br><strong>≫ SeSAC DT 마케팅 기반
-                                멀티미디어 콘텐츠 크리에이터 양성 과정</strong></p>
-                            <p style="font-size: 14px"><br><br><strong>■ 접수 안내</strong><br><strong>● 접수
-                                기간</strong><br><strong>≫ 2022.10.06(목) ~ 2022.11.20(일)</strong>&nbsp;/~23:59
-                                까지</p>
-                            <p style="font-size: 14px"><br><strong>● 접수 대상</strong><br><strong>≫ 신청일 기준 만 15세
-                                이상의 서울거주 시민</strong><br>⇒ 재직자는 신청이 어렵습니다</p>
-                            <p style="font-size: 14px"><br><strong>● 접수 방법</strong><br><strong>≫</strong><a
-                                    target="_blank" rel="noopener noreferrer nofollow"
-                                    style="text-decoration: underline"
-                                    href="https://sesac.seoul.kr/course/active/detail.do?courseActiveSeq=1520&amp;srchCategoryTypeCd=&amp;courseMasterSeq=283&amp;currentMenuId=900002001">홈페이지
-                                바로가기</a><br>⇒ [1] 상단 홈페이지로 이동하여 수강 신청을 한다.<br>⇒ [2] 홈페이지 과정 내 교육 개요의 접수 방법의
-                                구글 폼 링크를 통해 신청서를 작성한다.<br><strong>※ [1],[2] 과정 모두 완료 해주셔야 정상 접수 처리됩니다.</strong>
-                            </p>
-                            <p style="font-size: 14px"><br><br><strong>■ 교육 안내</strong><br><strong>● 교육
-                                기간</strong><br><strong>≫ 2022.11.30(수) ~2023.02.23(목)</strong></p>
-                            <p style="font-size: 14px"><br><strong>● 교육 시간</strong><br><strong>≫ 매주 월~금/
-                                09:00~18:00</strong></p>
-                            <p style="font-size: 14px"><br><strong>● 교육 장소</strong><br><strong>≫ 서울특별시 강서구
-                                공항대로61길 29 / SBA 국제유통센터</strong></p>
-                            <p style="font-size: 14px"><br><strong>● 교육 비용</strong><br><strong>≫ 전액
-                                무료</strong><br>⇒ 단, 예치금 10만원 선납후 수료이후 전액 반환</p>
-                            <p style="font-size: 14px"><br><br><strong>■
-                                해택</strong><br><strong>●교육해택</strong><br><strong>≫ 교육비
-                                전액무료</strong><br><strong>≫ 점심 식비 지원</strong><br><strong>≫ 취업을 위한 교육 운영 담당
-                                매니저의 취업 컨설팅 진행</strong><br><strong>≫ 현업에 있는 전문 강사진을 통한 꿀팁
-                                전수!</strong><br><strong>≫ 콘텐츠 마케터가 되기 위한 기업 매칭데이 진행</strong><br><strong>≫
-                                전문적인 스튜디오/장비를 활용한 실제 방송체험 제공</strong></p>
-                            <p style="font-size: 14px"><br><br><strong>■ 문의
-                                안내</strong><br><strong>●문의처</strong><br><strong>≫
-                                0505-150-7799</strong><br><strong>≫&nbsp;</strong><a target="_blank"
-                                                                                     rel="noopener noreferrer nofollow" style="text-decoration: underline"
-                                                                                     href="mailto:sesac.villain@gmail.com"><strong>sesac.villain@gmail.com</strong></a>
-                            </p>
+                        <div class="loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4" th:text="*{counselingContent}">
+
                         </div>
                         <div class="loungeCardContentsComponents_loungeContentsMoreButtonWrap__1LR4v"><button
                                 class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU   ">펼치기</button>
@@ -454,7 +409,7 @@
                     </div>
                 </div>
             </div>
-
+            </th:block>
 
         </div>
 
@@ -632,4 +587,5 @@
 <script src="/js/community/summernote-ko-KR.js"></script>
 <script src="/js/community/summernote-lite.js"></script>
 <script src="/js/fix/login.js"></script>
+<script src="/js/fix/header.js"></script>
 </html>

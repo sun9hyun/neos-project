@@ -1,20 +1,23 @@
 package com.app.neos.service.community;
 
 import com.app.neos.domain.community.CommunityDTO;
+import com.app.neos.domain.community.QCommunityDTO;
 import com.app.neos.domain.counseling.CounselingDTO;
 import com.app.neos.entity.community.Community;
+import com.app.neos.entity.community.QCommunity;
 import com.app.neos.entity.counseling.Counseling;
 import com.app.neos.entity.user.User;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.service.counseling.CounselingService;
-import lombok.RequiredArgsConstructor;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.stereotype.Service;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @SpringBootTest
 @Slf4j
@@ -22,13 +25,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Rollback(false)
 public class CommunityServiceTest {
     @Autowired
-    CommunutyService communutyService;
+    CommunityService communityService;
 
     @Autowired
     CounselingService counselingService;
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    JPAQueryFactory jpaQueryFactory;
 
     @Test
     public void test(){
@@ -41,15 +47,15 @@ public class CommunityServiceTest {
         user.getUserId();
 
         CommunityDTO communityDTO = new CommunityDTO();
-        communityDTO.setCommunityTitle("첫 자유게시판");
-        communityDTO.setCommunityContent("첫 자유 게시판 내용");
-        communityDTO.setCommunityLikeCount(0);
+        communityDTO.setCommunityTitle("3 자유게시판");
+        communityDTO.setCommunityContent("3 자유 게시판 내용");
+        communityDTO.setCommunityLikeCount(1);
         communityDTO.setUser(user);
 
         Community community = communityDTO.toEntity();
         community.changeUser(communityDTO.getUser());
 
-        communutyService.saveCommunity(community);
+        communityService.saveCommunity(community);
     }
 
     @Test
@@ -58,14 +64,28 @@ public class CommunityServiceTest {
         user.getUserId();
 
         CounselingDTO counselingDTO = new CounselingDTO();
-        counselingDTO.setCounselingTitle("첫 고민 게시글");
-        counselingDTO.setCounselingContent("첫 고민 게시글 내용");
+        counselingDTO.setCounselingTitle("2 고민 게시글");
+        counselingDTO.setCounselingContent("2 고민 게시글 내용");
         counselingDTO.setUser(user);
 
         Counseling counseling = counselingDTO.toEntity();
         counseling.changeUser(counselingDTO.getUser());
 
         counselingService.saveCounseling(counseling);
+    }
+
+    @Test
+    public void findAll(){
+        List<CommunityDTO> communityDTOS = jpaQueryFactory.select(new QCommunityDTO(
+                QCommunity.community.communityId,
+                QCommunity.community.communityTitle,
+                QCommunity.community.communityContent,
+                QCommunity.community.communityLikeCount,
+                QCommunity.community.user
+        ))
+                .from(QCommunity.community)
+                .orderBy(QCommunity.community.communityId.desc())
+                .fetch();
     }
 
 }

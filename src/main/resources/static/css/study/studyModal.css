@@ -40,7 +40,7 @@ button, input, select, textarea {
 }
 
 .modalWrapOpen .modalWrap {
-    padding: 60px 20px 40px;
+    padding: 60px 20px 20px;
     background-color: #fff;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -62,12 +62,12 @@ button, input, select, textarea {
 }
 
 .modalWrapOpen .modalWrap .modalTit {
-    font-size: 1.125rem;
+    font-size: 18px;
     color: #42495b;
     text-align: center;
     font-weight: 700;
     margin-bottom: 12px;
-    line-height: 1.25rem;
+    line-height: 19px;
 }
 
 .modalWrapOpen .modalWrap .closeBtn {
@@ -86,10 +86,10 @@ button, input, select, textarea {
 
 .modalWrapOpen .modalWrap .modalContent p,
 .modalWrapOpen .modalWrap .modalContent span {
-    font-size: .75rem;
+    font-size: 12px;
     color: #8e8ea2;
     text-align: center;
-    line-height: 1rem;
+    line-height: 12px;
 }
 
 .modalWrapOpen .modalWrap .btnWrap {
@@ -134,7 +134,8 @@ button, input, select, textarea {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    font-size: .75rem;
+    font-size: 12px;
+    outline: none;
 }
 
 .modalWrapOpen .modalWrap .btnWrap button.whiteBtn {

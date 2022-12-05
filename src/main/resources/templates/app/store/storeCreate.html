@@ -6,13 +6,14 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/store/storeCreate.css">
+    <link rel="stylesheet" href="/css/study/studyModal.css">
     <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="stylesheet" href="/css/fix/loginHeader.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
     <header th:replace="/app/fix/header.html :: header"></header>
-
+    <!-- 스토어 글쓰기 START-->
     <section class="buildProject storySection writeSection">
         <div class="storyWriteTit">
             <p><span>방구석에서 쓰는 소소한 글,</span>나만의 노하우를 알려주마💡</p>
@@ -38,13 +39,14 @@
                         <input type="radio" id="step2_radio" name="free_radio" value="02" class="checkCash">
                         <span class="checkmark"></span>
                     </label>
+                    <input type="hidden" th:value="${session.loginUser}"  name="userId" id="user" class="user">
                     <input type="hidden" th:field="*{storeStatus}" id="storeStatus" class="storeStatus">
                     <input class="cashCheck" th:field="*{storePoint}" type="text" placeholder="포인트를 입력해주세요 (숫자만)" autocomplete="off" value="0" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); disabled">
                 </div>
             </div>
             <div class="answer titWrap">
                 <p class="subTit">제목</p>
-                <input  class="textInput" th:field="*{storeTitle}" type="text" placeholder="최대 30자까지 입력가능합니다" maxlength="30" value="">
+                <input  class="textInput" th:field="*{storeTitle}" type="text" placeholder="3~20글자로 적어주세요 예) 토질역학 중간고사 범위 정리노트 판매합니다!" minlength="3" maxlength="20" value="">
             </div>
             <div class="answer">
                 <div class="thumbnailWrap">
@@ -93,11 +95,66 @@
             </form>
 
             <div class="btnWrap">
-                <div><button type="button" class="pinkBtn" onclick="submit()">게시</button></div>
+                <div><button type="button" class="pinkBtn storeBtn" onclick="submit()">게시</button></div>
             </div>
             </form>
         </div>
     </section>
+    <!-- 스토어 글쓰기 END-->
+
+    <!-- 관련 모달 START-->
+    <div class="modalWrapOpen">
+        <!--무료 선택 시-->
+        <div class="modalWrap modal1">
+            <p class="modalTit">등록포인트 조건을 지켜주세요.</p>
+            <button class="closeBtn">
+                <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" class="closeBtnImg">
+            </button>
+            <div class="modalContent">
+                <p>최소 등록 포인트는 1000 네오포인트입니다.</p>
+            </div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn blueBtn">확인</button>
+            </div>
+        </div>
+        <!--무료 선택 시-->
+        <div class="modalWrap modal2">
+            <p class="modalTit">자료상점 제목을 적어주세요</p>
+            <button class="closeBtn">
+                <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" class="closeBtnImg">
+            </button>
+            <div class="modalContent">
+                <p>자료상점 제목을 3~15자 이내로 적어주세요</p>
+            </div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn blueBtn">확인</button>
+            </div>
+        </div>
+        <!--작성완료_키워드 조건 미충족-->
+        <div class="modalWrap modal3">
+            <p class="modalTit">판매하는 자료에 대한 설명을 작성주세요</p>
+            <button class="closeBtn">
+                <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" class="closeBtnImg">
+            </button>
+            <div class="modalContent">
+                <p></p>
+            </div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn blueBtn">확인</button>
+            </div>
+        </div>
+        <!--작성완료_내용 조건 미충족-->
+        <div class="modalWrap modal4">
+            <p class="modalTit">자료상점 등록 성공</p>
+            <div class="modalContent">
+                <p>판매글이 게재되었습니다.</p>
+            </div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn blueBtn">확인</button>
+            </div>
+        </div>
+    </div>
+    <!-- 관련 모달 END-->
 
     <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
@@ -105,7 +162,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script>
-    console.log("들어옴ㄴ")
+    console.log("들어옴")
 
     // $(document).ready(function() {
     //     $('#summernote').summernote({
@@ -159,13 +216,7 @@
         });
     });
 
-    function submit() {
-        console.log($(".storeStatus").text());
-        console.log($(".cashCheck").val());
-        console.log($(".textInput").val());
-        console.log($(".storeContent").val());
-        storeForm.submit();
-    }
+
 
 
 </script>

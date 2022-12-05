@@ -20,7 +20,9 @@ public class StoreDTO {
     private Integer storePoint;
     private String storeTitle;
     private String storeContent;
-    private User user;
+    // DTO에 entity 사용X
+//    private User user;
+    private Long userId;
     private List<StoreFile> files;
 
     public Store toEntity(){
@@ -33,13 +35,21 @@ public class StoreDTO {
     }
 
     @QueryProjection
-    public StoreDTO(Long storeId, StoreStatus storeStatus, Integer storePoint, String storeTitle, String storeContent, User user, List<StoreFile> files) {
+    public StoreDTO(Long storeId, StoreStatus storeStatus, Integer storePoint, String storeTitle, String storeContent,  List<StoreFile> files) {
         this.storeId = storeId;
         this.storeStatus = storeStatus;
         this.storePoint = storePoint;
         this.storeTitle = storeTitle;
         this.storeContent = storeContent;
-        this.user = user;
         this.files = files;
+    }
+
+    @QueryProjection
+    public StoreDTO(Long storeId, StoreStatus storeStatus, Integer storePoint, String storeTitle, String storeContent) {
+        this.storeId = storeId;
+        this.storeStatus = storeStatus;
+        this.storePoint = storePoint;
+        this.storeTitle = storeTitle;
+        this.storeContent = storeContent;
     }
 }

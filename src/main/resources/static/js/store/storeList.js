@@ -4,7 +4,7 @@ var $top = $(".top");
 var $topImg = $(".top img");
 var $shopLink = $(".shopLink");
 
-
+console.log("들어옴");
 
 $lock.hover(function(){
     $(this).find($top).css("filter", "brightness(0.6)");

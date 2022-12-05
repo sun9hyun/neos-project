@@ -40,7 +40,9 @@
                             <span>&nbsp; 진행하고자 하는 스터디 주제를 제목으로 정해주세요</span>
                         </p>
                     </div>
-
+                    <form th:action="@{/study/ok}" method="post" id="postForm_1j">
+                        <input type="hidden" name="collegeId" th:value="${session.college}">
+                        <input type="hidden" name="userId" th:value="${session.loginUser}">
                     <div class="answer">
                         <ul>
                             <li>
@@ -48,7 +50,7 @@
                                     <input class="studyTitleInput" placeholder="3~20글자로 적어주세요 예)유체역학 : 레이놀드 수송이론"
                                            minlength="3" maxlength="20"
                                            autocomplete="on"
-                                           value="">
+                                           th:field="${studyDTO.studyTitle}">
                                 </div>
                             </li>
                         </ul>
@@ -61,17 +63,17 @@
                     <div class="answer">
                         <div>
                             <div class="inputWrap studyTitle row">
-                                <select id="studySubjectSelect">
-                                    <option>전공 과목</option>
-                                    <option>교양 과목</option>
-                                    <option>공통 과목</option>
+                                <select id="studySubjectSelect" name="studyType">
+                                    <option value="전공">전공 과목</option>
+                                    <option value="교양">교양 과목</option>
+                                    <option value="공통">공통 과목</option>
                                 </select>
                             </div>
                             <div class="answer">
                                 <input class="studyKeywordInput" type="text" id="studySubject2"
                                        placeholder="예) 재료역학, 수리역학, 철근콘크리트, 강구조설계"
-                                       minlength="3"
-                                       maxlength="20" autocomplete="off">
+                                       minlength="2"
+                                       maxlength="20" autocomplete="off"  th:field="${studyDTO.studyKeyword}">
                             </div>
                         </div>
                     </div>
@@ -89,7 +91,7 @@
                                     <input class="studyTitleInput" placeholder="재학 중인 대학교명을 작성해주세요." minlength="3"
                                            maxlength="20"
                                            autocomplete="on"
-                                           value="서울대학교" readonly>
+                                           th:value="${collegeName}" readonly>
                                 </div>
                             </li>
                         </ul>
@@ -102,31 +104,31 @@
                     <div class="answer">
                         <div class="selectBoxWrap">
                             <div class="selectBoxLeft">
-                                <select class="onOffSelect" id="onOffSelect">
-                                    <option value="00">온라인/오프라인 모두 가능</option>
-                                    <option value="01">온라인만 가능</option>
-                                    <option value="02">오프라인만 가능</option>
+                                <select class="onOffSelect" id="onOffSelect" name="studyO2o">
+                                    <option value="all">온라인/오프라인 모두 가능</option>
+                                    <option value="online">온라인만 가능</option>
+                                    <option value="offline">오프라인만 가능</option>
                                 </select>
                             </div>
                             <div class="selectBox">
-                                <select class="onOffResult" id="onOffResult">
-                                    <option>상관없음</option>
-                                    <option>서울특별시</option>
-                                    <option>경기도</option>
-                                    <option>부산광역시</option>
-                                    <option>인천광역시</option>
-                                    <option>대구광역시</option>
-                                    <option>경상남도</option>
-                                    <option>경상북도</option>
-                                    <option>충청남도</option>
-                                    <option>충청북도</option>
-                                    <option>전라남도</option>
-                                    <option>전라북도</option>
-                                    <option>광주광역시</option>
-                                    <option>강원도</option>
-                                    <option>울산광역시</option>
-                                    <option>제주특별자치도</option>
-                                    <option>세종특별자치시</option>
+                                <select class="onOffResult" id="onOffResult" name="studyCity">
+                                    <option value="all">상관없음</option>
+                                    <option value="서울특별시">서울특별시</option>
+                                    <option value="경기도">경기도</option>
+                                    <option value="부산광역시">부산광역시</option>
+                                    <option value="인천광역시">인천광역시</option>
+                                    <option value="대구광역시">대구광역시</option>
+                                    <option value="경상남도">경상남도</option>
+                                    <option value="경상북도">경상북도</option>
+                                    <option value="충청남도">충청남도</option>
+                                    <option value="충청북도">충청북도</option>
+                                    <option value="전라남도">전라남도</option>
+                                    <option value="전라북도">전라북도</option>
+                                    <option value="광주광역시">광주광역시</option>
+                                    <option value="강원도">강원도</option>
+                                    <option value="울산광역시">울산광역시</option>
+                                    <option value="제주특별자치도">제주특별자치도</option>
+                                    <option value="세종특별자치시">세종특별자치시</option>
                                 </select>
                             </div>
                         </div>
@@ -140,7 +142,7 @@
                     <div class="answer">
                         <div class="selectBoxWrap">
                             <div class="selectBox">
-                                <select id="maxCount">
+                                <select id="maxCount" name="studySupport">
                                     <option value="2">2명</option>
                                     <option value="3">3명</option>
                                     <option value="4">4명</option>
@@ -161,7 +163,7 @@
                     </div>
 
                     <div class="answer">
-                <textarea id="contents" placeholder="●  스터디 목표 및 진행방식
+                <textarea id="contents" name="studyContent" placeholder="●  스터디 목표 및 진행방식
 
 [목표] : ( 예: 레이놀드 방정식을 마스터하고자 합니다)
 
@@ -179,31 +181,12 @@
 [참여회비] (예 : 매 모임마다 1만원의 회비가 있습니다)
 
 [기타]  ( 예: 인천 거주하시는 분이시면 더욱 좋겠습니다)">
-●  스터디 목표 및 진행방식
-
-[목표] : ( 예: 레이놀드 방정식을 마스터하고자 합니다)
-
-[진행방식] : (예: 매주마다 다음주의 목표를 설정하고, 이에 대한 공부 후 실제 프로토타입)
-
-[장소/횟수] : (예: 정기적으로 오프라인 주말 1회 혹은 zoom 1회 토론 등)
-
-[기간] :  (예 : 3달 정도 진행하고자 합니다)
-
-
-●  참여 조건
-
-[지식수준] :  (예 :해당 과목에 대한 지식이 조금 있으셨으면 합니다. )
-
-[참여회비] (예 : 매 모임마다 1만원의 회비가 있습니다)
-
-[기타]  ( 예: 인천 거주하시는 분이시면 더욱 좋겠습니다)</textarea>
+</textarea>
                     </div>
-
-
                     <div class="confirmBtnWrap btnWrap">
-                        <button value="임시저장" class="grayBtn saveBtn">임시저장</button>
-                        <button value="완료" class="pinkBtn confirmBtn">작성완료</button>
+                        <button type="button" value="완료" class="pinkBtn confirmBtn">작성완료</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -219,7 +202,7 @@
             <div class="modalContent"><p>임시저장을 완료했습니다</p>
                 <p>미리보기가 가능합니다</p></div>
             <div class="btnWrap singleBtnWrap">
-                <button class="btn blueBtn">확인</button>
+                <button type="button" class="btn blueBtn">확인</button>
             </div>
         </div>
         <!--작성완료_제목 조건 미충족-->
@@ -228,7 +211,7 @@
                                           class="closeBtnImg"></button>
             <div class="modalContent"><p>스터디 주제를 3~15자 이내로 적어주세요</p></div>
             <div class="btnWrap singleBtnWrap">
-                <button class="btn blueBtn">확인</button>
+                <button type="button" class="btn blueBtn">확인</button>
             </div>
         </div>
         <!--작성완료_키워드 조건 미충족-->
@@ -237,7 +220,7 @@
                                           class="closeBtnImg"></button>
             <div class="modalContent"><p>한개 이상의 키워드가 필요합니다</p></div>
             <div class="btnWrap singleBtnWrap">
-                <button class="btn blueBtn">확인</button>
+                <button type="button" class="btn blueBtn">확인</button>
             </div>
         </div>
         <!--작성완료_내용 조건 미충족-->
@@ -246,7 +229,7 @@
                                           class="closeBtnImg"></button>
             <div class="modalContent"><p></p></div>
             <div class="btnWrap singleBtnWrap">
-                <button class="btn blueBtn">확인</button>
+                <button type="button" class="btn blueBtn">확인</button>
             </div>
         </div>
         <!--작성완료-->
@@ -255,7 +238,7 @@
                                           class="closeBtnImg"></button>
             <div class="modalContent"><p>스터디가 게재되었습니다.</p></div>
             <div class="btnWrap singleBtnWrap">
-                <button class="btn blueBtn">확인</button>
+                <button type="button" class="btn blueBtn" id="postOkBtn">확인</button>
             </div>
         </div>
 

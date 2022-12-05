@@ -11,6 +11,7 @@ import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -43,7 +44,7 @@ public class Study extends Period {
    private int studyView;
 
 
-   private LocalDateTime studyEndDate;
+   private LocalDate studyEndDate;
 
 //   작성자
    @ManyToOne(fetch = FetchType.LAZY)
@@ -55,7 +56,7 @@ public class Study extends Period {
    }
 
    @Builder
-   public Study(@NotNull String studyTitle, @NotNull StudyField studyField, @NotNull StudyOnlineWhether studyOnlineWhether, @NotNull Integer studySupport, @NotNull StudyRecruitStatus studyRecruitStatus, @NotNull StudyStatus studyStatus, @NotNull String studyContent, LocalDateTime studyEndDate) {
+   public Study(@NotNull String studyTitle, @NotNull StudyField studyField, @NotNull StudyOnlineWhether studyOnlineWhether, @NotNull Integer studySupport, @NotNull StudyRecruitStatus studyRecruitStatus, @NotNull StudyStatus studyStatus, @NotNull String studyContent, LocalDate studyEndDate) {
       this.studyTitle = studyTitle;
       this.studyField = studyField;
       this.studyOnlineWhether = studyOnlineWhether;

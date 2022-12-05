@@ -59,6 +59,7 @@ public class UserDTO {
 
 
 
+
     public User toEntity(){
         UserCollegeInfo userCollegeInfo = UserCollegeInfo.builder().userCollegeYear(userCollegeYear).userCollegeMajor(userCollegeMajor).build();
         UserLike userLike = UserLike.builder().userCity(userCity).userDay(userDay).userO2o(userO2o).userTime(userTime).build();

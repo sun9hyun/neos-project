@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Component
@@ -34,7 +35,7 @@ public class StudyDTO {
 
     private String studyContent;
     private int studyView;
-    private LocalDateTime studyEndDate;
+    private LocalDate studyEndDate;
 
     private Long collegeId;
     private String collegeLogoFile;
@@ -59,7 +60,7 @@ public class StudyDTO {
     }
 
     @QueryProjection
-    public StudyDTO(Long studyId, String studyTitle, String studyType, String studyKeyword, String studyO2o, String studyCity, Integer studySupport, StudyRecruitStatus studyRecruitStatus, StudyStatus studyStatus, String studyContent, int studyView, LocalDateTime studyEndDate) {
+    public StudyDTO(Long studyId, String studyTitle, String studyType, String studyKeyword, String studyO2o, String studyCity, Integer studySupport, StudyRecruitStatus studyRecruitStatus, StudyStatus studyStatus, String studyContent, int studyView, LocalDate studyEndDate) {
         this.studyId = studyId;
         this.studyTitle = studyTitle;
         this.studyType = studyType;
@@ -75,7 +76,7 @@ public class StudyDTO {
     }
 
     @QueryProjection
-    public StudyDTO(Long studyId, String studyTitle, String studyType, String studyKeyword, String studyO2o, String studyCity, Integer studySupport, StudyRecruitStatus studyRecruitStatus, StudyStatus studyStatus, String studyContent, int studyView, LocalDateTime studyEndDate, Long collegeId, String collegeLogoFile, String collegeName, Long userId, String userNickName) {
+    public StudyDTO(Long studyId, String studyTitle, String studyType, String studyKeyword, String studyO2o, String studyCity, Integer studySupport, StudyRecruitStatus studyRecruitStatus, StudyStatus studyStatus, String studyContent, int studyView, LocalDate studyEndDate, Long collegeId, String collegeLogoFile, String collegeName, Long userId, String userNickName) {
         this.studyId = studyId;
         this.studyTitle = studyTitle;
         this.studyType = studyType;

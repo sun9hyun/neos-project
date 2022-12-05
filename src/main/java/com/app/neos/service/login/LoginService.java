@@ -28,7 +28,7 @@ public class LoginService {
     }
 
     public boolean loginOk(String realId){
-        return userRepository.findByUserOAuthId(realId) != null;
+        return userRepository.findByUserOAuthId(realId).isPresent();
     }
 
 

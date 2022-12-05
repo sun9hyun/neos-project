@@ -178,8 +178,10 @@ public class User extends Period {
         userDTO.setUserCollegeEmail(this.userCollegeEmail);
         userDTO.setUserPhoneNumber(this.userPhoneNumber);
         userDTO.setUserCollegeCertify(this.userCollegeCertify);
-        userDTO.setUserCollegeYear(this.userCollegeInfo.getUserCollegeYear());
-        userDTO.setUserCollegeMajor(this.userCollegeInfo.getUserCollegeMajor());
+        if(this.userCollegeInfo !=null){
+            userDTO.setUserCollegeYear(this.userCollegeInfo.getUserCollegeYear());
+            userDTO.setUserCollegeMajor(this.userCollegeInfo.getUserCollegeMajor());
+        }
         userDTO.setUserNeosBadge(this.userNeosPower.getUserNeosBadge());
         userDTO.setUserNeosPowerLevel(this.userNeosPower.getUserNeosPowerLevel());
         userDTO.setUserNeosPowerAbility(this.userNeosPower.getUserNeosPowerAbility());

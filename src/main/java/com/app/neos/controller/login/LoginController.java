@@ -2,6 +2,7 @@ package com.app.neos.controller.login;
 
 
 import com.app.neos.domain.user.UserDTO;
+import com.app.neos.entity.user.User;
 import com.app.neos.service.join.GoogleService;
 import com.app.neos.service.join.KaKaoLoginService;
 import com.app.neos.service.join.KaKaoService;

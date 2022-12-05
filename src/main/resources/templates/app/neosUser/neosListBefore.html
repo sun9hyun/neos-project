@@ -491,21 +491,18 @@
     </div>
     <div class="peopleGrid">
         <ul class="peopleGridList">
-            <li class="letspler_Re"><img loading="lazy" class="newMark"
+            <th:block th:each="user:${users}">
+            <li class="letspler_Re" th:object="${user}"><img loading="lazy" class="newMark"
                                          src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">
                 <div class="top">
                     <div class="profilePicWrap">
-                        <div class="profilePic"><img
-                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png"
-                                alt="민쇼니"></div>
+                        <div class="profilePic"><img  th:src="*{userFile}" alt="민쇼니"></div>
                         <a class="favorite "></a>
                     </div>
                     <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png"
-                                                 alt="렛플렙">
+                        <div class="idWrap" ><img th:src="*{userNeosPower.userNeosBadge}"  loading="lazy" class="userLv" style="width: 20px">
                             <div class="userName">
-                                <span class="name">민쇼니</span>
+                                <span class="name"  th:text="*{userNickName}" >민쇼니</span>
                                 <ul class="idHoverMenu">
                                     <li><a class="detail" >프로필 상세</a></li>
                                     <li><a class="chat">1:1대화</a></li>
@@ -518,33 +515,34 @@
                             <div class="certiWrap"></div>
                         </div>
                         <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>3</span></div>
+                            <div><p><img loading="lazy" src="/images/neosUser/chatting-icon.png"
+                                      alt="네오스포인트" style="margin-top: 6px; "> </p> <span class="userPoint" th:text="*{userChattingPoint}"></span></div>
                             <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>3</span></div>
+                                      style="width: 20px; height: 20px;"><span>0</span></div>
                         </div>
                     </div>
                 </div>
                 <div class="bottom">
                     <ul class="userFavorite">
                         <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 경상대학교</span></span><span
-                                    class="grade">4학년</span></h3>
+                            <h3><span>[대학]&nbsp;<span class="university"  th:text="*{college.collegeName}" ></span></span>
+                                <span class="grade" th:text="*{userCollegeInfo.userCollegeYear}"></span><span style="font-size: 14px;color: #999999;">학년</span></h3>
                         </li>
                         <li>
-                            <h3><span>[전공]&nbsp;<span class="major"> 미입력</span></span><span></span></h3>
+                            <h3><span>[전공]&nbsp;<span class="major"  th:text="*{userCollegeInfo.userCollegeMajor}"></span></span><span></span></h3>
                         </li>
                     </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
+<!--                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>-->
                     <div class="userInfoTagWrap"></div>
                     <a class="chatBtn">
                         <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
+                                  alt="커피포인트"><span>NEO CHAT</span></div>
                     </a>
                 </div>
             </li>
-            <li class="letspler_Re"><img loading="lazy" class="newMark"
+            </th:block>
+
+            <!--<li class="letspler_Re"><img loading="lazy" class="newMark"
                                          src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">
                 <div class="top">
                     <div class="profilePicWrap">
@@ -738,7 +736,7 @@
                             <h3><span>[대학]&nbsp;<span class="university"> 인하대학교</span></span><span> 2학년</span></h3>
                         </li>
                         <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 수학교육학과</span></span><!--<span>초보</span>--></h3>
+                            <h3><span> [전공]&nbsp;<span class="major"> 수학교육학과</span></span>&lt;!&ndash;<span>초보</span>&ndash;&gt;</h3>
                         </li>
                     </ul>
                     <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
@@ -799,7 +797,7 @@
                             <h3><span>[대학]&nbsp;<span class="university"> 서울외국어대학교</span></span><span> 1학년</span></h3>
                         </li>
                         <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 영어학과</span></span><!--<span>초보</span>--></h3>
+                            <h3><span> [전공]&nbsp;<span class="major"> 영어학과</span></span>&lt;!&ndash;<span>초보</span>&ndash;&gt;</h3>
                         </li>
                     </ul>
                     <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
@@ -865,7 +863,7 @@
                             <h3><span>[대학]&nbsp;<span class="university"> 서울사이버대학교</span></span><span> 3학년</span></h3>
                         </li>
                         <li>
-                            <h3><span> [전공]&nbsp;<span class="major"> 정보학과</span></span><!--<span>중수</span>--></h3>
+                            <h3><span> [전공]&nbsp;<span class="major"> 정보학과</span></span>&lt;!&ndash;<span>중수</span>&ndash;&gt;</h3>
                         </li>
                     </ul>
                     <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
@@ -1574,7 +1572,7 @@
                                     CHAT</span></div>
                     </a>
                 </div>
-            </li>
+            </li>-->
         </ul>
 
         <div class="bigMoreBtn"><a>더 불러오기</a></div>

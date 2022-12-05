@@ -20,7 +20,6 @@ public class College extends Period{
     private Long collegeId;
     @NotNull
     private String collegeCity;
-    @NotNull
     private String collegeName;
     @NotNull
     private String collegeLogoFile;

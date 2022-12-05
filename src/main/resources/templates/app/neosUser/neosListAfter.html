@@ -214,7 +214,7 @@
             <h1 class="tit" style="margin-top: 30px;">네오스인 찾기</h1>
             <div class="searchOption" style="margin-bottom: 0px;">
                 <select class="smSelect locationSelect">
-                    <option value="00">지역 구분</option>
+                    <option value="00" id="location_1j">지역 구분</option>
                     <option value="01">서울특별시</option>
                     <option value="02">경상남도</option>
                 </select>
@@ -530,19 +530,19 @@
                                          src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">
                 <div class="top">
                     <div class="profilePicWrap">
-                        <div class="profilePic"><img
-                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png"
-                                alt="민쇼니"></div>
-                        <a class="favorite heart"></a>
+                        <div class="profilePic" >
+                            <img th:src="*{userFile}" alt="민쇼니"></div>
+                        <a class="favorite heart" ></a>
                     </div>
                     <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv"
-                                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png"
-                                                 alt="렛플렙" >
+                        <div class="idWrap">
+                           <img  th:src="*{userNeosBadge}"   loading="lazy" class="userLv" style="width: 20px">
                             <div class="userName" >
                                 <span class="name" th:text="*{userNickName}">민쇼니</span>
                                 <ul class="idHoverMenu">
-                                    <li><a class="detail">프로필 상세</a></li>
+                                    <li><a class="detail">프로필 상세</a>
+                                        <input type="hidden" th:href="*{userId}">
+                                    </li>
                                     <li><a class="chat">1:1대화</a></li>
                                     <li><a class="invite">스터디 초대</a></li>
                                 </ul>
@@ -553,31 +553,43 @@
                             <div class="certiWrap"></div>
                         </div>
                         <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                      alt="커피포인트"><span>3</span></div>
+                            <div > <p><img loading ="lazy" src="/images/neosUser/chatting-icon.png"
+                                      alt="네오스포인트" style="margin-top: 6px;">  </p> <span class="userPoint" th:text="*{userChattingPoint}"> </span></div>
                             <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"
-                                      style="width: 20px; height: 20px;"><span>3</span></div>
+                                      style="width: 20px; height: 20px;"><span id="result">0</span></div>
                         </div>
                     </div>
                 </div>
                 <div class="bottom">
                     <ul class="userFavorite">
                         <li>
-                            <h3 th:if="*{collegeName != 'null'} "><span>[대학]&nbsp;<span class="university" th:text="*{collegeName}"> 경상대학교</span></span><span class="grade"th:text="*{userCollegeYear}">4학년</span></h3>
-                            <h3><span>[대학]&nbsp;<span class="university"> 경상대학교</span></span><span class="grade">4학년</span></h3>
-                            <h3 th:unless="*{collegeName  == 'null'}"><span>[대학]&nbsp;<span class="university"> 학생</span>  <span class="grade" th:text=""></span> </span></h3>
+<!--                            <h3><span>[대학]&nbsp;<span class="university" th:text="*{collegeName}" ></span></span><span class="grade" th:text="*{userCollegeYear}"></span><span style="font-size: 14px;color: #999999;">학년</span></h3>-->
+
+                            <th:block th:if="*{collegeId != null}">
+                                <h3><span>[대학]&nbsp;<span class="university" th:text="*{collegeName}" ></span></span><span class="grade" th:text="*{userCollegeYear}"></span><span style="font-size: 14px;color: #999999;">학년</span></h3>
+                            </th:block>
+
+                            <th:block th:unless="*{collegeId != null}">
+                                <h3><span>[대학]&nbsp;<span class="university">해당사항없음</span></span><span class="grade"></span><span style="font-size: 14px;color: #999999;"></span></h3>
+                            </th:block>
                         </li>
+
+
                         <li>
-                            <h3 th:if="*{userCollegeMajor != 'null'}"><span>[전공]&nbsp;<span class="major" th:text="*{userCollegeMajor}"> 미입력</span></span><span></span></h3>
-                            <h3 th:unless="*{userCollegeMajor == 'null'}"><span>[전공]&nbsp;<span class="major" th:text="*{userCollegeMajor}"> 미입력</span></span><span></span></h3>
+                            <th:block th:if="*{collegeId != null}">
+                                <h3><span>[전공]&nbsp;<span class="major" th:text="*{userCollegeMajor}"></span></span><span></span></h3>
+                            </th:block>
+
+                            <th:block th:unless="*{collegeId != null}">
+                                <h3><span>[전공]&nbsp;<span class="major">해당사항없음</span></span><span></span></h3>
+
+                            </th:block>
                         </li>
                     </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
                     <div class="userInfoTagWrap"></div>
-                    <a class="chatBtn">
+                    <a class="chatBtn" >
                         <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                  alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
+                                  alt="네오스포인트"><span >NEO CHAT</span></div>
                     </a>
                 </div>
             </li>
@@ -597,8 +609,7 @@
 <!--                            <h2 class="userName">-->
 <!--                                <span class="name">박종우</span>-->
 <!--                                <ul class="idHoverMenu">-->
-<!--                                    <li><a class="detail">프로필 상세</a></li>-->
-<!--                                    <li><a class="chat">1:1대화</a></li>-->
+<!--                                    <li><a class="detail">프로필 상세</a></li>--><!--                                    <li><a class="chat">1:1대화</a></li>-->
 <!--                                    <li><a class="invite">스터디 초대</a></li>-->
 <!--                                </ul>-->
 <!--                            </h2>-->
@@ -1629,4 +1640,14 @@
 <script src="/js/neosUser/neosListAfter.js"></script>
 <script src="/js/fix/chatting.js"></script>
 <script src="/js/fix/login.js"></script>
+<script>
+    $(".detail").on("click", function (e) {
+        alert($(this).next().attr("href"));
+        e.preventDefault();
+        location.href = "/neosUser/info/yes" + "?userId=" + $(this).next().attr("href");
+    });
+
+
+</script>
+
 </html>

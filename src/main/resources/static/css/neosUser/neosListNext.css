@@ -309,7 +309,6 @@ img {
     flex-direction: row;
     align-items: flex-start;
     width: 100%;
-    margin-bottom: 10px;
 }
 
 .letspler_Re .top .profilePicWrap {
@@ -404,7 +403,7 @@ img {
 }
 
 .letspler_Re .top .profileTxt .coffeAndHeart {
-    margin-top: 2px;
+    margin-top: -4px;
     margin-left: 1px;
 }
 

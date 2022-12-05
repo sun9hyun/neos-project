@@ -5,16 +5,14 @@ import com.app.neos.entity.period.Created;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.point.NeosPowerContent;
 import com.sun.istack.NotNull;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name="TBL_NEOS_POWER")
 @Getter @ToString(exclude = "user")
+@NoArgsConstructor/*(access = AccessLevel.PROTECTED)*/
 public class NeosPower extends Created {
     @Id @GeneratedValue
     private Long neosPowerId;

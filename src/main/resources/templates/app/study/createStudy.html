@@ -12,6 +12,14 @@
 <body>
     <header th:replace="/app/fix/header.html :: header"></header>
     <!-- 스터디 작성 페이지 START-->
+    <input type="hidden" id="collegeId_1jsdf" th:value="${session.college}">
+    <script>
+        const collegeId = document.querySelector("#collegeId_1jsdf").value;
+        if(!collegeId){
+            alert("스터디 모집은 대학생만 가능합니다.")
+            location.href="/main/main";
+        }
+    </script>
     <div>
         <section class="bulidStudy">
             <!-- 화면 상단부 -->

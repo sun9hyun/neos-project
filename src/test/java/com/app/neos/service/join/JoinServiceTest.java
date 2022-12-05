@@ -138,4 +138,9 @@ public class JoinServiceTest {
         log.info(userRepository.findByUserOAuthId("2546432919k").get().toDTO().toString());
     }
 
+    @Test
+    public void loginTe3st(){
+        log.info("결과:" +loginService.loginOk("ser"));
+    }
+
 }

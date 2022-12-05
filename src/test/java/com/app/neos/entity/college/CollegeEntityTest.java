@@ -29,14 +29,28 @@ public class CollegeEntityTest {
     public void saveTest(){
         CollegeDTO collegeDTO = new CollegeDTO();
 
-        collegeDTO.setCollegeCity("경상남도");
-        collegeDTO.setCollegeName("문성대학교");
-        collegeDTO.setCollegeLogoFile("/images/college/changwonCollege.jpg");
-        collegeDTO.setCollegeEmailDomain("www.changwon.ac.kr");
+        collegeDTO.setCollegeCity("강원도");
+        collegeDTO.setCollegeName("강릉원주대학교");
+        collegeDTO.setCollegeLogoFile("/images/admin/college/gangneungCollege.jpg");
+        collegeDTO.setCollegeEmailDomain("www.gangneung.ac.kr");
 
         College college = collegeDTO.toEntity();
 
         collegeRepository.save(college);
+    }
+
+
+    @Test
+    public void updateTest2(){
+        CollegeDTO collegeDTO = new CollegeDTO();
+
+        collegeDTO.setCollegeCity("경상남도");
+        collegeDTO.setCollegeName("문성대학교");
+        collegeDTO.setCollegeLogoFile("/images/admin/college/changwonCollege.jpg");
+        collegeDTO.setCollegeEmailDomain("www.changwon.ac.kr");
+
+
+        collegeRepository.findById(2l).get().update(collegeDTO);
     }
 
 

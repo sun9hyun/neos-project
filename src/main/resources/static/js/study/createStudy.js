@@ -45,6 +45,10 @@ $(".confirmBtn").on("click",function(){
     }
 });
 
+$("#postOkBtn").on("click",function () {
+    $("#postForm_1j").submit();
+})
+
 // 온, 오프라인 설정에 따른 지역 미설정
 var $onOffSelect = $(".onOffSelect");
 
@@ -56,4 +60,14 @@ $onOffSelect.on("change", function() {
     }
 });
 
+$("#onOffSelect").on("change",function () {
+    if($("#onOffSelect option:selected").val()=='offline'){
+        $("#onOffResult option:eq(0)").attr("selected", "selected");
+        $("#onOffResult").prop('disabled',true);
+        $("#onOffResult").after(`<input type="hidden" id="studyCity_1j" name="studyCity" value="no">`)
+    }else{
+        $("#onOffResult").prop('disabled',false);
+        $("#studyCity_1j").remove();
+    }
+})
 

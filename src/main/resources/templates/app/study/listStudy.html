@@ -380,30 +380,16 @@
             </div>
             <div class="projectView projectAllGridView">
                 <h1 style="padding: 0 !important">전체 스터디</h1>
-                <div class="searchOption"><select class="citySelect smSelect">
-                    <option value="KR00">지역 미지정</option>
-                    <option value="KR01">서울특별시</option>
-                    <option value="KR02">경기도</option>
-                    <option value="KR03">부산광역시</option>
-                    <option value="KR04">인천광역시</option>
-                    <option value="KR05">대구광역시</option>
-                    <option value="KR06">경상남도</option>
-                    <option value="KR07">경상북도</option>
-                    <option value="KR08">대전광역시</option>
-                    <option value="KR09">충청남도</option>
-                    <option value="KR10">충청북도</option>
-                    <option value="KR11">전라남도</option>
-                    <option value="KR12">전라북도</option>
-                    <option value="KR13">광주광역시</option>
-                    <option value="KR14">강원도</option>
-                    <option value="KR15">울산광역시</option>
-                    <option value="KR16">제주특별자치도</option>
-                    <option value="KR17">세종특별자치시</option>
-                </select><select class="uniSelect smSelect">
+                <div class="searchOption"><select class="citySelect smSelect" id="citySelect_1j" name="studyCity">
+                    <option value="all">전체</option>
+                    <th:block th:each="city : ${collegeCityList}">
+                        <option th:value="${city}" th:text="${city}"></option>
+                    </th:block>
+                </select><select class="uniSelect smSelect" name="collegeName" id="collegeNameSelect_1j">
                     <option value="00">대학교</option>
                     <option value="01">인하대학교</option>
                     <option value="02">인천대학교</option>
-                </select><select class="fieldSelect smSelect">
+                </select><select class="fieldSelect smSelect" name="studyType">
                     <option value="F00">모집분야</option>
                     <option value="F01">전공 과목</option>
                     <option value="F02">교양 과목</option>
@@ -411,733 +397,88 @@
                 </select><label class="checkBox"><span class="txt">모집중</span><input type="checkbox" checked=""><span
                         class="checkmark"></span></label></div>
                 <div class="projectGridView">
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="topBadge red">
-                                        <img loading="lazy" src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="새로운 프로젝트">
-                                    </div>
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
-                                    </div>
-                                </div>
-                                <div class="favorite listFavorite off "></div>
-                            </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
-                        </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
-
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                </div>
-                            </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <!----------------------------------------- 리스트 예시 시작--------------------------------------->
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="topBadge red">
-                                        <img loading="lazy" src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="새로운 프로젝트">
+                    <th:block th:each="study : ${studyList}">
+                        <div class="projectGridWrap" th:object="${study}">
+                            <div class="projectTopInfo">
+                                <div class="top">
+                                    <div class="badgeWrap">
+                                        <div class="topBadge red">
+                                            <img  src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="새로운 프로젝트">
+                                        </div>
+                                        <div class="badge black">
+                                            <!-- <h2>사이드프로젝트</h2> -->
+                                            <img th:src="*{collegeLogoFile}">
+                                        </div>
                                     </div>
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
-                                    </div>
+                                    <div class="favorite listFavorite off "></div>
                                 </div>
-                                <div class="favorite listFavorite off "></div>
+                                <div class="projectThumb"><img loading="lazy"
+                                                               src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
+                                                               alt="커뮤니티 연계 교통 정보 어플"></div>
                             </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
-                        </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
+                            <div class="projectBottomInfo">
+                                <div class="txtWrap projectWrap">
+                                    <h3 class="category" th:text="*{studyType}"></h3>
+                                    <h2 class="tit" th:text="*{studyTitle}"></h2>
+                                    <!--                                 <div class="iconWrap2"><img loading="lazy"
+                                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                                            alt="Figma"></div> -->
 
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
                                 </div>
                             </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="topBadge purple">
-                                        <img loading="lazy" src="https://letspl.me/assets/images/ic-badge_project_story.png">
+                            <div class="projectInfo2">
+                                <div class="middleWrap">
+                                    <div class="left">
+                                        <div class="heartCount"><img loading="lazy"
+                                                                     src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
+                                                                     alt="구독자 수"><span>3</span></div>
                                     </div>
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
+                                    <div class="right">
+                                        <!-- <p><span> 44</span><span> (-) </span></p> -->
                                     </div>
                                 </div>
-                                <div class="favorite listFavorite off "></div>
-                            </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
-                        </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
-
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                </div>
-                            </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="topBadge purple">
-                                        <img loading="lazy" src="https://letspl.me/assets/images/ic-badge_project_story.png">
-                                    </div>
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
+                                <div class="bottomWrap">
+                                    <div class="gatherTxt">
+                                        <div>
+                                            <th:block th:if="*{studyRecruitStatus.toString() == 'RECRUITING'}">
+                                                <span>모집중</span>
+                                            </th:block>
+                                            <th:block th:unless="*{studyRecruitStatus.toString() == 'RECRUITING'}">
+                                                <span>모집완료</span>
+                                            </th:block>
+                                            <span>0</span>
+                                            <span>/</span>
+                                            <span th:text="*{studySupport}"></span></div>
                                     </div>
                                 </div>
-                                <div class="favorite listFavorite off "></div>
                             </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
                         </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
 
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                </div>
-                            </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
-                                    </div>
-                                </div>
-                                <div class="favorite listFavorite off "></div>
-                            </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
-                        </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
-
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                </div>
-                            </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
-                                    </div>
-                                </div>
-                                <div class="favorite listFavorite off "></div>
-                            </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
-                        </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
-
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                </div>
-                            </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
-                                    </div>
-                                </div>
-                                <div class="favorite listFavorite off "></div>
-                            </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
-                        </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
-
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                </div>
-                            </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
-                                    </div>
-                                </div>
-                                <div class="favorite listFavorite off "></div>
-                            </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
-                        </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
-
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                </div>
-                            </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
-                                    </div>
-                                </div>
-                                <div class="favorite listFavorite off "></div>
-                            </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
-                        </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
-
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                </div>
-                            </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
-                                    </div>
-                                </div>
-                                <div class="favorite listFavorite off "></div>
-                            </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
-                        </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
-
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                </div>
-                            </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
-                                    </div>
-                                </div>
-                                <div class="favorite listFavorite off "></div>
-                            </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
-                        </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
-
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                </div>
-                            </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
-                                    </div>
-                                </div>
-                                <div class="favorite listFavorite off "></div>
-                            </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
-                        </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
-
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                </div>
-                            </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
-                                    </div>
-                                </div>
-                                <div class="favorite listFavorite off "></div>
-                            </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
-                        </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
-
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                </div>
-                            </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
-                                    </div>
-                                </div>
-                                <div class="favorite listFavorite off "></div>
-                            </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
-                        </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
-
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                </div>
-                            </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
-                                    </div>
-                                </div>
-                                <div class="favorite listFavorite off "></div>
-                            </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
-                        </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
-
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                </div>
-                            </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projectGridWrap">
-                        <div class="projectTopInfo">
-                            <div class="top">
-                                <div class="badgeWrap">
-                                    <div class="badge black">
-                                        <!-- <h2>사이드프로젝트</h2> -->
-                                        <img src="/images/study/inha.png">
-                                    </div>
-                                </div>
-                                <div class="favorite listFavorite off "></div>
-                            </div>
-                            <div class="projectThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                           alt="커뮤니티 연계 교통 정보 어플"></div>
-                        </div>
-                        <div class="projectBottomInfo">
-                            <div class="txtWrap projectWrap">
-                                <h3 class="category">전공과목</h3>
-                                <h2 class="tit">공업수학_라플라스 변환</h2>
-                                <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                        alt="Figma"></div> -->
-
-                            </div>
-                        </div>
-                        <div class="projectInfo2">
-                            <div class="middleWrap">
-                                <div class="left">
-                                    <div class="heartCount"><img loading="lazy"
-                                                                 src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                 alt="구독자 수"><span>3</span></div>
-                                </div>
-                                <div class="right">
-                                    <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                </div>
-                            </div>
-                            <div class="bottomWrap">
-                                <div class="gatherTxt">
-                                    <div><span>모집완료</span><span>0/4</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!----------------------------------------- 리스트 예시 종료--------------------------------------->
-                </div>
-                <div class="pagingAndBtn">
-                    <span class="pagination pagination-sm clearfix">
-                        <a class="btn_paging prev screen_out"></a>
-                        <a class="active">1</a>
-                        <a class="btn_paging next screen_out"></a>
-                    </span>
-                </div>
+                    </th:block>
             </div>
+
+
+                <th:block th:object="${pagination}">
+                    <div class="pagingAndBtn">
+                    <span  class="pagination pagination-sm clearfix">
+                        <th:block th:if="*{!isFirst()}">
+                             <a th:href="@{/study/list(page=${pagination.getNumber()}-1)}" class="btn_paging prev screen_out"></a>
+                        </th:block>
+                        <th:block th:each="page: ${#numbers.sequence(1, pagination.getTotalPages())}">
+                            <th:block th:if="${page == (pagination.getNumber()+1)}">
+                                <a th:href="@{/study/list(page=${page}-1)}" class="active" th:text="${page}"></a>
+                            </th:block>
+                            <th:block th:unless="${page == (pagination.getNumber()+1)}">
+                                <a th:href="@{/study/list(page=${page}-1)}" th:text="${page}"></a>
+                            </th:block>
+                        </th:block>
+                         <th:block th:if="*{!isLast()}">
+                              <a th:href="@{/study/list(page=${pagination.getNumber()}+1)}" class="btn_paging next screen_out"></a>
+                        </th:block>
+                    </span>
+                    </div>
+                </th:block>
         </section>
     </div>
     <!-- 리스트 메인 END-->
@@ -1174,4 +515,27 @@
 <script src="/js/fix/chatting.js"></script>
 <script src="/js/fix/login.js"></script>
 <script src="/js/fix/header.js"></script>
+<script>
+    $("#citySelect_1j").on("change",function () {
+        var collegeCity = $("#citySelect_1j option:selected").text();
+        if(collegeCity != '전체'){
+            $("#collegeNameSelect_1j").prop('disabled',false);
+            $.ajax({
+                url: "/change/"+collegeCity,
+                type:"post",
+                success:function (result) {
+                    $("#collegeNameSelect_1j").empty();
+                    $("#collegeNameSelect_1j").append(`<option selected="" value="none">대학교</option>`)
+                    $(result).each((i,item)=>{
+                        $("#collegeNameSelect_1j").append(` <option class="collegeName_1j" value="`+item.collegeName+`">`+item.collegeName+`</option>`)
+                    })
+                }
+            })
+        }else{
+            $("#collegeNameSelect_1j option:eq(0)").attr("selected", "selected");
+            $("#collegeNameSelect_1j").prop('disabled',true);
+        }
+
+    })
+</script>
 </html>

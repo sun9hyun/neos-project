@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @SpringBootTest
@@ -29,31 +30,30 @@ public class StudyEntityTest {
 
     @Test
     public void saveTest(){
-        StudyDTO studyDTO = new StudyDTO();
-        studyDTO.setStudyTitle("엑셀의 활용");
-        studyDTO.setStudyType("교양 과목");
-        studyDTO.setStudyKeyword("엑셀");
-        studyDTO.setStudyO2o("오프라인만 가능");
-        studyDTO.setStudyCity("서울특별시");
-        studyDTO.setStudySupport(5);
+        for(int i = 0 ; i<100 ; i++){
+            StudyDTO studyDTO = new StudyDTO();
+            studyDTO.setStudyTitle("엑셀의 활용");
+            studyDTO.setStudyType("전공");
+            studyDTO.setStudyKeyword("음악");
+            studyDTO.setStudyO2o("offline");
+            studyDTO.setStudyCity("no");
+            studyDTO.setStudySupport(9);
+            // 내 생각에 이건 화면에서 받아오는 건 아니고 디폴트로 이렇게 들어가야하나?
+            studyDTO.setStudyRecruitStatus(StudyRecruitStatus.RECRUITING);
+            studyDTO.setStudyStatus(StudyStatus.READY);
+            studyDTO.setStudyContent("엑셀이 어려워 하는 분들! 같이 공부해보아요!");
 
-        // 내 생각에 이건 화면에서 받아오는 건 아니고 디폴트로 이렇게 들어가야하나?
-        studyDTO.setStudyRecruitStatus(StudyRecruitStatus.RECRUITING);
-        studyDTO.setStudyStatus(StudyStatus.READY);
+            // 조회수는 디폴트 0이 맞겠지? 그렇기에 nonnull 은 걸어야 할거 같다
+            studyDTO.setStudyView(0);
+            studyDTO.setStudyEndDate(LocalDate.now().plusMonths(6));
 
-        studyDTO.setStudyContent("엑셀이 어려워 하는 분들! 같이 공부해보아요!");
+            Study study = studyDTO.toEntity();
+            study.changeUser(userRepository.findById(9L).get());
+            studyRepository.save(study);
+        }
 
-        // 조회수는 디폴트 0이 맞겠지? 그렇기에 nonnull 은 걸어야 할거 같다
-        studyDTO.setStudyView(0);
+//        studyDTO.setStudyEndDate(study.getCreatedDate().plusMonths(6));
 
-        Study study = new Study();
-        study = studyDTO.toEntity();
-        study.changeUser(userRepository.findById(4L).get());
-
-        studyRepository.save(study);
-        studyDTO.setStudyEndDate(study.getCreatedDate().plusMonths(6));
-
-        study.update(studyDTO);
     }
 
 

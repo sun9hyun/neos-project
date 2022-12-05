@@ -1,6 +1,7 @@
 package com.app.neos.service.join;
 
 import com.app.neos.domain.college.CollegeDTO;
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.user.User;
 import com.app.neos.repository.college.CollegeRepository;
 import com.app.neos.repository.user.CollegesCustomRepository;
@@ -141,6 +142,12 @@ public class JoinServiceTest {
     @Test
     public void loginTe3st(){
         log.info("결과:" +loginService.loginOk("ser"));
+    }
+
+    @Test
+    public void findAllTest(){
+       List<UserDTO> list = userRepository.findAll().stream().map(i->i.toDTO()).collect(Collectors.toList());
+       log.info(list.toString());
     }
 
 }

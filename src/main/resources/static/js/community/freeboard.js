@@ -36,9 +36,169 @@ $commentButton.on("click", function () {
     }
 });*/
 
+const $noLoginModal = $(".noLoginModal");
+const $closeBtn =$(".noLoginModal .whiteBtn");
+const $yesBtn =$(".noLoginModal .redBtn");
+const $xBtn = $(".noLoginModal .closeBtn")
+$closeBtn.click(function(){
+    $noLoginModal.hide();
+})
+$yesBtn.click(function(){
+    $noLoginModal.hide();
+})
+$xBtn.click(function(){
+    $noLoginModal.hide();
+})
+
+/*-----------------------------------------------------------------------------------------------------------*/
+/*모달*/
+const $writeBtn = $(".postBtn");
+const $cancelBtn = $(".editorWrapButtonBoxLeft").find(".buttonComponents_md__26Zib");
+const $exitBtn = $(".closeButtonBox").find("img");
+const $registerBtn = $(".editorWrapButtonBoxRight").find("button")
+$writeBtn.on("click",function(){
+    $(".editorMdoal").attr("style","display:flex !important;");
+    $(".registerPost_1j").css("display","block");
+})
+$cancelBtn.on("click",function(){
+    $(".editorMdoal").attr("style","display:none !important;")
+    $(".editorMdoal").find(".editorTitle input").val("");
+    $(".editorMdoal").find(".note-editable").text("");
+    $(".updatePost_1j").css("display","none");
+})
+$exitBtn.on("click",function(){
+    $(".editorMdoal").attr("style","display:none !important;")
+    $(".editorMdoal").find(".editorTitle input").val("");
+    $(".editorMdoal").find(".note-editable").text("");
+    $(".updatePost_1j").css("display","none");
+})
+
+/*-----------------------------------------------------------------------------------------------------------*/
+$(document).ready(function(){
+//취소버튼
+    $cancelBtn.hover(function(){
+        $(this).css('background-color','#1a7cff');
+        $(this).css('border-color','#1a7cff');
+        $(this).css('color','#fff');
+        $(this).css('opacity','0.5')
+    },function(){
+        $(this).css('background-color','#fff');
+        $(this).css('border','1px solid #ced2d4');
+        $(this).css('color','black');
+        $(this).css('opacity','1')
+    })
+
+/*수정*/
+    function detail(communityId){
+        $.ajax({
+            url: "/community/communityDetail",
+            type: "post",
+            data: JSON.stringify(communityId),
+            contentType: "application/json; charset=utf-8",
+            success: function (result) {
+                if (callback) {
+                    callback(result);
+                }
+            }
+        });
+    }
+    const $postUpdateBtn = $(".loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo").find(".postUpdate_1j")
+
+    $postUpdateBtn.click(function () {
+        const $titles = $(".comTitle");
+        const $contents = $(".comContent");
+        // let i = $postUpdateBtn.index($(this));
+        let i = $(this).closest(".loungeCard").index();
+
+        const $title = $titles.eq(i).text();
+        const $content = $contents.eq(i).text();
+
+        $(".editorMdoal").find(".editorTitle input").val($title);
+        $(".editorMdoal").find(".note-editable").text($content);
+
+        $(".editorMdoal").attr("style","display:flex !important;");
+        $(".updatePost_1j").css("display","block");
+        $(".registerPost_1j").css("display","none");
+
+    })
+
+    $(".updatePost_1j").click(function(){
+        $(".updatePost_1j").css("display","none");
+        $(".editorMdoal").attr("style","display:none !important;")
+        $(".editorMdoal").find(".editorTitle input").val("");
+        $(".editorMdoal").find(".note-editable").text("");
+
+    })
+
+/*삭제 모달*/
+    const $postDeleteBtn = $(".loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo").find(".postDelete_1j");
+
+    $postDeleteBtn.on("click",function(){
+        $(".modalWrapOpen").attr("style","display : block !important")
+        $(".modalTit").text("글 삭제 확인");
+        $(".commonModalContent p").text("해당 글을 삭제하시겠습니까?");
+    })
+
+    $(".modalWrapOpen").find(".closeBtn").on("click",function () {
+        $(".modalWrapOpen").attr("style","display : none !important")
+    })
+
+    $(".modalWrapOpen").find(".doubleBtnWrap").click(function () {
+        $(".modalWrapOpen").attr("style","display : none !important")
+    })
+
+    $(".modalWrapOpen").find(".redBtn").click(function () {
+        $(".modalWrapOpen").attr("style","display : none !important")
+    })
+
+    const $replyDeleteBtn = $(".userInformationComponents_userReplySection__3ty7Q").find(".replyDelete");
+    $replyDeleteBtn.click(function () {
+        $(".modalWrapOpen").attr("style","display : block !important")
+        $(".modalTit").text("댓글 삭제 확인");
+        $(".commonModalContent p").text("해당 댓글을 삭제하시겠습니까?");
+    });
+})
+/*-----------------------------------------------------------------------------------------------------------*/
+$(document).ready(function(){
+//좋아요 버튼
+    const $likeBtn = $(".replyComponent_replyOpenAndLikeButtonGroup__3r9hv img");
+    $(".centerSectionBox").on("click",$likeBtn,function () {
+        if($(this).attr("src")=='https://letspl.me/assets/images/ic_talk_up.svg'){
+            $(this).attr("src","/images/community/blueLike.png")
+            $(this).after(`<span class="replyLikeCount">1</span>`)
+        }else{
+            $(this).attr("src",'https://letspl.me/assets/images/ic_talk_up.svg')
+            $(this).parent().find('.replyLikeCount').remove();
+        }
+    });
+
+/* 좋아요 버튼 */
+    $(".replyComponent_reply__3l-Wc").on("click", ".replyComponent_replyFilter__10kow button", function () {
+            if ($(this).hasClass("buttonComponents_gray__1blI9")) {
+                $(this)
+                    .parent()
+                    .find("button")
+                    .each((i, item) => {
+                        if ($(item).hasClass("buttonComponents_black__3vMzB")) {
+                            $(item)
+                                .removeClass("buttonComponents_black__3vMzB")
+                                .addClass("buttonComponents_gray__1blI9");
+                            $(item).find("img").remove();
+                        }
+                    });
+                $(this)
+                    .removeClass("buttonComponents_gray__1blI9")
+                    .addClass("buttonComponents_black__3vMzB");
+                $(this).prepend(
+                    `<img class="buttonComponents_smImg__1vYDM" src="../images/community/bluedot.png">`
+                );
+            }
+        }
+    );
+})
+/*-----------------------------------------------------------------------------------------------------------*/
 /*댓글*/
 var $commentButton = $(".replyComponent_replyOnOff__QKoso");
-
 
 $commentButton.on("click",function () {
     if($(this).closest(".replyComponent_reply__3l-Wc").find(".replyComponent_replyFilter__10kow").css("display")=="flex"){
@@ -52,7 +212,6 @@ $commentButton.on("click",function () {
     }
 
 })
-
 
 /*댓글*/
 // textarea 부모클래스                              택스트애리아 클래스
@@ -77,7 +236,6 @@ $(".rereply_textarea").on("keyup", function (e) {
     }
 );
 
-
 /* 위까지가 텍스트에리아 즉 댓글쓰기 */
 const $heartButtons = $(".replyComponent_replyButtonBox__2O3ME").find(
     ".button_heart_1ljw5"
@@ -97,34 +255,7 @@ $heartButtons.on("click", function () {
     }
 });
 
-/* 좋아요버튼 */
-$(".replyComponent_reply__3l-Wc").on(
-    "click",
-    ".replyComponent_replyFilter__10kow button",
-    function () {
-        if ($(this).hasClass("buttonComponents_gray__1blI9")) {
-            $(this)
-                .parent()
-                .find("button")
-                .each((i, item) => {
-                    if ($(item).hasClass("buttonComponents_black__3vMzB")) {
-                        $(item)
-                            .removeClass("buttonComponents_black__3vMzB")
-                            .addClass("buttonComponents_gray__1blI9");
-                        $(item).find("img").remove();
-                    }
-                });
-            $(this)
-                .removeClass("buttonComponents_gray__1blI9")
-                .addClass("buttonComponents_black__3vMzB");
-            $(this).prepend(
-                `<img class="buttonComponents_smImg__1vYDM" src="../images/community/bluedot.png">`
-            );
-        }
-    }
-);
 /* 댓글 최신순 정렬 */
-
 const $cardMoreButton = $(
     ".loungeCardContentsComponents_loungeContentsMoreButtonWrap__1LR4v"
 ).find(".buttonComponents_blue__1FlTU");
@@ -154,9 +285,6 @@ $cardMoreButton.on("click", function () {
     }
 });
 
-/* 게시글 펼치기 */
-
-
 /*대댓글 펼치기*/
 const $rereplyButton = $(".replyComponent_replyOpenAndLikeButtonGroup__3r9hv").find(".rereplyButton_1j")
 $rereplyButton.on("click",function(){
@@ -167,41 +295,6 @@ $rereplyButton.on("click",function(){
         $button.css("display","block");
     }
 })
-
-
-
-
-
-
-
-//
-// $registerBtn.on("click",function(){
-//     $(".editorMdoal").attr("style","display:none !important;")
-//     $(".editorMdoal").find(".editorTitle input").val("");
-//     $(".editorMdoal").find(".note-editable").text("");
-//     $(".updatePost_1j").css("display","none");
-// })
-
-
-
-/*수정*/
-const $postUpdateBtn = $(".loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo").find(".postUpdate_1j")
-
-$postUpdateBtn.click(function () {
-    $(".editorMdoal").attr("style","display:flex !important;");
-    $(".updatePost_1j").css("display","block");
-    $(".registerPost_1j").css("display","none");
-})
-
-$(".updatePost_1j").click(function(){
-    $(".updatePost_1j").css("display","none");
-    $(".editorMdoal").attr("style","display:none !important;")
-    $(".editorMdoal").find(".editorTitle input").val("");
-    $(".editorMdoal").find(".note-editable").text("");
-
-})
-
-
 
 const $replyUpdateBtn = $(".userInformationComponents_userReplySection__3ty7Q").find(".replyUpdate");
 let replyText = '';
@@ -230,48 +323,4 @@ $(".replyComponent_replyContent__3iS4J").on("click",".replyCancelButton_1j",func
     $(this).parent().prev().replaceWith(`<p class="replyContent_content_1j">`+replyText+`</p>`);
     $(this).parent().remove();
     replyCommentCheck=false;
-})
-
-
-
-/*삭제 모달*/
-
-const $postDeleteBtn = $(".loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo").find(".postDelete_1j");
-
-
-$postDeleteBtn.on("click",function(){
-    $(".modalWrapOpen").attr("style","display : block !important")
-    $(".modalTit").text("글 삭제 확인");
-    $(".commonModalContent p").text("해당 글을 삭제하시겠습니까?");
-})
-
-$(".modalWrapOpen").find(".closeBtn").on("click",function () {
-    $(".modalWrapOpen").attr("style","display : none !important")
-})
-
-$(".modalWrapOpen").find(".doubleBtnWrap").click(function () {
-    $(".modalWrapOpen").attr("style","display : none !important")
-})
-
-$(".modalWrapOpen").find(".redBtn").click(function () {
-    $(".modalWrapOpen").attr("style","display : none !important")
-})
-
-const $replyDeleteBtn = $(".userInformationComponents_userReplySection__3ty7Q").find(".replyDelete");
-$replyDeleteBtn.click(function () {
-    $(".modalWrapOpen").attr("style","display : block !important")
-    $(".modalTit").text("댓글 삭제 확인");
-    $(".commonModalContent p").text("해당 댓글을 삭제하시겠습니까?");
-});
-
-//좋아요 버튼
-const $likeBtn = $(".replyComponent_replyOpenAndLikeButtonGroup__3r9hv img")
-$likeBtn.on("click",function () {
-    if($(this).attr("src")=='https://letspl.me/assets/images/ic_talk_up.svg'){
-        $(this).attr("src","/images/community/blueLike.png")
-        $(this).after(`<span class="replyLikeCount">1</span>`)
-    }else{
-        $(this).attr("src",'https://letspl.me/assets/images/ic_talk_up.svg')
-        $(this).parent().find('.replyLikeCount').remove();
-    }
 })

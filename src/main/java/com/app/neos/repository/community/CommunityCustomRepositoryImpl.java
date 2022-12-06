@@ -21,7 +21,9 @@ public class CommunityCustomRepositoryImpl implements CommunityCustomRepository 
                 QCommunity.community.communityTitle,
                 QCommunity.community.communityContent,
                 QCommunity.community.communityLikeCount,
-                QCommunity.community.user
+                QCommunity.community.user,
+                QCommunity.community.createdDate,
+                QCommunity.community.updatedDate
                 ))
                 .from(QCommunity.community)
                 .orderBy(QCommunity.community.communityId.desc())
@@ -36,12 +38,25 @@ public class CommunityCustomRepositoryImpl implements CommunityCustomRepository 
                 QCommunity.community.communityTitle,
                 QCommunity.community.communityContent,
                 QCommunity.community.communityLikeCount,
-                QCommunity.community.user
+                QCommunity.community.user,
+                QCommunity.community.createdDate,
+                QCommunity.community.updatedDate
         ))
                 .from(QCommunity.community)
                 .where(QCommunity.community.communityId.eq(communityId))
                 .fetchOne();
     }
+
+//    @Override
+//    public CommunityDTO update(Long communityId) {
+//        return jpaQueryFactory.update(new QCommunityDTO(
+//                QCommunity.community.communityTitle,
+//                QCommunity.community.communityContent
+//        ))
+//                .from(QCommunity.community)
+//                .where(QCommunity.community.communityId.eq(communityId))
+//                ;
+//    }
 
 
 }

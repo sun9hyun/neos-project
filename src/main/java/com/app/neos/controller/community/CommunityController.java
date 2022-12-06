@@ -27,7 +27,7 @@ public class CommunityController {
     private final CounselingService counselingService;
 
 //    자유게시판
-    @GetMapping("/communityList")
+    @GetMapping("/community")
     public String community(CommunityDTO communityDTO, Model model){
         List<CommunityDTO> communityDTOS = communityService.findAll();
 
@@ -35,12 +35,12 @@ public class CommunityController {
         return "app/community/freeboard";
     }
 
-    @PostMapping("/communityList")
+    @PostMapping("/community")
     public RedirectView communityOk(CommunityDTO communityDTO){
-        Community community = communityDTO.toEntity();
-        communityService.saveCommunity(community);
+//        Community community = communityDTO.toEntity();
+        communityService.saveCommunity(communityDTO);
 
-        return new RedirectView("communityList");
+        return new RedirectView("community");
     }
 
 

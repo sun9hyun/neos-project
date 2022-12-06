@@ -55,7 +55,7 @@ public class CommunityServiceTest {
         Community community = communityDTO.toEntity();
         community.changeUser(communityDTO.getUser());
 
-        communityService.saveCommunity(community);
+//        communityService.saveCommunity(community);
     }
 
     @Test
@@ -81,11 +81,32 @@ public class CommunityServiceTest {
                 QCommunity.community.communityTitle,
                 QCommunity.community.communityContent,
                 QCommunity.community.communityLikeCount,
-                QCommunity.community.user
+                QCommunity.community.user,
+                QCommunity.community.createdDate,
+                QCommunity.community.updatedDate
         ))
                 .from(QCommunity.community)
                 .orderBy(QCommunity.community.communityId.desc())
                 .fetch();
     }
+
+//    @Test
+//    public void findById(Long communityId){
+//        communityId = communityService.findByCommunityId(3L).getCommunityId();
+//        List<CommunityDTO> communityDTOS = jpaQueryFactory.select(new QCommunityDTO(
+//                QCommunity.community.communityId,
+//                QCommunity.community.communityTitle,
+//                QCommunity.community.communityContent,
+//                QCommunity.community.communityLikeCount,
+//                QCommunity.community.user,
+//                QCommunity.community.createdDate,
+//                QCommunity.community.updatedDate
+//
+//        ))
+//                .from(QCommunity.community)
+//                .where(QCommunity.community.communityId.eq(communityId))
+//                .orderBy(QCommunity.community.communityId.desc())
+//                .fetch();
+//    }
 
 }

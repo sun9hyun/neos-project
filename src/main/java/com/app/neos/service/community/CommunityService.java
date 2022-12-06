@@ -2,6 +2,7 @@ package com.app.neos.service.community;
 
 import com.app.neos.domain.community.CommunityDTO;
 import com.app.neos.entity.community.Community;
+import com.app.neos.entity.user.User;
 import com.app.neos.repository.community.CommunityCustomRepository;
 import com.app.neos.repository.community.CommunityRepository;
 import com.app.neos.repository.user.UserRepository;
@@ -18,7 +19,11 @@ public class CommunityService {
     private  final UserRepository userRepository;
 
     //추가
-    public void saveCommunity(Community community){
+    public void saveCommunity(CommunityDTO communityDTO){
+        Community community = communityDTO.toEntity();
+        Long userId = communityDTO.getUserId();
+        User user = userRepository.findById(userId).get();
+        community.changeUser(user);
         communityRepository.save(community);
     }
 
@@ -32,4 +37,10 @@ public class CommunityService {
         return communityCustomRepository.findByCommunityId(communityId);
     }
 
+    //추가
+    public void updateCommunity(CommunityDTO communityDTO){
+        Community community = communityDTO.toEntity();
+        community.update(communityDTO);
+    }
+    
 }

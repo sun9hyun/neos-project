@@ -9,4 +9,6 @@ public interface CommunityCustomRepository {
 
     public CommunityDTO findByCommunityId(Long communityId);
 
+//    public CommunityDTO update(Long communityId);
+
 }

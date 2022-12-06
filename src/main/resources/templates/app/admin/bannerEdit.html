@@ -79,7 +79,7 @@
                     <li class="header-nav-brand">
                         <div class="brand-holder">
 								<span class="location_text">
-									<a href="#">배너 등록</a>	<!-- 동일 페이지로 재이동 -->
+									<a href="#">배너 등록 및 수정</a>	<!-- 동일 페이지로 재이동 -->
 								</span>
                         </div>
                     </li>
@@ -91,7 +91,7 @@
                         <a class="btn btn-default-bright" onclick="history.go(-1);">취소</a>
                     </li>
                     <li>
-                        <a class="btn btn-primary">저장</a>
+                        <a onclick="send()"  class="btn btn-primary">저장</a>
                     </li>
                 </ul>
             </div>
@@ -118,51 +118,53 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form id="dof" method="post" enctype="multipart/form-data" class="form-horizontal form-validate" action="" role="form" target="hidden_frame" novalidate="novalidate">
+                                <form th:action="@{/admin/test/banner/edit}" th:object="${bannerDTO}" name="bannerEdit" id="dof" method="post" class="form-horizontal form-validate" role="form" target="hidden_frame" enctype="multipart/form-data">
+                                    <input type="hidden" th:field="*{bannerUrl}" id="bannerUrl">
                                     <input type="hidden" name="popup_idx" id="popup_idx" value="0">
                                     <input type="hidden" name="img_name" id="img_name" value="">
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label" for="">제목</label>
+                                        <label class="col-sm-2 control-label">제목</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" name="subject" id="title" placeholder="관리용 제목(사용자에겐 표시되지 않습니다)" value="">
+                                            <input th:field="*{bannerTitle}" type="text" class="form-control" id="title" placeholder="관리용 제목(사용자에겐 표시되지 않습니다)" value="">
                                             <div class="form-control-line"></div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label" for="">기간</label>
-                                        <div class="col-sm-6 time_duration">
-                                            <div class="input-group">
-                                                <div class="input-group-content">
-                                                    <div style="position:relative">
-                                                        <input type="datetime-local" class="form-control" name="start_time" id="start_time" placeholder="날짜를 입력해주세요" value="2022-10-06 15:00" aria-invalid="false">
-                                                        <div class="form-control-line"></div>
-                                                    </div>
-                                                </div>
-                                                <span class="input-group-addon">~</span>
-                                                <div class="input-group-content">
-                                                    <div style="position:relative">
-                                                        <input type="datetime-local" class="form-control" name="end_time" id="end_time" placeholder="날짜를 입력해주세요" value="2023-10-06 15:00" aria-invalid="false">
-                                                        <div class="form-control-line"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-sm-2 control-label">기간</label>-->
+<!--                                        <div class="col-sm-6 time_duration">-->
+<!--                                            <div class="input-group">-->
+<!--                                                <div class="input-group-content">-->
+<!--                                                    <div style="position:relative">-->
+<!--                                                        <input type="datetime-local" class="form-control" name="start_time" id="start_time" placeholder="날짜를 입력해주세요" value="2022-10-06 15:00" aria-invalid="false">-->
+<!--                                                        <div class="form-control-line"></div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                                <span class="input-group-addon">~</span>-->
+<!--                                                <div class="input-group-content">-->
+<!--                                                    <div style="position:relative">-->
+<!--                                                        <input type="datetime-local" class="form-control" name="end_time" id="end_time" placeholder="날짜를 입력해주세요" value="2023-10-06 15:00" aria-invalid="false">-->
+<!--                                                        <div class="form-control-line"></div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
                                     <input type="hidden" name="content_type" value="image">
 
                                     <div class="_body_image_options">
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="">이미지</label>
+                                            <label class="col-sm-2 control-label">이미지</label>
                                             <div class="col-sm-6">
                                                 <div class="wrap-image-upload style-default-bright margin-bottom-xl">
                                                     <div class="image-list no-padding">
                                                         <label for="attach">
-                                                            <div class="item" id="alarm_img_group">
+                                                            <img class="item" id="alarm_img_group" src="/images/admin/imageSelected.jpg" style="width: 324px; height: 326px">
 <!--                                                                <a href="javascript:" class="close">-->
 <!--                                                                    &lt;!&ndash; <i class="zmdi zmdi-close"></i> &ndash;&gt;-->
 <!--                                                                </a>-->
-                                                            </div>
+                                                            </img>
+
                                                         </label>
                                                     </div>
                                                 </div>
@@ -307,10 +309,37 @@
 
     // 이미지 추가
     // 업로드한 파일은 input객체의 프로퍼티에 존재한다.
+    // const file = document.querySelector("input[type='file']");
+    // // 사용자가 업로드한 파일에 따라 배경 이미지가 변경되어야 하는 객체
+    // const thumbnail = document.querySelector("label[for='attach'] div");
+    // // change : 해당 객체에 변화가 있을 때(파일이 업로드 되었을 때)
+    // file.addEventListener("change", function(e){
+    //
+    //     // 업로드한 파일을 읽어올 객체
+    //     var reader = new FileReader();
+    //     // 해당 파일의 정보를 readAsDataURL에 전달하면
+    //     // 업로드된 파일의 암호화된 URL정보를 얻을 수 있다.
+    //     reader.readAsDataURL(e.target.files[0]);
+    //     // byte단위로 읽어온 뒤 전부 다 읽으면 load 이벤트가 발생된다.
+    //     reader.onload = function(e){
+    //         // e객체에 읽은 파일의 정보들이 들어있다.
+    //         // console.log(e.target.result);
+    //         let url = e.target.result;
+    //         // 이미지 파일인지 아닌지 검사하여 이미지 파일이 아닐 경우 원래 attach.png 이미지로 변경
+    //         if(url.includes('image')){
+    //             thumbnail.style.backgroundImage = "url('" + url + "')";
+    //         }else{
+    //             thumbnail.style.backgroundImage = "url('img/attach.png')";
+    //         }
+    //     }
+    // });
+
+    // 이미지 추가
+    // 업로드한 파일은 input객체의 프로퍼티에 존재한다.
     const file = document.querySelector("input[type='file']");
-    // 사용자가 업로드한 파일에 따라 배경 이미지가 변경되어야 하는 객체
-    const thumbnail = document.querySelector("label[for='attach'] div");
-    // change : 해당 객체에 변화가 있을 때(파일이 업로드 되었을 때)
+    // // 사용자가 업로드한 파일에 따라 배경 이미지가 변경되어야 하는 객체
+    // const thumbnail = document.querySelector("label[for='attach'] div img");
+    // // change : 해당 객체에 변화가 있을 때(파일이 업로드 되었을 때)
     file.addEventListener("change", function(e){
 
         // 업로드한 파일을 읽어올 객체
@@ -318,19 +347,40 @@
         // 해당 파일의 정보를 readAsDataURL에 전달하면
         // 업로드된 파일의 암호화된 URL정보를 얻을 수 있다.
         reader.readAsDataURL(e.target.files[0]);
+
         // byte단위로 읽어온 뒤 전부 다 읽으면 load 이벤트가 발생된다.
         reader.onload = function(e){
             // e객체에 읽은 파일의 정보들이 들어있다.
             // console.log(e.target.result);
             let url = e.target.result;
-            // 이미지 파일인지 아닌지 검사하여 이미지 파일이 아닐 경우 원래 attach.png 이미지로 변경
-            if(url.includes('image')){
-                thumbnail.style.backgroundImage = "url('" + url + "')";
-            }else{
-                thumbnail.style.backgroundImage = "url('img/attach.png')";
-            }
+            $("#alarm_img_group").attr("src", url);
         }
     });
+
+    $("input[type='file']").on("change", function(){
+        let bannerImageFile = $("input[type='file']").get(0).files[0];
+        let formData = new FormData();
+        formData.append('bannerImageFile', bannerImageFile);
+
+        $.ajax({
+            url: "/admin-rest/banner-upload",
+            type: "POST",
+            data: formData,
+            contentType: false, // 필수 : x-www-form-urlencoded로 파싱되는 것을 방지
+            processData: false,  // 필수: contentType을 false로 줬을 때 QueryString 자동 설정됨. 해제
+            enctype: "multipart/form-data",
+            dataType: "text",
+            success: function (result) {
+                console.log(result);
+                $("#bannerUrl").val("/upload/"+result);
+            }
+        });
+    });
+
+    function send() {
+
+        bannerEdit.submit();
+    }
 
 
 </script>

@@ -1,5 +1,5 @@
 package com.app.neos.type.banner;
 
 public enum BannerStatus {
-    PROCEEDING, FINISH
+    게재중, 기간만료
 }

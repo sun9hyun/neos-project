@@ -86,7 +86,7 @@
             <div class="headerbar-right">
                 <ul class="header-nav header-nav-options _option_list">
                     <li>
-                        <a class="btn btn-primary hidden-xs" onclick="submit()">저장</a>
+                        <a class="btn btn-primary hidden-xs" id="uploadBtn" onclick="submit()">저장</a>
                         <a class="btn btn-bright hidden-sm hidden-md hidden-lg" style="padding: 4px 6px;" onclick="location.href='#'"><i class="btl bt-plus vertical-middle"></i></a>
                     </li>
                 </ul><!--end .header-nav-options -->
@@ -123,19 +123,22 @@
                                 <div class="card-head">
                                     <header>대학교 정보</header>
                                 </div>
-                                <form th:action="@{/admin/test/college/write}" th:object="${collegeDTO}" name="collegeWrite" id="dof" method="post" class="form-horizontal form-validate" role="form" target="hidden_frame" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate">
+                                <form th:action="@{/admin/test/college/write}" th:object="${collegeDTO}" name="collegeWrite" id="dof" method="post" class="form-horizontal form-validate" role="form" target="hidden_frame" enctype="multipart/form-data">
                                 <div class="card-body border-top" style="padding-top: 70px;">
                                     <div class="profile-image text-center margin-bottom-xxl">
+
                                         <div id="fileupload_profile_img">
                                             <img class="company mg-circle" src="/images/admin/imageSelected.jpg" id="profile_img" width="72" height="72" style="height: 100%;">
                                             <input type="hidden" th:field="*{collegeLogoFile}" id="collegeLogoFile">
                                             <div id="drop_profile_img">
-                                                <input type="file" name="files[]" style="width: 100%" accept="image/jpeg, image/jpg, image/png, image/gif, image/svg+xml" >
+                                                <input type="file" name="profileImageFile" style="width: 100%" accept="image/jpeg, image/jpg, image/png, image/gif, image/svg+xml" >
                                             </div>
                                             <div class="over">
                                                 <i class="zmdi zmdi-camera"></i>
                                             </div>
                                         </div>
+
+
 
                                         <h3 class="text-15">대학교 로고</h3>
                                     </div><!--end.profile-image-->
@@ -280,9 +283,9 @@
     // 이미지 추가
     // 업로드한 파일은 input객체의 프로퍼티에 존재한다.
     const file = document.querySelector("input[type='file']");
-    // 사용자가 업로드한 파일에 따라 배경 이미지가 변경되어야 하는 객체
-    const thumbnail = document.querySelector("label[for='attach'] div img");
-    // change : 해당 객체에 변화가 있을 때(파일이 업로드 되었을 때)
+    // // 사용자가 업로드한 파일에 따라 배경 이미지가 변경되어야 하는 객체
+    // const thumbnail = document.querySelector("label[for='attach'] div img");
+    // // change : 해당 객체에 변화가 있을 때(파일이 업로드 되었을 때)
     file.addEventListener("change", function(e){
 
         // 업로드한 파일을 읽어올 객체
@@ -290,6 +293,7 @@
         // 해당 파일의 정보를 readAsDataURL에 전달하면
         // 업로드된 파일의 암호화된 URL정보를 얻을 수 있다.
         reader.readAsDataURL(e.target.files[0]);
+
         // byte단위로 읽어온 뒤 전부 다 읽으면 load 이벤트가 발생된다.
         reader.onload = function(e){
             // e객체에 읽은 파일의 정보들이 들어있다.
@@ -299,9 +303,35 @@
         }
     });
 
+    $("input[type='file']").on("change", function(){
+        let profileImageForm = $("#dof")[0]
+        let formData = new FormData(profileImageForm);
+
+        $.ajax({
+            url: "/admin-rest/college-upload",
+            type: "post",
+            data: formData,
+            contentType: false, // 필수 : x-www-form-urlencoded로 파싱되는 것을 방지
+            processData: false,  // 필수: contentType을 false로 줬을 때 QueryString 자동 설정됨. 해제
+            enctype: "multipart/form-data",
+            dataType: "text",
+            success: function (result) {
+                $("#collegeLogoFile").val("/upload/"+result);
+            }
+        });
+    });
+
+
+
+
+
+
+
+
+
+
     function submit() {
         $('input[id=collegeCity]').attr('value', $("#collegeCity option:selected").text());
-        $('input[id=collegeLogoFile]').attr('value', $("#profile_img").attr('src'));
 
         collegeWrite.submit();
     }

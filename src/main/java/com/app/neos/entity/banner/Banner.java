@@ -19,24 +19,20 @@ public class Banner extends Period {
     private String bannerTitle;
     @NotNull
     private String bannerUrl;
-    @NotNull
-    private String fileName;
 
    @Enumerated(EnumType.STRING) @NotNull
    private BannerStatus bannerStatus;
 
     @Builder
-    public Banner(String bannerTitle, String bannerUrl, String fileName, BannerStatus bannerStatus) {
+    public Banner(String bannerTitle, String bannerUrl, BannerStatus bannerStatus) {
         this.bannerTitle = bannerTitle;
         this.bannerUrl = bannerUrl;
-        this.fileName = fileName;
         this.bannerStatus = bannerStatus;
     }
 
     public void update(BannerDTO bannerDTO){
         this.bannerTitle = bannerDTO.getBannerTitle();
         this.bannerUrl = bannerDTO.getBannerUrl();
-        this.fileName = bannerDTO.getFileName();
         this.bannerStatus = bannerDTO.getBannerStatus();
     }
 

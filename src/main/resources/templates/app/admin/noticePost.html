@@ -108,40 +108,40 @@
                                     <header>공지사항 작성</header>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form" class="form-horizontal form-validate" novalidate="novalidate">
+                                    <form th:action="@{/admin/test/notice/edit}" th:object="${noticeDTO}" name="noticeSave" method="post" role="form" class="form-horizontal form-validate" novalidate="novalidate">
                                         <div class="form-group">
                                             <div class="col-sm-10">
-                                                <input type="text" required="" name="alarm_subject" id="alarm_subject" class="form-control" aria-required="true" placeholder="제목">
+                                                <input th:field="*{noticeTitle}" type="text" required="" id="alarm_subject" class="form-control" aria-required="true" placeholder="제목">
                                                 <div class="form-control-line"></div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-sm-12">
-                                                <textarea rows="3" required="" name="alarm_content" id="alarm_content" class="form-control" maxlength="925" placeholder="내용" aria-required="true" data-autosize-on="true"></textarea>
+                                                <textarea th:field="*{noticeContent}" rows="3" required="" id="alarm_content" class="form-control" maxlength="925" placeholder="내용" aria-required="true" data-autosize-on="true"></textarea>
                                                 <div class="form-control-line"></div>
                                                 <!-- <p class="help-block chars" id="chars_app_title">0/2500</p> --> <!-- 사용할거면 기능 구현 필요 -->
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-10">
-                                                <div class="wrap-image-upload style-default-bright margin-bottom-xl">
-                                                    <div class="image-list no-padding">
-                                                        <label for="attach">
-                                                            <div class="item" id="alarm_img_group">
+<!--                                        <div class="form-group">-->
+<!--                                            <div class="col-sm-10">-->
+<!--                                                <div class="wrap-image-upload style-default-bright margin-bottom-xl">-->
+<!--                                                    <div class="image-list no-padding">-->
+<!--                                                        <label for="attach">-->
+<!--                                                            <div class="item" id="alarm_img_group">-->
 
-                                                            </div>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <input type="file" id="attach" style='display:none;width: 100%' name="files[]"  accept="image/jpeg, image/jpg, image/png, image/gif, image/svg+xml" >
-                                                <span class="help-block">권장 해상도 : 720 x 320</span>
-                                            </div>
-                                        </div>
+<!--                                                            </div>-->
+<!--                                                        </label>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                                <input type="file" id="attach" style='display:none;width: 100%' name="files[]"  accept="image/jpeg, image/jpg, image/png, image/gif, image/svg+xml" >-->
+<!--                                                <span class="help-block">권장 해상도 : 720 x 320</span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
                                     </form>
                                 </div>
                                 <div class="card-actionbar">
                                     <div class="card-actionbar-row">
-                                        <a class="btn btn-raised btn-primary ink-reaction" id="sendsms" onclick="send_alarm()">보내기</a>
+                                        <a class="btn btn-raised btn-primary ink-reaction" id="sendsms" onclick="send()">보내기</a>
                                     </div>
                                 </div>
                             </div>
@@ -210,6 +210,12 @@
         $('.close').click(function(){
             $(this).parent().style.backgroundImage = url('/cosmos_new/imageSelect.jpg');
         }) */
+
+    function send() {
+        alert("작동")
+        noticeSave.submit();
+        alert("작동완료")
+    }
 
 
 </script>

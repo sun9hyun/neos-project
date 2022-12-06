@@ -24,15 +24,15 @@ public class CollegeEntityTest {
     @Autowired
     CollegeCustomRepository collegeCustomRepository;
 
-//    saveTest
+    //    saveTest
     @Test
     public void saveTest(){
         CollegeDTO collegeDTO = new CollegeDTO();
 
-        collegeDTO.setCollegeCity("강원도");
-        collegeDTO.setCollegeName("강릉원주대학교");
-        collegeDTO.setCollegeLogoFile("/images/admin/college/gangneungCollege.jpg");
-        collegeDTO.setCollegeEmailDomain("www.gangneung.ac.kr");
+        collegeDTO.setCollegeCity("경상남도");
+        collegeDTO.setCollegeName("문성대학교");
+        collegeDTO.setCollegeLogoFile("/images/college/changwonCollege.jpg");
+        collegeDTO.setCollegeEmailDomain("www.changwon.ac.kr");
 
         College college = collegeDTO.toEntity();
 
@@ -40,41 +40,39 @@ public class CollegeEntityTest {
     }
 
 
-    @Test
-    public void updateTest2(){
-        CollegeDTO collegeDTO = new CollegeDTO();
-
-        collegeDTO.setCollegeCity("경상남도");
-        collegeDTO.setCollegeName("문성대학교");
-        collegeDTO.setCollegeLogoFile("/images/admin/college/changwonCollege.jpg");
-        collegeDTO.setCollegeEmailDomain("www.changwon.ac.kr");
-
-
-        collegeRepository.findById(2l).get().update(collegeDTO);
-    }
-
-
-//    페이지 처리 Test
+    //    페이지 처리 Test
     @Test
     public void pageTest(){
-        Pageable pageable = PageRequest.of(0,6);
+        Pageable pageable = PageRequest.of(0,10);
         collegeCustomRepository.findAllPage(pageable).stream().map(CollegeDTO::toString).forEach(log::info);
 
 //        collegeCustomRepository.findAllPage(pageable).getContent().stream().map(CollegeDTO::toString).forEach(log::info);
     }
 
 
-//    대학 상세보기 Test
+    //    대학 상세보기 Test
     @Test
     public void findByNameTest(){
         log.info(collegeCustomRepository.findByCollegeId(15L).toString());
     }
 
 
-//    대학 유저 수
+    //    대학 유저 수
     @Test
     public void countByUser(){
         log.info(collegeCustomRepository.countByUser(15L) + "");
     }
+
+    //    체크된 대학 삭제
+    @Test
+    public void deleteTest(){
+        String collegeIds = "1,2,3,4,5";
+        String[] arCollegeIds = collegeIds.split(",");
+
+        for (int i = 0; i < arCollegeIds.length; i++){
+            collegeRepository.deleteById(Long.parseLong(arCollegeIds[i]));
+        }
+    }
+
 
 }

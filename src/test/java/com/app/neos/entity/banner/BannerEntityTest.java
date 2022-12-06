@@ -23,9 +23,8 @@ public class BannerEntityTest {
 
         BannerDTO bannerDTO = new BannerDTO();
         bannerDTO.setBannerTitle("11월 이벤트 배너");
-        bannerDTO.setBannerStatus(BannerStatus.PROCEEDING);
+        bannerDTO.setBannerStatus(BannerStatus.게재중);
         bannerDTO.setBannerUrl("호근이 마음속");
-        bannerDTO.setFileName("호근이 마음");
 
         Banner banner = bannerDTO.toEntity();
         bannerRepository.save(banner);
@@ -34,13 +33,12 @@ public class BannerEntityTest {
 
     @Test
     public void updateTest(){
-        Banner banner = bannerRepository.findById(2L).get();
+        Banner banner = bannerRepository.findById(10L).get();
 
         BannerDTO bannerDTO = new BannerDTO();
         bannerDTO.setBannerTitle("12월 이벤트 배너");
-        bannerDTO.setBannerStatus(BannerStatus.FINISH);
+        bannerDTO.setBannerStatus(BannerStatus.기간만료);
         bannerDTO.setBannerUrl("호근이 마음속");
-        bannerDTO.setFileName("호근이 마음");
 
         banner.update(bannerDTO);
     }
@@ -53,7 +51,7 @@ public class BannerEntityTest {
 
     @Test
     public void deleteTest(){
-        bannerRepository.deleteById(2L);
+        bannerRepository.deleteAll();
     }
 
 }

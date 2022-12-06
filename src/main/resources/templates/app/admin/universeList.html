@@ -115,7 +115,7 @@
             </div>
             <div class="btnWrap doubleBtnWrap">
                 <button class="btn whiteBtn" style="font-size: 12px;line-height: 3;">아니오</button>
-                <button class="btn redBtn deleteCheck" style="font-size: 12px;line-height: 3;">예</button>
+                <button class="btn redBtn" id="deleteCheck" style="font-size: 12px;line-height: 3;">예</button>
             </div>
         </div>
     </div>
@@ -193,7 +193,9 @@
                                     <div class="card">
                                         <div class="card-head" id="card-head">
                                             <header class="small">전체 대학교 목록
-                                                <span class="text-primary" id="total-member-count">5</span>
+                                                <th:block>
+                                                    <span class="text-primary" id="total-member-count" th:text="${total}"></span>
+                                                </th:block>
                                             </header>
                                         </div>
 
@@ -222,7 +224,7 @@
                                                         <li class="check">
                                                             <div class="checkbox checkbox-styled no-margin">
                                                                 <label>
-                                                                    <input type="checkbox" class="terms">
+                                                                    <input type="checkbox" value="" class="terms">
                                                                     <span></span>
                                                                 </label>
                                                             </div>
@@ -256,7 +258,7 @@
                                                                         </a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="javascript:;" onclick="modalUp()">
+                                                                        <a href="javascript:;" class="deleteBtn" onclick="">
                                                                             삭제
                                                                         </a>
                                                                     </li>
@@ -264,6 +266,7 @@
                                                             </div>
                                                         </li>
                                                     </ul>
+                                                    <input type="hidden" id="nowPage" th:value="${nowPage}">
                                                 </th:block>
                                                 </tbody>
                                                 <!--끝-->
@@ -518,13 +521,42 @@
         location.href = "/admin/test/college/detail" + "?collegeId=" + $(this).closest("#member_item_m20220929a41c742d48942").find(".collegeId").attr("href");
     });
 
-    $(".deleteCheck").on("click", function () {
-        alert(a);
-        if($('.terms').is(':checked')){
-            alert(d);
-        }
+    // $("#deleteCheck").on("click", function () {
+    //     if($('.terms').is(':checked')){
+    //         alert($(".terms").closest(".check").next().find(".collegeId").attr("href"));
+    //     }
+    // });
 
+    $('#deleteCheck').click(function() {
+        var collegeIds = "";
+        $(".terms:checked").each(function() {
+            if(collegeIds == ""){
+                collegeIds = $(this).closest(".check").next().find(".collegeId").attr("href");
+            } else {
+                collegeIds = collegeIds + "," + $(this).closest(".check").next().find(".collegeId").attr("href");
+            }
+        });
+        location.href = "/admin/test/college/deleteCheck" + "?collegeIds=" + collegeIds;
     });
+
+    $('.deleteBtn').click(function () {
+        var collegeId = $(this).closest('.action').prev().parent().find(".universeName").find('.collegeId').attr('href');
+        location.href = "/admin/test/college/delete" + "?collegeId=" + collegeId;
+    })
+
+    $('a.paging').click(function () {
+        alert($(this).attr('value'));
+        location.href = "/admin/test/college/list" + "?page=" + $(this).attr('value');
+    })
+
+    function pageActive() {
+        let $paging = $('a.paging').attr('value');
+        let $nowPage = $('#nowPage');
+
+        if($paging == $nowPage){
+            
+        }
+    }
 
 
 </script>

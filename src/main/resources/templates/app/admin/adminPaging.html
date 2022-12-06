@@ -8,13 +8,19 @@
 <section th:fragment="adminPaging">
 <div class="pagingAndBtn" >
                 <span class="pagination pagination-sm clearfix">
-                    <a class="btn_paging prev screen_out paging"></a>
-                    <a class="active paging">1</a>
-                    <a class="paging">2</a>
-                    <a class="paging">3</a>
-                    <a class="paging">4</a>
-                    <a class="paging">5</a>
-                    <a class="btn_paging next screen_out paging"></a>
+                    <th:block>
+                        <a class="btn_paging prev screen_out paging"></a>
+                    </th:block>
+                    <th:block>
+                        <a class="active paging" th:value="${0}">1</a>
+                        <a class="paging" th:value="${1}">2</a>
+                        <a class="paging" th:value="${2}">3</a>
+                        <a class="paging" th:value="${3}">4</a>
+                        <a class="paging" th:value="${4}">5</a>
+                    </th:block>
+                    <th:block>
+                        <a class="btn_paging next screen_out paging"></a>
+                    </th:block>
                 </span>
 </div>
 </section>

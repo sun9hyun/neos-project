@@ -115,7 +115,7 @@ section {
 label[for='attach'] div {
     width: 264px;
     height: 260px;
-    background-image: url('/images/admin/imageSelected.jpg');
+    /*background-image: url('/images/admin/imageSelected.jpg');*/
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;

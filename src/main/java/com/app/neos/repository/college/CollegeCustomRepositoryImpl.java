@@ -6,6 +6,7 @@ import com.app.neos.domain.user.QUserDTO;
 import com.app.neos.entity.college.College;
 import com.app.neos.entity.college.QCollege;
 import com.app.neos.entity.user.User;
+import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import static com.app.neos.entity.college.QCollege.college;
 import static com.app.neos.entity.user.QUser.user;
 
 @Repository
@@ -43,31 +45,31 @@ public class CollegeCustomRepositoryImpl implements CollegeCustomRepository{
     public Page<CollegeDTO> findAllPage(Pageable pageable) {
 
         List<CollegeDTO> collegeDTOS= jpaQueryFactory.select(new QCollegeDTO(
-                QCollege.college.collegeId,
-                QCollege.college.collegeCity,
-                QCollege.college.collegeName,
-                QCollege.college.collegeLogoFile,
-                QCollege.college.collegeEmailDomain,
-                QCollege.college.createdDate,
-                QCollege.college.updatedDate
+                college.collegeId,
+                college.collegeCity,
+                college.collegeName,
+                college.collegeLogoFile,
+                college.collegeEmailDomain,
+                college.createdDate,
+                college.updatedDate
                 ))
-                .from(QCollege.college)
-                .orderBy(QCollege.college.collegeId.desc())
+                .from(college)
+                .orderBy(college.collegeId.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
 
         long total = jpaQueryFactory.select(new QCollegeDTO(
-                QCollege.college.collegeId,
-                QCollege.college.collegeCity,
-                QCollege.college.collegeName,
-                QCollege.college.collegeLogoFile,
-                QCollege.college.collegeEmailDomain,
-                QCollege.college.createdDate,
-                QCollege.college.updatedDate
+                college.collegeId,
+                college.collegeCity,
+                college.collegeName,
+                college.collegeLogoFile,
+                college.collegeEmailDomain,
+                college.createdDate,
+                college.updatedDate
                 ))
-                .from(QCollege.college).fetch().size();
+                .from(college).fetch().size();
 
         return new PageImpl<>(collegeDTOS,pageable,total);
     }
@@ -75,15 +77,15 @@ public class CollegeCustomRepositoryImpl implements CollegeCustomRepository{
     @Override
     public CollegeDTO findByCollegeId(Long collegeId) {
         return jpaQueryFactory.select(new QCollegeDTO(
-                QCollege.college.collegeId,
-                QCollege.college.collegeCity,
-                QCollege.college.collegeName,
-                QCollege.college.collegeLogoFile,
-                QCollege.college.collegeEmailDomain,
-                QCollege.college.createdDate,
-                QCollege.college.updatedDate
-        )).from(QCollege.college)
-                .where(QCollege.college.collegeId.eq(collegeId))
+                college.collegeId,
+                college.collegeCity,
+                college.collegeName,
+                college.collegeLogoFile,
+                college.collegeEmailDomain,
+                college.createdDate,
+                college.updatedDate
+        )).from(college)
+                .where(college.collegeId.eq(collegeId))
                 .fetchOne();
     }
 

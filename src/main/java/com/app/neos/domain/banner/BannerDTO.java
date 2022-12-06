@@ -15,25 +15,22 @@ public class BannerDTO {
     private Long bannerId;
     private String bannerTitle;
     private String bannerUrl;
-    private String fileName;
     private BannerStatus bannerStatus;
 
     public Banner toEntity(){
         return Banner.builder().
                 bannerTitle(bannerTitle)
                 .bannerUrl(bannerUrl)
-                .bannerStatus(bannerStatus)
-                .fileName(fileName).
+                .bannerStatus(BannerStatus.게재중).
                 build();
 
     }
 
     @QueryProjection
-    public BannerDTO(Long bannerId, String bannerTitle, String bannerUrl, String fileName, BannerStatus bannerStatus) {
+    public BannerDTO(Long bannerId, String bannerTitle, String bannerUrl, BannerStatus bannerStatus) {
         this.bannerId = bannerId;
         this.bannerTitle = bannerTitle;
         this.bannerUrl = bannerUrl;
-        this.fileName = fileName;
         this.bannerStatus = bannerStatus;
     }
 }

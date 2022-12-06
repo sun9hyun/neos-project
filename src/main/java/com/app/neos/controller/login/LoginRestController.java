@@ -1,6 +1,7 @@
 package com.app.neos.controller.login;
 
 import com.app.neos.domain.study.StudyDTO;
+import com.app.neos.domain.study.StudySearch;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.study.Study;
 import com.app.neos.entity.user.User;
@@ -36,7 +37,8 @@ public class LoginRestController {
     @PutMapping("/test")
     public int test(){
         Pageable pageable = PageRequest.of(0,16);
-        return studyCustomRepository.findAllPage(pageable).getTotalPages();
+        StudySearch studySearch = new StudySearch();
+        return studyCustomRepository.findAllPage(pageable,studySearch).getTotalPages();
     }
 
 }

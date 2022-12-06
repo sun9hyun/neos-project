@@ -95,10 +95,6 @@ public class NaverService {
         }
     }
 
-//{"resultcode":"00","message":"success","response":{"id":"YK-XjKYwHjoePg7-U57-0AX8zoYAHbUaFbiDj-jjqG4","nickname":"\ubc15\uc885\uc6b0","email":"ewuanit0124@naver.com","mobile":"010-6681-8240","mobile_e164":"+821066818240","name":"\ubc15\uc885\uc6b0"}}
-//    id check, name, mobile, email
-
-
 //  id
     public String getNaverIdByToken(String token) throws Exception{
         String header = "Bearer " + token; // Bearer 다음에 공백 추가

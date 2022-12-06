@@ -13,7 +13,7 @@
 <body>
     <header th:replace="/app/fix/header.html :: header"></header>
     <!-- 상세보기 정보 페이지 START-->
-    <div id="_next">
+    <div id="_next" th:object="${study}">
         <section>
             <div class="projectPageHeaderWrap">
                 <div class="projectPurposeWrap">
@@ -22,18 +22,15 @@
                     </div>
                 </div>
                 <div class="projectPageHeaderContent">
-                    <h2 class="projectTit">[공업수학] 라플라스 변환의 이해와 적용</h2>
+                    <h2 class="projectTit" th:text="*{studyTitle}"></h2>
                     <li class="projectLeaderWrap">
                         <div class="userIdWrap">
                             <div class="leaderImg"><a href="#"><img width="20px"
                                                                     height="20px"
-                                                                    src="https://letspl.me/assets/images/prof-no-img.png"
+                                                                    th:src="${writer.userFile}"
                                                                     alt="추추추"></a></div>
                             <div class="rightTxt userId">
-                                <h2 class="userIdTxt">추추추</h2><span class="confirmPhoneTxt">(휴대폰 인증)</span><span
-                                    class="lastLoginTxt"> 오늘
-                                <!-- --> 로그인
-                                    </span>
+                                <h2 class="userIdTxt" th:text="*{userNickName}"></h2><span class="confirmPhoneTxt">(대학교 인증)</span>
                                 <div class="idHoverMenu">
                                     <ul>
                                         <li><a href="#">프로필 상세</a></li>
@@ -43,8 +40,13 @@
                             </div>
                         </div>
                     </li>
-                    <div class="statusTagWrap"><span class="statusTag gray">모집완료</span><span class="statusTag white">진행
-                                중</span>
+                    <div class="statusTagWrap">
+                        <th:block th:if="*{StudyRecruitStatus.toString() == 'RECRUITING'}">
+                            <span class="statusTag gray">진행 중</span>
+                        </th:block>
+                        <th:block th:unless="*{StudyRecruitStatus.toString() == 'RECRUITING'}">
+                            <span class="statusTag white">모집완료</span>
+                        </th:block>
                         <div class="modifyBtn"><a><img loading="lazy"
                                                        src="https://letspl.me/assets/images/ic-profile-modify.png"
                                                        alt="수정버튼" style="vertical-align: middle;"></a></div>

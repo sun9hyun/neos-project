@@ -2,6 +2,7 @@ package com.app.neos.controller.study;
 
 import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.domain.study.StudySearch;
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.service.join.JoinService;
 import com.app.neos.service.study.StudyService;
@@ -13,6 +14,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
@@ -39,10 +41,10 @@ public class StudyController {
     }
 
     @GetMapping("/list")
-    public String list(Model model, @PageableDefault(size = 16, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, StudySearch studySearch){
+    public String list(Model model){
         model.addAttribute("collegeCityList",joinService.getCollegeCityList());
-        model.addAttribute("pagination",studyService.getPagination(pageable));
-        model.addAttribute("studyList",studyService.getBoardList(pageable));
+//        model.addAttribute("pagination",studyService.getPagination(pageable));
+//        model.addAttribute("studyList",studyService.getBoardList(pageable));
         return "app/study/listStudy";
     }
 
@@ -82,7 +84,15 @@ public class StudyController {
     public RedirectView post(StudyDTO studyDTO){
         studyService.post(studyDTO);
         return new RedirectView("/study/list");
+    }
 
+    @GetMapping("/list/{studyId}")
+    public String listDetail(@PathVariable Long studyId, Model model){
+        StudyDTO study = studyService.getStudyDTO(studyId);
+        UserDTO user = studyService.getInfo(study.getUserId());
+        model.addAttribute("writer",user);
+        model.addAttribute("study",study);
+        return "app/study/detail-study";
     }
 
 }

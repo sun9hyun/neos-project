@@ -92,7 +92,6 @@ h1 {
 .projectLayoutRowFlex1 {
     -moz-box-flex: 1;
     flex: 1 1;
-    max-width: 590px;
     width: 100%;
     -webkit-transition: all .2s;
     -moz-transition: all .2s;
@@ -104,7 +103,6 @@ h1 {
 .projectLayoutRowFlex1 {
     -moz-box-flex: 1;
     flex: 1 1;
-    max-width: 590px;
     width: 100%;
     -webkit-transition: all .2s;
     -moz-transition: all .2s;
@@ -143,15 +141,16 @@ h1 {
     display: flex;
     -moz-box-orient: vertical;
     -moz-box-direction: normal;
-    flex-direction: column;
+    flex-direction: row;
     -moz-box-pack: center;
     justify-content: center;
     -moz-box-align: center;
     align-items: center;
     width: 100%;
-    max-width: 518px;
+    max-width: 1100px;
     margin: 0 auto;
     cursor: pointer;
+    height: 300px;
 }
 
 .newProjectTopWrap .projectThumbInfo, .newProjectTopWrap .projectThumbInfo .top {
@@ -165,9 +164,9 @@ h1 {
 
 .newProjectTopWrap .projectThumbInfo {
     max-width: 518px;
-    background-color: #eee;
-    border: 1px solid #ebebeb;
-    border-radius: 8px;
+    /*background-color: #eee;*/
+    /*border: 1px solid #ebebeb;*/
+    /*border-radius: 8px;*/
     overflow: hidden;
     display: -moz-inline-box;
     display: inline-flex;
@@ -244,7 +243,7 @@ h1 {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 12px;
+    padding: 36px;
     display: -moz-box;
     display: flex;
     -moz-box-pack: justify;
@@ -460,7 +459,6 @@ top
 .projectLayoutRowFlex1 {
     -moz-box-flex: 1;
     flex: 1 1;
-    max-width: 590px;
     width: 100%;
     -webkit-transition: all .2s;
     -moz-transition: all .2s;

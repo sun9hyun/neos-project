@@ -1,5 +1,6 @@
 package com.app.neos.service.study;
 
+import com.app.neos.domain.study.StudySearch;
 import com.app.neos.entity.study.Study;
 import com.app.neos.repository.study.StudyCustomRepository;
 import com.app.neos.repository.study.StudyRepository;
@@ -33,28 +34,53 @@ public class StudyServiceTest {
         log.info(studyRepository.findById(10l).get().toDTO().toString());
     }
 
+//    @Test
+//    public void findAllTest(){
+//        Pageable pageable = PageRequest.of(1,16);
+//        studyCustomRepository.findAllPage(pageable).stream().map(Study::toDTO).forEach(i->log.info(i.toString()));
+//    }
+//
+//
+//    @Test
+//    public void sizeTesT(){
+//        log.info("크기: "+studyCustomRepository.getTotal());
+//    }
+//    @Test
+//    public void findAllTest2(){
+//        Pageable pageable = PageRequest.of(1,16);
+//        log.info("ss"+studyCustomRepository.findAllPage(pageable).getTotalPages());
+//    }
+//
+//    @Test
+//    public void findCustomTest(){
+//        Pageable pageable = PageRequest.of(6,16);
+//        log.info("d"+studyCustomRepository.findAllPage(pageable).isLast());
+//    }
+
     @Test
     public void findAllTest(){
-        Pageable pageable = PageRequest.of(1,16);
-        studyCustomRepository.findAllPage(pageable).stream().map(Study::toDTO).forEach(i->log.info(i.toString()));
+        Pageable pageable = PageRequest.of(0,16);
+        StudySearch studySearch = new StudySearch();
+        studySearch.setStudyCity("인천광역시");
+        studyCustomRepository.findAllPage(pageable,studySearch).stream().map(Study::toDTO).forEach(i->log.info(i.toString()));
     }
 
 
     @Test
-    public void sizeTesT(){
-        log.info("크기: "+studyCustomRepository.getTotal());
-    }
-    @Test
-    public void findAllTest2(){
-        Pageable pageable = PageRequest.of(1,16);
-        log.info("ss"+studyCustomRepository.findAllPage(pageable).getTotalPages());
+    public void findUntilFourTest(){
+        studyCustomRepository.findUntilFour().stream().map(Study::toDTO).forEach(i->log.info(i.toString()));
     }
 
+
+
     @Test
-    public void findCustomTest(){
-        Pageable pageable = PageRequest.of(6,16);
-        log.info("d"+studyCustomRepository.findAllPage(pageable).isLast());
+    public void findAllSliceTest(){
+        Pageable pageable = PageRequest.of(21,10);
+        studyCustomRepository.findAllSlice(pageable).stream().map(Study::toDTO).forEach(i->log.info(i.toString()));
+        log.info("결과 : "+studyCustomRepository.findAllSlice(pageable).hasNext());
     }
+
+
 
 
 }

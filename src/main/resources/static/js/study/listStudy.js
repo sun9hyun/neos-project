@@ -90,7 +90,7 @@ function modalOk(heart) {
     })
 }
 
-$(".listFavorite.off").click(function(){
+$("#_next").on("click",".listFavorite.off",function () {
     let name = $(this).closest(".projectGridWrap").find(".projectWrap .tit").text();
     const heart = $(this);
     if($(this).hasClass("off")) {
@@ -115,7 +115,34 @@ $(".listFavorite.off").click(function(){
         $(this).addClass('off');
         $(this).removeClass('on');
     }
-});
+})
+
+// $(".listFavorite.off").click(function(){
+//     let name = $(this).closest(".projectGridWrap").find(".projectWrap .tit").text();
+//     const heart = $(this);
+//     if($(this).hasClass("off")) {
+//         heart.addClass('click');
+//     }
+//
+//     $(".modal1").children(".studyTit").text(name + "을");
+//
+//     if($(this).hasClass("off")) {
+//         $(".modalWrapOpen").show();
+//         $(".modal1").css('display','inline-block');
+//         $(".modalWrapOpen .modal1 .btnWrap button.blueBtn").on("click", function () {
+//             $(".modal1").css('display','none');
+//             $(".modalWrapOpen").hide();
+//             $(".click").addClass('active');
+//             $(".click").addClass('on');
+//             $(".click").removeClass('off');
+//             $(".click").removeClass('click');
+//         })
+//     } else {
+//         $(this).removeClass('active');
+//         $(this).addClass('off');
+//         $(this).removeClass('on');
+//     }
+// });
 
 // 탑 스터디 좋아요 구독하기 버튼
 $(".topFavorite.off").click(function(){

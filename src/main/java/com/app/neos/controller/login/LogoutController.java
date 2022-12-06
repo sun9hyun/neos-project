@@ -42,7 +42,7 @@ public class LogoutController {
             userDTO = userCustomRepository.findById(id);
         }
                 String oauthId = userDTO.getUserOAuthId();
-        if(oauthId.contains("k")){
+        if(oauthId.endsWith("k")){
             kaKaoService.logoutKakao(session.getAttribute("token").toString());
         }else if(oauthId.endsWith("naver")) {
             naverService.logoutNaver(session.getAttribute("token").toString());

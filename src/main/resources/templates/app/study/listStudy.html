@@ -11,6 +11,12 @@
     <link rel="stylesheet" href="/css/fix/chatting.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
+<style>
+    a.paging:hover{
+        background-color: #81839c;
+        color: #fff;
+    }
+</style>
 <body>
     <header th:replace="/app/fix/header.html :: header"></header>
     <!-- 리스트 메인 START-->
@@ -25,357 +31,136 @@
                         <h1 style="padding: 0 !important">신규 프로젝트</h1>
                         <div class="sliderWrap swiper mySwiper">
                             <div class="swiper-wrapper carousel-root">
-                                <div class="swiper-slide carousel carousel-slider">
-                                    <div class="newProjectTopWrap">
-                                        <div class="projectThumbInfo">
-                                            <div class="projectThumb"><img
-                                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4541/images/ai_to_png%E1%84%8B%E1%85%A1%E1%87%81%E1%84%86%E1%85%A7%E1%86%AB.png"
-                                                    alt="취약계층 지원 AI서비스 플랫폼"></div>
-                                            <div class="top">
-                                                <div class="badgeWrap"></div>
-                                                <div class="favorite topFavorite off" style="margin-top: 0"></div>
-                                            </div>
-                                        </div>
-                                        <div class="txtWrap">
-                                            <div class="left">
-                                                <h3 class="categoryTxt">전공과목</h3>
-                                                <h2 class="tit">유아교육과 실습</h2>
-                                                <h3 class="recruitTxt">미어제트는 최첨단 기술을 활용한 AIaaS Platform으로써 저비용으로 안전하게
-                                                    취약계층의 성장을 지원합니다🚀&amp;lt;서비스
-                                                    소개&amp;gt;취약계층도도 AI의 지원이 시급하다
-                                                    최근 황당한 소상공인을 목표로한 범죄 뉴스를 접하였습니다.충분히 현대 기술로도 대처할 수 있지만, 높은 코스트를 요구하는
-                                                    AI는 일반인이 접하기는 어렵습니다.
-                                                    6년간 글로벌 기업들과 다수의 AI솔루션을 개발하며 배운 노하우와 경험으로 소상공인을 지원하고자
-                                                    합니다.목표시장전체시장(TAM) 470조원의 리테일 시장 중,
-                                                    약 2조원에 육박하는 수익시장(SOM)인 소상공인 시장을 시작으로2026에는 기존 서비스의 응용 확대로 더 넓은 취약계층
-                                                    시장에 진입할 예정입니다.차별화 전략
-                                                    - 기존 솔루션 대비 AI도입 비용 최소화
-                                                    - 업종별 맞춤형 기능 제공
-                                                    - 가용성, 보안, 속도면에서 우수
-                                                    서비스와 사용자 이익소상공인은 상황 및 공간 분석, 실시간 알림, 과거 통계 등의 AI서비스를 제공받아,매장관리 효율화를
-                                                    높이고,단골소님 확대와 매출증진에 기대를 할 수
-                                                    있습니다.&amp;lt; 프로젝트 진행방식 &amp;gt;주로 커뮤니케이션 툴(슬랙 또는 디스코드 등 협의중) 위주
-                                                    사용하며, 온라인 회의는 줌을 활용하여 진행됩니다.회의 방식은 필요에
-                                                    따라 유동성 있게 진행할 예정입니다.사이드잡 형태로 함께 하시 분들은 진행할 수 있는 시간 협의도
-                                                    가능합니다.&amp;lt;팀 소개&amp;gt;팀 목표MISSION -이보다 든든 할 수
-                                                    없다.VISION -사회에 선한 영향을.팀원현황(일시적 사이드잡 팀원 2명)개발자 1명 - 자동화 개발 전문, AI데이터
-                                                    가공 전문디자이너 1명 - UIUX디자인 경력 3년, 유명 웹툰
-                                                    작가사업화현황
-                                                    플랫폼 프로토타입개발 및 기술 검증완료
-                                                    상표권 출원
-                                                    특허 3개 출원
-                                                    창조경제혁신센터 주관 비즈니스 아이디어 대회 1등
-                                                    고객검증 프로그램 우수팀 선정
-                                                </h3>
-                                            </div>
-                                            <div class="right">
-                                                <div class="heartCount"><img loading="lazy"
-                                                                             src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                             alt="구독자 수"><span>1</span></div>
-                                                <div class="gatherTxt">
-                                                    <div><span>모집완료</span><span>0/5</span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide carousel carousel-slider">
-                                    <div class="newProjectTopWrap">
-                                        <div class="projectThumbInfo">
-                                            <div class="projectThumb"><img
-                                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/undefined/images/rn_image_picker_lib_temp_b398ec73-e178-4289-a927-3a052fc56f91.jpg"
-                                                    alt="대학 동아리 플랫폼 App"></div>
-                                            <div class="top">
-                                                <div class="badgeWrap"></div>
-                                                <div class="favorite topFavorite off" style="margin-top: 0"></div>
-                                            </div>
-                                        </div>
-                                        <div class="txtWrap">
-                                            <div class="left">
-                                                <h3 class="categoryTxt">전공프로젝트</h3>
-                                                <h2 class="tit"> 대학 동아리 플랫폼 App</h2>
-                                                <h3 class="recruitTxt">﻿﻿﻿1. 프로젝트 배경 및 동기전국에는 400개 대학, 15만 개 동아리, 273만
-                                                    명의 대학생과 에xx타임, 네이버 밴x, 포스터 등 동아리를 찾고 모집하는 여러 채널이 있습니다.그러나 시공간적인 제약과
-                                                    무분별한 정보로 인해 찾는 학생도, 모집(관리)하는 동아리도 불편함을 겪고 있습니다."관심 분야의 동아리가 있는지도
-                                                    모르겠고, 자세한 활동 정보나 모집 정보를 찾기 힘들어요"
-
-
-                                                    "반복해서 게시물을 올리는 것이 비효율적이지만 적절한 대안이 없어 마지못해 하고 있어요"그래서
-                                                    만들었습니다!포레스틴(Forestin)은 가입부터 관리까지 간편하게 가능한 대학 동아리 전문 서비스로대학생은 언제 어디서나
-                                                    원하는 동아리 정보를 빠르게 찾고,
-                                                    동아리는 손쉽게 모집부터 운영까지 한 번에 할 수 있습니다.
-
-
-
-                                                    2. 회의 진행/모임 방식진행상황 점검 및 논의를 위해 매주 1회 온라인 정기회의를 진행할 예정입니다.추가적인 회의는
-                                                    팀원간에 개별적으로 스케줄 조정 후 미팅을 진행하시면돼요.온라인의 경우 디스코드 채널 및 노션을 활용하고, 오프라인은 서울
-                                                    지역에서 미팅룸을 대관할 예정입니다.3. 팀 소개 및 현황기획 및 마케팅 : 1명UI &amp; UX 디자인 :
-                                                    1명프론트엔드 : 1명백엔드 : ﻿1명취업 등의 개인적인 이유로 인한 일부 팀원의 이탈로 현재는 총 4명이며 새롭게 팀
-                                                    리빌딩을 시작하고 있어요.서비스는 MVP 개발을 시작으로 피봇팅을 거쳐 프로덕션 서비스 개발 80% 단계에 있습니다.(구글
-                                                    플레이스토어나 ios 앱 스토어에서 확인하실 수 있습니다)4. 연혁
-                                                    창업진흥원 예비창업패키지창업진흥원 실전창업교육경기도경제과학진흥원 세대융합형 창업 서포터즈 창업팀서울시 캠퍼스타운 스타트업
-                                                    팀5. 모집
-                                                    - 맡은 바에 대해 책임감이 있으신 분이셨으면 좋겠어요.- 팀원들 사이의 커뮤니케이션을 중요하게 여기고 적극적으로
-                                                    소통하시는 분이셨으면 좋겠어요.- 함께 성장하며 결과물을 완성하고, 이를 운영할 분을 찾고있어요.- 주간 15 시간 이상
-                                                    참여 가능한 코어 멤버라면 더욱더 환영이에요.﻿
-
-                                                    1) 프론트엔드 개발▷ 역할 : 신규 기능 개발 / 디버깅 / 코드 리팩토링 등의 역할을 수행하게 돼요.
-                                                    ▷ 우대사항 :React Native 개발 경험이 있으신 분,Git, github 사용 가능하신 분
-
-
-
-
-
-                                                    2) 온오프라인 마케팅▷역할 : 신규고객 및 파트너 유치 방안을 수립하고 이를 실행하는 역할을 수행하게 돼요.
-                                                    ▷우대사항 :온라인 서비스 홍보 경험이 있으신 분,오프라인 고객 유치 경험이 있으신 분
-
-
-
-
-
-                                                    3) 백엔드 개발▷ 역할 : 신규 기능 개발 / 디버깅 / 코드 리팩토링 등의 역할을 수행하게 돼요.
-                                                    ▷ 하단의 참고사항 에서 사용중인 기술 스택을 참고해 주세요.
-                                                    ▷우대사항 :Javascript 생태계에 익숙하신 분
-                                                    Express를 활용한 개발 경험이 있으신 분
-                                                    REST API에 대해 이해하고 계신 분
-                                                    Git, Github 사용 가능하신 분
-
-
-
-
-                                                    &lt;참고사항&gt;디자인: Figma프론트엔드 : React Native(Expo)백엔드 : NodeJS,
-                                                    Express, Mongo DB, Mongoose, Docker, AWS S3, AWS EC2
-
-
-                                                    hagopj13의 보일러 플레이트
-                                                    (https://github.com/hagopj13/node-express-boilerplate)6. 그 외추후 서비스
-                                                    활성화 및 법인 개설 후 중요도와 참여도에 따라 리워드(급여, 스톡옵션 등)를 분배할 예정이에요.7. Contact Us
-                                                    - 지원해주실 때이름 / 학력 / 나이 / 프로젝트 경험(포트폴리오, git 등)을 포함하여 전달해주세요- 사업 계획,
-                                                    방향성, 진행 방식 등 궁금하신 부분에 대해 자유롭게 문의해주세요.
-                                                    💬 카카오 채널 : 포레스틴 고객센터⭐인스타그램 : forestin_official
-
-
-                                                    📧 Gmail : cs.forestin@gmail.com8. 앱 스크린샷
-                                                </h3>
-                                            </div>
-                                            <div class="right">
-                                                <div class="heartCount"><img loading="lazy"
-                                                                             src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                             alt="구독자 수"><span>1</span></div>
-                                                <div class="gatherTxt">
-                                                    <div><span>모집완료</span><span>0/5</span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide carousel carousel-slider">
-                                    <div class="newProjectTopWrap">
-                                        <div class="projectThumbInfo">
-                                            <div class="projectThumb"><img
-                                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4591/images/2228AE3D5420E0BC21.png"
-                                                    alt="프로덕트헌트_ 스타트업 제품런칭플랫폼"></div>
-                                            <div class="top">
-                                                <div class="badgeWrap"></div>
-                                                <div class="favorite topFavorite off" style="margin-top: 0"></div>
-                                            </div>
-                                        </div>
-                                        <div class="txtWrap">
-                                            <div class="left">
-                                                <h3 class="categoryTxt">교양과목</h3>
-                                                <h2 class="tit">글쓰기와 토론_함께 생각해요!</h2>
-                                                <h3 class="recruitTxt">1. 프로젝트의 시작 동기
-                                                    프로덕트 헌트는 스타트업계의 빌보드 차트로, 제품소개와 토론을 통해 더 나은 스타트업 생태계를 꾸려나가는 커뮤니티 입니다.우리가 즐겨쓰는 노션도 프로덕트 헌트를 통해 세상에 알려졌답니다.스타트업 관련 일을 오랫동안 해오며 한국에도 좋은서비스와 아이디어를 널리 알릴수 있는 커뮤니티가 있으면 좋겠다고 생각해왔고, 좋은분들과 함께 의기투합 하고자 사이드프로젝트로 도전해보고자 합니다.기획자, 개발자, 마케터, 개발자등 새로운 서비스에 관심 많은 다양한 직군의 종사자를 대상으로 합니다.(참고 - 프로덕트 헌트)
-
-
-                                                    2. 회의 진행/모임 방식
-
-                                                    - 주 1~2회 온라인 미팅, 월1~2회 오프라인 미팅(가능하면)
-                                                    - 온라인은 줌을 활용하고, 오프라인은 여의도 회의실 대관할예정입니다, 커뮤니케이션은 슬랙을 위주로 사용합니다
-
-                                                    3. 그 외
-                                                    이번 사이드 프로젝트는1. 프로덕트헌트 벤치마킹을 통해최소 핵심기능 구현을 1차 목표로 하고 (제품출시, 투표, 댓글, 프로필)2. 부가적인 기능을 추가해 나가면 좋을것 같습니다.3. 프로덕트 헌트 서비스 예시를 아래 첨부드립니다.팀원 모집은 기획,디자인,프론트,백엔드,마케팅 전부문이고궁금하시거나 상세한 내용은 다음 오픈채팅을 이용해주시기 바랍니다.https://open.kakao.com/o/sBZrNNMe
-                                                </h3>
-                                            </div>
-                                            <div class="right">
-                                                <div class="heartCount"><img loading="lazy"
-                                                                             src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                             alt="구독자 수"><span>1</span></div>
-                                                <div class="gatherTxt">
-                                                    <div><span>모집완료</span><span>0/5</span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide carousel carousel-slider">
-                                    <div class="newProjectTopWrap">
-                                        <div class="projectThumbInfo">
-                                            <div class="projectThumb"><img
-                                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4616/images/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-11-11%20224533.png"
-                                                    alt="대학 동아리 플랫폼 App"></div>
-                                            <div class="top">
-                                                <div class="badgeWrap"></div>
-                                                <div class="favorite topFavorite off" style="margin-top: 0"></div>
-                                            </div>
-                                        </div>
-                                        <div class="txtWrap">
-                                            <div class="left">
-                                                <h3 class="categoryTxt">전공과목</h3>
-                                                <h2 class="tit">[경희대] 개성있는 로그라이크 턴제RPG 제작</h2>
-                                                <h3 class="recruitTxt">1. 프로젝트의 시작 동기'페르소나5'와 '데빌 메이 크라이 시리즈' 등을 해보고 영감을 얻어 시작한 프로젝트입니다.'드래곤 퀘스트'로부터 이어져 내려오는 턴제RPG 전투의 답답함을 줄이고 전략적인 요소를 추가하여 현대적으로 재해석하고자 합니다.게임은 로그라이크 형식으로 진행되며 플레이를 반복하여 스토리를 진행합니다.또한 개성있는 그래픽 및 배경설정과 심리상담과 관련된 스토리를 담고자 합니다.
-
-
-
-                                                    2. 회의 진행/모임 방식1주에 1 ~ 2 번 정도 함께 작업하는 시간이 있으면 합니다.가능하면 오프라인으로 직접 만나서 하는 것이 좋을 것 같습니다.온라인 작업 시에는 디스코드로 커뮤니케이션을 할 것 같습니다.
-
-                                                    3. 그외아래는 유니티로 제작중인 게임의 스크린샷입니다.혼자서 만들어보려 한 게임이지만 프로그래밍에 대한 어려움을 크게 느껴서 이렇게 함께 만들어볼 팀원을 구해보려 합니다.게임에 대한 자세한 설명과 프로젝트 진행에 대해서는 카카오톡으로 상의하려고 합니다.https://open.kakao.com/o/s2RMmfNe
-                                                </h3>
-                                            </div>
-                                            <div class="right">
-                                                <div class="heartCount"><img loading="lazy"
-                                                                             src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                             alt="구독자 수"><span>1</span></div>
-                                                <div class="gatherTxt">
-                                                    <div><span>모집완료</span><span>0/5</span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="swiper-button-next"></div>
                             <div class="swiper-button-prev"></div>
                         </div>
                     </div>
-                    <div class="projectToplRightWrap projectLayoutRowFlex1">
-                        <h1 style="padding: 0 !important">주목할만한 스터디</h1>
-                        <div class="recommendProjectlist">
-                            <div class="projectThumbWrap"><img
-                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/113/images/1.png"
-                                    alt="스마트팜교육메타버스아바타챗봇"></div>
-                            <div class="txtWrap">
-                                <h2 class="tit"> 스마트팜교육메타버스아바타챗봇</h2>
-                                <h3 class="desTxt"><span>﻿1. 프로젝트 설명-인공지능 사이드 프로젝트 및 메타버스 스터디 커뮤니티에 실제 적용할 예정이며, 창업공모전과
-                                        공모전에 메타버스 교육 플랫폼 AI 아바타 팻봇으로 낼 예정 입니다.- 커뮤니티는 인공지능 및 메타버스, 스마트시티, 디지털트윈 관련 정보를
-                                        교환하고 같이 사이드 프로젝트, 창업공모전 및 공모전을 하는 커뮤니티 입니다- 독립 사이트 aitutor21.com, 카톡 단톡방, 페이스북
-                                        그룹을 운영 중이며, 페북 그룹은 5000 명, 단톡방은 420 명 / 170 명 입니다.- 회원은 인공지능 개발자, 사업가, 연구원,
-                                        디자이너, 교수 등으로 구성되어 있습니다. - 대화 내용을 챗봇에 학습시켜서 서비스함 - 회원 증가 및 활성화 방안 마케팅 및 아이디어 발굴
-                                        예정- 기존 자료 검색 기능 (슬랙, 텔레그램 봇 참조)- 기존 자료 분류 기능 (슬랙, 노션 참조)- 영상 데이터 학습 및 질의응답 기능-
-                                        줌/게더타운/클럽하우스 연계 컨퍼런스 연계기능 - 스케쥴 기능 - 투표 기능- 음성 채팅 기능2. 프로젝트 필요성- 메타버스 솔루션 붐으로
-                                        메타휴먼에 대한 니즈가 많음- 실질적으로 다수에게 활용되는 챗봇은 없음- 음성으로 대화하고자 하는 니즈도 많음- 단톡방이나 커뮤니티를 운영하면서
-                                        챗봇에 대화 내용을 학습 시키고 설명시키고자 하는 수요가 많음- AI 아나운서나 버츄얼 유튜버는 실생활까지는 아직 활성화되어 있지 않고
-                                        부자연스러움3. 출시 플랫폼/타겟 유저- aitutor21.com 개발되어 있으나 디자인 컨텐츠 활성도가 약해서 리뉴얼을 하려고 함- 네이버
-                                        카페, 웹사이트, 페북, 메타버스 솔루션에 반영 예정- 서비스의 유저는 인공지능/메타버스/디지털트윈 관련 개발자/기획자/디자이너/사업가임 4.
-                                        구현 방안- 구글챗봇, 카카오챗봇 제작 완료함, 지식 학습 트레이닝 필요 - 카톡 봇 제작 예정 (페북 매크로, 텔레그램 봇도 고려)- 메타버스
-                                        솔루션에 챗봇 연계 예정5. 이런분들을 원합니다.- 사이트를 리뉴얼 하고 계속 운영하면서 공모전과 창업공모전을 계속 같이 하려고 함-
-                                        창업공모전을 위해 POC 개발을 같이 할 개발자 디자이너 구함- ﻿현재 팀원은 기획 개발자 디자이너 분들임- 디자인은 UI/UX 를 윅스나
-                                        피그마로 만들고 디자인할웹앱 디자이너와 유니티나 블랜더 3D 디자이너가 필요함- 개발은 프론트엔드/백엔드, 자바 파이썬PHP개발자가 필요함-
-                                        연락은 카톡 simjs1 이 빠릅니다</span></h3>
-                                <h3 class="typeTxt">[모집중] 웹 서버</h3>
-                            </div>
-                            <div class="heartCount"><img loading="lazy"
-                                                         src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                         alt="구독자 수"><span>4</span></div>
-                        </div>
-                        <div class="recommendProjectlist">
-                            <div class="projectThumbWrap"><img
-                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/undefined/images/rn_image_picker_lib_temp_b398ec73-e178-4289-a927-3a052fc56f91.jpg"
-                                    alt="대학 동아리 플랫폼 App"></div>
-                            <div class="txtWrap">
-                                <h2 class="tit"> 대학 동아리 플랫폼 App</h2>
-                                <h3 class="desTxt"><span>﻿﻿﻿1. 프로젝트 배경 및 동기전국에는 400개 대학, 15만 개 동아리, 273만 명의 대학생과 에xx타임,
-                                        네이버 밴x, 포스터 등 동아리를 찾고 모집하는 여러 채널이 있습니다.그러나 시공간적인 제약과 무분별한 정보로 인해 찾는 학생도,
-                                        모집(관리)하는 동아리도 불편함을 겪고 있습니다."관심 분야의 동아리가 있는지도 모르겠고, 자세한 활동 정보나 모집 정보를 찾기 힘들어요"
+<!--                    <div class="projectToplRightWrap projectLayoutRowFlex1">-->
+<!--                        <h1 style="padding: 0 !important">주목할만한 스터디</h1>-->
+<!--                        <div class="recommendProjectlist">-->
+<!--                            <div class="projectThumbWrap"><img-->
+<!--                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/113/images/1.png"-->
+<!--                                    alt="스마트팜교육메타버스아바타챗봇"></div>-->
+<!--                            <div class="txtWrap">-->
+<!--                                <h2 class="tit"> 스마트팜교육메타버스아바타챗봇</h2>-->
+<!--                                <h3 class="desTxt"><span>﻿1. 프로젝트 설명-인공지능 사이드 프로젝트 및 메타버스 스터디 커뮤니티에 실제 적용할 예정이며, 창업공모전과-->
+<!--                                        공모전에 메타버스 교육 플랫폼 AI 아바타 팻봇으로 낼 예정 입니다.- 커뮤니티는 인공지능 및 메타버스, 스마트시티, 디지털트윈 관련 정보를-->
+<!--                                        교환하고 같이 사이드 프로젝트, 창업공모전 및 공모전을 하는 커뮤니티 입니다- 독립 사이트 aitutor21.com, 카톡 단톡방, 페이스북-->
+<!--                                        그룹을 운영 중이며, 페북 그룹은 5000 명, 단톡방은 420 명 / 170 명 입니다.- 회원은 인공지능 개발자, 사업가, 연구원,-->
+<!--                                        디자이너, 교수 등으로 구성되어 있습니다. - 대화 내용을 챗봇에 학습시켜서 서비스함 - 회원 증가 및 활성화 방안 마케팅 및 아이디어 발굴-->
+<!--                                        예정- 기존 자료 검색 기능 (슬랙, 텔레그램 봇 참조)- 기존 자료 분류 기능 (슬랙, 노션 참조)- 영상 데이터 학습 및 질의응답 기능- -->
+<!--                                        줌/게더타운/클럽하우스 연계 컨퍼런스 연계기능 - 스케쥴 기능 - 투표 기능- 음성 채팅 기능2. 프로젝트 필요성- 메타버스 솔루션 붐으로-->
+<!--                                        메타휴먼에 대한 니즈가 많음- 실질적으로 다수에게 활용되는 챗봇은 없음- 음성으로 대화하고자 하는 니즈도 많음- 단톡방이나 커뮤니티를 운영하면서-->
+<!--                                        챗봇에 대화 내용을 학습 시키고 설명시키고자 하는 수요가 많음- AI 아나운서나 버츄얼 유튜버는 실생활까지는 아직 활성화되어 있지 않고-->
+<!--                                        부자연스러움3. 출시 플랫폼/타겟 유저- aitutor21.com 개발되어 있으나 디자인 컨텐츠 활성도가 약해서 리뉴얼을 하려고 함- 네이버-->
+<!--                                        카페, 웹사이트, 페북, 메타버스 솔루션에 반영 예정- 서비스의 유저는 인공지능/메타버스/디지털트윈 관련 개발자/기획자/디자이너/사업가임 4.-->
+<!--                                        구현 방안- 구글챗봇, 카카오챗봇 제작 완료함, 지식 학습 트레이닝 필요 - 카톡 봇 제작 예정 (페북 매크로, 텔레그램 봇도 고려)- 메타버스-->
+<!--                                        솔루션에 챗봇 연계 예정5. 이런분들을 원합니다.- 사이트를 리뉴얼 하고 계속 운영하면서 공모전과 창업공모전을 계속 같이 하려고 함- -->
+<!--                                        창업공모전을 위해 POC 개발을 같이 할 개발자 디자이너 구함- ﻿현재 팀원은 기획 개발자 디자이너 분들임- 디자인은 UI/UX 를 윅스나-->
+<!--                                        피그마로 만들고 디자인할웹앱 디자이너와 유니티나 블랜더 3D 디자이너가 필요함- 개발은 프론트엔드/백엔드, 자바 파이썬PHP개발자가 필요함- -->
+<!--                                        연락은 카톡 simjs1 이 빠릅니다</span></h3>-->
+<!--                                <h3 class="typeTxt">[모집중] 웹 서버</h3>-->
+<!--                            </div>-->
+<!--                            <div class="heartCount"><img loading="lazy"-->
+<!--                                                         src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"-->
+<!--                                                         alt="구독자 수"><span>4</span></div>-->
+<!--                        </div>-->
+<!--                        <div class="recommendProjectlist">-->
+<!--                            <div class="projectThumbWrap"><img-->
+<!--                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/undefined/images/rn_image_picker_lib_temp_b398ec73-e178-4289-a927-3a052fc56f91.jpg"-->
+<!--                                    alt="대학 동아리 플랫폼 App"></div>-->
+<!--                            <div class="txtWrap">-->
+<!--                                <h2 class="tit"> 대학 동아리 플랫폼 App</h2>-->
+<!--                                <h3 class="desTxt"><span>﻿﻿﻿1. 프로젝트 배경 및 동기전국에는 400개 대학, 15만 개 동아리, 273만 명의 대학생과 에xx타임,-->
+<!--                                        네이버 밴x, 포스터 등 동아리를 찾고 모집하는 여러 채널이 있습니다.그러나 시공간적인 제약과 무분별한 정보로 인해 찾는 학생도,-->
+<!--                                        모집(관리)하는 동아리도 불편함을 겪고 있습니다."관심 분야의 동아리가 있는지도 모르겠고, 자세한 활동 정보나 모집 정보를 찾기 힘들어요"-->
 
 
-                                        "반복해서 게시물을 올리는 것이 비효율적이지만 적절한 대안이 없어 마지못해 하고 있어요"그래서 만들었습니다!포레스틴(Forestin)은 가입부터
-                                        관리까지 간편하게 가능한 대학 동아리 전문 서비스로대학생은 언제 어디서나 원하는 동아리 정보를 빠르게 찾고,
-                                        동아리는 손쉽게 모집부터 운영까지 한 번에 할 수 있습니다.
-
-
-
-                                        2. 회의 진행/모임 방식진행상황 점검 및 논의를 위해 매주 1회 온라인 정기회의를 진행할 예정입니다.추가적인 회의는 팀원간에 개별적으로 스케줄
-                                        조정 후 미팅을 진행하시면돼요.온라인의 경우 디스코드 채널 및 노션을 활용하고, 오프라인은 서울 지역에서 미팅룸을 대관할 예정입니다.3. 팀
-                                        소개 및 현황기획 및 마케팅 : 1명UI &amp;amp; UX 디자인 : 1명프론트엔드 : 1명백엔드 : ﻿1명취업 등의 개인적인 이유로 인한
-                                        일부 팀원의 이탈로 현재는 총 4명이며 새롭게 팀 리빌딩을 시작하고 있어요.서비스는 MVP 개발을 시작으로 피봇팅을 거쳐 프로덕션 서비스 개발
-                                        80% 단계에 있습니다.(구글 플레이스토어나 ios 앱 스토어에서 확인하실 수 있습니다)4. 연혁
-                                        창업진흥원 예비창업패키지창업진흥원 실전창업교육경기도경제과학진흥원 세대융합형 창업 서포터즈 창업팀서울시 캠퍼스타운 스타트업 팀5. 모집
-                                        - 맡은 바에 대해 책임감이 있으신 분이셨으면 좋겠어요.- 팀원들 사이의 커뮤니케이션을 중요하게 여기고 적극적으로 소통하시는 분이셨으면
-                                        좋겠어요.- 함께 성장하며 결과물을 완성하고, 이를 운영할 분을 찾고있어요.- 주간 15 시간 이상 참여 가능한 코어 멤버라면 더욱더
-                                        환영이에요.﻿
-
-                                        1) 프론트엔드 개발▷ 역할 : 신규 기능 개발 / 디버깅 / 코드 리팩토링 등의 역할을 수행하게 돼요.
-                                        ▷ 우대사항 :React Native 개발 경험이 있으신 분,Git, github 사용 가능하신 분
+<!--                                        "반복해서 게시물을 올리는 것이 비효율적이지만 적절한 대안이 없어 마지못해 하고 있어요"그래서 만들었습니다!포레스틴(Forestin)은 가입부터-->
+<!--                                        관리까지 간편하게 가능한 대학 동아리 전문 서비스로대학생은 언제 어디서나 원하는 동아리 정보를 빠르게 찾고,-->
+<!--                                        동아리는 손쉽게 모집부터 운영까지 한 번에 할 수 있습니다.-->
 
 
 
+<!--                                        2. 회의 진행/모임 방식진행상황 점검 및 논의를 위해 매주 1회 온라인 정기회의를 진행할 예정입니다.추가적인 회의는 팀원간에 개별적으로 스케줄-->
+<!--                                        조정 후 미팅을 진행하시면돼요.온라인의 경우 디스코드 채널 및 노션을 활용하고, 오프라인은 서울 지역에서 미팅룸을 대관할 예정입니다.3. 팀-->
+<!--                                        소개 및 현황기획 및 마케팅 : 1명UI &amp;amp; UX 디자인 : 1명프론트엔드 : 1명백엔드 : ﻿1명취업 등의 개인적인 이유로 인한-->
+<!--                                        일부 팀원의 이탈로 현재는 총 4명이며 새롭게 팀 리빌딩을 시작하고 있어요.서비스는 MVP 개발을 시작으로 피봇팅을 거쳐 프로덕션 서비스 개발-->
+<!--                                        80% 단계에 있습니다.(구글 플레이스토어나 ios 앱 스토어에서 확인하실 수 있습니다)4. 연혁-->
+<!--                                        창업진흥원 예비창업패키지창업진흥원 실전창업교육경기도경제과학진흥원 세대융합형 창업 서포터즈 창업팀서울시 캠퍼스타운 스타트업 팀5. 모집-->
+<!--                                        - 맡은 바에 대해 책임감이 있으신 분이셨으면 좋겠어요.- 팀원들 사이의 커뮤니케이션을 중요하게 여기고 적극적으로 소통하시는 분이셨으면-->
+<!--                                        좋겠어요.- 함께 성장하며 결과물을 완성하고, 이를 운영할 분을 찾고있어요.- 주간 15 시간 이상 참여 가능한 코어 멤버라면 더욱더-->
+<!--                                        환영이에요.﻿-->
 
-
-                                        2) 온오프라인 마케팅▷역할 : 신규고객 및 파트너 유치 방안을 수립하고 이를 실행하는 역할을 수행하게 돼요.
-                                        ▷우대사항 :온라인 서비스 홍보 경험이 있으신 분,오프라인 고객 유치 경험이 있으신 분
+<!--                                        1) 프론트엔드 개발▷ 역할 : 신규 기능 개발 / 디버깅 / 코드 리팩토링 등의 역할을 수행하게 돼요.-->
+<!--                                        ▷ 우대사항 :React Native 개발 경험이 있으신 분,Git, github 사용 가능하신 분-->
 
 
 
 
 
-                                        3) 백엔드 개발▷ 역할 : 신규 기능 개발 / 디버깅 / 코드 리팩토링 등의 역할을 수행하게 돼요.
-                                        ▷ 하단의 참고사항 에서 사용중인 기술 스택을 참고해 주세요.
-                                        ▷우대사항 :Javascript 생태계에 익숙하신 분
-                                        Express를 활용한 개발 경험이 있으신 분
-                                        REST API에 대해 이해하고 계신 분
-                                        Git, Github 사용 가능하신 분
+<!--                                        2) 온오프라인 마케팅▷역할 : 신규고객 및 파트너 유치 방안을 수립하고 이를 실행하는 역할을 수행하게 돼요.-->
+<!--                                        ▷우대사항 :온라인 서비스 홍보 경험이 있으신 분,오프라인 고객 유치 경험이 있으신 분-->
 
 
 
 
-                                        &amp;lt;참고사항&amp;gt;디자인: Figma프론트엔드 : React Native(Expo)백엔드 : NodeJS, Express,
-                                        Mongo DB, Mongoose, Docker, AWS S3, AWS EC2
+
+<!--                                        3) 백엔드 개발▷ 역할 : 신규 기능 개발 / 디버깅 / 코드 리팩토링 등의 역할을 수행하게 돼요.-->
+<!--                                        ▷ 하단의 참고사항 에서 사용중인 기술 스택을 참고해 주세요.-->
+<!--                                        ▷우대사항 :Javascript 생태계에 익숙하신 분-->
+<!--                                        Express를 활용한 개발 경험이 있으신 분-->
+<!--                                        REST API에 대해 이해하고 계신 분-->
+<!--                                        Git, Github 사용 가능하신 분-->
 
 
-                                        hagopj13의 보일러 플레이트 (https://github.com/hagopj13/node-express-boilerplate)6. 그
-                                        외추후 서비스 활성화 및 법인 개설 후 중요도와 참여도에 따라 리워드(급여, 스톡옵션 등)를 분배할 예정이에요.7. Contact Us
-                                        - 지원해주실 때이름 / 학력 / 나이 / 프로젝트 경험(포트폴리오, git 등)을 포함하여 전달해주세요- 사업 계획, 방향성, 진행 방식 등
-                                        궁금하신 부분에 대해 자유롭게 문의해주세요.
-                                        💬 카카오 채널 : 포레스틴 고객센터⭐인스타그램 : forestin_official
 
 
-                                        📧 Gmail : cs.forestin@gmail.com8. 앱 스크린샷</span></h3>
-                                <h3 class="typeTxt">[모집중] 웹 서버</h3>
-                            </div>
-                            <div class="heartCount"><img loading="lazy"
-                                                         src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                         alt="구독자 수"><span>2</span></div>
-                        </div>
-                        <div class="recommendProjectlist">
-                            <div class="projectThumbWrap"><img
-                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/3334/images/%EC%9D%B4%EC%8A%88%EC%BD%983.PNG"
-                                    alt="집단 경험 순위 플랫폼 &quot;이슈콘&quot;"></div>
-                            <div class="txtWrap">
-                                <h2 class="tit">[서울] 집단 경험 순위 플랫폼 "이슈콘"</h2>
-                                <h3 class="desTxt"><span>﻿"이슈콘" 앱 개발 프로젝트 팀원 모집 : 앱 개발자 1명1. 사이드 프로젝트 소개1) 목적 : 사용자들이
-                                        만드는 집단 경험 순위 정보 플랫폼.2) 사이드 프로젝트를 하게된 동기와 배경 :- 순위 정보, 차트에 관한 정보는 많으나 자신이 원하고,
-                                        필요로 하는 순위 정보를 찾기 어려움.- 순위는 인류가 살아오면서 항상 관심을 가지고 있는 이슈.-세상의 모든 곳에서 시간과 에너지, 비용의
-                                        절감을 위한 플랫폼을 만드는 것이 목표입니다.- 추가 설명은 issuecon.com사이트를 참고해주세요.3) 목표 : 개발, 운영,
-                                        Exit.4) 차별성 - 순위 정보를 사용자들이 요청하고 다 같이 만들어가는 서비스임.- 유사앱이 있으나 활성화 되지 못함. 순위 차트를 매개로
-                                        하는 SNS 플랫폼 지향.5) 프로젝트 리더(제안자) 소개-사이드프로젝트 기획 경험 다수.6) 현재 인원 -현재 팀원 3명 (기획, 디자인,
-                                        운영)7) 실행 기간 -연말까지 완료. (변동 가능)- 현재 기획, 스토리보드, 화면설계 완료되어 있고, 개발 바로 진행 가능한 상황입니다.8)
-                                        모집 인원 : 앱개발자(풀스택) 1명 (Flutter 개발자 선호)2.예상되는 성과와 가치 - 글로벌 차트 플랫폼으로 성장.- 2.1목표 시장과
-                                        타겟 고객, 수익모델 : 앱내 코인 판매, 외부 제휴 마케팅, 광고.3.사이드 프로젝트 제반 사항 &amp;amp; 규칙1) 지역 : 서울 및
-                                        경기도2) 주1회 오프라인(서울 강남) 모임이 가능하신 분 ,강남역에 전용 회의실이 있습니다.3) 적극적으로 소통하고, 함께 협업하고, 자신의
-                                        일을 좋아하는 분4) 시간이 여유가 있어서 일평균 1시간 이상 시간 투자가 가능하신 분, 적극적으로 하실 분5) 책임감 강하신 분. 기한 내
-                                        역할을 끝낼 수 있는 분.6) 혼자 개발을 처음부터 끝까지 개발 완료한 경험이 있는 개발자.4.기타상세 문의 사항이 있는 경우는 아래 메일로
-                                        알려주세요.mhyungdoo@gmail.com</span></h3>
-                                <h3 class="typeTxt">[모집중] 웹 서버</h3>
-                            </div>
-                            <div class="heartCount"><img loading="lazy"
-                                                         src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                         alt="구독자 수"><span>0</span></div>
-                        </div>
-                    </div>
+<!--                                        &amp;lt;참고사항&amp;gt;디자인: Figma프론트엔드 : React Native(Expo)백엔드 : NodeJS, Express,-->
+<!--                                        Mongo DB, Mongoose, Docker, AWS S3, AWS EC2-->
+
+
+<!--                                        hagopj13의 보일러 플레이트 (https://github.com/hagopj13/node-express-boilerplate)6. 그-->
+<!--                                        외추후 서비스 활성화 및 법인 개설 후 중요도와 참여도에 따라 리워드(급여, 스톡옵션 등)를 분배할 예정이에요.7. Contact Us-->
+<!--                                        - 지원해주실 때이름 / 학력 / 나이 / 프로젝트 경험(포트폴리오, git 등)을 포함하여 전달해주세요- 사업 계획, 방향성, 진행 방식 등-->
+<!--                                        궁금하신 부분에 대해 자유롭게 문의해주세요.-->
+<!--                                        💬 카카오 채널 : 포레스틴 고객센터⭐인스타그램 : forestin_official-->
+
+
+<!--                                        📧 Gmail : cs.forestin@gmail.com8. 앱 스크린샷</span></h3>-->
+<!--                                <h3 class="typeTxt">[모집중] 웹 서버</h3>-->
+<!--                            </div>-->
+<!--                            <div class="heartCount"><img loading="lazy"-->
+<!--                                                         src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"-->
+<!--                                                         alt="구독자 수"><span>2</span></div>-->
+<!--                        </div>-->
+<!--                        <div class="recommendProjectlist">-->
+<!--                            <div class="projectThumbWrap"><img-->
+<!--                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/3334/images/%EC%9D%B4%EC%8A%88%EC%BD%983.PNG"-->
+<!--                                    alt="집단 경험 순위 플랫폼 &quot;이슈콘&quot;"></div>-->
+<!--                            <div class="txtWrap">-->
+<!--                                <h2 class="tit">[서울] 집단 경험 순위 플랫폼 "이슈콘"</h2>-->
+<!--                                <h3 class="desTxt"><span>﻿"이슈콘" 앱 개발 프로젝트 팀원 모집 : 앱 개발자 1명1. 사이드 프로젝트 소개1) 목적 : 사용자들이-->
+<!--                                        만드는 집단 경험 순위 정보 플랫폼.2) 사이드 프로젝트를 하게된 동기와 배경 :- 순위 정보, 차트에 관한 정보는 많으나 자신이 원하고,-->
+<!--                                        필요로 하는 순위 정보를 찾기 어려움.- 순위는 인류가 살아오면서 항상 관심을 가지고 있는 이슈.-세상의 모든 곳에서 시간과 에너지, 비용의-->
+<!--                                        절감을 위한 플랫폼을 만드는 것이 목표입니다.- 추가 설명은 issuecon.com사이트를 참고해주세요.3) 목표 : 개발, 운영,-->
+<!--                                        Exit.4) 차별성 - 순위 정보를 사용자들이 요청하고 다 같이 만들어가는 서비스임.- 유사앱이 있으나 활성화 되지 못함. 순위 차트를 매개로-->
+<!--                                        하는 SNS 플랫폼 지향.5) 프로젝트 리더(제안자) 소개-사이드프로젝트 기획 경험 다수.6) 현재 인원 -현재 팀원 3명 (기획, 디자인,-->
+<!--                                        운영)7) 실행 기간 -연말까지 완료. (변동 가능)- 현재 기획, 스토리보드, 화면설계 완료되어 있고, 개발 바로 진행 가능한 상황입니다.8)-->
+<!--                                        모집 인원 : 앱개발자(풀스택) 1명 (Flutter 개발자 선호)2.예상되는 성과와 가치 - 글로벌 차트 플랫폼으로 성장.- 2.1목표 시장과-->
+<!--                                        타겟 고객, 수익모델 : 앱내 코인 판매, 외부 제휴 마케팅, 광고.3.사이드 프로젝트 제반 사항 &amp;amp; 규칙1) 지역 : 서울 및-->
+<!--                                        경기도2) 주1회 오프라인(서울 강남) 모임이 가능하신 분 ,강남역에 전용 회의실이 있습니다.3) 적극적으로 소통하고, 함께 협업하고, 자신의-->
+<!--                                        일을 좋아하는 분4) 시간이 여유가 있어서 일평균 1시간 이상 시간 투자가 가능하신 분, 적극적으로 하실 분5) 책임감 강하신 분. 기한 내-->
+<!--                                        역할을 끝낼 수 있는 분.6) 혼자 개발을 처음부터 끝까지 개발 완료한 경험이 있는 개발자.4.기타상세 문의 사항이 있는 경우는 아래 메일로-->
+<!--                                        알려주세요.mhyungdoo@gmail.com</span></h3>-->
+<!--                                <h3 class="typeTxt">[모집중] 웹 서버</h3>-->
+<!--                            </div>-->
+<!--                            <div class="heartCount"><img loading="lazy"-->
+<!--                                                         src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"-->
+<!--                                                         alt="구독자 수"><span>0</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </div>
             <div class="projectView projectAllGridView">
@@ -389,96 +174,107 @@
                     <option value="00">대학교</option>
                     <option value="01">인하대학교</option>
                     <option value="02">인천대학교</option>
-                </select><select class="fieldSelect smSelect" name="studyType">
-                    <option value="F00">모집분야</option>
-                    <option value="F01">전공 과목</option>
-                    <option value="F02">교양 과목</option>
-                    <option value="F03">공통 과목</option>
-                </select><label class="checkBox"><span class="txt">모집중</span><input type="checkbox" checked=""><span
-                        class="checkmark"></span></label></div>
+                </select><select class="fieldSelect smSelect" name="studyType" id="studyTypeSelect_1j">
+                    <option value="모집분야">모집분야</option>
+                    <option value="전공">전공 과목</option>
+                    <option value="교양">교양 과목</option>
+                    <option value="공통">공통 과목</option>
+                </select>
+<!--                    <label class="checkBox"><span class="txt">모집중</span><input type="checkbox" checked=""><span-->
+<!--                        class="checkmark"></span></label>-->
+                </div>
                 <div class="projectGridView">
                     <!----------------------------------------- 리스트 예시 시작--------------------------------------->
-                    <th:block th:each="study : ${studyList}">
-                        <div class="projectGridWrap" th:object="${study}">
-                            <div class="projectTopInfo">
-                                <div class="top">
-                                    <div class="badgeWrap">
-                                        <div class="topBadge red">
-                                            <img  src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="새로운 프로젝트">
-                                        </div>
-                                        <div class="badge black">
-                                            <!-- <h2>사이드프로젝트</h2> -->
-                                            <img th:src="*{collegeLogoFile}">
-                                        </div>
-                                    </div>
-                                    <div class="favorite listFavorite off "></div>
-                                </div>
-                                <div class="projectThumb"><img loading="lazy"
-                                                               src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                               alt="커뮤니티 연계 교통 정보 어플"></div>
-                            </div>
-                            <div class="projectBottomInfo">
-                                <div class="txtWrap projectWrap">
-                                    <h3 class="category" th:text="*{studyType}"></h3>
-                                    <h2 class="tit" th:text="*{studyTitle}"></h2>
-                                    <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                            alt="Figma"></div> -->
+<!--                    <th:block th:each="study : ${studyList}">-->
+<!--                        <div class="projectGridWrap" th:object="${study}">-->
+<!--                            <div class="projectTopInfo">-->
+<!--                                <div class="top">-->
+<!--                                    <div class="badgeWrap">-->
+<!--                                        <div class="topBadge red">-->
+<!--                                            <img  src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="새로운 프로젝트">-->
+<!--                                        </div>-->
+<!--                                        <div class="badge black">-->
+<!--                                            &lt;!&ndash; <h2>사이드프로젝트</h2> &ndash;&gt;-->
+<!--                                            <img th:src="*{collegeLogoFile}">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="favorite listFavorite off "></div>-->
+<!--                                </div>-->
+<!--                                <div class="projectThumb"><img loading="lazy"-->
+<!--                                                               src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"-->
+<!--                                                               alt="커뮤니티 연계 교통 정보 어플"></div>-->
+<!--                            </div>-->
+<!--                            <div class="projectBottomInfo">-->
+<!--                                <div class="txtWrap projectWrap">-->
+<!--                                    <h3 class="category" th:text="*{studyType}"></h3>-->
+<!--                                    <h2 class="tit" th:text="*{studyTitle}"></h2>-->
+<!--                                    &lt;!&ndash;                                 <div class="iconWrap2"><img loading="lazy"-->
+<!--                                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"-->
+<!--                                            alt="Figma"></div> &ndash;&gt;-->
 
-                                </div>
-                            </div>
-                            <div class="projectInfo2">
-                                <div class="middleWrap">
-                                    <div class="left">
-                                        <div class="heartCount"><img loading="lazy"
-                                                                     src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                     alt="구독자 수"><span>3</span></div>
-                                    </div>
-                                    <div class="right">
-                                        <!-- <p><span> 44</span><span> (-) </span></p> -->
-                                    </div>
-                                </div>
-                                <div class="bottomWrap">
-                                    <div class="gatherTxt">
-                                        <div>
-                                            <th:block th:if="*{studyRecruitStatus.toString() == 'RECRUITING'}">
-                                                <span>모집중</span>
-                                            </th:block>
-                                            <th:block th:unless="*{studyRecruitStatus.toString() == 'RECRUITING'}">
-                                                <span>모집완료</span>
-                                            </th:block>
-                                            <span>0</span>
-                                            <span>/</span>
-                                            <span th:text="*{studySupport}"></span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="projectInfo2">-->
+<!--                                <div class="middleWrap">-->
+<!--                                    <div class="left">-->
+<!--                                        <div class="heartCount"><img loading="lazy"-->
+<!--                                                                     src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"-->
+<!--                                                                     alt="구독자 수"><span>3</span></div>-->
+<!--                                    </div>-->
+<!--                                    <div class="right">-->
+<!--                                        &lt;!&ndash; <p><span> 44</span><span> (-) </span></p> &ndash;&gt;-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="bottomWrap">-->
+<!--                                    <div class="gatherTxt">-->
+<!--                                        <div>-->
+<!--                                            <th:block th:if="*{studyRecruitStatus.toString() == 'RECRUITING'}">-->
+<!--                                                <span>모집중</span>-->
+<!--                                            </th:block>-->
+<!--                                            <th:block th:unless="*{studyRecruitStatus.toString() == 'RECRUITING'}">-->
+<!--                                                <span>모집완료</span>-->
+<!--                                            </th:block>-->
+<!--                                            <span>0</span>-->
+<!--                                            <span>/</span>-->
+<!--                                            <span th:text="*{studySupport}"></span></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                    </th:block>
+<!--                    </th:block>-->
             </div>
 
 
-                <th:block th:object="${pagination}">
+
                     <div class="pagingAndBtn">
-                    <span  class="pagination pagination-sm clearfix">
-                        <th:block th:if="*{!isFirst()}">
-                             <a th:href="@{/study/list(page=${pagination.getNumber()}-1)}" class="btn_paging prev screen_out"></a>
-                        </th:block>
-                        <th:block th:each="page: ${#numbers.sequence(1, pagination.getTotalPages())}">
-                            <th:block th:if="${page == (pagination.getNumber()+1)}">
-                                <a th:href="@{/study/list(page=${page}-1)}" class="active" th:text="${page}"></a>
-                            </th:block>
-                            <th:block th:unless="${page == (pagination.getNumber()+1)}">
-                                <a th:href="@{/study/list(page=${page}-1)}" th:text="${page}"></a>
-                            </th:block>
-                        </th:block>
-                         <th:block th:if="*{!isLast()}">
-                              <a th:href="@{/study/list(page=${pagination.getNumber()}+1)}" class="btn_paging next screen_out"></a>
-                        </th:block>
+                    <span  class="pagination pagination-sm clearfix pagination_1j">
+                             <a class="btn_paging prev screen_out"></a>
+                                <a  class="active">1</a>
+                                <a>2</a>
+                              <a class="btn_paging next screen_out"></a>
                     </span>
                     </div>
-                </th:block>
+<!--                <th:block th:object="${pagination}">-->
+<!--                    <div class="pagingAndBtn">-->
+<!--                    <span  class="pagination pagination-sm clearfix">-->
+<!--                        <th:block th:if="*{!isFirst()}">-->
+<!--                             <a th:href="@{/study/list(page=${pagination.getNumber()}-1)}" class="btn_paging prev screen_out"></a>-->
+<!--                        </th:block>-->
+<!--                        <th:block th:each="page: ${#numbers.sequence(1, pagination.getTotalPages())}">-->
+<!--                            <th:block th:if="${page == (pagination.getNumber()+1)}">-->
+<!--                                <a th:href="@{/study/list(page=${page}-1)}" class="active" th:text="${page}"></a>-->
+<!--                            </th:block>-->
+<!--                            <th:block th:unless="${page == (pagination.getNumber()+1)}">-->
+<!--                                <a th:href="@{/study/list(page=${page}-1)}" th:text="${page}"></a>-->
+<!--                            </th:block>-->
+<!--                        </th:block>-->
+<!--                         <th:block th:if="*{!isLast()}">-->
+<!--                              <a th:href="@{/study/list(page=${pagination.getNumber()}+1)}" class="btn_paging next screen_out"></a>-->
+<!--                        </th:block>-->
+<!--                    </span>-->
+<!--                    </div>-->
+<!--                </th:block>-->
         </section>
     </div>
     <!-- 리스트 메인 END-->
@@ -493,9 +289,7 @@
                 <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
             </button>
             <div class="modalContent">
-                <p>구독하시면, 관련된 정보나</p>
-                <p>홍보 컨텐츠가 SMS/이메일/푸쉬을 통해 정기적으로 배송됩니다</p>
-                <p>자동으로 NEOS 광고수신동의가 이루어집니다</p>
+                <p>구독하신 스터디 목록은 마이페이지에서 확인하실 수 있습니다.</p>
             </div>
             <div class="btnWrap doubleBtnWrap">
                 <button class="btn whiteBtn">아니요</button>
@@ -516,8 +310,23 @@
 <script src="/js/fix/login.js"></script>
 <script src="/js/fix/header.js"></script>
 <script>
+    //페이징 처리및 동적쿼리
+    globalThis.studyCity = undefined;
+    globalThis.collegeName = undefined;
+    globalThis.studyType = undefined;
+
+
     $("#citySelect_1j").on("change",function () {
         var collegeCity = $("#citySelect_1j option:selected").text();
+        globalThis.page = 1;
+        if(collegeCity=='전체'){
+            globalThis.studyCity = undefined;
+            globalThis.collegeName = undefined;
+        }else{
+            globalThis.studyCity=collegeCity.trim()
+            globalThis.collegeName = undefined;
+        }
+        showList()
         if(collegeCity != '전체'){
             $("#collegeNameSelect_1j").prop('disabled',false);
             $.ajax({
@@ -535,7 +344,205 @@
             $("#collegeNameSelect_1j option:eq(0)").attr("selected", "selected");
             $("#collegeNameSelect_1j").prop('disabled',true);
         }
+    })
+
+    $("#collegeNameSelect_1j").on("change",function () {
+        globalThis.page = 1;
+        var collegeName = $("#collegeNameSelect_1j option:selected").text();
+        if(collegeName=='대학교'){
+            globalThis.collegeName = undefined;
+        }else{
+            globalThis.collegeName=collegeName.trim()
+        }
+        showList()
+    })
+    $("#studyTypeSelect_1j").on("change",function () {
+        var studyType = $("#studyTypeSelect_1j option:selected").val();
+        globalThis.page = 1;
+        if(studyType=='모집분야'){
+            globalThis.studyType = undefined;
+        }else{
+            globalThis.studyType=studyType.trim()
+        }
+        showList()
+    })
+
+
+
+
+
+
+    globalThis.page = 1;
+    showList()
+    function showList(){
+        $.ajax({
+            url:"/stu/list?page="+(globalThis.page-1),
+            type:"get",
+            data:{studyCity:globalThis.studyCity, collegeName:globalThis.collegeName, studyType:globalThis.studyType},
+            success:
+            show
+        })
+    }
+
+    function show(result){
+    let text='';
+    var count= result.totalElements;
+    var end = result.totalPages;
+    $(result.content).each((i,item)=>{
+
+        text+= `<div class="projectGridWrap">`
+        text+= `<input type="hidden" name="studyId" class="studyID_1j" value="`+item.studyId+`">`
+        text+= `<div class="projectTopInfo">`
+        text+= `<div class="top">`
+        text+= `<div class="badgeWrap">`
+        text+= `<div class="topBadge red">`
+        text+= `<img  src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="새로운 프로젝트"> </div>`
+        text+= `<div class="badge black">`
+        text+= `<img src="`+item.collegeLogoFile+`"> </div>`
+        text+= `</div>`
+        text+= `<div class="favorite listFavorite off "></div>`
+        text+= `</div>`
+        if(item.studyType =='전공'){
+            text+= `<div class="projectThumb"><img src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_12.png" alt="커뮤니티 연계 교통 정보 어플"></div>`
+        }else if(item.studyType =='교양'){
+            text+= `<div class="projectThumb"><img src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_01.png" alt="커뮤니티 연계 교통 정보 어플"></div>`
+        }else if(item.studyType =='공통'){
+            text+= `<div class="projectThumb"><img src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_05.png" alt="커뮤니티 연계 교통 정보 어플"></div>`
+        }
+
+        text+= `</div>`
+        text += `<a href="/study/list/`+item.studyId+`">`
+        text+= `<div class="projectBottomInfo">`
+        text+= `<div class="txtWrap projectWrap">`
+        text+= `<h3 class="category">`+item.studyType+`</h3>`
+        text+= `<h2 class="tit">`+item.studyTitle+`</h2>`
+        text+= `</div>`
+        text+= `</div>`
+        text+= `<div class="projectInfo2">`
+        text+= `<div class="middleWrap">`
+        text+= `<div class="left">`
+        text+= `<div class="heartCount"><img src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>0</span></div>`
+        text+= `</div> <div class="right">`
+        text+= `</div>`
+        text+= `</div>`
+        text+= `<div class="bottomWrap">`
+        text+= `<div class="gatherTxt">`
+        text+= `<div>`
+        if(item.studyRecruitStatus=='RECRUITING'){
+            text+= `<span>모집중</span>`
+        }else if(item.studyRecruitStatus=='COMPLETE'){
+            text+= `<span>모집완료</span>`
+        }
+        text+= `<span>0</span>`
+        text+= `<span>/</span>`
+        text+= `<span>`+item.studySupport+`</span></div>`
+        text+= `</div>`
+        text+= `</div>`
+        text+= `</div>`
+        text+= `</div>`
+        text+= `</a>`
 
     })
+
+    $(".projectGridView").html(text);
+    pagination(count,end)
+    }
+
+    function pagination(count,end){
+        let endNumber = Math.ceil(globalThis.page / 5) * 5;
+        let startNumber = endNumber - 4;
+        let realEnd = /*Math.ceil(count / 5);*/ end;
+        if(endNumber > realEnd){
+            endNumber = realEnd == 0 ? '1' : realEnd;
+        }
+
+        let prev = startNumber > 1;
+        let next = endNumber < realEnd;
+
+        var pageText = '';
+
+        if(prev){
+            pageText += `<a class="btn_paging prev screen_out changePage paging" href="` + (startNumber - 1) + `"></a>`
+        }
+        for (let i=startNumber; i<=endNumber; i++){
+            if(globalThis.page == i){
+                pageText += `<a class="active changePage">`+i+`</a>`
+                continue;
+            }
+            pageText += `<a class="changePage paging" href="` + i + `">`+i+`</a>`
+        }
+        if(next){
+            pageText += `<a class="btn_paging next screen_out changePage paging" href="` + (endNumber + 1) + `"></a>`
+        }
+
+        $(".pagination_1j").html(pageText);
+    }
+
+    $("div.pagingAndBtn").on("click", "a.changePage", function(e){
+        e.preventDefault();
+        globalThis.page = $(this).attr("href");
+        showList();
+    });
+</script>
+<script>
+    //최근 4개 게시글
+    getRecent()
+    function getRecent(){
+        $.ajax({
+            url:"/stu/recent",
+            type:"get",
+            success: showRecent
+        })
+    }
+    function showRecent(result) {
+        let recentText= '';
+        $(result).each((i,item)=>{
+            recentText += `<a href="/study/list/`+item.studyId+`">`
+            recentText += `<div class="swiper-slide carousel carousel-slider">`
+            recentText += `<input type="hidden" name="studyId" class="studyID_1j" value="`+item.studyId+`">`
+            recentText += `<div class="newProjectTopWrap">`
+            recentText += `<div class="projectThumbInfo">`
+            if(item.studyType =='전공'){
+                recentText+= `<div class="projectThumb"><img src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_12.png" alt="커뮤니티 연계 교통 정보 어플"></div>`
+            }else if(item.studyType =='교양'){
+                recentText+= `<div class="projectThumb"><img src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_01.png" alt="커뮤니티 연계 교통 정보 어플"></div>`
+            }else if(item.studyType =='공통'){
+                recentText+= `<div class="projectThumb"><img src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_05.png" alt="커뮤니티 연계 교통 정보 어플"></div>`
+            }
+            recentText += `<div class="top">`
+            recentText += `<div class="badgeWrap"></div>`
+            recentText += `<div class="favorite topFavorite off" style="margin-top: 0"></div>`
+            recentText += `</div>`
+            recentText += `</div>`
+            recentText += `<div class="txtWrap">`
+            recentText += `<div class="left">`
+            recentText += `<h3 class="categoryTxt">`+item.studyType+`</h3>`
+            recentText += `<h2 class="tit">`+item.studyTitle+`</h2>`
+            recentText += `<h3 class="recruitTxt">`+item.studyContent+`</h3>`
+            recentText += `</div>`
+            recentText += `<div class="right">`
+            recentText += `<div class="heartCount"><img loading="lazy" src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수">`
+            recentText += `<span>0</span></div>`
+            recentText += `<div class="gatherTxt">`
+            recentText += `<div>`
+            if(item.studyRecruitStatus=='RECRUITING'){
+                recentText+= `<span>모집중</span>`
+            }else if(item.studyRecruitStatus=='COMPLETE'){
+                recentText+= `<span>모집완료</span>`
+            }
+            recentText+=`<span>0</span>`
+            recentText+=`<span>/</span>`
+            recentText+=`<span>`+item.studySupport+`</span></div>`
+            recentText += `</div>`
+            recentText+=`</a>`
+            recentText += `</div>`
+            recentText += `</div>`
+            recentText += `</div>`
+            recentText += `</div>`
+        })
+
+        $(".carousel-root").html(recentText)
+
+    }
 </script>
 </html>

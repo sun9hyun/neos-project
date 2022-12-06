@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 @Data
 @NoArgsConstructor
@@ -16,6 +18,10 @@ public class CommunityDTO {
     private String communityContent;
     private int communityLikeCount;
     private User user;
+    private Long userId;
+
+    private LocalDateTime createdDate;
+    private LocalDateTime updatedDate;
 
     public Community toEntity(){
         return Community.builder()
@@ -27,11 +33,22 @@ public class CommunityDTO {
 
 
     @QueryProjection
-    public CommunityDTO(Long communityId, String communityTitle, String communityContent, int communityLikeCount, User user) {
+    public CommunityDTO(Long communityId, String communityTitle, String communityContent, int communityLikeCount, User user, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.communityId = communityId;
         this.communityTitle = communityTitle;
         this.communityContent = communityContent;
         this.communityLikeCount = communityLikeCount;
         this.user = user;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+    }
+
+    @QueryProjection
+    public CommunityDTO(Long communityId, String communityTitle, String communityContent, int communityLikeCount, Long userId) {
+        this.communityId = communityId;
+        this.communityTitle = communityTitle;
+        this.communityContent = communityContent;
+        this.communityLikeCount = communityLikeCount;
+        this.userId = userId;
     }
 }

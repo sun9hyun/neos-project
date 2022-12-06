@@ -144,20 +144,10 @@
                 <div class="editorTitle">
                     <input type="text" id="communityTitle" name="cTitle" th:field="*{communityTitle}" placeholder="제목을 입력하세요.(최대 30자) " maxlength="30" value="">
                 </div>
-                <div class=" tagMultiSelectAnser">
-                    <div class=" css-1stwjcq-container">
-                        <div class=" css-1luw0me-control">
-
-                            <div class=" css-1wy0on6"></div>
-                        </div>
-                        <div><input name="loungeTag" type="hidden"></div>
-                    </div>
-                </div>
-
             </div>
            <!--섬머노트-->
-                <textarea th:field="*{communityContent}" id="summernote" name="cContent"></textarea>
-                <input type="text" th:value="${session.loginUser}"  name="userId" id="user" class="user">
+            <input type="hidden" th:value="${session.loginUser}"  name="userId" id="user" class="user">
+            <textarea th:field="*{communityContent}" id="summernote" name="cContent"></textarea>
 
             <div class="editorWrapButtonBox">
                 <div class="editorWrapButtonBoxLeft">
@@ -165,7 +155,7 @@
                 </div>
                 <div class="editorWrapButtonBoxRight">
                     <button type="button" class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_red__3SLsc  buttonComponents_md__26Zib updatePost_1j">수정</button>
-                    <button type="button" onclick="onsub()" class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_red__3SLsc  buttonComponents_md__26Zib registerPost_1j">등록</button>
+                    <button type="button" id="sendButton" class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r buttonComponents_red__3SLsc  buttonComponents_md__26Zib registerPost_1j">등록</button>
                 </div>
             </div>
         </div>
@@ -175,9 +165,9 @@
 
     <div class="centerSection">
         <div class="loungeTab">
-            <a th:href="@{/community/counseling}"  class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    ">고민상담 게시판</a>
+            <a th:href="@{/community/counseling}"  class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 ">고민상담 게시판</a>
             <a th:href="@{/community/community}" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  buttonComponents_categoryActive__31E3q  ">자유 게시판</a>
-            <div class="postWrap">
+            <div class="postWrap" th:if="${session.loginUser}">
                 <div class="postBtn">
                     <span>새 글쓰기</span>
                 </div>
@@ -461,9 +451,11 @@
 
 
 
-            <div class="moreButtonBox">
-                <button type="button" class="buttonComponents_button__1hvQa buttonComponents_radius__2l9SM   buttonComponents_md__26Zib ">더
-                보기</button></div>
+        </div>
+
+        <div class="moreButtonBox" style="margin-top: 15px;">
+            <button type="button" class="buttonComponents_button__1hvQa buttonComponents_radius__2l9SM buttonComponents_md__26Zib ">
+                더 보기</button>
         </div>
 
     </div>
@@ -563,78 +555,154 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script src="/js/community/freeBoardAjax.js"></script>
 <script>
-    console.log("들어옴")
-    show();
 
-    function show() {
-        communityService.getList({
-        }, getList);
-    }
+    // function show() {
+    //     communityService.getList({
+    //     communityDTOS
+    //     }, getList(communityDTOS));
+    // };
+    $(document).ready(function () {
+        show();
+        // alert($("#userId").attr("value"));
 
-    function getList(communityDTOS) {
-        let text = "";
-        communityDTOS.forEach(c => {
-            text += "<div class='loungeCard' style='margin-bottom: -10px;'>";
-            text += "<div class='userSection'>";
-            text += "<div class='userInformationComponents_profile__2pr8a'>";
-            text += "<div class='userInformationComponents_profileLeftGroup__1lq6K'>";
-            text += "<div class='userInformationComponents_profileImg__3qJcX'>";
-            text += "<img src='" + c.user.userFile + "' alt=''>";
-            text += "</div>";
-            text += "<p class='userInformationComponents_profileName__3l0ya'>" + c.user.userNickName;
-            text += "<i class='userInformationComponents_profileLevel__6Bl4w'>";
-            text += "<img src='" + c.user.userNeosBadge + "' alt=''>";
-            text += "</i>";
-            text += "</p>";
-            text += "</div>";
-            text += "<div class='userInformationComponents_profileRightGroup__3Ro_j'>";
-            text += "<div class='userInformationComponents_profileRightGroupFollow__kBAl7'>";
-            text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_radius__2l9SM'>";
-            //userFollower
-            //if(userFollower == )
-            text += "<img src='https://letspl.me/assets/images/ic-letspler-heart-full.png'>팔로잉</button>";
+        function add(community, callback, error) {
+            $.ajax({
+                url: "/community/communityOk",
+                type: "post",
+                data: JSON.stringify(community),
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    if (callback) {
+                        callback(result);
+                    }
+                },
+                error: function (xhr, status, err) {
+                    if (error) {
+                        error(err);
+                    }
+                }
+            });
+        }
 
-            text += "</div></div></div></div>";
-            text += "<div class='loungeCardContents'>";
-            text += "<div class='loungeCardContentsComponents_loungeContents__262-A'>";
-            text += "<div class='loungeCardContentsComponents_loungeContentsTagMoreBox__1oKkG'>";
-            text += "<div class='undefined'>";
-            text += "</div>";
-            text += "<div class='loungeCardContentsComponents_loungeContentsRight__14cdz'>";
-            text += "<div class='loungeCardContentsComponents_loungeContentsMore__2AXVI'>";
-            text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>";
-            text += "<img class='buttonComponents_mdImg__G1pNE' src='https://letspl.me/assets/images/ic-more.svg'>";
-            text += "</button>";
-            text += "<div class='loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo'>";
-            text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postUpdate_1j'>수정</button>";
-            text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postDelete_1j'>삭제</button>";
-            text += "</div></div></div></div>";
-            text += "<div class='loungeCardContentsComponents_loungeContentsTitleBox__2NtjH'>";
-            text += "<span class='loungeCardContentsComponents_loungeContentsTitleBoxNewsTxt__9_Iok'>자유게시글</span>";
-            text += "<div class='loungeCardContentsComponents_loungeContentsTitleDate__1-Xd2'>";
-            text += "<h3 class='loungeCardContentsComponents_title__1s8RE'>" + c.communityTitle + "</h3>";
-            text += "<span class='loungeCardContentsComponents_date__3pY5X'>21시간 전</span>";
-            text += "</div></div>";
-            text += "<div class='loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4'>"+ c.communityContent +"</div>";
-            text += "<div class='loungeCardContentsComponents_loungeContentsMoreButtonWrap__1LR4v'>";
-            text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU'>펼치기</button>";
-            text += "</div>";
-            text += "<div class='replyComponent_reply__3l-Wc'>";
-            text += "<div class='replyComponent_replyButtonBox__2O3ME'>";
-            text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 button_heart_1ljw5'>";
-            text += "<img src='https://letspl.me/assets/images/ic-letspler-heart-empty.png'>"+ c.communityLikeCount;
-            text += "</button>";
-            text += "<div class='replyComponent_replyOnOff__QKoso'>";
-            text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU'>";
-            text += "<span class='buttonComponents_gray__1blI9'>첫번째 댓글을 달아주세요</span>";
-            text += "<img class='buttonComponents_smMdImg__2IOAr' src='https://letspl.me/assets/images/ic-arrow-up.svg'>";
-            text += "</button>";
-            text += "</div>";
-            text += "</div>";
+        function show() {
+            $.ajax({
+                url: "/community/communityList",
+                type: "get",
+                async: false,
+                success: function (communityDTOS) {
+                    if(communityDTOS != null){
+                        getList(communityDTOS);
+                    }
+                },
+                error: function (xhr, status, err) {
+                    console.log(xhr, status, err);
+                }
+            });
+        };
+
+        $("#sendButton").on("click", function () {
+            var $title = $("#communityTitle");
+            var $content = $("#summernote");
+
+            if($title.val() == ""){
+                alert("제목을 입력해주세요");
+                return;
+            }
+
+            if($content.val() == ""){
+                alert("내용을 입력해주세요");
+                return;
+            }
+
+            add({
+                communityTitle: $title.val(),
+                communityContent: $content.val(),
+                userId: $("#user").val()
+            }, function(){
+                show();
+            });
+
+            $(".editorMdoal").attr("style","display:none !important;");
+            $(".editorMdoal").find(".editorTitle input").val("");
+            $(".editorMdoal").find(".note-editable").text("");
+            $(".updatePost_1j").css("display","none");
         });
 
-        $("div.centerSectionBox").html(text);
-    }
+        function getList(communityDTOS) {
+            // alert(communityDTOS);
+            let text = "";
+            communityDTOS.forEach(c => {
+                text += "<div class='loungeCard' style='margin-bottom: -10px;'>";
+                text += "<div class='userSection'>";
+                text += "<div class='userInformationComponents_profile__2pr8a'>";
+                text += "<div class='userInformationComponents_profileLeftGroup__1lq6K'>";
+                text += "<div class='userInformationComponents_profileImg__3qJcX'>";
+                text += "<img src='" + c.user.userFile + "' alt=''>";
+                text += "</div>";
+                text += "<p class='userInformationComponents_profileName__3l0ya'>" + c.user.userNickName;
+                text += "<i class='userInformationComponents_profileLevel__6Bl4w'>";
+                text += "<img src='" + c.user.userNeosPower.userNeosBadge + "' alt=''>";
+                text += "</i>";
+                text += "</p>";
+                text += "</div>";
+                text += "<div class='userInformationComponents_profileRightGroup__3Ro_j'>";
+                text += "<div class='userInformationComponents_profileRightGroupFollow__kBAl7'>";
+                text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_radius__2l9SM'>";
+                //userFollower
+                //if(userFollower == )
+                text += "<img src='https://letspl.me/assets/images/ic-letspler-heart-full.png'>팔로잉</button>";
+                text += "</div></div></div></div>";
+                text += "<div class='loungeCardContents'>";
+                text += "<div class='loungeCardContentsComponents_loungeContents__262-A'>";
+
+                //if(session.loginUser == c.userId)?
+                if($("#userId").attr("value") == c.user.userId){
+                text += "<div class='loungeCardContentsComponents_loungeContentsTagMoreBox__1oKkG'>";
+                text += "<div class='undefined'>";
+                text += "</div>";
+                text += "<div class='loungeCardContentsComponents_loungeContentsRight__14cdz'>";
+                text += "<div class='loungeCardContentsComponents_loungeContentsMore__2AXVI'>";
+                text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>";
+                text += "<img class='buttonComponents_mdImg__G1pNE' src='https://letspl.me/assets/images/ic-more.svg'>";
+                text += "</button>";
+                text += "<div class='loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo'>";
+                text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postUpdate_1j'>수정</button>";
+                text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postDelete_1j'>삭제</button>";
+                text += "</div></div></div></div>";
+                }
+
+                text += "<div class='loungeCardContentsComponents_loungeContentsTitleBox__2NtjH'>";
+                text += "<span class='loungeCardContentsComponents_loungeContentsTitleBoxNewsTxt__9_Iok'>자유게시글</span>";
+                text += "<div class='loungeCardContentsComponents_loungeContentsTitleDate__1-Xd2'>";
+                text += "<h3 class='comTitle loungeCardContentsComponents_title__1s8RE'>" + c.communityTitle + "</h3>";
+                text += "<span class='loungeCardContentsComponents_date__3pY5X'>" + (c.createdDate == c.updatedDate) ? communityService.timeForToday(c.createdDate) : communityService.timeForToday(c.updateDate) + "</span>";
+                text += "</div></div>";
+                text += "<div class='comContent loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4'>"+ c.communityContent +"</div>";
+                text += "<div class='loungeCardContentsComponents_loungeContentsMoreButtonWrap__1LR4v'>";
+                text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU'>펼치기</button>";
+                text += "</div>";
+                text += "<div class='replyComponent_reply__3l-Wc'>";
+                text += "<div class='replyComponent_replyButtonBox__2O3ME'>";
+                text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 button_heart_1ljw5'>";
+                text += "<img class='likeImg' src='https://letspl.me/assets/images/ic-letspler-heart-empty.png'>"+ c.communityLikeCount;
+                text += "</button>";
+                text += "<div class='replyComponent_replyOnOff__QKoso'>";
+                text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU'>";
+                text += "<span class='buttonComponents_gray__1blI9'>첫번째 댓글을 달아주세요</span>";
+                text += "<img class='buttonComponents_smMdImg__2IOAr' src='https://letspl.me/assets/images/ic-arrow-up.svg'>";
+                text += "</button>";
+                text += "</div>";
+                text += "</div>";
+                text += "</div></div></div>";
+                text += "<input class='cid' type='hidden' value='" + c.communityId + "'>";
+                text += "<input type='hidden' value='" + c.user.userId + "'>";
+                text += "</div>";
+            });
+
+            $("div.centerSectionBox").html(text);
+        }
+
+    })
 
 </script>
 <script src="/js/community/freeboard.js"></script>
@@ -676,93 +744,6 @@
             }
         });
     });
-</script>
-
-<script>
-    let user = "${session.loginUser}";
-    const $noLoginModal = $(".noLoginModal");
-    const $closeBtn =$(".noLoginModal .whiteBtn");
-    const $yesBtn =$(".noLoginModal .redBtn");
-    const $xBtn = $(".noLoginModal .closeBtn")
-    $closeBtn.click(function(){
-        $noLoginModal.hide();
-    })
-    $yesBtn.click(function(){
-        $noLoginModal.hide();
-    })
-    $xBtn.click(function(){
-        $noLoginModal.hide();
-    })
-    console.log(user);
-
-    /*모달*/
-    const $writeBtn = $(".postBtn");
-    const $cancelBtn = $(".editorWrapButtonBoxLeft").find(".buttonComponents_md__26Zib");
-    const $exitBtn = $(".closeButtonBox").find("img");
-    const $registerBtn = $(".editorWrapButtonBoxRight").find("button")
-    $writeBtn.on("click",function(){
-        console.log(user);
-        if(user != null){
-            $(".editorMdoal").attr("style","display:flex !important;");
-            $(".registerPost_1j").css("display","block");
-        }
-        else if(user == null){
-            $noLoginModal.show();
-        }
-
-    })
-    $cancelBtn.on("click",function(){
-        $(".editorMdoal").attr("style","display:none !important;")
-        $(".editorMdoal").find(".editorTitle input").val("");
-        $(".editorMdoal").find(".note-editable").text("");
-        $(".updatePost_1j").css("display","none");
-    })
-    $exitBtn.on("click",function(){
-        $(".editorMdoal").attr("style","display:none !important;")
-        $(".editorMdoal").find(".editorTitle input").val("");
-        $(".editorMdoal").find(".note-editable").text("");
-        $(".updatePost_1j").css("display","none");
-    })
-
-
-    //취소버튼
-    $(document).ready(function(){
-        $cancelBtn.hover(function(){
-            $(this).css('background-color','#1a7cff');
-            $(this).css('border-color','#1a7cff');
-            $(this).css('color','#fff');
-            $(this).css('opacity','0.5')
-        },function(){
-            $(this).css('background-color','#fff');
-            $(this).css('border','1px solid #ced2d4');
-            $(this).css('color','black');
-            $(this).css('opacity','1')
-        })
-
-    })
-    function onsub() {
-        var $title = $("#communityTitle");
-        var $content = $("#summernote");
-
-        if($title.val() == ""){
-            alert("제목을 입력해주세요");
-            return;
-        }
-
-        if($content.val() == ""){
-            alert("내용을 입력해주세요");
-            return;
-        }
-
-        communityWrite.submit();
-
-        $(".editorMdoal").attr("style","display:none !important;")
-        $(".editorMdoal").find(".editorTitle input").val("");
-        $(".editorMdoal").find(".note-editable").text("");
-        $(".updatePost_1j").css("display","none");
-
-    }
-
 </script>
 <script src="/js/fix/chatting.js"></script>
 <script src="/js/community/summernote-lite.js"></script>

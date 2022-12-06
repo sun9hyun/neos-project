@@ -450,7 +450,7 @@
     display: inline-flex;
     -moz-box-orient: horizontal;
     -moz-box-direction: normal;
-    flex-direction: row;
+    flex-direction: row-reverse;
     -moz-box-align: center;
     align-items: center;
     position: relative;

@@ -31,12 +31,8 @@ public class StudyQuestionReplyEntityTest {
     public void saveTest(){
         StudyQuestionReplyDTO studyQuestionReplyDTO = new StudyQuestionReplyDTO();
         studyQuestionReplyDTO.setStudyQuestionReplyContent("아이 참 그거 이거에요!");
-        studyQuestionReplyDTO.setStudyQuestionReplyWriter(userRepository.findById(4L).get());
-        studyQuestionReplyDTO.setStudyQuestion(studyQuestionRepository.findById(13L).get());
 
         StudyQuestionReply studyQuestionReply = studyQuestionReplyDTO.toEntity();
-        studyQuestionReply.changeStudyQuestionReplyWriter(studyQuestionReplyDTO.getStudyQuestionReplyWriter());
-        studyQuestionReply.changeStudyQuestion(studyQuestionReplyDTO.getStudyQuestion());
 
         studyQuestionReplyRepository.save(studyQuestionReply);
     }

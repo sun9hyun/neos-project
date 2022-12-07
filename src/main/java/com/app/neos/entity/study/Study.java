@@ -107,6 +107,7 @@ public class Study extends Period {
       studyDTO.setCollegeId(this.user.getCollege().getCollegeId());
       studyDTO.setCollegeLogoFile(this.user.getCollege().getCollegeLogoFile());
       studyDTO.setCollegeName(this.user.getCollege().getCollegeName());
+      studyDTO.setStudyStartDate(this.getCreatedDate().toLocalDate());
       return studyDTO;
    }
 

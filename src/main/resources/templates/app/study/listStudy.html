@@ -16,6 +16,19 @@
         background-color: #81839c;
         color: #fff;
     }
+    .projectGridWrap .projectBottomInfo .txtWrap .studyCategory{
+        display: inline !important;
+        font-size: 12px;
+        line-height: 12px;
+        height: 12px;
+        color: #b1b1b1;
+        margin-top: 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+    }
+
 </style>
 <body>
     <header th:replace="/app/fix/header.html :: header"></header>
@@ -166,14 +179,15 @@
             <div class="projectView projectAllGridView">
                 <h1 style="padding: 0 !important">전체 스터디</h1>
                 <div class="searchOption"><select class="citySelect smSelect" id="citySelect_1j" name="studyCity">
-                    <option value="all">전체</option>
+                    <option value="전체">전체</option>
+                    <option value="all">상관없음</option>
+                    <option value="no">오프라인</option>
                     <th:block th:each="city : ${collegeCityList}">
                         <option th:value="${city}" th:text="${city}"></option>
                     </th:block>
                 </select><select class="uniSelect smSelect" name="collegeName" id="collegeNameSelect_1j">
                     <option value="00">대학교</option>
-                    <option value="01">인하대학교</option>
-                    <option value="02">인천대학교</option>
+
                 </select><select class="fieldSelect smSelect" name="studyType" id="studyTypeSelect_1j">
                     <option value="모집분야">모집분야</option>
                     <option value="전공">전공 과목</option>
@@ -317,7 +331,7 @@
 
 
     $("#citySelect_1j").on("change",function () {
-        var collegeCity = $("#citySelect_1j option:selected").text();
+        var collegeCity = $("#citySelect_1j option:selected").val();
         globalThis.page = 1;
         if(collegeCity=='전체'){
             globalThis.studyCity = undefined;
@@ -327,22 +341,8 @@
             globalThis.collegeName = undefined;
         }
         showList()
-        if(collegeCity != '전체'){
-            $("#collegeNameSelect_1j").prop('disabled',false);
-            $.ajax({
-                url: "/change/"+collegeCity,
-                type:"post",
-                success:function (result) {
-                    $("#collegeNameSelect_1j").empty();
-                    $("#collegeNameSelect_1j").append(`<option selected="" value="none">대학교</option>`)
-                    $(result).each((i,item)=>{
-                        $("#collegeNameSelect_1j").append(` <option class="collegeName_1j" value="`+item.collegeName+`">`+item.collegeName+`</option>`)
-                    })
-                }
-            })
-        }else{
+        if(collegeCity == '전체'){
             $("#collegeNameSelect_1j option:eq(0)").attr("selected", "selected");
-            $("#collegeNameSelect_1j").prop('disabled',true);
         }
     })
 
@@ -416,6 +416,14 @@
         text+= `<div class="txtWrap projectWrap">`
         text+= `<h3 class="category">`+item.studyType+`</h3>`
         text+= `<h2 class="tit">`+item.studyTitle+`</h2>`
+        if(item.studyO2o=='all'){
+            text+= `<span class="studyCategory">#상관없음 </span>`
+        }else if(item.studyO2o=='online'){
+            text+= `<span class="studyCategory">#온라인 </span>`
+        }else if(item.studyO2o=='offline'){
+            text+= `<span class="studyCategory">#오프라인 </span>`
+        }
+        text+= `<span class="studyCategory">#`+item.studyKeyword+`</span>`
         text+= `</div>`
         text+= `</div>`
         text+= `<div class="projectInfo2">`
@@ -544,5 +552,22 @@
         $(".carousel-root").html(recentText)
 
     }
+
+    getCollege()
+    function getCollege(){
+        $.ajax({
+            url:"/stu/college",
+            type:"put",
+            success:function(result){
+                let text = '';
+                $(result).each((i,item)=>{
+                   text+=`<option value="`+item+`">`+item+`</option>`
+                })
+                $("#collegeNameSelect_1j").append(text);
+            }
+        })
+    }
+
+
 </script>
 </html>

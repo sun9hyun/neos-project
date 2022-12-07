@@ -1,21 +1,26 @@
 package com.app.neos.domain.study;
 
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.study.Study;
 import com.app.neos.entity.study.StudyQuestion;
 import com.app.neos.entity.user.User;
 import com.querydsl.core.annotations.QueryProjection;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Component
-@Data
+@Getter @Setter @ToString(exclude = "replies")
 @NoArgsConstructor
 public class StudyQuestionDTO {
     private Long studyQuestionId;
     private String studyQuestionContent;
-    private User studyQuestionWriter;
-    private Study study;
+    private UserDTO studyQuestionWriter;
+    private StudyDTO studyDTO;
+    private String createdDate;
+    private int replyLength;
 
     public StudyQuestion toEntity(){
         return StudyQuestion.builder()
@@ -24,10 +29,12 @@ public class StudyQuestionDTO {
     }
 
     @QueryProjection
-    public StudyQuestionDTO(Long studyQuestionId, String studyQuestionContent, User studyQuestionWriter, Study study) {
+    public StudyQuestionDTO(Long studyQuestionId, String studyQuestionContent, UserDTO studyQuestionWriter, StudyDTO studyDTO, String createdDate, int replyLength) {
         this.studyQuestionId = studyQuestionId;
         this.studyQuestionContent = studyQuestionContent;
         this.studyQuestionWriter = studyQuestionWriter;
-        this.study = study;
+        this.studyDTO = studyDTO;
+        this.createdDate = createdDate;
+        this.replyLength = replyLength;
     }
 }

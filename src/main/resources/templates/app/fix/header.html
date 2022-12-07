@@ -73,6 +73,14 @@
                                                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
                                                      alt="렛플렙"></div>
                                 <a class="logOut" th:href="@{/logout/logout}">로그아웃</a>
+                                <script th:inline="javascript">
+                                    var realId = [[${session.realId}]];
+                                    if(realId.endsWith('k')){
+                                        const logout = document.querySelector(".logOut");
+                                        logout.href='https://kauth.kakao.com/oauth/logout?client_id=e29231bc42552a6803c663f6ba7bad63&logout_redirect_uri=http://localhost:10718/logout/logout'
+                                    }
+                                </script>
+
 
                             </div><a href="/people/sun9hyun">
                             <p class="userId" id="userName">sun9hyun</p>

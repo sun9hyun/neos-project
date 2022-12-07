@@ -62,16 +62,16 @@ $(".okBtn").on("click", function () {
 
 
 /* 지역 선택시 대학 선택 셀렉박스 보이게 하기 */
-$(document).ready(function() {
-    $('.locationSelect').change(function() {
-        var result = $('.locationSelect option:selected').val();
-        if (result == '00') {
-            $('.universitySelect').hide();
-        } else {
-            $('.universitySelect').show();
-        }
-    });
-});
+// $(document).ready(function() {
+//     $('.locationSelect').change(function() {
+//         var result = $('.locationSelect option:selected').val();
+//         if (result == '00') {
+//             $('.universitySelect').hide();
+//         } else {
+//             $('.universitySelect').show();
+//         }
+//     });
+// });
 
 
 /* 네오챗 마우스 오버하면 이미지도 하얀걸로 바뀌기 */

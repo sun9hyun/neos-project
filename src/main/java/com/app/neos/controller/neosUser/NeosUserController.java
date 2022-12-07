@@ -1,8 +1,13 @@
 package com.app.neos.controller.neosUser;
 
+import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.domain.user.UserDTO;
+import com.app.neos.entity.study.Study;
 import com.app.neos.entity.user.User;
+import com.app.neos.repository.study.StudyRepository;
 import com.app.neos.repository.user.UserRepository;
+import com.app.neos.service.admin.AdminService;
+import com.app.neos.service.join.JoinService;
 import com.app.neos.service.neosUser.NeosUserService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +27,8 @@ import java.util.stream.Collectors;
 public class NeosUserController {
     private final NeosUserService neosUserService;
     private final UserRepository userRepository;
+    private final StudyRepository studyRepository;
+    private final JoinService joinService;
 
     @GetMapping("/list-before")
     public String listBefore() {
@@ -78,7 +85,9 @@ public class NeosUserController {
        List<UserDTO> userDTOS = userRepository.findAll().stream().map(i->i.toDTO()).collect(Collectors.toList());
 
         model.addAttribute("users", userDTOS);
+        model.addAttribute("collegeCityList",joinService.getCollegeCityList());
 
+        System.out.println("------>>>>>>>>>sdfsdfsdfㄴㅇㄹㄴㅇㄹㄴ" + joinService.getCollegeCityList());
         return "app/neosUser/neosListAfter";
 
 
@@ -98,15 +107,26 @@ public class NeosUserController {
     }
 
 
+
 //  유저 로그인 후 상세보기
     @GetMapping("/info/yes")
     public String infoYes(Long userId  ,Model model){
 //        List<User> userDTOS = neosUserService.findUser();
 //        model.addAttribute("users",userDTOS);
+//        UserDTO userDTO = (UserDTO) userRepository.findById(userId).stream().map(i->i.toDTO()).collect(Collectors.toList());
+//        model.addAttribute("userInterest", neosUserService.findByUserId(userId));
+
+//       유저
         model.addAttribute("user", neosUserService.findByUserId(userId));
+
+//        스터디
+        model.addAttribute("studys" , neosUserService.findByStudyId(userId));
 
         return "app/neosUser/userInfoYes";
     }
+
+
+
 
 
 }

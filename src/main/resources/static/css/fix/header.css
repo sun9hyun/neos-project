@@ -1758,3 +1758,24 @@ section {
 .letspler_Re {
     margin-right: 10px!important;
 }
+
+
+.finger{
+    position: relative;
+
+}
+
+.finger{
+    animation: motion 0.3s linear 0s infinite alternate; margin-left: 0;
+    -webkit-animation: motion 0.3s linear 0s infinite alternate; margin-left: 0;
+}
+
+@keyframes motion {
+    0% {left: 0px;}
+    100% {left: 10px;}
+}
+
+-webkit-@keyframes motion {
+            0% {left: 0px;}
+            100% {left: 10px;}
+        }

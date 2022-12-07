@@ -2,12 +2,15 @@ package com.app.neos.repository.neos;
 
 import com.app.neos.domain.user.QUserDTO;
 import com.app.neos.domain.user.UserDTO;
+import com.app.neos.entity.study.QStudy;
+import com.app.neos.entity.study.Study;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import static com.app.neos.entity.study.QStudy.*;
 import static com.app.neos.entity.user.QUser.*;
 
 @RequiredArgsConstructor
@@ -24,6 +27,12 @@ public class NeosUserCustomRepositoryImpl implements NeosUserCustomRepository {
 
     }
 
+    @Override
+    public List<Study> findByUserId(Long userId) {
+        System.out.println("TEST Service 호출");
+        System.out.println("service -> " + jpaQueryFactory.selectFrom(study).where(study.user.userId.eq(userId)).fetch());
+        return jpaQueryFactory.selectFrom(study).where(study.user.userId.eq(userId)).fetch();
+    }
 
 
 }

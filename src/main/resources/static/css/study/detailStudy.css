@@ -517,7 +517,8 @@ fieldset, img {
 
 .projectInfoTabContents .skillWrap .skillList li .icon-txt img {
     width: auto;
-    height: 30px;
+    height: 40px;
+    margin-bottom: 10px;
 }
 
 .projectInfoTabContents .skillWrap .skillList li .icon-txt p {
@@ -814,8 +815,8 @@ button {
 }
 
 .letspler_Re .top .profileTxt .idWrap .userLv {
-    width: 28px;
-    height: 20px;
+    width: 22px;
+    height: 23px;
     object-fit: cover;
     margin-right: 8px;
 }

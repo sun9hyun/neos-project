@@ -1,10 +1,12 @@
 package com.app.neos.controller.study;
 
 import com.app.neos.domain.study.StudyDTO;
+import com.app.neos.domain.study.StudyQuestionDTO;
 import com.app.neos.domain.study.StudySearch;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.service.join.JoinService;
+import com.app.neos.service.study.StudyQuestionService;
 import com.app.neos.service.study.StudyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +23,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/study/*")
@@ -30,6 +33,7 @@ public class StudyController {
     private final UserRepository userRepository;
     private final StudyService studyService;
     private final JoinService joinService;
+    private final StudyQuestionService studyQuestionService;
 
 
     @GetMapping("/create")
@@ -88,11 +92,41 @@ public class StudyController {
 
     @GetMapping("/list/{studyId}")
     public String listDetail(@PathVariable Long studyId, Model model){
+
         StudyDTO study = studyService.getStudyDTO(studyId);
         UserDTO user = studyService.getInfo(study.getUserId());
+        List<StudyQuestionDTO> questions = studyQuestionService.getInfo(studyId);
+        model.addAttribute("questions",questions);
         model.addAttribute("writer",user);
         model.addAttribute("study",study);
+        model.addAttribute("minusDay",studyService.minusDay(study));
+
         return "app/study/detail-study";
     }
+
+    @GetMapping("/question/{studyId}")
+    public String question(@PathVariable Long studyId,Model model, HttpServletRequest request){
+        HttpSession session = (HttpSession)request.getSession();
+        Long userId = (Long)session.getAttribute("loginUser");
+        StudyDTO study = studyService.getStudyDTO(studyId);
+        UserDTO user = studyService.getInfo(study.getUserId());
+        List<StudyQuestionDTO> questions = studyQuestionService.getInfo(studyId);
+        model.addAttribute("questions",questions);
+        model.addAttribute("writer",user);
+        model.addAttribute("study",study);
+        model.addAttribute("minusDay",studyService.minusDay(study));
+        model.addAttribute("nowUser",studyService.nowWriter(userId));
+
+
+
+        return "app/study/questionStudy";
+    }
+
+    @PostMapping("/question/write")
+    public RedirectView questionPost(StudyQuestionDTO studyQuestionDTO, Long userId,Long studyId){
+        studyQuestionService.post(studyQuestionDTO,userId,studyId);
+        return new RedirectView("/study/question/"+studyId);
+    }
+
 
 }

@@ -31,7 +31,7 @@ public class StudyCustomRepositoryImpl implements StudyCustomRepository {
             booleanBuilder.and(study.user.college.collegeName.eq(search.getCollegeName()));
         }
         if(search.getStudyCity() != null){
-            booleanBuilder2.and(study.studyOnlineWhether.studyCity.eq(search.getStudyCity())).or(study.studyOnlineWhether.studyCity.eq("all")).or(study.studyOnlineWhether.studyCity.eq("no"));
+            booleanBuilder2.and(study.studyOnlineWhether.studyCity.eq(search.getStudyCity()));
         }
         if(search.getStudyType() != null){
             booleanBuilder.and(study.studyField.studyType.eq(search.getStudyType()));
@@ -64,7 +64,7 @@ public class StudyCustomRepositoryImpl implements StudyCustomRepository {
             booleanBuilder.and(study.user.college.collegeName.eq(search.getCollegeName()));
         }
         if(search.getStudyCity() != null){
-            booleanBuilder2.and(study.studyOnlineWhether.studyCity.eq(search.getStudyCity())).or(study.studyOnlineWhether.studyCity.eq("all")).or(study.studyOnlineWhether.studyCity.eq("no"));
+            booleanBuilder2.and(study.studyOnlineWhether.studyCity.eq(search.getStudyCity()));
         }
         if(search.getStudyType() != null){
             booleanBuilder.and(study.studyField.studyType.eq(search.getStudyType()));

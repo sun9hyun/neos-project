@@ -31,12 +31,8 @@ public class StudyQuestionEntityTest {
     public void saveTest(){
         StudyQuestionDTO studyQuestionDTO = new StudyQuestionDTO();
         studyQuestionDTO.setStudyQuestionContent("질문이 있어요!!");
-        studyQuestionDTO.setStudyQuestionWriter(userRepository.findById(6L).get());
-        studyQuestionDTO.setStudy(studyRepository.findById(5L).get());
 
         StudyQuestion studyQuestion = studyQuestionDTO.toEntity();
-        studyQuestion.changeStudyQuestionWriter(studyQuestionDTO.getStudyQuestionWriter());
-        studyQuestion.changeStudyId(studyQuestionDTO.getStudy());
 
         studyQuestionRepository.save(studyQuestion);
     }
@@ -46,10 +42,7 @@ public class StudyQuestionEntityTest {
         StudyQuestion studyQuestion = studyQuestionRepository.findById(13L).get();
         StudyQuestionDTO studyQuestionDTO = new StudyQuestionDTO();
         studyQuestionDTO.setStudyQuestionContent("질문이 있었는데! 없어요!!");
-        studyQuestionDTO.setStudyQuestionWriter(userRepository.findById(6L).get());
-        studyQuestionDTO.setStudy(studyRepository.findById(5L).get());
 
-        studyQuestion.update(studyQuestionDTO);
     }
 
     @Test

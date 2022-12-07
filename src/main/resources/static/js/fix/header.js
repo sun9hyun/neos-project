@@ -30,10 +30,11 @@ $GoogleLoginBtn.on("click",function () {
 })
 
 
-var userId = document.querySelector("#userId").value;
+var userIdasdfasdfa = document.querySelector("#userId").value;
+show();
 function show(){
     $.ajax({
-        url: "/user/"+userId,
+        url: "/user/"+userIdasdfasdfa,
         type: "get",
         success: getInfo,
         error: function(xhr, status, err){

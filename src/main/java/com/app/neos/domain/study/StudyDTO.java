@@ -36,12 +36,13 @@ public class StudyDTO {
     private String studyContent;
     private int studyView;
     private LocalDate studyEndDate;
-
+    private LocalDate studyStartDate;
     private Long collegeId;
     private String collegeLogoFile;
     private String collegeName;
     private Long userId;
     private String userNickName;
+
 
     public Study toEntity(){
        StudyField studyField =  StudyField.builder().studyType(studyType).studyKeyword(studyKeyword).build();

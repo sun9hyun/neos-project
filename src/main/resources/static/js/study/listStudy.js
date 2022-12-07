@@ -23,22 +23,22 @@ var swiper = new Swiper(".mySwiper", {
 
 
 /*--정보 대학교 선택-----------------------------------------------------*/
-var $citySelect = $(".citySelect");
-
-$('.uniSelect').attr('disabled',true);
-// $('.fieldSelect').attr('disabled',true);
-
-$citySelect.on("change", function() {
-    var $city = $(this).val();
-
-    if($city == "KR00"){
-        $('.uniSelect').attr('disabled',true);
-        // $('.fieldSelect').attr('disabled',true);
-    }else{
-        $('.uniSelect').removeAttr('disabled');
-        // $('.fieldSelect').removeAttr('disabled');
-    }
-});
+// var $citySelect = $(".citySelect");
+//
+// $('.uniSelect').attr('disabled',true);
+// // $('.fieldSelect').attr('disabled',true);
+//
+// $citySelect.on("change", function() {
+//     var $city = $(this).val();
+//
+//     if($city == "KR00"){
+//         $('.uniSelect').attr('disabled',true);
+//         // $('.fieldSelect').attr('disabled',true);
+//     }else{
+//         $('.uniSelect').removeAttr('disabled');
+//         // $('.fieldSelect').removeAttr('disabled');
+//     }
+// });
 
 /*-----------------------모달-------------------------------------------*/
 // 모달 종료
@@ -91,6 +91,33 @@ function modalOk(heart) {
 }
 
 $("#_next").on("click",".listFavorite.off",function () {
+    let name = $(this).closest(".projectGridWrap").find(".projectWrap .tit").text();
+    const heart = $(this);
+    if($(this).hasClass("off")) {
+        heart.addClass('click');
+    }
+
+    $(".modal1").children(".studyTit").text(name + "을");
+
+    if($(this).hasClass("off")) {
+        $(".modalWrapOpen").show();
+        $(".modal1").css('display','inline-block');
+        $(".modalWrapOpen .modal1 .btnWrap button.blueBtn").on("click", function () {
+            $(".modal1").css('display','none');
+            $(".modalWrapOpen").hide();
+            $(".click").addClass('active');
+            $(".click").addClass('on');
+            $(".click").removeClass('off');
+            $(".click").removeClass('click');
+        })
+    } else {
+        $(this).removeClass('active');
+        $(this).addClass('off');
+        $(this).removeClass('on');
+    }
+})
+
+$("#_next").on("click",".listFavorite.on",function () {
     let name = $(this).closest(".projectGridWrap").find(".projectWrap .tit").text();
     const heart = $(this);
     if($(this).hasClass("off")) {

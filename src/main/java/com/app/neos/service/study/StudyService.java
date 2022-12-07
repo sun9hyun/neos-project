@@ -1,8 +1,11 @@
 package com.app.neos.service.study;
 
+import com.app.neos.domain.college.CollegeDTO;
 import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.domain.study.StudySearch;
 import com.app.neos.domain.user.UserDTO;
+import com.app.neos.entity.college.College;
+import com.app.neos.entity.college.QCollege;
 import com.app.neos.entity.study.Study;
 import com.app.neos.entity.user.User;
 import com.app.neos.repository.study.StudyCustomRepository;
@@ -19,7 +22,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -82,5 +90,27 @@ public class StudyService {
             return user.get().toDTO();
         }
         return null;
+    }
+
+    public List<String> collegeName(){
+        List<College> collegeList = jpaQueryFactory.selectFrom(QCollege.college).fetch();
+        List<String> collegeNames = collegeList.stream().map(College::getCollegeName).collect(Collectors.toList());
+        collegeNames.sort(Comparator.naturalOrder());
+
+        return collegeNames;
+    }
+
+    public int minusDay(StudyDTO studyDTO){
+        LocalDate startDay = studyDTO.getStudyStartDate();
+        LocalDate endDay = studyDTO.getStudyEndDate();
+
+        LocalDateTime start = startDay.atStartOfDay();
+        LocalDateTime end = endDay.atStartOfDay();
+        int betweenDays = (int) Duration.between(start, end).toDays();
+        return betweenDays;
+    }
+
+    public UserDTO nowWriter(Long userId){
+        return userRepository.findById(userId).get().toDTO();
     }
 }

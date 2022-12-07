@@ -10,10 +10,26 @@
     <link rel="stylesheet" href="/css/fix/chatting.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
+<style>
+    .updatePostBtn_1j1{
+        display: none;
+    }
+    .cancelBtn_1j1, .updatePost, .cancelTry{
+        display: none;
+    }
+
+</style>
 <body>
+<script th:inline="javascript">
+    const userId = [[${session.loginUser}]];
+    if(!userId){
+        alert("로그인 후 이용 가능한 서비스입니다.")
+        location.href="/study/list";
+    }
+</script>
     <header th:replace="/app/fix/header.html :: header"></header>
     <!-- 문의 페이지 START-->
-    <div id="_next">
+    <div id="_next" th:object="${study}">
         <section>
             <div class="projectPageHeaderWrap">
                 <div class="projectPurposeWrap">
@@ -22,18 +38,15 @@
                     </div>
                 </div>
                 <div class="projectPageHeaderContent">
-                    <h2 class="projectTit">[공업수학] 라플라스 변환의 이해와 적용</h2>
+                    <h2 class="projectTit" th:text="*{studyTitle}"></h2>
                     <li class="projectLeaderWrap">
                         <div class="userIdWrap">
                             <div class="leaderImg"><a href="#"><img width="20px"
                                                                     height="20px"
-                                                                    src="https://letspl.me/assets/images/prof-no-img.png"
+                                                                    th:src="${writer.userFile}"
                                                                     alt="추추추"></a></div>
                             <div class="rightTxt userId">
-                                <h2 class="userIdTxt">추추추</h2><span class="confirmPhoneTxt">(휴대폰 인증)</span><span
-                                    class="lastLoginTxt"> 오늘
-                                <!-- --> 로그인
-                                        </span>
+                                <h2 class="userIdTxt" th:text="*{userNickName}"></h2><span class="confirmPhoneTxt">(대학교 인증)</span>
                                 <div class="idHoverMenu">
                                     <ul>
                                         <li><a href="#">프로필 상세</a></li>
@@ -43,11 +56,16 @@
                             </div>
                         </div>
                     </li>
-                    <div class="statusTagWrap"><span class="statusTag gray">모집완료</span><span class="statusTag white">진행
-                                    중</span>
-                        <div class="modifyBtn"><a><img loading="lazy"
-                                                       src="https://letspl.me/assets/images/ic-profile-modify.png"
-                                                       alt="수정버튼" style="vertical-align: middle;"></a></div>
+                    <div class="statusTagWrap">
+                        <th:block th:if="*{StudyRecruitStatus.toString() == 'RECRUITING'}">
+                            <span class="statusTag gray">진행 중</span>
+                        </th:block>
+                        <th:block th:unless="*{StudyRecruitStatus.toString() == 'RECRUITING'}">
+                            <span class="statusTag white">모집완료</span>
+                        </th:block>
+                        <div class="modifyBtn" style="cursor: pointer"><a><img loading="lazy"
+                                                                               src="https://letspl.me/assets/images/ic-profile-modify.png"
+                                                                               alt="수정버튼" style="vertical-align: middle;"></a></div>
                     </div>
                 </div>
             </div>
@@ -55,10 +73,8 @@
                 <div class="projectDetailContents contents">
                     <div class="projectTabMenu clearfix">
                         <ul>
-                            <li><a name="#info" class="">정보</a></li>
-                            <li><a name="question" class="active">질문(
-                                <!-- -->1
-                                <!-- -->)
+                            <li><a name="#info" class="" th:href="@{/study/list/{id}(id=${study.studyId})}">정보</a></li>
+                            <li><a name="question" class="active">질문(&nbsp<span id="size_1j" th:text="${questions.size()}"></span><span>&nbsp)</span>
                             </a></li>
                             <li><a name="work" class="">일감</a></li>
                             <li><a name="feed" class="">피드</a></li>
@@ -68,132 +84,122 @@
                     <div class="projectDetailWrap">
                         <div class="projectTab projectFeedContents active">
                             <h3 class="tabTit qna">👍 이 모임에 응원·질문을 올려주세요!</h3>
+                            <form th:action="@{/study/question/write}" method="post" id="questionPostForm" name="questionPostForm">
                             <div class="section feedInputSection qnaInputSection">
-                                <div class="feedInputWrap"><textarea class="textarea" placeholder="이 모임에 응원·질문을 올려주세요!"
-                                                                     maxlength="1000" rows="2"></textarea></div>
-                                <div class="feed btnWrap"><p class="count"><span>12</span>/<span>1,000</span></p>
+                                <input type="hidden" name="userId" th:value="${session.loginUser}">
+                                <input type="hidden" id="studyId" name="studyId" th:value="${study.studyId}">
+                                <div class="feedInputWrap"><textarea id="studyQuestionContent" class="textarea" name="studyQuestionContent" placeholder="이 모임에 응원·질문을 올려주세요!"
+                                                                     maxlength="499" rows="2"></textarea></div>
+                                <div class="feed btnWrap"><p class="count"><span>12</span>/<span>500</span></p>
                                     <div>
-                                        <button class="whiteBtn">등록</button>
-                                        <button class="whiteBtn blackBtn">취소</button>
+                                        <button type="button" id="questionPostBtn_1j" class="whiteBtn">등록</button>
+                                        <button type="button" class="whiteBtn blackBtn">취소</button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="section feedUploadedSection">
-                                <div class="feedUploadWrap">
-                                    <div class="feedContentsWrap">
-                                        <div class="top"><a href="/people/ROSA" target="_blank">
-                                            <div class="thumb"><img loading="lazy" width="44px" height="44px"
-                                                                    src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"
-                                                                    alt="user_image"></div>
-                                        </a>
-                                            <div class="name"><h2 class="profileName">ROSA
-                                                <div class="hoverView">
-                                                    <ul>
-                                                        <li><a href="/people/ROSA" target="_blank">프로필 상세</a></li>
-                                                        <li class="questionChat"><a>1:1 대화</a></li>
-                                                        <!--<li><a>모임 초대</a></li>-->
-                                                    </ul>
-                                                </div>
-                                                </h2><span>22.11.21 01:39</span></div>
-                                        </div>
-                                        <div class="feedContents"><textarea disabled="" maxlength="1000"
-                                                                            style="font-size: 0.875rem; height: 62px !important;">저 안되는 부분이 있는데 도와주세요!</textarea>
-                                        </div>
-                                        <div class="bottom"><a class="feedReply active">댓글 열기</a><span class="replayCount">1</span></div>
-                                    </div>
-                                    <div class="replyWrap">
-                                        <div class="replyWrapContent">
-                                            <div class="top">
-                                                <div class="left"><a href="/people/추추추" target="_blank">
-                                                    <div class="profileThumb"><img loading="lazy" width="44px" height="44px"
-                                                                                   src="https://letspl.me/assets/images/prof-no-img.png"
-                                                                                   alt="user_image"></div>
-                                                </a></div>
-                                                <div class="right">
-                                                    <h4 class="profileName">추추추
+                            </form>
+                            <div id="questionWrapper_1j">
+                                <th:block th:each="question : ${questions}">
+                                    <div class="section feedUploadedSection" th:id="${question.getStudyQuestionId()}" th:object="${question}">
+                                        <div class="feedUploadWrap">
+                                            <div class="feedContentsWrap">
+                                                <div class="top"><a href="#" target="_blank">
+                                                    <div class="thumb"><img loading="lazy" width="44px" height="44px"
+                                                                            th:src="*{studyQuestionWriter.getUserFile()}"
+                                                                            alt="user_image"></div>
+                                                </a>
+                                                    <div class="name"><h2 class="profileName"><span class="profileName" th:text="*{studyQuestionWriter.getUserNickName()}"></span>
                                                         <div class="hoverView">
                                                             <ul>
-                                                                <li><a href="/people/추추추" target="_blank">프로필 상세</a></li>
+                                                                <li><a href="/people/ROSA" target="_blank">프로필 상세</a></li>
                                                                 <li class="questionChat"><a>1:1 대화</a></li>
+                                                                <!--<li><a>모임 초대</a></li>-->
                                                             </ul>
                                                         </div>
-                                                    </h4>
-                                                    <p class="dateTxt">22.11.21 11:34</p></div>
-                                            </div>
-                                            <div class="bottom">
-                                                <div class="left"></div>
-                                                <div class="txtWrap"><textarea disabled="" maxlength="500"
-                                                                               style="font-size: 0.875rem; height: 42px !important;">어떤 부분을 도와드릴까요</textarea>
+                                                    </h2><span class="createdDate" th:text="*{createdDate}"></span></div>
                                                 </div>
-                                                <div class="btnWrap">
-                                                    <button class="replyBtn txtBtn">수정</button>
-                                                    <div class="divider"></div>
-                                                    <button class="replyBtn txtBtn">삭제</button>
+                                                <div class="feedContents"><textarea class="studyQuestionContent_1j" disabled="" maxlength="1000"
+                                                                                    style="font-size: 0.875rem; height: 62px !important;" th:text="*{studyQuestionContent}"></textarea>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="replayInput">
-                                            <div class="profileThumb"><img loading="lazy" width="44px" height="44px"
-                                                                           src="https://letspl.me/assets/images/prof-no-img.png"
-                                                                           alt="user_image"></div>
-                                            <div class="txtInput"><textarea type="text" placeholder="댓글을 작성해주세요."
-                                                                            maxlength="500" rows="4"></textarea>
-                                                <div class="btnWrap">
-                                                    <button class="whiteBtn">등록</button>
-                                                    <button class="whiteBtn" style="margin-left: 8px">취소</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="section feedUploadedSection">
-                                <div class="feedUploadWrap">
-                                    <div class="feedContentsWrap">
-                                        <div class="top"><a href="/people/추추추" target="_blank">
-                                            <div class="thumb"><img loading="lazy" width="44px" height="44px"
-                                                                    src="https://letspl.me/assets/images/prof-no-img.png"
-                                                                    alt="user_image"></div>
-                                        </a>
-                                            <div class="name">
-                                                <h2 class="profileName">추추추
-                                                    <div class="hoverView">
-                                                        <ul>
-                                                            <li><a href="/people/추추추" target="_blank">프로필 상세</a></li>
-                                                            <li class="questionChat"><a>1:1 대화</a></li>
-                                                            <!--<li><a>모임 초대</a></li>-->
-                                                        </ul>
+                                                <th:block th:if="${question.getStudyQuestionWriter().getUserId() == session.loginUser}">
+                                                    <div class="btnWrap">
+                                                       <button class="feedBtn txtBtn updateBtn_1j1">수정</button>
+                                                       <button class="feedBtn txtBtn updatePostBtn_1j1">등록</button>
+                                                        <div class="divider"><input type="hidden" class="questionId" th:value="*{studyQuestionId}"></div>
+                                                        <button class="feedBtn txtBtn deleteBtn_1j1" >삭제</button>
+                                                        <button class="feedBtn txtBtn cancelBtn_1j1" >취소</button>
                                                     </div>
-                                                </h2>
-                                                <span>22.11.14 02:07</span>
+                                                </th:block>
+                                                <div class="bottom"><a class="feedReply active">댓글 열기</a><span class="replayCount" th:text="*{replyLength}"></span></div>
                                             </div>
-                                        </div>
-                                        <div class="feedContents"><textarea disabled="" maxlength="1000"
-                                                                            style="font-size: 0.875rem; height: 62px !important;">프로젝트 화이팅!</textarea>
-                                        </div>
-                                        <div class="btnWrap">
-                                            <button class="feedBtn txtBtn">수정</button>
-                                            <div class="divider"></div>
-                                            <button class="feedBtn txtBtn">삭제</button>
-                                        </div>
-                                        <div class="bottom"><a class="feedReply active">댓글 열기</a><span
-                                                class="replayCount">0</span></div>
-                                    </div>
-                                    <div class="replyWrap">
-                                        <div class="replayInput">
-                                            <div class="profileThumb"><img loading="lazy" width="44px" height="44px"
-                                                                           src="https://letspl.me/assets/images/prof-no-img.png"
-                                                                           alt="user_image"></div>
-                                            <div class="txtInput"><textarea type="text" placeholder="댓글을 작성해주세요."
-                                                                            maxlength="500" rows="4"></textarea>
-                                                <div class="btnWrap">
-                                                    <button class="whiteBtn">등록</button>
-                                                    <button class="whiteBtn" style="margin-left: 8px">취소</button>
+                                            <div class="replyWrap">
+                                                <div class="replyWrapContent">
+                                                </div>
+                                                <div class="replayInput">
+                                                    <div class="profileThumb"><img loading="lazy" width="44px" height="44px"
+                                                                                   th:src="${nowUser.getUserFile()}"
+                                                                                   alt="user_image"></div>
+                                                    <div class="txtInput"><textarea class="replyPostTextArea_1j" type="text" placeholder="댓글을 작성해주세요."
+                                                                                    maxlength="500" rows="4"></textarea>
+                                                        <div class="btnWrap">
+                                                            <button class="whiteBtn replyPost_1j">등록</button>
+                                                            <button class="whiteBtn" style="margin-left: 8px">취소</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </th:block>
+
+<!--                            <div class="section feedUploadedSection">-->
+<!--                                <div class="feedUploadWrap">-->
+<!--                                    <div class="feedContentsWrap">-->
+<!--                                        <div class="top"><a href="/people/추추추" target="_blank">-->
+<!--                                            <div class="thumb"><img loading="lazy" width="44px" height="44px"-->
+<!--                                                                    src="https://letspl.me/assets/images/prof-no-img.png"-->
+<!--                                                                    alt="user_image"></div>-->
+<!--                                        </a>-->
+<!--                                            <div class="name">-->
+<!--                                                <h2 class="profileName">추추추-->
+<!--                                                    <div class="hoverView">-->
+<!--                                                        <ul>-->
+<!--                                                            <li><a href="/people/추추추" target="_blank">프로필 상세</a></li>-->
+<!--                                                            <li class="questionChat"><a>1:1 대화</a></li>-->
+<!--                                                            &lt;!&ndash;<li><a>모임 초대</a></li>&ndash;&gt;-->
+<!--                                                        </ul>-->
+<!--                                                    </div>-->
+<!--                                                </h2>-->
+<!--                                                <span>22.11.14 02:07</span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="feedContents"><textarea disabled="" maxlength="1000"-->
+<!--                                                                            style="font-size: 0.875rem; height: 62px !important;">프로젝트 화이팅!</textarea>-->
+<!--                                        </div>-->
+<!--                                        <div class="btnWrap">-->
+<!--                                            <button class="feedBtn txtBtn">수정</button>-->
+<!--                                            <div class="divider"></div>-->
+<!--                                            <button class="feedBtn txtBtn">삭제</button>-->
+<!--                                        </div>-->
+<!--                                        <div class="bottom"><a class="feedReply active">댓글 열기</a><span-->
+<!--                                                class="replayCount">0</span></div>-->
+<!--                                    </div>-->
+<!--                                    <div class="replyWrap">-->
+<!--                                        <div class="replayInput">-->
+<!--                                            <div class="profileThumb"><img loading="lazy" width="44px" height="44px"-->
+<!--                                                                           src="https://letspl.me/assets/images/prof-no-img.png"-->
+<!--                                                                           alt="user_image"></div>-->
+<!--                                            <div class="txtInput"><textarea type="text" placeholder="댓글을 작성해주세요."-->
+<!--                                                                            maxlength="500" rows="4"></textarea>-->
+<!--                                                <div class="btnWrap">-->
+<!--                                                    <button class="whiteBtn">등록</button>-->
+<!--                                                    <button class="whiteBtn" style="margin-left: 8px">취소</button>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             </div>
                         </div>
                     </div>
@@ -205,14 +211,14 @@
                             <div class="leaderInfo">
                                 <div class="userIdWrap">
                                     <div class="leaderImg"><a class="leaderImgWrap"
-                                                              href="/people/%EC%B6%94%EC%B6%94%EC%B6%94"><img loading="lazy"
-                                                                                                              width="20px"
-                                                                                                              height="20px"
-                                                                                                              src="https://letspl.me/assets/images/prof-no-img.png"
-                                                                                                              alt="추추추"></a>
+                                                              href="/people/%EC%B6%94%EC%B6%94%EC%B6%94"><img
+                                            width="20px"
+                                            height="20px"
+                                            th:src="${writer.userFile}"
+                                            alt="추추추"></a>
                                     </div>
                                     <div class="rightBox">
-                                        <h2 class="userIdTxt">추추추
+                                        <h2 class="userIdTxt"><span th:text="${writer.userNickName}"></span>
                                             <div class="idHoverMenu">
                                                 <ul>
                                                     <li><a href="/people/%EC%#%94%EC%B6%94%EC%B6%94">프로필 상세</a></li>
@@ -220,10 +226,10 @@
                                                 </ul>
                                             </div>
                                         </h2>
-                                        <span class="confirmPhoneTxt">휴대폰 인증완료</span><span
-                                            class="proejctReactionRateTxt"><span class="leftTxt">리더 응답률 : </span><span
-                                            class="rightTxt">100%
-                                                    <br>(2건, 평균 1시간 미만)</span></span>
+                                        <span
+                                                class="proejctReactionRateTxt"><span class="leftTxt">대학교 : </span><span
+                                                class="rightTxt" th:text="${writer.collegeName}">
+                                                    </span></span>
                                         <div class="heartAndShareWrap"><a class="heartWrap viewCount">
                                             <svg
                                                     xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -232,10 +238,10 @@
                                                         d="M8 2.48901C6.27297 2.48988 4.58622 3.01069 3.15934 3.98365C1.73246 4.9566 0.631569 6.33661 0 7.94401C0.630962 9.55179 1.73172 10.9321 3.15875 11.9051C4.58577 12.878 6.27285 13.3985 8 13.3985C9.72715 13.3985 11.4142 12.878 12.8413 11.9051C14.2683 10.9321 15.369 9.55179 16 7.94401C15.3684 6.33661 14.2675 4.9566 12.8407 3.98365C11.4138 3.01069 9.72703 2.48988 8 2.48901V2.48901ZM8 11.58C7.28087 11.58 6.57788 11.3668 5.97995 10.9672C5.38201 10.5677 4.91597 9.99984 4.64077 9.33545C4.36557 8.67106 4.29357 7.93998 4.43386 7.23466C4.57416 6.52935 4.92046 5.88148 5.42896 5.37297C5.93746 4.86447 6.58534 4.51817 7.29065 4.37788C7.99597 4.23758 8.72704 4.30959 9.39144 4.58479C10.0558 4.85999 10.6237 5.32602 11.0232 5.92396C11.4228 6.5219 11.636 7.22488 11.636 7.94401C11.6355 8.90818 11.2522 9.8327 10.5705 10.5145C9.88869 11.1962 8.96416 11.5795 8 11.58ZM8 5.76201C7.56844 5.76201 7.14657 5.88999 6.78775 6.12975C6.42892 6.36951 6.14925 6.71029 5.9841 7.109C5.81894 7.50771 5.77573 7.94643 5.85993 8.3697C5.94412 8.79297 6.15194 9.18176 6.45709 9.48692C6.76225 9.79208 7.15105 9.99989 7.57431 10.0841C7.99758 10.1683 8.43631 10.1251 8.83502 9.95992C9.23372 9.79477 9.57451 9.5151 9.81427 9.15627C10.054 8.79744 10.182 8.37557 10.182 7.94401C10.1824 7.65736 10.1262 7.37344 10.0167 7.10853C9.90719 6.84362 9.74648 6.60292 9.54379 6.40023C9.34109 6.19753 9.10039 6.03682 8.83548 5.9273C8.57057 5.81779 8.28666 5.76162 8 5.76201Z"
                                                         fill="#A4A4B4"></path>
                                             </svg>
-                                            <span>80</span></a>
+                                            <span th:text="*{studyView}"></span></a>
                                             <a class="heartWrap">
                                                 <div class="favoriteSymbol">
-                                                    <div class="favorite active rightFavorite"></div>
+                                                    <div class="favorite rightFavorite"></div>
                                                 </div>
                                                 <span class="favoriteNumber">2</span>
                                             </a>
@@ -250,13 +256,11 @@
                             <p class="checkboxTit">스터디
                                 <!-- -->기간
                             </p>
-                            <h3 class="tabTxt">22.11.08
-                                <!-- -->~
-                                <!-- -->23.05.08
-                                <span>&nbsp;(
-                                    <!-- -->182
-                                    <!-- -->일)
-                                    </span>
+                            <h3 class="tabTxt">
+                                <span th:text="*{studyStartDate}"></span>
+                                <span> ~ </span>
+                                <span th:text="*{studyEndDate}"></span>
+                                <span>( </span><span th:text="${minusDay}"></span><span>일 )</span>
                             </h3>
                         </div>
                         <div class="projectBeginDate infoWrap">
@@ -264,31 +268,31 @@
                                 <!-- -->
                                 <!-- -->분야
                             </h3>
-                            <h3 class="tabTxt">전공과목 / 공업수학</h3>
+                            <h3 class="tabTxt"><span th:text="*{studyType}"></span><span>과목</span><span> / </span><span th:text="*{studyKeyword}"></span></h3>
                         </div>
                         <div class="infoWrap watchedLetsplerWrap">
-                            <h3 class="checkboxTit">구독중인 네오스인&nbsp;<span>2
+                            <h3 class="checkboxTit">구독중인 네오스인&nbsp;<span>0
                                 <!-- -->명
                                     </span></h3>
                             <ul>
-                                <li class="hoverNameWrap">
-                                    <div class="hoverName">
-                                        <p><span>[L6]</span><span>sun9hyun</span></p>
-                                    </div>
-                                    <div class="imgWrap"><img loading="lazy"
-                                                              src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png"
-                                                              alt="sun9hyun"></div>
-                                </li>
-                                <li class="hoverNameWrap">
-                                    <div class="hoverName">
-                                        <p><span>[L6]</span><span>ROSA</span></p>
-                                    </div>
-                                    <div class="imgWrap"><img loading="lazy"
-                                                              src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"
-                                                              alt="ROSA"></div>
-                                </li>
+                                <!--                                <li class="hoverNameWrap">-->
+                                <!--                                    <div class="hoverName">-->
+                                <!--                                        <p><span>[L6]</span><span>sun9hyun</span></p>-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="imgWrap"><img loading="lazy"-->
+                                <!--                                                              src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png"-->
+                                <!--                                                              alt="sun9hyun"></div>-->
+                                <!--                                </li>-->
+                                <!--                                <li class="hoverNameWrap">-->
+                                <!--                                    <div class="hoverName">-->
+                                <!--                                        <p><span>[L6]</span><span>ROSA</span></p>-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="imgWrap"><img loading="lazy"-->
+                                <!--                                                              src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"-->
+                                <!--                                                              alt="ROSA"></div>-->
+                                <!--                                </li>-->
                             </ul>
-                            <button class="subscribeBtn">구독하기</button>
+                            <button class="subscribeBtn active">구독하기</button>
                         </div>
                     </div>
                 </div>
@@ -300,20 +304,35 @@
     <!-- 관련 모달 START-->
     <div class="modalWrapOpen">
         <!--본인이 작성한 댓글, 질문 삭제-->
-        <div class="modalWrap modal1">
-            <p class="modalTit">적성하신 글의 삭제를 확인합니다</p>
+        <div class="modalWrap modal1" id="deleteModal_1j">
+            <p class="modalTit">작성하신 글의 삭제를 확인합니다</p>
             <button class="closeBtn">
                 <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
             </button>
             <div class="modalContent">
                 <p>작성하신 글을 삭제하시겠습니까?</p>
             </div>
+            <input type="hidden" id="questionIdForDelete" name="questionId" value="">
             <div class="btnWrap doubleBtnWrap">
-                <button class="btn whiteBtn">아니요</button>
-                <button class="btn blueBtn">예</button>
+                <button type="button" class="btn whiteBtn">아니요</button>
+                <button type="button" class="btn blueBtn" id="deleteBtn_11j">예</button>
             </div>
         </div>
-
+<!--    댓글 삭제 모달-->
+        <div class="modalWrap modal1" id="deleteModal_2j">
+            <p class="modalTit">작성하신 댓글의 삭제를 확인합니다</p>
+            <button class="closeBtn">
+                <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
+            </button>
+            <div class="modalContent">
+                <p>작성하신 댓글을 삭제하시겠습니까?</p>
+            </div>
+            <input type="hidden" id="questionIdForDelete2" name="questionId" value="">
+            <div class="btnWrap doubleBtnWrap">
+                <button type="button" class="btn whiteBtn">아니요</button>
+                <button type="button" class="btn blueBtn" id="deleteBtn_21j">예</button>
+            </div>
+        </div>
         <!--스터디 구독 버튼 클리 시, 상세보기 전체 공통으로 삭제 X-->
         <div class="modalWrap modal2">
             <p class="modalTit studyTit">삶에 활력을 주는 Done List을</p>
@@ -344,4 +363,225 @@
 <script src="/js/fix/chatting.js"></script>
 <script src="/js/fix/login.js"></script>
 <script src="/js/fix/header.js"></script>
+<script>
+    const $postBtn = $("#questionPostBtn_1j");
+    $postBtn.on("click",function () {
+        if(!$("#studyQuestionContent").val()){
+            alert("빈 내용은 등록하실 수 없습니다.");
+            return;
+        }
+        $("#questionPostForm").submit();
+    })
+
+    const $deleteBtn = $(".deleteBtn_1j1");
+    $deleteBtn.on("click",function () {
+        const id = $(this).prev().find(".questionId").val();
+        $("#questionIdForDelete").val(id);
+        $(".modalWrapOpen").show();
+        $("#deleteModal_1j").show();
+    })
+
+    $("#deleteBtn_11j").on("click",function () {
+        const id = $(this).parent().prev().val();
+        $.ajax({
+            url:"/quest/"+id,
+            type:"delete",
+            success:function(result){
+                if(result == 'delete success'){
+                    $("#"+id).remove();
+                    var num = parseInt($("#size_1j").text())-1;
+                    $("#size_1j").text(num);
+                }
+            }
+        })
+    })
+    globalThis.content = undefined;
+    var check = false;
+    $(".updateBtn_1j1").on("click",function () {
+        if(!check){
+            globalThis.content = $(this).parent().prev().find("textarea").val();
+            $(this).parent().prev().find("textarea").attr("disabled", false)
+                .css("height", "127px");
+            $(this).hide();
+            $(this).next().show();
+           $(this).closest(".btnWrap").find(".deleteBtn_1j1").hide();
+            $(this).closest(".btnWrap").find(".deleteBtn_1j1").next().show();
+            check=true
+        }else{
+            alert("한번에 하나의 글만 수정이 가능합니다.")
+        }
+    })
+
+    $(".cancelBtn_1j1").on("click",function () {
+        $(this).parent().prev().find("textarea").attr("disabled", true)
+            .css("height", "62px");
+
+        $(this).parent().prev().find("textarea").val(globalThis.content)
+        $(this).hide();
+        $(this).prev().show();
+        $(this).closest(".btnWrap").find(".updateBtn_1j1").show();
+        $(this).closest(".btnWrap").find(".updateBtn_1j1").next().hide();
+        check=false;
+    })
+
+    $(".updatePostBtn_1j1").on("click",function () {
+       const id = $(this).next().find(".questionId").val();
+       const content = $(this).closest(".btnWrap").prev().find(".studyQuestionContent_1j").val()
+        if(!content){
+            alert("빈 내용은 등록하실 수 없습니다.");
+            return;
+        }
+        if(content == globalThis.content){
+            alert("변경 사항이 없습니다.")
+            return;
+        }
+        $(this).parent().prev().find("textarea").attr("disabled", true)
+            .css("height", "62px");
+        $.ajax({
+            url:"/quest/"+id,
+            type:"post",
+            data:{content:content},
+            success:function (result) {
+                alert("수정이 완료되었습니다.")
+                $("#"+result.studyQuestionId).find("span.createdDate").html(result.createdDate);
+                $("#"+result.studyQuestionId).find(".studyQuestionContent_1j").text(result.studyQuestionContent);
+                check=false;
+                globalThis.content=undefined;
+                $("#"+result.studyQuestionId).find(".updatePostBtn_1j1").hide();
+                $("#"+result.studyQuestionId).find(".cancelBtn_1j1").hide();
+                $("#"+result.studyQuestionId).find(".updateBtn_1j1").show();
+                $("#"+result.studyQuestionId).find(".deleteBtn_1j1").show();
+            }
+        })
+
+    })
+
+</script>
+<script th:inline="javascript">
+//댓글 작성
+$(".replyPost_1j").on("click",function(){
+    const id = $(this).closest(".feedUploadedSection").attr("id");
+    const content = $(this).parent().prev().val();
+    if(!content){
+        alert("빈 내용은 등록하실 수 없습니다.");
+        return;
+    }
+    $.ajax({
+        url:"/quest-reply/"+id,
+        type:"post",
+        data:{studyQuestionReplyContent:content,userId:userId},
+        success:function(result){
+            $("#"+id).find(".replyPostTextArea_1j").val("");
+            show(id)
+        }
+    })
+})
+
+    // 댓글 목록
+$(".feedReply").on("click", function () {
+    $(this).toggleClass('active');
+    if($(this).hasClass('active')){
+        $(this).text("댓글 열기");
+        $(this).parents('.feedUploadWrap').children('.replyWrap').css("display", "none");
+    }else{
+        $(this).text("댓글 닫기");
+        $(this).parents('.feedUploadWrap').children('.replyWrap').css("display", "flex");
+        const id = $(this).closest(".feedUploadedSection").attr("id");
+        show(id)
+    }
+
+})
+
+    function show(obj){
+        var id = obj;
+        $.ajax({
+            url:"/quest-reply/"+id,
+            type:"get",
+            success:showList
+        })
+    }
+
+    function showList(result){
+    let text='';
+        $(result).each((i,item)=>{
+            text += `<div class="top">`
+            text += `<div class="left"><a href="#" target="_blank">`
+            text += `<div class="profileThumb"><img loading="lazy" width="44px" src="`+item.studyQuestionReplyWriter.userFile+`" height="44px" alt="user_image"></div>`
+            text += `</a></div>`
+            text += `<div class="right">`
+            text += `<h4 class="profileName">`+item.studyQuestionReplyWriter.userNickName
+            text += `<div class="hoverView">`
+            text += `<ul>`
+            text += `<li><a href="#" target="_blank">프로필 상세</a></li>`
+            text += `<li class="questionChat"><a>1:1 대화</a></li>`
+            text += `</ul>`
+            text += `</div>`
+            text += `</h4>`
+            text += `<p class="dateTxt">`+item.createdDate+`</p></div>`
+            text += `</div>`
+            text += `<div class="bottom">`
+            text += `<div class="left"></div>`
+            text += `<div class="txtWrap"><textarea disabled="" maxlength="500" style="font-size: 0.875rem; height: 42px !important;">`+item.studyQuestionReplyContent+`</textarea>`
+            text += `</div>`
+            if(userId==item.studyQuestionReplyWriter.userId){
+                text += `<div class="btnWrap">`
+                text += `<button class="replyBtn txtBtn updateTry">수정</button>`
+                text += `<button class="replyBtn txtBtn updatePost">등록</button>`
+                text += `<div class="divider"><input type="hidden" id="replyId" value="`+item.studyQuestionReplyId+`"></div>`
+                text += `<button class="replyBtn txtBtn cancelTry">취소</button>`
+                text += `<button class="replyBtn txtBtn deleteTry">삭제</button>`
+                text += `</div>`
+            }
+            text += `</div>`
+        })
+        $("#"+result[0].studyQuestion.studyQuestionId).find(".replyWrapContent").html(text);
+        $("#"+result[0].studyQuestion.studyQuestionId).find(".replayCount").text(result.length);
+    }
+
+//    수정
+
+//    삭제
+    globalThis.reply = undefined;
+    var replyCheck =false;
+    $(".replyWrapContent").on("click",".cancelTry",function () {
+        $(this).parent().prev().find("textarea").attr("disabled", true)
+            .css("height", "42px");
+        $(this).hide();
+        $(this).next().show();
+        $(this).prev().prev().hide();
+        $(this).prev().prev().prev().show();
+        $(this).parent().prev().find("textarea").val( globalThis.reply);
+        replyCheck=false;
+    })
+
+    $(".replyWrapContent").on("click",".updateTry",function () {
+        if(!replyCheck){
+            globalThis.reply = $(this).parent().prev().find("textarea").val();
+            $(this).parent().prev().find("textarea").attr("disabled", false)
+                .css("height", "62px");
+            $(this).hide();
+            $(this).next().show();
+            $(this).next().next().next().show();
+            $(this).next().next().next().next().hide();
+            replyCheck=true
+        }else{
+            alert("한번에 하나의 댓글만 달 수 있습니다.")
+        }
+
+    })
+
+
+
+    $(".replyWrapContent").on("click",".deleteTry",function () {
+        var id = $(this).prev().prev().find("#replyId").val();
+        $("#questionIdForDelete2").val(id);
+        $(".modalWrapOpen").show();
+        $("#deleteModal_2j").show();
+    })
+
+    $("")
+
+
+</script>
+
 </html>

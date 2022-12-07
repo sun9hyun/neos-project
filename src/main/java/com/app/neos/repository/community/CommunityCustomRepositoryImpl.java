@@ -5,8 +5,12 @@ import com.app.neos.domain.community.QCommunityDTO;
 import com.app.neos.entity.community.QCommunity;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import org.springframework.data.domain.SliceImpl;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -29,6 +33,33 @@ public class CommunityCustomRepositoryImpl implements CommunityCustomRepository 
                 .orderBy(QCommunity.community.updatedDate.desc())
                 .fetch();
 
+    }
+
+    @Override
+    public Slice<CommunityDTO> findAllPage(Pageable pageable) {
+        List<CommunityDTO> communityDTOList = jpaQueryFactory.select(new QCommunityDTO(
+                QCommunity.community.communityId,
+                QCommunity.community.communityTitle,
+                QCommunity.community.communityContent,
+                QCommunity.community.communityLikeCount,
+                QCommunity.community.user,
+                QCommunity.community.createdDate,
+                QCommunity.community.updatedDate
+                ))
+                .from(QCommunity.community)
+                .orderBy(QCommunity.community.updatedDate.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize()+1)
+                .fetch();
+
+        ArrayList<CommunityDTO> content = (ArrayList<CommunityDTO>)communityDTOList;
+
+        boolean hasNext = false;
+        if(content.size() > pageable.getPageSize()){
+            content.remove(pageable.getPageSize());
+            hasNext=true;
+        }
+        return new SliceImpl<>(content,pageable,hasNext);
     }
 
     @Override
@@ -57,6 +88,7 @@ public class CommunityCustomRepositoryImpl implements CommunityCustomRepository 
 //                .where(QCommunity.community.communityId.eq(communityId))
 //                ;
 //    }
+
 
 
 }

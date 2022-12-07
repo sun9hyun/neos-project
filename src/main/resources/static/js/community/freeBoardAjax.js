@@ -2,7 +2,9 @@
 *
 *
 * */
+globalThis.page = 0;
 $(document).ready(function () {
+    globalThis.check = false;
     show();
 
     function add(community, callback) {
@@ -24,7 +26,7 @@ $(document).ready(function () {
 
     function show() {
         $.ajax({
-            url: "/community/communityList",
+            url: "/community/communityList?page=" + (globalThis.page),
             type: "get",
             async: false,
             success: function (communityDTOS) {
@@ -69,32 +71,37 @@ $(document).ready(function () {
     function getList(communityDTOS) {
         // alert(communityDTOS);
         let text = "";
-        communityDTOS.forEach(c => {
+        $(communityDTOS.content).each((i,item) => {
             text += "<div class='loungeCard' style='margin-bottom: -10px;'>";
             text += "<div class='userSection'>";
             text += "<div class='userInformationComponents_profile__2pr8a'>";
             text += "<div class='userInformationComponents_profileLeftGroup__1lq6K'>";
             text += "<div class='userInformationComponents_profileImg__3qJcX'>";
-            text += "<img src='" + c.user.userFile + "' alt=''>";
+            text += "<img src='" + item.user.userFile + "' alt=''>";
             text += "</div>";
-            text += "<p class='userInformationComponents_profileName__3l0ya'>" + c.user.userNickName;
+            text += "<p class='userInformationComponents_profileName__3l0ya'>" + item.user.userNickName;
             text += "<i class='userInformationComponents_profileLevel__6Bl4w'>";
-            text += "<img src='" + c.user.userNeosPower.userNeosBadge + "' alt=''>";
+            text += "<img src='" + item.user.userNeosPower.userNeosBadge + "' alt=''>";
             text += "</i>";
             text += "</p>";
             text += "</div>";
             text += "<div class='userInformationComponents_profileRightGroup__3Ro_j'>";
-            text += "<div class='userInformationComponents_profileRightGroupFollow__kBAl7'>";
-            text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_radius__2l9SM'>";
+
             //userFollower
             //if(userFollower == )
-            text += "<img src='https://letspl.me/assets/images/ic-letspler-heart-full.png'>팔로잉</button>";
-            text += "</div></div></div></div>";
+            if($("#userId").attr("value") != item.user.userId) {
+                text += "<div class='userInformationComponents_profileRightGroupFollow__kBAl7'>";
+                text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_radius__2l9SM'>";
+                text += "<img src='https://letspl.me/assets/images/ic-letspler-heart-full.png'>팔로잉</button>";
+                text += "</div>";
+            }
+
+            text += "</div></div></div>";
             text += "<div class='loungeCardContents'>";
             text += "<div class='loungeCardContentsComponents_loungeContents__262-A'>";
 
             //if(session.loginUser == c.userId)?
-            if($("#userId").attr("value") == c.user.userId){
+            if($("#userId").attr("value") == item.user.userId){
                 text += "<div class='loungeCardContentsComponents_loungeContentsTagMoreBox__1oKkG'>";
                 text += "<div class='undefined'>";
                 text += "</div>";
@@ -112,17 +119,17 @@ $(document).ready(function () {
             text += "<div class='loungeCardContentsComponents_loungeContentsTitleBox__2NtjH'>";
             text += "<span class='loungeCardContentsComponents_loungeContentsTitleBoxNewsTxt__9_Iok'>자유게시글</span>";
             text += "<div class='loungeCardContentsComponents_loungeContentsTitleDate__1-Xd2'>";
-            text += "<h3 class='comTitle loungeCardContentsComponents_title__1s8RE'>" + c.communityTitle + "</h3>";
-            text += "<span class='loungeCardContentsComponents_date__3pY5X'>" +  communityService.timeForToday(c.updatedDate) + "</span>";
+            text += "<h3 class='comTitle loungeCardContentsComponents_title__1s8RE'>" + item.communityTitle + "</h3>";
+            text += "<span class='loungeCardContentsComponents_date__3pY5X'>" +  communityService.timeForToday(item.updatedDate) + "</span>";
             text += "</div></div>";
-            text += "<div class='comContent loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4'>"+ c.communityContent +"</div>";
+            text += "<div class='comContent loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4'>"+ item.communityContent +"</div>";
             text += "<div class='loungeCardContentsComponents_loungeContentsMoreButtonWrap__1LR4v'>";
             text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU'>펼치기</button>";
             text += "</div>";
             text += "<div class='replyComponent_reply__3l-Wc'>";
             text += "<div class='replyComponent_replyButtonBox__2O3ME'>";
             text += "<button type='button' class='likeBtn buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 button_heart_1ljw5'>";
-            text += "<img class='likeImg' src='https://letspl.me/assets/images/ic-letspler-heart-empty.png'>"+ c.communityLikeCount;
+            text += "<img class='likeImg' src='https://letspl.me/assets/images/ic-letspler-heart-empty.png'>"+ item.communityLikeCount;
             text += "</button>";
             text += "<div class='replyComponent_replyOnOff__QKoso'>";
             text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU'>";
@@ -132,13 +139,22 @@ $(document).ready(function () {
             text += "</div>";
             text += "</div>";
             text += "</div></div></div>";
-            text += "<input id='cid' type='hidden' value='" + c.communityId + "'>";
-            text += "<input type='hidden' value='" + c.user.userId + "'>";
+            text += "<input id='cid' type='hidden' value='" + item.communityId + "'>";
+            text += "<input type='hidden' value='" + item.user.userId + "'>";
             text += "</div>";
         });
 
-        $("div.centerSectionBox").html(text);
+        $("div.centerSectionBox").append(text);
     }
+
+    $(".moreButton").on("click", function(e){
+        e.preventDefault();
+        if(!globalThis.check){
+            globalThis.page = globalThis.page+1;
+            show();
+        }
+    });
+
 
     /*-----------------------------------------------------------------------------------------------------------*/
     //수정
@@ -174,7 +190,7 @@ $(document).ready(function () {
             }),
             contentType: "application/json; charset=utf-8",
             success: function(){
-                show();
+                showUpdate();
             },
             error: function (xhr, status, err) {
                 console.log(xhr, status, err);
@@ -186,6 +202,101 @@ $(document).ready(function () {
         $(".editorMdoal").find(".editorTitle input").val("");
         $(".editorMdoal").find(".note-editable").text("");
     })
+
+    function showUpdate() {
+        $.ajax({
+            url: "/community/communityList?page=0&size" + (globalThis.page) * 5,
+            type: "get",
+            async: false,
+            success: function (communityDTOS) {
+                if(communityDTOS != null){
+                    getListUpdate(communityDTOS);
+                }
+            },
+            error: function (xhr, status, err) {
+                console.log(xhr, status, err);
+            }
+        });
+    };
+
+    function getListUpdate(communityDTOS) {
+        // alert(communityDTOS);
+        let text = "";
+        $(communityDTOS.content).each((i,item) => {
+            text += "<div class='loungeCard' style='margin-bottom: -10px;'>";
+            text += "<div class='userSection'>";
+            text += "<div class='userInformationComponents_profile__2pr8a'>";
+            text += "<div class='userInformationComponents_profileLeftGroup__1lq6K'>";
+            text += "<div class='userInformationComponents_profileImg__3qJcX'>";
+            text += "<img src='" + item.user.userFile + "' alt=''>";
+            text += "</div>";
+            text += "<p class='userInformationComponents_profileName__3l0ya'>" + item.user.userNickName;
+            text += "<i class='userInformationComponents_profileLevel__6Bl4w'>";
+            text += "<img src='" + item.user.userNeosPower.userNeosBadge + "' alt=''>";
+            text += "</i>";
+            text += "</p>";
+            text += "</div>";
+            text += "<div class='userInformationComponents_profileRightGroup__3Ro_j'>";
+
+            //userFollower
+            //if(userFollower == )
+            if($("#userId").attr("value") != item.user.userId) {
+                text += "<div class='userInformationComponents_profileRightGroupFollow__kBAl7'>";
+                text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_radius__2l9SM'>";
+                text += "<img src='https://letspl.me/assets/images/ic-letspler-heart-full.png'>팔로잉</button>";
+                text += "</div>";
+            }
+
+            text += "</div></div></div>";
+            text += "<div class='loungeCardContents'>";
+            text += "<div class='loungeCardContentsComponents_loungeContents__262-A'>";
+
+            //if(session.loginUser == c.userId)?
+            if($("#userId").attr("value") == item.user.userId){
+                text += "<div class='loungeCardContentsComponents_loungeContentsTagMoreBox__1oKkG'>";
+                text += "<div class='undefined'>";
+                text += "</div>";
+                text += "<div class='loungeCardContentsComponents_loungeContentsRight__14cdz'>";
+                text += "<div class='loungeCardContentsComponents_loungeContentsMore__2AXVI'>";
+                text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>";
+                text += "<img class='buttonComponents_mdImg__G1pNE' src='https://letspl.me/assets/images/ic-more.svg'>";
+                text += "</button>";
+                text += "<div class='loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo'>";
+                text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postUpdate_1j'>수정</button>";
+                text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postDelete_1j'>삭제</button>";
+                text += "</div></div></div></div>";
+            }
+
+            text += "<div class='loungeCardContentsComponents_loungeContentsTitleBox__2NtjH'>";
+            text += "<span class='loungeCardContentsComponents_loungeContentsTitleBoxNewsTxt__9_Iok'>자유게시글</span>";
+            text += "<div class='loungeCardContentsComponents_loungeContentsTitleDate__1-Xd2'>";
+            text += "<h3 class='comTitle loungeCardContentsComponents_title__1s8RE'>" + item.communityTitle + "</h3>";
+            text += "<span class='loungeCardContentsComponents_date__3pY5X'>" +  communityService.timeForToday(item.updatedDate) + "</span>";
+            text += "</div></div>";
+            text += "<div class='comContent loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4'>"+ item.communityContent +"</div>";
+            text += "<div class='loungeCardContentsComponents_loungeContentsMoreButtonWrap__1LR4v'>";
+            text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU'>펼치기</button>";
+            text += "</div>";
+            text += "<div class='replyComponent_reply__3l-Wc'>";
+            text += "<div class='replyComponent_replyButtonBox__2O3ME'>";
+            text += "<button type='button' class='likeBtn buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 button_heart_1ljw5'>";
+            text += "<img class='likeImg' src='https://letspl.me/assets/images/ic-letspler-heart-empty.png'>"+ item.communityLikeCount;
+            text += "</button>";
+            text += "<div class='replyComponent_replyOnOff__QKoso'>";
+            text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU'>";
+            text += "<span class='buttonComponents_gray__1blI9'>첫번째 댓글을 달아주세요</span>";
+            text += "<img class='buttonComponents_smMdImg__2IOAr' src='https://letspl.me/assets/images/ic-arrow-up.svg'>";
+            text += "</button>";
+            text += "</div>";
+            text += "</div>";
+            text += "</div></div></div>";
+            text += "<input id='cid' type='hidden' value='" + item.communityId + "'>";
+            text += "<input type='hidden' value='" + item.user.userId + "'>";
+            text += "</div>";
+        });
+
+        $("div.centerSectionBox").html(text);
+    }
 
     /*-----------------------------------------------------------------------------------------------------------*/
     /*삭제*/
@@ -225,7 +336,7 @@ $(document).ready(function () {
 
 
 
-})
+});
 
 // 서비스에 대한 기능들을 하나의 모듈로 묶어서 처리한다.
 let communityService = (function() {

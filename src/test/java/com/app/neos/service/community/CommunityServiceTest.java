@@ -90,23 +90,40 @@ public class CommunityServiceTest {
                 .fetch();
     }
 
-//    @Test
-//    public void findById(Long communityId){
-//        communityId = communityService.findByCommunityId(3L).getCommunityId();
-//        List<CommunityDTO> communityDTOS = jpaQueryFactory.select(new QCommunityDTO(
-//                QCommunity.community.communityId,
-//                QCommunity.community.communityTitle,
-//                QCommunity.community.communityContent,
-//                QCommunity.community.communityLikeCount,
-//                QCommunity.community.user,
-//                QCommunity.community.createdDate,
-//                QCommunity.community.updatedDate
-//
-//        ))
-//                .from(QCommunity.community)
-//                .where(QCommunity.community.communityId.eq(communityId))
-//                .orderBy(QCommunity.community.communityId.desc())
-//                .fetch();
-//    }
+    @Test
+    public void findById(){
+        Long communityId = communityService.findByCommunityId(3L).getCommunityId();
+        CommunityDTO communityDTOS = jpaQueryFactory.select(new QCommunityDTO(
+                QCommunity.community.communityId,
+                QCommunity.community.communityTitle,
+                QCommunity.community.communityContent,
+                QCommunity.community.communityLikeCount,
+                QCommunity.community.user,
+                QCommunity.community.createdDate,
+                QCommunity.community.updatedDate
 
+        ))
+                .from(QCommunity.community)
+                .where(QCommunity.community.communityId.eq(communityId))
+                .fetchOne();
+    }
+
+    @Test
+    public void update( ){
+        User user = userRepository.findById(29l).get();
+        user.getUserId();
+
+        Long communityId = communityService.findByCommunityId(3L).getCommunityId();
+
+        CommunityDTO communityDTO = new CommunityDTO();
+        communityDTO.setCommunityTitle("3 자유게시판");
+        communityDTO.setCommunityContent("3 자유 게시판 내용");
+        communityDTO.setUser(user);
+
+        Community community = communityDTO.toEntity();
+
+        community.changeUser(communityDTO.getUser());
+
+//        communityService.saveCommunity(community);
+    }
 }

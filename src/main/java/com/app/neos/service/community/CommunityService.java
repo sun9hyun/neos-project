@@ -8,6 +8,7 @@ import com.app.neos.repository.community.CommunityRepository;
 import com.app.neos.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -38,9 +39,16 @@ public class CommunityService {
     }
 
     //추가
+    @Transactional
     public void updateCommunity(CommunityDTO communityDTO){
-        Community community = communityDTO.toEntity();
+//        Community community = communityDTO.toEntity();
+        Community community= communityRepository.findById(communityDTO.getCommunityId()).get();
         community.update(communityDTO);
+    }
+
+    //삭제
+    public void deleteCommunity(CommunityDTO communityDTO){
+        communityRepository.deleteById(communityDTO.getCommunityId());
     }
     
 }

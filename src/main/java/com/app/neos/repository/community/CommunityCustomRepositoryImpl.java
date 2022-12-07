@@ -26,7 +26,7 @@ public class CommunityCustomRepositoryImpl implements CommunityCustomRepository 
                 QCommunity.community.updatedDate
                 ))
                 .from(QCommunity.community)
-                .orderBy(QCommunity.community.communityId.desc())
+                .orderBy(QCommunity.community.updatedDate.desc())
                 .fetch();
 
     }

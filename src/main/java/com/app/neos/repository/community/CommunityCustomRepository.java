@@ -7,6 +7,8 @@ import java.util.List;
 public interface CommunityCustomRepository {
     public List<CommunityDTO> findAll();
 
+//    public
+
     public CommunityDTO findByCommunityId(Long communityId);
 
 //    public CommunityDTO update(Long communityId);

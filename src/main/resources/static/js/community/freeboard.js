@@ -88,68 +88,6 @@ $(document).ready(function(){
         $(this).css('opacity','1')
     })
 
-/*수정*/
-    function detail(communityId){
-        $.ajax({
-            url: "/community/communityDetail",
-            type: "post",
-            data: JSON.stringify(communityId),
-            contentType: "application/json; charset=utf-8",
-            success: function (result) {
-                if (callback) {
-                    callback(result);
-                }
-            }
-        });
-    }
-    const $postUpdateBtn = $(".loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo").find(".postUpdate_1j")
-
-    $postUpdateBtn.click(function () {
-        const $titles = $(".comTitle");
-        const $contents = $(".comContent");
-        // let i = $postUpdateBtn.index($(this));
-        let i = $(this).closest(".loungeCard").index();
-
-        const $title = $titles.eq(i).text();
-        const $content = $contents.eq(i).text();
-
-        $(".editorMdoal").find(".editorTitle input").val($title);
-        $(".editorMdoal").find(".note-editable").text($content);
-
-        $(".editorMdoal").attr("style","display:flex !important;");
-        $(".updatePost_1j").css("display","block");
-        $(".registerPost_1j").css("display","none");
-
-    })
-
-    $(".updatePost_1j").click(function(){
-        $(".updatePost_1j").css("display","none");
-        $(".editorMdoal").attr("style","display:none !important;")
-        $(".editorMdoal").find(".editorTitle input").val("");
-        $(".editorMdoal").find(".note-editable").text("");
-
-    })
-
-/*삭제 모달*/
-    const $postDeleteBtn = $(".loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo").find(".postDelete_1j");
-
-    $postDeleteBtn.on("click",function(){
-        $(".modalWrapOpen").attr("style","display : block !important")
-        $(".modalTit").text("글 삭제 확인");
-        $(".commonModalContent p").text("해당 글을 삭제하시겠습니까?");
-    })
-
-    $(".modalWrapOpen").find(".closeBtn").on("click",function () {
-        $(".modalWrapOpen").attr("style","display : none !important")
-    })
-
-    $(".modalWrapOpen").find(".doubleBtnWrap").click(function () {
-        $(".modalWrapOpen").attr("style","display : none !important")
-    })
-
-    $(".modalWrapOpen").find(".redBtn").click(function () {
-        $(".modalWrapOpen").attr("style","display : none !important")
-    })
 
     const $replyDeleteBtn = $(".userInformationComponents_userReplySection__3ty7Q").find(".replyDelete");
     $replyDeleteBtn.click(function () {
@@ -172,29 +110,6 @@ $(document).ready(function(){
         }
     });
 
-/* 좋아요 버튼 */
-    $(".replyComponent_reply__3l-Wc").on("click", ".replyComponent_replyFilter__10kow button", function () {
-            if ($(this).hasClass("buttonComponents_gray__1blI9")) {
-                $(this)
-                    .parent()
-                    .find("button")
-                    .each((i, item) => {
-                        if ($(item).hasClass("buttonComponents_black__3vMzB")) {
-                            $(item)
-                                .removeClass("buttonComponents_black__3vMzB")
-                                .addClass("buttonComponents_gray__1blI9");
-                            $(item).find("img").remove();
-                        }
-                    });
-                $(this)
-                    .removeClass("buttonComponents_gray__1blI9")
-                    .addClass("buttonComponents_black__3vMzB");
-                $(this).prepend(
-                    `<img class="buttonComponents_smImg__1vYDM" src="../images/community/bluedot.png">`
-                );
-            }
-        }
-    );
 })
 /*-----------------------------------------------------------------------------------------------------------*/
 /*댓글*/
@@ -282,6 +197,29 @@ $cardMoreButton.on("click", function () {
                 "loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4"
             );
         $(this).text("펼치기");
+    }
+});
+
+/* 댓글 좋아요 버튼 */
+$(".replyComponent_reply__3l-Wc").on("click", ".replyComponent_replyFilter__10kow button", function () {
+    if ($(this).hasClass("buttonComponents_gray__1blI9")) {
+        $(this)
+            .parent()
+            .find("button")
+            .each((i, item) => {
+                if ($(item).hasClass("buttonComponents_black__3vMzB")) {
+                    $(item)
+                        .removeClass("buttonComponents_black__3vMzB")
+                        .addClass("buttonComponents_gray__1blI9");
+                    $(item).find("img").remove();
+                }
+            });
+        $(this)
+            .removeClass("buttonComponents_gray__1blI9")
+            .addClass("buttonComponents_black__3vMzB");
+        $(this).prepend(
+            `<img class="buttonComponents_smImg__1vYDM" src="../images/community/bluedot.png">`
+        );
     }
 });
 

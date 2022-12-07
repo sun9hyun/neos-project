@@ -28,7 +28,7 @@ public class Community extends Period {
     private User user;
 
     public void changeUser(User user){
-       this.user = user;
+        this.user = user;
     }
 
     @Builder

@@ -4,6 +4,7 @@ package com.app.neos.controller.login;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.repository.user.UserCustomRepository;
 import com.app.neos.service.join.GoogleService;
+import com.app.neos.service.join.KaKaoLoginService;
 import com.app.neos.service.join.KaKaoService;
 import com.app.neos.service.join.NaverService;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,7 @@ public class LogoutController {
     private final KaKaoService kaKaoService;
     private final NaverService naverService;
     private final GoogleService googleService;
+    private final KaKaoLoginService kaKaoLoginService;
 
     private final UserCustomRepository userCustomRepository;
 
@@ -43,7 +45,7 @@ public class LogoutController {
         }
                 String oauthId = userDTO.getUserOAuthId();
         if(oauthId.endsWith("k")){
-            kaKaoService.logoutKakao(session.getAttribute("token").toString());
+            kaKaoLoginService.logoutKakao(session.getAttribute("token").toString());
         }else if(oauthId.endsWith("naver")) {
             naverService.logoutNaver(session.getAttribute("token").toString());
         }else if(oauthId.endsWith("google")){

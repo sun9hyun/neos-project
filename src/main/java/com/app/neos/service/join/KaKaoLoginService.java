@@ -138,4 +138,32 @@ public class KaKaoLoginService {
             e.printStackTrace();
         }
     }
+
+//    public void logoutKakao2(String token){
+//        String reqURL ="https://kapi.kakao.com/v1/user/logout";
+//        try {
+//            URL url = new URL(reqURL);
+//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//            conn.setRequestMethod("POST");
+//
+//            conn.setRequestProperty("Authorization", "Bearer " + token);
+//            int responseCode = conn.getResponseCode();
+//            log.info("responseCode : " + responseCode);
+//
+//            if(responseCode ==400)
+//                throw new RuntimeException("카카오 로그아웃 도중 오류 발생");
+//
+//            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//
+//            String br_line = "";
+//            String result = "";
+//            while ((br_line = br.readLine()) != null) {
+//                result += br_line;
+//            }
+//            log.info("결과");
+//            log.info(result);
+//        }catch(IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

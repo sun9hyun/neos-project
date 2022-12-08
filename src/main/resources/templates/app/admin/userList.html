@@ -117,7 +117,7 @@
                 <p style="font-size: 12px;margin-bottom: 12px;">해당 유저를 삭제하시겠습니까?</p>
             </div>
             <div class="btnWrap doubleBtnWrap"><button class="btn whiteBtn" style="font-size: 12px;line-height: 3;">아니오</button><button
-                    class="btn redBtn" style="font-size: 12px;line-height: 3;">예</button></div>
+                    class="btn redBtn deleteOk" id="deleteCheck" style="font-size: 12px;line-height: 3;">예</button></div>
         </div>
     </div>
 
@@ -202,7 +202,7 @@
                                     <div class="card">
                                         <div class="card-head" id="card-head">
                                             <header class="small">전체 사용자
-                                                <span class="text-primary" id="total-member-count">6</span>명
+                                                <span class="text-primary" id="total-member-count" th:text="${total}"></span>명
                                             </header>
 
                                         </div>
@@ -228,6 +228,87 @@
                                                     <li class="action"></li>
                                                 </ul>
 
+<!--                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">-->
+<!--                                                    <li class="check"> &lt;!&ndash; CHECKBOX &ndash;&gt;-->
+<!--                                                        <div class="checkbox checkbox-styled no-margin">-->
+<!--                                                            <label>-->
+<!--                                                                <input type="checkbox" class="terms">-->
+<!--                                                                <span></span>-->
+<!--                                                            </label>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
+
+<!--                                                    <li class="nick">-->
+<!--                                                        <a href="#" onclick="">-->
+<!--                                                            NEOS    <span class="badge">운영자</span>-->
+<!--                                                        </a>-->
+<!--                                                    </li>-->
+<!--                                                    <li class="account">slions1113@gmail.com</li>-->
+<!--                                                    <li class="dateJoin">2022-11-01</li>-->
+<!--                                                    <li class="participationProject">3</li>-->
+<!--                                                    <li class="participationStudy">8</li>-->
+<!--                                                    <li class="countPost">-->
+<!--                                                        <a href="#" onclick="">5</a> &lt;!&ndash; 마이페이지 내 게시글로 이동 &ndash;&gt;-->
+<!--                                                    </li>-->
+<!--                                                    <li class="countComment">0</li>-->
+<!--                                                    <li class="countQuestion">0</li>-->
+
+<!--                                                    <li class="action">-->
+<!--                                                        <div class="dropdown">-->
+<!--                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
+<!--                                                                <i class="zmdi zmdi-more"></i>-->
+<!--                                                            </button>-->
+<!--                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
+<!--                                                                <li>-->
+<!--                                                                    <a href="javascript:;" onclick="modalUp()">-->
+<!--                                                                        삭제-->
+<!--                                                                    </a>-->
+<!--                                                                </li>-->
+<!--                                                            </ul>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
+<!---->
+<!--                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">-->
+<!--                                                    <li class="check"> &lt;!&ndash; CHECKBOX &ndash;&gt;-->
+<!--                                                        <div class="checkbox checkbox-styled no-margin">-->
+<!--                                                            <label>-->
+<!--                                                                <input type="checkbox" class="terms">-->
+<!--                                                                <span></span>-->
+<!--                                                            </label>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
+
+<!--                                                    <li class="nick">-->
+<!--                                                        <a href="#" onclick="">성현성현</a>-->
+<!--                                                    </li>-->
+<!--                                                    <li class="account">neos01@gmail.com</li>-->
+<!--                                                    <li class="dateJoin">2022-10-09</li>-->
+<!--                                                    <li class="participationProject">5</li>-->
+<!--                                                    <li class="participationStudy">7</li>-->
+<!--                                                    <li class="countPost">-->
+<!--                                                        <a href="#" onclick="">6</a> &lt;!&ndash; 마이페이지 내 게시글로 이동 &ndash;&gt;-->
+<!--                                                    </li>-->
+<!--                                                    <li class="countComment">0</li>-->
+<!--                                                    <li class="countQuestion">1</li>-->
+
+<!--                                                    <li class="action">-->
+<!--                                                        <div class="dropdown">-->
+<!--                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
+<!--                                                                <i class="zmdi zmdi-more"></i>-->
+<!--                                                            </button>-->
+<!--                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
+<!--                                                                <li>-->
+<!--                                                                    <a href="javascript:;" onclick="modalUp()">-->
+<!--                                                                        삭제-->
+<!--                                                                    </a>-->
+<!--                                                                </li>-->
+<!--                                                            </ul>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
+                                                <tbody>
+                                                <th:block th:each="user:${users}" th:object="${user}">
                                                 <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
                                                     <li class="check"> <!-- CHECKBOX -->
                                                         <div class="checkbox checkbox-styled no-margin">
@@ -238,20 +319,23 @@
                                                         </div>
                                                     </li>
 
-                                                    <li class="nick">
-                                                        <a href="#" onclick="">
-                                                            NEOS    <span class="badge">운영자</span>
-                                                        </a>
+                                                    <li class="nick userInfo">
+                                                        <a href="#" class="userNickName" th:text="*{userNickName}"></a>
+                                                        <input type="hidden" th:href="*{userId}" class="userId">
                                                     </li>
-                                                    <li class="account">slions1113@gmail.com</li>
-                                                    <li class="dateJoin">2022-11-01</li>
-                                                    <li class="participationProject">3</li>
-                                                    <li class="participationStudy">8</li>
-                                                    <li class="countPost">
-                                                        <a href="#" onclick="">5</a> <!-- 마이페이지 내 게시글로 이동 -->
-                                                    </li>
-                                                    <li class="countComment">0</li>
-                                                    <li class="countQuestion">0</li>
+                                                    <li class="account" th:text="*{userOAuthEmail}"></li>
+                                                    <li class="dateJoin" th:text="*{createdDate}"></li>
+
+                                                    <th:block th:each="counts:${counts}">
+                                                        <li class="participationProject" th:text="${counts.storeCount}"></li>
+                                                        <li class="participationStudy" th:text="${counts.studyCount}"></li>
+                                                        <li class="countPost">
+                                                            <a href="#" onclick="" th:text="${counts.communityCount+counts.counselingCount}"></a> <!-- 마이페이지 내 게시글로 이동 -->
+                                                        </li>
+                                                        <li class="countComment" th:text="${counts.replyCount}"></li>
+                                                        <li class="countQuestion" th:text="${counts.inquiryCount}">0</li>
+                                                    </th:block>
+
 
                                                     <li class="action">
                                                         <div class="dropdown">
@@ -260,7 +344,9 @@
                                                             </button>
                                                             <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
                                                                 <li>
-                                                                    <a href="javascript:;" onclick="modalUp()">
+                                                                    <a href="javascript:;" class="deleteBtn"
+
+                                                                    >
                                                                         삭제
                                                                     </a>
                                                                 </li>
@@ -268,201 +354,125 @@
                                                         </div>
                                                     </li>
                                                 </ul>
+                                                </th:block>
+                                                </tbody>
 
-                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
-                                                    <li class="check"> <!-- CHECKBOX -->
-                                                        <div class="checkbox checkbox-styled no-margin">
-                                                            <label>
-                                                                <input type="checkbox" class="terms">
-                                                                <span></span>
-                                                            </label>
-                                                        </div>
-                                                    </li>
+<!--                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">-->
+<!--                                                    <li class="check"> &lt;!&ndash; CHECKBOX &ndash;&gt;-->
+<!--                                                        <div class="checkbox checkbox-styled no-margin">-->
+<!--                                                            <label>-->
+<!--                                                                <input type="checkbox" class="terms">-->
+<!--                                                                <span></span>-->
+<!--                                                            </label>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
 
-                                                    <li class="nick">
-                                                        <a href="#" onclick="">성현성현</a>
-                                                    </li>
-                                                    <li class="account">neos01@gmail.com</li>
-                                                    <li class="dateJoin">2022-10-09</li>
-                                                    <li class="participationProject">5</li>
-                                                    <li class="participationStudy">7</li>
-                                                    <li class="countPost">
-                                                        <a href="#" onclick="">6</a> <!-- 마이페이지 내 게시글로 이동 -->
-                                                    </li>
-                                                    <li class="countComment">0</li>
-                                                    <li class="countQuestion">1</li>
+<!--                                                    <li class="nick">-->
+<!--                                                        <a href="#" onclick="">호근호근</a>-->
+<!--                                                    </li>-->
+<!--                                                    <li class="account">neos1127@gmail.com</li>-->
+<!--                                                    <li class="dateJoin">2022-10-09</li>-->
+<!--                                                    <li class="participationProject">3</li>-->
+<!--                                                    <li class="participationStudy">0</li>-->
+<!--                                                    <li class="countPost">-->
+<!--                                                        <a href="#" onclick="">5</a> &lt;!&ndash; 마이페이지 내 게시글로 이동 &ndash;&gt;-->
+<!--                                                    </li>-->
+<!--                                                    <li class="countComment">2</li>-->
+<!--                                                    <li class="countQuestion">1</li>-->
 
-                                                    <li class="action">
-                                                        <div class="dropdown">
-                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
-                                                                <i class="zmdi zmdi-more"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
-                                                                <li>
-                                                                    <a href="javascript:;" onclick="modalUp()">
-                                                                        삭제
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+<!--                                                    <li class="action">-->
+<!--                                                        <div class="dropdown">-->
+<!--                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
+<!--                                                                <i class="zmdi zmdi-more"></i>-->
+<!--                                                            </button>-->
+<!--                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
+<!--                                                                <li>-->
+<!--                                                                    <a href="javascript:;" onclick="modalUp()">-->
+<!--                                                                        삭제-->
+<!--                                                                    </a>-->
+<!--                                                                </li>-->
+<!--                                                            </ul>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
 
-                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
-                                                    <li class="check"> <!-- CHECKBOX -->
-                                                        <div class="checkbox checkbox-styled no-margin">
-                                                            <label>
-                                                                <input type="checkbox" class="terms">
-                                                                <span></span>
-                                                            </label>
-                                                        </div>
-                                                    </li>
+<!--                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">-->
+<!--                                                    <li class="check"> &lt;!&ndash; CHECKBOX &ndash;&gt;-->
+<!--                                                        <div class="checkbox checkbox-styled no-margin">-->
+<!--                                                            <label>-->
+<!--                                                                <input type="checkbox" class="terms">-->
+<!--                                                                <span></span>-->
+<!--                                                            </label>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
 
-                                                    <li class="nick">
-                                                        <a href="#" onclick="">종우종우</a>
-                                                    </li>
-                                                    <li class="account">neos1127@gmail.com</li>
-                                                    <li class="dateJoin">2022-10-09</li>
-                                                    <li class="participationProject">3</li>
-                                                    <li class="participationStudy">8</li>
-                                                    <li class="countPost">
-                                                        <a href="#" onclick="">5</a> <!-- 마이페이지 내 게시글로 이동 -->
-                                                    </li>
-                                                    <li class="countComment">0</li>
-                                                    <li class="countQuestion">0</li>
+<!--                                                    <li class="nick">-->
+<!--                                                        <a href="#" onclick="">민성민성</a>-->
+<!--                                                    </li>-->
+<!--                                                    <li class="account">neos1157@gmail.com</li>-->
+<!--                                                    <li class="dateJoin">2022-10-09</li>-->
+<!--                                                    <li class="participationProject">3</li>-->
+<!--                                                    <li class="participationStudy">8</li>-->
+<!--                                                    <li class="countPost">-->
+<!--                                                        <a href="#" onclick="">5</a> &lt;!&ndash; 마이페이지 내 게시글로 이동 &ndash;&gt;-->
+<!--                                                    </li>-->
+<!--                                                    <li class="countComment">0</li>-->
+<!--                                                    <li class="countQuestion">0</li>-->
 
-                                                    <li class="action">
-                                                        <div class="dropdown">
-                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
-                                                                <i class="zmdi zmdi-more"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
-                                                                <li>
-                                                                    <a href="javascript:;" onclick="modalUp()">
-                                                                        삭제
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+<!--                                                    <li class="action">-->
+<!--                                                        <div class="dropdown">-->
+<!--                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
+<!--                                                                <i class="zmdi zmdi-more"></i>-->
+<!--                                                            </button>-->
+<!--                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
+<!--                                                                <li>-->
+<!--                                                                    <a href="javascript:;" onclick="modalUp()">-->
+<!--                                                                        삭제-->
+<!--                                                                    </a>-->
+<!--                                                                </li>-->
+<!--                                                            </ul>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
 
-                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
-                                                    <li class="check"> <!-- CHECKBOX -->
-                                                        <div class="checkbox checkbox-styled no-margin">
-                                                            <label>
-                                                                <input type="checkbox" class="terms">
-                                                                <span></span>
-                                                            </label>
-                                                        </div>
-                                                    </li>
+<!--                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">-->
+<!--                                                    <li class="check"> &lt;!&ndash; CHECKBOX &ndash;&gt;-->
+<!--                                                        <div class="checkbox checkbox-styled no-margin">-->
+<!--                                                            <label>-->
+<!--                                                                <input type="checkbox" class="terms">-->
+<!--                                                                <span></span>-->
+<!--                                                            </label>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
 
-                                                    <li class="nick">
-                                                        <a href="#" onclick="">호근호근</a>
-                                                    </li>
-                                                    <li class="account">neos1127@gmail.com</li>
-                                                    <li class="dateJoin">2022-10-09</li>
-                                                    <li class="participationProject">3</li>
-                                                    <li class="participationStudy">0</li>
-                                                    <li class="countPost">
-                                                        <a href="#" onclick="">5</a> <!-- 마이페이지 내 게시글로 이동 -->
-                                                    </li>
-                                                    <li class="countComment">2</li>
-                                                    <li class="countQuestion">1</li>
+<!--                                                    <li class="nick">-->
+<!--                                                        <a href="#" onclick="">로사로사</a>-->
+<!--                                                    </li>-->
+<!--                                                    <li class="account">neos@gmail.com</li>-->
+<!--                                                    <li class="dateJoin">2022-10-09</li>-->
+<!--                                                    <li class="participationProject">3</li>-->
+<!--                                                    <li class="participationStudy">8</li>-->
+<!--                                                    <li class="countPost">-->
+<!--                                                        <a href="#" onclick="">5</a> &lt;!&ndash; 마이페이지 내 게시글로 이동 &ndash;&gt;-->
+<!--                                                    </li>-->
+<!--                                                    <li class="countComment">0</li>-->
+<!--                                                    <li class="countQuestion">0</li>-->
 
-                                                    <li class="action">
-                                                        <div class="dropdown">
-                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
-                                                                <i class="zmdi zmdi-more"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
-                                                                <li>
-                                                                    <a href="javascript:;" onclick="modalUp()">
-                                                                        삭제
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-
-                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
-                                                    <li class="check"> <!-- CHECKBOX -->
-                                                        <div class="checkbox checkbox-styled no-margin">
-                                                            <label>
-                                                                <input type="checkbox" class="terms">
-                                                                <span></span>
-                                                            </label>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="nick">
-                                                        <a href="#" onclick="">민성민성</a>
-                                                    </li>
-                                                    <li class="account">neos1157@gmail.com</li>
-                                                    <li class="dateJoin">2022-10-09</li>
-                                                    <li class="participationProject">3</li>
-                                                    <li class="participationStudy">8</li>
-                                                    <li class="countPost">
-                                                        <a href="#" onclick="">5</a> <!-- 마이페이지 내 게시글로 이동 -->
-                                                    </li>
-                                                    <li class="countComment">0</li>
-                                                    <li class="countQuestion">0</li>
-
-                                                    <li class="action">
-                                                        <div class="dropdown">
-                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
-                                                                <i class="zmdi zmdi-more"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
-                                                                <li>
-                                                                    <a href="javascript:;" onclick="modalUp()">
-                                                                        삭제
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-
-                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
-                                                    <li class="check"> <!-- CHECKBOX -->
-                                                        <div class="checkbox checkbox-styled no-margin">
-                                                            <label>
-                                                                <input type="checkbox" class="terms">
-                                                                <span></span>
-                                                            </label>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="nick">
-                                                        <a href="#" onclick="">로사로사</a>
-                                                    </li>
-                                                    <li class="account">neos@gmail.com</li>
-                                                    <li class="dateJoin">2022-10-09</li>
-                                                    <li class="participationProject">3</li>
-                                                    <li class="participationStudy">8</li>
-                                                    <li class="countPost">
-                                                        <a href="#" onclick="">5</a> <!-- 마이페이지 내 게시글로 이동 -->
-                                                    </li>
-                                                    <li class="countComment">0</li>
-                                                    <li class="countQuestion">0</li>
-
-                                                    <li class="action">
-                                                        <div class="dropdown">
-                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">
-                                                                <i class="zmdi zmdi-more"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
-                                                                <li>
-                                                                    <a href="javascript:;" onclick="modalUp()">
-                                                                        삭제
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+<!--                                                    <li class="action">-->
+<!--                                                        <div class="dropdown">-->
+<!--                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
+<!--                                                                <i class="zmdi zmdi-more"></i>-->
+<!--                                                            </button>-->
+<!--                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
+<!--                                                                <li>-->
+<!--                                                                    <a href="javascript:;" onclick="modalUp()">-->
+<!--                                                                        삭제-->
+<!--                                                                    </a>-->
+<!--                                                                </li>-->
+<!--                                                            </ul>-->
+<!--                                                        </div>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
 
                                             </div>
                                             <nav class="text-center" id="paginate"></nav>
@@ -475,7 +485,40 @@
                 </div>
             </div>
         </section>
-        <section th:replace="/app/admin/adminPaging.html :: adminPaging"></section>
+        <section>
+            <div class="pagingAndBtn" >
+                <span class="pagination pagination-sm clearfix">
+                    <input type="hidden" id="nowPage" th:value="${nowPage}">
+                    <input type="hidden" id="total" th:value="${total}">
+                    <input type="hidden" id="size" th:value="${size}">
+                    <input type="hidden" id="endPage" th:value="${endPage}">
+
+                    <!--                    <input type="hidden" id="startPage" th:value="${startPage}">-->
+                    <th:block th:with="start=${T(java.lang.Math).floor(users.number/5)*5+1},
+                               last=(${start + 4 < users.totalPages ? start + 4 : users.totalPages})" th:if="${total != 0}">
+                        <th:block th:if="${start!=1}">
+                            <a class="btn_paging prev screen_out paging"
+                               th:href="${users.first} ? '#' :@{/admin/test/user/list(page=${users.number-1})}"></a>
+                        </th:block>
+                        <th:block th:unless="${start!=1}">
+                            <a class="btn_paging prev screen_out paging" style="display: none"
+                               th:href="${users.first} ? '#' :@{/admin/test/user/list(page=${users.number-1})}"></a>
+                        </th:block>
+                        <th:block th:each="num : ${#numbers.sequence(start, last)}">
+                            <a class="paging" th:text="${num}" th:href="@{/admin/test/user/list(page=${num-1})}"></a>
+                        </th:block>
+                        <th:block th:if="${(last%5) == 0}">
+                            <a class="btn_paging next screen_out paging"
+                               th:href="${users.last} ? '#' : @{/admin/test/user/list(page=${users.number+1})}"></a>
+                        </th:block>
+                        <th:block th:unless="${(last%5) == 0}">
+                            <a class="btn_paging next screen_out paging" style="display: none"
+                               th:href="${users.last} ? '#' : @{/admin/test/user/list(page=${users.number+1})}"></a>
+                        </th:block>
+                    </th:block>
+                </span>
+            </div>
+        </section>
 
     </div><!--end #content-->
 
@@ -549,5 +592,55 @@
     function modalUp(){
         $deleteModal.show();
     }
+
+
+    $(".dateJoin").ready(function () {
+        $(".dateJoin").bind("click", function () {
+            $(this).html($(this).text().slice(0, 10));
+        });
+        $(".dateJoin").trigger("click");
+    });
+
+
+    pageActive();
+
+    function pageActive() {
+        let $nowPage = $('#nowPage').attr('value');
+        let $endPage = $('#endPage').attr('value');
+
+        $('a.paging').each(function(){
+            if(($(this).text()-1) == $nowPage){
+                $(this).addClass('active');
+            }
+        });
+    }
+
+    $('.userNickName').click(function () {
+        var userId = $(this).next().attr('href');
+        location.href = "/admin/test/user/detail" + "?userId=" + userId;
+    })
+
+
+    $('#deleteCheck').click(function() {
+        var userIds = "";
+        $(".terms:checked").each(function() {
+            if(userIds == ""){
+                userIds = $(this).closest(".check").next().find(".userId").attr("href");
+            } else {
+                userIds = userIds + "," + $(this).closest(".check").next().find(".userId").attr("href");
+            }
+        });
+        location.href = "/admin/test/user/deleteCheck" + "?userIds=" + userIds;
+    });
+
+    $('.deleteBtn').click(function () {
+        let userId = $(this).closest('.action').prev().parent().find(".userInfo").find('.userId').attr('href');
+        alert(userId);
+
+        $('.deleteOk').click(function () {
+            alert(userId);
+            // location.href = "/admin/test/user/delete" + "?userId=" + userId;
+        })
+    })
 </script>
 </html>

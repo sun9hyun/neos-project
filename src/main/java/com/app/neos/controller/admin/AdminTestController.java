@@ -1,11 +1,14 @@
 package com.app.neos.controller.admin;
 
+import com.app.neos.domain.Admin.AdminUserDTO;
 import com.app.neos.domain.banner.BannerDTO;
 import com.app.neos.domain.college.CollegeDTO;
 import com.app.neos.domain.notice.NoticeDTO;
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.banner.Banner;
 import com.app.neos.entity.college.College;
 import com.app.neos.entity.notice.Notice;
+import com.app.neos.entity.user.User;
 import com.app.neos.service.admin.AdminCollegeService;
 import com.app.neos.service.admin.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -50,13 +53,17 @@ public class AdminTestController {
 
 //    대학교 목록
     @GetMapping("college/list")
-    public String list(Model model, @PageableDefault(page = 0, size = 3) Pageable pageable){
+    public String list(Model model, @PageableDefault(page = 0, size = 5) Pageable pageable){
 
         Page<CollegeDTO> collegeDTOS = adminService.findCollegePage(pageable);
 
-        log.info(pageable.getPageNumber() + "");
-
+        int startPage = Math.max(1, collegeDTOS.getPageable().getPageNumber());
+        int endPage = Math.min(collegeDTOS.getPageable().getPageNumber(), collegeDTOS.getTotalPages());
+//
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
         model.addAttribute("nowPage", pageable.getPageNumber());
+        model.addAttribute("size", pageable.getPageSize());
         model.addAttribute("colleges", collegeDTOS);
         model.addAttribute("total", adminService.findCollege().size());
 
@@ -92,7 +99,6 @@ public class AdminTestController {
 
     @GetMapping("college/delete")
     public RedirectView deleteById(String collegeId){
-        log.info(collegeId);
         adminService.deleteById(collegeId);
         return new RedirectView("list");
     }
@@ -121,6 +127,28 @@ public class AdminTestController {
         return new RedirectView("list");
     }
 
+//    배너수정가기
+    @GetMapping("banner/update")
+    public String update(Long bannerId, Model model){
+        model.addAttribute("bannerDTO", adminService.findByBannerId(bannerId));
+        return "app/admin/bannerUpdate";
+    }
+
+    @PostMapping("banner/update")
+    @Transactional
+    public RedirectView updateOk(BannerDTO bannerDTO){
+        Banner banner = adminService.findByBannerEntityId(bannerDTO.getBannerId());
+        banner.update(bannerDTO);
+
+        return new RedirectView("list");
+    }
+
+    @GetMapping("banner/delete")
+    public RedirectView deleteByBannerId(Long bannerId){
+        adminService.deleteByBannerId(bannerId);
+        return new RedirectView("list");
+    }
+
 
 //    공지사항 등록
     @GetMapping("notice/edit")
@@ -130,11 +158,63 @@ public class AdminTestController {
 
     @PostMapping("notice/edit")
     public RedirectView saveOk(NoticeDTO noticeDTO){
-        log.info("들어옴");
-        
         Notice notice = noticeDTO.toEntity();
         adminService.saveNotice(notice);
 
         return new RedirectView("edit");
     }
+
+
+//    유저 목록
+    @GetMapping("user/list")
+    public String userList(Model model, @PageableDefault(page = 0, size = 5) Pageable pageable){
+
+        Page<UserDTO> users = adminService.findAllUserPage(pageable);
+        List<AdminUserDTO> counts = new ArrayList<>();
+
+        for (UserDTO user: users) {
+            counts.add(adminService.workCount(user.getUserId()));
+        }
+
+        int startPage = Math.max(1, users.getPageable().getPageNumber()-1);
+        int endPage = Math.min(users.getPageable().getPageNumber()+4, users.getTotalPages());
+
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
+
+        model.addAttribute("nowPage", pageable.getPageNumber());
+        model.addAttribute("size", pageable.getPageSize());
+        model.addAttribute("users", users);
+        model.addAttribute("total", users.getTotalElements());
+
+        model.addAttribute("counts", counts);
+
+        return "app/admin/userList";
+    }
+
+//    유저 상세
+    @GetMapping("user/detail")
+    public String userDetail(Long userId, Model model){
+
+        model.addAttribute("user", adminService.findByUserDTOId(userId));
+        model.addAttribute("count", adminService.workCount(userId));
+
+        return "app/admin/userDetail";
+    }
+
+    //    유저 체크 여부에 따라 삭제하기
+    @GetMapping("user/deleteCheck")
+    public RedirectView deleteByCheckUser(String userIds){
+        adminService.deleteByUserCheck(userIds);
+        return new RedirectView("list");
+    }
+
+    @GetMapping("user/delete")
+    public RedirectView deleteByIdUser(String userId){
+        adminService.deleteByUserId(userId);
+        return new RedirectView("list");
+    }
+
+
+
 }

@@ -266,7 +266,6 @@
                                                             </div>
                                                         </li>
                                                     </ul>
-                                                    <input type="hidden" id="nowPage" th:value="${nowPage}">
                                                 </th:block>
                                                 </tbody>
                                                 <!--끝-->
@@ -430,11 +429,46 @@
                 </div>
             </div>
         </section>
-        <section th:replace="/app/admin/adminPaging.html :: adminPaging"></section>
+        <section>
+            <div class="pagingAndBtn" >
+                <span class="pagination pagination-sm clearfix">
+                    <input type="hidden" id="nowPage" th:value="${nowPage}">
+                    <input type="hidden" id="total" th:value="${total}">
+                    <input type="hidden" id="size" th:value="${size}">
+                    <input type="hidden" id="endPage" th:value="${endPage}">
+
+                    <!--                    <input type="hidden" id="startPage" th:value="${startPage}">-->
+                    <th:block th:with="start=${T(java.lang.Math).floor(colleges.number/5)*5+1},
+                               last=(${start + 4 < colleges.totalPages ? start + 4 : colleges.totalPages})" th:if="${total != 0}">
+                        <th:block th:if="${start!=1}">
+                            <a class="btn_paging prev screen_out paging"
+                               th:href="${colleges.first} ? '#' :@{/admin/test/college/list(page=${colleges.number-1})}"></a>
+                        </th:block>
+                        <th:block th:unless="${start!=1}">
+                            <a class="btn_paging prev screen_out paging" style="display: none"
+                               th:href="${colleges.first} ? '#' :@{/admin/test/college/list(page=${colleges.number-1})}"></a>
+                        </th:block>
+                        <th:block th:each="num : ${#numbers.sequence(start, last)}">
+                            <a class="paging" th:text="${num}" th:href="@{/admin/test/college/list(page=${num-1})}"></a>
+                        </th:block>
+                        <th:block th:if="${(last%5) == 0}">
+                            <a class="btn_paging next screen_out paging"
+                               th:href="${colleges.last} ? '#' : @{/admin/test/college/list(page=${colleges.number+1})}"></a>
+                        </th:block>
+                        <th:block th:unless="${(last%5) == 0}">
+                            <a class="btn_paging next screen_out paging" style="display: none"
+                               th:href="${colleges.last} ? '#' : @{/admin/test/college/list(page=${colleges.number+1})}"></a>
+                        </th:block>
+                    </th:block>
+                </span>
+            </div>
+        </section>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script th:inline="javascript">
+    pageActive();
+
     // base.html
 
     // 문서로드 완료 후 자바 스크립트 진행
@@ -544,18 +578,15 @@
         location.href = "/admin/test/college/delete" + "?collegeId=" + collegeId;
     })
 
-    $('a.paging').click(function () {
-        alert($(this).attr('value'));
-        location.href = "/admin/test/college/list" + "?page=" + $(this).attr('value');
-    })
-
     function pageActive() {
-        let $paging = $('a.paging').attr('value');
-        let $nowPage = $('#nowPage');
+        let $nowPage = $('#nowPage').attr('value');
+        let $endPage = $('#endPage').attr('value');
 
-        if($paging == $nowPage){
-            
-        }
+        $('a.paging').each(function(){
+            if(($(this).text()-1) == $nowPage){
+                $(this).addClass('active');
+            }
+        });
     }
 
 

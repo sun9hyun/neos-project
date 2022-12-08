@@ -2,8 +2,13 @@ package com.app.neos.service.admin;
 
 import com.app.neos.domain.college.CollegeDTO;
 import com.app.neos.domain.college.QCollegeDTO;
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.college.College;
 import com.app.neos.entity.college.QCollege;
+import com.app.neos.repository.admin.AdminCommunityReplyRepository;
+import com.app.neos.repository.admin.AdminCommunityRepository;
+import com.app.neos.repository.admin.AdminStudyFeedReplyRepository;
+import com.app.neos.repository.store.StoreRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +29,24 @@ import java.util.List;
 public class AdminServiceTest {
     @Autowired
     AdminCollegeService adminCollegeService;
+
+    @Autowired
+    AdminService adminService;
+
+    @Autowired
+    StoreRepository storeRepository;
+
+    @Autowired
+    AdminStudyFeedReplyRepository adminStudyFeedReplyRepository;
+
+    @Autowired
+    AdminCommunityReplyRepository adminCommunityReplyRepository;
+
+    @Autowired
+    AdminCommunityRepository adminCommunityRepository;
+
+
+
 
     @Autowired
     JPAQueryFactory jpaQueryFactory;
@@ -64,5 +87,30 @@ public class AdminServiceTest {
 
     }
 
+
+//    배너 아이디로 조회
+    @Test
+    public void findByBannerIdTest(){
+        adminService.findByBannerId(12L);
+    }
+
+
+//    유저 아이디로 조회
+    @Test
+    public void findByUserId(){
+        log.info(adminService.findByUserId(2L).toString());
+    }
+
+    @Test
+    public void findByUserDTDId(){
+        log.info(adminService.findByUserDTOId(2L).toString());
+    }
+
+    @Test
+    public void findFeedCount(){
+        log.info(adminStudyFeedReplyRepository.findAllByStudyFeedReplyWriter_UserId(2L).size() + "");
+//        log.info(adminCommunityReplyRepository.findByUser_UserId(2L).size() + "");
+//        log.info(adminCommunityRepository.findByUser_UserId(2L).size()+ "");
+    }
 
 }

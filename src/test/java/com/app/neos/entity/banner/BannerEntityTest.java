@@ -23,7 +23,7 @@ public class BannerEntityTest {
 
         BannerDTO bannerDTO = new BannerDTO();
         bannerDTO.setBannerTitle("11월 이벤트 배너");
-        bannerDTO.setBannerStatus(BannerStatus.게재중);
+        bannerDTO.setBannerStatus(BannerStatus.개제중);
         bannerDTO.setBannerUrl("호근이 마음속");
 
         Banner banner = bannerDTO.toEntity();
@@ -53,5 +53,6 @@ public class BannerEntityTest {
     public void deleteTest(){
         bannerRepository.deleteAll();
     }
+
 
 }

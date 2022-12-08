@@ -53,172 +53,59 @@
                         <th class="date">작성일</th>
                     </tr>
                     </thead>
+
                     <tbody>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">포인트 충전 가격 인상 안내</p>
-                        </td>
-                        <td>
-                            <p>22.07.18 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">채팅 시스템 업데이트 안내</p>
-                        </td>
-                        <td>
-                            <p >22.07.13 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">스터디 모집 글 공지사항 안내</p>
-                        </td>
-                        <td>
-                            <p>22.06.26 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">스터디 검수 및 노출 조건 안내 </p>
-                        </td>
-                        <td>
-                            <p>22.06.16 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">네오스 모바일 어플리케이션이 출시되었습니다</p>
-                        </td>
-                        <td>
-                            <p>22.06.13 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">스터디 검수조건 안내</p>
-                        </td>
-                        <td>
-                            <p>22.03.11 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">렛플 프로젝트 게시 시 , 연결 게시 사이트 안내 (2021년 12월)</p>
-                        </td>
-                        <td>
-                            <p>21.05.23 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">[신규 기능] 렛플 - 스토리 오픈</p>
-                        </td>
-                        <td>
-                            <p>21.03.28 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">[기능 업데이트] 프로젝트 지원시 ,개인정보제공(이메일정보)동의추가</p>
-                        </td>
-                        <td>
-                            <p>21.03.21 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">[신규 기능] 렛플 - 상호 평가 모듈 오픈</p>
-                        </td>
-                        <td>
-                            <p>21.02.21 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">[신규 기능] 렛플 - 그룹챗 기능 베타 오픈</p>
-                        </td>
-                        <td>
-                            <p>21.02.17 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">[이벤트] 커피 포인트를 받자 </p>
-                        </td>
-                        <td>
-                            <p>21.02.03 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">렛돈내플 이벤트 선정 결과 공지</p>
-                        </td>
-                        <td>
-                            <p>21.02.01 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">[이벤트] 최고의 프로젝트 중간 집계</p>
-                        </td>
-                        <td>
-                            <p>21.01.19 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">프로젝트 등록/신청 및 노출 로직 변경</p>
-                        </td>
-                        <td>
-                            <p>21.01.12 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">[이벤트] 커피 포인트를 드립니다</p>
-                        </td>
-                        <td>
-                            <p>20.12.20 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">[신규 기능] 렛플 "오픈 챗" 기능 추가 </p>
-                        </td>
-                        <td>
-                            <p>20.11.20 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">[이벤트] 렛돈내플 (기간연장/ 대상확대)</p>
-                        </td>
-                        <td>
-                            <p>20.11.15 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">[이벤트] 본인인증 하고 5 커피 포인트 받자!</p>
-                        </td>
-                        <td>
-                            <p>20.10.01 </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="cursor: pointer">렛플이 오픈하였습니다.</p>
-                        </td>
-                        <td>
-                            <p>20.09.01 </p>
-                        </td>
-                    </tr>
+                    <th:block th:each="notice:${notices}" th:object="${notice}">
+                        <tr>
+                            <td>
+                                <p class="noticeTitle" style="cursor: pointer" th:text="*{noticeTitle}"></p>
+                                <input type="hidden" th:href="*{noticeId}" id="noticeId">
+                            </td>
+                            <td>
+                                <p class="createdDate" th:text="*{createdDate}"></p>
+                            </td>
+                        </tr>
+                    </th:block>
                     </tbody>
                 </table>
-                <div class="pagingAndBtn"><span class="pagination pagination-sm clearfix"><a
-                        class="btn_paging prev screen_out" style="cursor: pointer"></a><a class="active">1</a><a
-                        class="btn_paging next screen_out" style="cursor: pointer"></a></span></div>
+<!--                <div class="pagingAndBtn"><span class="pagination pagination-sm clearfix"><a-->
+<!--                        class="btn_paging prev screen_out" style="cursor: pointer"></a><a class="active">1</a><a-->
+<!--                        class="btn_paging next screen_out" style="cursor: pointer"></a></span>-->
+<!--                </div>-->
+                <section>
+                    <div class="pagingAndBtn" >
+                <span class="pagination pagination-sm clearfix">
+                    <input type="hidden" id="nowPage" th:value="${nowPage}">
+                    <input type="hidden" id="total" th:value="${total}">
+                    <input type="hidden" id="size" th:value="${size}">
+                    <input type="hidden" id="endPage" th:value="${endPage}">
+
+                    <!--                    <input type="hidden" id="startPage" th:value="${startPage}">-->
+                    <th:block th:with="start=${T(java.lang.Math).floor(notices.number/5)*5+1},
+                               last=(${start + 4 < notices.totalPages ? start + 4 : notices.totalPages})" th:if="${total != 0}">
+                        <th:block th:if="${start!=1}">
+                            <a class="btn_paging prev screen_out paging"
+                               th:href="${notices.first} ? '#' :@{/notice/list(page=${notices.number-1})}"></a>
+                        </th:block>
+                        <th:block th:unless="${start!=1}">
+                            <a class="btn_paging prev screen_out paging" style="display: none"
+                               th:href="${notices.first} ? '#' :@{/notice/list(page=${notices.number-1})}"></a>
+                        </th:block>
+                        <th:block th:each="num : ${#numbers.sequence(start, last)}">
+                            <a class="paging" th:text="${num}" th:href="@{/notice/list(page=${num-1})}"></a>
+                        </th:block>
+                        <th:block th:if="${(last%5) == 0}">
+                            <a class="btn_paging next screen_out paging"
+                               th:href="${notices.last} ? '#' : @{/notice/list(page=${notices.number+1})}"></a>
+                        </th:block>
+                        <th:block th:unless="${(last%5) == 0}">
+                            <a class="btn_paging next screen_out paging" style="display: none"
+                               th:href="${notices.last} ? '#' : @{/notice/list(page=${notices.number+1})}"></a>
+                        </th:block>
+                    </th:block>
+                </span>
+                    </div>
+                </section>
             </div>
         </div>
     </section>
@@ -227,6 +114,44 @@
 </body>
 <script src="/js/fix/login.js"></script>
 <script src="/js/fix/header.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script th:inline="javascript">
+    pageActive();
+
+    function pageActive() {
+        let $nowPage = $('#nowPage').attr('value');
+        let $endPage = $('#endPage').attr('value');
+
+        $('a.paging').each(function(){
+            if(($(this).text()-1) == $nowPage){
+                $(this).addClass('active');
+            }
+
+            if($nowPage == 0){
+                $('.btn_paging.prev').css('display', 'none')
+            }
+
+            if($nowPage == $endPage-1){
+                $('.btn_paging.next').css('display', 'none')
+            }
+        });
+    }
+
+
+    $(".createdDate").ready(function () {
+        $(".createdDate").bind("click", function () {
+            $(this).html($(this).text().slice(0, 10));
+        });
+        $(".createdDate").trigger("click");
+    });
+
+
+    $('.noticeTitle').on("click", function (e) {
+        e.preventDefault();
+        location.href = "/notice/detail" + "?noticeId=" + $(this).next().attr("href");
+    });
+
+</script>
 
 
 </html>

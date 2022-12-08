@@ -1,16 +1,27 @@
 package com.app.neos.service.admin;
 
+import com.app.neos.domain.Admin.AdminUserDTO;
 import com.app.neos.domain.banner.BannerDTO;
 import com.app.neos.domain.college.CollegeDTO;
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.banner.Banner;
 import com.app.neos.entity.college.College;
 import com.app.neos.entity.notice.Notice;
+import com.app.neos.entity.user.User;
+import com.app.neos.repository.admin.*;
 import com.app.neos.repository.banner.BannerCustomRepository;
 import com.app.neos.repository.banner.BannerRepository;
 import com.app.neos.repository.college.CollegeCustomRepository;
 import com.app.neos.repository.college.CollegeCustomRepositoryImpl;
 import com.app.neos.repository.college.CollegeRepository;
+import com.app.neos.repository.community.CommunityRepository;
+import com.app.neos.repository.counseling.CounselingRepository;
+import com.app.neos.repository.notice.NoticeCustomRepository;
 import com.app.neos.repository.notice.NoticeRepository;
+import com.app.neos.repository.store.StoreRepository;
+import com.app.neos.repository.study.StudyRepository;
+import com.app.neos.repository.user.UserCustomRepository;
+import com.app.neos.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,11 +32,27 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AdminService {
+    private final UserRepository userRepository;
     private final CollegeRepository collegeRepository;
     private final CollegeCustomRepository collegeCustomRepository;
     private final BannerRepository bannerRepository;
     private final BannerCustomRepository bannerCustomRepository;
     private final NoticeRepository noticeRepository;
+    private final UserCustomRepository userCustomRepository;
+    private final AdminCustomRepository adminCustomRepository;
+    private final AdminStoreRepository adminStoreRepository;
+    private final AdminStudyRepository adminStudyRepository;
+    private final AdminCommunityRepository adminCommunityRepository;
+    private final AdminCounselingRepository adminCounselingRepository;
+    private final AdminInquiryRepository adminInquiryRepository;
+
+    private final AdminStudyFeedReplyRepository adminStudyFeedReplyRepository;
+    private final AdminCommunityReplyRepository adminCommunityReplyRepository;
+    private final AdminCommunityReReplyRepository adminCommunityReReplyRepository;
+    private final AdminCounselingReplyRepository adminCounselingReplyRepository;
+    private final AdminCounselingReReplyRepository adminCounselingReReplyRepository;
+    private final AdminStoreReplyRepository adminStoreReplyRepository;
+    private final AdminStoreReReplyRepository adminStoreReReplyRepository;
 
 
 
@@ -86,6 +113,21 @@ public class AdminService {
         return bannerCustomRepository.findAll();
     }
 
+    //    배너 아이디로 조회
+    public BannerDTO findByBannerId(Long bannerId){
+        return bannerCustomRepository.findById(bannerId);
+    }
+
+    //    배너 아이디로 엔티티 조회
+    public Banner findByBannerEntityId(Long bannerId){
+        return bannerRepository.findById(bannerId).get();
+    }
+
+    //    배너 삭제
+    public void deleteByBannerId(Long bannerId){
+        bannerRepository.deleteById(bannerId);
+    }
+
 
 
 
@@ -94,6 +136,64 @@ public class AdminService {
     public void saveNotice(Notice notice){
         noticeRepository.save(notice);
     }
+
+
+
+    //    유저 목록 페이지
+    public Page<UserDTO> findAllUserPage(Pageable pageable){
+        return adminCustomRepository.findAllUserPage(pageable);
+    }
+
+    //    유저 아이디로 조회
+    public User findByUserId(Long userId){
+        return  adminCustomRepository.findByUserId(userId);
+    }
+
+    //    유저 아이디로 조회
+    public UserDTO findByUserDTOId(Long userId){
+        return  adminCustomRepository.findByUserDTOId(userId);
+    }
+
+    //    유저 아이디로 게시글 숫자 카운트 뿌리기
+    public AdminUserDTO workCount(Long userId){
+        AdminUserDTO adminUserDTO = new AdminUserDTO();
+        int replyCount = 0;
+
+        int studyFeedReply = adminStudyFeedReplyRepository.findAllByStudyFeedReplyWriter_UserId(userId).size();
+        int communityReply = adminCommunityReplyRepository.findByUser_UserId(userId).size();
+        int communityReReply = adminCommunityReReplyRepository.findByUser_UserId(userId).size();
+        int counselingReply = adminCounselingReplyRepository.findByUser_UserId(userId).size();
+        int counselingReReply = adminCounselingReReplyRepository.findByUser_UserId(userId).size();
+        int storeReply = adminStoreReplyRepository.findByUser_UserId(userId).size();
+        int storeReReply = adminStoreReReplyRepository.findByUser_UserId(userId).size();
+
+        replyCount = studyFeedReply + communityReply + communityReReply + counselingReply + counselingReReply + storeReply + storeReReply;
+
+
+        adminUserDTO.setStoreCount((long) adminStoreRepository.findByUser_UserId(userId).size());
+        adminUserDTO.setStudyCount((long) adminStudyRepository.findByUser_UserId(userId).size());
+        adminUserDTO.setCommunityCount((long) adminCommunityRepository.findByUser_UserId(userId).size());
+        adminUserDTO.setCounselingCount((long) adminCounselingRepository.findByUser_UserId(userId).size());
+        adminUserDTO.setReplyCount((long) replyCount);
+        adminUserDTO.setInquiryCount((long) adminInquiryRepository.findByUser_UserId(userId).size());
+
+        return adminUserDTO;
+    }
+
+    //    유저 삭제
+    public void deleteByUserId(String userId){
+        userRepository.deleteById(Long.parseLong(userId));
+    }
+
+    //    유저 체크 여부에 따라 삭제하기
+    public void deleteByUserCheck(String userIds){
+        String[] arUserIds = userIds.split(",");
+
+        for (int i = 0; i < arUserIds.length; i++){
+            userRepository.deleteById(Long.parseLong(arUserIds[i]));
+        }
+    }
+
 
 
 }

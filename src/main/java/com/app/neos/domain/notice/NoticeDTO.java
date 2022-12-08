@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 @Data
 @NoArgsConstructor
@@ -13,6 +15,9 @@ public class NoticeDTO {
     private Long noticeId;
     private String noticeTitle;
     private String noticeContent;
+
+    private LocalDateTime createdDate;
+    private LocalDateTime updatedDate;
 
     public Notice toEntity(){
         return Notice.builder()
@@ -27,4 +32,18 @@ public class NoticeDTO {
         this.noticeTitle = noticeTitle;
         this.noticeContent = noticeContent;
     }
+
+
+    @QueryProjection
+    public NoticeDTO(Long noticeId, String noticeTitle, String noticeContent, LocalDateTime createdDate, LocalDateTime updatedDate) {
+        this.noticeId = noticeId;
+        this.noticeTitle = noticeTitle;
+        this.noticeContent = noticeContent;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+    }
+
+
+
+
 }

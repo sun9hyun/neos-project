@@ -180,7 +180,7 @@
                                                         <option value="13">부산광역시</option>
                                                         <option value="14">제주특별시</option>
                                                     </select>
-                                                    <input th:field="*{collegeCity}" id="collegeCity" type="hidden">
+                                                    <input th:field="*{collegeCity}" id="collegeCity2" type="hidden">
                                                 </div>
                                             </div>
 
@@ -331,7 +331,7 @@
 
 
     function submit() {
-        $('input[id=collegeCity]').attr('value', $("#collegeCity option:selected").text());
+        $('input[id=collegeCity2]').attr('value', $("#collegeCity option:selected").text());
 
         collegeWrite.submit();
     }

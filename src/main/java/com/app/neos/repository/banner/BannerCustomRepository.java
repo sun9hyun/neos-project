@@ -8,4 +8,6 @@ public interface BannerCustomRepository {
 
     public List<BannerDTO> findAll();
 
+    public BannerDTO findById(Long bannerId);
+
 }

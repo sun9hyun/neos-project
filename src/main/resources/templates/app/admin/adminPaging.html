@@ -8,21 +8,32 @@
 <section th:fragment="adminPaging">
 <div class="pagingAndBtn" >
                 <span class="pagination pagination-sm clearfix">
+                    <input type="hidden" id="nowPage" th:value="${nowPage}">
+                    <input type="hidden" id="total" th:value="${total}">
+                    <input type="hidden" id="size" th:value="${size}">
+                    <input type="hidden" id="startPage" th:value="${startPage}">
+                    <input type="hidden" id="endPage" th:value="${endPage}">
                     <th:block>
-                        <a class="btn_paging prev screen_out paging"></a>
+                        <a class="btn_paging prev screen_out paging"
+                           th:href="@{/admin/test/college/list(page=${colleges.pageable.pageNumber - 1})}"></a>
+                    </th:block>
+                    <th:block th:each="num : ${#numbers.sequence(startPage, endPage)}" th:if="${endPage != nowPage}">
+                        <a class="paging" th:href="@{/admin/test/college/list(page=${num-1})}" th:text="${num}"></a>
                     </th:block>
                     <th:block>
-                        <a class="active paging" th:value="${0}">1</a>
-                        <a class="paging" th:value="${1}">2</a>
-                        <a class="paging" th:value="${2}">3</a>
-                        <a class="paging" th:value="${3}">4</a>
-                        <a class="paging" th:value="${4}">5</a>
+                        <a class="btn_paging next screen_out paging"
+                           th:href="@{/admin/test/college/list(page=${colleges.pageable.pageNumber + 1})}"></a>
                     </th:block>
-                    <th:block>
-                        <a class="btn_paging next screen_out paging"></a>
-                    </th:block>
+
                 </span>
 </div>
 </section>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+
+
+
+</script>
+
 </html>

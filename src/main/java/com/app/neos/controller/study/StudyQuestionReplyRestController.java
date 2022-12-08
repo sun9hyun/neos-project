@@ -28,5 +28,21 @@ public class StudyQuestionReplyRestController {
         return studyQuestionReplyService.showList(studyQuestionId);
     }
 
+    @DeleteMapping("/{bno}")
+    public String remove(@PathVariable("bno") Long studyQuestionRepldId){
+        Long id = studyQuestionReplyService.getStudyQuestionId(studyQuestionRepldId);
+       studyQuestionReplyService.remove(studyQuestionRepldId);
+        return id.toString();
+    }
+
+    @PutMapping("/{bno}")
+    public String update(@PathVariable("bno") Long studyQuestionRepldId, StudyQuestionReplyDTO studyQuestionReplyDTO){
+
+        StudyQuestionReplyDTO dto = studyQuestionReplyDTO;
+        dto.setStudyQuestionReplyId(studyQuestionRepldId);
+        studyQuestionReplyService.update(dto);
+        return studyQuestionReplyService.getStudyQuestionId(studyQuestionRepldId).toString();
+    }
+
 
 }

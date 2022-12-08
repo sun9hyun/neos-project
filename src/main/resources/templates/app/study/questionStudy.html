@@ -78,7 +78,12 @@
                             </a></li>
                             <li><a name="work" class="">일감</a></li>
                             <li><a name="feed" class="">피드</a></li>
-                            <li><a name="mgmt" class="">관리</a></li>
+                            <th:block th:if="${session.loginUser != study.getUserId()}">
+                                <li><a name="mgmt" class="disabled">관리</a></li>
+                            </th:block>
+                            <th:block th:unless="${session.loginUser != study.getUserId()}">
+                                <li><a name="mgmt" th:href="@{/study/management/{id}(id=${study.studyId})}" class="">관리</a></li>
+                            </th:block>
                         </ul>
                     </div>
                     <div class="projectDetailWrap">
@@ -241,13 +246,18 @@
                                             <span th:text="*{studyView}"></span></a>
                                             <a class="heartWrap">
                                                 <div class="favoriteSymbol">
-                                                    <div class="favorite rightFavorite"></div>
+                                                    <th:block th:if="${#arrays.contains(study.followerNumberList,session.loginUser)}">
+                                                        <div class="favorite rightFavorite active"></div>
+                                                    </th:block>
+                                                    <th:block th:unless="${#arrays.contains(study.followerNumberList,session.loginUser)}">
+                                                        <div class="favorite rightFavorite"></div>
+                                                    </th:block>
+
+
                                                 </div>
-                                                <span class="favoriteNumber">2</span>
+                                                <span class="favoriteNumber" th:text="*{followTotal}"></span>
                                             </a>
-                                            <a class="shareWrap"><img loading="lazy"
-                                                                      src="https://letspl.me/assets/images/ic-share.png"
-                                                                      alt="URL 공유하기"><span>공유하기</span></a></div>
+                                            <a class="shareWrap"></a></div>
                                     </div>
                                 </div>
                             </div>
@@ -271,28 +281,27 @@
                             <h3 class="tabTxt"><span th:text="*{studyType}"></span><span>과목</span><span> / </span><span th:text="*{studyKeyword}"></span></h3>
                         </div>
                         <div class="infoWrap watchedLetsplerWrap">
-                            <h3 class="checkboxTit">구독중인 네오스인&nbsp;<span>0
-                                <!-- -->명
+                            <h3 class="checkboxTit">구독중인 네오스인&nbsp;<span th:text="*{followTotal}"></span><span>
+                                &nbsp명
                                     </span></h3>
                             <ul>
-                                <!--                                <li class="hoverNameWrap">-->
-                                <!--                                    <div class="hoverName">-->
-                                <!--                                        <p><span>[L6]</span><span>sun9hyun</span></p>-->
-                                <!--                                    </div>-->
-                                <!--                                    <div class="imgWrap"><img loading="lazy"-->
-                                <!--                                                              src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png"-->
-                                <!--                                                              alt="sun9hyun"></div>-->
-                                <!--                                </li>-->
-                                <!--                                <li class="hoverNameWrap">-->
-                                <!--                                    <div class="hoverName">-->
-                                <!--                                        <p><span>[L6]</span><span>ROSA</span></p>-->
-                                <!--                                    </div>-->
-                                <!--                                    <div class="imgWrap"><img loading="lazy"-->
-                                <!--                                                              src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"-->
-                                <!--                                                              alt="ROSA"></div>-->
-                                <!--                                </li>-->
+
+                                <th:block th:each="follower : *{follower}">
+                                    <li class="hoverNameWrap" th:object="${follower}">
+                                        <div class="hoverName">
+                                            <p><span>[L</span><span th:text="*{userNeosPowerLevel}"></span><span style="margin-right: 4px!important;">]</span><span th:text="*{userNickName}"></span></p>
+                                        </div>
+                                        <div class="imgWrap"><img th:src="*{userFile}" alt="sun9hyun"></div>
+                                    </li>
+                                </th:block>
                             </ul>
-                            <button class="subscribeBtn active">구독하기</button>
+                            <th:block th:if="${#arrays.contains(study.followerNumberList,session.loginUser)}">
+                                <button class="subscribeBtn">구독하기</button>
+                            </th:block>
+                            <th:block th:unless="${#arrays.contains(study.followerNumberList,session.loginUser)}">
+                                <button class="subscribeBtn active">구독하기</button>
+                            </th:block>
+
                         </div>
                     </div>
                 </div>
@@ -504,7 +513,7 @@ $(".feedReply").on("click", function () {
     function showList(result){
     let text='';
         $(result).each((i,item)=>{
-            text += `<div class="top">`
+            text += `<div class="top reply`+item.studyQuestionReplyId+`">`
             text += `<div class="left"><a href="#" target="_blank">`
             text += `<div class="profileThumb"><img loading="lazy" width="44px" src="`+item.studyQuestionReplyWriter.userFile+`" height="44px" alt="user_image"></div>`
             text += `</a></div>`
@@ -519,7 +528,7 @@ $(".feedReply").on("click", function () {
             text += `</h4>`
             text += `<p class="dateTxt">`+item.createdDate+`</p></div>`
             text += `</div>`
-            text += `<div class="bottom">`
+            text += `<div class="bottom reply`+item.studyQuestionReplyId+`">`
             text += `<div class="left"></div>`
             text += `<div class="txtWrap"><textarea disabled="" maxlength="500" style="font-size: 0.875rem; height: 42px !important;">`+item.studyQuestionReplyContent+`</textarea>`
             text += `</div>`
@@ -554,7 +563,9 @@ $(".feedReply").on("click", function () {
         replyCheck=false;
     })
 
+    globalThis.replyContent = undefined;
     $(".replyWrapContent").on("click",".updateTry",function () {
+        globalThis.replyContent= $(this).parent().prev().find("textarea").val();
         if(!replyCheck){
             globalThis.reply = $(this).parent().prev().find("textarea").val();
             $(this).parent().prev().find("textarea").attr("disabled", false)
@@ -565,7 +576,7 @@ $(".feedReply").on("click", function () {
             $(this).next().next().next().next().hide();
             replyCheck=true
         }else{
-            alert("한번에 하나의 댓글만 달 수 있습니다.")
+            alert("한번에 하나의 댓글만 수정 할 수 있습니다.")
         }
 
     })
@@ -579,7 +590,122 @@ $(".feedReply").on("click", function () {
         $("#deleteModal_2j").show();
     })
 
-    $("")
+    //삭제
+    $("#deleteBtn_21j").on("click",function () {
+        var id = $(this).parent().prev().val();
+        $.ajax({
+            url:"/quest-reply/"+id,
+            type:"delete",
+            success:function (result) {
+                var number = parseInt($(".reply"+result).closest(".replyWrap").prev().find(".replayCount").text());
+                $(".reply"+result).closest(".replyWrap").prev().find(".replayCount").text(number-1);
+                $(".reply"+result).remove();
+            }
+        })
+    })
+
+
+    //수정
+let replyUpdateCheck = false;
+
+$(".replyWrapContent").on("click",".updatePost",function () {
+    if(!replyUpdateCheck){
+        replyUpdateCheck = true;
+        var id = $(this).next().find("#replyId").val();
+        var content = $(this).parent().prev().find("textarea").val();
+
+        if(!content){
+            alert("빈 내용은 등록하실 수 없습니다.");
+            return;
+        }
+        if(globalThis.replyContent == content){
+            alert("같은 내용으로 수정하실 수 없습니다.");
+            return;
+        }
+        $.ajax({
+            url:"/quest-reply/"+id,
+            type:"put",
+            data:{studyQuestionReplyContent:content},
+            success:function(result){
+                globalThis.replyContent=undefined;
+                show(result);
+                replyUpdateCheck = false;
+                replyCheck = false;
+
+            }
+
+        })
+    }else{
+        alert("한번에 하나의 댓글만 수정 가능합니다.")
+    }
+
+
+})
+
+
+
+</script>
+<script th:inline="javascript">
+
+    let userSessionId = [[${session.loginUser}]];
+    let studyId = [[${study.studyId}]];
+    let studyName = [[${study.studyTitle}]]
+
+    $(".subscribeBtn").on("click", function () {
+        if($(this).hasClass("active")){
+            let name = $(this).parents(".projectPageWrap").prev().children(".projectPageHeaderContent").children(".projectTit").text();
+            $(".modal2").children(".studyTit").text(name + "을");
+            $(".modalWrapOpen").show();
+            $(".modal2").css('display','inline-block');
+
+        }else{
+            $(this).removeClass("active");
+            $(".rightFavorite").addClass("active");
+        }
+    })
+
+    $(".okBtn").on("click",function(){
+        $(".modalWrap").css('display','none');
+        $(".modalWrapOpen").hide();
+        $(".rightFavorite").addClass("active").css("background-image", "url(https://letspl.me/_next/static/media/ic-favorite-full.5a5209416a8859031c9099b5540c281a.svg)");
+        $(".subscribeBtn").removeClass("active");
+
+        $.ajax({
+            url:"/study-follow/follow",
+            type:"post",
+            data:{myId: userSessionId,studyId:studyId},
+            success: followActive
+
+        })
+
+    });
+
+    function followActive(result) {
+        if(result=='success'){
+            window.location.reload()
+        }else{
+            alert("알수 없는 오류")
+        }
+    }
+
+    $(".rightFavorite").on("click", function () {
+        if(!$(this).hasClass("active")){
+            $(".modal2").children(".studyTit").text(studyName + "을");
+            $(".modalWrapOpen").show();
+            $(".modal2").css('display','inline-block');
+        }else{
+            $.ajax({
+                url:"/study-follow/follow",
+                type:"post",
+                data:{myId: userSessionId,studyId:studyId},
+                success: function(result){
+                    window.location.reload()
+                }
+            })
+        }
+
+    })
+
 
 
 </script>

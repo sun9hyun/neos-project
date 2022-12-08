@@ -689,10 +689,9 @@ fieldset, img {
     display: inline-block;
 }
 
-.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li span:first-child {
+.projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li span {
     font-size: 12px!important;
     color: #1A7CFF!important;
-    margin-right: 4px!important;
 }
 
 .projectPageWrap .projectRightInfoContetns .watchedLetsplerWrap ul li span:last-child {

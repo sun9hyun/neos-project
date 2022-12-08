@@ -298,7 +298,7 @@
         <!--임시저장 버튼 클리 시-->
         <div class="modalWrap modal1">
             <p class="modalTit studyTit"></p>
-            <p class="modalTit">구독하시겠습니까?</p>
+            <p class="modalTit studyAsk">구독하시겠습니까?</p>
             <button class="closeBtn">
                 <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
             </button>
@@ -306,8 +306,10 @@
                 <p>구독하신 스터디 목록은 마이페이지에서 확인하실 수 있습니다.</p>
             </div>
             <div class="btnWrap doubleBtnWrap">
+                <input type="hidden" name="userId" id="myId">
+                <input type="hidden" name="studyId" id="studyId_1jsd">
                 <button class="btn whiteBtn">아니요</button>
-                <button class="btn blueBtn">예</button>
+                <button class="btn blueBtn followBtn_1j">예</button>
             </div>
         </div>
 
@@ -389,7 +391,7 @@
     var count= result.totalElements;
     var end = result.totalPages;
     $(result.content).each((i,item)=>{
-
+        var followCheck = false;
         text+= `<div class="projectGridWrap">`
         text+= `<input type="hidden" name="studyId" class="studyID_1j" value="`+item.studyId+`">`
         text+= `<div class="projectTopInfo">`
@@ -400,7 +402,16 @@
         text+= `<div class="badge black">`
         text+= `<img src="`+item.collegeLogoFile+`"> </div>`
         text+= `</div>`
-        text+= `<div class="favorite listFavorite off "></div>`
+        $(item.follower).each((i,item)=>{
+            if(item.userId==userSessionId){
+                followCheck=true;
+            }
+        })
+        if(followCheck){
+            text+= `<div class="favorite listFavorite active "></div>`
+        }else{
+            text+= `<div class="favorite listFavorite off "></div>`
+        }
         text+= `</div>`
         if(item.studyType =='전공'){
             text+= `<div class="projectThumb"><img src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_12.png" alt="커뮤니티 연계 교통 정보 어플"></div>`
@@ -429,7 +440,7 @@
         text+= `<div class="projectInfo2">`
         text+= `<div class="middleWrap">`
         text+= `<div class="left">`
-        text+= `<div class="heartCount"><img src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>0</span></div>`
+        text+= `<div class="heartCount"><img src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>`+item.followTotal+`</span></div>`
         text+= `</div> <div class="right">`
         text+= `</div>`
         text+= `</div>`
@@ -530,7 +541,7 @@
             recentText += `</div>`
             recentText += `<div class="right">`
             recentText += `<div class="heartCount"><img loading="lazy" src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수">`
-            recentText += `<span>0</span></div>`
+            recentText += `<span>`+item.followTotal+`</span></div>`
             recentText += `<div class="gatherTxt">`
             recentText += `<div>`
             if(item.studyRecruitStatus=='RECRUITING'){
@@ -567,6 +578,62 @@
             }
         })
     }
+
+
+</script>
+<script th:inline="javascript">
+    let userSessionId = [[${session.loginUser}]]
+    //구독
+
+
+    $("#_next").on("click",".favorite",function(){
+        let name = $(this).closest(".projectGridWrap").find(".projectWrap .tit").text();
+        let studyId = $(this).closest(".projectTopInfo").prev().val();
+        if($(this).hasClass("off")){
+            $(".modal1").find(".studyTit").text(name);
+            $(".modal1").find("#studyId_1jsd").val(studyId);
+            $(".modal1").find("#myId").val(userSessionId);
+            $(".modal1").find(".studyAsk").text("구독 하시겠습니까?");
+            $(".modalWrapOpen").show();
+            $(".modal1").show();
+        }else{
+            $(".modal1").find(".studyTit").text(name);
+            $(".modal1").find("#studyId_1jsd").val(studyId);
+            $(".modal1").find("#myId").val(userSessionId);
+            $(".modal1").find(".studyAsk").text("구독 취소하시겠습니까?");
+            $(".modalWrapOpen").show();
+            $(".modal1").show();
+        }
+    })
+
+    $(".followBtn_1j").on("click",function () {
+        let myIdNumber = $(".modal1").find("#myId").val();
+        let studyIdNumber = $(".modal1").find("#studyId_1jsd").val();
+
+       if(!userSessionId){
+           alert("로그인 후 구독 가능합니다.");
+           $(".modalWrapOpen").hide();
+           $(".modal1").hide();
+           return;
+       }
+
+       $.ajax({
+           url:"/study-follow/follow",
+           type:"post",
+           data:{myId: myIdNumber,studyId:studyIdNumber},
+           success:function(result){
+                showList();
+           }
+
+       })
+
+        $(".modalWrapOpen").hide();
+        $(".modal1").hide();
+    })
+
+
+
+
 
 
 </script>

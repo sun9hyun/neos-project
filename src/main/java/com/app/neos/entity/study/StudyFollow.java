@@ -31,6 +31,11 @@ public class StudyFollow extends Created {
 
     public void changeStudy(Study study){
         this.study = study;
+        study.getFollowList().add(this);
+    }
+
+    public static StudyFollow create(){
+        return new StudyFollow();
     }
 
 }

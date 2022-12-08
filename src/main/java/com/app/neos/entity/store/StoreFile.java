@@ -18,7 +18,11 @@ public class StoreFile extends Period {
     @NotNull
     private String storeFilePath;
     @NotNull
+    private String storeFileUuid;
+    @NotNull
+    private Long storeFileSize;
     private String storeFileQR;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STORE_ID")
@@ -30,9 +34,11 @@ public class StoreFile extends Period {
     }
 
     @Builder
-    public StoreFile(@NotNull String storeFileName, @NotNull String storeFilePath, @NotNull String storeFileQR) {
+    public StoreFile(@NotNull String storeFileName, @NotNull String storeFilePath, @NotNull String storeFileUuid, @NotNull Long storeFileSize, String storeFileQR) {
         this.storeFileName = storeFileName;
         this.storeFilePath = storeFilePath;
+        this.storeFileUuid = storeFileUuid;
+        this.storeFileSize = storeFileSize;
         this.storeFileQR = storeFileQR;
     }
 }

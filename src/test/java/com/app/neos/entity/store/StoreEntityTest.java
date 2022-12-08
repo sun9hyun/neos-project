@@ -26,17 +26,18 @@ public class StoreEntityTest {
 
     @Test
     public void saveTest(){
-//        StoreDTO storeDTO1 = new StoreDTO();
-//        storeDTO1.setStoreStatus(StoreStatus.FREE);
-//        storeDTO1.setStorePoint(0);
-//        storeDTO1.setStoreTitle("자료판매 테스트 1");
-//        storeDTO1.setStoreContent("아주 좋은 자료입니다.");
-//        storeDTO1.setUser(userRepository.findById(2L).get());
-////        storeDTO1.setFiles(storeFileRepository.findById(10L).get());
-//
-//        Store store1 = storeDTO1.toEntity();
-//        store1.changeUser(storeDTO1.getUser());
-//        storeRepository.save(store1);
+        StoreDTO storeDTO1 = new StoreDTO();
+        storeDTO1.setStoreStatus(StoreStatus.FREE);
+        storeDTO1.setStorePoint(0);
+        storeDTO1.setStoreTitle("자료판매 테스트 1");
+        storeDTO1.setStoreContent("아주 좋은 자료입니다.");
+        storeDTO1.setUserId(1L);
+//        storeDTO1.setUserid(userRepository.findById(2L).get());
+//        storeDTO1.setFiles(storeFileRepository.findById(10L).get());
+
+        Store store1 = storeDTO1.toEntity();
+        store1.changeUser(userRepository.findById(storeDTO1.getUserId()).get());
+        storeRepository.save(store1);
 //
 //        StoreDTO storeDTO2 = new StoreDTO();
 //        storeDTO2.setStoreStatus(StoreStatus.PAY);

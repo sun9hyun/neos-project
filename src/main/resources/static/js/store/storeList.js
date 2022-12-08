@@ -4,7 +4,7 @@ var $top = $(".top");
 var $topImg = $(".top img");
 var $shopLink = $(".shopLink");
 
-console.log("들어옴");
+console.log("storedList 들어옴");
 
 $lock.hover(function(){
     $(this).find($top).css("filter", "brightness(0.6)");
@@ -21,3 +21,11 @@ $free.hover(function(){
     $(this).find($topImg).attr("src", "/images/store/storeNeos.png");
     $(this).find($shopLink).toggleClass("shopLink");
 });
+
+/*------------------------------페이지 이동-------------------------------------*/
+const $detail = $("a.detailBtn");
+
+$detail.on("click", function (e) {
+    e.preventDefault();
+    location.href = "/store/store-detail" + "?storeId=" + $(this).attr("href");
+})

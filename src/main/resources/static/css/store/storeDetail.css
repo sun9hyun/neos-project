@@ -385,7 +385,9 @@
     resize: none;
     border: 0px;
     background-color: transparent;
-    height: 405px !important;
+    /*height: 405px !important;*/
+    height: auto !important;
+    min-height: 405px;
     font-family: 'GmarketSansMedium' !important;
 }
 .projectTextArea::-webkit-scrollbar{

@@ -1,6 +1,7 @@
 package com.app.neos.entity.study;
 
 import com.app.neos.domain.study.StudyDTO;
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.embeddable.study.StudyField;
 import com.app.neos.embeddable.study.StudyOnlineWhether;
 import com.app.neos.entity.period.Period;
@@ -13,10 +14,12 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="TBL_STUDY")
-@Getter @ToString(exclude = "user")
+@Getter @ToString(exclude = {"user","followList"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Study extends Period {
     @Id @GeneratedValue
@@ -43,6 +46,9 @@ public class Study extends Period {
    @NotNull
    private int studyView;
 
+   @OneToMany(fetch = FetchType.LAZY,mappedBy = "study")
+   private List<StudyFollow> followList;
+
 
    private LocalDate studyEndDate;
 
@@ -50,6 +56,10 @@ public class Study extends Period {
    @ManyToOne(fetch = FetchType.LAZY)
    @JoinColumn(name="USER_ID")
    private User user;
+
+   public void changeFollowList(List<StudyFollow> followList){
+      this.followList = followList;
+   }
 
    public void changeUser(User user){
       this.user = user;
@@ -108,6 +118,11 @@ public class Study extends Period {
       studyDTO.setCollegeLogoFile(this.user.getCollege().getCollegeLogoFile());
       studyDTO.setCollegeName(this.user.getCollege().getCollegeName());
       studyDTO.setStudyStartDate(this.getCreatedDate().toLocalDate());
+      studyDTO.setFollowTotal(this.followList.size());
+      List<UserDTO> follower = this.followList.stream().map(i->i.getUser().toDTO()).collect(Collectors.toList());
+      List<Long> followerNumberList = this.followList.stream().map(i->i.getUser().getUserId()).collect(Collectors.toList());
+      studyDTO.setFollower(follower);
+      studyDTO.setFollowerNumberList(followerNumberList);
       return studyDTO;
    }
 

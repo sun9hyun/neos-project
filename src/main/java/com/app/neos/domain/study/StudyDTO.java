@@ -1,6 +1,7 @@
 package com.app.neos.domain.study;
 
 
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.embeddable.study.StudyField;
 import com.app.neos.embeddable.study.StudyOnlineWhether;
 import com.app.neos.entity.study.Study;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Component
 @Data
@@ -42,7 +44,9 @@ public class StudyDTO {
     private String collegeName;
     private Long userId;
     private String userNickName;
-
+    private int followTotal;
+    private List<Long> followerNumberList;
+    private List<UserDTO> follower;
 
     public Study toEntity(){
        StudyField studyField =  StudyField.builder().studyType(studyType).studyKeyword(studyKeyword).build();

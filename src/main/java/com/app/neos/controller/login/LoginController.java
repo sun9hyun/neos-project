@@ -42,6 +42,7 @@ public class LoginController {
 
         HttpSession session= (HttpSession)request.getSession();
         session.setAttribute("token",token);
+
         try {
             Long id = kaKaoService.getKakaoIdByToken(token);
             String realId = id+"k";

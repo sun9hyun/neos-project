@@ -122,6 +122,18 @@ public class StudyController {
         return "app/study/questionStudy";
     }
 
+    @GetMapping("/management/{studyId}")
+    public String management(@PathVariable Long studyId,Model model, HttpServletRequest request){
+        StudyDTO study = studyService.getStudyDTO(studyId);
+        UserDTO user = studyService.getInfo(study.getUserId());
+        List<StudyQuestionDTO> questions = studyQuestionService.getInfo(studyId);
+        model.addAttribute("questions",questions);
+        model.addAttribute("writer",user);
+        model.addAttribute("study",study);
+        model.addAttribute("minusDay",studyService.minusDay(study));
+        return "app/study/studyManagement";
+    }
+
     @PostMapping("/question/write")
     public RedirectView questionPost(StudyQuestionDTO studyQuestionDTO, Long userId,Long studyId){
         studyQuestionService.post(studyQuestionDTO,userId,studyId);

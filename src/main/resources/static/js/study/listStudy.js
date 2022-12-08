@@ -80,69 +80,9 @@ $(".whiteBtn").on("click",function(){
 
 
 /*스터디 누르면 나오는 모달 + 하트 불 들어오고 나가고*/
-function modalOk(heart) {
-    $(".modalWrapOpen .modal1 .btnWrap button.blueBtn").on("click", function () {
-        $(".modal1").css('display','none');
-        $(".modalWrapOpen").hide();
-        $(heart).addClass('active2');
-        $(heart).addClass('on');
-        $(heart).removeClass('off');
-    })
-}
 
-$("#_next").on("click",".listFavorite.off",function () {
-    let name = $(this).closest(".projectGridWrap").find(".projectWrap .tit").text();
-    const heart = $(this);
-    if($(this).hasClass("off")) {
-        heart.addClass('click');
-    }
 
-    $(".modal1").children(".studyTit").text(name + "을");
 
-    if($(this).hasClass("off")) {
-        $(".modalWrapOpen").show();
-        $(".modal1").css('display','inline-block');
-        $(".modalWrapOpen .modal1 .btnWrap button.blueBtn").on("click", function () {
-            $(".modal1").css('display','none');
-            $(".modalWrapOpen").hide();
-            $(".click").addClass('active');
-            $(".click").addClass('on');
-            $(".click").removeClass('off');
-            $(".click").removeClass('click');
-        })
-    } else {
-        $(this).removeClass('active');
-        $(this).addClass('off');
-        $(this).removeClass('on');
-    }
-})
-
-$("#_next").on("click",".listFavorite.on",function () {
-    let name = $(this).closest(".projectGridWrap").find(".projectWrap .tit").text();
-    const heart = $(this);
-    if($(this).hasClass("off")) {
-        heart.addClass('click');
-    }
-
-    $(".modal1").children(".studyTit").text(name + "을");
-
-    if($(this).hasClass("off")) {
-        $(".modalWrapOpen").show();
-        $(".modal1").css('display','inline-block');
-        $(".modalWrapOpen .modal1 .btnWrap button.blueBtn").on("click", function () {
-            $(".modal1").css('display','none');
-            $(".modalWrapOpen").hide();
-            $(".click").addClass('active');
-            $(".click").addClass('on');
-            $(".click").removeClass('off');
-            $(".click").removeClass('click');
-        })
-    } else {
-        $(this).removeClass('active');
-        $(this).addClass('off');
-        $(this).removeClass('on');
-    }
-})
 
 // $(".listFavorite.off").click(function(){
 //     let name = $(this).closest(".projectGridWrap").find(".projectWrap .tit").text();

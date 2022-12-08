@@ -29,7 +29,7 @@ public class CommunityEntityTest {
         communityDTO.setCommunityContent("자유 게시판 내용");
         communityDTO.setCommunityLikeCount(0);
 
-        communityDTO.setUser(userRepository.findById(2L).get());
+        communityDTO.setUser(userRepository.findById(1L).get());
 
         Community community = communityDTO.toEntity();
         community.changeUser(communityDTO.getUser());

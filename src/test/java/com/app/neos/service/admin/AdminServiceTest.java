@@ -15,10 +15,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.print.Pageable;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -111,6 +113,12 @@ public class AdminServiceTest {
         log.info(adminStudyFeedReplyRepository.findAllByStudyFeedReplyWriter_UserId(2L).size() + "");
 //        log.info(adminCommunityReplyRepository.findByUser_UserId(2L).size() + "");
 //        log.info(adminCommunityRepository.findByUser_UserId(2L).size()+ "");
+    }
+
+    @Test
+    public void findStudyPage(){
+        log.info(adminService.findStudyPage(PageRequest.of(0, 10)).getTotalElements() + "");
+        log.info(adminService.findStudyPage(PageRequest.of(0, 10)).toString() + "");
     }
 
 }

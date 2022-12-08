@@ -326,7 +326,7 @@
                                                     <li class="account" th:text="*{userOAuthEmail}"></li>
                                                     <li class="dateJoin" th:text="*{createdDate}"></li>
 
-                                                    <th:block th:each="counts:${counts}">
+                                                    <th:block th:each="counts:${user.counts}">
                                                         <li class="participationProject" th:text="${counts.storeCount}"></li>
                                                         <li class="participationStudy" th:text="${counts.studyCount}"></li>
                                                         <li class="countPost">
@@ -527,6 +527,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
+
     // base.html
 
     // 문서로드 완료 후 자바 스크립트 진행
@@ -635,12 +636,8 @@
 
     $('.deleteBtn').click(function () {
         let userId = $(this).closest('.action').prev().parent().find(".userInfo").find('.userId').attr('href');
-        alert(userId);
 
-        $('.deleteOk').click(function () {
-            alert(userId);
-            // location.href = "/admin/test/user/delete" + "?userId=" + userId;
-        })
+            location.href = "/admin/test/user/delete" + "?userId=" + userId;
     })
 </script>
 </html>

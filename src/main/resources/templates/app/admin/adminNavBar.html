@@ -33,18 +33,18 @@
 
             <ul id="main-menu" class="gui-controls">
                 <li class="  " data-title="preview">
-                    <a href="#" target="_blank"> <!-- 우리 cosmos 홈페이지 url 교체 필요 -->
+                    <a th:href="@{/main/main}"> <!-- 우리 cosmos 홈페이지 url 교체 필요 -->
                         <div class="gui-icon">
                             <i class="db-preview"></i>
                         </div>
-                        <span class="title">사이트 바로가기</span>
+                        <span class="title" >사이트 바로가기</span>
                     </a>
                 </li>
 
                 <li class="spacer"></li> <!-- 공간 여백 div -->
 
                 <li class="active expanded expanding" data-title="adminPage">
-                    <a href="#"> <!-- 관리자 메인 화면 링크-->
+                    <a th:href="@{/admin/test/index}"> <!-- 관리자 메인 화면 링크-->
                         <div class="gui-icon">
                             <i class="db-dashboard"></i>
                         </div>
@@ -53,7 +53,7 @@
                 </li>
 
                 <li class="gui-folder" data-title="member"> <!-- 현재 이동한 페이지의 카테고리를 활성화 시켜줘야함 -->
-                    <a href="#" class="sidebar-nav-menu" onclick="return false;">
+                    <a  class="sidebar-nav-menu" onclick="return false;">
                         <div class="gui-icon">
                             <i class="db-user"></i>
                         </div>
@@ -61,12 +61,12 @@
                     </a>
                     <ul>
                         <li class="  " data-title="memberList">
-                            <a href="#">   <!-- 이동할 페이지 url 작성 -->
+                            <a th:href="@{/admin/test/user/list}">   <!-- 이동할 페이지 url 작성 -->
                                 <span class="title">사용자 목록</span>
                             </a>
                         </li>
                         <li class="  " data-title="companyList">  <!-- a태그의 클래스명이 li 태그 클래스에 출가된다. 활성화 된 클래스 표시(active) -->
-                            <a href="#">  <!-- 해당 페이지의 목록에 active가 들어가야지 음영처리가된다. -->
+                            <a th:href="@{/admin/test/college/list}">  <!-- 해당 페이지의 목록에 active가 들어가야지 음영처리가된다. -->
                                 <span class="title">대학교 목록</span>
                             </a>
                         </li>
@@ -81,22 +81,22 @@
                     </a>
                     <ul>
                         <li class="  " data-title="studyList">
-                            <a href="#">   <!-- 이동할 페이지 url 작성 -->
+                            <a th:href="@{/admin/test/study/list}">   <!-- 이동할 페이지 url 작성 -->
                                 <span class="title">스터디 게시글 관리</span>
                             </a>
                         </li>
                         <li class="  " data-title="freeList">
-                            <a href="#">   <!-- 이동할 페이지 url 작성 -->
+                            <a th:href="@{/admin/test/community/list}">   <!-- 이동할 페이지 url 작성 -->
                                 <span class="title">자유 게시글 관리</span>
                             </a>
                         </li>
                         <li class="  " data-title="counselingList">
-                            <a href="#">   <!-- 이동할 페이지 url 작성 -->
+                            <a th:href="@{/admin/test/counseling/list}">   <!-- 이동할 페이지 url 작성 -->
                                 <span class="title">고민 상담 게시글 관리</span>
                             </a>
                         </li>
                         <li class="  " data-title="counselingList">
-                            <a href="#">   <!-- 이동할 페이지 url 작성 -->
+                            <a th:href="@{/admin/test/store/list}">   <!-- 이동할 페이지 url 작성 -->
                                 <span class="title">자료 상점 게시글 관리</span>
                             </a>
                         </li>
@@ -149,7 +149,7 @@
                             </a>
                         </li>
                         <li class="  " data-title="noticeList">  <!-- a태그의 클래스명이 li 태그 클래스에 출가된다. 활성화 된 클래스 표시(active) -->
-                            <a href="#">  <!-- 해당 페이지의 목록에 active가 들어가야지 음영처리가된다. -->
+                            <a th:href="@{/admin/test/notice/edit}">  <!-- 해당 페이지의 목록에 active가 들어가야지 음영처리가된다. -->
                                 <span class="title">공지사항 작성</span>
                             </a>
                         </li>
@@ -164,7 +164,7 @@
                     </a>
                     <ul>
                         <li class="  " data-title="configPopup">
-                            <a href="#">
+                            <a th:href="@{/admin/test/banner/list}">
                                 <span class="title">배너 관리</span>
                             </a>
                         </li>
@@ -176,4 +176,11 @@
 </div><!-- END MENUBAR-->
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+    // $('.title').on("click", function (e) {
+    //     e.preventDefault();
+    //     location.href = "/main/main";
+    // });
+</script>
 </html>

@@ -9,6 +9,7 @@ import com.app.neos.entity.user.User;
 import com.app.neos.repository.chatting.ChattingContentRepository;
 import com.app.neos.repository.chatting.ChattingRepository;
 import com.app.neos.repository.user.UserRepository;
+import com.app.neos.type.chatting.ChatType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +33,11 @@ public class ChattingContentEntityTest {
     public void saveTest(){
         ChattingContentDTO chattingContentDTO = new ChattingContentDTO();
 
-        chattingContentDTO.setChatting(chattingRepository.findById(5l).get());
-        chattingContentDTO.setMy(userRepository.findById(2l).get());
-        chattingContentDTO.setReceiver(userRepository.findById(3l).get());
-        chattingContentDTO.setChattingContent("안녕안녕");
+        chattingContentDTO.setChatting(chattingRepository.findById(7l).get());
+        chattingContentDTO.setMy(chattingRepository.findById(7l).get().getMyId());
+        chattingContentDTO.setReceiver(chattingRepository.findById(7l).get().getReceiverId());
+        chattingContentDTO.setChatType(ChatType.ENTER);
+        chattingContentDTO.setChattingContent("테스트임당");
 
         ChattingContent chattingContent = chattingContentDTO.toEntity();
 
@@ -44,12 +46,11 @@ public class ChattingContentEntityTest {
         chattingContent.changeChatting(chattingContentDTO.getChatting());
 
         chattingContentRepository.save(chattingContent);
-
     }
 
     @Test
     public void deleteTest(){
-        chattingContentRepository.deleteById(10l);
+        chattingContentRepository.deleteById(7l);
     }
 
     @Test

@@ -31,21 +31,32 @@
             <div class="chattingSection">
                 <div class="list left">
                     <ul>
-                        <li class="active leftChattingList">
-                            <div class="thumb"><img
-                                    src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"
-                                    alt="chat_image"></div>
-                            <div class="chatInfo">
-                                <div class="userIdAndBeforeTime">
-                                    <div class="right"><span class="userId">ROSA</span></div>
-                                    <span class="beforeTime">방금 전</span>
-                                </div>
-                                <p class="chatInfoTxt">
-                                    로사 하이 채팅방 테스트 중
-                                </p>
-                                <p class="endTime">종료 :&nbsp;22.12.02 18:08</p></div>
-                        </li>
-                        <li class="active leftChattingList">
+                        <!--시작-->
+                        <tbody>
+                        <th:block th:each="content:${contents}" th:object="${content}">
+                            <input type="hidden" th:value="*{receiverRoom.userId}">
+<!--                        <th:block th:each="last:${lasts}" >-->
+                            <li class="active leftChattingList" th:href="*{receiverRoom.userId}">
+                                <div class="thumb"><img
+                                        src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"
+                                        alt="chat_image"></div>
+                                <div class="chatInfo">
+                                    <div class="userIdAndBeforeTime">
+                                        <div class="right">
+                                            <span class="userId" th:text="*{receiverRoom.userNickName}" ></span></div>
+                                        <span class="beforeTime">방금 전</span>
+                                    </div>
+                                    <p class="chatInfoTxt" th:text="*{chattingContentRoom}">
+
+                                    </p>
+                                    <p class="endTime" th:text="*{updatedDate +''}"></p></div>
+                            </li>
+                        </th:block>
+<!--                        </th:block>-->
+                        </tbody>
+
+
+                        <li class="active leftChattingList" >
                             <div class="thumb"><img loading="lazy" src="/images/fix/favicon.png"
                                                     alt="chat_image"></div>
                             <div class="chatInfo">
@@ -64,67 +75,67 @@
                         <div class="dayInfo"><p>22.10.24 월요일</p></div>
 
                         <div class="opponent">
-                            <div class="thumb"><a href="/people/엔잡쏘" target="_blank"><img
-                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png"
-                                    alt="chat_image"></a></div>
-                            <div class="userIdChatTxt"><span class="userId">심민성</span>
-                                <div class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">한 사람을&nbsp;</a></span>
-                                    <div class="timeWrap"><span class="time">오후 5:03</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="opponent">
-                            <div class="thumb"><a href="/people/dddog" target="_blank"><img
-                                    src="/images/fix/favicon.png" alt="chat_image"></a></div>
-                            <div class="userIdChatTxt"><span class="userId">추성윤</span>
-                                <div class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">동시에 사랑하고 있습니다&nbsp;</a></span>
-                                    <div class="timeWrap"><span class="time">오후 5:31</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="opponent">
-                            <div class="thumb"><a href="/people/렛플운영자" target="_blank"><img
-                                    src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png"
-                                    alt="chat_image"></a></div>
-                            <div class="userIdChatTxt"><span class="userId">조성현</span>
-                                <div class="chatTxt"><span class="chatTxtContents"><a
-                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a
-                                        style="color: rgb(51, 51, 51);">석빙고 처럼 차가워 보이지만&nbsp;</a></span>
-                                    <div class="timeWrap"><span class="time">오후 6:33</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dayInfo"><p>22.11.04 금요일</p></div>
-                        <div class="opponent">
-                            <div class="thumb"><a href="/people/ROSA" target="_blank"><img
-                                    src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"
-                                    alt="chat_image"></a></div>
-                            <div class="userIdChatTxt"><span class="userId">김로사</span>
-                                <div class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">사실 알고보면 따뜻한 사람입니다&nbsp;</a></span>
-                                    <div class="timeWrap"><span class="time">오후 3:07</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="opponent">
-                            <div class="thumb"><a href="/people/ROSA" target="_blank"><img
-                                    src="/images/fix/favicon.png"
-                                    alt="chat_image"></a></div>
-                            <div class="userIdChatTxt"><span class="userId">박종우</span>
-                                <div class="chatTxt"><span class="chatTxtContents"><a
-                                        style="color: rgb(51, 51, 51);">랑만이 가득한 그 사람은&nbsp;</a></span>
-                                    <div class="timeWrap"><span class="time">오후 3:07</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="opponent">
-                            <div class="thumb"><a href="/people/렛플운영자" target="_blank"><img
-                                    src="/images/fix/favicon.png"
-                                    alt="chat_image"></a></div>
-                            <div class="userIdChatTxt"><span class="userId">유호근</span>
-                                <div class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">해보다 눈부신 바로 당신입니다&nbsp;</a></span>
-                                    <div class="timeWrap"><span class="time">오후 3:08</span></div>
-                                </div>
-                            </div>
+<!--                            <div class="thumb"><a href="/people/엔잡쏘" target="_blank"><img-->
+<!--                                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png"-->
+<!--                                    alt="chat_image"></a></div>-->
+<!--                            <div class="userIdChatTxt"><span class="userId">심민성</span>-->
+<!--                                <div class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">한 사람을&nbsp;</a></span>-->
+<!--                                    <div class="timeWrap"><span class="time">오후 5:03</span></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="opponent">-->
+<!--                            <div class="thumb"><a href="/people/dddog" target="_blank"><img-->
+<!--                                    src="/images/fix/favicon.png" alt="chat_image"></a></div>-->
+<!--                            <div class="userIdChatTxt"><span class="userId">추성윤</span>-->
+<!--                                <div class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">동시에 사랑하고 있습니다&nbsp;</a></span>-->
+<!--                                    <div class="timeWrap"><span class="time">오후 5:31</span></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="opponent">-->
+<!--                            <div class="thumb"><a href="/people/렛플운영자" target="_blank"><img-->
+<!--                                    src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png"-->
+<!--                                    alt="chat_image"></a></div>-->
+<!--                            <div class="userIdChatTxt"><span class="userId">조성현</span>-->
+<!--                                <div class="chatTxt"><span class="chatTxtContents"><a-->
+<!--                                        style="color: rgb(51, 51, 51);">&nbsp;</a><a-->
+<!--                                        style="color: rgb(51, 51, 51);">석빙고 처럼 차가워 보이지만&nbsp;</a></span>-->
+<!--                                    <div class="timeWrap"><span class="time">오후 6:33</span></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="dayInfo"><p>22.11.04 금요일</p></div>-->
+<!--                        <div class="opponent">-->
+<!--                            <div class="thumb"><a href="/people/ROSA" target="_blank"><img-->
+<!--                                    src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"-->
+<!--                                    alt="chat_image"></a></div>-->
+<!--                            <div class="userIdChatTxt"><span class="userId">김로사</span>-->
+<!--                                <div class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">사실 알고보면 따뜻한 사람입니다&nbsp;</a></span>-->
+<!--                                    <div class="timeWrap"><span class="time">오후 3:07</span></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="opponent">-->
+<!--                            <div class="thumb"><a href="/people/ROSA" target="_blank"><img-->
+<!--                                    src="/images/fix/favicon.png"-->
+<!--                                    alt="chat_image"></a></div>-->
+<!--                            <div class="userIdChatTxt"><span class="userId">박종우</span>-->
+<!--                                <div class="chatTxt"><span class="chatTxtContents"><a-->
+<!--                                        style="color: rgb(51, 51, 51);">랑만이 가득한 그 사람은&nbsp;</a></span>-->
+<!--                                    <div class="timeWrap"><span class="time">오후 3:07</span></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="opponent">-->
+<!--                            <div class="thumb"><a href="/people/렛플운영자" target="_blank"><img-->
+<!--                                    src="/images/fix/favicon.png"-->
+<!--                                    alt="chat_image"></a></div>-->
+<!--                            <div class="userIdChatTxt"><span class="userId">유호근</span>-->
+<!--                                <div class="chatTxt"><span class="chatTxtContents"><a style="color: rgb(51, 51, 51);">해보다 눈부신 바로 당신입니다&nbsp;</a></span>-->
+<!--                                    <div class="timeWrap"><span class="time">오후 3:08</span></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
                         </div>
 
 
@@ -135,12 +146,12 @@
                              style="position: relative; overflow-y: visible;">
                             <div class="mentions__control">
                                 <div class="mentions__highlighter"
-                                     style="position: relative; box-sizing: border-box; width: 100%; color: transparent; overflow: hidden; white-space: pre-wrap; overflow-wrap: break-word; border: 1px solid transparent; text-align: start;"></div>
+                                     style="position: relative; box-sizing: border-box; width: 100%; color: transparent; overflow: hidden; white-space: pre-wrap; overflow-wrap: break-word; border: 1px solid transparent; text-align: start;" ></div>
                                 <textarea placeholder="@으로 상대방 지정이 가능합니다." rows="10" cols="40" class="mentions__input"
-                                          style="display: block; width: 100%; position: absolute; margin: 0px; top: 0px; left: 0px; box-sizing: border-box; background-color: transparent; font-family: inherit; font-size: inherit; letter-spacing: inherit; height: 100%; bottom: 0px; overflow: hidden; resize: none; padding-top: 6px; outline: none; max-height: 150px;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                                          style="display: block; width: 100%; position: absolute; margin: 0px; top: 0px; left: 0px; box-sizing: border-box; background-color: transparent; font-family: inherit; font-size: inherit; letter-spacing: inherit; height: 100%; bottom: 0px; overflow: hidden; resize: none; padding-top: 6px; outline: none; max-height: 150px;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"' id="msg" ></textarea>
                             </div>
                         </div>
-                        <button class="buttonComponents_button__1hvQa buttonComponents_circle__2iQ3w buttonComponents_blueBlack__2HIFu  buttonComponents_lgImg__2-hZO ">
+                        <button class="buttonComponents_button__1hvQa buttonComponents_circle__2iQ3w buttonComponents_blueBlack__2HIFu  buttonComponents_lgImg__2-hZO " id="button_send">
                             <img class="" src="https://letspl.me/assets/images/ic-send.svg"></button>
                     </div>
                 </div>
@@ -195,4 +206,243 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/fix/chatting.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous"></script>
+
+<script th:inline="javascript">
+
+    // document.addEventListener('DOMContentLoaded', function () {
+    //
+    //     const username = [[${session.loginUserName}]]
+    //
+    //     // 연결끊기(해당 페이지에서는 사용하지 않음)
+    //     // document.querySelector('#disconn').addEventListener('click', disconnect);
+    //
+    //     // 전송하기
+    //     document.querySelector('#button_send').addEventListener('click', send);
+    //
+    //     // 키보드로 전송하기
+    //     window.addEventListener('keydown', (e) => {
+    //         if (e.key === 'Enter') {
+    //             send();
+    //         }
+    //     })
+    //
+    //     const websocket = new WebSocket('ws://localhost:10718/chat/test/room');
+    //
+    //     websocket.onmessage = onMessage;
+    //     websocket.onopen = onOpen;
+    //     websocket.onclose = onClose;
+    //
+    //     function send() {
+    //         console.log("send")
+    //         let msg = document.getElementById('msg');
+    //         console.log(username + ': ' + msg.value);
+    //         websocket.send(username + ': ' + msg.value);
+    //         msg.value = '';
+    //     }
+    //
+    //     // 채팅창에서 나갔을 때
+    //     function onClose(evt) {
+    //         console.log("close")
+    //         var str = username + '님이 방을 나가셨습니다.';
+    //         websocket.send(str);
+    //     }
+    //
+    //     // 채팅창에 들어왔을 때
+    //            function onOpen(evt) {
+    //         console.log("open")
+    //         var str = username + '님이 입장하셨습니다.';
+    //         websocket.send(str);
+    //     }
+    //
+    //     function onMessage(msg) {
+    //         console.log(msg)
+    //         var data = msg.data;
+    //         // 데이터를 보낸 사람
+    //         var sessionId = null;
+    //         var message = null;
+    //         var arr = data.split(/\:/);
+    //
+    //         // 현재 세션에 로그인 한 사람
+    //         var cur_session = username;
+    //
+    //         // 테스트 용도
+    //         for (var i = 0; i < arr.length; i++) {
+    //             console.log('arr[' + i + ']: ' + arr[i]);
+    //         }
+    //
+    //         console.log("cur_session: " + cur_session);
+    //         sessionId = arr[0].trim();
+    //         if(arr[1] === undefined) {
+    //             message = '';
+    //         } else {
+    //             message = arr[1].trim();
+    //         }
+    //
+    //         console.log("sessionID: " + sessionId);
+    //         console.log("cur_session: " + cur_session);
+    //
+    //         // 로그인 한 클라이언트
+    //         if (sessionId == cur_session) {
+    //             var str = "<div class='col-12'>";
+    //             str += "<div class='alert alert-primary style='word-break:break-all;''>";
+    //             if(message === '') {
+    //                 str += "<b>" + sessionId
+    //             } else {
+    //                 str += "<b>" + sessionId + ": " + message + "</b>";
+    //             }
+    //             str += "</div></div>";
+    //             document.querySelector('#msgArea').innerHTML += str;
+    //         }
+    //
+    //         // 타 클라이언트
+    //         else {
+    //             var str = "<div class='col-12'>";
+    //             str += "<div class='alert alert-warning' style='word-break:break-all;'>";
+    //             if(message === '') {
+    //                 str += "<b>" + sessionId
+    //             } else {
+    //                 str += "<b>" + sessionId + ": " + message + "</b>";
+    //             }
+    //             str += "</div></div>";
+    //             document.querySelector('#msgArea').innerHTML += str;
+    //         }
+    //     }
+    // })
+
+    // $("li.active").on("click", function(e){
+    //     e.preventDefault();
+    //     show();
+    // });
+
+    // function show(){
+    //     console.log("들어옴")
+    //     ({
+    //         // receiver: userId,
+    //     }, getList);
+    // }
+
+    // var webSocket;
+    // const username = [[${session.loginUserName}]]
+    //
+    // document.querySelector('#button_send').addEventListener("click",function(){
+    //     send();
+    // })
+    // function connect(){
+    //     console.log("연결");
+    //     webSocket = new WebSocket("ws://localhost:10718/chat/test/room");
+    //     webSocket.onopen = onOpen;
+    //     webSocket.onclose = onClose;
+    //     webSocket.onmessage = onMessage;
+    // }
+    // function disconnect(){
+    //     console.log("연결x");
+    //     webSocket.send();
+    //     webSocket.close();
+    // }
+    // function send(){
+    //     console.log("전송");
+    //     msg = document.getElementById("message").value;
+    //     webSocket.send(JSON.stringify({message : msg}));
+    //     document.getElementById("message").value = "";
+    //
+    // }
+    // function onOpen(){
+    //     console.log("열림");
+    //     webSocket.send(JSON.stringify({writer:username}));
+    // }
+    // function onMessage(e){
+    //     console.log("메세지");
+    //     data = e.data;
+    //     chatroom = document.getElementById("chatroom");
+    //     chatroom.innerHTML = chatroom.innerHTML + "<br>" + data;
+    // }
+    // function onClose(){
+    //     disconnect();
+    // }
+
+    // $(".chattingWrap").on("click",".leftChattingList",function () {
+    //     var id = $(this).attr("href");
+    //     alert(id);
+    // })
+
+    // function showChatting(obj) {
+    //     var id =
+    //     $.ajax({
+    //         url:"/chat/chatContent/",
+    //         type:"",
+    //         success:function(result){
+    //
+    //         }
+    //     })
+    // }
+
+        // show({
+        //     receiverRoom: receiverRoom
+        // }, getList());
+        //
+        // function show(param, callback, error) {
+        //     console.log("show");
+        //     alert("show")
+        //     $.ajax({
+        //         url: "/chat/chatContent/" + param.receiverRoom,
+        //         type: "get",
+        //         // data: {receiverId: receiverId},
+        //         async: false,
+        //         success: function (text) {
+        //             if (callback) {
+        //                 callback(text);
+        //             }
+        //         },
+        //         error: function (xhr, status, err) {
+        //             if (error) {
+        //                 error(err);
+        //             }
+        //         }
+        //     });
+        // };
+
+        // function getList(chattingContentDTO) {
+        //     console.log("getList");
+        //     alert("getList")
+        //     let text = "";
+        //     chattingContentDTO.forEach(content => {
+        //         console.log(content)
+        //         text += "<div class='opponent'>";
+        //         text += "<div class='thumb'>";
+        //         text += "<a href='/people/엔잡쏘' target='_blank'>"
+        //         text += "<img src='https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png' alt='chat_image'>";
+        //         text += "</a>"
+        //         text += "</div>"
+        //         text += "<div class='userIdChatTxt'>"
+        //         text += "<span class='userId'> + content.receiver + </span>";
+        //         text += "<div class='chatTxt'>";
+        //         text += "<span class='chatTxtContents'>";
+        //         text += "<a style='color: rgb(51, 51, 51);'> + content.chattingContent + </a>";
+        //         text += "</span>";
+        //         text += "<div class='timeWrap'>";
+        //         text += "<span class='time'> + content.createdDate +</span>";
+        //         text += "</div>";
+        //         text += "</div>";
+        //         text += "</div>";
+        //     });
+        //
+        //     $("div.opponent").html(text);
+        // }
+
+
+        // let receiverRoom;
+        // $("li.active").on("click", function () {
+        //     receiverRoom = $(this).attr("href");
+        //     show(receiverRoom)
+        // });
+
+
+</script>
+
 </html>

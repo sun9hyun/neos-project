@@ -9,6 +9,7 @@ import com.app.neos.embeddable.user.UserNeosPower;
 import com.app.neos.entity.college.College;
 import com.app.neos.entity.period.Period;
 import com.app.neos.type.user.UserCollegeMajor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -54,6 +55,7 @@ public class User extends Period {
 
     private String userFile;
 
+   @JsonIgnore
    @ManyToOne(fetch = FetchType.LAZY)
    @JoinColumn(name="COLLEGE_ID")
     private College college;

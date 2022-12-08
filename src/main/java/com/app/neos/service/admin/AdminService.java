@@ -3,6 +3,8 @@ package com.app.neos.service.admin;
 import com.app.neos.domain.Admin.AdminUserDTO;
 import com.app.neos.domain.banner.BannerDTO;
 import com.app.neos.domain.college.CollegeDTO;
+import com.app.neos.domain.study.StudyDTO;
+import com.app.neos.domain.user.QUserDTO;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.banner.Banner;
 import com.app.neos.entity.college.College;
@@ -22,12 +24,16 @@ import com.app.neos.repository.store.StoreRepository;
 import com.app.neos.repository.study.StudyRepository;
 import com.app.neos.repository.user.UserCustomRepository;
 import com.app.neos.repository.user.UserRepository;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.app.neos.entity.user.QUser.user;
 
 @Service
 @RequiredArgsConstructor
@@ -39,6 +45,7 @@ public class AdminService {
     private final BannerCustomRepository bannerCustomRepository;
     private final NoticeRepository noticeRepository;
     private final UserCustomRepository userCustomRepository;
+
     private final AdminCustomRepository adminCustomRepository;
     private final AdminStoreRepository adminStoreRepository;
     private final AdminStudyRepository adminStudyRepository;
@@ -53,6 +60,8 @@ public class AdminService {
     private final AdminCounselingReReplyRepository adminCounselingReReplyRepository;
     private final AdminStoreReplyRepository adminStoreReplyRepository;
     private final AdminStoreReReplyRepository adminStoreReReplyRepository;
+
+
 
 
 
@@ -138,11 +147,86 @@ public class AdminService {
     }
 
 
-
-    //    유저 목록 페이지
-    public Page<UserDTO> findAllUserPage(Pageable pageable){
-        return adminCustomRepository.findAllUserPage(pageable);
+    //    스터디 목록 페이징 처리
+    public Page<StudyDTO> findStudyPage(Pageable pageable){
+        return adminCustomRepository.findAllStudyPage(pageable);
     }
+
+
+
+
+
+
+
+
+//    //    유저 목록 페이지
+//    public Page<UserDTO> findAllUserPage(Pageable pageable){
+//        List<UserDTO> userDTOS = jpaQueryFactory.select(new QUserDTO(
+//                user.userId,
+//                user.userNickName,
+//                user.userOAuthId,
+//                user.userOAuthEmail,
+//                user.userCollegeEmail,
+//                user.userPhoneNumber,
+//                user.userCollegeCertify,
+//                user.userCollegeInfo.userCollegeYear,
+//                user.userCollegeInfo.userCollegeMajor,
+//                user.userNeosPower.userNeosBadge,
+//                user.userNeosPower.userNeosPowerLevel,
+//                user.userNeosPower.userNeosPowerAbility,
+//                user.userNeosPoint,
+//                user.userChattingPoint,
+//                user.userLike.userO2o,
+//                user.userLike.userCity,
+//                user.userLike.userDay,
+//                user.userLike.userTime,
+//                user.userMBTI.userMbtiName,
+//                user.userMBTI.userMbtiColor,
+//                user.userIntroduce,
+//                user.userFile,
+//                user.createdDate
+//        ))
+//                .from(user)
+//                .orderBy(user.userId.desc())
+//                .offset(pageable.getOffset())
+//                .limit(pageable.getPageSize())
+//                .fetch();
+//
+//        for (UserDTO user: userDTOS) {
+//            user.setCounts(adminService.workCount(user.getUserId()));
+//        }
+//
+//
+//        long total = jpaQueryFactory.select(new QUserDTO(
+//                user.userId,
+//                user.userNickName,
+//                user.userOAuthId,
+//                user.userOAuthEmail,
+//                user.userCollegeEmail,
+//                user.userPhoneNumber,
+//                user.userCollegeCertify,
+//                user.userCollegeInfo.userCollegeYear,
+//                user.userCollegeInfo.userCollegeMajor,
+//                user.userNeosPower.userNeosBadge,
+//                user.userNeosPower.userNeosPowerLevel,
+//                user.userNeosPower.userNeosPowerAbility,
+//                user.userNeosPoint,
+//                user.userChattingPoint,
+//                user.userLike.userO2o,
+//                user.userLike.userCity,
+//                user.userLike.userDay,
+//                user.userLike.userTime,
+//                user.userMBTI.userMbtiName,
+//                user.userMBTI.userMbtiColor,
+//                user.userIntroduce,
+//                user.userFile,
+//                user.createdDate
+//        ))
+//                .from(user)
+//                .fetch().size();
+//
+//        return new PageImpl<>(userDTOS,pageable,total);
+//    }
 
     //    유저 아이디로 조회
     public User findByUserId(Long userId){

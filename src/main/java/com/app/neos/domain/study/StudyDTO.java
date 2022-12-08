@@ -48,6 +48,8 @@ public class StudyDTO {
     private List<Long> followerNumberList;
     private List<UserDTO> follower;
 
+    private LocalDateTime createdDate;
+
     public Study toEntity(){
        StudyField studyField =  StudyField.builder().studyType(studyType).studyKeyword(studyKeyword).build();
         StudyOnlineWhether studyOnlineWhether = StudyOnlineWhether.builder().studyO2o(studyO2o).studyCity(studyCity).build();
@@ -99,5 +101,36 @@ public class StudyDTO {
         this.collegeName = collegeName;
         this.userId = userId;
         this.userNickName = userNickName;
+    }
+
+    @QueryProjection
+    public StudyDTO(Long studyId, String studyTitle, String studyType, String studyKeyword, String studyO2o, String studyCity, Integer studySupport, StudyRecruitStatus studyRecruitStatus, StudyStatus studyStatus, String studyContent, int studyView, LocalDate studyEndDate, Long collegeId, String collegeLogoFile, String collegeName, Long userId, String userNickName, LocalDateTime createdDate) {
+        this.studyId = studyId;
+        this.studyTitle = studyTitle;
+        this.studyType = studyType;
+        this.studyKeyword = studyKeyword;
+        this.studyO2o = studyO2o;
+        this.studyCity = studyCity;
+        this.studySupport = studySupport;
+        this.studyRecruitStatus = studyRecruitStatus;
+        this.studyStatus = studyStatus;
+        this.studyContent = studyContent;
+        this.studyView = studyView;
+        this.studyEndDate = studyEndDate;
+        this.collegeId = collegeId;
+        this.collegeLogoFile = collegeLogoFile;
+        this.collegeName = collegeName;
+        this.userId = userId;
+        this.userNickName = userNickName;
+        this.createdDate = createdDate;
+    }
+
+    @QueryProjection
+    public StudyDTO(Long studyId, String studyTitle, String userNickName, LocalDateTime createdDate, int followTotal) {
+        this.studyId = studyId;
+        this.studyTitle = studyTitle;
+        this.userNickName = userNickName;
+        this.createdDate = createdDate;
+        this.followTotal = followTotal;
     }
 }

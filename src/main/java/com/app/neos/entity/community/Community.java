@@ -6,6 +6,8 @@ import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -24,6 +26,7 @@ public class Community extends Period {
     private int communityLikeCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "USER_ID")
     private User user;
 

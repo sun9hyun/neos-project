@@ -4,6 +4,8 @@ import com.app.neos.domain.Admin.AdminUserDTO;
 import com.app.neos.domain.banner.BannerDTO;
 import com.app.neos.domain.college.CollegeDTO;
 import com.app.neos.domain.notice.NoticeDTO;
+import com.app.neos.domain.study.StudyDTO;
+import com.app.neos.domain.user.QUserDTO;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.banner.Banner;
 import com.app.neos.entity.college.College;
@@ -11,9 +13,11 @@ import com.app.neos.entity.notice.Notice;
 import com.app.neos.entity.user.User;
 import com.app.neos.service.admin.AdminCollegeService;
 import com.app.neos.service.admin.AdminService;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -30,12 +34,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.app.neos.entity.user.QUser.user;
+
 @Controller
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/admin/test/*")
 public class AdminTestController {
     private final AdminService adminService;
+    private final JPAQueryFactory jpaQueryFactory;
 
 //    대학교 추가
     @GetMapping("college/write")
@@ -169,12 +176,72 @@ public class AdminTestController {
     @GetMapping("user/list")
     public String userList(Model model, @PageableDefault(page = 0, size = 5) Pageable pageable){
 
-        Page<UserDTO> users = adminService.findAllUserPage(pageable);
-        List<AdminUserDTO> counts = new ArrayList<>();
+        List<UserDTO> userDTOS = jpaQueryFactory.select(new QUserDTO(
+                user.userId,
+                user.userNickName,
+                user.userOAuthId,
+                user.userOAuthEmail,
+                user.userCollegeEmail,
+                user.userPhoneNumber,
+                user.userCollegeCertify,
+                user.userCollegeInfo.userCollegeYear,
+                user.userCollegeInfo.userCollegeMajor,
+                user.userNeosPower.userNeosBadge,
+                user.userNeosPower.userNeosPowerLevel,
+                user.userNeosPower.userNeosPowerAbility,
+                user.userNeosPoint,
+                user.userChattingPoint,
+                user.userLike.userO2o,
+                user.userLike.userCity,
+                user.userLike.userDay,
+                user.userLike.userTime,
+                user.userMBTI.userMbtiName,
+                user.userMBTI.userMbtiColor,
+                user.userIntroduce,
+                user.userFile,
+                user.createdDate
+        ))
+                .from(user)
+                .orderBy(user.userId.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
 
-        for (UserDTO user: users) {
-            counts.add(adminService.workCount(user.getUserId()));
+        for (UserDTO user: userDTOS) {
+            user.setCounts(adminService.workCount(user.getUserId()));
         }
+
+
+        long total = jpaQueryFactory.select(new QUserDTO(
+                user.userId,
+                user.userNickName,
+                user.userOAuthId,
+                user.userOAuthEmail,
+                user.userCollegeEmail,
+                user.userPhoneNumber,
+                user.userCollegeCertify,
+                user.userCollegeInfo.userCollegeYear,
+                user.userCollegeInfo.userCollegeMajor,
+                user.userNeosPower.userNeosBadge,
+                user.userNeosPower.userNeosPowerLevel,
+                user.userNeosPower.userNeosPowerAbility,
+                user.userNeosPoint,
+                user.userChattingPoint,
+                user.userLike.userO2o,
+                user.userLike.userCity,
+                user.userLike.userDay,
+                user.userLike.userTime,
+                user.userMBTI.userMbtiName,
+                user.userMBTI.userMbtiColor,
+                user.userIntroduce,
+                user.userFile,
+                user.createdDate
+        ))
+                .from(user)
+                .fetch().size();
+
+        Page<UserDTO> users = new PageImpl<>(userDTOS,pageable,total);
+
 
         int startPage = Math.max(1, users.getPageable().getPageNumber()-1);
         int endPage = Math.min(users.getPageable().getPageNumber()+4, users.getTotalPages());
@@ -187,7 +254,6 @@ public class AdminTestController {
         model.addAttribute("users", users);
         model.addAttribute("total", users.getTotalElements());
 
-        model.addAttribute("counts", counts);
 
         return "app/admin/userList";
     }
@@ -213,6 +279,53 @@ public class AdminTestController {
     public RedirectView deleteByIdUser(String userId){
         adminService.deleteByUserId(userId);
         return new RedirectView("list");
+    }
+
+
+
+//    관리자 홈
+    @GetMapping("index")
+    public String index(){
+        return "app/admin/adminIndex";
+    }
+
+
+
+    //    스터디 게시글 관리
+    @GetMapping("study/list")
+    public String study(){
+        return "app/admin/studyManagement";
+    }
+
+    //    자유게시판 게시글 관리
+    @GetMapping("community/list")
+    public String community(Model model, @PageableDefault(page = 0, size = 5) Pageable pageable){
+
+        Page<StudyDTO> studyDTOS = adminService.findStudyPage(pageable);
+
+        int startPage = Math.max(1, studyDTOS.getPageable().getPageNumber());
+        int endPage = Math.min(studyDTOS.getPageable().getPageNumber(), studyDTOS.getTotalPages());
+//
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
+        model.addAttribute("nowPage", pageable.getPageNumber());
+        model.addAttribute("size", pageable.getPageSize());
+        model.addAttribute("studies", studyDTOS);
+        model.addAttribute("total", studyDTOS.getTotalElements());
+
+        return "app/admin/freeBoardManagement";
+    }
+
+    //    고민 상담 게시글 관리
+    @GetMapping("counseling/list")
+    public String counseling(){
+        return "app/admin/counselingBoardManagement";
+    }
+
+    //    자료 상점 게시글 관리
+    @GetMapping("store/list")
+    public String store(){
+        return "app/admin/freeShopBoardManagement";
     }
 
 

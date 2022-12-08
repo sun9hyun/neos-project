@@ -21,7 +21,7 @@ public class NoticeController {
 
 
     @GetMapping("list")
-    public String list(Model model, @PageableDefault(page = 0, size = 2) Pageable pageable){
+    public String list(Model model, @PageableDefault(page = 0, size = 20) Pageable pageable){
 
         Page<NoticeDTO> noticeDTOS = noticeService.findNoticePage(pageable);
 

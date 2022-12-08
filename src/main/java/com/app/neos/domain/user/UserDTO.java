@@ -1,6 +1,7 @@
 package com.app.neos.domain.user;
 
 
+import com.app.neos.domain.Admin.AdminUserDTO;
 import com.app.neos.domain.college.CollegeDTO;
 import com.app.neos.embeddable.user.UserCollegeInfo;
 import com.app.neos.embeddable.user.UserLike;
@@ -59,6 +60,7 @@ public class UserDTO {
     private String collegeEmailDomain;
 
     private LocalDateTime createdDate;
+    private AdminUserDTO counts;
 
 
 
@@ -169,5 +171,34 @@ public class UserDTO {
         this.userIntroduce = userIntroduce;
         this.userFile = userFile;
         this.createdDate = createdDate;
+    }
+
+
+    @QueryProjection
+    public UserDTO(Long userId, String userNickName, String userOAuthId, String userOAuthEmail, String userCollegeEmail, String userPhoneNumber, String userCollegeCertify, Integer userCollegeYear, UserCollegeMajor userCollegeMajor, String userNeosBadge, Integer userNeosPowerLevel, Integer userNeosPowerAbility, Integer userNeosPoint, Integer userChattingPoint, String userO2o, String userCity, String userDay, String userTime, String userMbtiName, String userMbtiColor, String userIntroduce, String userFile, LocalDateTime createdDate, AdminUserDTO counts) {
+        this.userId = userId;
+        this.userNickName = userNickName;
+        this.userOAuthId = userOAuthId;
+        this.userOAuthEmail = userOAuthEmail;
+        this.userCollegeEmail = userCollegeEmail;
+        this.userPhoneNumber = userPhoneNumber;
+        this.userCollegeCertify = userCollegeCertify;
+        this.userCollegeYear = userCollegeYear;
+        this.userCollegeMajor = userCollegeMajor;
+        this.userNeosBadge = userNeosBadge;
+        this.userNeosPowerLevel = userNeosPowerLevel;
+        this.userNeosPowerAbility = userNeosPowerAbility;
+        this.userNeosPoint = userNeosPoint;
+        this.userChattingPoint = userChattingPoint;
+        this.userO2o = userO2o;
+        this.userCity = userCity;
+        this.userDay = userDay;
+        this.userTime = userTime;
+        this.userMbtiName = userMbtiName;
+        this.userMbtiColor = userMbtiColor;
+        this.userIntroduce = userIntroduce;
+        this.userFile = userFile;
+        this.createdDate = createdDate;
+        this.counts = counts;
     }
 }

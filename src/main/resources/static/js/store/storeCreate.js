@@ -67,7 +67,7 @@ function submit() {
 }
 /*-------------------------------------------------------------------------------------------------------------*/
 var $file = $(".file");
-var $fileText = $(".fileText").text();
+var $fileText = $(".baseText").text();
 
 let $tempTr;
 var $userImg = $(".thumbnailImage2");
@@ -103,7 +103,8 @@ $file.on('change',function(e){
         $img.css('height', '');
         $imgBox.css('background-color', '#f5f5f5');
     }else {
-        $(this).next().next().children($("li")).text($fileName);
+
+        // $(this).next().next().children($("li")).text($fileName);
 
         $(this).toggleClass("active");
         $(this).prev("label").toggleClass("active");
@@ -150,7 +151,8 @@ $cancel.on("click", function () {
     $(this).toggleClass("active");
     $(this).prev().prev("label").toggleClass("active");
     $(this).prev(".file").toggleClass("active");
-
+    $(this).prev(".file").val("");
+    //
     $fileNameText.text($fileText);
 
     $img.attr('src', $tempTr);
@@ -158,3 +160,233 @@ $cancel.on("click", function () {
     $img.css('height', '');
     $imgBox.css('background-color', '#f5f5f5');
 });
+/*------------------------------------------------------------------*/
+// let arrayFile = [];
+
+
+// 첨부파일 추가하는 경우
+$("input[name='upload1']").on("change", function(){
+    let formData = new FormData();
+    let files = $(this)[0].files;
+
+    $(files).each(function(i, file){
+        formData.append("upload", file);
+    });
+
+    $.ajax({
+        url: "/file/upload",
+        type: "post",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (files) {
+            let text1 = "";
+            let text2 = "";
+            let text3 = "";
+            $(files).each(function(i, file){
+                console.log("여기 확인 필요");
+                console.log(file);
+
+                text1 += file.storeFileName +`(` + parseInt(file.storeFileSize / 1024) +`KB)`;
+
+                text2 += `<div class="fileVal1" type="hidden" data-file-size="` + file.storeFileSize + `" data-file-name="` + file.storeFileName + `" data-file-upload-path="` + file.storeFilePath + `" data-file-uuid="` + file.storeFileUuid + `">`;
+                text2 += `</div>`;
+
+                text3 += `<div type="hidden" class="fileData1">`;
+                text3 += `<input type="hidden" name="storeFlieDTOS[0].storeFileName" value="` + file.storeFileName + `">`;
+                text3 += `<input type="hidden" name="storeFlieDTOS[0].storeFilePath" value="` + file.storeFilePath + `">`;
+                text3 += `<input type="hidden" name="storeFlieDTOS[0].storeFileUuid" value="` + file.storeFileUuid + `">`;
+                text3 += `<input type="hidden" name="storeFlieDTOS[0].storeFileSize" value="` + file.storeFileSize + `">`;
+                text3 += `</div>`
+            });
+
+            $(".uploadResult1").append(text2);
+            $(".uploadResult1").children(".fileText1").html(text1);
+            $(".fileDataWrap").append(text3);
+
+        }
+    });
+});
+
+// 등록 취소 하는 경우
+$(".cancelBtn1").on("click", function(){
+    const $div1 = $(this).next().children(".fileVal1");
+    const $data1 = $(".fileDataWrap").children(".fileData1");
+    // let i = $(".uploadResult ul span").index($(this));
+    let uploadPath = $div1.data("file-upload-path");
+    let fileName = $div1.data("file-uuid") + "_" + $div1.data("file-name");
+    console.log($div1);
+    console.log(uploadPath);
+    console.log(fileName);
+    $.ajax({
+        url: "/file/delete",
+        type: "post",
+        data: {uploadPath: uploadPath, fileName: fileName},
+        success: function(){
+            $div1.remove();
+            $data1.remove();
+            // arrayFile.splice(i, 1);
+            // const dataTransfer = new DataTransfer();
+            // arrayFile.forEach(file => dataTransfer.items.add(file));
+            // $("input[name='upload']")[0].files = dataTransfer.files;
+        }
+    });
+});
+
+/*-------------------------------------첨부2----------------------------------*/
+// 첨부파일 추가하는 경우
+$("input[name='upload2']").on("change", function(){
+    let formData = new FormData();
+    let files = $(this)[0].files;
+
+    $(files).each(function(i, file){
+        formData.append("upload", file);
+    });
+
+    $.ajax({
+        url: "/file/upload",
+        type: "post",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (files) {
+            let text1 = "";
+            let text2 = "";
+            let text3 = "";
+            $(files).each(function(i, file){
+                console.log("여기 확인 필요");
+                console.log(file);
+
+                text1 += file.storeFileName +`(` + parseInt(file.storeFileSize / 1024) +`KB)`;
+
+                text2 += `<div class="fileVal2" type="hidden" data-file-size="` + file.storeFileSize + `" data-file-name="` + file.storeFileName + `" data-file-upload-path="` + file.storeFilePath + `" data-file-uuid="` + file.storeFileUuid + `">`;
+                text2 += `</div>`;
+
+                text3 += `<div type="hidden" class="fileData2">`;
+                text3 += `<input type="hidden" name="storeFlieDTOS[1].storeFileName" value="` + file.storeFileName + `">`;
+                text3 += `<input type="hidden" name="storeFlieDTOS[1].storeFilePath" value="` + file.storeFilePath + `">`;
+                text3 += `<input type="hidden" name="storeFlieDTOS[1].storeFileUuid" value="` + file.storeFileUuid + `">`;
+                text3 += `<input type="hidden" name="storeFlieDTOS[1].storeFileSize" value="` + file.storeFileSize + `">`;
+                text3 += `</div>`
+            });
+
+            $(".uploadResult2").append(text2);
+            $(".uploadResult2").children(".fileText2").html(text1);
+            $(".fileDataWrap").append(text3);
+
+        }
+    });
+});
+
+// 등록 취소 하는 경우
+$(".cancelBtn2").on("click", function(){
+    const $div2 = $(this).next().children(".fileVal2");
+    const $data2 = $(".fileDataWrap").children(".fileData2");
+    // let i = $(".uploadResult ul span").index($(this));
+    let uploadPath = $div2.data("file-upload-path");
+    let fileName = $div2.data("file-uuid") + "_" + $div2.data("file-name");
+    console.log($div2);
+    console.log(uploadPath);
+    console.log(fileName);
+    $.ajax({
+        url: "/file/delete",
+        type: "post",
+        data: {uploadPath: uploadPath, fileName: fileName},
+        success: function(){
+            $div2.remove();
+            $data2.remove();
+            // arrayFile.splice(i, 1);
+            // const dataTransfer = new DataTransfer();
+            // arrayFile.forEach(file => dataTransfer.items.add(file));
+            // $("input[name='upload']")[0].files = dataTransfer.files;
+        }
+    });
+});
+/*-------------------------------------첨부3----------------------------------*/
+// 첨부파일 추가하는 경우
+$("input[name='upload3']").on("change", function(){
+    let formData = new FormData();
+    let files = $(this)[0].files;
+
+    $(files).each(function(i, file){
+        formData.append("upload", file);
+    });
+
+    $.ajax({
+        url: "/file/upload",
+        type: "post",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (files) {
+            let text1 = "";
+            let text2 = "";
+            let text3 = "";
+            $(files).each(function(i, file){
+                console.log("여기 확인 필요");
+                console.log(file);
+
+                text1 += file.storeFileName +`(` + parseInt(file.storeFileSize / 1024) +`KB)`;
+
+                text2 += `<div class="fileVal3" type="hidden" data-file-size="` + file.storeFileSize + `" data-file-name="` + file.storeFileName + `" data-file-upload-path="` + file.storeFilePath + `" data-file-uuid="` + file.storeFileUuid + `">`;
+                text2 += `</div>`;
+
+                text3 += `<div type="hidden" class="fileData3">`;
+                text3 += `<input type="hidden" name="storeFlieDTOS[2].storeFileName" value="` + file.storeFileName + `">`;
+                text3 += `<input type="hidden" name="storeFlieDTOS[2].storeFilePath" value="` + file.storeFilePath + `">`;
+                text3 += `<input type="hidden" name="storeFlieDTOS[2].storeFileUuid" value="` + file.storeFileUuid + `">`;
+                text3 += `<input type="hidden" name="storeFlieDTOS[2].storeFileSize" value="` + file.storeFileSize + `">`;
+                text3 += `</div>`
+            });
+
+            $(".uploadResult3").append(text2);
+            $(".uploadResult3").children(".fileText3").html(text1);
+            $(".fileDataWrap").append(text3);
+
+        }
+    });
+});
+
+// 등록 취소 하는 경우
+$(".cancelBtn3").on("click", function(){
+    const $div3 = $(this).next().children(".fileVal3");
+    const $data3 = $(".fileDataWrap").children(".fileData3");
+    // let i = $(".uploadResult ul span").index($(this));
+    let uploadPath = $div3.data("file-upload-path");
+    let fileName = $div3.data("file-uuid") + "_" + $div3.data("file-name");
+    console.log($div3);
+    console.log(uploadPath);
+    console.log(fileName);
+    $.ajax({
+        url: "/file/delete",
+        type: "post",
+        data: {uploadPath: uploadPath, fileName: fileName},
+        success: function(){
+            $div3.remove();
+            $data3.remove();
+            // arrayFile.splice(i, 1);
+            // const dataTransfer = new DataTransfer();
+            // arrayFile.forEach(file => dataTransfer.items.add(file));
+            // $("input[name='upload']")[0].files = dataTransfer.files;
+        }
+    });
+});
+
+/*-----------------------------------------------------------------------*/
+
+
+
+function showUploadResult(files){
+    let text = "";
+    $(files).each(function(i, file){
+        console.log("여기 확인 필요");
+        console.log(file);
+
+        text += `<li data-file-size="` + file.storeFileSize + `" data-file-name="` + file.storeFileName + `" data-file-upload-path="` + file.storeFilePath + `" data-file-uuid="` + file.storeFileUuid + `">`;
+        text += file.storeFileName +`(` + parseInt(file.storeFileSize / 1024) +`KB)`;
+        text += `</li>`;
+    });
+    // $(".uploadResult").append(text);
+    $(".uploadResult").children(".fileText").html(text);
+}
+

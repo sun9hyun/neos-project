@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="buildProjectContents storyContentsWrap">
-            <form method="post" th:action="@{/store/store-create}" th:object="${storeDTO}" id="storeForm" name="storeForm" >
+            <form method="post" th:action="@{/store/store-create}" th:object="${storeDTO}" id="storeForm" name="storeForm">
 
             <div class="answer purpose">
                 <p class="subTit">유형</p>
@@ -54,39 +54,40 @@
                         <img class="thumbnailImage2"
                              src="https://letspl.me/assets/images/ic-camera-alt-24-px.png" alt="story_image">
                     </div>
-                    <div class="uploadBox">
+                    <div class="uploadBox" style="width: 170px;">
                         <label for="file1" class="active">파일 업로드</label>
-                        <input type="file" name="file" class="file active" id="file1">
-                        <button type="button" class="fileButton cancel ">취소</button>
-                        <ul>
-                            <li class="fileText">저작권에 위배되지 않는 &nbsp&nbsp 파일만 업로드해주세요.</li>
+                        <input type="file" name="upload1" class="file upload active" id="file1">
+                        <button type="button" class="fileButton cancelBtn1 cancel ">취소</button>
+                        <ul class="uploadResult1">
+                            <li class="fileText fileText1">저작권에 위배되지 않는 &nbsp&nbsp 파일만 업로드해주세요.</li>
                         </ul>
                     </div>
                     <div class="thumbnailBox">
                         <img class="thumbnailImage2"
                              src="https://letspl.me/assets/images/ic-camera-alt-24-px.png" alt="story_image">
                     </div>
-                    <div class="uploadBox">
+                    <div class="uploadBox" style="width: 170px;">
                         <label for="file2" class="active">파일 업로드</label>
-                        <input type="file" name="file" class="file active" id="file2">
-                        <button type="button" class="fileButton cancel ">취소</button>
-                        <ul>
-                            <li>저작권에 위배되지 않는 &nbsp&nbsp 파일만 업로드해주세요.</li>
+                        <input type="file" name="upload2" class="file upload active" id="file2">
+                        <button type="button" class="fileButton cancelBtn2 cancel ">취소</button>
+                        <ul class="uploadResult2">
+                            <li class="fileText baseText fileText2">저작권에 위배되지 않는 &nbsp&nbsp 파일만 업로드해주세요.</li>
                         </ul>
                     </div>
                     <div class="thumbnailBox">
                         <img class="thumbnailImage2"
                              src="https://letspl.me/assets/images/ic-camera-alt-24-px.png" alt="story_image">
                     </div>
-                    <div class="uploadBox">
+                    <div class="uploadBox" style="width: 170px;">
                         <label for="file3" class="active">파일 업로드</label>
-                        <input type="file" name="file" class="file active" id="file3">
-                        <button type="button" class="fileButton cancel ">취소</button>
-                        <ul>
-                            <li>저작권에 위배되지 않는 &nbsp&nbsp 파일만 업로드해주세요.</li>
+                        <input type="file" name="upload3" class="file upload active" id="file3">
+                        <button type="button" class="fileButton cancelBtn3 cancel ">취소</button>
+                        <ul class="uploadResult3">
+                            <li class="fileText fileText3">저작권에 위배되지 않는 &nbsp&nbsp 파일만 업로드해주세요.</li>
                         </ul>
                     </div>
                 </div>
+                <div type="hidden" class="fileDataWrap" ></div>
 
             </div>
 

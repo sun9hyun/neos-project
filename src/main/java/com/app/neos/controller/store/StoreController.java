@@ -41,7 +41,6 @@ public class StoreController {
     public RedirectView saveOk(StoreDTO storeDTO){
 //        Store store = storeDTO.toEntity();
 
-
         storeService.saveStore(storeDTO);
 
         return new RedirectView("store-list");
@@ -51,7 +50,8 @@ public class StoreController {
 
 //    자료상점 상세
     @GetMapping("/store-detail")
-    public String storeDetail(){
+    public String storeDetail(Long storeId, Model model){
+        model.addAttribute("store", storeService.findStoreOne(storeId));
         return "app/store/storeDetail";
     }
 }

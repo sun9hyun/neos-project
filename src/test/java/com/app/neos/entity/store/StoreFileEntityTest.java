@@ -2,6 +2,7 @@ package com.app.neos.entity.store;
 
 
 import com.app.neos.domain.store.StoreFlieDTO;
+import com.app.neos.repository.store.StoreFileCustomRepository;
 import com.app.neos.repository.store.StoreFileRepository;
 import com.app.neos.repository.store.StoreRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -20,16 +21,22 @@ public class StoreFileEntityTest {
     StoreRepository storeRepository;
     @Autowired
     StoreFileRepository storeFileRepository;
+    @Autowired
+    StoreFileCustomRepository storeFileCustomRepository;
 
     @Test
     public void saveTest(){
         StoreFlieDTO storeFlieDTO = new StoreFlieDTO();
-        storeFlieDTO.setStoreFileName("Test.doc");
+        storeFlieDTO.setStoreFileName("222Test.doc");
         storeFlieDTO.setStoreFilePath("c:test/test/Test.doc");
-        storeFlieDTO.setStoreFileQR("TestDoc.img");
+        storeFlieDTO.setStoreFileUuid("22Test.doc");
+        storeFlieDTO.setStoreFileSize(50L);
+        storeFlieDTO.setStoreFileQR("22TestDoc.img");
 
-        storeFlieDTO.setStore(storeRepository.findById(6L).get());
+//        storeFlieDTO.setStoreId(22L);
+        storeFlieDTO.setStore(storeRepository.findById(22L).get());
         StoreFile storeFile = storeFlieDTO.toEntity();
+//        storeFile.changeStore(storeRepository.findById(storeFlieDTO.getStoreId()).get());
         storeFile.changeStore(storeFlieDTO.getStore());
 
         storeFileRepository.save(storeFile);
@@ -37,4 +44,14 @@ public class StoreFileEntityTest {
 
     @Test
     public void deleteTest(){ storeFileRepository.deleteById(8L);}
+
+    @Test
+    public void findByStoreIdTest(){
+        storeFileCustomRepository.findByStoreId(22L).stream().map(StoreFlieDTO::toString).forEach(log::info);
+    }
+
+    @Test
+    public void deleteByStoreIdTest(){
+        storeFileCustomRepository.deleteByStoreId(22L);
+    }
 }

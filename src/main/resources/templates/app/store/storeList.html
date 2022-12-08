@@ -29,7 +29,7 @@
                 <!-- 자료상점 리스트 출력 START-->
                 <div class="contetnsGrid" >
                     <div th:each="store:${stores}" th:object="${store}">
-                        <div class="Box free"  th:if="*{storeStatus == T(com.app.neos.type.store.StoreStatus).FREE}" >
+                        <div class="Box free"  th:if="*{storeStatus.toString() == 'FREE'}" >
                             <a class="storyGridBox" href="javascript:;" target="_self">
                                 <!-- <div class="top up">
                                     <img src="img/qr.jpg" alt="">
@@ -69,11 +69,11 @@
                                 </div>
                             </a>
                             <div class="shopLink" >
-                                <a href='javascript:;' class='shopDetail'>상세보기</a>
+                                <a th:href="*{storeId}" class='shopDetail detailBtn'>상세보기</a>
                             </div>
                         </div>
 
-                        <div class="Box lock" th:if="*{storeStatus == T(com.app.neos.type.store.StoreStatus).PAY}">
+                        <div class="Box lock" th:if="*{storeStatus.toString() == 'PAY'}">
                             <a class="storyGridBox" href="javascript:;" target="_self">
                                 <div class="top">
                                     <img src="/images/store/storeNeos.png" alt="">
@@ -113,7 +113,7 @@
                             </a>
                             <div class="shopLink">
                                 <a href='javascript:;' class='lockCash shopDetail'>결제하기</a>
-                                <a href='javascript:;' class='lockDetail shopDetail'>상세보기</a>
+                                <a th:href="*{storeId}" class='lockDetail shopDetail detailBtn'>상세보기</a>
                             </div>
                         </div>
                     </div>

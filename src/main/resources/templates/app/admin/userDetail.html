@@ -100,13 +100,13 @@
             <div class="card style-transparent card-top no-tab">
                 <div class="card-head">
                     <header>
-                        <a href="#" onclick="window.location = '#';"> <!-- 사용자 목록 리스트 주소 입력 필요 -->
+                        <a th:href="@{/admin/test/user/list}"> <!-- 사용자 목록 리스트 주소 입력 필요 -->
                             <i class="zmdi zmdi-arrow-back"></i>리스트로 돌아가기
                         </a>
                     </header>
                 </div>
             </div>
-
+            <th:block th:object="${user}">
             <div class="section-body">
                 <div class="tab-pane" id="daily">
                     <div class="row">
@@ -118,9 +118,9 @@
                                 <div class="card-body border-top">
                                     <div class="profile-image text-center margin-bottom-xxl">
                                         <div id="fileupload_profile_img">
-                                            <img src="https://testchoo.imweb.me/common/img/default_profile.png" id="profile_img" width="72" height="72" class="img-circle"> <!-- 개인별 프로필 사진으로 변경 -->
+                                            <img th:src="*{userFile}" id="profile_img" width="72" height="72" class="img-circle"> <!-- 개인별 프로필 사진으로 변경 -->
                                         </div>
-                                        <h3 class="text-15">관리자</h3> <!-- 사용자 닉네임 -->
+                                        <h3 class="text-15" th:text="*{userNickName}"></h3> <!-- 사용자 닉네임 -->
                                     </div>
 
                                     <div class="profile-info">
@@ -134,33 +134,59 @@
                                             <input type="hidden" name="from_permission" value=""> -->
                                             <!-- 해당 사용자 상세내용 -->
 
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label text-right">회원 유형</label>
-                                                <span class="form-control-static col-md-9">admin</span>
-                                            </div>
+<!--                                            <div class="form-group">-->
+<!--                                                <label class="col-sm-3 control-label text-right">회원 유형</label>-->
+<!--                                                <span class="form-control-static col-md-9">admin</span>-->
+<!--                                            </div>-->
 
                                             <div class="form-group">
                                                 <label class="col-sm-3 control-label text-right">계정</label>
-                                                <span class="form-control-static col-md-9">neos0124@gmail.com</span>
+                                                <span class="form-control-static col-md-9" th:text="*{userOAuthEmail}"></span>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label text-right" for="">이름</label>
-                                                <span class="form-control-static col-md-9 user_name">박종우</span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label text-right" for="">대학교</label>
-                                                <span class="form-control-static col-md-9 college_name">서울대학교</span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label text-right" for="">대학교 이메일</label>
-                                                <span class="form-control-static col-md-9 college_logo">neos@seoul.kr</span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label text-right" for="">대학교 로고</label>
-                                                <span class="form-control-static col-md-9 college_logo"><img style="width: 50px" src="/images/admin/college/seoulCollege.png"
-                                                                                                             alt=""></span>
-                                            </div>
+<!--                                            <div class="form-group">-->
+<!--                                                <label class="col-sm-3 control-label text-right" for="">이름</label>-->
+<!--                                                <span class="form-control-static col-md-9 user_name">박종우</span>-->
+<!--                                            </div>-->
+                                            <th:block th:if="*{collegeId == null}">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label text-right">대학교</label>
+                                                    <span class="form-control-static col-md-9 college_name">해당 없음</span>
+                                                </div>
+                                            </th:block>
+                                            <th:block th:unless="*{collegeId == null}">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label text-right">대학교</label>
+                                                    <span class="form-control-static col-md-9 college_name" th:text="*{collegeName}"></span>
+                                                </div>
+                                            </th:block>
+
+                                            <th:block th:if="*{collegeId == null}">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label text-right">대학교 이메일</label>
+                                                    <span class="form-control-static col-md-9 college_logo">해당 없음</span>
+                                                </div>
+                                            </th:block>
+                                            <th:block th:unless="*{collegeId == null}">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label text-right">대학교 이메일</label>
+                                                    <span class="form-control-static col-md-9 college_logo" th:text="*{collegeEmailDomain}"></span>
+                                                </div>
+                                            </th:block>
+
+                                            <th:block th:if="*{collegeId == null}">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label text-right">대학교 로고</label>
+                                                    <span class="form-control-static col-md-9 college_logo">해당 없음</span>
+                                                </div>
+                                            </th:block>
+                                            <th:block th:unless="*{collegeId == null}">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label text-right">대학교 로고</label>
+                                                    <span class="form-control-static col-md-9 college_logo"><img style="width: 50px" th:src="*{collegeLogoFile}"
+                                                                                                                 alt=""></span>
+                                                </div>
+                                            </th:block>
                                         </form>
                                     </div>
                                 </div><!--end.card-body-->
@@ -178,15 +204,22 @@
                                             <div class="form-group margin-bottom-xxxl">
                                                 <label class="col-sm-3 control-label text-right margin-top-5">가입일</label>
                                                 <div class="col-sm-9">
-                                                    <p class="form-control-static">2022-11-01 00:00</p>
+                                                    <p class="form-control-static dateJoin" th:text="*{createdDate}"></p>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="form-group margin-bottom-xxxl">
-                                                <label class="col-sm-3 control-label text-right margin-top-5">포인트</label>
-                                                <p class="form-control-static col-sm-9">10000 <span>point</span></p>
+                                                <label class="col-sm-3 control-label text-right margin-top-5">채팅 포인트</label>
+                                                <p class="form-control-static col-sm-9" th:text="*{userChattingPoint}"> <span>point</span></p>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="form-group margin-bottom-xxxl">
+                                                <label class="col-sm-3 control-label text-right margin-top-5">네오 포인트</label>
+                                                <p class="form-control-static col-sm-9" th:text="*{userNeosPoint}"> <span>point</span></p>
                                             </div>
                                         </div>
                                     </div>
@@ -198,29 +231,29 @@
                                                 <div class="form-control-static col-sm-9">
                                                     <div class="row margin-bottom-12">
                                                         <span style="display:inline-block;" class="col-xs-3">자료상점</span>
-                                                        <p>0</p>
+                                                        <p th:text="${count.storeCount}"></p>
                                                     </div>
 
                                                     <div class="row margin-bottom-12">
                                                         <span style="display:inline-block;" class="col-xs-3">스터디</span>
-                                                        <p>0</p>
+                                                        <p th:text="${count.studyCount}"></p>
                                                     </div>
                                                     <div class="row margin-bottom-12">
                                                         <span style="display:inline-block;" class="col-xs-3">자유 게시글</span>
-                                                        <p>0</p>
+                                                        <p th:text="${count.communityCount}"></p>
                                                     </div>
                                                     <div class="row margin-bottom-12">
                                                         <span style="display:inline-block;" class="col-xs-3">익명 게시글</span>
-                                                        <p>0</p>
+                                                        <p th:text="${count.counselingCount}"></p>
                                                     </div>
                                                     <div class="row margin-bottom-12">
                                                         <span style="display:inline-block;" class="col-xs-3">댓글</span>
-                                                        <p>0</p>
+                                                        <p th:text="${count.replyCount}"></p>
                                                     </div>
 
                                                     <div class="row margin-bottom-12">
                                                         <span style="display:inline-block;" class="col-xs-3">문의</span>
-                                                        <p>0</p>
+                                                        <p th:text="${count.inquiryCount}"></p>
                                                         <!-- <a href="/admin/shopping/answers?q=YSUzQTIlM0ElN0JzJTNBNyUzQSUyMmtleXdvcmQlMjIlM0JzJTNBMjAlM0ElMjJzbGlvbnMxMTEzJTQwZ21haWwuY29tJTIyJTNCcyUzQTEyJTNBJTIya2V5d29yZF90eXBlJTIyJTNCcyUzQTMlM0ElMjJ1aWQlMjIlM0IlN0Q=" class="text-primary col-sm-1 col-xs-2 no-padding text-right">0</a> -->
                                                     </div>
                                                     <!-- a태그 href 해당 사용자 카운팅 된 링크로 이동필요, 혹은 기능 삭제 -->
@@ -235,6 +268,7 @@
                     </div>
                 </div>
             </div>
+            </th:block>
         </section>
     </div>
 
@@ -260,6 +294,13 @@
     $('.gui-folder').click(function(){
         $(this).toggleClass('expanded'); /* expanded가 없으면 생성, 있으면 삭제, 따라서 gui-folder은 계속 유지 */
         $(this).parent().children('.expanded').not(this).removeClass('expanded');
+    });
+
+    $(".dateJoin").ready(function () {
+        $(".dateJoin").bind("click", function () {
+            $(this).html($(this).text().slice(0, 10));
+        });
+        $(".dateJoin").trigger("click");
     });
 
 

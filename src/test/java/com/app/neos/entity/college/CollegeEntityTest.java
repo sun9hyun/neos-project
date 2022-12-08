@@ -27,6 +27,8 @@ public class CollegeEntityTest {
     //    saveTest
     @Test
     public void saveTest(){
+        for (int i = 0; i < 50; i++) {
+
         CollegeDTO collegeDTO = new CollegeDTO();
 
         collegeDTO.setCollegeCity("경상남도");
@@ -35,8 +37,8 @@ public class CollegeEntityTest {
         collegeDTO.setCollegeEmailDomain("www.changwon.ac.kr");
 
         College college = collegeDTO.toEntity();
-
-        collegeRepository.save(college);
+            collegeRepository.save(college);
+        }
     }
 
 

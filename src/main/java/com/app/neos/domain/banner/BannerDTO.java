@@ -21,7 +21,7 @@ public class BannerDTO {
         return Banner.builder().
                 bannerTitle(bannerTitle)
                 .bannerUrl(bannerUrl)
-                .bannerStatus(BannerStatus.게재중).
+                .bannerStatus(BannerStatus.개제중).
                 build();
 
     }

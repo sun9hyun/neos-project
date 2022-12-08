@@ -15,6 +15,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
@@ -56,6 +57,8 @@ public class UserDTO {
     private String collegeName;
     private String collegeLogoFile;
     private String collegeEmailDomain;
+
+    private LocalDateTime createdDate;
 
 
 
@@ -139,5 +142,32 @@ public class UserDTO {
         this.userMbtiColor = userMbtiColor;
         this.userIntroduce = userIntroduce;
         this.userFile = userFile;
+    }
+
+    @QueryProjection
+    public UserDTO(Long userId, String userNickName, String userOAuthId, String userOAuthEmail, String userCollegeEmail, String userPhoneNumber, String userCollegeCertify, Integer userCollegeYear, UserCollegeMajor userCollegeMajor, String userNeosBadge, Integer userNeosPowerLevel, Integer userNeosPowerAbility, Integer userNeosPoint, Integer userChattingPoint, String userO2o, String userCity, String userDay, String userTime, String userMbtiName, String userMbtiColor, String userIntroduce, String userFile, LocalDateTime createdDate) {
+        this.userId = userId;
+        this.userNickName = userNickName;
+        this.userOAuthId = userOAuthId;
+        this.userOAuthEmail = userOAuthEmail;
+        this.userCollegeEmail = userCollegeEmail;
+        this.userPhoneNumber = userPhoneNumber;
+        this.userCollegeCertify = userCollegeCertify;
+        this.userCollegeYear = userCollegeYear;
+        this.userCollegeMajor = userCollegeMajor;
+        this.userNeosBadge = userNeosBadge;
+        this.userNeosPowerLevel = userNeosPowerLevel;
+        this.userNeosPowerAbility = userNeosPowerAbility;
+        this.userNeosPoint = userNeosPoint;
+        this.userChattingPoint = userChattingPoint;
+        this.userO2o = userO2o;
+        this.userCity = userCity;
+        this.userDay = userDay;
+        this.userTime = userTime;
+        this.userMbtiName = userMbtiName;
+        this.userMbtiColor = userMbtiColor;
+        this.userIntroduce = userIntroduce;
+        this.userFile = userFile;
+        this.createdDate = createdDate;
     }
 }

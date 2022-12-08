@@ -127,8 +127,10 @@
                                     <div class="profile-image text-center margin-bottom-xxl">
                                         <div id="fileupload_profile_img">
                                             <img class="company mg-circle" th:src="${college.collegeLogoFile}" id="profile_img" width="72" height="72" >
+
                                             <div id="drop_profile_img">
                                                 <input type="file" name="files[]" style="width: 100%" accept="image/jpeg, image/jpg, image/png, image/gif, image/svg+xml">
+
                                             </div>
                                             <div class="over">
                                                 <i class="zmdi zmdi-camera"></i>
@@ -139,8 +141,8 @@
                                     </div><!--end.profile-image-->
 
                                     <div class="profile-info">
-                                        <form id="dof" th:action="@{/admin/test/college/update}" th:object="${college}" name="collegeUpdate" method="post" class="form-horizontal form-validate" role="form" target="hidden_frame" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate">
-                                            <input type="hidden" name="collegeLogoFile" id="collegeLogoFile">
+                                        <form th:action="@{/admin/test/college/update}" th:object="${college}" name="collegeUpdate" id="dof" method="post" class="form-horizontal form-validate" role="form" target="hidden_frame" enctype="multipart/form-data">
+                                            <input type="hidden" th:field="*{collegeLogoFile}" id="collegeLogoFile">
                                             <!-- 해당 회사 상세내용 아래 방법으로 코드 작성  -->
                                             <!-- <input type="hidden" name="idx" value="22645265">
                                             <input type="hidden" name="code" value="m20220929a41c742d48942">
@@ -178,7 +180,7 @@
                                                             <option value="13">부산광역시</option>
                                                             <option value="14">제주특별시</option>
                                                         </select>
-                                                        <input th:field="*{collegeCity}" id="collegeCity" type="hidden">
+                                                        <input th:field="*{collegeCity}" id="collegeCity2" type="hidden">
                                                     </div>
                                                 </div>
 
@@ -209,6 +211,7 @@
                                 </div><!--end.card-body-->
                             </div><!--end.card-->
                         </div><!--end.col-->
+
 
                         <div class="col-md-6">
                             <div class="card">
@@ -305,12 +308,30 @@
         $(".createdDate").trigger("click");
     });
 
+    $("input[type='file']").on("change", function(){
+        let bannerImageFile = $("input[type='file']").get(0).files[0];
+        let formData = new FormData();
+        formData.append('bannerImageFile', bannerImageFile);
+
+        $.ajax({
+            url: "/admin-rest/banner-upload",
+            type: "POST",
+            data: formData,
+            contentType: false, // 필수 : x-www-form-urlencoded로 파싱되는 것을 방지
+            processData: false,  // 필수: contentType을 false로 줬을 때 QueryString 자동 설정됨. 해제
+            enctype: "multipart/form-data",
+            dataType: "text",
+            success: function (result) {
+                console.log(result);
+                $("#collegeLogoFile").val("/upload/"+result);
+            }
+        });
+    });
+
+
+
     function submit() {
-        const $img = $("#profile_img");
-        var images = $img.attr("src");
-        $('input[id=collegeCity]').attr('value', $("#collegeCity option:selected").text());
-        // $('input[id=collegeLogoFile]').attr('value', $("#profile_img").attr('src'));
-        $("#collegeLogoFile").val(images);
+        $('input[id=collegeCity2]').attr('value', $("#collegeCity option:selected").text());
         collegeUpdate.submit();
     }
 

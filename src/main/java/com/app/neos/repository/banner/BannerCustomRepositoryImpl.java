@@ -29,9 +29,18 @@ public class BannerCustomRepositoryImpl implements BannerCustomRepository {
                 .fetch();
     }
 
-
-
-
+    @Override
+    public BannerDTO findById(Long bannerId) {
+        return jpaQueryFactory.select(new QBannerDTO(
+                banner.bannerId,
+                banner.bannerTitle,
+                banner.bannerUrl,
+                banner.bannerStatus
+        ))
+                .from(banner)
+                .where(banner.bannerId.eq(bannerId))
+                .fetchOne();
+    }
 
 
 }

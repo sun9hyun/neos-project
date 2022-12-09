@@ -79,11 +79,14 @@ public class StoreService {
 
 
          List<StoreFlieDTO> storeFlieDTOS = storeDTO.getStoreFlieDTOS();
+         System.out.println("*********************  1: " + storeDTO + "*********************");
+         System.out.println("*********************  1: " + storeDTO.getStoreId() + "*********************");
+
          storeFileCustomRepository.deleteByStoreId(storeDTO.getStoreId());
 
          updateEntity(storeDTO);
          Store store = storeRepository.findById(storeDTO.getStoreId()).get();
-         System.out.println("*********************  1: " + store + "*********************");
+         System.out.println("*********************  2: " + store + "*********************");
 
 //         User user = userRepository.findById(storeDTO.getUserId()).get();
 //         store.changeUser(user);
@@ -105,7 +108,7 @@ public class StoreService {
              storeFlieDTOS.forEach(storeFlieDTO -> {
                  StoreFile storeFile = storeFlieDTO.toEntity();
 
-                 Store store1 = storeRepository.findById(storeFlieDTO.getStoreId()).get();
+                 Store store1 = storeRepository.findById(storeDTO.getStoreId()).get();
                  storeFile.changeStore(store1);
 
                  storeFileRepository.save(storeFile);

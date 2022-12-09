@@ -10,6 +10,30 @@
     <link rel="stylesheet" href="/css/fix/chatting.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
+<style>
+    .modalWrapOpen .modalWrap .btnWrap form button.whiteBtn {
+        border: 1px solid #1A7CFF;
+        color: #1A7CFF;
+        background-color: #fff;
+    }
+
+    .modalWrapOpen .modalWrap .btnWrap.doubleBtnWrap form button {
+        height: 44px;
+        width: 49%;
+        border: none;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: .75rem;
+        padding: 0;
+        border-radius: 4px;
+    }
+
+    .modalWrapOpen .modalWrap .btnWrap.doubleBtnWrap form{
+        width: 100%;
+        display: flex;
+    }
+</style>
 <body>
 <script th:inline="javascript">
     const userId = [[${session.loginUser}]];
@@ -85,22 +109,40 @@
                                 <ul>
                                     <!-- 지원자 하나의 경우만 보여 주지만, 모집중과 아닌 경우 보여 주기 위하여 2가지로 임의 구성-->
                                     <!-- case1. 지원종료 -->
-                                    <li>
-                                        <h2 class="positionTxt">지원자</h2><span class="">1
-                                        <!-- -->/
-                                        <!-- -->5
-                                            </span>
-                                        <button value="완료" class="postionApplyBtn disabledBtn" disabled="">완료
-                                        </button>
-                                    </li>
+                                    <th:block th:if="*{studyRecruitStatus.toString() == 'RECRUITING'}">
+                                        <li>
+                                            <h2 class="positionTxt">지원자</h2>
+                                            <span class="active" style="margin-right:-10px;width: 24px" th:text="*{studySupporterDTOS.size()}"></span>
+                                            <span class="active" style="margin-right:-10px;width: 24px">명</span>
+                                            <th:block th:if="${#arrays.contains(supportList,session.loginUser)}">
+
+                                            </th:block>
+                                            <th:block th:unless="${#arrays.contains(supportList,session.loginUser)}">
+                                                <button value="완료" class="postionApplyBtn">지원</button>
+                                            </th:block>
+
+                                        </li>
+                                        <li>
+                                            <h2 class="positionTxt">모집 완료</h2>
+                                            <span class="active" style="margin-right:-10px;width: 24px" th:text="*{studyMemberList.size()}"></span>
+                                            <span class="active" style="margin-right:-10px;width: 24px">/</span>
+                                            <span class="active" th:text="*{studySupport}"></span>
+
+                                        </li>
+                                    </th:block>
+                                    <th:block th:unless="*{studyRecruitStatus.toString() == 'RECRUITING'}">
+                                        <li>
+                                            <h2 class="positionTxt">모집완료</h2>
+                                            <span class="" style="margin-right:-10px;width: 24px" th:text="*{studyMemberList.size()}"></span>
+                                            <span class="" style="margin-right:-10px;width: 24px">/</span>
+                                            <span class="" th:text="*{studySupport}"></span>
+                                            <button value="완료" class="postionApplyBtn disabledBtn" disabled="">완료
+                                            </button>
+                                        </li>
+                                    </th:block>
+
                                     <!-- case2. 모집중 -->
-                                    <li>
-                                        <h2 class="positionTxt">지원자</h2><span class="active">1
-                                        <!-- -->/
-                                        <!-- -->5</span>
-                                        <button value="완료" class="postionApplyBtn">지원
-                                        </button>
-                                    </li>
+
                                 </ul>
                             </div>
                             <div class="section skillSection">
@@ -469,8 +511,12 @@
                 <p></p>
             </div>
             <div class="btnWrap doubleBtnWrap">
-                <button class="btn whiteBtn">아니요</button>
-                <button class="btn blueBtn okBtn">예</button>
+                <form th:action="@{/study-member/join}" method="post" id="joinForm">
+                <input type="hidden" name="studyId" th:value="${study.studyId}">
+                <input type="hidden" id="userDTO" name="user.userId" th:value="${session.loginUser}">
+                <button type="button" class="btn whiteBtn">아니요</button>
+                <button type="button" class="btn blueBtn joinBtn_1j">예</button>
+                </form>
             </div>
         </div>
     </div>
@@ -487,6 +533,7 @@
 <script src="/js/fix/header.js"></script>
 <script th:inline="javascript">
 
+    /*민성이형을 위한 구독 */
     let userSessionId = [[${session.loginUser}]];
     let studyId = [[${study.studyId}]];
     let studyName = [[${study.studyTitle}]]
@@ -546,7 +593,11 @@
 
     })
 
+</script>
+<script th:inline="javascript">
+    $(".joinBtn_1j").on("click",function () {
+        $("#joinForm").submit();
 
-
+    })
 </script>
 </html>

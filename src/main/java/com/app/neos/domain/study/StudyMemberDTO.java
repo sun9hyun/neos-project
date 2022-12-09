@@ -1,6 +1,7 @@
 package com.app.neos.domain.study;
 
 
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.study.Study;
 import com.app.neos.entity.study.StudyMember;
 import com.app.neos.entity.user.User;
@@ -17,8 +18,8 @@ public class StudyMemberDTO {
 
     private Long studyMemberId;
     private StudyMemberStatus studyMemberStatus;
-    private User user;
-    private Study study;
+    private UserDTO userDTO;
+    private StudyDTO studyDTO;
 
     public StudyMember toEntity(){
         return StudyMember.builder()
@@ -27,10 +28,10 @@ public class StudyMemberDTO {
     }
 
     @QueryProjection
-    public StudyMemberDTO(Long studyMemberId, StudyMemberStatus studyMemberStatus, User user, Study study) {
+    public StudyMemberDTO(Long studyMemberId, StudyMemberStatus studyMemberStatus, UserDTO userDTO, StudyDTO studyDTO) {
         this.studyMemberId = studyMemberId;
         this.studyMemberStatus = studyMemberStatus;
-        this.user = user;
-        this.study = study;
+        this.userDTO = userDTO;
+        this.studyDTO = studyDTO;
     }
 }

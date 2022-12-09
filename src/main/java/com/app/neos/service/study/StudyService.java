@@ -113,4 +113,14 @@ public class StudyService {
     public UserDTO nowWriter(Long userId){
         return userRepository.findById(userId).get().toDTO();
     }
+
+    public void remove(Long studyId){
+        studyRepository.delete(studyRepository.findById(studyId).get());
+    }
+
+    @Transactional
+    public void update(StudyDTO studyDTO){
+        Study study = studyRepository.findById(studyDTO.getStudyId()).get();
+        study.update(studyDTO);
+    }
 }

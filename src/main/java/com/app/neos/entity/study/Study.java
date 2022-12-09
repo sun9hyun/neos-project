@@ -1,6 +1,8 @@
 package com.app.neos.entity.study;
 
 import com.app.neos.domain.study.StudyDTO;
+import com.app.neos.domain.study.StudyMemberDTO;
+import com.app.neos.domain.study.StudySupporterDTO;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.embeddable.study.StudyField;
 import com.app.neos.embeddable.study.StudyOnlineWhether;
@@ -8,8 +10,13 @@ import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.study.StudyRecruitStatus;
 import com.app.neos.type.study.StudyStatus;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -19,7 +26,7 @@ import java.util.stream.Collectors;
 
 @Entity
 @Table(name="TBL_STUDY")
-@Getter @ToString(exclude = {"user","followList"})
+@Getter @ToString(exclude = {"user","followList","studyMemberList","studySupporterList"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Study extends Period {
     @Id @GeneratedValue
@@ -46,19 +53,30 @@ public class Study extends Period {
    @NotNull
    private int studyView;
 
-   @OneToMany(fetch = FetchType.LAZY,mappedBy = "study")
+   @OneToMany(fetch = FetchType.LAZY,mappedBy = "study", cascade = CascadeType.REMOVE)
    private List<StudyFollow> followList;
 
+   @OneToMany(fetch = FetchType.LAZY,mappedBy = "study",cascade = CascadeType.REMOVE)
+   private List<StudyMember> studyMemberList;
+
+   @OneToMany(fetch = FetchType.LAZY,mappedBy = "study",cascade = CascadeType.REMOVE)
+   @JsonIgnore
+   public List<StudySupporter> studySupporterList;
 
    private LocalDate studyEndDate;
 
 //   작성자
    @ManyToOne(fetch = FetchType.LAZY)
+   @OnDelete(action = OnDeleteAction.CASCADE)
    @JoinColumn(name="USER_ID")
    private User user;
 
    public void changeFollowList(List<StudyFollow> followList){
       this.followList = followList;
+   }
+
+   public void changeStudyMemberList(List<StudyMember> studyMembers){
+         this.studyMemberList = studyMembers;
    }
 
    public void changeUser(User user){
@@ -84,8 +102,6 @@ public class Study extends Period {
       this.studyTitle = studyDTO.getStudyTitle();
       this.studyField = studyField;
       this.studyOnlineWhether= studyOnlineWhether;
-      this.studySupport = studyDTO.getStudySupport();
-      this.studyRecruitStatus = studyDTO.getStudyRecruitStatus();
       this.studyStatus = studyDTO.getStudyStatus();
       this.studyContent = studyDTO.getStudyContent();
       this.studyEndDate = studyDTO.getStudyEndDate();
@@ -120,9 +136,13 @@ public class Study extends Period {
       studyDTO.setStudyStartDate(this.getCreatedDate().toLocalDate());
       studyDTO.setFollowTotal(this.followList.size());
       List<UserDTO> follower = this.followList.stream().map(i->i.getUser().toDTO()).collect(Collectors.toList());
+      List<StudyMemberDTO> studyMembers = this.studyMemberList.stream().map(i->i.toDTO()).collect(Collectors.toList());
       List<Long> followerNumberList = this.followList.stream().map(i->i.getUser().getUserId()).collect(Collectors.toList());
+      List<StudySupporterDTO>  studySupporterDTOS = this.studySupporterList.stream().map(i->i.toDTO()).collect(Collectors.toList());
+      studyDTO.setStudyMemberList(studyMembers);
       studyDTO.setFollower(follower);
       studyDTO.setFollowerNumberList(followerNumberList);
+      studyDTO.setStudySupporterDTOS(studySupporterDTOS);
       return studyDTO;
    }
 

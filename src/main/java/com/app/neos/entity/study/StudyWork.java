@@ -8,6 +8,8 @@ import com.app.neos.type.study.work.StudyLocationStatus;
 import com.app.neos.type.study.work.StudyWorkStatus;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -34,14 +36,17 @@ public class StudyWork extends Period {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="WRITER_USER_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User studyWorkWriter;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="CHOICE_USER_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User studyWorkChoiceMember;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STUDY_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Study study;
 
 

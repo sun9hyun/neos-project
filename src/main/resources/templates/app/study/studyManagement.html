@@ -10,6 +10,35 @@
     <link rel="stylesheet" href="/css/fix/chatting.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
+<style>
+
+    .modalWrapOpen .modalWrap .btnWrap form{
+        width: 100%;
+        display: flex;
+    }
+    .modalWrapOpen .modalWrap .btnWrap form button.whiteBtn {
+        border: 1px solid #1A7CFF;
+        color: #1A7CFF;
+        background-color: #fff;
+    }
+    .modalWrapOpen .modalWrap .btnWrap.doubleBtnWrap form button {
+        height: 44px;
+        width: 49%;
+        border: none;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: .75rem;
+        padding: 0;
+        border-radius: 4px;
+    }
+    .letspler_Re .top .profileTxt .idWrap .userLv {
+        width: 23px;
+        height: 23px;
+        object-fit: cover;
+        margin-right: 8px;
+    }
+</style>
 <body>
     <header th:replace="/app/fix/header.html :: header"></header>
     <!-- 관리 페이지 START-->
@@ -77,75 +106,77 @@
                             <!-------- 멤버관리 DIV -------->
                             <div class="memberManagementTab active">
                                 <div class="section applicantSection">
+                                    <th:block th:if="*{studySupporterDTOS.size() == 0}">
+                                        <h3>지원자 현황</h3>
+                                        <div class="emptyApply">현재 지원자가 없습니다.</div>
+                                    </th:block>
+                                    <th:block th:unless="*{studySupporterDTOS.size() == 0}">
+                                        <h3>지원자 현황</h3>
+                                        <button class="blackBtn allJoin" style="margin-bottom: 10px;">모두 멤버로 승인</button>
+                                        <div class="projectMemberList">
+                                            <th:block th:each="supporter : *{studySupporterDTOS}" th:object="${supporter}">
+                                                <li class="letspler_Re">
+                                                    <div class="top">
+                                                        <div class="profilePicWrap">
+                                                            <div class="profilePic">
+                                                                <img loading="lazy" th:src="*{user.userFile}">
+                                                            </div>
+
+                                                            <a class="favorite favoriteUser"></a>
+                                                        </div>
+                                                        <div class="profileTxt">
+                                                            <div class="idWrap"><img loading="lazy" class="userLv"
+                                                                                     th:src="*{user.userNeosBadge}"
+                                                                                     alt="렛플렙">
+                                                                <h2 class="userName" >
+                                                                    <span th:text="*{user.userNickName}"></span>
+                                                                    <ul class="idHoverMenu">
+                                                                        <input type="hidden" name="userId" class="userId_1jasd" th:value="*{user.userId}">
+                                                                        <li><a target="_blank" href="#">프로필 상세</a></li>
+                                                                        <li class="managementBtn"><a>1:1 대화</a></li>
+                                                                        <li><a>승인</a></li>
+                                                                        <li class="rejectionBtn"><a>거절</a></li>
+                                                                    </ul>
+                                                                </h2>
+                                                            </div>
+                                                            <div class="coffeAndHeart">
+                                                                <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
+                                                                          alt="커피 포인트"><span th:text="*{user.userChattingPoint}"></span></div>
+                                                                <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png"
+                                                                          alt="구독자 수"
+                                                                          style="width: 20px; height: 20px;"><span>0</span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="bottom">
+                                                        <ul class="userFavorite">
+                                                            <li><h2><span>[대학교]&nbsp</span>
+                                                                <span style="margin-left: 0px;font-size: 14px;color: #333;font-weight: 400;" th:text="*{user.collegeName}"></span>
+                                                                <span style="font-size: 14px;color: #999;margin-left: 10px; font-weight: 400;" th:text="*{user.userCollegeYear}"></span>
+                                                                <span style="font-size: 14px;color: #999;font-weight: 400;">학년</span></h2></li>
+                                                            <li><h2><span> [전공]</span><span style="color:#333" th:text="*{user.userCollegeMajor.toString()}"></span><span></span></h2></li>
+                                                        </ul>
+                                                        <div class="candidateWrap">
+                                                            <br>
+                                                            <p class="ingProjectTxt2"><span>지원일 : &nbsp</span><span th:text="*{createdDate}"></span></p>
+                                                            <p class="ingProjectTxt2">
+                                                                <span>[이메일] &nbsp</span><span th:text="*{user.userCollegeEmail}"></span>
+                                                            </p>
+                                                            <br>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </th:block>
+                                        </div>
+                                        <div class="section nowMemberSection">
+                                            <p class="listTit2">* <strong>닉네임을 클릭해보세요.</strong>
+                                                <br><span style="color: #1A7CFF;">(거절 시 재지원이 불가능합니다.)</span></p>
+                                        </div>
+                                    </th:block>
                                     <!--지원자 없는 경우-->
-                                    <h3>지원자 현황</h3>
-                                    <div class="emptyApply">현재 지원자가 없습니다.</div>
-                                    <div class="section nowMemberSection">
-                                        <p class="listTit2">* <strong>닉네임을 클릭해보세요.</strong>&nbsp;승인/거절이 14일동안 없으면 자동
-                                            취소됩니다.<br><span style="color: #1A7CFF;">(자동취소건수가 <strong>3건 이상
-                                                    </strong>&amp; 응답율 <strong>50% 미만</strong>시 NEOS에서 노출되지 않습니다)</span></p>
-                                    </div>
+
                                 </div>
                                 <!-- 지원자 있는 경우 -->
-                                <div class="section applicantSection">
-                                    <h3>지원자 현황</h3>
-                                    <button class="blackBtn allJoin" style="margin-bottom: 10px;">모두 멤버로 승인</button>
-                                    <div class="projectMemberList">
-                                        <li class="letspler_Re">
-                                            <div class="top">
-                                                <div class="profilePicWrap">
-                                                    <div class="profilePic">
-                                                        <img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/SIM.jpg">
-                                                    </div>
-                                                    <a class="favorite favoriteUser active"></a>
-                                                </div>
-                                                <div class="profileTxt">
-                                                    <div class="idWrap"><img loading="lazy" class="userLv"
-                                                                             src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_5.png"
-                                                                             alt="렛플렙">
-                                                        <h2 class="userName">민쇼니
-                                                        <ul class="idHoverMenu">
-                                                            <li><a target="_blank" href="#">프로필 상세</a></li>
-                                                            <li class="managementBtn"><a>1:1 대화</a></li>
-                                                            <li><a>승인</a></li>
-                                                            <li class="rejectionBtn"><a>거절</a></li>
-                                                        </ul>
-                                                        </h2>
-                                                        <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                                                    src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                                                    alt="본인인증"></div>
-                                                    </div>
-                                                    <div class="coffeAndHeart">
-                                                        <div><img loading="lazy" src="/images/neosUser/chatting-icon.png"
-                                                                  alt="커피 포인트"><span>3</span></div>
-                                                        <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png"
-                                                                  alt="구독자 수"
-                                                                  style="width: 20px; height: 20px;"><span>3</span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bottom">
-                                                <ul class="userFavorite">
-                                                    <li><h2><span>[대학교]&nbsp;서울 대학교</span><span> 4학년</span></h2></li>
-                                                    <li><h2><span> [전공]&nbsp;전자공학</span><span></span></h2></li>
-                                                </ul>
-                                                <div class="candidateWrap">
-                                                    <br>
-                                                    <p class="ingProjectTxt2"><span>지원일 : 22.11.22</span></p>
-                                                    <p class="ingProjectTxt2">
-                                                        <span>[이메일]&nbsp;tlaalstjd15@jr.naver.com</span>
-                                                    </p>
-                                                    <br>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </div>
-                                    <div class="section nowMemberSection">
-                                        <p class="listTit2">* <strong>닉네임을 클릭해보세요.</strong>&nbsp;승인/거절이 14일동안 없으면 자동
-                                            취소됩니다.<br><span style="color: #1A7CFF;">(자동취소건수가 <strong>3건 이상
-                                                    </strong>&amp; 응답율 <strong>50% 미만</strong>시 NEOS에서 노출되지 않습니다)</span></p>
-                                    </div>
-                                </div>
                                 <div class="section nowMemberSection">
                                     <h3>현재 스터디 멤버 <span>/ 총 3명</span></h3>
                                     <p class="listTit">리더</p>
@@ -312,16 +343,18 @@
                             </div>
 
                             <!-------- 정보 관리 DIV -------->
+
                             <div class="projectMangementTab buildProjectContents">
                                 <div class="question">
                                     <p>- 스터디 주제</p>
                                 </div>
+                                <form th:action="@{/study/update(studyId=${study.studyId})}" method="post" id="updateForm">
                                 <div class="answer">
                                     <ul>
                                         <li>
-                                            <div class="inputWrap projectTitle row"><input class="studyTitleInput"
+                                            <div class="inputWrap projectTitle row"><input class="studyTitleInput" name="studyTitle"
                                                     placeholder="3~20글자로 적어주세요 예)유체역학 : 레이놀드 수송이론" maxlength="20"
-                                                    value="[공업수학] 라플라스 변환의 이해와 적용"></div>
+                                                    th:value="*{studyTitle}"></div>
                                         </li>
                                     </ul>
                                 </div>
@@ -331,13 +364,15 @@
                                             <p>- 상태변경<span class="" for="">&nbsp;스터디 완료는 시작일로부터 30일 이후부터 설정이
                                                         가능합니다</span></p>
                                         </div>
-                                        <div class="answer"><select>
-                                            <option value="01" disabled="">준비 중</option>
-                                            <option value="02">진행 중</option>
-                                            <option value="03">스터디 완료</option>
+                                        <div class="answer"><select name="studyStatus">
+
+                                            <option value="PROCEEDING" th:selected="*{studyStatus.toString() eq 'READY'} ">진행 중</option>
+                                            <option value="FINISH" th:selected="*{studyStatus.toString() eq 'FINISH'}">스터디 완료</option>
+
                                         </select></div>
                                     </div>
                                 </div>
+
                                 <div class="question">
                                     <p>- 완료 예정일</p>
                                 </div>
@@ -353,7 +388,7 @@
                                                                 aria-label="Date" type="date" id="date_input"
                                                                 name="date_input" placeholder="Date" autocomplete="off"
                                                                 aria-describedby="DateInput__screen-reader-message-date_input"
-                                                                value="2023-05-08">
+                                                                th:value="*{studyEndDate}">
                                                             <p class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
                                                                id="DateInput__screen-reader-message-date_input">
                                                                 Navigate forward to interact with the calendar and
@@ -372,16 +407,17 @@
                                 <div class="answer">
                                     <div>
                                         <div class="inputWrap studyTitle row">
-                                            <select id="studySubjectSelect">
-                                                <option>전공 과목</option>
-                                                <option>교양 과목</option>
-                                                <option selected>공통 과목</option>
+                                            <select id="studySubjectSelect" name="studyType">
+                                                    <option value="전공" th:selected="*{studyType eq '전공'}">전공 과목</option>
+                                                    <option value="교양" th:selected="*{studyType eq '교양'}">교양 과목</option>
+                                                    <option value="공통" th:selected="*{studyType eq '공통'}">공통 과목</option>
                                             </select>
                                         </div>
                                         <div class="answer">
                                             <input type="text" class="studyKeywordInput" id="studySubject2" placeholder="예) 재료역학, 수리역학, 철근콘크리트, 강구조설계"
+                                                   name="studyKeyword"
                                                    minlength="3"
-                                                   maxlength="20" autocomplete="off" value=" 공업수학">
+                                                   maxlength="20" autocomplete="off" th:value="*{studyKeyword}">
                                         </div>
                                     </div>
                                 </div>
@@ -391,30 +427,36 @@
                                 <div class="answer answer5">
                                     <div class="projectMettingPlaceSettingWrap">
                                         <div class="selectWrap">
-                                            <select name="" >
-                                                <option value="00">온라인/오프라인 모두 가능</option>
-                                                <option value="01">온라인만 가능</option>
-                                                <option value="02" selected>오프라인만 가능</option>
+                                            <select name="studyO2o" id="studyO2o">
+                                                <th:block>
+                                                <option value="all" th:selected="${study.studyO2o eq 'all'}">온라인/오프라인 모두 가능</option>
+                                                <option value="online" th:selected="${study.studyO2o eq 'online'}">온라인만 가능</option>
+                                                <option value="offline" th:selected="${study.studyO2o eq 'offline'}">오프라인만 가능</option>
+                                                </th:block>
                                             </select>
-                                            <select name="">
-                                                <option value="KR00">지역 상관없음</option>
-                                                <option value="KR01">서울특별시</option>
-                                                <option value="KR02">경기도</option>
-                                                <option value="KR03">부산광역시</option>
-                                                <option value="KR04" selected>인천광역시</option>
-                                                <option value="KR05">대구광역시</option>
-                                                <option value="KR06">경상남도</option>
-                                                <option value="KR07">경상북도</option>
-                                                <option value="KR08">대전광역시</option>
-                                                <option value="KR09">충청남도</option>
-                                                <option value="KR10">충청북도</option>
-                                                <option value="KR11">전라남도</option>
-                                                <option value="KR12">전라북도</option>
-                                                <option value="KR13">광주광역시</option>
-                                                <option value="KR14">강원도</option>
-                                                <option value="KR15">울산광역시</option>
-                                                <option value="KR16">제주특별자치도</option>
-                                                <option value="KR17">세종특별자치시</option>
+                                            <select name="studyCity" id="studyCity" th:disabled="*{studyCity eq 'no'}">
+                                                <option th:value="no"  th:selected="*{'no' eq studyCity}" disabled="true">오프라인</option>
+                                                <option th:value="all"  th:selected="*{'all' eq studyCity}" >지역 상관없음</option>
+                                                <option th:value="서울특별시"  th:selected="*{'서울특별시' eq studyCity}" >서울특별시</option>
+                                                <option th:value="경기도"  th:selected="*{'경기도' eq studyCity}" >경기도</option>
+                                                <option th:value="부산광역시"  th:selected="*{'부산광역시' eq studyCity}" >부산광역시</option>
+                                                <option th:value="인천광역시"  th:selected="*{'인천광역시' eq studyCity}" >인천광역시</option>
+                                                <option th:value="대구광역시"  th:selected="*{'대구광역시' eq studyCity}" >대구광역시</option>
+                                                <option th:value="경상남도"  th:selected="*{'경상남도' eq studyCity}" >경상남도</option>
+                                                <option th:value="경상북도"  th:selected="*{'경상북도' eq studyCity}" >경상북도</option>
+                                                <option th:value="대전광역시"  th:selected="*{'대전광역시' eq studyCity}" >대전광역시</option>
+                                                <option th:value="충청남도"  th:selected="*{'충청남도' eq studyCity}" >충청남도</option>
+                                                <option th:value="충청북도"  th:selected="*{'충청북도' eq studyCity}" >충청북도</option>
+                                                <option th:value="전라남도"  th:selected="*{'전라남도' eq studyCity}" >전라남도</option>
+                                                <option th:value="전라북도"  th:selected="*{'전라북도' eq studyCity}" >전라북도</option>
+                                                <option th:value="광주광역시"  th:selected="*{'광주광역시' eq studyCity}" >광주광역시</option>
+                                                <option th:value="강원도"  th:selected="*{'강원도' eq studyCity}" >강원도</option>
+                                                <option th:value="울산광역시"  th:selected="*{'울산광역시' eq studyCity}" >울산광역시</option>
+                                                <option th:value="제주특별자치도"  th:selected="*{'제주특별자치도' eq studyCity}" >제주특별자치도</option>
+                                                <option th:value="세종특별자치시"  th:selected="*{'세종특별자치시' eq studyCity}" >세종특별자치시</option>
+                                                <th:block th:if="*{studyCity=='no'}">
+                                                    <input type="hidden" name="studyCity" id="studyCity_1j" value="no">
+                                                </th:block>
                                             </select>
                                         </div>
                                     </div>
@@ -422,42 +464,8 @@
                                 <div class="question">
                                     <p>- 스터디 설명</p>
                                 </div>
-                                <div class="answer" style="display: block;"><textarea id="contents" placeholder="●  스터디 목표 및 진행방식
-
-[목표] : 라플라스 변환의 이해와 적용
-
-[진행방식] : 오프라인
-
-[장소/횟수] : 강남 신도림 당산 영등포 / 주 5회
-
-[기간] :  1개월
-
-
-●  참여 조건
-
-[지식수준] : 해당 과목에 대한 지식이 조금 있으셨으면 합니다.
-
-[참여회비] 매 모임마다 2만원의 회비가 있습니다
-
-[기타]  오프라인 모임에 문제가 없는 분이시면 더욱 좋겠습니다" maxlength="1000"
-                                >●  스터디 목표 및 진행방식
-
-[목표] : 라플라스 변환의 이해와 적용
-
-[진행방식] : 오프라인
-
-[장소/횟수] : 강남 신도림 당산 영등포 / 주 5회
-
-[기간] :  1개월
-
-
-●  참여 조건
-
-[지식수준] : 해당 과목에 대한 지식이 조금 있으셨으면 합니다.
-
-[참여회비] 매 모임마다 2만원의 회비가 있습니다
-
-[기타]  오프라인 모임에 문제가 없는 분이시면 더욱 좋겠습니다</textarea></div>
+                                <div class="answer" style="display: block;"><textarea id="contents" name="studyContent" th:placeholder="*{studyContent}" maxlength="1000" th:text="*{studyContent}"
+                                ></textarea></div>
                                 <!-- <div class="alimTalkCheckBox">
                                     <div class="labelChecbox">
                                         <div class="question">
@@ -468,13 +476,14 @@
                                     </div>
                                 </div> -->
                                 <div class="btnWrap projectMgmgtBtnWrap">
-                                    <button
+                                    <button type="button"
                                             class="blackBtn proejectModifyBtn">업데이트
                                     </button>
-                                    <button
+                                    <button type="button"
                                             class="btnBlue proejectCloseBtn">스터디 포기
                                     </button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -594,7 +603,7 @@
                 <p></p>
             </div>
             <div class="btnWrap singleBtnWrap">
-                <button class="btn blueBtn">확인</button>
+                <button class="btn blueBtn postUpdate">확인</button>
             </div>
         </div>
 
@@ -661,8 +670,10 @@
                 <p>모두 회수되며 재지급되지 않습니다.</p>
             </div>
             <div class="btnWrap doubleBtnWrap">
-                <button class="btn whiteBtn">아니요</button>
-                <button class="btn blueBtn okBtn">예</button>
+                <form th:action="@{/study/delete(studyId=${study.studyId})}" method="post" id="DeleteForm">
+                <button type="button" class="btn whiteBtn">아니요</button>
+                <button type="button" class="btn blueBtn studyDeleteBtn">예</button>
+                </form>
             </div>
         </div>
 
@@ -838,5 +849,33 @@
 
     })
 
+</script>
+<script th:inline="javascript">
+    //수정 삭제
+
+
+    $("#studyO2o").on("change",function () {
+        if($('#studyO2o > option:selected').val() == 'offline') {
+            $("#studyCity").val('no').prop("selected", true);
+            $("#studyCity").attr('disabled',true);
+            $("#studyCity").append(`<input type="hidden" name="studyCity" value="no" id="studyCity_1j">`)
+        }else{
+            $("#studyCity").val('all').prop("selected", true);
+            $("#studyCity").attr('disabled',false);
+            $("#studyCity_1j").remove();
+
+        }
+    })
+
+
+
+
+    $(".studyDeleteBtn").on("click",function () {
+        $("#DeleteForm").submit();
+    })
+
+    $(".postUpdate").on("click",function () {
+        $("#updateForm").submit();
+    })
 </script>
 </html>

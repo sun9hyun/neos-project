@@ -7,6 +7,8 @@ import com.app.neos.entity.user.User;
 import com.app.neos.type.study.milestone.StudyMilestoneStatus;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -28,10 +30,12 @@ public class StudyMilestone extends Period {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User mileStoneWriter;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STUDY_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Study study;
 
     public void changeMileStoneWriter(User mileStoneWriter){

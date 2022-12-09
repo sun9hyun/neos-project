@@ -1,5 +1,6 @@
 package com.app.neos.domain.study;
 
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.study.Study;
 import com.app.neos.entity.study.StudySupporter;
 import com.app.neos.entity.user.User;
@@ -9,14 +10,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+
 @Component
 @Data
 @NoArgsConstructor
 public class StudySupporterDTO {
     private Long studySupporterId;
     private StudySupporterStatus studySupporterStatus;
-    private User user;
-    private Study study;
+    private UserDTO user;
+    private Long studyId;
+    private LocalDate createdDate;
 
 
     public StudySupporter toEntity(){
@@ -26,10 +30,10 @@ public class StudySupporterDTO {
     }
 
     @QueryProjection
-    public StudySupporterDTO(Long studySupporterId, StudySupporterStatus studySupporterStatus, User user, Study study) {
+    public StudySupporterDTO(Long studySupporterId, StudySupporterStatus studySupporterStatus, UserDTO user, Long studyId) {
         this.studySupporterId = studySupporterId;
         this.studySupporterStatus = studySupporterStatus;
         this.user = user;
-        this.study = study;
+        this.studyId = studyId;
     }
 }

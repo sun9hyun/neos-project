@@ -30,12 +30,8 @@ public class StudyMemberEntityTest {
     public void saveTest(){
         StudyMemberDTO studyMemberDTO = new StudyMemberDTO();
         studyMemberDTO.setStudyMemberStatus(StudyMemberStatus.LEADER);
-        studyMemberDTO.setStudy(studyRepository.findById(5L).get());
-        studyMemberDTO.setUser(userRepository.findById(6L).get());
 
         StudyMember studyMember = studyMemberDTO.toEntity();
-        studyMember.changeStudy(studyMemberDTO.getStudy());
-        studyMember.changeUser(studyMemberDTO.getUser());
 
         studyMemberRepository.save(studyMember);
     }

@@ -4,6 +4,8 @@ package com.app.neos.entity.study;
 import com.app.neos.entity.period.Created;
 import com.app.neos.entity.user.User;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -18,11 +20,13 @@ public class StudyFollow extends Created {
 //    스터디번호
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STUDY_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Study study;
 
 //    구독한 유저
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="USER_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
     public void changeUser(User user){

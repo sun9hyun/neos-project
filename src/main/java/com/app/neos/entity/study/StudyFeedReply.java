@@ -5,6 +5,8 @@ import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -24,6 +26,7 @@ public class StudyFeedReply extends Period {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="STUDY_FEED_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private StudyFeed studyFeed;
 
     public void changeStudyFeedReplyWriter(User studyFeedReplyWriter){

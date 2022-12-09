@@ -5,6 +5,8 @@ import com.app.neos.domain.study.StudyQuestionReplyDTO;
 import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.format.DateTimeFormatter;
@@ -23,10 +25,12 @@ public class StudyQuestion extends Period {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User studyQuestionWriter;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STUDY_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Study study;
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "studyQuestion", cascade = CascadeType.REMOVE)

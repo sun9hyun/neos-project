@@ -2,6 +2,7 @@ package com.app.neos.service.study;
 
 import com.app.neos.repository.study.StudyFollowCustomRepository;
 import com.app.neos.repository.study.StudyRepository;
+import com.app.neos.repository.study.StudySupporterRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public class StudyFollowTest {
     StudyRepository studyRepository;
     @Autowired
     StudyFollowCustomRepository studyFollowCustomRepository;
+    @Autowired
+    StudySupporterRepository studySupporterRepository;
 
     @Test
     public void test1(){
@@ -40,4 +43,12 @@ public class StudyFollowTest {
         log.info(studyRepository.findById(235l).get().toDTO().toString());
     }
 
+    @Test
+    public void test4(){
+        log.info(studySupporterRepository.findById(342l).get().toDTO().toString());
+    }
+    @Test
+    public void test5(){
+        studyRepository.findById(315l).get().toDTO().getStudySupporterDTOS().stream().map(i->i.getUser().getUserId()).forEach(i->log.info(i.toString()));
+    }
 }

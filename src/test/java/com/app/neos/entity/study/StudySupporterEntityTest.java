@@ -32,12 +32,8 @@ public class StudySupporterEntityTest {
     public void saveTest(){
         StudySupporterDTO studySupporterDTO = new StudySupporterDTO();
         studySupporterDTO.setStudySupporterStatus(StudySupporterStatus.FAIL);
-        studySupporterDTO.setUser(userRepository.findAll().get(0));
-        studySupporterDTO.setStudy(studyRepository.findAll().get(0));
 
         StudySupporter studySupporter = studySupporterDTO.toEntity();
-        studySupporter.changeUser(studySupporterDTO.getUser());
-        studySupporter.changeStudy(studySupporterDTO.getStudy());
 
         studySupporterRepository.save(studySupporter);
     }

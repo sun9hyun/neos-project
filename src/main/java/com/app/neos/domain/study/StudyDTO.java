@@ -47,6 +47,8 @@ public class StudyDTO {
     private int followTotal;
     private List<Long> followerNumberList;
     private List<UserDTO> follower;
+    private List<StudyMemberDTO> studyMemberList;
+    private List<StudySupporterDTO> studySupporterDTOS;
 
     private LocalDateTime createdDate;
 

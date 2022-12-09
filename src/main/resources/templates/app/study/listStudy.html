@@ -452,7 +452,7 @@
         }else if(item.studyRecruitStatus=='COMPLETE'){
             text+= `<span>모집완료</span>`
         }
-        text+= `<span>0</span>`
+        text+= `<span>`+item.studyMemberList.length+`</span>`
         text+= `<span>/</span>`
         text+= `<span>`+item.studySupport+`</span></div>`
         text+= `</div>`
@@ -549,7 +549,7 @@
             }else if(item.studyRecruitStatus=='COMPLETE'){
                 recentText+= `<span>모집완료</span>`
             }
-            recentText+=`<span>0</span>`
+            recentText+=`<span>`+item.studyMemberList.length+`</span>`
             recentText+=`<span>/</span>`
             recentText+=`<span>`+item.studySupport+`</span></div>`
             recentText += `</div>`

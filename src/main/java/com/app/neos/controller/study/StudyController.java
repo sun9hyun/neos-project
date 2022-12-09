@@ -10,20 +10,21 @@ import com.app.neos.service.study.StudyQuestionService;
 import com.app.neos.service.study.StudyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/study/*")
@@ -96,6 +97,10 @@ public class StudyController {
         StudyDTO study = studyService.getStudyDTO(studyId);
         UserDTO user = studyService.getInfo(study.getUserId());
         List<StudyQuestionDTO> questions = studyQuestionService.getInfo(studyId);
+        List<Long> ids = study.getStudySupporterDTOS().stream().map(i->i.getUser().getUserId()).collect(Collectors.toList());
+        log.info("여기보세요:"+ids.toString());
+        ids.add(study.getUserId());
+        model.addAttribute("supportList",ids);
         model.addAttribute("questions",questions);
         model.addAttribute("writer",user);
         model.addAttribute("study",study);
@@ -138,6 +143,23 @@ public class StudyController {
     public RedirectView questionPost(StudyQuestionDTO studyQuestionDTO, Long userId,Long studyId){
         studyQuestionService.post(studyQuestionDTO,userId,studyId);
         return new RedirectView("/study/question/"+studyId);
+    }
+
+    @PostMapping("/delete")
+    public RedirectView delete(Long studyId){
+        studyService.remove(studyId);
+        return new RedirectView("/study/list");
+    }
+
+    @PostMapping("/update")
+    public RedirectView update(Long studyId, StudyDTO studyDTO, String date_input){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate date = LocalDate.parse(date_input, formatter);
+        StudyDTO dto = studyDTO;
+        dto.setStudyId(studyId);
+        dto.setStudyEndDate(date);
+        studyService.update(dto);
+        return new RedirectView("/study/management/"+studyId);
     }
 
 

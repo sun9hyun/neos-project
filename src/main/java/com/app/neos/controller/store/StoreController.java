@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class StoreController {
         return "app/store/storeList";
     }
 
-//    자료상점 글작성
+//    자료상점 게시글 작성
     @GetMapping("/store-create")
     public String storeCreate(StoreDTO storeDTO){
         return "app/store/storeCreate";
@@ -46,12 +47,34 @@ public class StoreController {
         return new RedirectView("store-list");
 //        return new RedirectView("store-create");
     }
+    
+
+//  자료상점 게시글 업데이트
+    @GetMapping("/store-update")
+    public String update(Long storeId, Model model){
+        model.addAttribute("storeDTO", storeService.findStoreOne(storeId));
+        return "app/store/storeUpdate";
+    }
+
+    @PostMapping("/store-update")
+    public RedirectView storeUpdate(StoreDTO storeDTO, RedirectAttributes redirectAttributes){
+        storeService.updateStore(storeDTO);
+        redirectAttributes.addAttribute("storeId", storeDTO.getStoreId());
+        return new RedirectView("store-detail");
+    }
 
 
-//    자료상점 상세
+//  자료상점 게시글 상세
     @GetMapping("/store-detail")
     public String storeDetail(Long storeId, Model model){
         model.addAttribute("store", storeService.findStoreOne(storeId));
         return "app/store/storeDetail";
+    }
+    
+    // 자료상점 게시글 삭제
+    @GetMapping("/store-delete")
+    public RedirectView delete(Long storeId){
+        storeService.deleteByStoreId(storeId);
+        return new RedirectView("store-list");
     }
 }

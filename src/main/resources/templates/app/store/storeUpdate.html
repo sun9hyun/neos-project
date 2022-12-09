@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NEOS | 자료상점 수정하기</title>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/store/storeCreate.css">
+    <link rel="stylesheet" href="/css/study/studyModal.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/loginHeader.css">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
+</head>
+<body>
+    <header th:replace="/app/fix/header.html :: header"></header>
+    <!-- 스토어 글쓰기 START-->
+    <section class="buildProject storySection writeSection">
+        <div class="storyWriteTit">
+            <p><span>방구석에서 쓰는 소소한 글,</span>나만의 노하우를 알려주마💡</p>
+            <div class="writeNotice">
+                <p>Tip. 작성된 게시글은 마이페이지에서 확인 하실 수 있습니다.
+                    <span>단, 문제(저작권 등)소지가 있는 글일 경우 관리자 판단하에 글을 내릴 수 있습니다.</span>
+                </p>
+            </div>
+        </div>
+        <div class="buildProjectContents storyContentsWrap">
+            <form method="post" th:action="@{/store/store-update}" th:object="${storeDTO}" id="storeForm" name="storeForm">
+
+            <div class="answer purpose">
+                <p class="subTit">유형</p>
+                <div class="checkWrap">
+                    <label for="step1_radio" class="checkBox">
+                        <span class="txt">무료🔓</span>
+                        <input type="radio" id="step1_radio" name="free_radio" value="01" checked class="checkFree">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label for="step2_radio" class="checkBox">
+                        <span class="txt">유료🔒</span>
+                        <input type="radio" id="step2_radio" name="free_radio" value="02" class="checkCash">
+                        <span class="checkmark"></span>
+                    </label>
+                    <input type="hidden" th:value="*{storeId}"  name="storeId" id="storeId" class="storeId">
+                    <input type="hidden" th:value="${session.loginUser}"  name="userId" id="user" class="user">
+                    <input type="hidden" th:field="*{storeStatus}" id="storeStatus" class="storeStatus">
+                    <input class="cashCheck" th:field="*{storePoint}" type="text" placeholder="포인트를 입력해주세요 (숫자만)" autocomplete="off" value="0" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); disabled">
+                </div>
+            </div>
+            <div class="answer titWrap">
+                <p class="subTit">제목</p>
+                <input  class="textInput" th:field="*{storeTitle}" type="text" placeholder="3~20글자로 적어주세요 예) 토질역학 중간고사 범위 정리노트 판매합니다!" minlength="3" maxlength="20" value="">
+            </div>
+            <div class="answer">
+                <div class="thumbnailWrap">
+                    <div class="thumbnailBox">
+                        <img class="thumbnailImage2"
+                             src="https://letspl.me/assets/images/ic-camera-alt-24-px.png" alt="story_image">
+                    </div>
+                    <div class="uploadBox" style="width: 170px;">
+                        <label for="file1" class="active">파일 업로드</label>
+                        <input type="file" name="upload1" class="file upload active" id="file1">
+                        <button type="button" class="fileButton cancelBtn1 cancel ">취소</button>
+                        <ul class="uploadResult1">
+                            <li class="fileText fileText1">저작권에 위배되지 않는 &nbsp&nbsp 파일만 업로드해주세요.</li>
+                        </ul>
+                    </div>
+                    <div class="thumbnailBox">
+                        <img class="thumbnailImage2"
+                             src="https://letspl.me/assets/images/ic-camera-alt-24-px.png" alt="story_image">
+                    </div>
+                    <div class="uploadBox" style="width: 170px;">
+                        <label for="file2" class="active">파일 업로드</label>
+                        <input type="file" name="upload2" class="file upload active" id="file2">
+                        <button type="button" class="fileButton cancelBtn2 cancel ">취소</button>
+                        <ul class="uploadResult2">
+                            <li class="fileText baseText fileText2">저작권에 위배되지 않는 &nbsp&nbsp 파일만 업로드해주세요.</li>
+                        </ul>
+                    </div>
+                    <div class="thumbnailBox">
+                        <img class="thumbnailImage2"
+                             src="https://letspl.me/assets/images/ic-camera-alt-24-px.png" alt="story_image">
+                    </div>
+                    <div class="uploadBox" style="width: 170px;">
+                        <label for="file3" class="active">파일 업로드</label>
+                        <input type="file" name="upload3" class="file upload active" id="file3">
+                        <button type="button" class="fileButton cancelBtn3 cancel ">취소</button>
+                        <ul class="uploadResult3">
+                            <li class="fileText fileText3">저작권에 위배되지 않는 &nbsp&nbsp 파일만 업로드해주세요.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div type="hidden" class="fileDataWrap" ></div>
+
+            </div>
+
+            <form method="post">
+                <textarea id="summernote" class="storeContent" th:field="*{storeContent}" placeholder=""> </textarea>
+            </form>
+
+            <div class="btnWrap">
+                <div><button type="button" class="pinkBtn storeBtn" onclick="submit()">게시</button></div>
+            </div>
+            </form>
+        </div>
+    </section>
+    <!-- 스토어 글쓰기 END-->
+
+    <!-- 관련 모달 START-->
+    <div class="modalWrapOpen">
+        <!--무료 선택 시-->
+        <div class="modalWrap modal1">
+            <p class="modalTit">등록포인트 조건을 지켜주세요.</p>
+            <button class="closeBtn">
+                <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" class="closeBtnImg">
+            </button>
+            <div class="modalContent">
+                <p>최소 등록 포인트는 1000 네오포인트입니다.</p>
+            </div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn blueBtn">확인</button>
+            </div>
+        </div>
+        <!--무료 선택 시-->
+        <div class="modalWrap modal2">
+            <p class="modalTit">자료상점 제목을 적어주세요</p>
+            <button class="closeBtn">
+                <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" class="closeBtnImg">
+            </button>
+            <div class="modalContent">
+                <p>자료상점 제목을 3~15자 이내로 적어주세요</p>
+            </div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn blueBtn">확인</button>
+            </div>
+        </div>
+        <!--작성완료_키워드 조건 미충족-->
+        <div class="modalWrap modal3">
+            <p class="modalTit">판매하는 자료에 대한 설명을 작성주세요</p>
+            <button class="closeBtn">
+                <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" class="closeBtnImg">
+            </button>
+            <div class="modalContent">
+                <p></p>
+            </div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn blueBtn">확인</button>
+            </div>
+        </div>
+        <!--작성완료_내용 조건 미충족-->
+        <div class="modalWrap modal4">
+            <p class="modalTit">자료상점 등록 성공</p>
+            <div class="modalContent">
+                <p>판매글이 게재되었습니다.</p>
+            </div>
+            <div class="btnWrap singleBtnWrap">
+                <button class="btn blueBtn">확인</button>
+            </div>
+        </div>
+    </div>
+    <!-- 관련 모달 END-->
+
+    <div th:replace="/app/fix/footer.html :: footer"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+    console.log("들어옴")
+
+    // $(document).ready(function() {
+    //     $('#summernote').summernote({
+    //         // airMode: true,
+    //         callbacks: {
+    //             onChange: function(contents, $editable) {
+    //                 editorText = f_SkipTags_html(contents);
+    //                 editorText = editorText.replace(/\s/gi,""); //줄바꿈 제거
+    //                 editorText = editorText.replace(/&nbsp;/gi, ""); //공백제거
+    //                 $("#letter-length").text(editorText.length);
+    //             },
+    //             onImageUpload : function(files, editor){
+    //                 console.log(files);
+    //             }
+    //         }
+    //     });
+    // });
+
+    $(document).ready(function() {
+
+        $('#summernote').summernote({
+            height: 600,
+            lang: "ko-KR",
+            toolbar: [
+                // [groupName, [list of button]]
+                ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
+                ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+                ['color', ['forecolor','color']],
+                ['table', ['table']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['view', ['fullscreen']]
+            ],
+            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+            fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+            callbacks: {   //여기 부분이 이미지를 첨부하는 부분
+                onImageUpload : function(files) {
+                    uploadSummernoteImageFile(files[0],this);
+                },
+                onPaste: function (e) {
+                    var clipboardData = e.originalEvent.clipboardData;
+                    if (clipboardData && clipboardData.items && clipboardData.items.length) {
+                        var item = clipboardData.items[0];
+                        if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
+                            e.preventDefault();
+                        }
+                    }
+                }
+            }
+        });
+    });
+
+
+
+
+</script>
+<script src="/js/store/storeCreate.js"></script>
+<script src="/js/fix/login.js"></script>
+<script src="/js/fix/header.js"></script>
+</html>

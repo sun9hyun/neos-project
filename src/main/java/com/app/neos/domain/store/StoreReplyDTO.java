@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 @Data
 @NoArgsConstructor
@@ -17,7 +19,12 @@ public class StoreReplyDTO {
     private String storeReplyContent;
     private StoreReplySecret storeReplySecret;
     private User user;
+    private Long userId;
     private Store store;
+    private Long storeId;
+
+    private LocalDateTime createdDate;
+    private LocalDateTime updatedDate;
 
     public StoreReply toEntity(){
         return StoreReply.builder()
@@ -33,4 +40,28 @@ public class StoreReplyDTO {
         this.user = user;
         this.store = store;
     }
+
+    @QueryProjection
+    public StoreReplyDTO(Long storeReplyId, String storeReplyContent, StoreReplySecret storeReplySecret, Long userId, Long storeId) {
+        this.storeReplyId = storeReplyId;
+        this.storeReplyContent = storeReplyContent;
+        this.storeReplySecret = storeReplySecret;
+        this.userId = userId;
+        this.storeId = storeId;
+    }
+
+    @QueryProjection
+    public StoreReplyDTO(Long storeReplyId, String storeReplyContent, StoreReplySecret storeReplySecret, User user, Long storeId, LocalDateTime updatedDate) {
+        this.storeReplyId = storeReplyId;
+        this.storeReplyContent = storeReplyContent;
+        this.storeReplySecret = storeReplySecret;
+        this.user = user;
+        this.storeId = storeId;
+        this.updatedDate = updatedDate;
+    }
+
+
+
+
+
 }

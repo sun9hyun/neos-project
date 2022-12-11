@@ -157,6 +157,7 @@
 }
 
 .projectPageHeaderWrap .statusTagWrap .statusTag.white {
+    margin-left: 18px;
     background-color: #fff;
     border: 1px solid #e8e8e8;
     -webkit-box-sizing: border-box;
@@ -306,6 +307,7 @@
 }
 
 .projectInfoTabContents .section.statusSection ul li {
+    width: 266px;
     display: -moz-box;
     display: flex;
     -moz-box-orient: horizontal;

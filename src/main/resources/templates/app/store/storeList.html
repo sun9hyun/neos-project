@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/store/storeList.css">
     <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="stylesheet" href="/css/fix/loginHeader.css">
+    <link rel="stylesheet" href="/css/admin/adminPaging.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
@@ -122,19 +123,55 @@
                 <!-- 자료상점 리스트 출력 END-->
             </div>
 
-            <div class="divider"></div>
+            <nav class="text-center" id="paginate"></nav>
 
-            <div class="pagingAndBtn">
+            <!--            <div class="divider"></div>-->
+
+<!--            <div class="pagingAndBtn">-->
+<!--                <span class="pagination pagination-sm clearfix">-->
+<!--                    <a class="btn_paging prev screen_out paging"></a>-->
+<!--                    <a class="active paging">1</a>-->
+<!--                    <a class="paging">2</a>-->
+<!--                    <a class="paging">3</a>-->
+<!--                    <a class="paging">4</a>-->
+<!--                    <a class="paging">5</a>-->
+<!--                    <a class="btn_paging next screen_out paging"></a>-->
+<!--                </span>-->
+<!--            </div>-->
+        </div>
+    </section>
+    <section>
+        <div class="pagingAndBtn" >
                 <span class="pagination pagination-sm clearfix">
-                    <a class="btn_paging prev screen_out paging"></a>
-                    <a class="active paging">1</a>
-                    <a class="paging">2</a>
-                    <a class="paging">3</a>
-                    <a class="paging">4</a>
-                    <a class="paging">5</a>
-                    <a class="btn_paging next screen_out paging"></a>
+                    <input type="hidden" id="nowPage" th:value="${nowPage}">
+                    <input type="hidden" id="total" th:value="${total}">
+                    <input type="hidden" id="size" th:value="${size}">
+                    <input type="hidden" id="endPage" th:value="${endPage}">
+
+                    <!--                    <input type="hidden" id="startPage" th:value="${startPage}">-->
+                    <th:block th:with="start=${T(java.lang.Math).floor(stores.number/5)*5+1},
+                               last=(${start + 4 < stores.totalPages ? start + 4 : stores.totalPages})" th:if="${total != 0}">
+                        <th:block th:if="${start!=1}">
+                            <a class="btn_paging prev screen_out paging"
+                               th:href="${stores.first} ? '#' :@{/store/store-list(page=${stores.number-1})}"></a>
+                        </th:block>
+                        <th:block th:unless="${start!=1}">
+                            <a class="btn_paging prev screen_out paging" style="display: none"
+                               th:href="${stores.first} ? '#' :@{/store/store-list(page=${stores.number-1})}"></a>
+                        </th:block>
+                        <th:block th:each="num : ${#numbers.sequence(start, last)}">
+                            <a class="paging" th:text="${num}" th:href="@{/store/store-list(page=${num-1})}"></a>
+                        </th:block>
+                        <th:block th:if="${(last%5) == 0}">
+                            <a class="btn_paging next screen_out paging"
+                               th:href="${stores.last} ? '#' : @{/store/store-list(page=${stores.number+1})}"></a>
+                        </th:block>
+                        <th:block th:unless="${(last%5) == 0}">
+                            <a class="btn_paging next screen_out paging" style="display: none"
+                               th:href="${stores.last} ? '#' : @{/store/store-list(page=${stores.number+1})}"></a>
+                        </th:block>
+                    </th:block>
                 </span>
-            </div>
         </div>
     </section>
 
@@ -144,4 +181,17 @@
 <script src="/js/store/storeList.js"></script>
 <script src="/js/fix/login.js"></script>
 <script src="/js/fix/header.js"></script>
+<script th:inline="javascript">
+    pageActive();
+
+    function pageActive() {
+        let $nowPage = $('#nowPage').attr('value');
+        let $endPage = $('#endPage').attr('value');
+
+        $('a.paging').each(function(){
+            if(($(this).text()-1) == $nowPage){
+                $(this).addClass('active');
+            }
+        });
+</script>
 </html>

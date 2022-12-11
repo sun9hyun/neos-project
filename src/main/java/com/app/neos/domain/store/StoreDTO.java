@@ -21,7 +21,7 @@ public class StoreDTO {
     private String storeTitle;
     private String storeContent;
     // DTO에 entity 사용X
-//    private User user;
+    private User user;
     private Long userId;
     private List<StoreFlieDTO> storeFlieDTOS;
 
@@ -46,11 +46,31 @@ public class StoreDTO {
     }
 
     @QueryProjection
+    public StoreDTO(Long storeId, StoreStatus storeStatus, Integer storePoint, String storeTitle, String storeContent, Long userId) {
+        this.storeId = storeId;
+        this.storeStatus = storeStatus;
+        this.storePoint = storePoint;
+        this.storeTitle = storeTitle;
+        this.storeContent = storeContent;
+        this.userId = userId;
+    }
+
+    @QueryProjection
     public StoreDTO(Long storeId, StoreStatus storeStatus, Integer storePoint, String storeTitle, String storeContent) {
         this.storeId = storeId;
         this.storeStatus = storeStatus;
         this.storePoint = storePoint;
         this.storeTitle = storeTitle;
         this.storeContent = storeContent;
+    }
+
+    @QueryProjection
+    public StoreDTO(Long storeId, StoreStatus storeStatus, Integer storePoint, String storeTitle, String storeContent, User user) {
+        this.storeId = storeId;
+        this.storeStatus = storeStatus;
+        this.storePoint = storePoint;
+        this.storeTitle = storeTitle;
+        this.storeContent = storeContent;
+        this.user = user;
     }
 }

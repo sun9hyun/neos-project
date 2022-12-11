@@ -4,6 +4,7 @@ import com.app.neos.domain.store.QStoreDTO;
 import com.app.neos.domain.store.StoreDTO;
 import com.app.neos.entity.store.QStore;
 import com.app.neos.entity.store.Store;
+import com.app.neos.entity.user.QUser;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -49,7 +50,8 @@ public class StoreCustomRepositoryImpl implements StoreCustomRepository {
                 QStore.store.storeStatus,
                 QStore.store.storePoint,
                 QStore.store.storeTitle,
-                QStore.store.storeContent
+                QStore.store.storeContent,
+                QStore.store.user
                 ))
                 .from(QStore.store)
                 .where(QStore.store.storeId.eq(storeId))
@@ -92,7 +94,7 @@ public class StoreCustomRepositoryImpl implements StoreCustomRepository {
                 QStore.store.storePoint,
                 QStore.store.storeTitle,
                 QStore.store.storeContent
-                  ))
+                ))
                 .from(QStore.store).fetch().size();
 
         return new PageImpl<>(storeDTOS,pageable,total);

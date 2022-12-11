@@ -2,9 +2,13 @@ package com.app.neos.controller.store;
 
 import com.app.neos.domain.store.StoreDTO;
 import com.app.neos.entity.store.Store;
+import com.app.neos.service.neosUser.NeosUserService;
 import com.app.neos.service.store.StoreService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
 
 import java.util.List;
 
@@ -21,15 +26,31 @@ import java.util.List;
 @RequestMapping("/store/*")
 public class StoreController {
     private final StoreService storeService;
+    private final NeosUserService neosUserService;
 
 //    자료상점 목록
     @GetMapping("/store-list")
-    public String storeList(Model model){
-        List<StoreDTO> storeDTOS = storeService.findStore();
+    public String storeList(Model model, @PageableDefault(page = 0, size = 12) Pageable pageable) {
 
+        Page<StoreDTO> storeDTOS = storeService.findStorePage(pageable);
+
+        int startPage = Math.max(1, storeDTOS.getPageable().getPageNumber());
+        int endPage = Math.min(storeDTOS.getPageable().getPageNumber(), storeDTOS.getTotalPages());
+
+        model.addAttribute("stratPAge", startPage);
+        model.addAttribute("endPage", endPage);
+        model.addAttribute("nowPage", pageable.getPageNumber());
+        model.addAttribute("size", pageable.getPageSize());
         model.addAttribute("stores", storeDTOS);
+        model.addAttribute("total", storeService.findStore().size());
 
         return "app/store/storeList";
+
+
+
+//        List<StoreDTO> storeDTOS = storeService.findStore();
+//        model.addAttribute("stores", storeDTOS);
+//        return "app/store/storeList";
     }
 
 //    자료상점 게시글 작성
@@ -64,7 +85,7 @@ public class StoreController {
     }
 
 
-//  자료상점 게시글 상세
+    // 자료상점 게시글 상세
     @GetMapping("/store-detail")
     public String storeDetail(Long storeId, Model model){
         model.addAttribute("store", storeService.findStoreOne(storeId));
@@ -77,4 +98,6 @@ public class StoreController {
         storeService.deleteByStoreId(storeId);
         return new RedirectView("store-list");
     }
+
+    // 자료상점 게시글 페이징 처리
 }

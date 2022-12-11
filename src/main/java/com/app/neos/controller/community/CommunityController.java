@@ -1,9 +1,12 @@
 package com.app.neos.controller.community;
 
 import com.app.neos.domain.community.CommunityDTO;
+import com.app.neos.domain.community.CommunityLikeDTO;
+import com.app.neos.domain.community.CommunityReplyDTO;
 import com.app.neos.domain.counseling.CounselingDTO;
 import com.app.neos.entity.community.Community;
 import com.app.neos.entity.counseling.Counseling;
+import com.app.neos.service.community.CommunityReplyService;
 import com.app.neos.service.community.CommunityService;
 import com.app.neos.service.counseling.CounselingService;
 import lombok.RequiredArgsConstructor;
@@ -24,11 +27,12 @@ import java.util.List;
 @RequestMapping("/community/*")
 public class CommunityController {
     private final CommunityService communityService;
+    private final CommunityReplyService communityReplyService;
     private final CounselingService counselingService;
 
 //    자유게시판
     @GetMapping("/community")
-    public String community(CommunityDTO communityDTO, Model model){
+    public String community(CommunityDTO communityDTO, CommunityReplyDTO communityReplyDTO, Model model){
         List<CommunityDTO> communityDTOS = communityService.findAll();
 
         model.addAttribute("communitys", communityDTOS);
@@ -59,8 +63,8 @@ public class CommunityController {
 
     @PostMapping("/counseling")
     public RedirectView counselingOk(CounselingDTO counselingDTO){
-        Counseling counseling = counselingDTO.toEntity();
-        counselingService.saveCounseling(counseling);
+//        Counseling counseling = counselingDTO.toEntity();
+        counselingService.saveCounseling(counselingDTO);
 
         return new RedirectView("counseling");
     }

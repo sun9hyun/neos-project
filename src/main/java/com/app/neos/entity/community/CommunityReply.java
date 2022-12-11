@@ -50,6 +50,5 @@ public class CommunityReply extends Period {
 
     public void update(CommunityReplyDTO communityReply){
         this.communityReplyContent = communityReply.getCommunityReplyContent();
-        this.communityReplyLikeCount = communityReply.getCommunityReplyLikeCount();
     }
 }

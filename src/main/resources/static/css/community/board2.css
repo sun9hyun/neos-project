@@ -1318,9 +1318,9 @@
     margin-left: 2px
 }
 
-.replyComponent_reply__3l-Wc .replyComponent_replyInputBox__2yLKK {
+.replyComponent_replyInputBox__2yLKK {
     display: -moz-box;
-    display: flex;
+    display: none;
     -moz-box-orient: vertical;
     -moz-box-direction: normal;
     flex-direction: column;

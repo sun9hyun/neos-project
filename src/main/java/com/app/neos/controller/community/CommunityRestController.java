@@ -1,6 +1,7 @@
 package com.app.neos.controller.community;
 
 import com.app.neos.domain.community.CommunityDTO;
+import com.app.neos.domain.community.CommunityLikeDTO;
 import com.app.neos.entity.community.Community;
 import com.app.neos.repository.community.CommunityCustomRepository;
 import com.app.neos.service.community.CommunityService;
@@ -24,21 +25,18 @@ public class CommunityRestController {
     private final CommunityService communityService;
     private final CommunityCustomRepository communityCustomRepository;
 
+    //    @GetMapping("/communityList")
+    //    public List<CommunityDTO> list(CommunityDTO communityDTO){
+    //        List<CommunityDTO> communityDTOS = communityService.findAll();
+    //        return communityDTOS;
+    //    }
+
+
     //     게시글 전체 조회
     @GetMapping("/communityList")
     public Slice<CommunityDTO> list(@PageableDefault(size = 5, sort = "updatedDate", direction = Sort.Direction.DESC) Pageable pageable){
         return communityCustomRepository.findAllPage(pageable);
     }
-//    @GetMapping("/communityList")
-//    public List<CommunityDTO> list(CommunityDTO communityDTO){
-//        List<CommunityDTO> communityDTOS = communityService.findAll();
-//        return communityDTOS;
-//    }
-
-//    @GetMapping("list")
-//    public Slice<BoardDTO> getList(@PageableDefault(size = 10, sort = "BoardId", direction = Sort.Direction.DESC) Pageable pageable){
-//        return boardCustomRepository.findAllSliceDTO(pageable);
-//    }
 
     //     게시글 등록
     @PostMapping("/communityOk")
@@ -47,13 +45,6 @@ public class CommunityRestController {
         return "write success";
     }
 
-    //     게시글 하나 조회
-//    @GetMapping("/communityDetail")
-//    public CommunityDTO detail(Long communityId){
-//        CommunityDTO communityDTOS = communityService.findByCommunityId(communityId);
-//        return communityDTOS;
-//    }
-
     //     게시글 수정
     @PutMapping("/communityUpdate")
     public String modify(@RequestBody CommunityDTO communityDTO){
@@ -61,19 +52,39 @@ public class CommunityRestController {
         return "modify success";
     }
 
-//    @PutMapping(value = "/{cno}")
-//    public String modify(@RequestBody CommunityDTO communityDTO, @PathVariable("cno") Long communityId){
-//        communityDTO.setCommunityId(communityId);
-//        communityService.updateCommunity(communityDTO);
-//        return "modify success";
-//    }
-
     //     게시글 삭제
     @DeleteMapping("/communityDelete")
     public String delete(@RequestBody CommunityDTO communityDTO){
         communityService.deleteCommunity(communityDTO);
         return "delete success";
     }
+
+//   ----------------------------------------------------------------------------------
+    //     게시글 좋아요 수정
+    @PutMapping("/communityLikeUpdate")
+    public String likeModify(@RequestBody CommunityDTO communityDTO){
+        communityService.updateCommunityLike(communityDTO);
+        return "likeModify success";
+    }
+
+    //    @GetMapping("/communityDetail")
+    //    public CommunityDTO detail(Long communityId){
+    //        CommunityDTO communityDTOS = communityService.findByCommunityId(communityId);
+    //        return communityDTOS;
+    //    }
+
+    @GetMapping("/communityLike")
+    public List<CommunityLikeDTO> likeList(Long communityId){
+        List<CommunityLikeDTO> communityLikeDTOS = communityCustomRepository.findByLikeId(communityId);
+        return communityLikeDTOS;
+    }
+
+    @GetMapping("/communityLikeList")
+    public int LikeCheck(Long communityId, Long userId){
+        return communityService.LikeCheck(communityId, userId);
+    }
+
+
 
 
 }

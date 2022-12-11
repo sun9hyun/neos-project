@@ -5,8 +5,12 @@ import com.app.neos.domain.counseling.QCounselingDTO;
 import com.app.neos.entity.counseling.QCounseling;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import org.springframework.data.domain.SliceImpl;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -20,10 +24,38 @@ public class CounselingCustomRepositoryImpl implements CounselingCustomRepositor
                 QCounseling.counseling.counselingId,
                 QCounseling.counseling.counselingTitle,
                 QCounseling.counseling.counselingContent,
-                QCounseling.counseling.user
+                QCounseling.counseling.user,
+                QCounseling.counseling.createdDate,
+                QCounseling.counseling.updatedDate
         ))
                 .from(QCounseling.counseling)
                 .orderBy(QCounseling.counseling.counselingId.desc())
                 .fetch();
+    }
+
+    @Override
+    public Slice<CounselingDTO> findAllPage(Pageable pageable) {
+        List<CounselingDTO> counselingDTOS = jpaQueryFactory.select(new QCounselingDTO(
+                QCounseling.counseling.counselingId,
+                QCounseling.counseling.counselingTitle,
+                QCounseling.counseling.counselingContent,
+                QCounseling.counseling.user,
+                QCounseling.counseling.createdDate,
+                QCounseling.counseling.updatedDate
+        ))
+                .from(QCounseling.counseling)
+                .orderBy(QCounseling.counseling.updatedDate.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize()+1)
+                .fetch();
+
+        ArrayList<CounselingDTO> content = (ArrayList<CounselingDTO>)counselingDTOS;
+
+        boolean hasNext = false;
+        if(content.size() > pageable.getPageSize()){
+            content.remove(pageable.getPageSize());
+            hasNext = true;
+        }
+        return new SliceImpl<>(content, pageable, hasNext);
     }
 }

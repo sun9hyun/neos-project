@@ -11,6 +11,8 @@ import com.app.neos.repository.store.StoreFileRepository;
 import com.app.neos.repository.store.StoreRepository;
 import com.app.neos.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -138,11 +140,15 @@ public class StoreService {
     public StoreDTO findStoreOne(Long storeId){
         StoreDTO storeDTO = storeCustomRepository.selectOne(storeId);
         storeDTO.setStoreFlieDTOS(storeFileCustomRepository.findByStoreId(storeId));
+//        storeDTO.setUserId(userRepository);
 
         return storeDTO;}
 
-    // 스토어 글 목록
+    // 자료상점 게시글 전체 조회
     public List<StoreDTO> findStore() { return storeCustomRepository.findAll();}
+
+    // 자료상점 게시글 페이징 처리
+    public Page<StoreDTO> findStorePage(Pageable pageable) {return storeCustomRepository.findAllPage(pageable);}
 
 
 

@@ -3,463 +3,412 @@
 <head>
     <meta charset="UTF-8">
     <title>NEOS | 자료상점 상세보기</title>
-<!--    <link rel="stylesheet" href="/css/study/feedStudy.css">-->
+    <!--    <link rel="stylesheet" href="/css/study/feedStudy.css">-->
     <link rel="stylesheet" href="/css/store/storeDetail.css">
     <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="stylesheet" href="/css/fix/loginHeader.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body style="overflow: unset;">
-    <header th:replace="/app/fix/header.html :: header"></header>
+<header th:replace="/app/fix/header.html :: header"></header>
 
-    <section>
-        <div class="storyDetailWrap" th:object="${store}">
-            <div class="projectPageHeaderWrap">
-                <div class="projectPurposeWrap">
-                    <div style="background-color:#1A7CFF">
-                        <h2 class="rightTxt" style="color:#fff">자료상점</h2>
-                    </div>
-                </div>
-                <div class="projectPageHeaderContent">
-                    <h2 class="projectTit" th:text="*{storeTitle}">[안내] 자료상점 작성하기</h2>
-                    <li class="projectLeaderWrap">
-                        <div class="userIdWrap">
-                            <div class="leaderImg">
-                                <a href="/people/%EC%B6%94%EC%B6%94%EC%B6%94">
-                                    <img width="20px" height="20px" src="https://letspl.me/assets/images/prof-no-img.png"
-                                         alt="추추추">
-                                </a>
-                            </div>
-                            <div class="rightTxt userId">
-                                <h2 class="userIdTxt">추추추</h2>
-                                <span class="confirmPhoneTxt">(휴대폰 인증)</span>
-                                <span class="lastLoginTxt"> 오늘 <!-- --> 로그인
-                            </span>
-                                <div class="idHoverMenu" style="display: none;">
-                                    <ul>
-                                        <li><a href="">프로필 상세</a></li>
-                                        <li><a>1:1 대화</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <div class="statusTagWrap">
-                        <span class="statusTag white" th:text="*{storeStatus}" >무료</span>
-                        <div class="modifyBtn">
-                            <a th:href="*{storeId}" class="changeBtn">
-                                <img loading="lazy" src="https://letspl.me/assets/images/ic-profile-modify.png" alt="수정버튼" style="vertical-align: middle; cursor: pointer;">
-                            </a>
-                        </div>
-
-                        <div class="deleteBtn">
-                            <a th:href="*{storeId}" class="detailBtn">
-                                <img loading="lazy" src="/images/store/delete.png" style="vertical-align: middle; height: 28px; margin-left: 5px; cursor: pointer;">
-                            </a>
-                        </div>
-                    </div>
+<section>
+    <div class="storyDetailWrap" th:object="${store}">
+        <div class="projectPageHeaderWrap">
+            <div class="projectPurposeWrap">
+                <div style="background-color:#1A7CFF">
+                    <h2 class="rightTxt" style="color:#fff">자료상점</h2>
                 </div>
             </div>
-
-            <div class="projectPageWrap">
-                <div class="projectDetailContents contents">
-                    <div class="projectTabMenu clearfix">
-                        <ul>
-                            <li><a name="#info" class="active">정보</a></li>
-                            <li><a name="question" class="">&nbsp</a></li>
-                            <li><a name="work" class="">&nbsp</a></li>
-                            <li><a name="feed" class="">&nbsp</a></li>
-                            <li><a name="mgmt" class="">&nbsp</a></li>
-                        </ul>
-                    </div>
-                    <div class="projectDetailWrap">
-                        <div class="projectTab projectInfoTabContents active">
-                            <div class="section statusSection">
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <h1 class="tabTit" style="padding: 0 !important;">첨부파일</h1>
-                                    <button type="button" class="cashButton">결제하기</button>
-                                </div>
-
-                                <ul class="fileList" th:if="*{storeFlieDTOS.size() != 0}">
-                                    <li th:if="*{storeFlieDTOS[0].getStoreFileName != null}">
-                                        <a>
-                                            <img src="/images/store/pdf.png" alt="">
-                                        </a>
-                                        <p class="checkboxTit" th:text="*{storeFlieDTOS[0].getStoreFileName + '(' + storeFlieDTOS[1].storeFileSize/1024 + 'KB' + ')'}" >neos.pdf</p>
-                                    </li>
-                                    <li th:if="*{storeFlieDTOS.size() > 1 and (storeFlieDTOS[1].getStoreFileName != null)}">
-                                        <a>
-                                            <img src="/images/store/ppt.png" alt="">
-                                        </a>
-                                        <p class="checkboxTit" th:text="*{storeFlieDTOS[1].getStoreFileName + '(' + storeFlieDTOS[1].storeFileSize/1024 + 'KB' + ')'}">자료상점 이용방법.ppt</p>
-                                    </li>
-                                    <li th:if="*{storeFlieDTOS.size() > 2}">
-                                        <a>
-                                            <img src="/images/store/word.png" alt="">
-                                        </a>
-                                        <p class="checkboxTit" th:text="*{storeFlieDTOS[2].getStoreFileName + '(' + storeFlieDTOS[2].storeFileSize/1024 + 'KB' + ')'}">neos기능.word</p>
-                                    </li>
+            <div class="projectPageHeaderContent">
+                <h2 class="projectTit" th:text="*{storeTitle}">[안내] 자료상점 작성하기</h2>
+                <li class="projectLeaderWrap">
+                    <div class="userIdWrap">
+                        <div class="leaderImg">
+                            <a href="#">
+                                <img th:src="*{user.userFile}" width="20px" height="20px"
+                                     src="https://letspl.me/assets/images/prof-no-img.png"
+                                     alt="추추추">
+                            </a>
+                        </div>
+                        <div class="rightTxt userId">
+                            <h2 class="userIdTxt" th:text="*{user.userNickName}">추추추</h2>
+                            <span class="confirmPhoneTxt" th:if="*{user.userCollegeCertify == 'true'}">(대학교 인증)</span>
+                            <span class="confirmPhoneTxt"
+                                  th:if="*{user.userCollegeCertify == 'noNeed'}">(대학교 미인증)</span>
+                            <!--                                <span class="lastLoginTxt"> 오늘 &lt;!&ndash; &ndash;&gt; 로그인-->
+                            </span>
+                            <div class="idHoverMenu" style="display: none;">
+                                <ul>
+                                    <li><a href="">프로필 상세</a></li>
+                                    <li><a>1:1 대화</a></li>
                                 </ul>
                             </div>
-
-                            <div class="section onlyTxtSection">
-                                <h1 class="tabTit">- 소개</h1>
-                                <div class="projectTextArea" disabled="" th:utext="*{storeContent}">
-●  자료상점이란?
-
-[목표] : 서로 자료와 성적이 잘나오는 노하우를 공유하여 성적을 높일 수 있게 됩니다
-
-
-
-●  참여 조건
-
-[지식수준] : 본인이 가지고 있는 지식
-
-[유료] : 포인트로 결제 할 수 있고 포인트 충전은 마이페이지에서 충전 가능합니다
-
-[참여기준] : 모두가 참여 할 수 있는 공간입니다 많은 참여 바랍니다!🤗
-
-[첨부파일 등록] : 첨부파일은 hwp, pdf, png, jpg, jpeg, png, pptx, xlsx, xls, docx, txt가 가능합니다!
-
-
-
-
-
-
-
-
-                            </div>
-                            </div>
-
-                            <div class="projectDetailWrap" style="padding: 0;">
-                                <div class="projectTab projectFeedContents active">
-                                    <div class="section feedInputSection ">
-                                        <div class="feedInputWrap"><textarea class="textarea" placeholder="궁금하신 점이 있다면 댓글을 달아주세요!" rows="2" maxlength="1000"></textarea></div>
-                                        <div class="feed btnWrap" style="display: none;">
-                                            <p class="count"><span>0</span>/<span>500</span></p>
-                                            <div style="display: flex">
-                                                <div class="checkboxs" style="display: flex; vertical-align: middle; align-items: center;">
-                                                    <input type="checkbox" id="secert" style="width: 20px; height: 20px; margin: 8px; margin-left: 0;">
-                                                    <label for="secert" class="name">비밀 댓글 🔒</label>
-                                                </div>
-                                                <button class="whiteBtn">등록</button>
-                                                <button class="whiteBtn blackBtn">취소</button>
-                                            </div>
-                                        </div>
-                                        <div class="fileWrap"></div>
-                                    </div>
-                                    <div class="section feedUploadedSection replySection">
-                                        <div class="feedUploadWrap">
-                                            <div class="feedContentsWrap">
-                                                <div class="top">
-                                                    <div class="thumb"><img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image"></div>
-                                                    <div class="name">
-                                                        <h2 class="profileName">추추추
-                                                            <div class="hoverView" style="display: none">
-                                                                <ul>
-                                                                    <li><a href="/people/추추추" target="_blank">프로필 상세</a></li>
-                                                                    <li><a>1:1 대화</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </h2>
-                                                        <span>22.11.08 17:37</span>
-                                                    </div>
-                                                </div>
-                                                <div class="feedContents"><textarea disabled="" maxlength="1000" style="font-size: 0.875rem; height: 62px !important;">조성현님 문제 출제 부탁드립니다.</textarea>
-
-                                                </div>
-                                                <div class="btnWrap" style="">
-                                                    <button class="feedBtn txtBtn">수정</button>
-                                                    <div class="divider"></div>
-                                                    <button class="feedBtn txtBtn">삭제</button>
-                                                </div>
-                                                <div class="bottom"><a class="feedReply active">댓글 열기</a><span class="replayCount">2</span></div>
-                                            </div>
-                                            <div class="replyWrap">
-                                                <div class="replyWrapContent">
-                                                    <div class="top">
-                                                        <div class="left">
-                                                            <div class="profileThumb"><a href="/people/undefined" target="_blank"><img loading="lazy" width="44px" height="44px" src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif" alt="user_image"></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="right">
-                                                            <h4 class="profileName">ROSA
-                                                                <div class="hoverView" style="display: none;">
-                                                                    <ul>
-                                                                        <li><a href="/people/ROSA" target="_blank">프로필 상세</a>
-                                                                        </li>
-                                                                        <li><a>1:1 대화</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </h4>
-                                                            <p class="dateTxt">22.11.13 22:00</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="bottom">
-                                                        <div class="left"></div>
-                                                        <div class="txtWrap"><textarea disabled="" maxlength="500" style="font-size: 0.875rem; height: 42px !important;">파일은 어떻게 올리나요?</textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="replyWrapContent">
-                                                    <div class="top">
-                                                        <div class="left">
-                                                            <div class="profileThumb"><a href="/people/undefined" target="_blank"><img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image"></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="right">
-                                                            <h4 class="profileName">추추추
-                                                                <div class="hoverView" style="display: none;">
-                                                                    <ul>
-                                                                        <li><a href="/people/추추추" target="_blank">프로필 상세</a>
-                                                                        </li>
-                                                                        <li><a>1:1 대화</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </h4>
-                                                            <p class="dateTxt">22.11.14 09:01</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="bottom">
-                                                        <div class="left"></div>
-                                                        <div class="txtWrap">
-                                                <textarea maxlength="500" style="font-size: 0.875rem; height: 42px !important;" disabled="">마우스를 클릭하세요 오른쪽을 한번 누르면 클릭
-                                                </textarea>
-                                                        </div>
-                                                        <div class="btnWrap" style="">
-                                                            <button class="replyBtn txtBtn">수정</button>
-                                                            <div class="divider"></div>
-                                                            <button class="replyBtn txtBtn">삭제</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="replayInput">
-                                                    <div class="profileThumb"><img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image"></div>
-                                                    <div class="txtInput"><textarea type="text" placeholder="댓글을 작성해주세요." rows="4" maxlength="500"></textarea>
-                                                        <div class="btnWrap" style="">
-                                                            <button class="whiteBtn" >등록</button>
-                                                            <button class="whiteBtn" style="margin-left: 8px">취소</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="section feedUploadedSection replySection">
-                                        <div class="feedUploadWrap">
-                                            <div class="feedContentsWrap">
-                                                <div class="top secret">
-                                                    <div class="thumb">
-                                                        <img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image">
-                                                    </div>
-                                                    <div class="name">
-                                                        <h2 class="profileName">추추추
-                                                            <div class="hoverView" style="display: none">
-                                                                <ul>
-                                                                    <li><a href="/people/추추추" target="_blank">프로필 상세</a></li>
-                                                                    <li><a>1:1 대화</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </h2>
-                                                        <span>22.11.08 17:37</span>
-                                                    </div>
-                                                </div>
-                                                <div class="feedContents"><textarea disabled="" maxlength="1000" style="font-size: 0.875rem; height: 62px !important;">여러분 함께 열심히 공부해봅시다!</textarea>
-                                                    <div class="imgWrap"></div>
-                                                </div>
-                                                <div class="btnWrap" style="">
-                                                    <button class="feedBtn txtBtn">수정</button>
-                                                    <div class="divider"></div>
-                                                    <button class="feedBtn txtBtn">삭제</button>
-                                                </div>
-                                                <div class="bottom"><a class="feedReply active">댓글 열기</a><span class="replayCount">0</span></div>
-                                            </div>
-                                            <div class="replyWrap">
-                                                <div class="replayInput">
-                                                    <div class="profileThumb"><img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image"></div>
-                                                    <div class="txtInput"><textarea type="text" placeholder="댓글을 작성해주세요." rows="4" maxlength="500"></textarea>
-                                                        <div class="btnWrap" style="">
-                                                            <button class="whiteBtn" >등록</button>
-                                                            <button class="whiteBtn" style="margin-left: 8px">취소</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="section feedUploadedSection replySection">
-                                        <!--  비밀 댓글 다른 유저가 볼 때  -->
-                                        <div class="secret feedUploadWrap">
-                                            <div class="feedContentsWrap">
-                                                <div class="top secret">
-                                                    <div class="name" style="margin-top: 14px; margin-bottom: 14px;">
-                                                        <h2 class="profileName">비밀 댓글 입니다.
-                                                        </h2>
-                                                        <span>22.11.08 17:37</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="section feedUploadedSection replySection">
-                                        <!--  비밀 댓글 다른 유저가 볼 때  -->
-                                        <div style="display:none;" class="secret feedUploadWrap">
-                                            <div class="feedContentsWrap">
-                                                <div class="top secret">
-                                                    <div class="name" style="margin-top: 14px;">
-                                                        <h2 class="profileName">비밀 댓글 입니다.
-                                                        </h2>
-                                                        <span>22.11.08 17:37</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--  비밀 댓글 작성자, 게시글 작성자가 볼때  -->
-                                        <div  class="basic feedUploadWrap">
-                                            <div class="feedContentsWrap">
-                                                <div class="top ">
-                                                    <div class="thumb">
-                                                        <img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image">
-                                                    </div>
-                                                    <div class="name">
-                                                        <h2 class="profileName">추추추 🔒
-                                                            <div class="hoverView" style="display: none">
-                                                                <ul>
-                                                                    <li><a href="/people/추추추" target="_blank">프로필 상세</a></li>
-                                                                    <li><a>1:1 대화</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </h2>
-                                                        <span>22.11.08 17:37</span>
-                                                    </div>
-                                                </div>
-                                                <div class="feedContents"><textarea disabled="" maxlength="1000" style="font-size: 0.875rem; height: 62px !important;">여러분 함께 열심히 공부해봅시다!</textarea>
-                                                    <div class="imgWrap"></div>
-                                                </div>
-                                                <div class="btnWrap" style="">
-                                                    <button class="feedBtn txtBtn">수정</button>
-                                                    <div class="divider"></div>
-                                                    <button class="feedBtn txtBtn">삭제</button>
-                                                </div>
-                                                <div class="bottom"><a class="feedReply active">댓글 열기</a><span class="replayCount">0</span></div>
-                                            </div>
-                                            <div class="replyWrap">
-                                                <div class="replayInput">
-                                                    <div class="profileThumb"><img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image"></div>
-                                                    <div class="txtInput"><textarea type="text" placeholder="댓글을 작성해주세요." rows="4" maxlength="500"></textarea>
-                                                        <div class="btnWrap" style="">
-                                                            <button class="whiteBtn" >등록</button>
-                                                            <button class="whiteBtn" style="margin-left: 8px">취소</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!--  일반 댓글  -->
-                                        <div  style="display:none;" class="basic feedUploadWrap">
-                                            <div class="feedContentsWrap">
-                                                <div class="top ">
-                                                    <div class="thumb">
-                                                        <img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image">
-                                                    </div>
-                                                    <div class="name">
-                                                        <h2 class="profileName">추추추
-                                                            <div class="hoverView" style="display: none">
-                                                                <ul>
-                                                                    <li><a href="/people/추추추" target="_blank">프로필 상세</a></li>
-                                                                    <li><a>1:1 대화</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </h2>
-                                                        <span>22.11.08 17:37</span>
-                                                    </div>
-                                                </div>
-                                                <div class="feedContents"><textarea disabled="" maxlength="1000" style="font-size: 0.875rem; height: 62px !important;">여러분 함께 열심히 공부해봅시다!</textarea>
-                                                    <div class="imgWrap"></div>
-                                                </div>
-                                                <div class="btnWrap" style="">
-                                                    <button class="feedBtn txtBtn">수정</button>
-                                                    <div class="divider"></div>
-                                                    <button class="feedBtn txtBtn">삭제</button>
-                                                </div>
-                                                <div class="bottom"><a class="feedReply active">댓글 열기</a><span class="replayCount">0</span></div>
-                                            </div>
-                                            <div class="replyWrap">
-                                                <div class="replayInput">
-                                                    <div class="profileThumb"><img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image"></div>
-                                                    <div class="txtInput"><textarea type="text" placeholder="댓글을 작성해주세요." rows="4" maxlength="500"></textarea>
-                                                        <div class="btnWrap" style="">
-                                                            <button class="whiteBtn" >등록</button>
-                                                            <button class="whiteBtn" style="margin-left: 8px">취소</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
                         </div>
                     </div>
-                </div>
+                </li>
+                <div class="statusTagWrap">
+                    <span class="statusTag white" th:text="*{storeStatus}">무료</span>
+                    <div class="modifyBtn">
+                        <a th:href="*{storeId}" th:if="${store.user.userId == session.loginUser}" class="changeBtn">
+                            <img loading="lazy" src="https://letspl.me/assets/images/ic-profile-modify.png" alt="수정버튼"
+                                 style="vertical-align: middle; cursor: pointer;">
+                        </a>
+                    </div>
 
-
-                <div class="projectRightInfoContetns">
-                    <div class="projectRightInfoWrap" style="padding-bottom: 0;">
-                        <div class="basicInfoWrap infoWrap">
-                            <p class="checkboxTit">다운로드 QR코드</p>
-
-                        </div>
-                        <div class="qrImg" style="text-align: center;">
-                            <a href="javascript:;" style="font-size: 0;">
-                                <img class="blur" src="/images/store/qrDetail.jpg" style="cursor: default; width: 80%; height: 80%;">
-                            </a>
-                            <p class="checkboxTit">neos.pdf</p>
-                        </div>
-                        <div class="qrImg" style="text-align: center;">
-                            <a href="javascript:;" style="font-size: 0;">
-                                <img class="" src="/images/store/qrDetail.jpg" style="cursor: default; width: 80%; height: 80%;">
-                            </a>
-                            <p class="checkboxTit">자료상점 이용방법.ppt</p>
-                        </div>
-                        <div class="qrImg qrLast" style="text-align: center;">
-                            <a href="javascript:;" style="font-size: 0;">
-                                <img class="" src="/images/store/qrDetail.jpg" style="cursor: default; width: 80%; height: 80%;">
-                            </a>
-                            <p class="checkboxTit">neos기능.word</p>
-                        </div>
-
+                    <div class="deleteBtn">
+                        <a th:href="*{storeId}" th:if="${store.user.userId == session.loginUser}" class="detailBtn">
+                            <img loading="lazy" src="/images/store/delete.png"
+                                 style="vertical-align: middle; height: 28px; margin-left: 5px; cursor: pointer;">
+                        </a>
                     </div>
                 </div>
-
-
             </div>
         </div>
-    </section>
 
-    <div th:replace="/app/fix/footer.html :: footer"></div>
+        <div class="projectPageWrap">
+            <div class="projectDetailContents contents">
+                <div class="projectTabMenu clearfix">
+                    <ul>
+                        <li><a name="#info" class="active">정보</a></li>
+                        <li><a name="question" class="">&nbsp</a></li>
+                        <li><a name="work" class="">&nbsp</a></li>
+                        <li><a name="feed" class="">&nbsp</a></li>
+
+                    </ul>
+                </div>
+                <div class="projectDetailWrap">
+                    <div class="projectTab projectInfoTabContents active">
+                        <div class="section statusSection">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <h1 class="tabTit" style="padding: 0 !important;">첨부파일</h1>
+                                <button type="button" class="cashButton" th:if="*{storeStatus.toString() == 'PAY'}">
+                                    결제하기
+                                </button>
+                            </div>
+
+                            <ul class="fileList" th:if="*{storeFlieDTOS.size() != 0}">
+                                <li th:if="*{storeFlieDTOS[0].getStoreFileName != null}">
+                                    <a th:href="@{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}">
+                                        <img src="/images/store/pdf.png" class="fileImg">
+                                    </a>
+                                    <input type="hidden" class="attachFile1"
+                                           th:value="*{storeFlieDTOS[0].getStoreFileName}">
+                                    <p class="checkboxTit"
+                                       th:text="*{storeFlieDTOS[0].getStoreFileName + '(' + storeFlieDTOS[0].storeFileSize/1024 + 'KB' + ')'}">
+                                        neos.pdf</p>
+                                </li>
+                                <li th:if="*{storeFlieDTOS.size() > 1 and (storeFlieDTOS[1].getStoreFileName != null)}">
+                                    <a th:href="@{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}">
+                                        <img src="/images/store/pdf.png" class="fileImg">
+                                    </a>
+                                    <input type="hidden" class="attachFile2"
+                                           th:value="*{storeFlieDTOS[1].getStoreFileName}">
+                                    <p class="checkboxTit"
+                                       th:text="*{storeFlieDTOS[1].getStoreFileName + '(' + storeFlieDTOS[1].storeFileSize/1024 + 'KB' + ')'}">
+                                        자료상점 이용방법.ppt</p>
+                                </li>
+                                <li th:if="*{storeFlieDTOS.size() > 2}">
+                                    <a th:href="@{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}">
+                                        <img src="/images/store/pdf.png" class="fileImg">
+                                    </a>
+                                    <input type="hidden" class="attachFile3"
+                                           th:value="*{storeFlieDTOS[2].getStoreFileName}">
+                                    <p class="checkboxTit"
+                                       th:text="*{storeFlieDTOS[2].getStoreFileName + '(' + storeFlieDTOS[2].storeFileSize/1024 + 'KB' + ')'}">
+                                        neos기능.word</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="section onlyTxtSection">
+                            <h1 class="tabTit">- 소개</h1>
+                            <div class="projectTextArea" disabled="" th:utext="*{storeContent}">
+                                ● 자료상점이란?
+
+                                [목표] : 서로 자료와 성적이 잘나오는 노하우를 공유하여 성적을 높일 수 있게 됩니다
+
+
+                                ● 참여 조건
+
+                                [지식수준] : 본인이 가지고 있는 지식
+
+                                [유료] : 포인트로 결제 할 수 있고 포인트 충전은 마이페이지에서 충전 가능합니다
+
+                                [참여기준] : 모두가 참여 할 수 있는 공간입니다 많은 참여 바랍니다!🤗
+
+                                [첨부파일 등록] : 첨부파일은 hwp, pdf, png, jpg, jpeg, png, pptx, xlsx, xls, docx, txt가 가능합니다!
+
+
+                            </div>
+                        </div>
+
+                        <div class="projectDetailWrap" style="padding: 0;">
+                            <div class="projectTab projectFeedContents active">
+                                <input type="text" th:value="*{user.userId}" name="storeUserId"></input>
+                                <input type="text" th:value="${session.loginUser}" name="userId"></input>
+                                <input type="text" name="storeReplySecret" class="replyStatus" value="PUBLIC"></input>
+                                <input type="text" name="storeId" th:value="*{storeId}"></input>
+                                <div class="section feedInputSection ">
+                                    <div class="feedInputWrap">
+                                        <textarea class="textarea" name="storeReplyContent"
+                                                  placeholder="궁금하신 점이 있다면 댓글을 달아주세요!" rows="2"
+                                                  maxlength="1000"></textarea>
+                                    </div>
+                                    <div class="feed btnWrap" style="display: none;">
+                                        <p class="count"><span>0</span>/<span>500</span></p>
+                                        <div style="display: flex">
+                                            <div class="checkboxs"
+                                                 style="display: flex; vertical-align: middle; align-items: center;">
+                                                <input type="checkbox" class="replyStatusCheck" id="secert"
+                                                       style="width: 20px; height: 20px; margin: 8px; margin-left: 0;">
+                                                <label for="secert" class="name">비밀 댓글 🔒</label>
+                                            </div>
+                                            <button class="whiteBtn storeReplySaveBtn">등록</button>
+                                            <button class="whiteBtn blackBtn">취소</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="fileWrap"></div>
+                                </div>
+
+                                <div class="replyAreaWrap"></div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="projectRightInfoContetns">
+                <div class="projectRightInfoWrap" style="padding-bottom: 0;">
+                    <div class="basicInfoWrap infoWrap">
+                        <p class="checkboxTit">다운로드 QR코드</p>
+
+                    </div>
+                    <div class="QRWrap" th:if="*{storeFlieDTOS.size() != 0}">
+                        <div class="qrImg" style="text-align: center;"
+                             th:if="*{storeFlieDTOS[0].getStoreFileName != null}">
+                            <a th:href="@{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}">
+                                <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}"
+                                     alt="">
+                            </a>
+                            <p class="checkboxTit"
+                               th:text="*{storeFlieDTOS[0].getStoreFileName + '(' + storeFlieDTOS[0].storeFileSize/1024 + 'KB' + ')'}">
+                                neos.pdf</p>
+                        </div>
+                        <div class="qrImg" style="text-align: center;"
+                             th:if="*{storeFlieDTOS.size() > 1 and (storeFlieDTOS[1].getStoreFileName != null)}">
+                            <a th:href="@{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}">
+                                <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}"
+                                     alt="">
+                            </a>
+                            <p class="checkboxTit"
+                               th:text="*{storeFlieDTOS[1].getStoreFileName + '(' + storeFlieDTOS[1].storeFileSize/1024 + 'KB' + ')'}">
+                                자료상점 이용방법.ppt</p>
+                        </div>
+                        <div class="qrImg qrLast" style="text-align: center;" th:if="*{storeFlieDTOS.size() > 2}">
+                            <a th:href="@{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}">
+                                <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}"
+                                     alt="">
+                            </a>
+                            <p class="checkboxTit"
+                               th:text="*{storeFlieDTOS[2].getStoreFileName + '(' + storeFlieDTOS[2].storeFileSize/1024 + 'KB' + ')'}">
+                                neos기능.word</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="/js/study/feed-study.js"></script>
+<script src="/js/store/storeDetail.js"></script>
 <script src="/js/fix/login.js"></script>
 <script src="/js/fix/header.js"></script>
-<script>
-    const $detail = $("a.detailBtn");
-    const $change = $("a.changeBtn");
+<script th:inline="javascript">
+    // let storeId = [[${store.storeId}]];
+    //
+    // console.log(storeId);
 
-    $detail.on("click", function (e) {
-        e.preventDefault();
-        location.href = "/store/store-delete" + "?storeId=" + $(this).attr("href");
-    })
+    show();
 
-    $change.on("click", function (e) {
-        e.preventDefault();
-        location.href = "/store/store-update" + "?storeId=" + $(this).attr("href");
-    })
+    $(".storeReplySaveBtn").on("click", function () {
+        replyService.add({
+            storeReplyContent: $("textarea[name='storeReplyContent']").val(),
+            storeReplySecret: $("input[name='storeReplySecret']").val(),
+            userId: $("input[name='userId']").val(),
+            storeId: $("input[name='storeId']").val()
+        }, function () {
+            show()
+        });
+        $(this).parents('.feedInputSection').children('.feedInputWrap').children("textarea").val("")
+            .attr("rows", 2);
+        $(this).parents('.feed').css("display", "none");
+    });
+
+    function show() {
+        replyService.getList($("input[name='storeId']").val(), getList);
+    }
+
+    function getList(replies) {
+        let text = "";
+
+        console.log(replies);
+
+        replies.forEach(reply => {
+
+            if (reply.storeReplySecret.toString() == "PUBLIC") {
+                text += "<div class='section feedUploadedSection replySection'>";
+                text += "<div class='feedUploadWrap'>";
+                text += "<div class='feedContentsWrap'>";
+                text += "<div class='top'>";
+                text += "<div class='thumb'>";
+                text += "<img loading='lazy' width='44px' height='44px' src='" + reply.user.userFile + "' alt='user_image'>";
+                text += "</div>";
+                text += "<div class='name'>";
+                text += "<h2 class='profileName'>" + reply.user.userNickName;
+                text += "<div class='hoverView' style='display: none'>";
+                text += "<ul>";
+                text += "<li><a href='#' target='_blank'>프로필 상세</a></li>";
+                text += "<li><a>1:1 대화</a></li>";
+                text += "</ul>";
+                text += "</div>";
+                text += "</h2>";
+                text += "<span>" + replyService.timeForToday(reply.updatedDate) + "</span>";
+                text += "</div>";
+                text += "</div>";
+                text += "<div class='feedContents'>";
+                text += "<textarea class='replyText' disabled='' maxlength='1000' style='font-size: 0.875rem; height: 62px !important;'>" + reply.storeReplyContent + "</textarea>";
+                text += "</div>";
+                if ($("input[name='userId']").val() == reply.user.userId) {
+                    text += "<div class='btnWrap' style=''>";
+                    text += "<button class='feedBtn txtBtn' data-reply-id='" + reply.storeReplyId + "'>수정</button>";
+                    text += "<div class='divider'></div>";
+                    text += "<button class='feedBtn txtBtn' data-reply-id='" + reply.storeReplyId + "'>삭제</button>";
+                    text += "</div>";
+                }
+                // text += "<div class='bottom'>";
+                // text += "<a class='feedReply active'>댓글 열기</a>";
+                // text += "<span class='replayCount'>2</span>";
+                // text += "</div>";
+                text += "</div>";
+                text += "</div>";
+                text += "</div>";
+            }
+
+            if (reply.storeReplySecret.toString() == "PRIVATE") {
+                if ($("input[name='userId']").val() == reply.user.userId || $("input[name='userId']").val() == $("input[name='storeUserId']").val()) {
+                    text += "<div class='section feedUploadedSection replySection'>";
+                    text += "<div  class='basic feedUploadWrap'>";
+                    text += "<div class='feedContentsWrap'>";
+                    text += "<div class='top '>";
+                    text += "<div class='thumb'>";
+                    text += "<img loading='lazy' width='44px' height='44px' src='" + reply.user.userFile + "' alt='user_image'>";
+                    text += "</div>";
+                    text += "<div class='name'>";
+                    text += "<h2 class='profileName'>" + reply.user.userNickName + "🔒";
+                    text += "<div class='hoverView' style='display: none'>";
+                    text += "<ul>";
+                    text += "<li><a href='/people/추추추' target='_blank'>프로필 상세</a></li>";
+                    text += "<li><a>1:1 대화</a></li>";
+                    text += "</ul>";
+                    text += "</div>";
+                    text += "</h2>";
+                    text += "<span>" + replyService.timeForToday(reply.updatedDate) + "</span>";
+                    text += "</div>";
+                    text += "</div>";
+                    text += "<div class='feedContents'>";
+                    text += "<textarea disabled='' maxlength='1000' style='font-size: 0.875rem; height: 62px !important;'>" + reply.storeReplyContent + "</textarea>";
+                    text += "<div class='imgWrap'></div>";
+                    text += "</div>";
+                    if ($("input[name='userId']").val() == reply.user.userId) {
+                        text += "<div class='btnWrap' style=''>";
+                        text += "<button class='feedBtn txtBtn' data-reply-id='" + reply.storeReplyId + "'>수정</button>";
+                        text += "<div class='divider'></div>";
+                        text += "<button class='feedBtn txtBtn' data-reply-id='" + reply.storeReplyId + "'>삭제</button>";
+                        text += "</div>";
+                    }
+                    text += "</div>";
+                    text += "</div>";
+                    text += "</div>";
+
+                } else {
+                    text += "<div class='section feedUploadedSection replySection'>";
+                    text += "<div class='secret feedUploadWrap'>";
+                    text += "<div class='feedContentsWrap'>";
+                    text += "<div class='top secret'>";
+                    text += "<div class='name' style='margin-top: 14px; margin-bottom: 14px;'>";
+                    text += "<h2 class='profileName'>비밀 댓글 입니다.</h2>";
+                    text += "<span>" + replyService.timeForToday(reply.updatedDate) + "</span>";
+                    text += "</div>";
+                    text += "</div>";
+                    text += "</div>";
+                    text += "</div>";
+                    text += "</div>";
+                }
+
+            }
+
+
+        });
+
+        $("div.replyAreaWrap").html(text)
+    }
+
+    $("div.replyAreaWrap").on("click", ".txtBtn", function (e) {
+        // e.preventDefault();
+        // let replyNumber = $(this).attr("href");
+        // replyService.remove(replyNumber, function(){show();});
+
+        if ($(this).text() == "등록") {
+            let replyNumber = $(this).data("reply-id");
+            let replyUpdateContent = $(this).parents(".feedContentsWrap").children(".feedContents").children().val();
+            console.log(replyNumber);
+            console.log(replyUpdateContent);
+            replyService.modify({
+                storeReplyContent: replyUpdateContent,
+                storeReplyId: replyNumber
+            }, function () {
+                show();
+            });
+        }
+
+        if ($(this).text() == "수정") {
+            $feedText = $(this).parents('.feedContentsWrap').children('.feedContents').children("textarea").text();
+            $(this).text("등록");
+            $(this).next().next().text("취소");
+            $(this).parents('.feedContentsWrap').children('.feedContents').children("textarea").attr("disabled", false)
+                .css("height", "127px");
+        }
+
+        if ($(this).text() == "삭제") {
+            // e.preventDefault();
+            let replyNumber = $(this).data("reply-id");
+            console.log(replyNumber);
+            replyService.remove(replyNumber, function () {
+                show();
+            });
+        }
+        if ($(this).text() == "취소") {
+            $(this).text("삭제");
+            $(this).prev().prev().text("수정");
+            $(this).parents('.feedContentsWrap').children('.feedContents').children("textarea").val($feedText);
+            $(this).parents('.feedContentsWrap').children('.feedContents').children("textarea").attr("disabled", true)
+                .css("height", "62px");
+        }
+    });
+
+
 </script>
 </html>

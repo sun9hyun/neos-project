@@ -18,8 +18,10 @@ public interface StoreCustomRepository {
     // 자료상점 게시글 조회
     public StoreDTO selectOne(Long storeId);
 
+    // 자료상점 게시글 전체 조회
     public List<StoreDTO> findAll();
 
+    // 자료상점 게시글 페이징 처리
     public Page<StoreDTO> findAllPage(Pageable pageable);
 
 }

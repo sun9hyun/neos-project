@@ -96,7 +96,11 @@ public class StoreFileController {
         HttpHeaders header = new HttpHeaders();
         String name = resource.getFilename();
         name = name.substring(name.indexOf("_") + 1);
+        System.out.println("********************* 다운로드 : " + name + "*********************");
+
         header.add("Content-Disposition", "attachment;filename=" + new String(name.getBytes("UTF-8")));
+        System.out.println("********************* header : " + header + "*********************");
+
         return new ResponseEntity<>(resource, header, HttpStatus.OK);
     }
 

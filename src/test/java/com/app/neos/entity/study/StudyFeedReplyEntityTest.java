@@ -31,12 +31,8 @@ public class StudyFeedReplyEntityTest {
     public void saveTest(){
         StudyFeedReplyDTO studyFeedReplyDTO = new StudyFeedReplyDTO();
         studyFeedReplyDTO.setStudyFeedReplyContent("오늘 끝내기 가능!");
-        studyFeedReplyDTO.setStudyFeed(studyFeedRepository.findById(7L).get());
-        studyFeedReplyDTO.setStudyFeedReplyWriter(userRepository.findById(6L).get());
 
         StudyFeedReply studyFeedReply = studyFeedReplyDTO.toEntity();
-        studyFeedReply.changeStudyFeed(studyFeedReplyDTO.getStudyFeed());
-        studyFeedReply.changeStudyFeedReplyWriter(studyFeedReplyDTO.getStudyFeedReplyWriter());
 
         studyFeedReplyRepository.save(studyFeedReply);
     }

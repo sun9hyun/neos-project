@@ -19,7 +19,7 @@ public class StudyMemberDTO {
     private Long studyMemberId;
     private StudyMemberStatus studyMemberStatus;
     private UserDTO userDTO;
-    private StudyDTO studyDTO;
+    private Long studyId;
 
     public StudyMember toEntity(){
         return StudyMember.builder()
@@ -28,10 +28,10 @@ public class StudyMemberDTO {
     }
 
     @QueryProjection
-    public StudyMemberDTO(Long studyMemberId, StudyMemberStatus studyMemberStatus, UserDTO userDTO, StudyDTO studyDTO) {
+    public StudyMemberDTO(Long studyMemberId, StudyMemberStatus studyMemberStatus, UserDTO userDTO, Long studyId) {
         this.studyMemberId = studyMemberId;
         this.studyMemberStatus = studyMemberStatus;
         this.userDTO = userDTO;
-        this.studyDTO = studyDTO;
+        this.studyId = studyId;
     }
 }

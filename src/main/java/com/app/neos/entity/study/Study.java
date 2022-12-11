@@ -111,6 +111,23 @@ public class Study extends Period {
       this.studyView = studyView+1;
    }
 
+   public void supportUpdate(int studySupport){
+      this.studySupport = this.studySupport+studySupport;
+      this.studyRecruitStatus = StudyRecruitStatus.RECRUITING;
+   }
+
+   public void supportEnd(){
+      this.studySupport = this.studyMemberList.size();
+      this.studyRecruitStatus = StudyRecruitStatus.COMPLETE;
+   }
+
+   public void end(){
+      this.studyRecruitStatus = StudyRecruitStatus.COMPLETE;
+   }
+
+   public void start(){
+      this.studyRecruitStatus = StudyRecruitStatus.RECRUITING;
+   }
 
 //   private String collegeName;
 

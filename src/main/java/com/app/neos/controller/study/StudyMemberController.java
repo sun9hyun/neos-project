@@ -21,4 +21,22 @@ public class StudyMemberController {
         studyMemberService.supportJoin(supporterDTO);
         return new RedirectView("/study/list/"+supporterDTO.getStudyId());
     }
+
+    @PostMapping("/rejection")
+    public RedirectView reject(Long studyId, StudySupporterDTO studySupporterDTO){
+        studyMemberService.reject(studySupporterDTO);
+        return new RedirectView("/study/management/"+studyId);
+    }
+
+    @PostMapping("/ok")
+    public RedirectView ok(Long studyId, StudySupporterDTO studySupporterDTO){
+        studyMemberService.ok(studySupporterDTO);
+        return new RedirectView("/study/management/"+studyId);
+    }
+
+    @PostMapping("/release")
+    public RedirectView ok(Long studyId, StudyMemberDTO studyMemberDTO){
+       studyMemberService.releaseMember(studyMemberDTO);
+        return new RedirectView("/study/management/"+studyId);
+    }
 }

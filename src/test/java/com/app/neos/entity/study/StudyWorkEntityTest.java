@@ -37,14 +37,8 @@ public class StudyWorkEntityTest {
         studyWorkDTO.setStudyWorkTargetDate(LocalDateTime.of(2022, 6, 10, 10, 00));
         studyWorkDTO.setStudyLocationStatus(StudyLocationStatus.ONLINE);
         studyWorkDTO.setStudyWorkStatus(StudyWorkStatus.PROCEEDING);
-        studyWorkDTO.setStudyWorkWriter(userRepository.findAll().get(0));
-        studyWorkDTO.setStudyWorkChoiceMember(userRepository.findAll().get(1));
-        studyWorkDTO.setStudy(studyRepository.findAll().get(0));
 
         StudyWork studyWork = studyWorkDTO.toEntity();
-        studyWork.changeStudyWorkWriter(studyWorkDTO.getStudyWorkWriter());
-        studyWork.changeStudyWorkChoiceMember(studyWorkDTO.getStudyWorkChoiceMember());
-        studyWork.changeStudy(studyWorkDTO.getStudy());
 
         studyWorkRepository.save(studyWork);
     }

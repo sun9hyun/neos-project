@@ -1,6 +1,7 @@
 package com.app.neos.entity.study;
 
 import com.app.neos.domain.study.StudyFeedReplyDTO;
+import com.app.neos.domain.study.StudyQuestionReplyDTO;
 import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
 import com.sun.istack.NotNull;
@@ -9,6 +10,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name="TBL_STUDY_FEED_REPLY")
@@ -34,6 +36,7 @@ public class StudyFeedReply extends Period {
     }
     public void changeStudyFeed(StudyFeed studyFeed){
         this.studyFeed = studyFeed;
+        studyFeed.getReplies().add(this);
     }
 
     @Builder
@@ -43,5 +46,16 @@ public class StudyFeedReply extends Period {
 
     public void update(StudyFeedReplyDTO studyFeedReplyDTO){
         this.studyFeedReplyContent = studyFeedReplyDTO.getStudyFeedReplyContent();
+    }
+
+    public StudyFeedReplyDTO toDTO(){
+        String dateFormat = this.getUpdatedDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"));
+        StudyFeedReplyDTO dto = new StudyFeedReplyDTO();
+        dto.setStudyFeedReplyId(this.studyFeedReplyId);
+        dto.setStudyFeedReplyContent(this.studyFeedReplyContent);
+        dto.setStudyFeed(this.studyFeed.toDTO());
+        dto.setStudyFeedReplyWriter(this.studyFeedReplyWriter.toDTO());
+        dto.setCreatedDate(dateFormat);
+        return dto;
     }
 }

@@ -58,17 +58,17 @@ $(".favoriteUser").on("click", function () {
 })
 
 // 댓글 열기, 닫기
-$(".feedReply").on("click", function () {
-    $(this).toggleClass('active');
-    if($(this).hasClass('active')){
-        $(this).text("댓글 열기");
-        $(this).parents('.feedUploadWrap').children('.replyWrap').css("display", "none");
-    }else{
-        $(this).text("댓글 닫기");
-        $(this).parents('.feedUploadWrap').children('.replyWrap').css("display", "flex");
-    }
-
-})
+// $(".feedReply").on("click", function () {
+//     $(this).toggleClass('active');
+//     if($(this).hasClass('active')){
+//         $(this).text("댓글 열기");
+//         $(this).parents('.feedUploadWrap').children('.replyWrap').css("display", "none");
+//     }else{
+//         $(this).text("댓글 닫기");
+//         $(this).parents('.feedUploadWrap').children('.replyWrap').css("display", "flex");
+//     }
+//
+// })
 
 // 본인이 작성한 댓글, 피드 삭제
 $(".txtBtn").on("click",function () {
@@ -79,23 +79,7 @@ $(".txtBtn").on("click",function () {
 })
 
 // 댓글 수정
-let $replyText;
-$(".replyBtn").on("click", function () {
-    if($(this).text()=="수정"){
-        $replyText = $(this).closest('.bottom').find("textarea").text();
-        $(this).text("등록");
-        $(this).next().next().text("취소");
-        $(this).closest('.bottom').find("textarea").attr("disabled", false)
-            .css("height", "127px");
-    }
-    if($(this).text()=="취소"){
-        $(this).text("삭제");
-        $(this).prev().prev().text("수정");
-        $(this).closest('.bottom').find("textarea").val($replyText);
-        $(this).closest('.bottom').find("textarea").attr("disabled", true)
-            .css("height", "42px");
-    }
-})
+
 
 // 댓글 작성 중 취소
 $('.whiteBtn').on("click", function () {

@@ -1,5 +1,6 @@
 package com.app.neos.domain.study;
 
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.study.StudyFeed;
 import com.app.neos.entity.study.StudyFeedReply;
 import com.app.neos.entity.user.User;
@@ -14,8 +15,9 @@ import org.springframework.stereotype.Component;
 public class StudyFeedReplyDTO {
     private Long studyFeedReplyId;
     private String studyFeedReplyContent;
-    private User studyFeedReplyWriter;
-    private StudyFeed studyFeed;
+    private UserDTO studyFeedReplyWriter;
+    private StudyFeedDTO studyFeed;
+    private String createdDate;
 
     public StudyFeedReply toEntity(){
         return StudyFeedReply.builder()
@@ -24,7 +26,7 @@ public class StudyFeedReplyDTO {
     }
 
     @QueryProjection
-    public StudyFeedReplyDTO(Long studyFeedReplyId, String studyFeedReplyContent, User studyFeedReplyWriter, StudyFeed studyFeed) {
+    public StudyFeedReplyDTO(Long studyFeedReplyId, String studyFeedReplyContent, UserDTO studyFeedReplyWriter, StudyFeedDTO studyFeed) {
         this.studyFeedReplyId = studyFeedReplyId;
         this.studyFeedReplyContent = studyFeedReplyContent;
         this.studyFeedReplyWriter = studyFeedReplyWriter;

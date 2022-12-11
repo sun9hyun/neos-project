@@ -1,11 +1,14 @@
 package com.app.neos.controller.study;
 
 import com.app.neos.domain.study.StudyDTO;
+import com.app.neos.domain.study.StudyFeedDTO;
 import com.app.neos.domain.study.StudyQuestionDTO;
 import com.app.neos.domain.study.StudySearch;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.service.join.JoinService;
+import com.app.neos.service.study.StudyFeedService;
+import com.app.neos.service.study.StudyMemberService;
 import com.app.neos.service.study.StudyQuestionService;
 import com.app.neos.service.study.StudyService;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +38,8 @@ public class StudyController {
     private final StudyService studyService;
     private final JoinService joinService;
     private final StudyQuestionService studyQuestionService;
+    private final StudyMemberService studyMemberService;
+    private final StudyFeedService studyFeedService;
 
 
     @GetMapping("/create")
@@ -98,7 +103,10 @@ public class StudyController {
         UserDTO user = studyService.getInfo(study.getUserId());
         List<StudyQuestionDTO> questions = studyQuestionService.getInfo(studyId);
         List<Long> ids = study.getStudySupporterDTOS().stream().map(i->i.getUser().getUserId()).collect(Collectors.toList());
-        log.info("여기보세요:"+ids.toString());
+
+        List<Long> memberIds = study.getStudyMemberList().stream().map(i->i.getUserDTO().getUserId()).collect(Collectors.toList());
+        memberIds.add(study.getUserId());
+        model.addAttribute("memberList",memberIds);
         ids.add(study.getUserId());
         model.addAttribute("supportList",ids);
         model.addAttribute("questions",questions);
@@ -116,6 +124,9 @@ public class StudyController {
         StudyDTO study = studyService.getStudyDTO(studyId);
         UserDTO user = studyService.getInfo(study.getUserId());
         List<StudyQuestionDTO> questions = studyQuestionService.getInfo(studyId);
+        List<Long> memberIds = study.getStudyMemberList().stream().map(i->i.getUserDTO().getUserId()).collect(Collectors.toList());
+        memberIds.add(study.getUserId());
+        model.addAttribute("memberList",memberIds);
         model.addAttribute("questions",questions);
         model.addAttribute("writer",user);
         model.addAttribute("study",study);
@@ -132,12 +143,66 @@ public class StudyController {
         StudyDTO study = studyService.getStudyDTO(studyId);
         UserDTO user = studyService.getInfo(study.getUserId());
         List<StudyQuestionDTO> questions = studyQuestionService.getInfo(studyId);
+        model.addAttribute("supporter",studyMemberService.showWaitList());
+        List<Long> memberIds = study.getStudyMemberList().stream().map(i->i.getUserDTO().getUserId()).collect(Collectors.toList());
+        memberIds.add(study.getUserId());
+        model.addAttribute("memberList",memberIds);
         model.addAttribute("questions",questions);
         model.addAttribute("writer",user);
         model.addAttribute("study",study);
         model.addAttribute("minusDay",studyService.minusDay(study));
         return "app/study/studyManagement";
     }
+
+    @GetMapping("/feed/{studyId}")
+    public String feedDetail(@PathVariable Long studyId, Model model){
+
+        StudyDTO study = studyService.getStudyDTO(studyId);
+        UserDTO user = studyService.getInfo(study.getUserId());
+        List<StudyQuestionDTO> questions = studyQuestionService.getInfo(studyId);
+        List<Long> ids = study.getStudySupporterDTOS().stream().map(i->i.getUser().getUserId()).collect(Collectors.toList());
+
+        List<Long> memberIds = study.getStudyMemberList().stream().map(i->i.getUserDTO().getUserId()).collect(Collectors.toList());
+        memberIds.add(study.getUserId());
+        model.addAttribute("memberList",memberIds);
+        ids.add(study.getUserId());
+        model.addAttribute("supportList",ids);
+        model.addAttribute("questions",questions);
+        model.addAttribute("writer",user);
+        model.addAttribute("study",study);
+        model.addAttribute("minusDay",studyService.minusDay(study));
+        return "app/study/feed-study";
+    }
+
+    @GetMapping("/work/{studyId}")
+    public String workDetail(@PathVariable Long studyId, Model model){
+
+        StudyDTO study = studyService.getStudyDTO(studyId);
+        UserDTO user = studyService.getInfo(study.getUserId());
+        List<StudyQuestionDTO> questions = studyQuestionService.getInfo(studyId);
+        List<Long> ids = study.getStudySupporterDTOS().stream().map(i->i.getUser().getUserId()).collect(Collectors.toList());
+
+        List<Long> memberIds = study.getStudyMemberList().stream().map(i->i.getUserDTO().getUserId()).collect(Collectors.toList());
+        memberIds.add(study.getUserId());
+        model.addAttribute("memberList",memberIds);
+        ids.add(study.getUserId());
+        model.addAttribute("supportList",ids);
+        model.addAttribute("questions",questions);
+        model.addAttribute("writer",user);
+        model.addAttribute("study",study);
+        model.addAttribute("minusDay",studyService.minusDay(study));
+        return "app/study/workStudy";
+    }
+
+
+
+
+    @PostMapping("/feed/write")
+    public RedirectView feedPost(StudyFeedDTO studyFeedDTO){
+        studyFeedService.post(studyFeedDTO);
+        return new RedirectView("/study/feed/"+studyFeedDTO.getStudy().getStudyId());
+    }
+
 
     @PostMapping("/question/write")
     public RedirectView questionPost(StudyQuestionDTO studyQuestionDTO, Long userId,Long studyId){
@@ -162,5 +227,15 @@ public class StudyController {
         return new RedirectView("/study/management/"+studyId);
     }
 
+    @PostMapping("/support-update")
+    public RedirectView supportUpdate(Long studyId, int studySupportTotal){
+        studyService.supportUpdate(studyId,studySupportTotal);
+        return new RedirectView("/study/management/"+studyId);
+    }
 
+    @PostMapping("/support-end")
+    public RedirectView supportEnd(Long studyId){
+        studyService.supportEnd(studyId);
+        return  new RedirectView("/study/management/"+studyId);
+    }
 }

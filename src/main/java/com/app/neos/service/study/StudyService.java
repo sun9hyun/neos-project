@@ -123,4 +123,16 @@ public class StudyService {
         Study study = studyRepository.findById(studyDTO.getStudyId()).get();
         study.update(studyDTO);
     }
+
+    @Transactional
+    public void supportUpdate(Long studyId, int studySupport){
+        Study study = studyRepository.findById(studyId).get();
+        study.supportUpdate(studySupport);
+    }
+
+    @Transactional
+    public void supportEnd(Long studyId){
+        Study study = studyRepository.findById(studyId).get();
+        study.supportEnd();
+    }
 }

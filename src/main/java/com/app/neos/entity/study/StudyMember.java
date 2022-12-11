@@ -50,7 +50,7 @@ public class StudyMember extends Created {
         StudyMemberDTO dto = new StudyMemberDTO();
         dto.setStudyMemberId(this.studyMemberId);
         dto.setStudyMemberStatus(this.studyMemberStatus);
-        dto.setStudyDTO(this.study.toDTO());
+        dto.setStudyId(this.study.getStudyId());
         dto.setUserDTO(this.user.toDTO());
         return dto;
     }

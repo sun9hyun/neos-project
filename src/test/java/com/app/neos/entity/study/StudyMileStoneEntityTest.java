@@ -32,12 +32,8 @@ public class StudyMileStoneEntityTest {
         studyMilestoneDTO.setStudyMileStoneTitle("오늘 5챕터 마무리");
         studyMilestoneDTO.setStudyMileStoneContent("다들 화이팅!");
         studyMilestoneDTO.setStudyMilestoneStatus(StudyMilestoneStatus.PROCEEDING);
-        studyMilestoneDTO.setMileStoneWriter(userRepository.findById(6L).get());
-        studyMilestoneDTO.setStudy(studyRepository.findById(5L).get());
 
         StudyMilestone studyMilestone = studyMilestoneDTO.toEntity();
-        studyMilestone.changeMileStoneWriter(studyMilestoneDTO.getMileStoneWriter());
-        studyMilestone.changeStudy(studyMilestoneDTO.getStudy());
         studyMilestoneRepository.save(studyMilestone);
 
     }

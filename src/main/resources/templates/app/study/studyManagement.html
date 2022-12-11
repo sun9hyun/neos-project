@@ -40,6 +40,19 @@
     }
 </style>
 <body>
+<script th:inline="javascript">
+    const userId = [[${session.loginUser}]];
+    const studyOwner = [[${study.userId}]]
+    if(!userId){
+        alert("로그인 후 이용 가능한 서비스입니다.")
+        location.href="/study/list";
+    }
+
+    if(userId != studyOwner){
+        alert("비정상적인 접근입니다..")
+        location.href="/study/list";
+    }
+</script>
     <header th:replace="/app/fix/header.html :: header"></header>
     <!-- 관리 페이지 START-->
     <div id="_next" th:object="${study}">
@@ -71,14 +84,16 @@
                     </li>
                     <div class="statusTagWrap">
                         <th:block th:if="*{StudyRecruitStatus.toString() == 'RECRUITING'}">
-                            <span class="statusTag gray">진행 중</span>
+                            <span class="statusTag gray">모집 중</span>
                         </th:block>
                         <th:block th:unless="*{StudyRecruitStatus.toString() == 'RECRUITING'}">
                             <span class="statusTag white">모집완료</span>
                         </th:block>
-                        <div class="modifyBtn" style="cursor: pointer"><a><img loading="lazy"
-                                                                               src="https://letspl.me/assets/images/ic-profile-modify.png"
-                                                                               alt="수정버튼" style="vertical-align: middle;"></a></div>
+                        <th:block th:if="${session.loginUser == study.userId}">
+                            <div class="modifyBtn" style="cursor: pointer"><a th:href="@{/study/management/{id}(id=${study.studyId})}"><img loading="lazy"
+                                                                                                                                            src="https://letspl.me/assets/images/ic-profile-modify.png"
+                                                                                                                                            alt="수정버튼" style="vertical-align: middle;"></a></div>
+                        </th:block>
                     </div>
                 </div>
             </div>
@@ -88,8 +103,14 @@
                         <ul>
                             <li><a name="#info" class="" th:href="@{/study/list/{id}(id=${study.studyId})}">정보</a></li>
                             <li><a name="question" class="" th:href="@{/study/question/{id}(id=${study.studyId})}">질문(&nbsp<span th:text="${questions.size()}"></span><span>&nbsp)</span>
-                            <li><a name="work" class="">일감</a></li>
-                            <li><a name="feed" class="">피드</a></li>
+                            <th:block th:if="${#arrays.contains(memberList,session.loginUser)}">
+                                <li><a name="work" class="" th:href="@{/study/work/{id}(id=${study.studyId})}">일감</a></li>
+                                <li><a name="feed" class="" th:href="@{/study/feed/{id}(id=${study.studyId})}">피드</a></li>
+                            </th:block>
+                            <th:block th:unless="${#arrays.contains(memberList,session.loginUser)}">
+                                <li><a name="work" class="disabled">일감</a></li>
+                                <li><a name="feed" class="disabled">피드</a></li>
+                            </th:block>
                             <li><a name="mgmt" class="active">관리</a></li>
                         </ul>
                     </div>
@@ -105,16 +126,16 @@
                             </div>
                             <!-------- 멤버관리 DIV -------->
                             <div class="memberManagementTab active">
+                                <th:block th:if="${study.StudyRecruitStatus.toString()=='RECRUITING'}">
                                 <div class="section applicantSection">
-                                    <th:block th:if="*{studySupporterDTOS.size() == 0}">
+                                    <th:block th:if="${supporter.size() == 0 }">
                                         <h3>지원자 현황</h3>
                                         <div class="emptyApply">현재 지원자가 없습니다.</div>
                                     </th:block>
-                                    <th:block th:unless="*{studySupporterDTOS.size() == 0}">
+                                    <th:block th:unless="${supporter.size() == 0}">
                                         <h3>지원자 현황</h3>
-                                        <button class="blackBtn allJoin" style="margin-bottom: 10px;">모두 멤버로 승인</button>
                                         <div class="projectMemberList">
-                                            <th:block th:each="supporter : *{studySupporterDTOS}" th:object="${supporter}">
+                                            <th:block th:each="people : ${supporter}" th:object="${people}">
                                                 <li class="letspler_Re">
                                                     <div class="top">
                                                         <div class="profilePicWrap">
@@ -132,10 +153,11 @@
                                                                     <span th:text="*{user.userNickName}"></span>
                                                                     <ul class="idHoverMenu">
                                                                         <input type="hidden" name="userId" class="userId_1jasd" th:value="*{user.userId}">
+                                                                        <input type="hidden" name="supportId" class="supportId_1jasd" th:value="*{studySupporterId}">
                                                                         <li><a target="_blank" href="#">프로필 상세</a></li>
                                                                         <li class="managementBtn"><a>1:1 대화</a></li>
-                                                                        <li><a>승인</a></li>
-                                                                        <li class="rejectionBtn"><a>거절</a></li>
+                                                                        <li class="memberJoinBtn"><a>승인</a></li>
+                                                                        <li class="rejection"><a>거절</a></li>
                                                                     </ul>
                                                                 </h2>
                                                             </div>
@@ -176,51 +198,53 @@
                                     <!--지원자 없는 경우-->
 
                                 </div>
+                                </th:block>
                                 <!-- 지원자 있는 경우 -->
                                 <div class="section nowMemberSection">
-                                    <h3>현재 스터디 멤버 <span>/ 총 3명</span></h3>
+                                    <h3>현재 스터디 멤버 <span>/ 총</span><span th:text="*{studyMemberList.size()}"></span><span>명</span></h3>
                                     <p class="listTit">리더</p>
-                                    <div class="projectMemberList">
+                                    <div class="projectMemberList" th:object="${writer}">
                                         <li class="letspler_Re">
                                             <div class="top">
                                                 <div class="profilePicWrap">
                                                     <div class="profilePic">
-                                                        <img src="https://letspl.me/assets/images/prof-no-img.png"></div>
-                                                    <a class="favorite favoriteUser active"></a>
+                                                        <img th:src="*{userFile}"></div>
+                                                    <a class="favorite favoriteUser"></a>
                                                 </div>
                                                 <div class="profileTxt">
                                                     <div class="idWrap"><img loading="lazy" class="userLv"
-                                                                             src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_9.png"
+                                                                             th:src="*{userNeosBadge}"
                                                                              alt="lv">
-                                                        <h2 class="userName">추추추
+                                                        <h2 class="userName"><span th:text="*{userNickName}"></span>
                                                             <ul class="idHoverMenu">
                                                                 <li><a target="_blank" href="/people/추추추">프로필 상세</a></li>
-                                                                <li class="readerChangeBtn"><a>리더 변경</a></li>
                                                             </ul>
                                                         </h2>
-                                                        <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                                                    src="https://letspl.me/assets/images/ic-certi-gray.png"
-                                                                                    alt="휴대폰인증">
-                                                        </div>
                                                     </div>
                                                     <div class="coffeAndHeart">
                                                         <div><img loading="lazy"
                                                                   src="/images/neosUser/chatting-icon.png"
-                                                                  alt="coffeePoint"><span>1</span></div>
+                                                                  alt="coffeePoint"><span th:text="*{userChattingPoint}"></span></div>
                                                         <div><img loading="lazy"
                                                                   src="https://letspl.me/assets/images/ico_like.png"
                                                                   alt="coffeePoint"
-                                                                  style="width: 20px; height: 20px;"><span>3</span></div>
+                                                                  style="width: 20px; height: 20px;"><span>0</span></div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="bottom">
                                                 <ul class="userFavorite">
                                                     <li>
-                                                        <h2><span>[대학교] 인하대학교</span><span> 4학년</span></h2>
+                                                        <h2><span>[대학교]&nbsp</span>
+                                                    <span style="margin-left: 0px;font-size: 14px;color: #333;font-weight: 400;" th:text="*{collegeName}"></span>
+                                                    <span style="font-size: 14px;color: #999;margin-left: 10px; font-weight: 400;" th:text="*{userCollegeYear}"></span>
+                                                    <span style="font-size: 14px;color: #999;font-weight: 400;">학년</span></h2>
                                                     </li>
                                                     <li>
-                                                        <h2><span> [전공] 토목공학</span><span></span></h2>
+                                                        <h2><span> [전 공]</span><span style="color:#333" th:text="*{userCollegeMajor.toString()}"></span><span></span></h2>
+                                                    </li>
+                                                    <li>
+                                                        <h2><span> [이메일]</span><span style="color:#333;font-size: 11px" th:text="*{userCollegeEmail}"></span><span></span></h2>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -230,115 +254,75 @@
                                 <div class="section nowMemberSection">
                                     <p class="listTit">멤버</p>
                                     <div class="projectMemberList">
-                                        <li class="letspler_Re">
-                                            <div class="top">
-                                                <div class="profilePicWrap">
-                                                    <div class="profilePic">
-                                                        <img loading="lazy" src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png">
+                                        <th:block th:each="member : *{studyMemberList}" th:object="${member}">
+                                            <li class="letspler_Re">
+                                                <div class="top">
+                                                    <div class="profilePicWrap">
+                                                        <div class="profilePic">
+                                                            <img loading="lazy" th:src="*{userDTO.userFile}">
+                                                        </div>
+                                                        <a class="favorite favoriteUser"></a>
                                                     </div>
-                                                    <a class="favorite favoriteUser active"></a>
-                                                </div>
-                                                <div class="profileTxt">
-                                                    <div class="idWrap"><img loading="lazy" class="userLv"
-                                                                             src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
-                                                                             alt="lv">
-                                                        <h2 class="userName">sun9hyun
-                                                            <ul class="idHoverMenu">
-                                                                <li><a target="_blank" href="/people/sun9hyun">프로필 상세</a>
-                                                                </li>
-                                                                <li class="releaseBtn"><a>스터디 방출</a></li>
-                                                            </ul>
-                                                        </h2>
-                                                        <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                                                    src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                                                    alt="본인인증">
+                                                    <div class="profileTxt">
+                                                        <div class="idWrap"><img loading="lazy" class="userLv"
+                                                                                 th:src="*{userDTO.userNeosBadge}"
+                                                                                 alt="lv">
+                                                            <h2 class="userName"><span th:text="*{userDTO.userNickName}"></span>
+                                                                <ul class="idHoverMenu">
+                                                                    <input type="hidden" class="userId_1jasd" th:value="*{userDTO.userId}">
+                                                                    <input type="hidden" class="memberId_1jasd" th:value="*{studyMemberId}">
+                                                                    <li><a target="_blank" href="/people/sun9hyun">프로필 상세</a>
+                                                                    </li>
+                                                                    <li class="releaseBtn"><a>스터디 방출</a></li>
+                                                                </ul>
+                                                            </h2>
+                                                        </div>
+                                                        <div class="coffeAndHeart">
+                                                            <div><img loading="lazy"
+                                                                      src="/images/neosUser/chatting-icon.png"
+                                                                      alt="coffeePoint"><span th:text="*{userDTO.userChattingPoint}"></span></div>
+                                                            <div><img loading="lazy"
+                                                                      src="https://letspl.me/assets/images/ico_like.png"
+                                                                      alt="coffeePoint"
+                                                                      style="width: 20px; height: 20px;"><span>0</span></div>
                                                         </div>
                                                     </div>
-                                                    <div class="coffeAndHeart">
-                                                        <div><img loading="lazy"
-                                                                  src="/images/neosUser/chatting-icon.png"
-                                                                  alt="coffeePoint"><span>1</span></div>
-                                                        <div><img loading="lazy"
-                                                                  src="https://letspl.me/assets/images/ico_like.png"
-                                                                  alt="coffeePoint"
-                                                                  style="width: 20px; height: 20px;"><span>2</span></div>
-                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="bottom">
-                                                <ul class="userFavorite">
-                                                    <li>
-                                                        <h2><span>[대학교] 인증 진행 중</span><span> -</span></h2>
-                                                    </li>
-                                                    <li>
-                                                        <h2><span>[전공] 미입력</span><span></span></h2>
-                                                    </li>
-                                                    <li>
-                                                        <h2><span>[이메일] sonia970718@naver.com</span><span></span></h2>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="letspler_Re">
-                                            <div class="top">
-                                                <div class="profilePicWrap">
-                                                    <div class="profilePic">
-                                                        <img loading="lazy" src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif">
-                                                    </div>
-                                                    <a class="favorite favoriteUser active"></a>
+                                                <div class="bottom">
+                                                    <ul class="userFavorite">
+                                                        <li>
+                                                            <h2><span>[대학교]&nbsp</span>
+                                                                <span style="margin-left: 0px;font-size: 14px;color: #333;font-weight: 400;" th:text="*{userDTO.collegeName}"></span>
+                                                                <span style="font-size: 14px;color: #999;margin-left: 10px; font-weight: 400;" th:text="*{userDTO.userCollegeYear}"></span>
+                                                                <span style="font-size: 14px;color: #999;font-weight: 400;">학년</span></h2>
+                                                        </li>
+                                                        <li>
+                                                            <h2><span> [전 공]</span><span style="color:#333" th:text="*{userDTO.userCollegeMajor.toString()}"></span><span></span></h2>
+                                                        </li>
+                                                        <li>
+                                                            <h2><span> [이메일]</span><span style="color:#333;font-size: 11px" th:text="*{userDTO.userCollegeEmail}"></span><span></span></h2>
+                                                        </li>
+                                                    </ul>
                                                 </div>
-                                                <div class="profileTxt">
-                                                    <div class="idWrap"><img loading="lazy" class="userLv"
-                                                                             src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
-                                                                             alt="lv">
-                                                        <h2 class="userName">ROSA
-                                                            <ul class="idHoverMenu">
-                                                                <li><a target="_blank" href="/people/ROSA">프로필 상세</a></li>
-                                                                <li class="releaseBtn"><a>스터디 방출</a></li>
-                                                            </ul>
-                                                        </h2>
-                                                        <div class="certiWrap"><img loading="lazy" class="userCertIcon"
-                                                                                    src="https://letspl.me/assets/images/ic-certi-red.png"
-                                                                                    alt="본인인증">
-                                                        </div>
-                                                    </div>
-                                                    <div class="coffeAndHeart">
-                                                        <div><img loading="lazy"
-                                                                  src="/images/neosUser/chatting-icon.png"
-                                                                  alt="coffeePoint"><span>1</span></div>
-                                                        <div><img loading="lazy"
-                                                                  src="https://letspl.me/assets/images/ico_like.png"
-                                                                  alt="coffeePoint"
-                                                                  style="width: 20px; height: 20px;"><span>3</span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bottom">
-                                                <ul class="userFavorite">
-                                                    <li>
-                                                        <h2><span>[대학교] 인증 진행 중</span><span> -</span></h2>
-                                                    </li>
-                                                    <li>
-                                                        <h2><span>[전공] 미입력</span><span></span></h2>
-                                                    </li>
-                                                    <li>
-                                                        <h2><span>[이메일]
-                                                                <br>rosa172@naver.com</span><span></span></h2>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        </th:block>
                                     </div>
                                 </div>
                                 <div class="section nowMemberSection">
-                                    <p class="listTit3">인원 설정 (2/2)</p>
+                                    <p class="listTit3">인원 설정 (<span th:text="*{studyMemberList.size()}"></span><span>/</span><span th:text="*{studySupport}"></span>)</p>
                                     <div class="section nowMemberSection">
                                         <p class="listTit2"><!--* 미지정/역할명을 눌러 담당자 변경통해 멤버를 지정하세요.<br>--><span
                                                 style="color: #1A7CFF;">추가모집은 <strong>"인원 추가"</strong> / 공고를
                                                     내릴 땐 <strong>"모집 종료"</strong>를 선택하세요</span></p>
                                     </div>
-                                    <button class="blackBtn addBtn" style="margin-right: 10px;">인원 추가</button>
-                                    <button class="blackBtn endBtn" >모집 종료</button>
+
+                                    <th:block th:if="*{studySupport < 9}">
+                                        <button class="blackBtn addBtn" style="margin-right: 10px;">인원 추가</button>
+                                    </th:block>
+                                    <th:block th:if="*{StudyRecruitStatus.toString() == 'RECRUITING'}">
+                                        <button class="blackBtn endBtn" >모집 종료</button>
+                                    </th:block>
+
                                 </div>
                             </div>
 
@@ -615,9 +599,7 @@
                 <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
             </button>
             <div class="modalContent">
-                <p>구독하시면, 관련된 정보나</p>
-                <p>홍보 컨텐츠가 SMS/이메일/푸쉬을 통해 정기적으로 배송됩니다</p>
-                <p>자동으로 NEOS 광고수신동의가 이루어집니다</p>
+                <p>구독하신 스터디 목록은 마이페이지에서 확인하실 수 있습니다.</p>
             </div>
             <div class="btnWrap doubleBtnWrap">
                 <button class="btn whiteBtn">아니요</button>
@@ -695,6 +677,9 @@
         <!--멤버 관리 지원자 탈락 시킬 경우-->
         <div class="modalWrap modal8">
             <p class="modalTit">해당 지원자를 거절하시겠습니까?</p>
+            <form th:action="@{/study-member/rejection}" method="post" id="rejectForm">
+                <input type="hidden" name="studyId" id="rejectStudyId" th:value="${study.studyId}">
+                <input type="hidden" name="studySupporterId" id="rejectUserNumber" value="">
             <button class="closeBtn">
                 <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
             </button>
@@ -702,9 +687,30 @@
                 <p></p>
             </div>
             <div class="btnWrap doubleBtnWrap">
-                <button class="btn whiteBtn">아니요</button>
-                <button class="btn blueBtn okBtn">예</button>
+                <button type="button" class="btn whiteBtn">아니요</button>
+                <button type="button" class="btn blueBtn rejectBtn_1j">예</button>
             </div>
+            </form>
+        </div>
+
+        <!--해당 지원자 승인-->
+        <div class="modalWrap modal50">
+            <p class="modalTit">해당 지원자를 승인하시겠습니까?</p>
+            <form th:action="@{/study-member/ok}" method="post" id="okForm">
+                <input type="hidden" name="studyId" id="okStudyId" th:value="${study.studyId}">
+                <input type="hidden" name="studySupporterId" id="okUserNumber" value="">
+                <input type="hidden" name="user.userId" id="okUserId" value="">
+                <button class="closeBtn">
+                    <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
+                </button>
+                <div class="modalContent">
+                    <p></p>
+                </div>
+                <div class="btnWrap doubleBtnWrap">
+                    <button type="button" class="btn whiteBtn">아니요</button>
+                    <button type="button" class="btn blueBtn okBtn_1j">예</button>
+                </div>
+            </form>
         </div>
 
         <!--모집 종료하는 경우-->
@@ -713,13 +719,16 @@
             <button class="closeBtn">
                 <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
             </button>
+            <form th:action="@{/study/support-end}" method="post" id="supportEndForm">
+                <input type="hidden" name="studyId" th:value="${study.studyId}">
             <div class="modalContent">
                 <p>모집 확정된 인원으로 인원수가 조정됩니다.</p>
             </div>
             <div class="btnWrap doubleBtnWrap">
                 <button class="btn whiteBtn">아니요</button>
-                <button class="btn blueBtn okBtn">예</button>
+                <button class="btn blueBtn supportBye">예</button>
             </div>
+            </form>
         </div>
 
         <!--인원을 추가하는 경우-->
@@ -728,20 +737,23 @@
             <button class="closeBtn">
                 <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
             </button>
-            <select>
+            <form th:action="@{/study/support-update}" method="post" id="supportForm_1j">
+                <input type="hidden" name="studyId" th:value="${study.studyId}">
+            <select name="studySupportTotal" id="studySupportTotal">
                 <!-- 최대인원 수 - 현재 인원 수 제외하고 보여야 한다.-->
-                <option value="1">1명</option>
-                <option value="2">2명</option>
-                <option value="3">3명</option>
-                <option value="4">4명</option>
-                <option value="5">5명</option>
-                <option value="6">6명</option>
-                <option value="7">7명</option>
+                <option value="1" th:if="${study.studySupport<=8}">1명</option>
+                <option value="2" th:if="${study.studySupport<=7}">2명</option>
+                <option value="3" th:if="${study.studySupport<=6}">3명</option>
+                <option value="4" th:if="${study.studySupport<=5}">4명</option>
+                <option value="5" th:if="${study.studySupport<=4}">5명</option>
+                <option value="6" th:if="${study.studySupport<=3}">6명</option>
+                <option value="7" th:if="${study.studySupport<=2}">7명</option>
             </select>
             <div class="btnWrap doubleBtnWrap">
-                <button class="btn whiteBtn">아니요</button>
-                <button class="btn blueBtn okBtn">예</button>
+                <button type="button" class="btn whiteBtn">아니요</button>
+                <button type="button" class="btn blueBtn studySupportCountModify">예</button>
             </div>
+            </form>
         </div>
 
         <!--리더를 변경 하는 경우-->
@@ -767,13 +779,17 @@
             <button class="closeBtn">
                 <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
             </button>
+            <form th:action="@{/study-member/release}" method="post" id="releaseForm">
+                <input type="hidden" name="studyId" th:value="${study.studyId}">
+                <input type="hidden" name="studyMemberId" id="studyMemberId">
             <div class="modalContent">
                 <p></p>
             </div>
             <div class="btnWrap doubleBtnWrap">
-                <button class="btn whiteBtn">아니요</button>
-                <button class="btn blueBtn okBtn">예</button>
+                <button type="button" class="btn whiteBtn">아니요</button>
+                <button type="button" class="btn blueBtn releaseOk">예</button>
             </div>
+            </form>
         </div>
 
     </div>
@@ -876,6 +892,45 @@
 
     $(".postUpdate").on("click",function () {
         $("#updateForm").submit();
+    })
+
+    $(".studySupportCountModify").on("click",function () {
+        $("#supportForm_1j").submit();
+    })
+
+
+    $(".rejection").on("click",function () {
+        var supportId= $(this).closest(".idHoverMenu").find(".supportId_1jasd").val();
+        $(".modalWrapOpen").show();
+        $(".modal8").show();
+        $("#rejectUserNumber").val(supportId);
+    })
+
+    $(".rejectBtn_1j").on("click",function () {
+        $("#rejectForm").submit();
+    })
+
+    $(".memberJoinBtn").on("click",function () {
+        var supportId= $(this).closest(".idHoverMenu").find(".supportId_1jasd").val();
+        var userId= $(this).closest(".idHoverMenu").find(".userId_1jasd").val();
+        $(".modalWrapOpen").show();
+        $(".modal50").show();
+        $("#okUserNumber").val(supportId);
+        $("#okUserId").val(userId);
+    })
+
+
+    $(".okBtn_1j").on("click",function () {
+        $("#okForm").submit()
+    })
+
+    $(".releaseBtn").on("click",function () {
+        var studyMemberId = $(this).closest(".idHoverMenu").find(".memberId_1jasd").val();
+        $("#studyMemberId").val(studyMemberId);
+    })
+
+    $(".releaseOk").on("click",function () {
+        $("#releaseForm").submit();
     })
 </script>
 </html>

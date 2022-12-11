@@ -11,9 +11,16 @@
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
+<script th:inline="javascript">
+    const userId = [[${session.loginUser}]];
+    if(!userId){
+        alert("로그인 후 이용 가능한 서비스입니다.")
+        location.href="/study/list";
+    }
+</script>
     <header th:replace="/app/fix/header.html :: header"></header>
     <!-- 일감 페이지 START-->
-    <div id="_next">
+    <div id="_next" th:object="${study}">
         <section>
             <div class="projectPageHeaderWrap">
                 <div class="projectPurposeWrap">
@@ -22,18 +29,15 @@
                     </div>
                 </div>
                 <div class="projectPageHeaderContent">
-                    <h2 class="projectTit">[공업수학] 라플라스 변환의 이해와 적용</h2>
+                    <h2 class="projectTit" th:text="*{studyTitle}"></h2>
                     <li class="projectLeaderWrap">
                         <div class="userIdWrap">
                             <div class="leaderImg"><a href="#"><img width="20px"
                                                                     height="20px"
-                                                                    src="https://letspl.me/assets/images/prof-no-img.png"
+                                                                    th:src="${writer.userFile}"
                                                                     alt="추추추"></a></div>
                             <div class="rightTxt userId">
-                                <h2 class="userIdTxt">추추추</h2><span class="confirmPhoneTxt">(휴대폰 인증)</span><span
-                                    class="lastLoginTxt"> 오늘
-                                <!-- --> 로그인
-                                    </span>
+                                <h2 class="userIdTxt" th:text="*{userNickName}"></h2><span class="confirmPhoneTxt">(대학교 인증)</span>
                                 <div class="idHoverMenu">
                                     <ul>
                                         <li><a href="#">프로필 상세</a></li>
@@ -43,11 +47,18 @@
                             </div>
                         </div>
                     </li>
-                    <div class="statusTagWrap"><span class="statusTag gray">모집완료</span><span class="statusTag white">진행
-                                중</span>
-                        <div class="modifyBtn"><a><img loading="lazy"
-                                                       src="https://letspl.me/assets/images/ic-profile-modify.png"
-                                                       alt="수정버튼" style="vertical-align: middle;"></a></div>
+                    <div class="statusTagWrap">
+                        <th:block th:if="*{StudyRecruitStatus.toString() == 'RECRUITING'}">
+                            <span class="statusTag gray">모집 중</span>
+                        </th:block>
+                        <th:block th:unless="*{StudyRecruitStatus.toString() == 'RECRUITING'}">
+                            <span class="statusTag white">모집완료</span>
+                        </th:block>
+                        <th:block th:if="${session.loginUser == study.userId}">
+                            <div class="modifyBtn" style="cursor: pointer"><a th:href="@{/study/management/{id}(id=${study.studyId})}"><img loading="lazy"
+                                                                                                                                            src="https://letspl.me/assets/images/ic-profile-modify.png"
+                                                                                                                                            alt="수정버튼" style="vertical-align: middle;"></a></div>
+                        </th:block>
                     </div>
                 </div>
             </div>
@@ -55,14 +66,23 @@
                 <div class="projectDetailContents contents">
                     <div class="projectTabMenu clearfix">
                         <ul>
-                            <li><a name="#info" class="">정보</a></li>
-                            <li><a name="question" class="">질문(
-                                <!-- -->0
-                                <!-- -->)
+                            <li><a name="#info" class="" th:href="@{/study/list/{id}(id=${study.studyId})}">정보</a></li>
+                            <li><a name="question" class="" th:href="@{/study/question/{id}(id=${study.studyId})}">질문(&nbsp<span th:text="${questions.size()}"></span><span>&nbsp)</span>
                             </a></li>
-                            <li><a name="work" class="active">일감</a></li>
-                            <li><a name="feed" class="">피드</a></li>
-                            <li><a name="mgmt" class="">관리</a></li>
+                            <th:block th:if="${#arrays.contains(memberList,session.loginUser)}">
+                                <li><a name="work" class="active" th:href="@{/study/work/{id}(id=${study.studyId})}">일감</a></li>
+                                <li><a name="feed" class="" th:href="@{/study/feed/{id}(id=${study.studyId})}">피드</a></li>
+                            </th:block>
+                            <th:block th:unless="${#arrays.contains(memberList,session.loginUser)}">
+                                <li><a name="work" class="disabled">일감</a></li>
+                                <li><a name="feed" class="disabled">피드</a></li>
+                            </th:block>
+                            <th:block th:if="${session.loginUser != study.getUserId()}">
+                                <li><a name="mgmt" class="disabled">관리</a></li>
+                            </th:block>
+                            <th:block th:unless="${session.loginUser != study.getUserId()}">
+                                <li><a name="mgmt" th:href="@{/study/management/{id}(id=${study.studyId})}" class="">관리</a></li>
+                            </th:block>
                         </ul>
                     </div>
                     <!-- project detail wrap START -->
@@ -228,44 +248,40 @@
                                 </div>
                             </div>
                             <div class="mileStoneTab ">
-                                <div class="mileStoneInputWrap"><input type="text" class="mileStoneTit"
+                                <div class="mileStoneInputWrap"><input type="text" class="mileStoneTit" id="milestoneTitle_1j"
                                                                        placeholder="목표의 제목을 입력해주세요" maxlength="50" value=""><textarea
-                                        class="mileStoneTxt" placeholder="목표의 내용을 입력해주세요" rows="2"
+                                        class="mileStoneTxt" id="milestoneContent_1j" placeholder="목표의 내용을 입력해주세요" rows="2"
                                         maxlength="100"></textarea>
                                     <div class="leftBtnWrap">
-                                        <button class="grayBtn">등록</button>
+                                        <button type="button" class="grayBtn milestonePost">등록</button>
                                     </div>
                                 </div>
-                                <div class="nowMilestoneWrap mileStoneContentsWrap">
-                                    <div class="top"><p class="date">22.11.16
-                                    </p>
-                                        <div class="btnWrap">
-                                            <div class="statusCircle"><span>진행</span></div>
-                                            <button class="firstBtn mileBtn">수정</button>
-                                            <button class="mileBtn">완료</button>
+                                <h1>진행 중인 목표</h1>
+                                <div class="nowWrapper_1j">
+
+
+                                </div>
+                                <h1>완료된 목표</h1>
+                                <div class="completeWrapper_1j">
+                                    <div class="completedMilestoneWrap mileStoneContentsWrap">
+                                        <div class="top">
+                                            <p class="date">22.11.08
+                                            </p>
+                                        </div>
+                                        <input type="text" class="mileStoneTit" disabled="" value="금요일까지 1차 퍼블리싱">
+                                        <div class="mileStoneTxt"><textarea rows="1" disabled="">금요일까지 1차 퍼블리싱</textarea>
                                         </div>
                                     </div>
-                                    <input type="text" class="mileStoneTit" value="퍼블리싱 진행" disabled="">
-                                    <div class="mileStoneTxt"><textarea rows="1" disabled="">퍼블리싱 완료하기</textarea>
+                                    <div class="completedMilestoneWrap mileStoneContentsWrap">
+                                        <div class="top">
+                                            <p class="date">22.11.08
+                                            </p>
+                                        </div>
+                                        <input type="text" class="mileStoneTit" disabled="" value="퍼블리싱">
+                                        <div class="mileStoneTxt"><textarea rows="1" disabled="">퍼블리싱 진행 완료</textarea></div>
                                     </div>
                                 </div>
-                                <div class="completedMilestoneWrap mileStoneContentsWrap">
-                                    <div class="top">
-                                        <p class="date">22.11.08
-                                        </p>
-                                    </div>
-                                    <input type="text" class="mileStoneTit" disabled="" value="금요일까지 1차 퍼블리싱">
-                                    <div class="mileStoneTxt"><textarea rows="1" disabled="">금요일까지 1차 퍼블리싱</textarea>
-                                    </div>
-                                </div>
-                                <div class="completedMilestoneWrap mileStoneContentsWrap">
-                                    <div class="top">
-                                        <p class="date">22.11.08
-                                        </p>
-                                    </div>
-                                    <input type="text" class="mileStoneTit" disabled="" value="퍼블리싱">
-                                    <div class="mileStoneTxt"><textarea rows="1" disabled="">퍼블리싱 진행 완료</textarea></div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -279,14 +295,14 @@
                             <div class="leaderInfo">
                                 <div class="userIdWrap">
                                     <div class="leaderImg"><a class="leaderImgWrap"
-                                                              href="/people/%EC%B6%94%EC%B6%94%EC%B6%94"><img loading="lazy"
-                                                                                                              width="20px"
-                                                                                                              height="20px"
-                                                                                                              src="https://letspl.me/assets/images/prof-no-img.png"
-                                                                                                              alt="추추추"></a>
+                                                              href="/people/%EC%B6%94%EC%B6%94%EC%B6%94"><img
+                                            width="20px"
+                                            height="20px"
+                                            th:src="${writer.userFile}"
+                                            alt="추추추"></a>
                                     </div>
                                     <div class="rightBox">
-                                        <h2 class="userIdTxt">추추추
+                                        <h2 class="userIdTxt"><span th:text="${writer.userNickName}"></span>
                                             <div class="idHoverMenu">
                                                 <ul>
                                                     <li><a href="/people/%EC%#%94%EC%B6%94%EC%B6%94">프로필 상세</a></li>
@@ -294,10 +310,10 @@
                                                 </ul>
                                             </div>
                                         </h2>
-                                        <span class="confirmPhoneTxt">휴대폰 인증완료</span><span
-                                            class="proejctReactionRateTxt"><span class="leftTxt">리더 응답률 : </span><span
-                                            class="rightTxt">100%
-                                                    <br>(2건, 평균 1시간 미만)</span></span>
+                                        <span
+                                                class="proejctReactionRateTxt"><span class="leftTxt">대학교 : </span><span
+                                                class="rightTxt" th:text="${writer.collegeName}">
+                                                    </span></span>
                                         <div class="heartAndShareWrap"><a class="heartWrap viewCount">
                                             <svg
                                                     xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -306,16 +322,21 @@
                                                         d="M8 2.48901C6.27297 2.48988 4.58622 3.01069 3.15934 3.98365C1.73246 4.9566 0.631569 6.33661 0 7.94401C0.630962 9.55179 1.73172 10.9321 3.15875 11.9051C4.58577 12.878 6.27285 13.3985 8 13.3985C9.72715 13.3985 11.4142 12.878 12.8413 11.9051C14.2683 10.9321 15.369 9.55179 16 7.94401C15.3684 6.33661 14.2675 4.9566 12.8407 3.98365C11.4138 3.01069 9.72703 2.48988 8 2.48901V2.48901ZM8 11.58C7.28087 11.58 6.57788 11.3668 5.97995 10.9672C5.38201 10.5677 4.91597 9.99984 4.64077 9.33545C4.36557 8.67106 4.29357 7.93998 4.43386 7.23466C4.57416 6.52935 4.92046 5.88148 5.42896 5.37297C5.93746 4.86447 6.58534 4.51817 7.29065 4.37788C7.99597 4.23758 8.72704 4.30959 9.39144 4.58479C10.0558 4.85999 10.6237 5.32602 11.0232 5.92396C11.4228 6.5219 11.636 7.22488 11.636 7.94401C11.6355 8.90818 11.2522 9.8327 10.5705 10.5145C9.88869 11.1962 8.96416 11.5795 8 11.58ZM8 5.76201C7.56844 5.76201 7.14657 5.88999 6.78775 6.12975C6.42892 6.36951 6.14925 6.71029 5.9841 7.109C5.81894 7.50771 5.77573 7.94643 5.85993 8.3697C5.94412 8.79297 6.15194 9.18176 6.45709 9.48692C6.76225 9.79208 7.15105 9.99989 7.57431 10.0841C7.99758 10.1683 8.43631 10.1251 8.83502 9.95992C9.23372 9.79477 9.57451 9.5151 9.81427 9.15627C10.054 8.79744 10.182 8.37557 10.182 7.94401C10.1824 7.65736 10.1262 7.37344 10.0167 7.10853C9.90719 6.84362 9.74648 6.60292 9.54379 6.40023C9.34109 6.19753 9.10039 6.03682 8.83548 5.9273C8.57057 5.81779 8.28666 5.76162 8 5.76201Z"
                                                         fill="#A4A4B4"></path>
                                             </svg>
-                                            <span>80</span></a>
+                                            <span th:text="*{studyView}"></span></a>
                                             <a class="heartWrap">
                                                 <div class="favoriteSymbol">
-                                                    <div class="favorite active rightFavorite"></div>
+                                                    <th:block th:if="${#arrays.contains(study.followerNumberList,session.loginUser)}">
+                                                        <div class="favorite rightFavorite active"></div>
+                                                    </th:block>
+                                                    <th:block th:unless="${#arrays.contains(study.followerNumberList,session.loginUser)}">
+                                                        <div class="favorite rightFavorite"></div>
+                                                    </th:block>
+
+
                                                 </div>
-                                                <span class="favoriteNumber">2</span>
+                                                <span class="favoriteNumber" th:text="*{followTotal}"></span>
                                             </a>
-                                            <a class="shareWrap"><img loading="lazy"
-                                                                      src="https://letspl.me/assets/images/ic-share.png"
-                                                                      alt="URL 공유하기"><span>공유하기</span></a></div>
+                                            <a class="shareWrap"></a></div>
                                     </div>
                                 </div>
                             </div>
@@ -324,13 +345,11 @@
                             <p class="checkboxTit">스터디
                                 <!-- -->기간
                             </p>
-                            <h3 class="tabTxt">22.11.08
-                                <!-- -->~
-                                <!-- -->23.05.08
-                                <span>&nbsp;(
-                                    <!-- -->182
-                                    <!-- -->일)
-                                    </span>
+                            <h3 class="tabTxt">
+                                <span th:text="*{studyStartDate}"></span>
+                                <span> ~ </span>
+                                <span th:text="*{studyEndDate}"></span>
+                                <span>( </span><span th:text="${minusDay}"></span><span>일 )</span>
                             </h3>
                         </div>
                         <div class="projectBeginDate infoWrap">
@@ -338,31 +357,30 @@
                                 <!-- -->
                                 <!-- -->분야
                             </h3>
-                            <h3 class="tabTxt">전공과목 / 공업수학</h3>
+                            <h3 class="tabTxt"><span th:text="*{studyType}"></span><span>과목</span><span> / </span><span th:text="*{studyKeyword}"></span></h3>
                         </div>
                         <div class="infoWrap watchedLetsplerWrap">
-                            <h3 class="checkboxTit">구독중인 네오스인&nbsp;<span>2
-                                <!-- -->명
+                            <h3 class="checkboxTit">구독중인 네오스인&nbsp;<span th:text="*{followTotal}"></span><span>
+                                &nbsp명
                                     </span></h3>
                             <ul>
-                                <li class="hoverNameWrap">
-                                    <div class="hoverName">
-                                        <p><span>[L6]</span><span>sun9hyun</span></p>
-                                    </div>
-                                    <div class="imgWrap"><img loading="lazy"
-                                                              src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png"
-                                                              alt="sun9hyun"></div>
-                                </li>
-                                <li class="hoverNameWrap">
-                                    <div class="hoverName">
-                                        <p><span>[L6]</span><span>ROSA</span></p>
-                                    </div>
-                                    <div class="imgWrap"><img loading="lazy"
-                                                              src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"
-                                                              alt="ROSA"></div>
-                                </li>
+
+                                <th:block th:each="follower : *{follower}">
+                                    <li class="hoverNameWrap" th:object="${follower}">
+                                        <div class="hoverName">
+                                            <p><span>[L</span><span th:text="*{userNeosPowerLevel}"></span><span style="margin-right: 4px!important;">]</span><span th:text="*{userNickName}"></span></p>
+                                        </div>
+                                        <div class="imgWrap"><img th:src="*{userFile}" alt="sun9hyun"></div>
+                                    </li>
+                                </th:block>
                             </ul>
-                            <button class="subscribeBtn">구독하기</button>
+                            <th:block th:if="${#arrays.contains(study.followerNumberList,session.loginUser)}">
+                                <button class="subscribeBtn">구독하기</button>
+                            </th:block>
+                            <th:block th:unless="${#arrays.contains(study.followerNumberList,session.loginUser)}">
+                                <button class="subscribeBtn active">구독하기</button>
+                            </th:block>
+
                         </div>
                     </div>
                 </div>
@@ -398,9 +416,7 @@
                 <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
             </button>
             <div class="modalContent">
-                <p>구독하시면, 관련된 정보나</p>
-                <p>홍보 컨텐츠가 SMS/이메일/푸쉬을 통해 정기적으로 배송됩니다</p>
-                <p>자동으로 NEOS 광고수신동의가 이루어집니다</p>
+                <p>구독하신 스터디 목록은 마이페이지에서 확인하실 수 있습니다.</p>
             </div>
             <div class="btnWrap doubleBtnWrap">
                 <button class="btn whiteBtn">아니요</button>
@@ -466,4 +482,155 @@
 <script src="/js/fix/chatting.js"></script>
 <script src="/js/fix/login.js"></script>
 <script src="/js/fix/header.js"></script>
+<script th:inline="javascript">
+
+    /*민성이형을 위한 구독 */
+    let userSessionId = [[${session.loginUser}]];
+    let studyId = [[${study.studyId}]];
+    let studyName = [[${study.studyTitle}]]
+
+    $(".subscribeBtn").on("click", function () {
+        if($(this).hasClass("active")){
+            let name = $(this).parents(".projectPageWrap").prev().children(".projectPageHeaderContent").children(".projectTit").text();
+            $(".modal2").children(".studyTit").text(name + "을");
+            $(".modalWrapOpen").show();
+            $(".modal2").css('display','inline-block');
+
+        }else{
+            $(this).removeClass("active");
+            $(".rightFavorite").addClass("active");
+        }
+    })
+
+    $(".okBtn").on("click",function(){
+        $(".modalWrap").css('display','none');
+        $(".modalWrapOpen").hide();
+        $(".rightFavorite").addClass("active").css("background-image", "url(https://letspl.me/_next/static/media/ic-favorite-full.5a5209416a8859031c9099b5540c281a.svg)");
+        $(".subscribeBtn").removeClass("active");
+
+        $.ajax({
+            url:"/study-follow/follow",
+            type:"post",
+            data:{myId: userSessionId,studyId:studyId},
+            success: followActive
+
+        })
+
+    });
+
+    function followActive(result) {
+        if(result=='success'){
+            window.location.reload()
+        }else{
+            alert("알수 없는 오류")
+        }
+    }
+
+    $(".rightFavorite").on("click", function () {
+        if(!$(this).hasClass("active")){
+            $(".modal2").children(".studyTit").text(studyName + "을");
+            $(".modalWrapOpen").show();
+            $(".modal2").css('display','inline-block');
+        }else{
+            $.ajax({
+                url:"/study-follow/follow",
+                type:"post",
+                data:{myId: userSessionId,studyId:studyId},
+                success: function(result){
+                    window.location.reload()
+                }
+            })
+        }
+
+    })
+
+</script>
+<script th:inline="javascript">
+
+    $(".milestonePost").on("click",function () {
+        let title = $("#milestoneTitle_1j").val();
+        let content = $("#milestoneContent_1j").val();
+        if(!title){
+            alert("제목을 입력해주세요")
+            return;
+        }
+        if(!content){
+            alert("내용을 입력해주세요")
+            return;
+        }
+
+        $.ajax({
+            url:"/mile-stone/"+studyId,
+            type:"post",
+            data:{studyMileStoneTitle:title, studyMileStoneContent:content, userId: userId},
+            success: function (result) {
+                if(result == 'success'){
+                    show();
+                }
+            }
+        })
+
+    })
+    show();
+    function show(){
+        $.ajax({
+            url:"/mile-stone/"+studyId,
+            type:"get",
+            success:showList
+        })
+    }
+
+    function showList(result) {
+        let text = '';
+        $(result).each((i,item)=>{
+            text += `<div class="nowMilestoneWrap mileStoneContentsWrap">`
+            text += `<div class="top"><p class="date">`+item.createDate
+            text += `</p>`
+            if(userId == item.mileStoneWriter.userId){
+                text += `<div class="btnWrap">`
+                text += `<div class="statusCircle"><span>진행</span></div>`
+                text += `<button class="firstBtn mileBtn">수정</button>`
+                text += `<button class="mileBtn">완료</button>`
+                text += `</div>`
+            }
+            text += `</div>`
+            text += `<input type="text" class="mileStoneTit" value="`+item.studyMileStoneTitle+`" disabled="">`
+            text += `<div class="mileStoneTxt"><textarea rows="1" disabled="">`+item.studyMileStoneContent+`</textarea>`
+            text += `</div>`
+            text += `</div>`
+        })
+        $(".nowWrapper_1j").html(text);
+    }
+
+    finishListGet();
+    function finishListGet(){
+        $.ajax({
+            url:"/mile-stone/finish/"+studyId,
+            type:"get",
+            success:showFinish
+        })
+    }
+
+    function showFinish(result) {
+        let high = '';
+        $(result).each((i,item)=>{
+            high += `<div class="completedMilestoneWrap mileStoneContentsWrap">`
+            high += `<div class="top">`
+            high += `<p class="date">`+item.createDate
+            high += `</p>`
+            high += `</div>`
+            high += `<input type="text" class="mileStoneTit" disabled="" value="`+item.studyMileStoneTitle+`">`
+            high += `<div class="mileStoneTxt"><textarea rows="1" disabled="">`+item.studyMileStoneContent+`</textarea>`
+            high += `</div>`
+            high += `</div>`
+        })
+
+        $(".completeWrapper_1j").html(high);
+    }
+
+
+
+
+
+</script>
 </html>

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
-@Getter @Setter @ToString(exclude = "replies")
+@Getter @Setter @ToString
 @NoArgsConstructor
 public class StudyQuestionDTO {
     private Long studyQuestionId;

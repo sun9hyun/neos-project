@@ -58,14 +58,16 @@
                     </li>
                     <div class="statusTagWrap">
                         <th:block th:if="*{StudyRecruitStatus.toString() == 'RECRUITING'}">
-                            <span class="statusTag gray">진행 중</span>
+                            <span class="statusTag gray">모집 중</span>
                         </th:block>
                         <th:block th:unless="*{StudyRecruitStatus.toString() == 'RECRUITING'}">
                             <span class="statusTag white">모집완료</span>
                         </th:block>
-                        <div class="modifyBtn" style="cursor: pointer"><a><img loading="lazy"
-                                                                               src="https://letspl.me/assets/images/ic-profile-modify.png"
-                                                                               alt="수정버튼" style="vertical-align: middle;"></a></div>
+                        <th:block th:if="${session.loginUser == study.userId}">
+                            <div class="modifyBtn" style="cursor: pointer"><a th:href="@{/study/management/{id}(id=${study.studyId})}"><img loading="lazy"
+                                                                                                                                            src="https://letspl.me/assets/images/ic-profile-modify.png"
+                                                                                                                                            alt="수정버튼" style="vertical-align: middle;"></a></div>
+                        </th:block>
                     </div>
                 </div>
             </div>
@@ -76,8 +78,14 @@
                             <li><a name="#info" class="" th:href="@{/study/list/{id}(id=${study.studyId})}">정보</a></li>
                             <li><a name="question" class="active">질문(&nbsp<span id="size_1j" th:text="${questions.size()}"></span><span>&nbsp)</span>
                             </a></li>
-                            <li><a name="work" class="">일감</a></li>
-                            <li><a name="feed" class="">피드</a></li>
+                            <th:block th:if="${#arrays.contains(memberList,session.loginUser)}">
+                                <li><a name="work" class="" th:href="@{/study/work/{id}(id=${study.studyId})}">일감</a></li>
+                                <li><a name="feed" class="" th:href="@{/study/feed/{id}(id=${study.studyId})}">피드</a></li>
+                            </th:block>
+                            <th:block th:unless="${#arrays.contains(memberList,session.loginUser)}">
+                                <li><a name="work" class="disabled">일감</a></li>
+                                <li><a name="feed" class="disabled">피드</a></li>
+                            </th:block>
                             <th:block th:if="${session.loginUser != study.getUserId()}">
                                 <li><a name="mgmt" class="disabled">관리</a></li>
                             </th:block>
@@ -348,9 +356,7 @@
                 <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
             </button>
             <div class="modalContent">
-                <p>구독하시면, 관련된 정보나</p>
-                <p>홍보 컨텐츠가 SMS/이메일/푸쉬을 통해 정기적으로 배송됩니다</p>
-                <p>자동으로 NEOS 광고수신동의가 이루어집니다</p>
+                <p>구독하신 스터디 목록은 마이페이지에서 확인하실 수 있습니다.</p>
             </div>
             <div class="btnWrap doubleBtnWrap">
                 <button class="btn whiteBtn">아니요</button>
@@ -504,11 +510,13 @@ $(".feedReply").on("click", function () {
         $.ajax({
             url:"/quest-reply/"+id,
             type:"get",
-            success:showList
+            success:function(result){
+                showList(result,id)
+            }
         })
     }
 
-    function showList(result){
+    function showList(result,id){
     let text='';
         $(result).each((i,item)=>{
             text += `<div class="top reply`+item.studyQuestionReplyId+`">`
@@ -541,8 +549,8 @@ $(".feedReply").on("click", function () {
             }
             text += `</div>`
         })
-        $("#"+result[0].studyQuestion.studyQuestionId).find(".replyWrapContent").html(text);
-        $("#"+result[0].studyQuestion.studyQuestionId).find(".replayCount").text(result.length);
+        $("#"+id).find(".replyWrapContent").html(text);
+        $("#"+id).find(".replayCount").text(result.length);
     }
 
 //    수정
@@ -594,15 +602,13 @@ $(".feedReply").on("click", function () {
         $.ajax({
             url:"/quest-reply/"+id,
             type:"delete",
-            success:function (result) {
-                var number = parseInt($(".reply"+result).closest(".replyWrap").prev().find(".replayCount").text());
-                $(".reply"+result).closest(".replyWrap").prev().find(".replayCount").text(number-1);
-                $(".reply"+result).remove();
-            }
+            success:showre
         })
     })
 
-
+    function showre(result){
+        show(result);
+    }
     //수정
 let replyUpdateCheck = false;
 

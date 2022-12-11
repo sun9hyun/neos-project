@@ -1,5 +1,6 @@
 package com.app.neos.domain.study;
 
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.study.Study;
 import com.app.neos.entity.study.StudyFeed;
 import com.app.neos.entity.user.User;
@@ -15,8 +16,10 @@ public class StudyFeedDTO {
     private Long studyFeedId;
     private String studyFeedContent;
 
-    private User studyFeedWriter;
-    private Study study;
+    private UserDTO studyFeedWriter;
+    private StudyDTO study;
+    private String createdDate;
+    private int replyLength;
 
 
     public StudyFeed toEntity(){
@@ -26,7 +29,7 @@ public class StudyFeedDTO {
     }
 
     @QueryProjection
-    public StudyFeedDTO(Long studyFeedId, String studyFeedContent, User studyFeedWriter, Study study) {
+    public StudyFeedDTO(Long studyFeedId, String studyFeedContent, UserDTO studyFeedWriter, StudyDTO study) {
         this.studyFeedId = studyFeedId;
         this.studyFeedContent = studyFeedContent;
         this.studyFeedWriter = studyFeedWriter;

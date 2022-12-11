@@ -23,7 +23,7 @@ public class StudyQuestionCustomRepositoryImpl implements StudyQuestionCustomRep
     public List<StudyQuestion> findByStudyId(Long studyId) {
         return jpaQueryFactory.selectFrom(studyQuestion)
                 .where(studyQuestion.study.studyId.eq(studyId))
-                .orderBy(studyQuestion.studyQuestionId.desc())
+                .orderBy(studyQuestion.updatedDate.desc())
                 .fetch();
     }
 

@@ -101,7 +101,7 @@
                 <p style="font-size: 12px;margin-bottom: 12px;">해당 댓글을 삭제하시겠습니까?</p>
             </div>
             <div class="btnWrap doubleBtnWrap"><button class="btn whiteBtn" style="font-size: 12px;line-height: 3;">아니오</button><button
-                    class="btn redBtn" style="font-size: 12px;line-height: 3;">예</button></div>
+                    class="btn redBtn" style="font-size: 12px;line-height: 3;" id="deleteCheck">예</button></div>
         </div>
     </div>
 
@@ -166,7 +166,7 @@
                                     <div class="card">
                                         <div class="card-head" id="card-head">
                                             <header class="small">전체 댓글
-                                                <span class="text-primary" id="total-member-count">1</span>
+                                                <span class="text-primary" id="total-member-count" th:text="${total}"></span>
                                             </header>
                                         </div>
 
@@ -187,20 +187,24 @@
                                                     <li class="action"></li>
                                                 </ul>
 
+
+                                                <tbody>
+                                                <th:block th:each="studyFeedReply:${studyFeedReplies}" th:object="${studyFeedReply}">
                                                 <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
                                                     <li class="check">
                                                         <div class="checkbox checkbox-styled no-margin">
                                                             <label>
                                                                 <input type="checkbox" class="terms">
+                                                                <input type="hidden" class="studyFeedReplyId" th:href="*{studyFeedReplyId}">
                                                                 <span></span>
                                                             </label>
                                                         </div>
                                                     </li>
 
-                                                    <li class="commentNick"><a href="#">종우종우</a></li><!-- 작성사 상세 페이지 이동 -->
-                                                    <li class="comment">NEOS 화이팅! 앞으로도 힘냅시다! 2팀짱</li>
-                                                    <li class="commentPost"><a href="#">[스터디] 게시글 테스트입니다</a></li> <!-- 작성한 게시글 페이지 이동 -->
-                                                    <li class="commentDate">2022-11-17 15:17</li>
+                                                    <li class="commentNick"><a th:text="*{userNickName}"></a></li><!-- 작성사 상세 페이지 이동 -->
+                                                    <li class="comment" th:text="*{studyFeedReplyContent}"></li>
+                                                    <li class="commentPost"><a>[스터디] &nbsp;<a th:text="*{studyTitle}"></a> </a></li> <!-- 작성한 게시글 페이지 이동 -->
+                                                    <li class="commentDate" th:text="*{#temporals.format(createdDate2, 'yyyy.MM.dd HH:mm')}"></li>
 
                                                     <li class="action">
                                                         <div class="dropdown">
@@ -209,14 +213,18 @@
                                                             </button>
                                                             <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
                                                                 <li>
-                                                                    <a href="javascript:;" onclick="modalUp()">
+                                                                    <a href="javascript:;" class="deleteBtn">
                                                                         삭제
                                                                     </a>
+                                                                    <input type="hidden" class="studyFeedReplyId" th:href="*{studyFeedReplyId}">
                                                                 </li>
                                                             </ul>
                                                         </div>
                                                     </li>
                                                 </ul>
+                                                </th:block>
+                                                </tbody>
+
                                             </div>
                                             <nav class="text-center" id="paginate"></nav>
                                         </div>
@@ -228,7 +236,40 @@
                 </div>
             </div>
         </section>
-        <section th:replace="/app/admin/adminPaging.html :: adminPaging">
+        <section>
+            <div class="pagingAndBtn" >
+                <span class="pagination pagination-sm clearfix">
+                    <input type="hidden" id="nowPage" th:value="${nowPage}">
+                    <input type="hidden" id="total" th:value="${total}">
+                    <input type="hidden" id="size" th:value="${size}">
+                    <input type="hidden" id="endPage" th:value="${endPage}">
+
+                    <!--                    <input type="hidden" id="startPage" th:value="${startPage}">-->
+                    <th:block th:with="start=${T(java.lang.Math).floor(studyFeedReplies.number/5)*5+1},
+                               last=(${start + 4 < studyFeedReplies.totalPages ? start + 4 : studyFeedReplies.totalPages})" th:if="${total != 0}">
+                        <th:block th:if="${start!=1}">
+                            <a class="btn_paging prev screen_out paging"
+                               th:href="${studyFeedReplies.first} ? '#' :@{/admin/test/study/reply/list(page=${studyFeedReplies.number-1})}"></a>
+                        </th:block>
+                        <th:block th:unless="${start!=1}">
+                            <a class="btn_paging prev screen_out paging" style="display: none"
+                               th:href="${studyFeedReplies.first} ? '#' :@{/admin/test/study/reply/list(page=${studyFeedReplies.number-1})}"></a>
+                        </th:block>
+                        <th:block th:each="num : ${#numbers.sequence(start, last)}">
+                            <a class="paging" th:text="${num}" th:href="@{/admin/test/study/reply/list(page=${num-1})}"></a>
+                        </th:block>
+                        <th:block th:if="${last != endPage}">
+                            <a class="btn_paging next screen_out paging"
+                               th:href="${studyFeedReplies.last} ? '#' : @{/admin/test/study/reply/list(page=${studyFeedReplies.number+1})}"></a>
+                        </th:block>
+                        <th:block th:unless="${last != endPage}">
+                            <a class="btn_paging next screen_out paging" style="display: none"
+                               th:href="${studyFeedReplies.last} ? '#' : @{/admin/test/study/reply/list(page=${studyFeedReplies.number+1})}"></a>
+                        </th:block>
+                    </th:block>
+                </span>
+            </div>
+        </section>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
@@ -287,5 +328,39 @@
     function modalUp(){
         $deleteModal.show();
     }
+
+
+    pageActive();
+
+    function pageActive() {
+        let $nowPage = $('#nowPage').attr('value');
+        let $endPage = $('#endPage').attr('value');
+
+        $('a.paging').each(function(){
+            if(($(this).text()-1) == $nowPage){
+                $(this).addClass('active');
+            }
+        });
+    }
+
+    $('#deleteCheck').click(function() {
+        var studyFeedReplyIds = "";
+        $(".terms:checked").each(function() {
+            if(studyFeedReplyIds == ""){
+                studyFeedReplyIds = $(this).next().attr('href');
+            } else {
+                studyFeedReplyIds = studyFeedReplyIds + "," + $(this).next().attr('href');
+            }
+        });
+        location.href = "/admin/test/study/reply/deleteCheck" + "?studyFeedReplyIds=" + studyFeedReplyIds;
+    });
+
+    $('.deleteBtn').click(function () {
+        let studyFeedReplyId = $(this).next().attr('href');
+        modalUp();
+        $('#deleteCheck').click(function () {
+            location.href = "/admin/test/study/reply/delete" + "?studyFeedReplyId=" + studyFeedReplyId;
+        })
+    })
 </script>
 </html>

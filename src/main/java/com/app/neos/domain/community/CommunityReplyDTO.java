@@ -25,6 +25,9 @@ public class CommunityReplyDTO {
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
+    private String communityTitle;
+    private String userNickName;
+
     public CommunityReply toEntity(){
         return CommunityReply.builder()
                 .communityReplyContent(communityReplyContent)
@@ -50,6 +53,15 @@ public class CommunityReplyDTO {
         this.communityReplyLikeCount = communityReplyLikeCount;
         this.userId = userId;
         this.communityId = communityId;
+    }
+
+    @QueryProjection
+    public CommunityReplyDTO(Long communityReplyId, String communityReplyContent, String userNickName, String communityTitle, LocalDateTime createdDate) {
+        this.communityReplyId = communityReplyId;
+        this.communityReplyContent = communityReplyContent;
+        this.userNickName = userNickName;
+        this.communityTitle = communityTitle;
+        this.createdDate = createdDate;
     }
 
 }

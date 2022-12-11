@@ -22,6 +22,10 @@ public class CounselingReplyDTO {
     private Long userId;
     private Long counselingId;
 
+    private String userNickName;
+    private String counselingTitle;
+    private LocalDateTime createdDate;
+
     public CounselingReply toEntity(){
         return CounselingReply.builder()
                 .counselingReplyContent(counselingReplyContent)
@@ -42,5 +46,14 @@ public class CounselingReplyDTO {
         this.counselingReplyContent = counselingReplyContent;
         this.userId = userId;
         this.counselingId = counselingId;
+    }
+
+    @QueryProjection
+    public CounselingReplyDTO(Long counselingReplyId, String counselingReplyContent, String userNickName, String counselingTitle, LocalDateTime createdDate) {
+        this.counselingReplyId = counselingReplyId;
+        this.counselingReplyContent = counselingReplyContent;
+        this.userNickName = userNickName;
+        this.counselingTitle = counselingTitle;
+        this.createdDate = createdDate;
     }
 }

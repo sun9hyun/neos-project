@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 @Data
 @NoArgsConstructor
@@ -18,6 +20,10 @@ public class StudyFeedReplyDTO {
     private UserDTO studyFeedReplyWriter;
     private StudyFeedDTO studyFeed;
     private String createdDate;
+
+    private String userNickName;
+    private LocalDateTime createdDate2;
+    private String studyTitle;
 
     public StudyFeedReply toEntity(){
         return StudyFeedReply.builder()
@@ -31,5 +37,14 @@ public class StudyFeedReplyDTO {
         this.studyFeedReplyContent = studyFeedReplyContent;
         this.studyFeedReplyWriter = studyFeedReplyWriter;
         this.studyFeed = studyFeed;
+    }
+
+    @QueryProjection
+    public StudyFeedReplyDTO(Long studyFeedReplyId, String studyFeedReplyContent, String userNickName, LocalDateTime createdDate2, String studyTitle) {
+        this.studyFeedReplyId = studyFeedReplyId;
+        this.studyFeedReplyContent = studyFeedReplyContent;
+        this.userNickName = userNickName;
+        this.createdDate2 = createdDate2;
+        this.studyTitle = studyTitle;
     }
 }

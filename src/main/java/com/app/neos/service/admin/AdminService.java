@@ -3,7 +3,14 @@ package com.app.neos.service.admin;
 import com.app.neos.domain.Admin.AdminUserDTO;
 import com.app.neos.domain.banner.BannerDTO;
 import com.app.neos.domain.college.CollegeDTO;
+import com.app.neos.domain.community.CommunityDTO;
+import com.app.neos.domain.community.CommunityReplyDTO;
+import com.app.neos.domain.counseling.CounselingDTO;
+import com.app.neos.domain.counseling.CounselingReplyDTO;
+import com.app.neos.domain.store.StoreDTO;
+import com.app.neos.domain.store.StoreReplyDTO;
 import com.app.neos.domain.study.StudyDTO;
+import com.app.neos.domain.study.StudyFeedReplyDTO;
 import com.app.neos.domain.user.QUserDTO;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.banner.Banner;
@@ -16,11 +23,15 @@ import com.app.neos.repository.banner.BannerRepository;
 import com.app.neos.repository.college.CollegeCustomRepository;
 import com.app.neos.repository.college.CollegeCustomRepositoryImpl;
 import com.app.neos.repository.college.CollegeRepository;
+import com.app.neos.repository.community.CommunityReplyRepository;
 import com.app.neos.repository.community.CommunityRepository;
+import com.app.neos.repository.counseling.CounselingReplyRepository;
 import com.app.neos.repository.counseling.CounselingRepository;
 import com.app.neos.repository.notice.NoticeCustomRepository;
 import com.app.neos.repository.notice.NoticeRepository;
+import com.app.neos.repository.store.StoreReplyRepository;
 import com.app.neos.repository.store.StoreRepository;
+import com.app.neos.repository.study.StudyFeedReplyRepository;
 import com.app.neos.repository.study.StudyRepository;
 import com.app.neos.repository.user.UserCustomRepository;
 import com.app.neos.repository.user.UserRepository;
@@ -60,6 +71,17 @@ public class AdminService {
     private final AdminCounselingReReplyRepository adminCounselingReReplyRepository;
     private final AdminStoreReplyRepository adminStoreReplyRepository;
     private final AdminStoreReReplyRepository adminStoreReReplyRepository;
+
+    private final AdminStudyFollowRepository adminStudyFollowRepository;
+    private final StudyRepository studyRepository;
+    private final CommunityRepository communityRepository;
+    private final CounselingRepository counselingRepository;
+    private final StoreRepository storeRepository;
+
+    private final StudyFeedReplyRepository studyFeedReplyRepository;
+    private final CommunityReplyRepository communityReplyRepository;
+    private final CounselingReplyRepository counselingReplyRepository;
+    private final StoreReplyRepository storeReplyRepository;
 
 
 
@@ -145,18 +167,6 @@ public class AdminService {
     public void saveNotice(Notice notice){
         noticeRepository.save(notice);
     }
-
-
-    //    스터디 목록 페이징 처리
-    public Page<StudyDTO> findStudyPage(Pageable pageable){
-        return adminCustomRepository.findAllStudyPage(pageable);
-    }
-
-
-
-
-
-
 
 
 //    //    유저 목록 페이지
@@ -277,6 +287,228 @@ public class AdminService {
             userRepository.deleteById(Long.parseLong(arUserIds[i]));
         }
     }
+
+
+    //    스터디 목록 페이징 처리
+    public Page<StudyDTO> findStudyPage(Pageable pageable){
+        Page<StudyDTO> studyDTOS = adminCustomRepository.findAllStudyPage(pageable);
+
+        for (StudyDTO studyDTO : studyDTOS) {
+            studyDTO.setFollowTotal(adminStudyFollowRepository.countByStudyStudyId(studyDTO.getStudyId()));
+        }
+
+        return studyDTOS;
+    }
+
+    //    스터디 목록 조회
+    public List<StudyDTO> findAllStudy(){
+        return  adminCustomRepository.findAllStudy();
+    }
+
+
+    //    스터디 삭제
+    public void deleteByStudyId(String studyId){
+        studyRepository.deleteById(Long.parseLong(studyId));
+    }
+
+    //    스터디 체크 여부에 따라 삭제하기
+    public void deleteByStudyCheck(String studyIds){
+        String[] arStudyIds = studyIds.split(",");
+
+        for (int i = 0; i < arStudyIds.length; i++){
+            studyRepository.deleteById(Long.parseLong(arStudyIds[i]));
+        }
+    }
+
+
+    //    게시판 목록 페이징 처리
+    public Page<CommunityDTO> findCommunityPage(Pageable pageable){
+        Page<CommunityDTO> communityDTOS = adminCustomRepository.findAllCommunityPage(pageable);
+
+        return communityDTOS;
+    }
+
+    //    게시판 목록 조회
+    public List<CommunityDTO> findAllCommunity(){
+        return  adminCustomRepository.findAllCommunity();
+    }
+
+    //    게시판 삭제
+    public void deleteByCommunityId(String communityId){
+        communityRepository.deleteById(Long.parseLong(communityId));
+    }
+
+    //    게시판 체크 여부에 따라 삭제하기
+    public void deleteByCommunityCheck(String communityIds){
+        String[] arCommunityIds = communityIds.split(",");
+
+        for (int i = 0; i < arCommunityIds.length; i++){
+            communityRepository.deleteById(Long.parseLong(arCommunityIds[i]));
+        }
+    }
+
+
+    //    고민게시판 목록 페이징 처리
+    public Page<CounselingDTO> findCounselingPage(Pageable pageable){
+        Page<CounselingDTO> counselingDTOS = adminCustomRepository.findAllCounselingPage(pageable);
+
+        return counselingDTOS;
+    }
+
+    //    고민게시판 목록 조회
+    public List<CounselingDTO> findAllCounseling(){
+        return  adminCustomRepository.findAllCounseling();
+    }
+
+    //    고민게시판 삭제
+    public void deleteByCounselingId(String counselingId){
+        counselingRepository.deleteById(Long.parseLong(counselingId));
+    }
+
+    //    고민게시판 체크 여부에 따라 삭제하기
+    public void deleteByCounselingCheck(String counselingIds){
+        String[] arcounselingIds = counselingIds.split(",");
+
+        for (int i = 0; i < arcounselingIds.length; i++){
+            counselingRepository.deleteById(Long.parseLong(arcounselingIds[i]));
+        }
+    }
+
+
+    //    자료상점 목록 페이징 처리
+    public Page<StoreDTO> findStorePage(Pageable pageable){
+        Page<StoreDTO> storeDTOS = adminCustomRepository.findAllStorePage(pageable);
+
+        return storeDTOS;
+    }
+
+    //    자료상점 목록 조회
+    public List<StoreDTO> findAllStore(){
+        return  adminCustomRepository.findAllStore();
+    }
+
+    //    자료상점 삭제
+    public void deleteByStoreId(String storeId){
+        storeRepository.deleteById(Long.parseLong(storeId));
+    }
+
+    //    자료상점 체크 여부에 따라 삭제하기
+    public void deleteByStoreCheck(String storeIds){
+        String[] arStoreIds = storeIds.split(",");
+
+        for (int i = 0; i < arStoreIds.length; i++){
+            storeRepository.deleteById(Long.parseLong(arStoreIds[i]));
+        }
+    }
+
+
+    //    스터디 댓글 목록 페이징 처리
+    public Page<StudyFeedReplyDTO> findStudyRePage(Pageable pageable){
+        Page<StudyFeedReplyDTO> studyFeedReplyDTOS = adminCustomRepository.findAllStudyReplyPage(pageable);
+
+        return studyFeedReplyDTOS;
+    }
+
+    //    스터디 댓글 목록 조회
+    public List<StudyFeedReplyDTO> findAllStudyRe(){
+        return  adminCustomRepository.findAllStudyReply();
+    }
+
+    //    스터디 댓글 삭제
+    public void deleteByStudyReId(String studyFeedReplyId){
+        studyFeedReplyRepository.deleteById(Long.parseLong(studyFeedReplyId));
+    }
+
+    //    스터디 댓글 체크 여부에 따라 삭제하기
+    public void deleteByStudyReCheck(String studyFeedReplyIds){
+        String[] arStudyFeedReIds = studyFeedReplyIds.split(",");
+
+        for (int i = 0; i < arStudyFeedReIds.length; i++){
+            studyFeedReplyRepository.deleteById(Long.parseLong(arStudyFeedReIds[i]));
+        }
+    }
+
+
+    //    게시판 댓글 목록 페이징 처리
+    public Page<CommunityReplyDTO> findCommunityRePage(Pageable pageable){
+        Page<CommunityReplyDTO> communityReplyDTOS = adminCustomRepository.findAllCommunityReplyPage(pageable);
+
+        return communityReplyDTOS;
+    }
+
+    //    게시판 댓글 목록 조회
+    public List<CommunityReplyDTO> findAllCommunityRe(){
+        return  adminCustomRepository.findAllCommunityReply();
+    }
+
+    //    게시판 댓글 삭제
+    public void deleteByCommunityReId(String communityReplyId){
+        communityReplyRepository.deleteById(Long.parseLong(communityReplyId));
+    }
+
+    //    게시판 댓글 체크 여부에 따라 삭제하기
+    public void deleteByCommunityReCheck(String communityReplyIds){
+        String[] arCommunityReIds = communityReplyIds.split(",");
+
+        for (int i = 0; i < arCommunityReIds.length; i++){
+            communityReplyRepository.deleteById(Long.parseLong(arCommunityReIds[i]));
+        }
+    }
+
+
+    //    고민 게시판 댓글 목록 페이징 처리
+    public Page<CounselingReplyDTO> findCounselingRePage(Pageable pageable){
+        Page<CounselingReplyDTO> counselingReplyDTOS = adminCustomRepository.findAllCounselingReplyPage(pageable);
+
+        return counselingReplyDTOS;
+    }
+
+    //    고민 게시판 댓글 목록 조회
+    public List<CounselingReplyDTO> findAllCounselingRe(){
+        return  adminCustomRepository.findAllCounselingReply();
+    }
+
+    //    고민 게시판 댓글 삭제
+    public void deleteByCounselingReId(String counselingReplyId){
+        counselingReplyRepository.deleteById(Long.parseLong(counselingReplyId));
+    }
+
+    //    고민 게시판 댓글 체크 여부에 따라 삭제하기
+    public void deleteByCounselingReCheck(String counselingReplyIds){
+        String[] arCounselingReIds = counselingReplyIds.split(",");
+
+        for (int i = 0; i < arCounselingReIds.length; i++){
+            counselingReplyRepository.deleteById(Long.parseLong(arCounselingReIds[i]));
+        }
+    }
+
+
+    //    자료 상점 댓글 목록 페이징 처리
+    public Page<StoreReplyDTO> findStoreRePage(Pageable pageable){
+        Page<StoreReplyDTO> storeReplyDTOS = adminCustomRepository.findAllStoreReplyPage(pageable);
+
+        return storeReplyDTOS;
+    }
+
+    //    자료 상점 댓글 목록 조회
+    public List<StoreReplyDTO> findAllStoreRe(){
+        return  adminCustomRepository.findAllStoreReply();
+    }
+
+    //    자료 상점 댓글 삭제
+    public void deleteByStoreReId(String storeReplyId){
+        storeReplyRepository.deleteById(Long.parseLong(storeReplyId));
+    }
+
+    //    자료 상점 댓글 체크 여부에 따라 삭제하기
+    public void deleteByStoreReCheck(String storeReplyIds){
+        String[] arStoreReIds = storeReplyIds.split(",");
+
+        for (int i = 0; i < arStoreReIds.length; i++){
+            storeReplyRepository.deleteById(Long.parseLong(arStoreReIds[i]));
+        }
+    }
+
 
 
 

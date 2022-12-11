@@ -23,6 +23,8 @@ public class CounselingDTO {
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
+    private String userNickName;
+
     public Counseling toEntity(){
         return Counseling.builder()
                 .counselingTitle(counselingTitle)
@@ -46,6 +48,14 @@ public class CounselingDTO {
         this.counselingTitle = counselingTitle;
         this.counselingContent = counselingContent;
         this.userId = userId;
+    }
+
+    @QueryProjection
+    public CounselingDTO(Long counselingId, String counselingTitle, String userNickName, LocalDateTime createdDate) {
+        this.counselingId = counselingId;
+        this.counselingTitle = counselingTitle;
+        this.userNickName = userNickName;
+        this.createdDate = createdDate;
     }
 
 }

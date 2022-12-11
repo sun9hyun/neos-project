@@ -23,6 +23,8 @@ public class CommunityDTO {
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
+    private String userNickName;
+
     public Community toEntity(){
         return Community.builder()
                 .communityTitle(communityTitle)
@@ -50,5 +52,14 @@ public class CommunityDTO {
         this.communityContent = communityContent;
         this.communityLikeCount = communityLikeCount;
         this.userId = userId;
+    }
+
+    @QueryProjection
+    public CommunityDTO(Long communityId, String communityTitle, int communityLikeCount, String userNickName, LocalDateTime createdDate) {
+        this.communityId = communityId;
+        this.communityTitle = communityTitle;
+        this.communityLikeCount = communityLikeCount;
+        this.userNickName = userNickName;
+        this.createdDate = createdDate;
     }
 }

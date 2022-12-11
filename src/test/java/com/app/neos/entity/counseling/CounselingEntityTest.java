@@ -23,17 +23,19 @@ public class CounselingEntityTest {
 
     @Test
     public void saveTest(){
-        CounselingDTO counselingDTO = new CounselingDTO();
-        counselingDTO.setCounselingTitle("고민 게시판");
-        counselingDTO.setCounselingContent("고민 게시판 내용");
+        for(int i = 0; i < 100; i++) {
 
-        counselingDTO.setUser(userRepository.findById(2L).get());
+            CounselingDTO counselingDTO = new CounselingDTO();
+            counselingDTO.setCounselingTitle("고민 게시판");
+            counselingDTO.setCounselingContent("고민 게시판 내용");
 
-        Counseling counseling = counselingDTO.toEntity();
-        counseling.changeUser(counselingDTO.getUser());
+            counselingDTO.setUser(userRepository.findById(5L).get());
 
-        counselingRepository.save(counseling);
+            Counseling counseling = counselingDTO.toEntity();
+            counseling.changeUser(counselingDTO.getUser());
 
+            counselingRepository.save(counseling);
+        }
     }
 
     @Test

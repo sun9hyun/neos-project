@@ -507,11 +507,11 @@
                         <th:block th:each="num : ${#numbers.sequence(start, last)}">
                             <a class="paging" th:text="${num}" th:href="@{/admin/test/user/list(page=${num-1})}"></a>
                         </th:block>
-                        <th:block th:if="${(last%5) == 0}">
+                        <th:block th:if="${last != endPage}">
                             <a class="btn_paging next screen_out paging"
                                th:href="${users.last} ? '#' : @{/admin/test/user/list(page=${users.number+1})}"></a>
                         </th:block>
-                        <th:block th:unless="${(last%5) == 0}">
+                        <th:block th:unless="${last != endPage}">
                             <a class="btn_paging next screen_out paging" style="display: none"
                                th:href="${users.last} ? '#' : @{/admin/test/user/list(page=${users.number+1})}"></a>
                         </th:block>
@@ -636,8 +636,10 @@
 
     $('.deleteBtn').click(function () {
         let userId = $(this).closest('.action').prev().parent().find(".userInfo").find('.userId').attr('href');
-
+        modalUp();
+        $('#deleteCheck').click(function () {
             location.href = "/admin/test/user/delete" + "?userId=" + userId;
+        })
     })
 </script>
 </html>

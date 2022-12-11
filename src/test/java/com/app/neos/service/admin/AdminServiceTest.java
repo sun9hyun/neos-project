@@ -2,12 +2,14 @@ package com.app.neos.service.admin;
 
 import com.app.neos.domain.college.CollegeDTO;
 import com.app.neos.domain.college.QCollegeDTO;
+import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.college.College;
 import com.app.neos.entity.college.QCollege;
 import com.app.neos.repository.admin.AdminCommunityReplyRepository;
 import com.app.neos.repository.admin.AdminCommunityRepository;
 import com.app.neos.repository.admin.AdminStudyFeedReplyRepository;
+import com.app.neos.repository.admin.AdminStudyFollowRepository;
 import com.app.neos.repository.store.StoreRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +48,9 @@ public class AdminServiceTest {
 
     @Autowired
     AdminCommunityRepository adminCommunityRepository;
+
+    @Autowired
+    AdminStudyFollowRepository adminStudyFollowRepository;
 
 
 
@@ -117,8 +122,10 @@ public class AdminServiceTest {
 
     @Test
     public void findStudyPage(){
-        log.info(adminService.findStudyPage(PageRequest.of(0, 10)).getTotalElements() + "");
-        log.info(adminService.findStudyPage(PageRequest.of(0, 10)).toString() + "");
+//        log.info(adminService.findStudyPage(PageRequest.of(0, 10)).getTotalElements() + "");
+//        log.info(adminService.findStudyPage(PageRequest.of(0, 10)).toString() + "");
+//        adminService.findAllStudy().stream().map(StudyDTO::toString).forEach(log::info);
+        log.info(adminStudyFollowRepository.countByStudyStudyId(6L) + "");
     }
 
 }

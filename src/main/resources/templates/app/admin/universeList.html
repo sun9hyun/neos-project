@@ -451,11 +451,11 @@
                         <th:block th:each="num : ${#numbers.sequence(start, last)}">
                             <a class="paging" th:text="${num}" th:href="@{/admin/test/college/list(page=${num-1})}"></a>
                         </th:block>
-                        <th:block th:if="${(last%5) == 0}">
+                        <th:block th:if="${last != endPage}">
                             <a class="btn_paging next screen_out paging"
                                th:href="${colleges.last} ? '#' : @{/admin/test/college/list(page=${colleges.number+1})}"></a>
                         </th:block>
-                        <th:block th:unless="${(last%5) == 0}">
+                        <th:block th:unless="${last != endPage}">
                             <a class="btn_paging next screen_out paging" style="display: none"
                                th:href="${colleges.last} ? '#' : @{/admin/test/college/list(page=${colleges.number+1})}"></a>
                         </th:block>

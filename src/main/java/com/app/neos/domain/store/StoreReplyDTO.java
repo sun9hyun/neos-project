@@ -26,6 +26,9 @@ public class StoreReplyDTO {
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
+    private String userNickName;
+    private String storeTitle;
+
     public StoreReply toEntity(){
         return StoreReply.builder()
                 .storeReplyContent(storeReplyContent)
@@ -58,6 +61,16 @@ public class StoreReplyDTO {
         this.user = user;
         this.storeId = storeId;
         this.updatedDate = updatedDate;
+    }
+
+
+    @QueryProjection
+    public StoreReplyDTO(Long storeReplyId, String storeReplyContent, String userNickName, String storeTitle, LocalDateTime createdDate) {
+        this.storeReplyId = storeReplyId;
+        this.storeReplyContent = storeReplyContent;
+        this.userNickName = userNickName;
+        this.storeTitle = storeTitle;
+        this.createdDate = createdDate;
     }
 
 

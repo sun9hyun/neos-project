@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 @Data
 @NoArgsConstructor
@@ -17,6 +19,8 @@ public class CounselingReplyDTO {
     private String counselingReplyContent;
     private User user;
     private Counseling counseling;
+    private Long userId;
+    private Long counselingId;
 
     public CounselingReply toEntity(){
         return CounselingReply.builder()
@@ -30,5 +34,13 @@ public class CounselingReplyDTO {
         this.counselingReplyContent = counselingReplyContent;
         this.user = user;
         this.counseling = counseling;
+    }
+
+    @QueryProjection
+    public CounselingReplyDTO(Long counselingReplyId, String counselingReplyContent, Long userId, Long counselingId) {
+        this.counselingReplyId = counselingReplyId;
+        this.counselingReplyContent = counselingReplyContent;
+        this.userId = userId;
+        this.counselingId = counselingId;
     }
 }

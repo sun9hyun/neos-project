@@ -98,58 +98,82 @@ $(document).ready(function(){
 })
 /*-----------------------------------------------------------------------------------------------------------*/
 $(document).ready(function(){
-//좋아요 버튼
-    const $likeBtn = $(".replyComponent_replyOpenAndLikeButtonGroup__3r9hv img");
-    $(".centerSectionBox").on("click",$likeBtn,function () {
-        if($(this).attr("src")=='https://letspl.me/assets/images/ic_talk_up.svg'){
-            $(this).attr("src","/images/community/blueLike.png")
-            $(this).after(`<span class="replyLikeCount">1</span>`)
-        }else{
-            $(this).attr("src",'https://letspl.me/assets/images/ic_talk_up.svg')
-            $(this).parent().find('.replyLikeCount').remove();
+//펼치기
+    $(".loungeCard").on("click", ".buttonComponents_blue__1FlTU", function () {
+        const $card = $(this).parent().prev();
+        if (
+            $card.hasClass(
+                "loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4"
+            )
+        ) {
+            $card
+                .removeClass(
+                    "loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4"
+                )
+                .addClass("loungeCardContentsComponents_loungeContentsAreaExpand__3U5Se");
+            $(this).text("닫기");
+        } else {
+            $card
+                .removeClass(
+                    "loungeCardContentsComponents_loungeContentsAreaExpand__3U5Se"
+                )
+                .addClass(
+                    "loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4"
+                );
+            $(this).text("펼치기");
         }
     });
 
-})
-/*-----------------------------------------------------------------------------------------------------------*/
-/*댓글*/
-var $commentButton = $(".replyComponent_replyOnOff__QKoso");
+//좋아요 버튼
+    $("div.centerSectionBox").on("click",".likeBtn",function () {
+        if($(this).children(".likeImg").attr("src")=='https://letspl.me/assets/images/ic-letspler-heart-empty.png'){
+            $(this).children(".likeImg").attr("src","https://letspl.me/assets/images/ic-letspler-heart-full.png")
+            // $(this).after(`<span class="replyLikeCount">1</span>`)
+        }else{
+            $(this).children(".likeImg").attr("src",'https://letspl.me/assets/images/ic-letspler-heart-empty.png')
+            // $(this).parent().find('.replyLikeCount').remove();
+        }
+    });
 
-$commentButton.on("click",function () {
-    if($(this).closest(".replyComponent_reply__3l-Wc").find(".replyComponent_replyFilter__10kow").css("display")=="flex"){
-        $(this).closest(".replyComponent_reply__3l-Wc").find(".replyComponent_replyFilter__10kow").css("display","none");
-        $(this).closest(".replyComponent_reply__3l-Wc").find(".replyComponent_replyInputBox__2yLKK").attr("style","display: none !important");
-        $(this).closest(".replyComponent_reply__3l-Wc").find(".replyComponent_replyBox__1duHS").css("display","none");
-    }else{
-        $(this).closest(".replyComponent_reply__3l-Wc").find(".replyComponent_replyFilter__10kow").css("display","flex");
-        $(this).closest(".replyComponent_reply__3l-Wc").find(".replyComponent_replyInputBox__2yLKK").attr("style","display: flex !important");
-        $(this).closest(".replyComponent_reply__3l-Wc").find(".replyComponent_replyBox__1duHS").css("display","block");
-    }
-
-})
+/*댓글 펼치기*/
+    $(".centerSectionBox").on("click", ".buttonComponents_gray__1blI9", function () {
+        if ($(this).closest(".replyComponent_reply__3l-Wc").children(".replyForm").children(".replyComponent_replyInputBox__2yLKK").css("display") == "flex") {
+            $(this).closest(".replyComponent_reply__3l-Wc").children(".replyForm").children(".replyComponent_replyInputBox__2yLKK").css("display", "none");
+            $(this).closest(".replyComponent_reply__3l-Wc").children(".replyForm").next(".replyComponent_replyBox__1duHS").css("display", "none");
+        } else {
+            $(this).closest(".replyComponent_reply__3l-Wc").children(".replyForm").children(".replyComponent_replyInputBox__2yLKK").css("display", "flex");
+            $(this).closest(".replyComponent_reply__3l-Wc").children(".replyForm").next(".replyComponent_replyBox__1duHS").css("display", "block");
+        }
+    })
 
 /*댓글*/
 // textarea 부모클래스                              택스트애리아 클래스
-$(".replyComponent_reply__3l-Wc").on("keyup", ".replyTextArea",function (e) {
-        let content = $(this).val();
-        if (content.length == 0 || content == "") {
-            //텍스트애리아 로부터 숫자바뀌는거 span 태그 찾는작업
-            $(this).parent().next().find(".replyTextCount").text("0");
-        } else {
-            $(this).parent().next().find(".replyTextCount").text(content.length);
+    $("div.centerSectionBox").on("keyup", ".replyContent",function (e) {
+        console.log($(this));
+            let content = $(this).val();
+            if (content.length == 0 || content == "") {
+                //텍스트애리아 로부터 숫자바뀌는거 span 태그 찾는작업
+                $(this).parent().next().find(".rereplyTextCount").text("0");
+            } else {
+                $(this).parent().next().find(".rereplyTextCount").text(content.length);
+            }
         }
-    }
-);
+    );
 
-$(".rereply_textarea").on("keyup", function (e) {
-        let content = $(this).val();
-        if (content.length == 0 || content == "") {
-            $(this).next().find(".rereplyTextCount").text("0")
-        } else {
-            $(this).next().find(".rereplyTextCount").text(content.length);
-        }
-    }
-);
+    // $(".rereply_textarea").on("keyup", function (e) {
+    //         let content = $(this).val();
+    //         if (content.length == 0 || content == "") {
+    //             $(this).next().find(".rereplyTextCount").text("0")
+    //         } else {
+    //             $(this).next().find(".rereplyTextCount").text(content.length);
+    //         }
+    //     }
+    // );
+
+
+//    ready
+})
+
 
 /* 위까지가 텍스트에리아 즉 댓글쓰기 */
 const $heartButtons = $(".replyComponent_replyButtonBox__2O3ME").find(
@@ -171,34 +195,8 @@ $heartButtons.on("click", function () {
 });
 
 /* 댓글 최신순 정렬 */
-const $cardMoreButton = $(
-    ".loungeCardContentsComponents_loungeContentsMoreButtonWrap__1LR4v"
-).find(".buttonComponents_blue__1FlTU");
 
-$cardMoreButton.on("click", function () {
-    const $card = $(this).parent().prev();
-    if (
-        $card.hasClass(
-            "loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4"
-        )
-    ) {
-        $card
-            .removeClass(
-                "loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4"
-            )
-            .addClass("loungeCardContentsComponents_loungeContentsAreaExpand__3U5Se");
-        $(this).text("닫기");
-    } else {
-        $card
-            .removeClass(
-                "loungeCardContentsComponents_loungeContentsAreaExpand__3U5Se"
-            )
-            .addClass(
-                "loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4"
-            );
-        $(this).text("펼치기");
-    }
-});
+
 
 /* 댓글 좋아요 버튼 */
 $(".replyComponent_reply__3l-Wc").on("click", ".replyComponent_replyFilter__10kow button", function () {
@@ -224,15 +222,15 @@ $(".replyComponent_reply__3l-Wc").on("click", ".replyComponent_replyFilter__10ko
 });
 
 /*대댓글 펼치기*/
-const $rereplyButton = $(".replyComponent_replyOpenAndLikeButtonGroup__3r9hv").find(".rereplyButton_1j")
-$rereplyButton.on("click",function(){
-    var $button = $(this).parent().next().find(".rereplyContainer__3x");
-    if($button.css("display")=='block'){
-        $button.css("display","none");
-    }else{
-        $button.css("display","block");
-    }
-})
+// const $rereplyButton = $(".replyComponent_replyOpenAndLikeButtonGroup__3r9hv").find(".rereplyButton_1j")
+// $rereplyButton.on("click",function(){
+//     var $button = $(this).parent().next().find(".rereplyContainer__3x");
+//     if($button.css("display")=='block'){
+//         $button.css("display","none");
+//     }else{
+//         $button.css("display","block");
+//     }
+// })
 
 const $replyUpdateBtn = $(".userInformationComponents_userReplySection__3ty7Q").find(".replyUpdate");
 let replyText = '';

@@ -71,7 +71,7 @@ public class CommunityServiceTest {
         Counseling counseling = counselingDTO.toEntity();
         counseling.changeUser(counselingDTO.getUser());
 
-        counselingService.saveCounseling(counseling);
+//        counselingService.saveCounseling(counseling);
     }
 
     @Test
@@ -126,4 +126,7 @@ public class CommunityServiceTest {
 
 //        communityService.saveCommunity(community);
     }
+
+
+
 }

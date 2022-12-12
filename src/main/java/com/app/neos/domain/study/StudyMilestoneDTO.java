@@ -2,9 +2,7 @@ package com.app.neos.domain.study;
 
 
 import com.app.neos.domain.user.UserDTO;
-import com.app.neos.entity.study.Study;
 import com.app.neos.entity.study.StudyMilestone;
-import com.app.neos.entity.user.User;
 import com.app.neos.type.study.milestone.StudyMilestoneStatus;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
@@ -12,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Component
 @Data
@@ -19,11 +18,13 @@ import java.time.LocalDate;
 public class StudyMilestoneDTO {
     private Long studyMileStoneId;
     private String studyMileStoneTitle;
-    private String studyMileStoneContent;
+        private String studyMileStoneContent;
     private StudyMilestoneStatus studyMilestoneStatus;
     private UserDTO mileStoneWriter;
     private StudyDTO study;
     private LocalDate createDate;
+    private LocalDateTime createdTime;
+    private LocalDateTime updatedTime;
 
     public StudyMilestone toEntity(){
         return StudyMilestone.builder()
@@ -32,6 +33,7 @@ public class StudyMilestoneDTO {
                 .studyMilestoneStatus(studyMilestoneStatus)
                 .build();
     }
+
 
     @QueryProjection
     public StudyMilestoneDTO(Long studyMileStoneId, String studyMileStoneTitle, String studyMileStoneContent, StudyMilestoneStatus studyMilestoneStatus, UserDTO mileStoneWriter, StudyDTO study) {

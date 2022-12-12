@@ -33,11 +33,19 @@ public class StudyMileStoneRestController {
 
     @GetMapping("/finish/{bno}")
     public List<StudyMilestoneDTO> mileStoneFinishList(@PathVariable("bno") Long studyId){
-        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         return studyMileStoneService.showListFinish(studyId);
+    }
+
+    @PostMapping("/finish/{bno}")
+    public String mileStoneFinish(@PathVariable("bno") Long mileStoneId){
+       studyMileStoneService.complete(mileStoneId);
+        return "success";
+    }
+
+    @PutMapping("/{bno}")
+    public String mileStoneUpdate(@PathVariable("bno") Long mileStoneId, StudyMilestoneDTO studyMilestoneDTO){
+       studyMilestoneDTO.setStudyMileStoneId(mileStoneId);
+        studyMileStoneService.update(studyMilestoneDTO);
+        return "success";
     }
 }

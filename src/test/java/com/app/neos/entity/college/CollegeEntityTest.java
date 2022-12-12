@@ -27,18 +27,68 @@ public class CollegeEntityTest {
     //    saveTest
     @Test
     public void saveTest(){
-        for (int i = 0; i < 50; i++) {
 
-        CollegeDTO collegeDTO = new CollegeDTO();
 
-        collegeDTO.setCollegeCity("경상남도");
-        collegeDTO.setCollegeName("문성대학교");
-        collegeDTO.setCollegeLogoFile("/images/college/changwonCollege.jpg");
-        collegeDTO.setCollegeEmailDomain("www.changwon.ac.kr");
+        CollegeDTO collegeDTO1 = new CollegeDTO();
 
-        College college = collegeDTO.toEntity();
+        collegeDTO1.setCollegeCity("강원도");
+        collegeDTO1.setCollegeName("강릉원주대학교");
+        collegeDTO1.setCollegeLogoFile("/images/admin/college/gangneungCollege.jpg");
+        collegeDTO1.setCollegeEmailDomain("www.gangneung.ac.kr");
+
+        College college = collegeDTO1.toEntity();
             collegeRepository.save(college);
-        }
+
+        CollegeDTO collegeDTO2 = new CollegeDTO();
+
+        collegeDTO2.setCollegeCity("인천광역시");
+        collegeDTO2.setCollegeName("인천대학교");
+        collegeDTO2.setCollegeLogoFile("/images/admin/college/incheonCollege.png");
+        collegeDTO2.setCollegeEmailDomain("www.inu.ac.kr");
+
+        College college2 = collegeDTO2.toEntity();
+            collegeRepository.save(college2);
+
+        CollegeDTO collegeDTO3 = new CollegeDTO();
+
+        collegeDTO3.setCollegeCity("서울특별시");
+        collegeDTO3.setCollegeName("서울대학교");
+        collegeDTO3.setCollegeLogoFile("/images/admin/college/seoulCollege.png");
+        collegeDTO3.setCollegeEmailDomain("www.snu.ac.kr");
+
+        College college3 = collegeDTO3.toEntity();
+        collegeRepository.save(college3);
+
+        CollegeDTO collegeDTO4 = new CollegeDTO();
+
+        collegeDTO4.setCollegeCity("대전광역시");
+        collegeDTO4.setCollegeName("대전대학교");
+        collegeDTO4.setCollegeLogoFile("/images/admin/college/dageonCollege.jpg");
+        collegeDTO4.setCollegeEmailDomain("www.dageon.ac.kr");
+
+        College college4 = collegeDTO4.toEntity();
+        collegeRepository.save(college4);
+
+        CollegeDTO collegeDTO5 = new CollegeDTO();
+
+        collegeDTO5.setCollegeCity("경상남도");
+        collegeDTO5.setCollegeName("경상국립대학교");
+        collegeDTO5.setCollegeLogoFile("/images/admin/college/gyeongsangCollege.jpg");
+        collegeDTO5.setCollegeEmailDomain("www.gyeongsang.ac.kr");
+
+        College college5 = collegeDTO5.toEntity();
+        collegeRepository.save(college5);
+
+        CollegeDTO collegeDTO6 = new CollegeDTO();
+
+        collegeDTO6.setCollegeCity("경상남도");
+        collegeDTO6.setCollegeName("문성대학교");
+        collegeDTO6.setCollegeLogoFile("/images/admin/college/changwonCollege.jpg");
+        collegeDTO6.setCollegeEmailDomain("www.changwon.ac.kr");
+
+        College college6 = collegeDTO6.toEntity();
+        collegeRepository.save(college6);
+
     }
 
 

@@ -1,15 +1,14 @@
 package com.app.neos.service.study;
 
 import com.app.neos.domain.study.StudyMemberDTO;
+import com.app.neos.domain.study.StudyNewsDTO;
 import com.app.neos.domain.study.StudySupporterDTO;
 import com.app.neos.entity.study.Study;
 import com.app.neos.entity.study.StudyMember;
+import com.app.neos.entity.study.StudyNews;
 import com.app.neos.entity.study.StudySupporter;
 import com.app.neos.entity.user.User;
-import com.app.neos.repository.study.StudyMemberRepository;
-import com.app.neos.repository.study.StudyRepository;
-import com.app.neos.repository.study.StudySupporterCustomRepository;
-import com.app.neos.repository.study.StudySupporterRepository;
+import com.app.neos.repository.study.*;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.type.study.member.StudyMemberStatus;
 import com.app.neos.type.study.supporter.StudySupporterStatus;
@@ -32,6 +31,7 @@ public class StudyMemberService {
     private final StudyRepository studyRepository;
     private final UserRepository userRepository;
     private final StudySupporterCustomRepository studySupporterCustomRepository;
+    private final StudyNewsRepository studyNewsRepository;
 
 
     public void supportJoin(StudySupporterDTO supporterDTO){
@@ -78,7 +78,17 @@ public class StudyMemberService {
         StudyMember studyMember = studyMemberDTO.toEntity();
         studyMember.changeUser(user);
         studyMember.changeStudy(study);
-        studyMemberRepository.save(studyMember);
+       StudyMember member =  studyMemberRepository.save(studyMember);
+
+//        뉴스 저장
+        StudyNewsDTO dto1 = new StudyNewsDTO();
+        dto1.setCategory("member");
+        dto1.setNewsCreatedTime(member.getCreatedDate().toLocalDate());
+        dto1.setStatus("proceed");
+        StudyNews news = dto1.toEntity();
+        news.changeStudyMember(member);
+        news.changeStudy(study);
+        studyNewsRepository.save(news);
 
     }
 

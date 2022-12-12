@@ -56,8 +56,13 @@ public class StudyMilestone extends Period {
     public void update(StudyMilestoneDTO studyMilestoneDTO){
         this.studyMileStoneTitle = studyMilestoneDTO.getStudyMileStoneTitle();
         this.studyMileStoneContent = studyMilestoneDTO.getStudyMileStoneContent();
-        this.studyMilestoneStatus = studyMilestoneDTO.getStudyMilestoneStatus();
     }
+
+    public void complete(){
+        this.studyMilestoneStatus = StudyMilestoneStatus.FINISH;
+    }
+
+
 
     public StudyMilestoneDTO toDTO(){
         StudyMilestoneDTO dto = new StudyMilestoneDTO();
@@ -68,6 +73,8 @@ public class StudyMilestone extends Period {
         dto.setStudy(this.study.toDTO());
         dto.setMileStoneWriter(this.mileStoneWriter.toDTO());
         dto.setCreateDate(this.getCreatedDate().toLocalDate());
+        dto.setCreatedTime(this.getCreatedDate());
+        dto.setUpdatedTime(this.getUpdatedDate());
         return dto;
     }
 

@@ -10,6 +10,7 @@ import com.app.neos.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import java.util.List;
@@ -45,6 +46,15 @@ public class NeosUserService {
     public List<Study> findByStudyId(Long studyId){
         return neosUserCustomRepository.findByUserId(studyId);
     }
+
+//    유저 검색
+
+//    @Transactional
+//    public List<UserDTO> findByKeyword(String keyword){
+//        List<UserDTO> userDTOList =neosUserCustomRepository.findByKeyword(keyword);
+//
+//        return userDTOList;
+//    }
 
 
 }

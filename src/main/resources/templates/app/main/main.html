@@ -93,7 +93,8 @@
         <h1><span class="bigTxt">새로운<em class="pinkColor">' </em>스터디</span></h1>
         <div class="hotProjectContentWrap">
 
-            <div class="projectGridWrap" style="margin-right: 10px">
+            <th:block th:each="study:${study}" th:object="${study}">
+            <div class="projectGridWrap"  style="margin-right: 10px">
                 <div class="projectTopInfo">
                     <div class="top">
                         <div class="badgeWrap">
@@ -102,7 +103,7 @@
                             </div>
                             <div class="badge black">
                                 <!-- <h2>사이드프로젝트</h2> -->
-                                <img src="/images/study/inha.png">
+                                <img  src="/images/study/inha.png">
                             </div>
                         </div>
                         <div class="favorite listFavorite off"></div>
@@ -112,7 +113,7 @@
                 <div class="projectBottomInfo">
                     <div class="txtWrap projectWrap">
                         <h3 class="category">전공과목</h3>
-                        <h2 class="tit">공업수학_라플라스 변환</h2>
+                        <h2 class="tit" th:text="*{studyTitle}" >공업수학_라플라스 변환</h2>
                         <!--                                 <div class="iconWrap2"><img loading="lazy"
                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
                                 alt="Figma"></div> -->
@@ -130,12 +131,13 @@
                     </div>
                     <div class="bottomWrap">
                         <div class="gatherTxt">
-                            <div><span>모집완료</span><span>0/4</span></div>
+                            <div><span >모집완료</span><span >0/4</span></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="projectGridWrap" style="margin-right: 10px">
+            </th:block>
+            <!--<div class="projectGridWrap" style="margin-right: 10px">
                 <div class="projectTopInfo">
                     <div class="top">
                         <div class="badgeWrap">
@@ -143,7 +145,7 @@
                                 <img loading="lazy" src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="새로운 프로젝트">
                             </div>
                             <div class="badge black">
-                                <!-- <h2>사이드프로젝트</h2> -->
+                                &lt;!&ndash; <h2>사이드프로젝트</h2> &ndash;&gt;
                                 <img src="/images/study/inha.png">
                             </div>
                         </div>
@@ -155,9 +157,9 @@
                     <div class="txtWrap projectWrap">
                         <h3 class="category">전공과목</h3>
                         <h2 class="tit">공업수학_라플라스 변환</h2>
-                        <!--                                 <div class="iconWrap2"><img loading="lazy"
+                        &lt;!&ndash;                                 <div class="iconWrap2"><img loading="lazy"
                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                alt="Figma"></div> -->
+                                alt="Figma"></div> &ndash;&gt;
 
                     </div>
                 </div>
@@ -167,7 +169,7 @@
                             <div class="heartCount"><img loading="lazy" src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>3</span></div>
                         </div>
                         <div class="right">
-                            <!-- <p><span> 44</span><span> (-) </span></p> -->
+                            &lt;!&ndash; <p><span> 44</span><span> (-) </span></p> &ndash;&gt;
                         </div>
                     </div>
                     <div class="bottomWrap">
@@ -185,7 +187,7 @@
                                 <img loading="lazy" src="https://letspl.me/assets/images/ic-badge_project_story.png">
                             </div>
                             <div class="badge black">
-                                <!-- <h2>사이드프로젝트</h2> -->
+                                &lt;!&ndash; <h2>사이드프로젝트</h2> &ndash;&gt;
                                 <img src="/images/study/inha.png">
                             </div>
                         </div>
@@ -197,9 +199,9 @@
                     <div class="txtWrap projectWrap">
                         <h3 class="category">전공과목</h3>
                         <h2 class="tit">공업수학_라플라스 변환</h2>
-                        <!--                                 <div class="iconWrap2"><img loading="lazy"
+                        &lt;!&ndash;                                 <div class="iconWrap2"><img loading="lazy"
                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                alt="Figma"></div> -->
+                                alt="Figma"></div> &ndash;&gt;
 
                     </div>
                 </div>
@@ -209,7 +211,7 @@
                             <div class="heartCount"><img loading="lazy" src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>3</span></div>
                         </div>
                         <div class="right">
-                            <!-- <p><span> 44</span><span> (-) </span></p> -->
+                            &lt;!&ndash; <p><span> 44</span><span> (-) </span></p> &ndash;&gt;
                         </div>
                     </div>
                     <div class="bottomWrap">
@@ -227,7 +229,7 @@
                                 <img loading="lazy" src="https://letspl.me/assets/images/ic-badge_project_story.png">
                             </div>
                             <div class="badge black">
-                                <!-- <h2>사이드프로젝트</h2> -->
+                                &lt;!&ndash; <h2>사이드프로젝트</h2> &ndash;&gt;
                                 <img src="/images/study/inha.png">
                             </div>
                         </div>
@@ -239,9 +241,9 @@
                     <div class="txtWrap projectWrap">
                         <h3 class="category">전공과목</h3>
                         <h2 class="tit">공업수학_라플라스 변환</h2>
-                        <!--                                 <div class="iconWrap2"><img loading="lazy"
+                        &lt;!&ndash;                                 <div class="iconWrap2"><img loading="lazy"
                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                alt="Figma"></div> -->
+                                alt="Figma"></div> &ndash;&gt;
 
                     </div>
                 </div>
@@ -251,7 +253,7 @@
                             <div class="heartCount"><img loading="lazy" src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수"><span>3</span></div>
                         </div>
                         <div class="right">
-                            <!-- <p><span> 44</span><span> (-) </span></p> -->
+                            &lt;!&ndash; <p><span> 44</span><span> (-) </span></p> &ndash;&gt;
                         </div>
                     </div>
                     <div class="bottomWrap">
@@ -260,7 +262,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
     <!--자료상점-->
@@ -269,9 +271,10 @@
 
         <div class="storyContentsWrap">
             <div class="contents highLanking">
-                <h1><span class="bigTxt">핫한<em class="pinkColor">' </em>자료</span></h1>
+                <h1><span class="bigTxt">새로운<em class="pinkColor">' </em>자료</span></h1>
                 <div class="contetnsGrid">
 
+                    <th:block th:each="store:${store}" th:object="${store}">
                     <div class="Box free">
                         <a class="storyGridBox" href="javascript:;" target="_self">
                             <!-- <div class="top up">
@@ -282,8 +285,8 @@
                             </div>
                             <div class="bottom">
                                 <div class="titWrap">
-                                    <h2 class="titTxt">[특집#5] 할일관리/Todo에 집중한 프로젝트</h2>
-                                    <h3 class="category">렛플운영자</h3>
+                                    <h2 class="titTxt" th:text="*{storeTitle}" >[특집#5] 할일관리/Todo에 집중한 프로젝트</h2>
+                                    <h3 class="category" >렛플운영자</h3>
                                 </div>
                                 <div class="viewWrap">
                                     <p>
@@ -309,8 +312,9 @@
                         </a>
                         <div class="shopLink"><a href="javascript:;" class="shopDetail">상세보기</a></div>
                     </div>
+                    </th:block>
 
-                    <div class="Box lock">
+                  <!--  <div class="Box lock">
                         <a class="storyGridBox" href="javascript:;" target="_self">
                             <div class="top" style="filter: brightness(1);">
                                 <img src="/images/store/storeNeos.png" alt="">
@@ -346,9 +350,9 @@
                             <a href="javascript:;" class="lockCash shopDetail">결제하기</a>
                             <a href="javascript:;" class="lockDetail shopDetail">상세보기</a>
                         </div>
-                    </div>
+                    </div>-->
 
-                    <div class="Box free">
+                  <!--  <div class="Box free">
                         <a class="storyGridBox" href="javascript:;" target="_self">
                             <div class="top">
                                 <img src="/images/store/storeNeos.png" alt="">
@@ -416,13 +420,13 @@
                             </div>
                         </a>
                         <div class="shopLink"><a href="javascript:;" class="shopDetail">상세보기</a></div>
-                    </div>
+                    </div>-->
 
 
                 </div>
     </section>
 
-    <!- 중앙 배너 -->
+    <!-- 중앙 배너 -->
     <section class="bannerSection">
         <div>
             <div class="carousel-root">
@@ -438,7 +442,7 @@
                             <li class="slide selected previous">
                                 <div class="bannerWrap">
                                     <p class="lgTxt">NEOS - 스터디</p>
-                                    <p class="smTxt">함께 스터디 할 인원을 모집해보세요!</p><a>스터디 모집하기</a>
+                                    <p class="smTxt">함께 스터디 할 인원을 모집해보세요!</p><a style="cursor: pointer;" th:href="@{/study/create}">스터디 모집하기</a>
                                 </div>
                             </li>
                         </ul>
@@ -451,24 +455,23 @@
     <!--커뮤니티-->
     <section>
         <div class="reviewContentWrap">
-            <div class="reviewWrap"><h1><span class="bigTxt">새로운<em style="color:#1A7CFF; ">'</em> 커뮤니티 <a class="checkLook" href="">더보기</a><img class="lookImage" src="/images/main/look.png"></span>
+            <div class="reviewWrap"><h1><span class="bigTxt">새로운<em style="color:#1A7CFF; ">'</em> 커뮤니티 <a class="checkLook" th:href="@{/community/community}">더보기</a><img class="lookImage" src="/images/main/look.png"></span>
 
             </h1>
                 <div class="scroll">
+
+                    <th:block th:each="community:${community}" th:object="${community}">
                     <div class="reviewCard">
                         <div class="top">
                             <div class="profileImgAndId">
                                 <div class="imgThumb"><img loading="lazy"
-                                                           src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/569/images/SCS_Symbol_1.jpg"
+                                                           th:src="*{user.userFile}"
                                                            alt="스마트차징솔루션"></div>
-                                <h3>스마트차징솔루션<span></span></h3></div>
-                            <h2 class="descTxt">사이드 프로젝트를 진행하면서 팀원을 구하는데 렛플을 많이 이용하고 있습니다. 개발자 이외에 디자이너, 기획 등 다양한 분야의
-                                사람들을 만날 수 있는 유용한 사이트인 것 같습니다. 렛플을 통해 좋은 사람들을 만나서 즐겁게 프로젝트 진행하고 있습니다.</h2></div>
-                        <!--                        <div class="bottom"><p><span>프로젝트</span>전기차 충전운영 플랫폼 개발</p>-->
-                        <!--                            <button>프로필 바로가기</button>-->
-                        <!--                        </div>-->
+
+                                <h3 th:text="*{communityTitle}">스마트차징솔루션<span></span></h3></div>
+                            <h2 class="descTxt" th:utext="*{communityContent}"></h2></div>
                     </div>
-                    <div class="reviewCard">
+                   <!-- <div class="reviewCard">
                         <div class="top">
                             <div class="profileImgAndId">
                                 <div class="imgThumb"><img loading="lazy"
@@ -478,9 +481,9 @@
                             <h2 class="descTxt">누구나에게 꿈은 있으리라 판단이 됩니다. 다만 현실과의 간극 때문에 이를 꿈으로만 남겨두는 경우가 다수인데요.렛플은 그 꿈을
                                 현실로써 이룰 수 있는 가장 좋은 도구라 생각합니다. 나와 비슷한 상황에 내가 부족한 부분을 채워줄 수 있는 훌륭하신 분들이 많아 너무나 좋았습니다.</h2>
                         </div>
-                        <!--                        <div class="bottom"><p><span>프로젝트</span>AI 기반 보험을 부탁해</p>-->
-                        <!--                            <button>프로필 바로가기</button>-->
-                        <!--                        </div>-->
+                        &lt;!&ndash;                        <div class="bottom"><p><span>프로젝트</span>AI 기반 보험을 부탁해</p>&ndash;&gt;
+                        &lt;!&ndash;                            <button>프로필 바로가기</button>&ndash;&gt;
+                        &lt;!&ndash;                        </div>&ndash;&gt;
                     </div>
                     <div class="reviewCard">
                         <div class="top">
@@ -491,9 +494,9 @@
                                 <h3>fitQA<span></span></h3></div>
                             <h2 class="descTxt">새로 팀원들을 구인하는데 우연한 계기로 사이드프로젝트에 대해서 알게 됐습니다. 생각보다 많은 분들이 지원해주셔서 놀랐고, 다른
                                 사이트들보다 구성원들이 열의가 있어서 좋았습니다!! </h2></div>
-                        <!--                        <div class="bottom"><p><span>프로젝트</span>헬스 피드백 플랫폼</p>-->
-                        <!--                            <button>프로필 바로가기</button>-->
-                        <!--                        </div>-->
+                        &lt;!&ndash;                        <div class="bottom"><p><span>프로젝트</span>헬스 피드백 플랫폼</p>&ndash;&gt;
+                        &lt;!&ndash;                            <button>프로필 바로가기</button>&ndash;&gt;
+                        &lt;!&ndash;                        </div>&ndash;&gt;
                     </div>
                     <div class="reviewCard">
                         <div class="top">
@@ -504,31 +507,33 @@
                                 <h3>pp391zzk<span></span></h3></div>
                             <h2 class="descTxt">팀원분들이 갑자기 나가면 다시 구인하는게 너무 힘들었습니다. 렛플은 간단하게 모집마감/추가모집이 가능하고, 많은 분들이 빨리
                                 지원해주셔서 쉽게 팀원을 보강할 수 있어서, 프로젝트를 성공리에 할 수 있었습니다.</h2></div>
-                        <!--                        <div class="bottom"><p><span>프로젝트</span>와라와라편의점리뉴얼</p>-->
-                        <!--                            <button>프로필 바로가기</button>-->
-                        <!--                        </div>-->
-                    </div>
+                        &lt;!&ndash;                        <div class="bottom"><p><span>프로젝트</span>와라와라편의점리뉴얼</p>&ndash;&gt;
+                        &lt;!&ndash;                            <button>프로필 바로가기</button>&ndash;&gt;
+                        &lt;!&ndash;                        </div>&ndash;&gt;
+                    </div>-->
                 </div>
             </div>
         </div>
     </section>
     <!--네오스인-->
     <div class="hotProjectWrap wrap mainWrap">
-        <h1><span class="bigTxt">핫한<em class="pinkColor">' </em>네오스인</span></h1>
+        <h1><span class="bigTxt">새로운<em class="pinkColor">' </em>네오스인</span></h1>
         <div class="hotProjectContentWrap" >
 
+            <th:block th:each="user:${users}" th:object="${user}">
             <li class="letspler_Re"><img loading="lazy" class="newMark" src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">
                 <div class="top">
                     <div class="profilePicWrap">
-                        <div class="profilePic"><img src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png" alt="민쇼니"></div>
+                        <div class="profilePic"><img th:src="*{userFile}"></div>
                         <a class="favorite heart"></a>
                     </div>
                     <div class="profileTxt">
-                        <div class="idWrap"><img loading="lazy" class="userLv" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png" alt="렛플렙">
+                        <div class="idWrap"><img loading="lazy" class="userLv" th:src="*{userNeosBadge}" alt="렛플렙" style="width: 20px">
                             <div class="userName">
-                                <span class="name">민쇼니</span>
+                                <span class="name" th:text="*{userNickName}">민쇼니</span>
                                 <ul class="idHoverMenu" style="display: none;">
                                     <li><a class="detail">프로필 상세</a></li>
+                                    <input type="hidden" th:href="*{userId}">
                                     <li><a class="chat">1:1대화</a></li>
                                     <li><a class="invite">스터디 초대</a></li>
                                 </ul>
@@ -537,7 +542,7 @@
                             <div class="certiWrap"></div>
                         </div>
                         <div class="coffeAndHeart">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="커피포인트"><span>3</span></div>
+                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="커피포인트"><span th:text="*{userChattingPoint}"></span></div>
                             <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>3</span></div>
                         </div>
                     </div>
@@ -545,13 +550,32 @@
                 <div class="bottom">
                     <ul class="userFavorite">
                         <li>
-                            <h3><span>[대학]&nbsp;<span class="university"> 경상대학교</span></span><span class="grade">4학년</span></h3>
+
+                            <th:blokc th:if="*{collegeId != null}">
+
+                            <h3><span>[대학]&nbsp;<span class="university" th:text="*{collegeName}"> 경상대학교</span></span><span class="grade" th:text="*{userCollegeYear}"></span><span style="font-size: 14px;color: #999999;">학년</span></h3>
+
+                            </th:blokc>
+
+                            <th:block th:unless="*{collegeId != null}">
+
+                                <h3><span>[대학]&nbsp;<span class="university">해당사항없음</span></span><span class="grade"></span><span style="font-size: 14px;color: #999999;"></span></h3>
+
+                            </th:block>
+
                         </li>
+
+
                         <li>
-                            <h3><span>[전공]&nbsp;<span class="major"> 미입력</span></span><span></span></h3>
+                            <th:block th:if="*{collegeId != null}">
+                            <h3><span>[전공]&nbsp;<span class="major" th:text="*{userCollegeMajor}"> 미입력</span></span><span></span></h3>
+                            </th:block>
+
+                            <th:block th:unless="*{collegeId != null}">
+                                <h3><span>[전공]&nbsp;<span class="major">해당사항없음</span></span><span></span></h3>
+                            </th:block>
                         </li>
                     </ul>
-                    <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
                     <div class="userInfoTagWrap"></div>
                     <a class="chatBtn">
                         <div><img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="커피포인트"><span>NEO
@@ -559,8 +583,9 @@
                     </a>
                 </div>
             </li>
+            </th:block>
 
-            <li class="letspler_Re"><img loading="lazy" class="newMark" src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">
+            <!--<li class="letspler_Re"><img loading="lazy" class="newMark" src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">
                 <div class="top">
                     <div class="profilePicWrap">
                         <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png" alt="박종우"></div>
@@ -682,7 +707,7 @@
                                     CHAT</span></div>
                     </a>
                 </div>
-            </li>
+            </li>-->
         </div>
     </div>
 </div>
@@ -785,6 +810,13 @@
 <script src="/js/fix/chatting.js"></script>
 <script src="/js/fix/chattingAll.js"></script>
 <script>
+    /*프로필 상세 누를시 상세 페이지 이동 */
+    $(".detail").on("click", function (e) {
+        alert($(this).next().attr("href"));
+        e.preventDefault();
+        location.href = "/neosUser/info/yes" + "?userId=" + $(this).next().attr("href");
+    });
+
 
 </script>
 

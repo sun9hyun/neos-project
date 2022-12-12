@@ -72,3 +72,6 @@ $clearIpt.click(function(){
     $registrationPt.hide();
     $countIpt.hide();
 });
+
+
+

@@ -13,10 +13,11 @@
 <body>
 <header th:replace="/app/fix/header.html :: header"></header>
 <section class="userProfileSection">
+    <th:block th:object="${user}">
     <div class="profileInfo">
         <div class="pic">
             <div class="picWrap"><img
-                    src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png"
+                    th:src="*{userFile}"
                     alt="민쇼니"></div><a class="favoriteSymbol">
             <div class="favorite active"></div>
         </a>
@@ -25,23 +26,138 @@
             <div class="profileInfoTxtFirst">
                 <div class="profileStatusSection">
                     <div class="userTag grayTag"><span>번호미인증</span></div>
-                    <div class="userTag" style="background-color:#50a9ab;border:1px solid#50a9ab"><span>ENTP</span>
+
+                    <div class="userTag">
+                       <!-- <span>ENTP</span>-->
+                        <!-- 유저의 mbti 가 entp 일때-->
+                        <th:block th:if="*{userMbtiName} == ENTP">
+                            <div class="userTag entp" >
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+                        <!-- 유저의 mbti 가 istj 일때-->
+                        <th:block th:if="*{userMbtiName} == ISTJ">
+                            <div class="userTag istj" >
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+                        <!-- 유저의 mbti 가 enfp 일때-->
+                        <th:block th:if="*{userMbtiName} == ENFP">
+                            <div class="userTag enfp" >
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+
+                        <!-- 유저의 mbti 가 esfj 일때-->
+                        <th:block th:if="*{userMbtiName} == ESFJ">
+                            <div class="userTag esfj" >
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+
+                        <!-- 유저의 mbti 가 isfj-->
+                        <th:block th:if="*{userMbtiName} == ISFJ">
+                            <div class="userTag isfj" >
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+
+                        <!-- enfj-->
+                        <th:block th:if="*{userMbtiName} == ENFJ">
+                            <div class="userTag enfj" >
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+
+                        <!--INFJ-->
+                        <th:block th:if="*{userMbtiName} == INFJ">
+                            <div class="userTag infj">
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+
+                        <!--ISTP -->
+                        <th:block th:if="*{userMbtiName} == ISTP ">
+                            <div class="userTag istp" >
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+
+                        <!--ESTP-->
+                        <th:block th:if="*{userMbtiName} == ESTP ">
+                            <div class="userTag estp">
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+
+                        <!--INTJ -->
+                        <th:block th:if="*{userMbtiName} == INTJ  ">
+                            <div class="userTag intj">
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+
+                        <!--ISFP -->
+                        <th:block th:if="*{userMbtiName} == ISFP  ">
+                            <div class="userTag isfp" >
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+
+                        <!--INFP  -->
+                        <th:block th:if="*{userMbtiName} == INFP   ">
+                            <div class="userTag infp">
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+
+                        <!--ESTJ   -->
+                        <th:block th:if="*{userMbtiName} == ESTJ    ">
+                            <div class="userTag estj">
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+
+                        <!--ESFP   -->
+                        <th:block th:if="*{userMbtiName} == ESFP    ">
+                            <div class="userTag esfp">
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+
+                        <!--ENTJ   -->
+                        <th:block th:if="*{userMbtiName} == ENTJ ">
+                            <div class="userTag entj">
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+
+                        <!--INTP   -->
+                        <th:block th:if="*{userMbtiName} == INTP ">
+                            <div class="userTag intp">
+                                <span th:text="*{userMbtiName}"></span>
+                            </div>
+                        </th:block>
+
+
+
                     </div>
                     <div class="modifyBtn"></div>
                 </div>
-                <h2 class="tit"><img class="userLv"
-                                     src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_4.png"
-                                     alt="렛플렙">&nbsp;
-                    <!-- -->민쇼니
+                <h2 class="tit"><img class="userLv"  th:src="*{userNeosBadge}" alt="렛플렙">
+
+                  <span class="name" style="font-size: 22px;" th:text="*{userNickName}"> 민쇼니 </span>
                 </h2>
                 <p class="introduction">마지막 로그인 :
                     <!-- --> 오늘
                 </p>
-                <div class="topBtnWrap btnWrap"><button class="pinkBtn">1:1 대화</button><button class="blackBtn">모임
+                <div class="topBtnWrap btnWrap"><button class="pinkBtn">1:1 대화</button><button class="blackBtn">스터디
                     초대</button></div>
             </div>
             <div class="myTabWrapContainer">
-                <div class="myTabWrap"><a class="">정보</a><a class="active">문의( 1 )
+                <div class="myTabWrap"><a class="">정보</a>
+                    <input type="hidden" th:href="*{userId}">
+                    <a class="active">문의( 1 )
                 </a><a class="">
 
                 </a></div>
@@ -49,35 +165,57 @@
             <section class="grayBg secretNote">
                 <div class="projectFeedContents mypage">
                     <p class="tit">나의 문의함(Q&amp;A)&nbsp; <span>(1)</span></p>
-                    <div class="communiWrap"><textarea class="text123" placeholder="네오스에 궁금한게 있으신가요? 궁굼한 사항을 작성해 주세요!" rows="2"
-                                                       maxlength="1000"></textarea>
+                    <form th:action="@{/inquiry/write}" th:object="${inquiryDTO}" name="inquiryWrite" id="dof" method="post" class="form-horizontal form-validate" >
+                        <input type="hidden" name="nowUser" th:value="${session.loginUser}">
+                        <div class="communiWrap">
+                        <input type="hidden" th:value="${session.loginUser}" name="userId" id="user" class="user">
+
+
+                        <textarea th:field="*{inquiryContent}" class="text123" placeholder="네오스에 궁금한게 있으신가요? 궁굼한 사항을 작성해 주세요!" rows="2"
+                                                       maxlength="1000" name="cContent" id="content1"></textarea>
                         <div class="buttonCountWrap">
                             <p class="count"><span class="spanCount">0</span>/<span>500</span></p>
-                            <button class="registration" style="margin-left: 891px; position: absolute; display: none">등록</button>
+                            <button id="sendButton" class="registration" style="margin-left: 891px; position: absolute; display: none" onclick="sendInquiry()">등록</button>
                             <button class="cance">취소</button>
                         </div>
                     </div>
+                    </form>
+
+
+
                     <div class="section feedUploadedSection">
+
+
+
+                        <th:block th:each="inquiry:${inquirys}" th:object="${inquiry}">
                         <div class="feedUploadWrap">
                             <div class="feedContentsWrap">
                                 <div class="top"><a href="/people/민쇼니" target="_blank">
                                     <div class="thumb"><img loading="lazy"
-                                                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png"
+                                                            th:src="*{user.userFile}"
                                                             alt="user_image"></div>
                                 </a>
                                     <div class="name">
-                                        <p class="profileName">민쇼니
-
+                                        <p class="profileName" th:text="*{user.userNickName}">
                                         </p><span>22.11.09 16:51</span>
                                     </div>
                                 </div>
                                 <div class="feedContents"><textarea class="textarea2" maxlength="1000"
                                                                     style="font-size: 0.875rem; height: 62px !important; white:100%"
-                                                                    disabled=""  >의대에 관심있는데 안과전공한 사람들의 스터디에 들어가고싶은데 어케 들어가여?</textarea></div>
+                                                                    disabled="" th:text="*{inquiryContent}" >의대에 관심있는데 안과전공한 사람들의 스터디에 들어가고싶은데 어케 들어가여?</textarea></div>
 
                                 <div class="btnWrap">
-                                    <div class="statusCircle"><span style="font-size: .75rem!important;color: #fff!important;">답변 완료</span></div>
+                                    <div class="statusCircle">
+                                        <th:block th:if="*{inquiryReply} != null">
+                                        <span style="font-size: .75rem!important;color: #fff!important;">답변 완료</span>
+                                        </th:block>
+
+                                        <th:block th:unless="*{inquiryReply} != null">
+                                        <span style="font-size: .75rem!important;color: #fff!important;">답변 대기</span>
+                                        </th:block>
+                                    </div>
                                     <button class="txtBtn" onclick="modalUp()">삭제</button>
+                                    <input type="hidden" th:href="*{inquiryId}" id="cidUpdate">
                                 </div>
                                 <div class="bottom"><a class="feedReply active">댓글 열기</a><span class="replayCount">1</span></div>
                             </div>
@@ -99,21 +237,23 @@
                                     <div class="bottom">
                                         <div class="left"></div>
                                         <div class="txtWrap"><textarea disabled="" maxlength="500"
-                                                                       style="font-size: 0.875rem; height: 42px !important;">스터디 모집에 들어가시면 굉장히 많아요</textarea>
+                                                                       style="font-size: 0.875rem; height: 42px !important;" th:text="*{inquiryReply}">스터디 모집에 들어가시면 굉장히 많아요</textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </th:block>
                     </div>
                 </div>
             </section>
         </div>
     </div>
+    </th:block>
 </section>
 <div th:replace="/app/fix/footer.html :: footer"></div>
 <div th:replace="/app/fix/chattingAll.html :: chattingAll"></div>
-<div th:replace="/app/neosUser/modalList.html :: modalSpace"></div>
+<!--<div th:replace="/app/neosUser/modalList.html :: modalSpace"></div>-->
 
 <!-- 삭제 버튼 모달 -->
 <div class="modalWrapOpen">
@@ -160,8 +300,19 @@
     }
 
 
+    function sendInquiry() {
+
+        inquiryWrite.submit();
+    }
+
+    $(".myTabWrap").on("click", function (e) {
+        alert($(this).next().attr("href"));
+        e.preventDefault();
+        location.href = "/inquiry/info/yes" + "?userId=" + $(this).next().attr("href");
+    });
+
 </script>
 
 
-<script src="/js/fix/login.js"></script>
+<!--<script src="/js/fix/login.js"></script>-->
 </html>

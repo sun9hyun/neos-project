@@ -19,7 +19,6 @@ public class Inquiry extends Period {
 
     @NotNull
     private String inquiryContent;
-    @NotNull
     private String inquiryReply;
 
     @Enumerated(EnumType.STRING)

@@ -7,6 +7,8 @@ import com.app.neos.entity.neos.QNeosPoint;
 import com.app.neos.entity.neos.QNeosPower;
 import com.app.neos.entity.user.QUser;
 import com.app.neos.entity.user.User;
+import com.app.neos.repository.user.UserCustomRepository;
+import com.app.neos.repository.user.UserCustomRepositoryImpl;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.type.user.UserCollegeMajor;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -34,7 +36,11 @@ public class NeosUserServiceTest {
     NeosUserService neosUserService;
 
     @Autowired
+    UserCustomRepository userCustomRepository;
+
+    @Autowired
     JPAQueryFactory jpaQueryFactory;
+
 
 
 //    유저 등록 테스트
@@ -68,25 +74,17 @@ public class NeosUserServiceTest {
 
         User user1 = user1DTO.toEntity();
 
-        userRepository.save(user1);
+        neosUserService.saveUser(user1);
 
 
     }
 
-
 //    @Test
-//    public void findUser(){
-//        List<UserDTO> userDTOS = jpaQueryFactory.select(new QUserDTO(
-//                QUser.user.userId,
-//                QUser.user.userNickName,
-//                QUser.user.userLike,
-//                QUser.user.userNeosPoint,
-//                QUser.user.userChattingPoint,
-//                QCollege.college.collegeName,
-//                QUser.user.userCollegeInfo
-//                ))
-//                .from(QUser.user)
-//                .fetch();
+//    public void findByKeywordTest(){
+//        UserDTO userDTO = new UserDTO();
+//
+//
+//        neosUserService.findByKeyword("인천대학교");
 //
 //    }
 

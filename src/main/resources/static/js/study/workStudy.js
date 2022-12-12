@@ -66,7 +66,7 @@ var $meeting = $(".meeting");
 $meeting.attr('disabled',true);
 
 $member.on("change", function() {
-    if($member.val() == "01"){
+    if($member.val() == "0"){
         $('.meeting').removeAttr('disabled');
     }else{
         $('.meeting').attr('disabled',true);
@@ -75,7 +75,7 @@ $member.on("change", function() {
 });
 
 $meeting.on("change", function() {
-    if($meeting.val() == "02"){
+    if($meeting.val() == "OFFLINE"){
         $('.meetingPlace').css("display", "flex");
     }else{
         $('.meetingPlace').css("display", "none");
@@ -131,15 +131,7 @@ $(".mileBtn").on("click", function () {
 })
 
 
-// 할일 완료 처리
-$(".statusCircle").on("click",function () {
-    if($(this).children().text() == "완료") {
-        let name = $(this).parents(".taskContentsWrap").children(".tastContent").children(".taskTxt").text().split("]")[1];
-        $(".modal1").children(".modalContent").children(".modalName").text("[" + name + " ]");
-        $(".modalWrapOpen").show();
-        $(".modal1").css('display', 'inline-block');
-    }
-})
+
 
 // 목표 등록 할 때,
 $(".addTaskButton").on("click",function () {

@@ -351,6 +351,7 @@
 </script>
 <script th:inline="javascript">
     var studyNumber = [[${study.studyId}]];
+    var nowWriter = [[${nowUser.getUserFile()}]]
     show();
     function show(){
         $.ajax({
@@ -452,7 +453,7 @@
                 text += `</div>`
                 text += `</div>`
                 text += `<div class="replayInput">`
-                text += `<div class="profileThumb"><img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image"></div>`
+                text += `<div class="profileThumb"><img loading="lazy" width="44px" height="44px" src="`+nowWriter+`" alt="user_image"></div>`
                 text += `<div class="txtInput"><textarea type="text" placeholder="댓글을 작성해주세요." rows="4" maxlength="500"></textarea>`
                 text += `<div class="btnWrap">`
                 text += `<button class="whiteBtn replyPost">등록</button>`

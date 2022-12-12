@@ -61,7 +61,7 @@ $onOffSelect.on("change", function() {
 });
 
 $("#onOffSelect").on("change",function () {
-    if($("#onOffSelect option:selected").val()=='offline'){
+    if($("#onOffSelect option:selected").val()=='online'){
         $("#onOffResult option:eq(0)").attr("selected", "selected");
         $("#onOffResult").prop('disabled',true);
         $("#onOffResult").after(`<input type="hidden" id="studyCity_1j" name="studyCity" value="no">`)

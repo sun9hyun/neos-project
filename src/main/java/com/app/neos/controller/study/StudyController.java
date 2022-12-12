@@ -7,10 +7,7 @@ import com.app.neos.domain.study.StudySearch;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.service.join.JoinService;
-import com.app.neos.service.study.StudyFeedService;
-import com.app.neos.service.study.StudyMemberService;
-import com.app.neos.service.study.StudyQuestionService;
-import com.app.neos.service.study.StudyService;
+import com.app.neos.service.study.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +37,7 @@ public class StudyController {
     private final StudyQuestionService studyQuestionService;
     private final StudyMemberService studyMemberService;
     private final StudyFeedService studyFeedService;
+    private final StudyWorkService studyWorkService;
 
 
     @GetMapping("/create")
@@ -155,8 +153,9 @@ public class StudyController {
     }
 
     @GetMapping("/feed/{studyId}")
-    public String feedDetail(@PathVariable Long studyId, Model model){
-
+    public String feedDetail(@PathVariable Long studyId, Model model, HttpServletRequest request){
+        HttpSession session = (HttpSession)request.getSession();
+        Long userId = (Long)session.getAttribute("loginUser");
         StudyDTO study = studyService.getStudyDTO(studyId);
         UserDTO user = studyService.getInfo(study.getUserId());
         List<StudyQuestionDTO> questions = studyQuestionService.getInfo(studyId);
@@ -171,6 +170,7 @@ public class StudyController {
         model.addAttribute("writer",user);
         model.addAttribute("study",study);
         model.addAttribute("minusDay",studyService.minusDay(study));
+        model.addAttribute("nowUser",studyService.nowWriter(userId));
         return "app/study/feed-study";
     }
 
@@ -182,6 +182,7 @@ public class StudyController {
         List<StudyQuestionDTO> questions = studyQuestionService.getInfo(studyId);
         List<Long> ids = study.getStudySupporterDTOS().stream().map(i->i.getUser().getUserId()).collect(Collectors.toList());
 
+
         List<Long> memberIds = study.getStudyMemberList().stream().map(i->i.getUserDTO().getUserId()).collect(Collectors.toList());
         memberIds.add(study.getUserId());
         model.addAttribute("memberList",memberIds);
@@ -191,6 +192,8 @@ public class StudyController {
         model.addAttribute("writer",user);
         model.addAttribute("study",study);
         model.addAttribute("minusDay",studyService.minusDay(study));
+        model.addAttribute("proceed",studyWorkService.showProceeding(studyId));
+        model.addAttribute("finish",studyWorkService.showFinish(studyId));
         return "app/study/workStudy";
     }
 

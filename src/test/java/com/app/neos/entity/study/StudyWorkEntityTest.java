@@ -34,7 +34,6 @@ public class StudyWorkEntityTest {
     public void saveTest(){
         StudyWorkDTO studyWorkDTO = new StudyWorkDTO();
         studyWorkDTO.setStudyWorkContent("오메가호근몬 토벌");
-        studyWorkDTO.setStudyWorkTargetDate(LocalDateTime.of(2022, 6, 10, 10, 00));
         studyWorkDTO.setStudyLocationStatus(StudyLocationStatus.ONLINE);
         studyWorkDTO.setStudyWorkStatus(StudyWorkStatus.PROCEEDING);
 

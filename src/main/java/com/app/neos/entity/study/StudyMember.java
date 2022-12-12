@@ -52,6 +52,8 @@ public class StudyMember extends Created {
         dto.setStudyMemberStatus(this.studyMemberStatus);
         dto.setStudyId(this.study.getStudyId());
         dto.setUserDTO(this.user.toDTO());
+        dto.setCreatDate(this.getCreatedDate().toLocalDate());
+        dto.setCreatedTime(this.getCreatedDate());
         return dto;
     }
 }

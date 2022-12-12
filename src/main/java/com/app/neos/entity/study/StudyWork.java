@@ -12,6 +12,8 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -73,5 +75,26 @@ public class StudyWork extends Period {
 
     public void statusUpdate(StudyWorkDTO studyWorkDTO){
         this.studyWorkStatus = studyWorkDTO.getStudyWorkStatus();
+    }
+
+    public StudyWorkDTO toDTO(){
+        StudyWorkDTO dto = new StudyWorkDTO();
+        dto.setStudyWorkId(this.studyWorkId);
+        dto.setStudyWorkContent(this.studyWorkContent);
+        dto.setStudyWorkTargetDate(this.studyWorkTargetDate.toLocalDate());
+        dto.setStudyWorkLocation(this.studyWorkLocation);
+        dto.setStudyLocationStatus(this.studyLocationStatus);
+        dto.setStudyWorkStatus(this.studyWorkStatus);
+        dto.setStudyWorkWriter(this.studyWorkWriter.toDTO());
+        if(this.studyWorkChoiceMember != null){
+            dto.setStudyWorkChoiceMember(this.studyWorkChoiceMember.toDTO());
+        }
+        dto.setStudy(this.study.toDTO());
+        dto.setCreateDate(this.getCreatedDate().toLocalDate());
+        int dday =  (int)Duration.between(LocalDateTime.now(), this.getStudyWorkTargetDate()).toDays();
+        dto.setDDay(dday);
+        dto.setCreatedTime(this.getCreatedDate());
+        dto.setUpdatedTime(this.getUpdatedDate());
+        return dto;
     }
 }

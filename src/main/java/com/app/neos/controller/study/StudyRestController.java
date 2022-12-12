@@ -3,18 +3,17 @@ package com.app.neos.controller.study;
 
 import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.domain.study.StudySearch;
+import com.app.neos.domain.study.StudyWorkDTO;
 import com.app.neos.entity.study.Study;
 import com.app.neos.service.study.StudyService;
+import com.app.neos.service.study.StudyWorkService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,6 +38,17 @@ public class StudyRestController {
     @PutMapping("/college")
     public List<String> getCollegeNames(){
         return studyService.collegeName();
+    }
+
+
+    private final StudyWorkService studyWorkService;
+    @GetMapping("/test/{bno}")
+    public List<StudyWorkDTO> proceeding(@PathVariable("bno") Long studyId){
+        return studyWorkService.showProceeding(studyId);
+    }
+    @PostMapping("/test/{bno}")
+    public List<StudyWorkDTO> finish(@PathVariable("bno") Long studyId){
+        return studyWorkService.showFinish(studyId);
     }
 
 }

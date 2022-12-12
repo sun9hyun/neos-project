@@ -77,22 +77,26 @@ public class NeosUserController {
 
     //    네오스인 페이지 목록 로그인 후
     @GetMapping("/list")
-    public String list(Model model) {
+    public String list(Model model , String keyWord) {
 //        List<UserDTO> userDTOS = neosUserService.findUser();
 //        userDTOS.forEach(t -> log.info(t.getCollege().getCollegeName().toString()));
 
 //        전체 유저 정보 불러오기
        List<UserDTO> userDTOS = userRepository.findAll().stream().map(i->i.toDTO()).collect(Collectors.toList());
-
         model.addAttribute("users", userDTOS);
+
+//        검색
+//        List<UserDTO> userDTOList = neosUserService.findByKeyword(keyWord);
+//
+//        model.addAttribute("userNickNames" , userDTOList);
+
+        //   유저 상세보기
         model.addAttribute("collegeCityList",joinService.getCollegeCityList());
 
-        System.out.println("------>>>>>>>>>sdfsdfsdfㄴㅇㄹㄴㅇㄹㄴ" + joinService.getCollegeCityList());
+
+
+
         return "app/neosUser/neosListAfter";
-
-
-
-
     }
 //  네오스인 페이지 목록  로그인 전
     @GetMapping("/before/list")
@@ -113,6 +117,7 @@ public class NeosUserController {
     public String infoYes(Long userId  ,Model model){
 //        List<User> userDTOS = neosUserService.findUser();
 //        model.addAttribute("users",userDTOS);
+
 //        UserDTO userDTO = (UserDTO) userRepository.findById(userId).stream().map(i->i.toDTO()).collect(Collectors.toList());
 //        model.addAttribute("userInterest", neosUserService.findByUserId(userId));
 
@@ -124,6 +129,7 @@ public class NeosUserController {
 
         return "app/neosUser/userInfoYes";
     }
+
 
 
 

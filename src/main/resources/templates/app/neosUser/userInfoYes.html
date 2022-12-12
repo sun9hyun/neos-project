@@ -8,8 +8,9 @@
     <title>NEOS | 프로필 상세</title>
     <link rel="stylesheet" href="/css/neosUser/userInfo.css">
     <link rel="stylesheet" href="/css/neosUser/modalList.css">
-    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/loginHeader.css">
     <link rel="stylesheet" href="/css/fix/chatting.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
@@ -155,8 +156,10 @@
                 </div>
             </div>
             <div class="myTabWrapContainer">
-                <div class="myTabWrap"><a class="active">정보</a><a class="">문의(<!-- --> 1<!-- --> )</a><!--<a class="">스토리(
-                    &lt;!&ndash; &ndash;&gt; 0&lt;!&ndash; &ndash;&gt; )</a>--></div>
+                <div class="myTabWrap"><a class="active">정보</a>
+                    <a class="inquiryDetail">문의(<!-- --> 1<!-- --> )</a>
+                    <input type="hidden" th:href="*{userId}">
+                </div>
             </div>
             <div class="summaryInfo">
                 <div class="summaryInfoWrap">
@@ -656,4 +659,17 @@
 <script src="/js/neosUser/userInfo.js"></script>
 <script src="/js/fix/chatting.js"></script>
 <script src="/js/fix/login.js"></script>
+<script src="/js/fix/header.js"></script>
+
+<script>
+
+    $(".inquiryDetail").on("click", function (e) {
+        alert($(this).next().attr("href"));
+        e.preventDefault();
+        location.href = "/inquiry/list" + "?userId=" + $(this).next().attr("href");
+    });
+
+
+</script>
+
 </html>

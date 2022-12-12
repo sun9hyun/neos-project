@@ -44,6 +44,9 @@ public class StoreController {
         model.addAttribute("stores", storeDTOS);
         model.addAttribute("total", storeService.findStore().size());
 
+        System.out.println("********************* storeDTOS : " + storeDTOS + "*********************");
+
+
         return "app/store/storeList";
 
 

@@ -46,10 +46,14 @@ function submit() {
     console.log($(".textInput").val());
     console.log($(".storeContent").val());
     console.log($(".cashCheck").val().length);
+    console.log($(".addFile").length);
 
     if($(".textInput").val().length < 3){ // 제목 조건 미충족
         $(".modalWrapOpen").show();
         $(".modal2").css('display','inline-block');
+    }else if($(".addFile").length < 1){ // 자료 조건 미충족
+        $(".modalWrapOpen").show();
+        $(".modal5").css('display','inline-block');
     }else if($(".storeContent").val().length < 1){ // 내용 조건 미충족
         $(".modalWrapOpen").show();
         $(".modal3").css('display','inline-block');
@@ -60,9 +64,6 @@ function submit() {
     }else if($(".cashCheck").val().length < 4){ // 최소 포인트 조건 미충족
         $(".modalWrapOpen").show();
         $(".modal1").css('display','inline-block');
-    }else if($(".cashCheck").val().length >= 4){
-        $(".modalWrapOpen").show();
-        $(".modal4").css('display','inline-block');
     }
 }
 /*-------------------------------------------------------------------------------------------------------------*/
@@ -189,7 +190,7 @@ $("input[name='upload1']").on("change", function(){
 
                 text1 += file.storeFileName +`(` + parseInt(file.storeFileSize / 1024) +`KB)`;
 
-                text2 += `<div class="fileVal1" type="hidden" data-file-size="` + file.storeFileSize + `" data-file-name="` + file.storeFileName + `" data-file-upload-path="` + file.storeFilePath + `" data-file-uuid="` + file.storeFileUuid + `">`;
+                text2 += `<div class="fileVal1 addFile" type="hidden" data-file-size="` + file.storeFileSize + `" data-file-name="` + file.storeFileName + `" data-file-upload-path="` + file.storeFilePath + `" data-file-uuid="` + file.storeFileUuid + `">`;
                 text2 += `</div>`;
 
                 text3 += `<div type="hidden" class="fileData1">`;
@@ -259,7 +260,7 @@ $("input[name='upload2']").on("change", function(){
 
                 text1 += file.storeFileName +`(` + parseInt(file.storeFileSize / 1024) +`KB)`;
 
-                text2 += `<div class="fileVal2" type="hidden" data-file-size="` + file.storeFileSize + `" data-file-name="` + file.storeFileName + `" data-file-upload-path="` + file.storeFilePath + `" data-file-uuid="` + file.storeFileUuid + `">`;
+                text2 += `<div class="fileVal2 addFile" type="hidden" data-file-size="` + file.storeFileSize + `" data-file-name="` + file.storeFileName + `" data-file-upload-path="` + file.storeFilePath + `" data-file-uuid="` + file.storeFileUuid + `">`;
                 text2 += `</div>`;
 
                 text3 += `<div type="hidden" class="fileData2">`;
@@ -328,7 +329,7 @@ $("input[name='upload3']").on("change", function(){
 
                 text1 += file.storeFileName +`(` + parseInt(file.storeFileSize / 1024) +`KB)`;
 
-                text2 += `<div class="fileVal3" type="hidden" data-file-size="` + file.storeFileSize + `" data-file-name="` + file.storeFileName + `" data-file-upload-path="` + file.storeFilePath + `" data-file-uuid="` + file.storeFileUuid + `">`;
+                text2 += `<div class="fileVal3 addFile" type="hidden" data-file-size="` + file.storeFileSize + `" data-file-name="` + file.storeFileName + `" data-file-upload-path="` + file.storeFilePath + `" data-file-uuid="` + file.storeFileUuid + `">`;
                 text2 += `</div>`;
 
                 text3 += `<div type="hidden" class="fileData3">`;

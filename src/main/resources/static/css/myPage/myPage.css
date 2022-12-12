@@ -1061,6 +1061,50 @@ input[type=checkbox], input[type=radio] {
 
 
 
+/*------------------*/
+.moreButtonBox {
+    display: -moz-box;
+    display: flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.moreButtonBox {
+    -moz-box-pack: center;
+    justify-content: center;
+    -moz-box-align: center;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.buttonComponents_button__1hvQa.buttonComponents_radius__2l9SM.buttonComponents_md__26Zib {
+    padding: 13px 24px;
+}
+
+.buttonComponents_button__1hvQa.buttonComponents_radius__2l9SM {
+    border-radius: 50px;
+    border: 1px solid #ced2d4;
+    padding: 8px 16px;
+}
+
+.buttonComponents_button__1hvQa {
+    font-size: 14px;
+    line-height: 16px;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #202224;
+    grid-gap: 4px;
+    gap: 4px;
+}
+
+
+
 
 
 

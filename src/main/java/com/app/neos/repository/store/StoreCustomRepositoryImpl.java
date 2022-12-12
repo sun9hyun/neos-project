@@ -7,11 +7,10 @@ import com.app.neos.entity.store.Store;
 import com.app.neos.entity.user.QUser;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -59,6 +58,22 @@ public class StoreCustomRepositoryImpl implements StoreCustomRepository {
     }
 
     @Override
+    public List<StoreDTO> findByUserId(Long userId) {
+        return jpaQueryFactory.select(new QStoreDTO(
+                QStore.store.storeId,
+                QStore.store.storeStatus,
+                QStore.store.storePoint,
+                QStore.store.storeTitle,
+                QStore.store.storeContent,
+                QStore.store.user
+                ))
+                .from(QStore.store)
+                .where(QStore.store.user.userId.eq(userId))
+                .orderBy(QStore.store.storeId.desc())
+                .fetch();
+    }
+
+    @Override
     public List<StoreDTO> findAll() {
         return jpaQueryFactory.select(new QStoreDTO(
                 QStore.store.storeId,
@@ -98,5 +113,33 @@ public class StoreCustomRepositoryImpl implements StoreCustomRepository {
                 .from(QStore.store).fetch().size();
 
         return new PageImpl<>(storeDTOS,pageable,total);
+    }
+
+    @Override
+    public Slice<StoreDTO> findAllPageBySlice(Pageable pageable, Long userId) {
+
+        List<StoreDTO> storeDTOS = jpaQueryFactory.select(new QStoreDTO(
+                QStore.store.storeId,
+                QStore.store.storeStatus,
+                QStore.store.storePoint,
+                QStore.store.storeTitle,
+                QStore.store.storeContent
+        ))
+                .from(QStore.store)
+                .where(QStore.store.user.userId.eq(userId))
+                .orderBy(QStore.store.storeId.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize() + 1)
+                .fetch();
+
+        ArrayList<StoreDTO> content = (ArrayList<StoreDTO>)storeDTOS;
+
+        boolean hasNext = false;
+        if (content.size() > pageable.getPageSize()){
+            content.remove(pageable.getPageSize());
+            hasNext=true;
+        }
+
+        return new SliceImpl<>(content,pageable,hasNext);
     }
 }

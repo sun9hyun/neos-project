@@ -13,6 +13,7 @@ import com.app.neos.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -150,7 +151,8 @@ public class StoreService {
     // 자료상점 게시글 페이징 처리
     public Page<StoreDTO> findStorePage(Pageable pageable) {return storeCustomRepository.findAllPage(pageable);}
 
-
+    // 자료상점 게시글 슬라이스 페이징 처리
+    public Slice<StoreDTO> findStorePageBySlice(Pageable pageable, Long userId){return storeCustomRepository.findAllPageBySlice(pageable, userId);}
 
 
 

@@ -61,7 +61,7 @@ public class InquiryController {
     }
 
 
-    @GetMapping("inquriry/delete")
+    @GetMapping("inquiry/delete")
     public RedirectView deleteById(Long inquiryId){
         inquiryService.remove(inquiryId);
         return new RedirectView("list");

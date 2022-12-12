@@ -292,3 +292,42 @@ $otoo.on("change", function() {
         $('.areaSort').removeAttr('disabled');
     }
 });
+
+/*-----------------------------자료상점----------------------------------*/
+var $lock = $(".lock");
+var $free = $(".free");
+var $top = $(".top");
+var $topImg = $(".top img");
+var $shopLink = $(".shopLink");
+
+console.log("storedList 들어옴");
+
+// $lock.hover(function(){
+//     $(this).find($top).css("filter", "brightness(0.6)");
+//     $(this).find($shopLink).toggleClass("shopLink");
+// },function(){
+//     $(this).find($top).css("filter", "brightness(1)");
+//     $(this).find($shopLink).toggleClass("shopLink");
+// });
+
+$('.contetnsGrid').on("mouseover", ".free" ,function(){
+    $(this).find(".top img").attr("src", "/images/store/qr.jpg");
+    $(this).find(".shop").removeClass("shopLink");
+})
+
+$('.contetnsGrid').on("mouseout", ".free" ,function(){
+    $(this).find(".top img").attr("src", "/images/store/storeNeos.png");
+    $(this).find(".shop").addClass("shopLink");
+})
+
+$('.contetnsGrid').on("mouseover", ".lock" ,function(){
+    $(this).find(".top").css("filter", "brightness(0.6)");
+    $(this).find(".shop").removeClass("shopLink");
+})
+
+$('.contetnsGrid').on("mouseout", ".lock" ,function(){
+    $(this).find(".top").css("filter", "brightness(1)");
+    $(this).find(".shop").addClass("shopLink");
+})
+
+

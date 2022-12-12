@@ -123,32 +123,15 @@
 
                         <div class="section onlyTxtSection">
                             <h1 class="tabTit">- 소개</h1>
-                            <div class="projectTextArea" disabled="" th:utext="*{storeContent}">
-                                ● 자료상점이란?
-
-                                [목표] : 서로 자료와 성적이 잘나오는 노하우를 공유하여 성적을 높일 수 있게 됩니다
-
-
-                                ● 참여 조건
-
-                                [지식수준] : 본인이 가지고 있는 지식
-
-                                [유료] : 포인트로 결제 할 수 있고 포인트 충전은 마이페이지에서 충전 가능합니다
-
-                                [참여기준] : 모두가 참여 할 수 있는 공간입니다 많은 참여 바랍니다!🤗
-
-                                [첨부파일 등록] : 첨부파일은 hwp, pdf, png, jpg, jpeg, png, pptx, xlsx, xls, docx, txt가 가능합니다!
-
-
-                            </div>
+                            <div class="projectTextArea" disabled="" th:utext="*{storeContent}"></div>
                         </div>
 
                         <div class="projectDetailWrap" style="padding: 0;">
                             <div class="projectTab projectFeedContents active">
-                                <input type="text" th:value="*{user.userId}" name="storeUserId"></input>
-                                <input type="text" th:value="${session.loginUser}" name="userId"></input>
-                                <input type="text" name="storeReplySecret" class="replyStatus" value="PUBLIC"></input>
-                                <input type="text" name="storeId" th:value="*{storeId}"></input>
+                                <input type="hidden" th:value="*{user.userId}" name="storeUserId"></input>
+                                <input type="hidden" th:value="${session.loginUser}" name="userId"></input>
+                                <input type="hidden" name="storeReplySecret" class="replyStatus" value="PUBLIC"></input>
+                                <input type="hidden" name="storeId" th:value="*{storeId}"></input>
                                 <div class="section feedInputSection ">
                                     <div class="feedInputWrap">
                                         <textarea class="textarea" name="storeReplyContent"
@@ -233,13 +216,12 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="/js/study/feed-study.js"></script>
-<script src="/js/store/storeDetail.js"></script>
 <script src="/js/fix/login.js"></script>
 <script src="/js/fix/header.js"></script>
+<script src="/js/store/storeDetail.js"></script>
+<script src="/js/store/storeDetailAjax.js"></script>
 <script th:inline="javascript">
-    // let storeId = [[${store.storeId}]];
-    //
-    // console.log(storeId);
+    let storeId = $("input[name='storeId']").val();
 
     show();
 
@@ -258,12 +240,19 @@
     });
 
     function show() {
-        replyService.getList($("input[name='storeId']").val(), getList);
+        console.log("show 들어옴");
+        console.log(storeId);
+
+        replyService.getList(storeId, getList);
+
+        console.log("show 나감");
+
     }
 
     function getList(replies) {
         let text = "";
 
+        console.log("getList 들어옴");
         console.log(replies);
 
         replies.forEach(reply => {
@@ -343,7 +332,7 @@
                     text += "</div>";
                     text += "</div>";
 
-                } else {
+                } else if($("input[name='userId']").val() != reply.user.userId && $("input[name='userId']").val() != $("input[name='storeUserId']").val()) {
                     text += "<div class='section feedUploadedSection replySection'>";
                     text += "<div class='secret feedUploadWrap'>";
                     text += "<div class='feedContentsWrap'>";

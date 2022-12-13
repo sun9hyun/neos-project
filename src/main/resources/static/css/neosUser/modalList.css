@@ -56,6 +56,9 @@ input, textarea, select {
 .quitModal {
     display: none;
 }
+.payModal {
+    display: none;
+}
 
 
 

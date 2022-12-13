@@ -551,8 +551,9 @@
 }
 
 .userInformationComponents_profileRightGroupModifyBoxModal__1csNJ {
-    display: none;
     position: absolute;
+    display: -moz-inline-box;
+    display: inline-flex;
     -moz-box-orient: vertical;
     -moz-box-direction: normal;
     flex-direction: column;
@@ -561,10 +562,11 @@
     border: 1px solid #dfe3e4;
     border-radius: 4px;
     padding: 8px 6px;
-    left: -44px;
+    left: -25px;
     bottom: -56px;
     grid-gap: 10px;
-    gap: 10px
+    gap: 10px;
+    display: none;
 }
 
 .userInformationComponents_profileRightGroupModifyBoxModal__1csNJ button:hover {

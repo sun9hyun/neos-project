@@ -99,7 +99,7 @@ $(document).ready(function(){
 /*-----------------------------------------------------------------------------------------------------------*/
 $(document).ready(function(){
 //펼치기
-    $(".loungeCard").on("click", ".buttonComponents_blue__1FlTU", function () {
+    $(".centerSectionBox").on("click", ".buttonComponents_blue__1FlTU", function () {
         const $card = $(this).parent().prev();
         if (
             $card.hasClass(
@@ -149,7 +149,7 @@ $(document).ready(function(){
 /*댓글*/
 // textarea 부모클래스                              택스트애리아 클래스
     $("div.centerSectionBox").on("keyup", ".replyContent",function (e) {
-        console.log($(this));
+        // console.log($(this));
             let content = $(this).val();
             if (content.length == 0 || content == "") {
                 //텍스트애리아 로부터 숫자바뀌는거 span 태그 찾는작업
@@ -235,26 +235,26 @@ $(".replyComponent_reply__3l-Wc").on("click", ".replyComponent_replyFilter__10ko
 const $replyUpdateBtn = $(".userInformationComponents_userReplySection__3ty7Q").find(".replyUpdate");
 let replyText = '';
 let replyCommentCheck = false;
-$replyUpdateBtn.click(function () {
-    if(replyCommentCheck){
-        alert("해당 댓글 수정을 완료 해주세요.")
-        return;
-    }
-    if(!replyCommentCheck){
-        var text = $(this).closest(".userInformationComponents_userReplySection__3ty7Q").next().children().eq(0).text();
-        replyText = text;
-        const $replaceTag =  $(this).closest(".userInformationComponents_userReplySection__3ty7Q").next().children().eq(0);
-        var tab = `<textarea maxlength="1000" placeholder="대댓글을 입력해주세요." style="resize: none; padding: 16px 24px; border: 1px solid rgb(223, 227, 228); border-radius: 6px; height: 63px !important;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'>`+text+`</textarea>`
-        tab += `<div class="replyComponent_replyButtonGroup__2i0ow" style="justify-content: flex-end;"><button class = "replyUpdateButton_1j" style="border: 1px solid rgb(206, 210, 212); padding: 8px 16px; border-radius: 6px;">확인</button><button class = "replyCancelButton_1j" style="border: 1px solid rgb(206, 210, 212); padding: 8px 16px; border-radius: 6px;">취소</button></div>`;
-        if($replaceTag.prop(`tagName`)=='P'){
-            $(this).closest(".userInformationComponents_userReplySection__3ty7Q").next().children().eq(0).replaceWith(tab);
-        }
-        replyCommentCheck=true;
-    }
+// $("div.centerSectionBox").on("click",$replyUpdateBtn,function () {
+//     if(replyCommentCheck){
+//         alert("해당 댓글 수정을 완료 해주세요.")
+//         return;
+//     }
+//     if(!replyCommentCheck){
+//         var text = $(this).closest(".userInformationComponents_userReplySection__3ty7Q").next().children().eq(0).text();
+//         replyText = text;
+//         const $replaceTag =  $(this).closest(".userInformationComponents_userReplySection__3ty7Q").next().children().eq(0);
+//         var tab = `<textarea maxlength="1000" placeholder="대댓글을 입력해주세요." style="resize: none; padding: 16px 24px; border: 1px solid rgb(223, 227, 228); border-radius: 6px; height: 63px !important;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'>`+text+`</textarea>`
+//         tab += `<div class="replyComponent_replyButtonGroup__2i0ow" style="justify-content: flex-end;"><button class = "replyUpdateButton_1j" style="border: 1px solid rgb(206, 210, 212); padding: 8px 16px; border-radius: 6px;">확인</button><button class = "replyCancelButton_1j" style="border: 1px solid rgb(206, 210, 212); padding: 8px 16px; border-radius: 6px;">취소</button></div>`;
+//         if($replaceTag.prop(`tagName`)=='P'){
+//             $(this).closest(".userInformationComponents_userReplySection__3ty7Q").next().children().eq(0).replaceWith(tab);
+//         }
+//         replyCommentCheck=true;
+//     }
+//
+// })
 
-})
-
-$(".replyComponent_replyContent__3iS4J").on("click",".replyCancelButton_1j",function () {
+$("div.centerSectionBox").on("click",".replyCancelButton_1j",function () {
    var text= $(this).parent().prev().val();
     $(this).parent().prev().replaceWith(`<p class="replyContent_content_1j">`+replyText+`</p>`);
     $(this).parent().remove();

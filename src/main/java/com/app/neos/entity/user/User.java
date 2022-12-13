@@ -1,6 +1,7 @@
 package com.app.neos.entity.user;
 
 
+import com.app.neos.domain.neos.NeosPointDTO;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.embeddable.user.UserCollegeInfo;
 import com.app.neos.embeddable.user.UserLike;
@@ -154,8 +155,8 @@ public class User extends Period {
        this.userNeosPower = userNeosPower;
     }
 
-    public void updatePoint(UserDTO userDTO){
-       this.userNeosPoint = userDTO.getUserNeosPoint();
+    public void updatePoint(NeosPointDTO neosPointDTO){
+        this.userNeosPoint = this.userNeosPoint + neosPointDTO.getNeosPointMoney();
     }
 
     public void update(UserDTO userDTO){

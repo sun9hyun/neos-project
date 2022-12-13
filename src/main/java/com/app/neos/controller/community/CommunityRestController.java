@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Optional;
@@ -40,7 +41,9 @@ public class CommunityRestController {
 
     //     게시글 등록
     @PostMapping("/communityOk")
-    public String write(@RequestBody CommunityDTO communityDTO){
+    public String write(@RequestBody CommunityDTO communityDTO, HttpSession session){
+        Long userId = (Long)session.getAttribute("loginUser");
+        communityService.postEXP(userId);
         communityService.saveCommunity(communityDTO);
         return "write success";
     }
@@ -59,7 +62,7 @@ public class CommunityRestController {
         return "delete success";
     }
 
-//   ----------------------------------------------------------------------------------
+//   ---------------------------------------------------------------------------------------------------------------
     //     게시글 좋아요 수정
     @PutMapping("/communityLikeUpdate")
     public String likeModify(@RequestBody CommunityDTO communityDTO){

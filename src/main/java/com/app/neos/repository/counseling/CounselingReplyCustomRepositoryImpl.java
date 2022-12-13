@@ -3,6 +3,7 @@ package com.app.neos.repository.counseling;
 import com.app.neos.domain.counseling.CounselingReplyDTO;
 import com.app.neos.domain.counseling.QCounselingDTO;
 import com.app.neos.domain.counseling.QCounselingReplyDTO;
+import com.app.neos.entity.community.QCommunityReply;
 import com.app.neos.entity.counseling.QCounseling;
 import com.app.neos.entity.counseling.QCounselingReply;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -23,11 +24,13 @@ public class CounselingReplyCustomRepositoryImpl implements CounselingReplyCusto
                 QCounselingReply.counselingReply.counselingReplyId,
                 QCounselingReply.counselingReply.counselingReplyContent,
                 QCounselingReply.counselingReply.user,
-                QCounselingReply.counselingReply.counseling
+                QCounselingReply.counselingReply.counseling,
+                QCounselingReply.counselingReply.createdDate,
+                QCounselingReply.counselingReply.updatedDate
         ))
                 .from(QCounselingReply.counselingReply)
                 .where(QCounselingReply.counselingReply.counseling.counselingId.eq(counselingId))
-                .orderBy(QCounselingReply.counselingReply.createdDate.desc())
+                .orderBy(QCounselingReply.counselingReply.updatedDate.asc())
                 .fetch();
     }
 }

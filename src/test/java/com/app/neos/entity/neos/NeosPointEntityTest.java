@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.app.neos.type.point.NeosPointContent.포인트충전완료;
+import static com.app.neos.type.point.NeosPointContent.포인트충전;
 
 @SpringBootTest
 @Slf4j
@@ -28,9 +28,9 @@ public class NeosPointEntityTest {
     public void neosPointSaveTest(){
         NeosPointDTO neosPointDTO = new NeosPointDTO();
 
-        neosPointDTO.setNeosPointContent(포인트충전완료);
-        neosPointDTO.setNeosPointMoney(50_000);
-        neosPointDTO.setUser(userRepository.findById(2l).get());
+        neosPointDTO.setNeosPointContent(포인트충전);
+        neosPointDTO.setNeosPointMoney(1000);
+        neosPointDTO.setUser(userRepository.findById(1l).get());
 
         NeosPoint neosPoint = neosPointDTO.toEntity();
         neosPoint.changeUser(neosPointDTO.getUser());

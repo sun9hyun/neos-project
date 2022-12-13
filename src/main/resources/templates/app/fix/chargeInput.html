@@ -7,17 +7,19 @@
     <link rel="stylesheet" href="/css/fix/chatting.css">
     <link rel="stylesheet" href="/css/fix/loginHeader.css">
     <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/neosUser/modalList.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
 <header th:replace="/app/fix/header.html :: header"></header>
+
 <div id="next">
     <section class="payment">
-        <div class="commonContentViewHeader"><h1><span class="smTxt">LET'S be rich</span><span
-                class="bgTxt">네오 포인트 충전</span></h1></div>
+        <div class="commonContentViewHeader"><h1><span class="smTxt">LET'S be rich</span>
+            <span class="bgTxt">네오 포인트 충전</span></h1></div>
         <div>
-            <div class="adWrap"><p>더 많은 네오스인이 만나고 싶나요?</p>
-                <span>네오스와 함께 이야기 하는건 어떨까요?</span><span>(대화 완료 후, 상대방에게 포인트가 지급됩니다.)</span></div>
+            <div class="adWrap"><p>더 많은 서비스를 즐기고 싶나요?</p>
+                <span>네오스와 함께 하는건 어떨까요?</span><span>(서비스 이용 후, 네오력이 지급됩니다.)</span></div>
             <div class="step1 paymentStep"><p class="stepNumber"><span>1단계.</span>결제 금액을 선택해주세요.</p>
                 <div class="chargeTable">
                     <table>
@@ -36,39 +38,40 @@
                             <td><input class="cashCheck" id="name"  onkeyup="printName()" name = "point" type="text" placeholder="포인트를 입력해주세요 (숫자만)" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); disabled" disabled="disabled" ></td>
                         </tr>
                         <tr>
-                            <td><label class="checkBox"><input class = "radio" type="radio" name="price" value="5,000" checked="" ><span
+                            <td><label class="checkBox"><input class = "radio" type="radio" name="price" value="5000" checked="" ><span
                                     class="checkmark"></span></label></td>
-                            <td class="pr">5,000원</td>
+                            <td class="pr">5000원</td>
                             <td>5000 네오포인트 + 500 네오력</td>
                         </tr>
                         <tr>
-                            <td><label  class="checkBox"><input class = "radio"type="radio" name="price" value="10,000" ><span
+                            <td><label  class="checkBox"><input class = "radio"type="radio" name="price" value="10000" ><span
                                     class="checkmark"></span></label></td>
-                            <td class="pr">10,000원</td>
+                            <td class="pr">10000원</td>
                             <td>10000 네오포인트 + 1,000 네오력</td>
                         </tr>
                         <tr>
-                            <td><label class="checkBox"><input class = "radio" type="radio" name="price" value="20,000" ><span
+                            <td><label class="checkBox"><input class = "radio" type="radio" name="price" value="20000" ><span
                                     class="checkmark"></span></label></td>
-                            <td class="pr">20,000원</td>
+                            <td class="pr">20000원</td>
                             <td>20000 네오포인트 + 2,000 네오력</td>
                         </tr>
                         <tr>
-                            <td><label class="checkBox"><input class = "radio" type="radio" name="price" value="50,000" ><span
+                            <td><label class="checkBox"><input class = "radio" type="radio" name="price" value="50000" ><span
                                     class="checkmark"></span></label></td>
-                            <td class="pr">50,000원</td>
+                            <td class="pr">50000원</td>
                             <td>50000 네오포인트 + 5,000네오력</td>
                         </tr>
                         </tbody>
                     </table>
-                    <div style="margin-top: 10px;">총 결제금액 : <span class = "results" id="result">5,000</span>원  </div>
+                    <div style="margin-top: 10px;">총 결제금액 : <span class = "results" id="result">5000</span>원  </div>
                 </div>
             </div>
             <div class="step2 paymentStep"><p class="stepNumber"><span>2단계.</span>결제해주세요.</p>
 
                 <div class="easyPayment paymentMethod"><p>간편 결제</p>
-                    <div>
-                        <button class="kakao"></button>
+                    <div th:if="${session.loginUser}">
+                        <button class="public" style="background-color: #1A7CFF; color: #fff; font-size: 18px; line-height: 18px; padding-top: 1px;">💳 일반 결제</button>
+                        <button class="kakaoPay"></button>
                     </div>
                 </div>
             </div>
@@ -76,6 +79,7 @@
     </section>
 </div>
 
+<div th:replace="/app/neosUser/modalList.html :: modalSpace"></div>
 <div th:replace="/app/fix/chattingAll.html :: chattingAll"></div>
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
@@ -91,20 +95,20 @@
         $('.radio').change(function() {
             var radio = $("input[type=radio][name=price]:checked").val();
             var input = $("input[type=text][name=point]:checked").val();
-            if(radio == "10,000"){
-                $result.text("10,000")
+            if(radio == "10000"){
+                $result.text("10000");
             }
-            if(radio == "20,000"){
-                $result.text("20,000")
+            if(radio == "20000"){
+                $result.text("20000");
             }
-            if(radio == "50,000"){
-                $result.text("50,000")
+            if(radio == "50000"){
+                $result.text("50000");
             }
-            if(radio == "5,000"){
-                $result.text("5,000")
+            if(radio == "5000"){
+                $result.text("5000");
             }
             if(input == input){
-                $result.text(input)
+                $result.text(input);
             }
         })
     });
@@ -115,7 +119,7 @@
     }
 
 
-    $(function(){
+    $(document).ready(function() {
         if($(".radio").is(":checked")){
             $(".cashCheck").attr("disabled", true);
         };
@@ -133,6 +137,121 @@
     });
 
 
+    function showPay() {
+        $(".payModal").css("display", "block");
+    }
+    $(".closeBtn").on("click", function () {
+        $(".payModal").css("display", "none");
+    })
+    $(".btn").on("click", function () {
+        $(".payModal").css("display", "none");
+    })
+
+</script>
+<script src="https://js.bootpay.co.kr/bootpay-4.2.6.min.js" type="application/javascript"></script>
+<!--<script src="/js/fix/pay.js"></script>-->
+<script>
+    function pointSave(pay) {
+        $.ajax({
+            url: "/pay/chargingOk",
+            type: "post",
+            data: JSON.stringify(pay),
+            contentType: "application/json; charset=utf-8",
+            success: function() {
+                showPay();
+            },
+            error: function (xhr, status, err) {
+                console.log(xhr, status, err);
+            }
+        });
+    }
+
+    async function kakaoPay() {
+        const response = await Bootpay.requestPayment({
+            "application_id": "6396df69d01c7e001bfeb951",
+            "price": $(".results").text(),
+            "order_name": "NEOS",
+            "order_id": 'order_id_' + new Date().getTime(),
+            "pg": "카카오페이",
+            "method": "카카오페이",
+            "tax_free": 0,
+            "user": {
+                "id": $("#user").val()
+            },
+            "items": [
+                {
+                    "id": 'id_' + new Date().getTime(),
+                    "name": "Neos Point",
+                    "qty": 1,
+                    "price": $(".results").text()
+                }
+            ],
+            "extra": {
+                "open_type": "iframe",
+                "card_quota": "0,2,3",
+                "seller_name": "NEOS",
+                "escrow": false
+            }
+        })
+        switch (response.event) {
+            case 'done':
+                // 결제 완료 처리
+                pointSave({
+                    neosPointMoney: response.data.price,
+                    neosPointContent: "포인트충전",
+                    userId: $('#userId').val()
+                });
+                break;
+        }
+    }
+
+
+    async function publicPay() {
+        const response = await Bootpay.requestPayment({
+            "application_id": "6396df69d01c7e001bfeb951",
+            "price": $(".results").text(),
+            "order_name": "NEOS",
+            "order_id": 'order_id_' + new Date().getTime(),
+            "pg": "케이씨피",
+            "method": "카드",
+            "user": {
+                "id": $("#user").val()
+            },
+            "items": [
+                {
+                    "id": 'id_' + new Date().getTime(),
+                    "name": "Neos Point",
+                    "qty": 1,
+                    "price": $(".results").text()
+                }
+            ],
+            "extra": {
+                "open_type": "iframe",
+                "card_quota": "0,2,3",
+                "seller_name": "NEOS",
+                "escrow": false
+            }
+        })
+        switch (response.event) {
+            case 'done':
+                // 결제 완료 처리
+                pointSave({
+                    neosPointMoney: response.data.price,
+                    neosPointContent: "포인트충전",
+                    userId: $('#userId').val()
+                });
+                break;
+        }
+    }
+
+
+    $(".kakaoPay").on("click", function () {
+        kakaoPay();
+    })
+
+    $(".public").on("click", function () {
+        publicPay();
+    })
 </script>
 <script src="/js/fix/login.js"></script>
 <script src="/js/fix/header.js"></script>

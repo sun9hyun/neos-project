@@ -1,6 +1,7 @@
 package com.app.neos.domain.neos;
 
 
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.neos.NeosPower;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.point.NeosPointContent;
@@ -18,7 +19,7 @@ public class NeosPowerDTO {
     private Long neosPowerId;
     private Integer neosPowerAbility;
     private NeosPowerContent neosPowerContent;
-    private User user;
+    private UserDTO user;
 
     public NeosPower toEntity(){
         return NeosPower.builder()
@@ -28,14 +29,10 @@ public class NeosPowerDTO {
     }
 
     @QueryProjection
-    public NeosPowerDTO(Long neosPowerId, Integer neosPowerAbility, NeosPowerContent neosPowerContent, User user) {
+    public NeosPowerDTO(Long neosPowerId, Integer neosPowerAbility, NeosPowerContent neosPowerContent, UserDTO user) {
         this.neosPowerId = neosPowerId;
         this.neosPowerAbility = neosPowerAbility;
         this.neosPowerContent = neosPowerContent;
         this.user = user;
     }
-
-
-
-
 }

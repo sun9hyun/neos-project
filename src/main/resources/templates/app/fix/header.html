@@ -72,7 +72,12 @@
                                 <div class="lv"><img  class="userLv" id = "userLevel"
                                                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_6.png"
                                                      alt="렛플렙"></div>
-                                <a class="logOut" th:href="@{/logout/logout}">로그아웃</a>
+                                <th:block th:if="${#strings.endsWith(session.realId,'-google')}">
+                                    <a class="logOut" href="https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:10718/logout/google">로그아웃</a>
+                                </th:block>
+                                <th:block th:unless="${#strings.endsWith(session.realId,'-google')}">
+                                    <a class="logOut" th:href="@{/logout/logout}">로그아웃</a>
+                                </th:block>
                                 <script th:inline="javascript">
                                     var realId = [[${session.realId}]];
                                     if(realId.endsWith('k')){

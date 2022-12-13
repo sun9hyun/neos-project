@@ -5,6 +5,7 @@ import com.app.neos.domain.study.StudyFeedDTO;
 import com.app.neos.domain.study.StudyQuestionDTO;
 import com.app.neos.domain.study.StudySearch;
 import com.app.neos.domain.user.UserDTO;
+import com.app.neos.entity.study.Study;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.service.join.JoinService;
 import com.app.neos.service.study.*;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
@@ -89,19 +91,19 @@ public class StudyController {
     }
 
     @PostMapping("/ok")
-    public RedirectView post(StudyDTO studyDTO){
+    public RedirectView post(StudyDTO studyDTO, HttpSession session){
+        Long userId = (Long)session.getAttribute("loginUser");
+        studyService.postEXP(userId);
         studyService.post(studyDTO);
         return new RedirectView("/study/list");
     }
 
     @GetMapping("/list/{studyId}")
     public String listDetail(@PathVariable Long studyId, Model model){
-
         StudyDTO study = studyService.getStudyDTO(studyId);
         UserDTO user = studyService.getInfo(study.getUserId());
         List<StudyQuestionDTO> questions = studyQuestionService.getInfo(studyId);
         List<Long> ids = study.getStudySupporterDTOS().stream().map(i->i.getUser().getUserId()).collect(Collectors.toList());
-
         List<Long> memberIds = study.getStudyMemberList().stream().map(i->i.getUserDTO().getUserId()).collect(Collectors.toList());
         memberIds.add(study.getUserId());
         model.addAttribute("memberList",memberIds);
@@ -111,8 +113,14 @@ public class StudyController {
         model.addAttribute("writer",user);
         model.addAttribute("study",study);
         model.addAttribute("minusDay",studyService.minusDay(study));
-
         return "app/study/detail-study";
+    }
+
+    @Transactional
+    @GetMapping("/view/{studyId}")
+    public RedirectView listViewUpdate(@PathVariable Long studyId){
+        studyService.viewUpdate(studyId);
+        return new RedirectView("/study/list/"+studyId);
     }
 
     @GetMapping("/question/{studyId}")
@@ -214,7 +222,9 @@ public class StudyController {
     }
 
     @PostMapping("/delete")
-    public RedirectView delete(Long studyId){
+    public RedirectView delete(Long studyId, HttpSession session){
+        Long userId = (Long)session.getAttribute("loginUser");
+        studyService.postDeleteEXP(userId);
         studyService.remove(studyId);
         return new RedirectView("/study/list");
     }

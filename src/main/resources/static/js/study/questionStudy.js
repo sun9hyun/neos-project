@@ -31,11 +31,10 @@ $('.hoverNameWrap').on("mouseout",function(){
 })
 
 /*댓글 작성자*/
-$('.profileName').on("mouseover",function(){
+$('#_next').on("mouseover",".profileName",function () {
     $(this).children('.hoverView').css("display", "block");
 })
-
-$('.profileName').on("mouseout",function(){
+$('#_next').on("mouseout",".profileName",function () {
     $(this).children('.hoverView').css("display", "none");
 })
 

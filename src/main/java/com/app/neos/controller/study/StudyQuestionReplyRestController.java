@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,9 @@ public class StudyQuestionReplyRestController {
     private final StudyQuestionReplyService studyQuestionReplyService;
 
     @PostMapping("/{bno}")
-    public String post(@PathVariable("bno")Long studyQuestionId, StudyQuestionReplyDTO studyQuestionReplyDTO, Long userId){
+    public String post(@PathVariable("bno")Long studyQuestionId, StudyQuestionReplyDTO studyQuestionReplyDTO, Long userId, HttpSession session){
+        Long myId = (Long)session.getAttribute("loginUser");
+        studyQuestionReplyService.expUp(myId);
         studyQuestionReplyService.post(studyQuestionId,studyQuestionReplyDTO,userId);
         return "success";
     }
@@ -29,7 +32,9 @@ public class StudyQuestionReplyRestController {
     }
 
     @DeleteMapping("/{bno}")
-    public String remove(@PathVariable("bno") Long studyQuestionRepldId){
+    public String remove(@PathVariable("bno") Long studyQuestionRepldId,HttpSession session){
+        Long myId = (Long)session.getAttribute("loginUser");
+        studyQuestionReplyService.expDown(myId);
         Long id = studyQuestionReplyService.getStudyQuestionId(studyQuestionRepldId);
        studyQuestionReplyService.remove(studyQuestionRepldId);
         return id.toString();

@@ -3,10 +3,7 @@ package com.app.neos.controller.login;
 
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.user.User;
-import com.app.neos.service.join.GoogleService;
-import com.app.neos.service.join.KaKaoLoginService;
-import com.app.neos.service.join.KaKaoService;
-import com.app.neos.service.join.NaverService;
+import com.app.neos.service.join.*;
 import com.app.neos.service.login.LoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,8 +24,8 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
     private final KaKaoLoginService kaKaoService;
     private final NaverService naverService;
-    private final GoogleService googleService;
     private final LoginService loginService;
+    private final GoogleJoinService googleJoinService;
     /*로그인 모달 */
     @GetMapping("/login")
     public String login(){
@@ -95,27 +92,20 @@ public class LoginController {
     }
 
     @GetMapping("/google")
-    public RedirectView googleJoin(@RequestParam String code, HttpServletRequest request) {
-        String token = googleService.getGoogleLoginAccessToken(code)[0];
-        HttpSession session= (HttpSession)request.getSession();
-        session.setAttribute("token",token);
-        try {
-            String id = googleService.getGoogleIdByToken(token);
-            String realId = id+"-google";
-            UserDTO userDTO = loginService.login(realId);
-            if(userDTO == null){
-                return new RedirectView("/main/main?login=GoogleFalse");
-            }else {
-                if(userDTO.getUserCollegeCertify().equals("false")){
-                    return new RedirectView("/main/main?login=need");
-                }
-                session.setAttribute("loginUser",userDTO.getUserId());
-                session.setAttribute("loginUserName",userDTO.getUserNickName());
-                session.setAttribute("college",userDTO.getCollegeId());
-                session.setAttribute("realId",realId);
+    public RedirectView googleLogin(@RequestParam String code,HttpSession session) throws Exception{
+        String id = googleJoinService.loginInfo(code);
+        String realId = id+"-google";
+        UserDTO userDTO = loginService.login(realId);
+        if(userDTO == null){
+            return new RedirectView("/main/main?login=GoogleFalse");
+        }else {
+            if(userDTO.getUserCollegeCertify().equals("false")){
+                return new RedirectView("/main/main?login=need");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            session.setAttribute("loginUser",userDTO.getUserId());
+            session.setAttribute("loginUserName",userDTO.getUserNickName());
+            session.setAttribute("college",userDTO.getCollegeId());
+            session.setAttribute("realId",realId);
         }
 
         return new RedirectView("/main/main?login=true");

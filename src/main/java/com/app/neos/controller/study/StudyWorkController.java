@@ -20,6 +20,11 @@ public class StudyWorkController {
     private final StudyWorkService studyWorkService;
     @PostMapping("/post")
     public RedirectView post(StudyWorkDTO studyWorkDTO, String studyWorkTargetDateString){
+
+        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        log.info("번호"+studyWorkDTO.toString());
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate date = LocalDate.parse(studyWorkTargetDateString, formatter);
         studyWorkDTO.setStudyWorkTargetDate(date);

@@ -41,7 +41,7 @@
                     <h2 class="projectTit" th:text="*{studyTitle}"></h2>
                     <li class="projectLeaderWrap">
                         <div class="userIdWrap">
-                            <div class="leaderImg"><a href="#"><img width="20px"
+                            <div class="leaderImg"><a th:href="@{/neosUser/info/yes(userId=${writer.userId})}"><img width="20px"
                                                                     height="20px"
                                                                     th:src="${writer.userFile}"
                                                                     alt="추추추"></a></div>
@@ -49,7 +49,7 @@
                                 <h2 class="userIdTxt" th:text="*{userNickName}"></h2><span class="confirmPhoneTxt">(대학교 인증)</span>
                                 <div class="idHoverMenu">
                                     <ul>
-                                        <li><a href="#">프로필 상세</a></li>
+                                        <li><a th:href="@{/neosUser/info/yes(userId=${writer.userId})}">프로필 상세</a></li>
                                         <li class="chatTop"><a>1:1 대화</a></li>
                                     </ul>
                                 </div>
@@ -130,7 +130,7 @@
                             <div class="leaderInfo">
                                 <div class="userIdWrap">
                                     <div class="leaderImg"><a class="leaderImgWrap"
-                                                              href="/people/%EC%B6%94%EC%B6%94%EC%B6%94"><img
+                                                              th:href="@{/neosUser/info/yes(userId=${writer.userId})}"><img
                                             width="20px"
                                             height="20px"
                                             th:src="${writer.userFile}"
@@ -140,7 +140,7 @@
                                         <h2 class="userIdTxt"><span th:text="${writer.userNickName}"></span>
                                             <div class="idHoverMenu">
                                                 <ul>
-                                                    <li><a href="/people/%EC%#%94%EC%B6%94%EC%B6%94">프로필 상세</a></li>
+                                                    <li><a th:href="@{/neosUser/info/yes(userId=${writer.userId})}">프로필 상세</a></li>
                                                     <li class="chatReader"><a>1:1 대화</a></li>
                                                 </ul>
                                             </div>
@@ -368,12 +368,12 @@
                 text += `<div class="feedUploadWrap">`
                 text += `<div class="feedContentsWrap">`
                 text += `<div class="top">`
-                text += `<div class="thumb"><img loading="lazy" width="44px" height="44px" src="`+item.studyFeedWriter.userFile+`" alt="user_image"></div>`
+                text += `<div class="thumb"><a href="/neosUser/info/yes?userId=`+item.studyFeedWriter.userId+`"><img loading="lazy" width="44px" height="44px" src="`+item.studyFeedWriter.userFile+`" alt="user_image"></a></div>`
                 text += `<div class="name">`
                 text += `<h2 class="profileName">`+item.studyFeedWriter.userNickName
                 text += `<div class="hoverView">`
                 text += `<ul>`
-                text += `<li><a href="/people/추추추" target="_blank">프로필 상세</a></li>`
+                text += `<li><a href="/neosUser/info/yes?userId=`+item.studyFeedWriter.userId+`" >프로필 상세</a></li>`
                 text += `<li class="chatList"><a>1:1 대화</a></li>`
                 text += `</ul>`
                 text += `</div>`
@@ -399,13 +399,13 @@
                 text += `<div class="replyWrapContent">`
                 text += `<div class="top">`
                 text += `<div class="left">`
-                text += `<div class="profileThumb"><a href="/people/undefined" target="_blank"><img loading="lazy" width="44px" height="44px" src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif" alt="user_image"></a>`
+                text += `<div class="profileThumb"><a href="/people/undefined" ><img loading="lazy" width="44px" height="44px" src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif" alt="user_image"></a>`
                 text += `</div> </div>`
                 text += `<div class="right">`
                 text += `<h4 class="profileName">ROSA`
                 text += `<div class="hoverView">`
                 text += `<ul>`
-                text += `<li><a href="/people/ROSA" target="_blank">프로필 상세</a>`
+                text += `<li><a href="/people/ROSA" >프로필 상세</a>`
                 text += `</li>`
                 text += `<li class="chatList"><a>1:1 대화</a></li>`
                 text += `</ul>`
@@ -423,14 +423,14 @@
                 text += `<div class="replyWrapContent">`
                 text += `<div class="top">`
                 text += `<div class="left">`
-                text += `<div class="profileThumb"><a href="/people/undefined" target="_blank"><img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image"></a>`
+                text += `<div class="profileThumb"><a href="/people/undefined" ><img loading="lazy" width="44px" height="44px" src="https://letspl.me/assets/images/prof-no-img.png" alt="user_image"></a>`
                 text += `</div>`
                 text += `</div>`
                 text += `<div class="right">`
                 text += `<h4 class="profileName">추추추`
                 text += `<div class="hoverView">`
                 text += `<ul>`
-                text += `<li><a href="/people/추추추" target="_blank">프로필 상세</a>`
+                text += `<li><a href="/people/추추추" >프로필 상세</a>`
                 text += `</li>`
                 text += `<li class="chatList"><a>1:1 대화</a></li>`
                 text += `</ul>`
@@ -597,13 +597,13 @@
                     text += `<div class="replyWrapContent" id="`+item.studyFeedReplyId+`">`
                     text += `<div class="top">`
                     text += `<div class="left">`
-                    text += `<div class="profileThumb"><a href="/people/undefined" target="_blank"><img loading="lazy" width="44px" height="44px" src="`+item.studyFeedReplyWriter.userFile+`" alt="user_image"></a>`
+                    text += `<div class="profileThumb"><a href="/neosUser/info/yes?userId=`+item.studyFeedReplyWriter.userId+`" ><img loading="lazy" width="44px" height="44px" src="`+item.studyFeedReplyWriter.userFile+`" alt="user_image"></a>`
                     text += `</div>`
                     text += `</div>`
                     text += `<div class="right">`
                     text += `<h4 class="profileName">`+item.studyFeedReplyWriter.userNickName+`<div class="hoverView">`
                     text += `<ul>`
-                    text += `<li><a href="/people/추추추" target="_blank">프로필 상세</a></li>`
+                    text += `<li><a href="/neosUser/info/yes?userId=`+item.studyFeedReplyWriter.userId+`" >프로필 상세</a></li>`
                     text += `<li class="chatList"><a>1:1 대화</a></li>`
                     text += `</ul>`
                     text += `</div>`

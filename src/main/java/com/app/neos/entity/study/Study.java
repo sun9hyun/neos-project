@@ -108,7 +108,7 @@ public class Study extends Period {
    }
 
    public void viewUpdate(){
-      this.studyView = studyView+1;
+      this.studyView = this.studyView+1;
    }
 
    public void supportUpdate(int studySupport){

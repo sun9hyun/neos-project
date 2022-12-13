@@ -12,13 +12,12 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 @NoArgsConstructor
-
 public class NeosPointDTO {
-
     private Long neosPointId;
     private Integer neosPointMoney;
     private NeosPointContent neosPointContent;
     private User user;
+    private Long userId;
 
     public NeosPoint toEntity(){
         return NeosPoint.builder()
@@ -33,5 +32,13 @@ public class NeosPointDTO {
         this.neosPointMoney = neosPointMoney;
         this.neosPointContent = neosPointContent;
         this.user = user;
+    }
+
+    @QueryProjection
+    public NeosPointDTO(Long neosPointId, Integer neosPointMoney, NeosPointContent neosPointContent, Long userId) {
+        this.neosPointId = neosPointId;
+        this.neosPointMoney = neosPointMoney;
+        this.neosPointContent = neosPointContent;
+        this.userId = userId;
     }
 }

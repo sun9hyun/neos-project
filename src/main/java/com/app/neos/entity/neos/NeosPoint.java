@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="TBL_NEOS_POINT")
 @Getter @ToString(exclude = "user")
-@NoArgsConstructor/*(access = AccessLevel.PROTECTED)*/
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class NeosPoint extends Created {
     @Id
     @GeneratedValue

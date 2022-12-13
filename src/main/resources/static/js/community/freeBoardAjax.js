@@ -26,7 +26,7 @@ $(document).ready(function () {
     }
 
     function show() {
-        alert(globalThis.page);
+        // alert(globalThis.page);
 
         $.ajax({
             url: "/community/communityList?page=" + (globalThis.page),
@@ -187,59 +187,6 @@ $(document).ready(function () {
 
                 //댓글 목록
                 text += "<div class='replyComponent_replyBox__1duHS'>";
-
-                        // text += "<div class='replyComponent_replyContainer__3dxJZ'>";
-                        // text += "<div style='border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;'>";
-                        // text += "<div class='userInformationComponents_userReplySection__3ty7Q'>";
-                        // text += "<div class='userInformationComponents_profile__2pr8a'>";
-                        // text += "<div class='userInformationComponents_profileLeftGroup__1lq6K'>";
-                        // text += "<div class='userInformationComponents_profileLeftGroupLeftBox__2YqvE'>";
-                        // text += "<div class='userInformationComponents_profileImg__3qJcX'>";
-                        // text += "<img class='userInformationComponents_smImg__2uLTY' src='" + item.user.userFile + "' alt=''>";
-                        // text += "</div>";
-                        // text += "<p class='userInformationComponents_profileName__3l0ya'>" + item.user.userNickName;
-                        // text += "<i class='userInformationComponents_profileLevel__6Bl4w'>";
-                        // text += "<img src='" + item.user.userNeosPower.userNeosBadge + "' alt='lv'>";
-                        // text += "</i>";
-                        // text += "</p>";
-                        //
-                        // // if (cr.community.user.userId == cr.user.userId) {
-                        // text += "<div class='userInformationComponents_profileLeftGroupTagBox__1IPyA'>";
-                        // text += "<div class='tag_tag__2gh0s tag_typeGray__3-1Ag tag_sizeDefault__2V2-5'>";
-                        // text += "<span>작성자</span>";
-                        // text += "</div>";
-                        // text += "</div>";
-                        // // }
-                        // text += "</div>";
-                        //
-                        // text += "<span class='userInformationComponents_recordTime__LAQ3h'>aaa</span>";
-                        // text += "</div>";
-                        //
-                        // // if ($("#userId").attr("value") == cr.user.userId) {
-                        // text += "<div class='userInformationComponents_profileRightGroup__3Ro_j'>";
-                        // text += "<div class='userInformationComponents_profileRightGroupModifyBox__3xfKH'>";
-                        // text += "<button class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>";
-                        // text += "<img class='' src='https://letspl.me/assets/images/ic-more.svg'>";
-                        // text += "</button>";
-                        // text += "<div class='userInformationComponents_profileRightGroupModifyBoxModal__1csNJ'>";
-                        // text += "<button class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>수정</button>";
-                        // text += "<button class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>삭제</button>";
-                        // text += "</div></div></div>";
-                        // // }
-                        //
-                        // text += "</div>";
-                        // text += "</div>";
-                        // text += "<div class='replyComponent_replyContent__3iS4J'>";
-                        // text += "<p>aaa</p>";
-                        // text += "<div class='replyComponent_replyOpenAndLikeButtonGroup__3r9hv'>";
-                        // text += "<button class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_red__3SLsc'>";
-                        // text += "<img class='' src='https://letspl.me/assets/images/ic_talk_up_o.svg'>";
-                        // text += "<span class=''>aaa</span>";
-                        // text += "</button>";
-                        // text += "<button class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_lightGray__cqa_C'>대댓글쓰기</button>";
-                        //
-                        // text += "</div><div></div></div></div></div>";
-
                 text += "</div>";
 
                 text += "</div></div></div>";
@@ -249,6 +196,10 @@ $(document).ready(function () {
             });
 
         $("div.centerSectionBox").append(text);
+        if(communityDTOS.last){
+            $(".moreButton").hide();
+        }
+
     }
 
 
@@ -414,7 +365,7 @@ $(document).ready(function () {
             text += "<span class='rereplyTextCount'>0</span><span>/</span><span>1000</span>";
             text += "</div>";
             text += "<input type='hidden' th:value='${session.loginUser}'  name='userId' id='replyUser' class='user'>";
-            text += "<input type='hidden' name='communityId' id='replyCommunity'value='" + item.communityId + "'>";
+            text += "<input type='hidden' name='communityId' class='replyCommunity'value='" + item.communityId + "'>";
 
             if($("#userId").attr("value") != null) {
                 text += "<button type='button' class='replyWrite buttonComponents_button__1hvQa buttonComponents_square__3hf2r'>확인</button>";
@@ -436,6 +387,9 @@ $(document).ready(function () {
         });
 
         $("div.centerSectionBox").html(text);
+        if(communityDTOS.last){
+            $(".moreButton").hide();
+        }
     }
 
 /*-----------------------------------------------------------------------------------------------------------*/

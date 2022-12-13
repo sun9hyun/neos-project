@@ -11,6 +11,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/counseling/*")
@@ -26,7 +28,9 @@ public class CounselingRestController {
 
 //    게시글 등록
     @PostMapping("/counselingOk")
-    public String write(@RequestBody CounselingDTO counselingDTO){
+    public String write(@RequestBody CounselingDTO counselingDTO, HttpSession session){
+        Long userId = (Long)session.getAttribute("loginUser");
+        counselingService.postEXP(userId);
         counselingService.saveCounseling(counselingDTO);
         return "counseling write success";
     }
@@ -40,7 +44,9 @@ public class CounselingRestController {
 
 //    게시글 삭제
     @DeleteMapping("/counselingDelete")
-    public String delete(@RequestBody CounselingDTO counselingDTO){
+    public String delete(@RequestBody CounselingDTO counselingDTO, HttpSession session){
+        Long userId = (Long)session.getAttribute("loginUser");
+        counselingService.postDeleteEXP(userId);
         counselingService.deleteCounseling(counselingDTO);
         return "counseling delete success";
     }

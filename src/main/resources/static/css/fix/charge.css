@@ -87,7 +87,7 @@ blockquote, body, button, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4,
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding-top: 66px;
+    padding-top: 40px;
     font-size: 1.5rem;
 }
 
@@ -368,7 +368,7 @@ input {
     flex-wrap: wrap;
     width: 100%;
 }
-.payment .paymentStep .easyPayment div button.kakao {
+.payment .paymentStep .easyPayment div button.kakaoPay {
     background-image: url(https://letspl.s3.ap-northeast-2.amazonaws.com/images/ic_pay_kakao.png);
     background-position: 50%;
     background-repeat: no-repeat;

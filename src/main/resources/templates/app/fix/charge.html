@@ -15,8 +15,8 @@
     <div class="commonContentViewHeader"><h1><span class="smTxt">LET'S be rich</span><span
             class="bgTxt">네오 포인트 충전</span></h1></div>
     <div>
-        <div class="adWrap"><p>더 많은 네오스인이 만나고 싶나요?</p>
-            <span>네오스와 함께 이야기 하는건 어떨까요?</span><span>(대화 완료 후, 상대방에게 포인트가 지급됩니다.)</span></div>
+        <div class="adWrap"><p>더 많은 서비스를 즐기고 싶나요?</p>
+            <span style="font-size: 20px;">네오스와 함께 하는건 어떨까요?</span><span style="font-size: 16px;">(서비스 이용 후, 네오력이 지급됩니다.)</span></div>
         <div class="step1 paymentStep"><p class="stepNumber"><span>1단계.</span>결제 금액을 선택해주세요.</p>
             <div class="chargeTable">
                 <table>
@@ -28,12 +28,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td><label class="checkBox" ><input class = "radio" type="radio" name="price" value="F01" disabled=""><span
-                                class="checkmark"></span></label></td>
-                        <td>인증완료</td>
-                        <td>포인트가 지급된 계정입니다</td>
-                    </tr>
+<!--                    <tr>-->
+<!--                        <td><label class="checkBox" ><input class = "radio" type="radio" name="price" value="F01" disabled=""><span-->
+<!--                                class="checkmark"></span></label></td>-->
+<!--                        <td>인증완료</td>-->
+<!--                        <td>포인트가 지급된 계정입니다</td>-->
+<!--                    </tr>-->
                     <tr>
                         <td><label class="checkBox"><input class = "radio" type="radio" name="price" value="5,000" checked="" ><span
                                 class="checkmark"></span></label></td>
@@ -66,9 +66,11 @@
         <div class="step2 paymentStep"><p class="stepNumber"><span>2단계.</span>결제해주세요.</p>
 
             <div class="easyPayment paymentMethod"><p>간편 결제</p>
-                <div>
-                    <button class="kakao"></button>
-                </div>
+<!--                <form action="post" th:action="">-->
+                    <div>
+                        <button type="button" class="kakao"></button>
+                    </div>
+<!--                </form>-->
             </div>
         </div>
     </div>
@@ -102,9 +104,50 @@
         })
     });
 
+</script>
+<!--<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.1/kakao.min.js" integrity="sha384-eKjgHJ9+vwU/FCSUG3nV1RKFolUXLsc6nLQ2R1tD0t4YFPCvRmkcF8saIfOZNWf/" crossorigin="anonymous"></script>-->
+<!--<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.8.js"></script>-->
+<!--<script src="/js/fix/kakaoPay.js"></script>-->
+<script src="https://js.bootpay.co.kr/bootpay-4.2.6.min.js" type="application/javascript"></script>
+<script>
 
+    console.log($(".results").val());
+    console.log($("#user").val());
 
+    async function kakaoPay() {
+        const response = await Bootpay.requestPayment({
+            "application_id": "6396df69d01c7e001bfeb951",
+            "price": $(".results").val(),
+            "order_name": "NEOS",
+            "order_id": 'order_id_' + new Date().getTime(),
+            "pg": "케이씨피",
+            "method": "카드",
+            "tax_free": 0,
+            "user": {
+                "id": $("#user").val()
+            },
+            "items": [
+                {
+                    "id": 'id_' + new Date().getTime(),
+                    "name": "Neos Point",
+                    "qty": 1,
+                    "price": $(".results").val()
+                }
+            ],
+            "extra": {
+                "open_type": "iframe",
+                "card_quota": "0,2,3",
+                "seller_name": "NEOS",
+                "escrow": false
+            }
+        })
+    }
 
+    kakaoPay();
+
+    $(".kakao").on("click", function () {
+        kakaoPay();
+    })
 </script>
 <script src="/js/fix/login.js"></script>
 <script src="/js/fix/header.js"></script>

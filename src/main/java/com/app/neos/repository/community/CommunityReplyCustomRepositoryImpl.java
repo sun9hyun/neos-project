@@ -27,7 +27,7 @@ public class CommunityReplyCustomRepositoryImpl implements CommunityReplyCustomR
         ))
                 .from(QCommunityReply.communityReply)
                 .where(QCommunityReply.communityReply.community.communityId.eq(communityId))
-                .orderBy(QCommunityReply.communityReply.createdDate.desc())
+                .orderBy(QCommunityReply.communityReply.updatedDate.asc())
                 .fetch();
     }
 }

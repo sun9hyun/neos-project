@@ -3,6 +3,7 @@ package com.app.neos.entity.counseling;
 import com.app.neos.domain.counseling.CounselingDTO;
 import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -23,6 +24,7 @@ public class Counseling extends Period {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
+    @JsonIgnore
     private User user;
 
     public void changeUser(User user){

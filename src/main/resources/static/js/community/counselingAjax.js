@@ -25,7 +25,7 @@ $(document).ready(function () {
     }
 
     function show() {
-        alert(globalThis.page);
+        // alert(globalThis.page);
 
         $.ajax({
             url: "/counseling/counselingList?page=" + (globalThis.page),
@@ -119,14 +119,14 @@ $(document).ready(function () {
             text += "</div>";
 
             //댓글
-            text += "<form th:action='@{/community/community}' th:object='${communityReplyDTO}' name='communityReplyWrite' class='replyForm' method='post' class='form-horizontal form-validate' role='form' target='hidden_frame' enctype='multipart/form-data' autocomplete='off'novalidate='novalidate'>";
+            text += "<form th:action='@{/counseling/counseling}' th:object='${counselingReplyDTO}' name='communityReplyWrite' class='replyForm' method='post' class='form-horizontal form-validate' role='form' target='hidden_frame' enctype='multipart/form-data' autocomplete='off'novalidate='novalidate'>";
             text += "<div class='replyComponent_replyInputBox__2yLKK'>";
             text += "<div class='replyComponent_replyInputContainer__3TJW8'>";
 
             if ($("#userId").attr("value") != null) {
-                text += "<textarea th:field='*{communityReplyContent}' class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
+                text += "<textarea th:field='*{counselingReplyContent}' class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
             } else {
-                text += "<textarea th:field='*{communityReplyContent}' readonly class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
+                text += "<textarea th:field='*{counselingReplyContent}' readonly class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
             }
             text += "</div>";
             text += "<div class='replyComponent_replyButtonGroup__2i0ow'>";
@@ -134,7 +134,7 @@ $(document).ready(function () {
             text += "<span class='rereplyTextCount'>0</span><span>/</span><span>1000</span>";
             text += "</div>";
             text += "<input type='hidden' th:value='${session.loginUser}'  name='userId' id='replyUser' class='user'>";
-            text += "<input type='hidden' name='communityId' id='replyCommunity'value='" + item.counselingId + "'>";
+            text += "<input type='hidden' name='counselingId' class='replyCounseling'value='" + item.counselingId + "'>";
 
             if ($("#userId").attr("value") != null) {
                 text += "<button type='button' class='replyWrite buttonComponents_button__1hvQa buttonComponents_square__3hf2r'>확인</button>";
@@ -145,6 +145,9 @@ $(document).ready(function () {
             text += "</div>";
             text += "</form>";
 
+            text += "<div class='replyComponent_replyBox__1duHS'>";
+            text += "</div>";
+
             text += "</div></div></div>";
             text += "<input class='cid' type='hidden' value='" + item.counselingId + "'>";
             text += "<input type='hidden' value='" + item.user.userId + "'>";
@@ -153,6 +156,9 @@ $(document).ready(function () {
 
         });
         $("div.centerSectionBox").append(text);
+        if(counselingDTOS.last){
+            $(".moreButton").hide();
+        }
     }
 
     $(".moreButton").on("click", function(e){
@@ -293,7 +299,7 @@ $(document).ready(function () {
             text += "<span class='rereplyTextCount'>0</span><span>/</span><span>1000</span>";
             text += "</div>";
             text += "<input type='hidden' th:value='${session.loginUser}'  name='userId' id='replyUser' class='user'>";
-            text += "<input type='hidden' name='counselingId' id='replyCounseling'value='" + item.counselingId + "'>";
+            text += "<input type='hidden' name='counselingId' class='replyCounseling'value='" + item.counselingId + "'>";
 
             if ($("#userId").attr("value") != null) {
                 text += "<button type='button' class='replyWrite buttonComponents_button__1hvQa buttonComponents_square__3hf2r'>확인</button>";
@@ -304,6 +310,9 @@ $(document).ready(function () {
             text += "</div>";
             text += "</form>";
 
+            text += "<div class='replyComponent_replyBox__1duHS'>";
+            text += "</div>";
+
             text += "</div></div></div>";
             text += "<input class='cid' type='hidden' value='" + item.counselingId + "'>";
             text += "<input type='hidden' value='" + item.user.userId + "'>";
@@ -312,6 +321,9 @@ $(document).ready(function () {
 
         });
         $("div.centerSectionBox").html(text);
+        if(counselingDTOS.last){
+            $(".moreButton").hide();
+        }
     }
 
     /*-----------------------------------------------------------------------------------------------------------*/

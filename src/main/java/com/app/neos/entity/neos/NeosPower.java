@@ -1,6 +1,7 @@
 package com.app.neos.entity.neos;
 
 
+import com.app.neos.domain.neos.NeosPowerDTO;
 import com.app.neos.entity.period.Created;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.point.NeosPowerContent;
@@ -34,6 +35,16 @@ public class NeosPower extends Created {
     public NeosPower(@NotNull Integer neosPowerAbility, @NotNull NeosPowerContent neosPowerContent) {
         this.neosPowerAbility = neosPowerAbility;
         this.neosPowerContent = neosPowerContent;
+    }
+
+
+    public NeosPowerDTO toDTO(){
+        NeosPowerDTO dto = new NeosPowerDTO();
+        dto.setNeosPowerId(neosPowerId);
+        dto.setNeosPowerAbility(neosPowerAbility);
+        dto.setNeosPowerContent(neosPowerContent);
+        dto.setUser(user.toDTO());
+        return dto;
     }
 }
 

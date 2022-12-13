@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -48,10 +49,15 @@ public class LogoutController {
             kaKaoLoginService.logoutKakao(session.getAttribute("token").toString());
         }else if(oauthId.endsWith("naver")) {
             naverService.logoutNaver(session.getAttribute("token").toString());
-        }else if(oauthId.endsWith("google")){
-//            googleService.logoutGoogle(session.getAttribute("token").toString());
         }
         session.invalidate();
+        return new RedirectView("/main/main?logout=true");
+    }
+
+    @GetMapping("/google")
+    public RedirectView logout(HttpServletRequest request, HttpSession session, SessionStatus status){
+        session.invalidate();
+        status.setComplete();
         return new RedirectView("/main/main?logout=true");
     }
 }

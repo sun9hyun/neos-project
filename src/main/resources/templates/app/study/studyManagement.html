@@ -67,7 +67,7 @@
                     <h2 class="projectTit" th:text="*{studyTitle}"></h2>
                     <li class="projectLeaderWrap">
                         <div class="userIdWrap">
-                            <div class="leaderImg"><a href="#"><img width="20px"
+                            <div class="leaderImg"><a th:href="@{/neosUser/info/yes(userId=${writer.userId})}"><img width="20px"
                                                                     height="20px"
                                                                     th:src="${writer.userFile}"
                                                                     alt="추추추"></a></div>
@@ -75,7 +75,7 @@
                                 <h2 class="userIdTxt" th:text="*{userNickName}"></h2><span class="confirmPhoneTxt">(대학교 인증)</span>
                                 <div class="idHoverMenu">
                                     <ul>
-                                        <li><a href="#">프로필 상세</a></li>
+                                        <li><a th:href="@{/neosUser/info/yes(userId=${writer.userId})}">프로필 상세</a></li>
                                         <li class="chatTop"><a>1:1 대화</a></li>
                                     </ul>
                                 </div>
@@ -154,7 +154,7 @@
                                                                     <ul class="idHoverMenu">
                                                                         <input type="hidden" name="userId" class="userId_1jasd" th:value="*{user.userId}">
                                                                         <input type="hidden" name="supportId" class="supportId_1jasd" th:value="*{studySupporterId}">
-                                                                        <li><a target="_blank" href="#">프로필 상세</a></li>
+                                                                        <li><a th:href="@{/neosUser/info/yes(userId=${people.user.userId})}">프로필 상세</a></li>
                                                                         <li class="managementBtn"><a>1:1 대화</a></li>
                                                                         <li class="memberJoinBtn"><a>승인</a></li>
                                                                         <li class="rejection"><a>거절</a></li>
@@ -217,7 +217,7 @@
                                                                              alt="lv">
                                                         <h2 class="userName"><span th:text="*{userNickName}"></span>
                                                             <ul class="idHoverMenu">
-                                                                <li><a target="_blank" href="/people/추추추">프로필 상세</a></li>
+                                                                <li><a th:href="@{/neosUser/info/yes(userId=${writer.userId})}">프로필 상세</a></li>
                                                             </ul>
                                                         </h2>
                                                     </div>
@@ -271,7 +271,7 @@
                                                                 <ul class="idHoverMenu">
                                                                     <input type="hidden" class="userId_1jasd" th:value="*{userDTO.userId}">
                                                                     <input type="hidden" class="memberId_1jasd" th:value="*{studyMemberId}">
-                                                                    <li><a target="_blank" href="/people/sun9hyun">프로필 상세</a>
+                                                                    <li><a  th:href="@{/neosUser/info/yes(userId=${member.userDTO.userId})}">프로필 상세</a>
                                                                     </li>
                                                                     <li class="releaseBtn"><a>스터디 방출</a></li>
                                                                 </ul>
@@ -481,7 +481,7 @@
                             <div class="leaderInfo">
                                 <div class="userIdWrap">
                                     <div class="leaderImg"><a class="leaderImgWrap"
-                                                              href="/people/%EC%B6%94%EC%B6%94%EC%B6%94"><img
+                                                              th:href="@{/neosUser/info/yes(userId=${writer.userId})}"><img
                                             width="20px"
                                             height="20px"
                                             th:src="${writer.userFile}"
@@ -491,7 +491,7 @@
                                         <h2 class="userIdTxt"><span th:text="${writer.userNickName}"></span>
                                             <div class="idHoverMenu">
                                                 <ul>
-                                                    <li><a href="/people/%EC%#%94%EC%B6%94%EC%B6%94">프로필 상세</a></li>
+                                                    <li><a th:href="@{/neosUser/info/yes(userId=${writer.userId})}">프로필 상세</a></li>
                                                     <li class="chatReader"><a>1:1 대화</a></li>
                                                 </ul>
                                             </div>

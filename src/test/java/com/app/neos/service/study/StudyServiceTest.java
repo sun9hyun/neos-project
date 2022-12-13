@@ -1,7 +1,10 @@
 package com.app.neos.service.study;
 
+import com.app.neos.domain.neos.NeosPowerDTO;
 import com.app.neos.domain.study.StudySearch;
+import com.app.neos.entity.neos.NeosPower;
 import com.app.neos.entity.study.Study;
+import com.app.neos.repository.neos.NeosPowerRepository;
 import com.app.neos.repository.study.StudyCustomRepository;
 import com.app.neos.repository.study.StudyRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +18,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @SpringBootTest
 @RequiredArgsConstructor
 @Slf4j
@@ -27,6 +33,8 @@ public class StudyServiceTest {
     StudyCustomRepository studyCustomRepository;
     @Autowired
     StudyService studyService;
+    @Autowired
+    NeosPowerRepository neosPowerRepository;
 
     @Test
     public void findTest(){
@@ -80,6 +88,13 @@ public class StudyServiceTest {
         log.info("결과 : "+studyCustomRepository.findAllSlice(pageable).hasNext());
     }
 
+
+    @Test
+    public void test5(){
+        List<NeosPowerDTO> list = neosPowerRepository.findAll().stream().map(NeosPower::toDTO).collect(Collectors.toList());
+
+        log.info(list.toString());
+    }
 
 
 

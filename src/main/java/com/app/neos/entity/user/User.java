@@ -84,9 +84,13 @@ public class User extends Period {
     //    대학교
 
     public void updateNeosPower(int power){
-       UserNeosPower userNeosPower = this.userNeosPower;
-       userNeosPower.setUserNeosPowerAbility(power);
-       this.userNeosPower = userNeosPower;
+        UserNeosPower userNeosPower = this.userNeosPower;
+       if(power < 0){
+           userNeosPower.setUserNeosPowerAbility(0);
+       }else{
+           userNeosPower.setUserNeosPowerAbility(power);
+       }
+        this.userNeosPower = userNeosPower;
     }
 
     public boolean levelUpCheck(){

@@ -1,10 +1,7 @@
 package com.app.neos.controller.join;
 
 import com.app.neos.domain.user.UserDTO;
-import com.app.neos.service.join.GoogleService;
-import com.app.neos.service.join.JoinService;
-import com.app.neos.service.join.KaKaoService;
-import com.app.neos.service.join.NaverService;
+import com.app.neos.service.join.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -16,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.ArrayList;
+
 @Controller
 @RequestMapping("/join/*")
 @RequiredArgsConstructor
@@ -23,7 +22,7 @@ import org.springframework.web.servlet.view.RedirectView;
 public class JoinController {
     private final KaKaoService kaKaoService;
     private final NaverService naverService;
-    private final GoogleService googleService;
+    private final GoogleJoinService googleService;
     private final JoinService joinService;
 
     /*회원가입 모달 */
@@ -124,29 +123,19 @@ public class JoinController {
     }
 
     @GetMapping("/google")
-    public RedirectView googleJoin(@RequestParam String code, RedirectAttributes redirectAttributes){
-       String token = googleService.getGoogleAccessToken(code)[0];
-//       String tokenId =  googleService.getGoogleAccessToken(code)[1];
-        String googleId = null;
-        String googleName = null;
-        String googleProfileImg = null;
-        String googleEmail = null;
-//        log.info("토큰:"+token);
-        try {
-            googleId =  googleService.getGoogleIdByToken(token) +"-google";
-            googleName = googleService.getGoogleNameByToken(token);
-            googleProfileImg = googleService.getGoogleProfileImgByToken(token);
-            googleEmail = googleService.getGoogleEmailByToken(token);
-            redirectAttributes.addFlashAttribute("oAuthNickNames",googleName);
-            redirectAttributes.addFlashAttribute("oauthEmails",googleEmail);
-            redirectAttributes.addFlashAttribute("tokenId",googleId);
-            redirectAttributes.addFlashAttribute("oAuthUserProfile",googleProfileImg);
-            if(joinService.duplicateId(googleId)){
-                return new RedirectView("/main/main?check=true");
-            }
+    public RedirectView googleJoin(@RequestParam String code, RedirectAttributes redirectAttributes) throws Exception{
+       ArrayList<String> userinfo =  googleService.getGoogleAccessTokenInfo(code);
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        String userEmail = userinfo.get(0);
+        String userName = userinfo.get(1);
+        String userFile = userinfo.get(2);
+        String oauthId = userinfo.get(3)+"-google";
+        redirectAttributes.addFlashAttribute("oAuthNickNames",userName);
+        redirectAttributes.addFlashAttribute("oauthEmails",userEmail);
+        redirectAttributes.addFlashAttribute("tokenId",oauthId);
+        redirectAttributes.addFlashAttribute("oAuthUserProfile",userFile);
+        if(joinService.duplicateId(oauthId)){
+            return new RedirectView("/main/main?check=true");
         }
 
         return new RedirectView("/join/join-page-details");

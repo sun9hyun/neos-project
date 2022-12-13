@@ -86,18 +86,6 @@ if($member.val() == "01" && $meeting.val() == "02"){
     $('.meetingPlace').css("display", "flex");
 }
 
-// 진행 중 할일 지도 보이기
-let placeCheck = false;
-$(".placePick").on("click", function() {
-    if(!placeCheck){
-        placeCheck = true;
-        $('.place').css("display", "flex");
-    }else{
-        placeCheck = false;
-        $('.place').css("display", "none");
-    }
-});
-
 // 목표 완료 처리 버튼 클릭 시
 $(".mileBtn").on("click",function () {
     if($(this).text() == "완료") {

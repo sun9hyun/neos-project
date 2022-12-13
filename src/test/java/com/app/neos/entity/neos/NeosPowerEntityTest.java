@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.app.neos.type.point.NeosPowerContent.네오력상승;
 
 @SpringBootTest
 @Slf4j
@@ -28,12 +27,9 @@ public class NeosPowerEntityTest {
     public void neosPowerSaveTest(){
         NeosPowerDTO neosPowerDTO = new NeosPowerDTO();
 
-        neosPowerDTO.setNeosPowerContent(네오력상승);
         neosPowerDTO.setNeosPowerAbility(100);
-        neosPowerDTO.setUser(userRepository.findById(2L).get());
 
         NeosPower neosPower = neosPowerDTO.toEntity();
-        neosPower.changeUser(neosPowerDTO.getUser());
         neosPowerRepository.save(neosPower);
 
     }

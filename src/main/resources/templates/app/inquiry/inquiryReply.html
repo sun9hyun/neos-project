@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>NEOS | 내 프로필</title>
@@ -157,14 +158,18 @@
             <div class="myTabWrapContainer">
                 <div class="myTabWrap"><a class="">정보</a>
                     <input type="hidden" th:href="*{userId}">
-                    <a class="active">문의( 1 )
-                </a><a class="">
 
-                </a></div>
+                    <a sec:authorize="!isAuthenticated()" id="login-text" href="/user/login" class="active">
+                        문의
+                    </a>
+                 <!--   <a  class="active">문의( 1 )
+                </a>-->
+
+                </div>
             </div>
             <section class="grayBg secretNote">
                 <div class="projectFeedContents mypage">
-                    <p class="tit">나의 문의함(Q&amp;A)&nbsp; <span>(1)</span></p>
+                    <p class="tit">나의 문의함(Q&amp;A)&nbsp; <span></span></p>
                     <form th:action="@{/inquiry/write}" th:object="${inquiryDTO}" name="inquiryWrite" id="dof" method="post" class="form-horizontal form-validate" >
                         <input type="hidden" name="nowUser" th:value="${session.loginUser}">
                         <div class="communiWrap">
@@ -197,7 +202,7 @@
                                 </a>
                                     <div class="name">
                                         <p class="profileName" th:text="*{user.userNickName}">
-                                        </p><span>22.11.09 16:51</span>
+                                        </p><span class="createdDate" th:text="*{createdDate}">22.11.09 16:51</span>
                                     </div>
                                 </div>
                                 <div class="feedContents"><textarea class="textarea2" maxlength="1000"
@@ -264,7 +269,7 @@
             <p style="font-size: 12px;margin-bottom: 12px;">해당 문의 글을 삭제하시겠습니까?</p>
         </div>
         <div class="btnWrap doubleBtnWrap"><button class="btn whiteBtn" style="font-size: 12px;line-height: 3;">아니오</button><button
-                class="btn redBtn" style="font-size: 12px;line-height: 3;">예</button></div>
+                class="btn redBtn" style="font-size: 12px;line-height: 3;" id="deleteCheck">예</button></div>
     </div>
 </div>
 
@@ -275,6 +280,14 @@
 <script src="/js/fix/chatting.js"></script>
 <script src="/js/fix/login.js"></script>
 <script src="/js/fix/header.js"></script>
+
+<!--<script th:inline="javascript">
+
+    function test() {
+        let  name =[[${session}]];
+    }
+
+</script>-->
 
 <script>
     const $deleteModal = $(".modalWrapOpen");
@@ -310,6 +323,20 @@
         e.preventDefault();
         location.href = "/inquiry/info/yes" + "?userId=" + $(this).next().attr("href");
     });
+
+
+    $('.txtBtn').click(function () {
+        let inquiryId = $(this).next().attr('href');
+        modalUp();
+        console.log("들어올래?")
+        $('#deleteCheck').click(function () {
+            console.log("들어올래????????")
+            /*location.href = "/admin/test/community/reply/delete" + "?communityReplyId=" + communityReplyId;*/
+            location.href = "/inquiry/delete" + "?inquiryId=" + inquiryId;
+        })
+    })
+
+
 
 </script>
 

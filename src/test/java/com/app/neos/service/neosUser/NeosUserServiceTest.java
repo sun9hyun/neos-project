@@ -79,13 +79,13 @@ public class NeosUserServiceTest {
 
     }
 
-//    @Test
-//    public void findByKeywordTest(){
-//        UserDTO userDTO = new UserDTO();
-//
-//
-//        neosUserService.findByKeyword("인천대학교");
-//
-//    }
+    @Test
+    public void findByKeywordTest(){
+        UserDTO userDTO = new UserDTO();
+
+
+        neosUserService.findByKeyword("민송");
+
+    }
 
 }

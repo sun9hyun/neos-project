@@ -96,13 +96,35 @@ public class NeosUserCustomRepositoryImpl implements NeosUserCustomRepository {
 
 
 
+    /* 검색 */
+/*    @Override
+    public List<UserDTO> findByKeyword(String keyword) {
+        List<User> list = jpaQueryFactory.selectFrom(user).where(user.userNickName.eq(keyword).or(user.college.collegeName.eq(keyword))).orderBy(user.userId.desc()).fetch();
+
+        System.out.println("ddddㅇㅇㅇㅇㅇㅇ" + list.stream().map(i->i.toDTO()).collect(Collectors.toList()));
+
+        return list.stream().map(i->i.toDTO()).collect(Collectors.toList());
+    }*/
+
+    @Override
+    public Slice<UserDTO> findByKeywordSlice(String keyword , Pageable pageable) {
+        List<User> userList = jpaQueryFactory.selectFrom(user).where(user.userNickName.like("%" + keyword+ "%")).orderBy(user.userId.desc())
+                .offset(pageable.getOffset()).limit(pageable.getPageSize()+1).fetch();
+
+        List<UserDTO> userDTOList = userList.stream().map(User::toDTO).collect(Collectors.toList());
+
+        ArrayList<UserDTO> content = (ArrayList<UserDTO>)userDTOList;
+
+        boolean hasNext = false;
+        if (content.size() > pageable.getPageSize()){
+            content.remove(pageable.getPageSize());
+            hasNext = false;
+        }
 
 
 
-//    @Override
-//    public List<UserDTO> findByKeyword(String keyword) {
-//        List<User> list = jpaQueryFactory.selectFrom(user).where(user.userNickName.eq(keyword).or(user.college.collegeName.eq(keyword))).orderBy(user.userId.desc()).fetch();
-//        return list.stream().map(i->i.toDTO()).collect(Collectors.toList());
-//    }
+
+        return new SliceImpl<>(content , pageable , hasNext);
+    }
 
 }

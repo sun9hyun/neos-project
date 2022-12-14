@@ -9,9 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,4 +25,10 @@ public class NeosUserRestController {
 
         return neosUserCustomRepository.findAllPage(pageable);
     }
+
+   @PostMapping("{keyword}")            /*검색도 똑같이 넘겨줌 */
+   public Slice<UserDTO> list (@PageableDefault(size = 4, sort = "id" , direction = Sort.Direction.DESC) Pageable pageable,@PathVariable("keyword")  String keyword){
+        return neosUserService.findBykeyword(keyword,pageable);
+   }
+
 }

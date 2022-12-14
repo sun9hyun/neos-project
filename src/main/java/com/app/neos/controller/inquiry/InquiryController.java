@@ -56,6 +56,9 @@ public class InquiryController {
         //        문의하기
         model.addAttribute("inquirys" , inquiryService.findbyInquiryId(id));
 
+     /*   if (session != null){
+            model.addAttribute("username",session.getId().toString());
+        }*/
 
         return "app/inquiry/inquiryReply";
     }

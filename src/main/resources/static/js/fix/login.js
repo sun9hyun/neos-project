@@ -15,44 +15,44 @@ $profile.click(function () {
 
 })
 
-var swiper = new Swiper(".mySwiper", {
-    spaceBetween: 30,
-    centeredSlides: true,
-    slidesPerView: 1,
-    spaceBetween: 30,
-    loop: true,
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-    },
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-});
+// var swiper = new Swiper(".mySwiper", {
+//     spaceBetween: 30,
+//     centeredSlides: true,
+//     slidesPerView: 1,
+//     spaceBetween: 30,
+//     loop: true,
+//     autoplay: {
+//         delay: 3000,
+//         disableOnInteraction: false,
+//     },
+//     pagination: {
+//         el: ".swiper-pagination",
+//         clickable: true,
+//     },
+//     navigation: {
+//         nextEl: ".swiper-button-next",
+//         prevEl: ".swiper-button-prev",
+//     },
+// });
 
 let header = document.getElementsByClassName("Header");
 
-header.addEventListener("mouseover", function (event) {
-    event.target.style.color = "#fbdd97";
-}, false);
+// header.addEventListener("mouseover", function (event) {
+//     event.target.style.color = "#fbdd97";
+// }, false);
+//
+//
+// header.addEventListener("mouseout", function(event){
+//     event.target.style.color = "white";
+// }, false)
 
-
-header.addEventListener("mouseout", function(event){
-    event.target.style.color = "white";
-}, false)
-
-
-var swiper2 = new Swiper2(".mySwiper", {
-    scrollbar: {
-        el: ".swiper-scrollbar",
-        hide: false
-    }
-});
+//
+// var swiper2 = new Swiper2(".mySwiper", {
+//     scrollbar: {
+//         el: ".swiper-scrollbar",
+//         hide: false
+//     }
+// });
 
 var mql = window.matchMedia("screen and (max-width: 1024px)");
 

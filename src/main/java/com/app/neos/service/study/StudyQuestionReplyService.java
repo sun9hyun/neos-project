@@ -10,6 +10,8 @@ import com.app.neos.repository.study.StudyQuestionReplyCustomRepository;
 import com.app.neos.repository.study.StudyQuestionReplyRepository;
 import com.app.neos.repository.study.StudyQuestionRepository;
 import com.app.neos.repository.user.UserRepository;
+import com.app.neos.service.alarm.AlarmService;
+import com.app.neos.type.alarm.AlarmCategory;
 import com.app.neos.type.point.NeosPowerContent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,13 +30,17 @@ public class StudyQuestionReplyService {
     private final StudyQuestionRepository studyQuestionRepository;
     private  final StudyQuestionReplyCustomRepository studyQuestionReplyCustomRepository;
     private final NeosPowerRepository neosPowerRepository;
+    private final AlarmService alarmService;
 
     public void post(Long studyQuestionId, StudyQuestionReplyDTO studyQuestionReplyDTO, Long userId){
         StudyQuestionReplyDTO dto = studyQuestionReplyDTO;
         StudyQuestionReply reply = dto.toEntity();
         reply.changeStudyQuestion(studyQuestionRepository.findById(studyQuestionId).get());
         reply.changeStudyQuestionReplyWriter(userRepository.findById(userId).get());
-        studyQuestionReplyRepository.save(reply);
+       StudyQuestionReply entity =  studyQuestionReplyRepository.save(reply);
+        studyQuestionReplyDTO = entity.toDTO();
+        AlarmCategory category = AlarmCategory.QUESTIONREPLY;
+        alarmService.alarm(studyQuestionReplyDTO,category);
     }
 
     public List<StudyQuestionReplyDTO> showList(Long studyQuestionId){

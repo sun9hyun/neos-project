@@ -1,15 +1,11 @@
 package com.app.neos.controller.main;
 
-import com.app.neos.domain.chatting.ChattingContentDTO;
-import com.app.neos.domain.chatting.ChattingDTO;
+import com.app.neos.aspect.annotation.QuestionReplyAlarm;
 import com.app.neos.domain.chatting.ChattingRoomDTO;
 import com.app.neos.domain.community.CommunityDTO;
 import com.app.neos.domain.store.StoreDTO;
 import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.domain.user.UserDTO;
-import com.app.neos.entity.store.Store;
-import com.app.neos.entity.user.User;
-import com.app.neos.repository.neos.NeosUserCustomRepository;
 import com.app.neos.repository.study.StudyRepository;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.service.fix.FixService;
@@ -17,7 +13,6 @@ import com.app.neos.service.join.JoinService;
 import com.app.neos.service.main.MainService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -29,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor

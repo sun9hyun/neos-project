@@ -1,5 +1,7 @@
 package com.app.neos.service.study;
 
+import com.app.neos.aspect.annotation.AlarmInput;
+import com.app.neos.aspect.annotation.FeedReplyAlarm;
 import com.app.neos.domain.neos.NeosPowerDTO;
 import com.app.neos.domain.study.StudyFeedReplyDTO;
 import com.app.neos.entity.neos.NeosPower;
@@ -10,6 +12,8 @@ import com.app.neos.repository.study.StudyFeedReplyCustomRepository;
 import com.app.neos.repository.study.StudyFeedReplyRepository;
 import com.app.neos.repository.study.StudyFeedRepository;
 import com.app.neos.repository.user.UserRepository;
+import com.app.neos.service.alarm.AlarmService;
+import com.app.neos.type.alarm.AlarmCategory;
 import com.app.neos.type.point.NeosPowerContent;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -30,12 +34,17 @@ public class StudyFeedReplyService {
     private final StudyFeedRepository studyFeedRepository;
     private final StudyFeedReplyCustomRepository studyFeedReplyCustomRepository;
     private final NeosPowerRepository neosPowerRepository;
+    private final AlarmService alarmService;
 
-    public void post(StudyFeedReplyDTO studyFeedReplyDTO,Long userId, Long studyFeedId){
+    @Transactional
+    public void post(StudyFeedReplyDTO studyFeedReplyDTO,Long userId){
         StudyFeedReply reply = studyFeedReplyDTO.toEntity();
-        reply.changeStudyFeed(studyFeedRepository.findById(studyFeedId).get());
+        reply.changeStudyFeed(studyFeedRepository.findById(studyFeedReplyDTO.getStudyFeed().getStudyFeedId()).get());
         reply.changeStudyFeedReplyWriter(userRepository.findById(userId).get());
-        studyFeedReplyRepository.save(reply);
+        StudyFeedReply entity =  studyFeedReplyRepository.save(reply);
+        studyFeedReplyDTO = entity.toDTO();
+        AlarmCategory category = AlarmCategory.FEEDREPLY;
+        alarmService.alarm(studyFeedReplyDTO,category);
     }
 
     public List<StudyFeedReplyDTO> show(Long feedId){
@@ -79,6 +88,7 @@ public class StudyFeedReplyService {
         entity.changeUser(user);
         neosPowerRepository.save(entity);
     }
+
 
 
 

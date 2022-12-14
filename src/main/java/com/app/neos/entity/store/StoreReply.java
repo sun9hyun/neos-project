@@ -6,6 +6,8 @@ import com.app.neos.entity.user.User;
 import com.app.neos.type.store.StoreReplySecret;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -24,10 +26,12 @@ public class StoreReply extends Period {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STORE_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Store store;
 
     public void changeUser(User user){

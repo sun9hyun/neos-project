@@ -130,7 +130,7 @@
                             <div class="projectTab projectFeedContents active">
                                 <input type="hidden" th:value="*{user.userId}" name="storeUserId"></input>
                                 <input type="hidden" th:value="${session.loginUser}" name="userId"></input>
-                                <input type="hidden" name="storeReplySecret" class="replyStatus" value="PUBLIC"></input>
+                                <input type="text" name="storeReplySecret" class="replyStatus" value="PUBLIC"></input>
                                 <input type="hidden" name="storeId" th:value="*{storeId}"></input>
                                 <div class="section feedInputSection ">
                                     <div class="feedInputWrap">
@@ -218,8 +218,8 @@
 <script src="/js/study/feed-study.js"></script>
 <script src="/js/fix/login.js"></script>
 <script src="/js/fix/header.js"></script>
-<script src="/js/store/storeDetail.js"></script>
 <script src="/js/store/storeDetailAjax.js"></script>
+<script src="/js/store/storeDetail.js"></script>
 <script th:inline="javascript">
     let storeId = $("input[name='storeId']").val();
 
@@ -346,10 +346,7 @@
                     text += "</div>";
                     text += "</div>";
                 }
-
             }
-
-
         });
 
         $("div.replyAreaWrap").html(text)
@@ -396,6 +393,17 @@
             $(this).parents('.feedContentsWrap').children('.feedContents').children("textarea").attr("disabled", true)
                 .css("height", "62px");
         }
+    });
+
+    $(function(){
+        $(".replyStatusCheck").change(function(){
+            console.log("들어옴")
+            if($(".replyStatusCheck").is(":checked")){
+                $(".replyStatus").val("PRIVATE")
+            }else {
+                $(".replyStatus").val("PUBLIC")
+            };
+        });
     });
 
 

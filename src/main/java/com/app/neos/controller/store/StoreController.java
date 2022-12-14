@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -63,9 +64,10 @@ public class StoreController {
     }
 
     @PostMapping("/store-create")
-    public RedirectView saveOk(StoreDTO storeDTO){
+    public RedirectView saveOk(StoreDTO storeDTO, HttpSession session){
 //        Store store = storeDTO.toEntity();
-
+        Long userId = (Long)session.getAttribute("loginUser");
+        storeService.postEXP(userId);
         storeService.saveStore(storeDTO);
 
         return new RedirectView("store-list");
@@ -97,8 +99,10 @@ public class StoreController {
     
     // 자료상점 게시글 삭제
     @GetMapping("/store-delete")
-    public RedirectView delete(Long storeId){
+    public RedirectView delete(Long storeId, HttpSession session){
+        Long userId = (Long)session.getAttribute("loginUser");
         storeService.deleteByStoreId(storeId);
+        storeService.postDeleteEXP(userId);
         return new RedirectView("store-list");
     }
 

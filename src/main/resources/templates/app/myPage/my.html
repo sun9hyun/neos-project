@@ -31,16 +31,16 @@
                 <a name="info">정보</a>
             </li>
             <li class="">
-                <a name="project">스터디(1)</a>
+                <a name="project">스터디</a>
             </li>
             <li class="">
-                <a class="story" name="story">자료상점(1)</a>
+                <a class="story" name="story">자료상점</a>
             </li>
             <li class="">
-                <a name="favorite">구독(3)</a>
+                <a name="favorite">구독</a>
             </li>
             <li class="">
-                <a name="alarm">알림(6)</a>
+                <a name="alarm">알림</a>
             </li>
             <li class="">
                 <a name="payment">포인트</a>
@@ -53,513 +53,202 @@
     <!--  정보  -->
     <div class="myTabContents myProfileTab active">
         <div class="myProfileWrap">
-            <div class="left">
-                <div class="profileImg">
-                    <img class="userImg"  src="" alt="user_image">
+            <form action="/my-detail/" >
+                <div class="left">
+                    <div class="profileImg">
+                        <img class="userImg"  src="data:image/;base64" alt="user_image">
+                    </div>
+                    <label for="ImgBtn"></label>
+                    <input type="file" name="userFileInput" accept="image/*" class="changeImgBtn" id="ImgBtn">
+
                 </div>
-                <label for="ImgBtn"></label>
-                <input type="file" accept="image/*" class="changeImgBtn" id="ImgBtn">
+                <div class="right">
+                    <div class="profileInputWrap firstProfileInputWrap">
+                        <div class="inputAndBtn">
+                            <div class="inputAndBtnWrap">
+                                <label>이메일</label>
+                                <input name="userOAuthEmail" disabled="" value="">
+                            </div>
+                        </div>
+                        <div class="inputAndBtn">
+                            <div class="inputAndBtnWrap">
+                                <label>닉네임</label>
+                                <input name="userNickName" minlength="3" maxlength="10" placeholder="3~10자리 이내로 적어주세요!" value="">
+                            </div>
+                            <!--                        <div class="rightLayoutWrap">-->
+                            <!--                            <span>사용 가능합니다</span>-->
+                            <!--                        </div>-->
+                        </div>
+                        <div class="inputAndBtn">
+                            <div class="inputAndBtnWrap" style="margin-bottom: 20px;">
+                                <label>휴대폰번호</label>
+                                <input name="userPhoneNumber" disabled="" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profileInputWrap">
+                        <div class="labelSelect labelSelectThird">
+                            <label>대학교/전공/학년</label>
+                            <div class="rightWrap selectFour">
+                                <select class="KRUni collegeCity"  name="collegeCity">
+                                    <option class="KR00" value="KR00">지역 미지정</option>
+                                </select>
+                                <select class="selectUni Univer" id="collegeName" name="collegeName">
+                                    <option selected="" value="02">대학교</option>
+                                </select>
+                                <select class="selectUni uniPart">
+                                    <option selected="" value="0201">전공</option>
+                                    <option value="인문계열">인문계열</option>
+                                    <option value="사회계열">사회계열</option>
+                                    <option value="자연계열">자연계열</option>
+                                    <option value="의약계열">의약계열</option>
+                                    <option value="공학계열">공학계열</option>
+                                    <option value="예체능계열">예체능계열</option>
+                                    <option value="교육계열">교육계열</option>
+                                    <option value="IT계열">IT계열</option>
+                                    <option value="기타계열">기타계열</option>
+                                </select>
+                                <select class="selectUni uniYear">
+                                    <option value="1">학년</option>
+                                    <option value="2">1학년</option>
+                                    <option value="3">2학년</option>
+                                    <option value="4">3학년</option>
+                                    <option value="5">4학년</option>
+                                </select>
 
-            </div>
-            <div class="right">
-                <div class="profileInputWrap firstProfileInputWrap">
-                    <div class="inputAndBtn">
-                        <div class="inputAndBtnWrap">
-                            <label>이메일</label>
-                            <input name="userOAuthEmail" disabled="" value="">
+                            </div>
+                            <div style="display: flex; margin: 15px 0;">
+                                <input type="text" class="uniEmail" placeholder="대학교 이메일">
+                                <p name="userCollegeEmail" class="uniEmailText" style="line-height: 44px;">@snu.ac.kr</p>
+                            </div>
+                            <div class="checkboxs">
+                                <input type="checkbox" id="uni_radio" class="userCollegeCertify" style="width: 20px; height: 20px; margin: 8px; margin-left: 0;">
+                                <label for="uni_radio" style="padding: 0; margin: 0; line-height: 1px; font-size: 12.5px; color: #6e6e6e;">선택 안함</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="inputAndBtn">
-                        <div class="inputAndBtnWrap">
-                            <label>닉네임</label>
-                            <input name="userNickName" minlength="3" maxlength="10" placeholder="3~10자리 이내로 적어주세요!" value="">
-                        </div>
-<!--                        <div class="rightLayoutWrap">-->
-<!--                            <span>사용 가능합니다</span>-->
-<!--                        </div>-->
-                    </div>
-                    <div class="inputAndBtn">
-                        <div class="inputAndBtnWrap" style="margin-bottom: 20px;">
-                            <label>휴대폰번호</label>
-                            <input name="userPhoneNumber" disabled="" value="">
-                        </div>
-                    </div>
-                </div>
-                <div class="profileInputWrap">
-                    <div class="labelSelect labelSelectThird">
-                        <label>본 캐릭터 대학교/전공/학년</label>
-                        <div class="rightWrap selectFour">
-                            <select class=" KRUni">
-                                <option value="KR00">지역 미지정</option>
-                                <option value="KR01">서울특별시</option>
-                                <option value="KR02">경기도</option>
-                                <option value="KR03" selected="selected">부산광역시</option>
-                                <option value="KR04">인천광역시</option>
-                                <option value="KR05">대구광역시</option>
-                                <option value="KR06">경상남도</option>
-                                <option value="KR07">경상북도</option>
-                                <option value="KR08">대전광역시</option>
-                                <option value="KR09">충청남도</option>
-                                <option value="KR10">충청북도</option>
-                                <option value="KR11">전라남도</option>
-                                <option value="KR12">전라북도</option>
-                                <option value="KR13">광주광역시</option>
-                                <option value="KR14">강원도</option>
-                                <option value="KR15">울산광역시</option>
-                                <option value="KR16">제주특별자치도</option>
-                                <option value="KR17">세종특별자치시</option>
-                            </select>
-                            <select class="selectUni Univer">
-                                <option selected="" value="02">대학교</option>
-                                <option value="03">가톨릭대학교</option>
-                                <option value="04">건국대학교</option>
-                                <option value="05">경기대학교</option>
-                                <option value="06">고려대학교</option>
-                                <option value="07">광운대학교</option>
-                                <option value="08">국민대학교</option>
-                                <option value="10">경성대학교</option>
-                                <option value="11">고신대학교</option>
-                                <option value="12">경북대학교</option>
-                                <option value="13">계명대학교</option>
-                                <option value="14">가천대학교</option>
-                                <option value="15">광신대학교</option>
-                                <option value="16">광주대학교</option>
-                                <option value="17">건양대학교</option>
-                                <option value="18">고려대학교 세종캠퍼스</option>
-                                <option value="19">가천대학교</option>
-                                <option value="20">가톨릭대학교</option>
-                                <option value="21">강남대학교</option>
-                                <option value="22">경기대학교</option>
-                                <option value="23">경동대학교</option>
-                                <option value="24">경희대학교</option>
-                                <option value="25">가톨릭관동대학교</option>
-                                <option value="26">강릉원주대학교</option>
-                                <option value="27">강원대학교</option>
-                                <option value="28">경동대학교</option>
-                                <option value="29">건국대학교 GLOCAL캠퍼스</option>
-                                <option value="30">극동대학교</option>
-                                <option value="31">건양대학교</option>
-                                <option value="32">고신대학교</option>
-                                <option value="33">공주대학교</option>
-                                <option value="34">군산대학교</option>
-                                <option value="35">경북대학교</option>
-                                <option value="36">경운대학교</option>
-                                <option value="37">경일대학교</option>
-                                <option value="38">금오공과대학교</option>
-                                <option value="39">김천대학교</option>
-                                <option value="40">가야대학교</option>
-                                <option value="41">경남대학교</option>
-                                <option value="42">경상국립대학교</option>
-                                <option value="43">광주보건대학교</option>
-                                <option value="44">기독간호대학교</option>
-                                <option value="45">계명문화대학교</option>
-                                <option value="46">경기과학기술대학교</option>
-                                <option value="47">경민대학교</option>
-                                <option value="48">경복대학교</option>
-                                <option value="49">계원예술대학교</option>
-                                <option value="50">국제대학교</option>
-                                <option value="51">김포대학교</option>
-                                <option value="52">강릉영동대학교</option>
-                                <option value="53">강원관광대학교</option>
-                                <option value="54">강원도립대학교</option>
-                                <option value="55">강동대학교</option>
-                                <option value="56">군산간호대학교</option>
-                                <option value="57">군장대학교</option>
-                                <option value="58">고구려대학교</option>
-                                <option value="59">광양보건대학교</option>
-                                <option value="60">가톨릭상지대학교</option>
-                                <option value="61">경북과학대학교</option>
-                                <option value="62">경북도립대학교</option>
-                                <option value="63">경북전문대학교</option>
-                                <option value="64">구미대학교</option>
-                                <option value="65">거제대학교</option>
-                                <option value="66">경남도립거창대학</option>
-                                <option value="67">경남도립남해대학</option>
-                                <option value="68">김해대학교</option>
-                                <option value="69">경인여자대학교</option>
-                                <option value="71">남부대학교</option>
-                                <option value="72">나사렛대학교</option>
-                                <option value="73">남서울대학교</option>
-                                <option value="74">농협대학교</option>
-                                <option value="75">동국대학교</option>
-                                <option value="76">동명대학교</option>
-                                <option value="77">동서대학교</option>
-                                <option value="78">동아대학교</option>
-                                <option value="79">동의대학교</option>
-                                <option value="80">대구가톨릭대학교</option>
-                                <option value="81">대구대학교</option>
-                                <option value="82">대전대학교</option>
-                                <option value="83">대진대학교</option>
-                                <option value="84">동국대학교</option>
-                                <option value="85">단국대학교</option>
-                                <option value="86">동신대학교</option>
-                                <option value="87">대구가톨릭대학교</option>
-                                <option value="88">대구한의대학교</option>
-                                <option value="89">동국대학교 WISE캠퍼스</option>
-                                <option value="90">동양대학교</option>
-                                <option value="91">덕성여자대학교</option>
-                                <option value="92">동덕여자대학교</option>
-                                <option value="93">동양미래대학교</option>
-                                <option value="94">동강대학교</option>
-                                <option value="95">대구공업대학교</option>
-                                <option value="96">대구과학대학교</option>
-                                <option value="97">대구보건대학교</option>
-                                <option value="98">대덕대학교</option>
-                                <option value="99">대전과학기술대학교</option>
-                                <option value="100">대전보건대학교</option>
-                                <option value="101">대림대학교</option>
-                                <option value="102">동남보건대학교</option>
-                                <option value="103">동서울대학교</option>
-                                <option value="104">동아방송예술대학교</option>
-                                <option value="105">동원대학교</option>
-                                <option value="106">두원공과대학교</option>
-                                <option value="107">대원대학교</option>
-                                <option value="108">동아보건대학교</option>
-                                <option value="109">대경대학교</option>
-                                <option value="110">동원과학기술대학교</option>
-                                <option value="112">명지대학교</option>
-                                <option value="113">목포해양대학교</option>
-                                <option value="114">목포대학교</option>
-                                <option value="115">명지전문대학</option>
-                                <option value="116">목포과학대학교</option>
-                                <option value="117">문경대학교</option>
-                                <option value="118">마산대학교</option>
-                                <option value="119">부경대학교</option>
-                                <option value="120">부산대학교</option>
-                                <option value="121">부산외국어대학교</option>
-                                <option value="122">배재대학교</option>
-                                <option value="123">백석대학교</option>
-                                <option value="124">부천대학교</option>
-                                <option value="125">백석문화대학교</option>
-                                <option value="126">백제예술대학교</option>
-                                <option value="127">부산여자대학교</option>
-                                <option value="128">배화여자대학교</option>
-                                <option value="129">삼육대학교</option>
-                                <option value="130">상명대학교</option>
-                                <option value="131">서강대학교</option>
-                                <option value="132">서경대학교</option>
-                                <option value="133">서울대학교</option>
-                                <option value="134">서울과학기술대학교</option>
-                                <option value="135">서울시립대학교</option>
-                                <option value="136">성공회대학교</option>
-                                <option value="138">성균관대학교</option>
-                                <option value="138">세종대학교</option>
-                                <option value="140">숭실대학교</option>
-                                <option value="141">신라대학교</option>
-                                <option value="142">송원대학교</option>
-                                <option value="143">성균관대학교</option>
-                                <option value="144">수원대학교</option>
-                                <option value="145">신경대학교</option>
-                                <option value="146">신한대학교</option>
-                                <option value="147">상지대학교</option>
-                                <option value="148" selected="selected">서울대학교</option>
-                                <option value="149">서원대학교</option>
-                                <option value="150">세명대학교</option>
-                                <option value="151">상명대학교</option>
-                                <option value="152">선문대학교</option>
-                                <option value="153">세명대학교</option>
-                                <option value="154">세한대학교</option>
-                                <option value="155">순천향대학교</option>
-                                <option value="156">서울여자대학교</option>
-                                <option value="157">성신여자대학교</option>
-                                <option value="158">숙명여자대학교</option>
-                                <option value="159">삼육보건대학교</option>
-                                <option value="160">서일대학교</option>
-                                <option value="161">서영대학교</option>
-                                <option value="162">수성대학교</option>
-                                <option value="163">서울예술대학교</option>
-                                <option value="164">서정대학교</option>
-                                <option value="165">수원과학대학교</option>
-                                <option value="166">수원여자대학교</option>
-                                <option value="167">신구대학교</option>
-                                <option value="168">신안산대학교</option>
-                                <option value="169">세경대학교</option>
-                                <option value="170">송곡대학교</option>
-                                <option value="171">송호대학교</option>
-                                <option value="172">신성대학교</option>
-                                <option value="173">순천제일대학교</option>
-                                <option value="174">서라벌대학교</option>
-                                <option value="175">선린대학교</option>
-                                <option value="176">성운대학교</option>
-                                <option value="177">서울여자간호대학교</option>
-                                <option value="178">수원여자대학교</option>
-                                <option value="179">숭의여자대학교</option>
-                                <option value="180">연세대학교</option>
-                                <option value="181">영산대학교</option>
-                                <option value="182">인제대학교</option>
-                                <option value="183">영남대학교</option>
-                                <option value="184">안양대학교</option>
-                                <option value="185">인천대학교</option>
-                                <option value="186">인하대학교</option>
-                                <option value="187">우송대학교</option>
-                                <option value="188">을지대학교</option>
-                                <option value="189">울산대학교</option>
-                                <option value="190">아주대학교</option>
-                                <option value="191">용인대학교</option>
-                                <option value="192">우석대학교</option>
-                                <option value="193">유원대학교</option>
-                                <option value="194">원광대학교</option>
-                                <option value="195">안동대학교</option>
-                                <option value="196">영남대학교</option>
-                                <option value="197">영산대학교</option>
-                                <option value="198">인제대학교</option>
-                                <option value="199">이화여자대학교</option>
-                                <option value="200">인덕대학교</option>
-                                <option value="201">인하공업전문대학</option>
-                                <option value="202">인천재능대학교</option>
-                                <option value="203">영남이공대학교</option>
-                                <option value="204">영진전문대학교</option>
-                                <option value="205">우송정보대학</option>
-                                <option value="206">안산대학교</option>
-                                <option value="207">연성대학교</option>
-                                <option value="208">여주대학교</option>
-                                <option value="209">오산대학교</option>
-                                <option value="210">용인송담대학교</option>
-                                <option value="211">웅지세무대학교</option>
-                                <option value="212">유한대학교</option>
-                                <option value="213">아주자동차대학</option>
-                                <option value="214">연암대학교</option>
-                                <option value="215">안동과학대학교</option>
-                                <option value="216">영진전문대학교</option>
-                                <option value="217">연암공과대학교</option>
-                                <option value="218">중앙대학교</option>
-                                <option value="219">전남대학교</option>
-                                <option value="220">조선대학교</option>
-                                <option value="221">중부대학교</option>
-                                <option value="222">중앙대학교</option>
-                                <option value="223">중원대학교</option>
-                                <option value="224">중부대학교</option>
-                                <option value="225">전북대학교</option>
-                                <option value="226">전주대학교</option>
-                                <option value="227">전남대학교</option>
-                                <option value="228">제주국제대학교</option>
-                                <option value="229">제주대학교</option>
-                                <option value="230">조선간호대학교</option>
-                                <option value="231">조선이공대학교</option>
-                                <option value="232">장안대학교</option>
-                                <option value="233">전북과학대학교</option>
-                                <option value="234">전주기전대학</option>
-                                <option value="235">전주비전대학교</option>
-                                <option value="236">전남과학대학교</option>
-                                <option value="237">전남도립대학교</option>
-                                <option value="238">진주보건대학교</option>
-                                <option value="239">제주관광대학교</option>
-                                <option value="230">제주한라대학교</option>
-                                <option value="231">총신대학교</option>
-                                <option value="232">청운대학교</option>
-                                <option value="233">충남대학교</option>
-                                <option value="234">청주대학교</option>
-                                <option value="235">충북대학교</option>
-                                <option value="236">청운대학교</option>
-                                <option value="237">초당대학교</option>
-                                <option value="238">창신대학교</option>
-                                <option value="239">창원대학교</option>
-                                <option value="240">춘해보건대학교</option>
-                                <option value="241">청강문화산업대학교</option>
-                                <option value="242">충북도립대학교</option>
-                                <option value="243">충북보건과학대학교</option>
-                                <option value="244">충청대학교</option>
-                                <option value="245">청암대학교</option>
-                                <option value="246">창원문성대학교</option>
-                                <option value="247">케이씨대학교</option>
-                                <option value="248">포항공과대학교</option>
-                                <option value="249">포항대학교</option>
-                                <option value="250">평택대학교</option>
-                                <option value="251">한국외국어대학교</option>
-                                <option value="252">한성대학교</option>
-                                <option value="253">한양대학교</option>
-                                <option value="254">홍익대학교</option>
-                                <option value="255">한국해양대학교</option>
-                                <option value="256">호남대학교</option>
-                                <option value="257">한남대학교</option>
-                                <option value="258">한밭대학교</option>
-                                <option value="259">한경대학교</option>
-                                <option value="260">한국공학대학교</option>
-                                <option value="261">한국교통대학교</option>
-                                <option value="262">한국외국어대학교</option>
-                                <option value="263">한국항공대학교</option>
-                                <option value="264">한세대학교</option>
-                                <option value="265">한신대학교</option>
-                                <option value="266">한양대학교 ERICA캠퍼스</option>
-                                <option value="267">협성대학교</option>
-                                <option value="268">한라대학교</option>
-                                <option value="269">한림대학교</option>
-                                <option value="270">한국교통대학교</option>
-                                <option value="271">한서대학교</option>
-                                <option value="272">호서대학교</option>
-                                <option value="273">호원대학교</option>
-                                <option value="274">한동대학교</option>
-                                <option value="275">한국국제대학교</option>
-                                <option value="276">한국영상대학교</option>
-                                <option value="277">한국관광대학교</option>
-                                <option value="278">한국복지대학교</option>
-                                <option value="279">한국골프대학교</option>
-                                <option value="280">한림성심대학교</option>
-                                <option value="281">혜전대학교</option>
-                                <option value="282">한영대학교</option>
-                                <option value="283">한국승강기대학교</option>
-                                <option value="284">한양여자대학교</option>
-                                <option value="285">한국폴리텍Ⅰ대학</option>
-                            </select>
-                            <select class="selectUni">
-                                <option selected="" value="0201">전공</option>
-                                <option value="0202">인문계열</option>
-                                <option value="0203">사회계열</option>
-                                <option value="0204">자연계열</option>
-                                <option value="0205">의약계열</option>
-                                <option value="0206">공학계열</option>
-                                <option value="0207">예체능계열</option>
-                                <option value="0208">교육계열</option>
-                                <option value="0209">IT계열</option>
-                                <option value="0210">기타계열</option>
-                            </select>
-                            <select class="selectUni">
-                                <option value="01">학년</option>
-                                <option value="02">1학년</option>
-                                <option value="03">2학년</option>
-                                <option value="04">3학년</option>
-                                <option value="05">4학년</option>
-                            </select>
 
+                        <div class="labelSelect">
+                            <label>대화 포인트</label>
+                            <div class="rightWrap">
+                                <select class="chatPoint">
+                                    <option value="1000">1,000</option>
+                                    <option value="2000">2,000</option>
+                                    <option value="3000">3,000</option>
+                                    <option value="4000">4,000</option>
+                                    <option value="5000">5,000</option>
+                                </select>
+                            </div>
+                            <span>상대방이 나에게 대화를 요청할 때, 필요한 포인트입니다.</span>
                         </div>
-                        <div style="display: flex; margin: 15px 0;">
-                            <input type="text" class="uniEmail" placeholder="대학교 이메일">
-                            <p class="uniEmailText" style="line-height: 44px;">@snu.ac.kr</p>
+                        <div class="labelSelect">
+                            <label>선호 지역 설정</label>
+                            <div class="rightWrap">
+                                <select class = "otoo">
+                                    <option value="온라인/오프라인 모두 가능">온라인/오프라인 모두 가능</option>
+                                    <option value="온라인만 가능">온라인만 가능</option>
+                                    <option value="오프라인만 가능">오프라인만 가능</option>
+                                </select>
+                                <select class = "areaSort">
+                                    <option value="상관없음">상관없음</option>
+                                    <option value="서울특별시">서울특별시</option>
+                                    <option value="경기도">경기도</option>
+                                    <option value="부산광역시">부산광역시</option>
+                                    <option value="인천광역시">인천광역시</option>
+                                    <option value="대구광역시">대구광역시</option>
+                                    <option value="경상남도">경상남도</option>
+                                    <option value="경상북도">경상북도</option>
+                                    <option value="대전광역시">대전광역시</option>
+                                    <option value="충청남도">충청남도</option>
+                                    <option value="충청북도">충청북도</option>
+                                    <option value="전라남도">전라남도</option>
+                                    <option value="전라북도">전라북도</option>
+                                    <option value="광주광역시">광주광역시</option>
+                                    <option value="강원도">강원도</option>
+                                    <option value="울산광역시">울산광역시</option>
+                                    <option value="제주특별자치도">제주특별자치도</option>
+                                    <option value="세종특별자치시">세종특별자치시</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="checkboxs">
-                            <input type="checkbox" id="uni_radio" style="width: 20px; height: 20px; margin: 8px; margin-left: 0;">
-                            <label for="uni_radio" style="padding: 0; margin: 0; line-height: 1px; font-size: 12.5px; color: #6e6e6e;">선택 안함</label>
+                        <div class="labelSelect">
+                            <label>선호 시간 설정</label>
+                            <div class="rightWrap">
+                                <select class="userDay">
+                                    <option value="주중/주말 모두가능">주중/주말 모두가능</option>
+                                    <option value="주중만 가능">주중만 가능</option>
+                                    <option value="주말만 가능">주말만 가능</option>
+                                </select>
+                                <select class="userTime">
+                                    <option value="상관없음">상관없음</option>
+                                    <option value="오전 위주">오전 위주</option>
+                                    <option value="오후 위주">오후 위주</option>
+                                    <option value="저녁 위주">저녁 위주</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profileInputWrap">
+                        <!--                    <div class="labelInput labelTag">-->
+                        <!--                        <label>관심분야 (최대 1개)</label>-->
+                        <!--                        <input type="text" class="interestAll" value="text">-->
+                        <!--                        <div class="interestWrap">-->
+                        <!--                            <p class="interest">여가/취미</p>-->
+                        <!--                            <p class="interest">여행</p>-->
+                        <!--                            <p class="interest">SNS</p>-->
+                        <!--                            <p class="interest">뷰티/패션</p>-->
+                        <!--                            <p class="interest">엔터테인먼트</p>-->
+                        <!--                            <p class="interest">게임</p>-->
+                        <!--                            <p class="interest">헬스/스포츠</p>-->
+                        <!--                            <p class="interest">뉴스/정보</p>-->
+                        <!--                            <p class="interest">종교</p>-->
+                        <!--                            <p class="interest">학업</p>-->
+                        <!--                            <p class="interest">우주/외계인</p>-->
+                        <!--                        </div>-->
+                        <!--                    </div>-->
+                        <div class="labelSelect">
+                            <input type="hidden" class="mbtiSelectText" value="0000"></input>
+                            <label>MBTI</label>
+                            <div class="rightWrap">
+                                <select class="mbtiSelect">
+                                    <option value="0000">미지정</option>
+                                    <option value="ISTJ">ISTJ</option>
+                                    <option value="ISFJ">ISFJ</option>
+                                    <option value="INFJ">INFJ</option>
+                                    <option value="INTJ">INTJ</option>
+                                    <option value="ISTP">ISTP</option>
+                                    <option value="ISFP">ISFP</option>
+                                    <option value="INTP">INTP</option>
+                                    <option value="INFP">INFP</option>
+                                    <option value="ESTP">ESTP</option>
+                                    <option value="ESFP">ESFP</option>
+                                    <option value="ENTP">ENTP</option>
+                                    <option value="ENFP">ENFP</option>
+                                    <option value="ESTJ">ESTJ</option>
+                                    <option value="ESFJ">ESFJ</option>
+                                    <option value="ENTJ">ENTJ</option>
+                                    <option value="ENFJ">ENFJ</option>
+                                </select>
+                            </div>
+                            <span class="mbtiText">철저한 준비를 하며 활동적입니다. 통솔력이 있으며 단호합니다.</span>
                         </div>
                     </div>
 
-                    <div class="labelSelect">
-                        <label>대화 포인트</label>
+                    <div class="labelTextarea">
+                        <label>자세한 소개</label>
                         <div class="rightWrap">
-                            <select>
-                                <option value="1000">1,000</option>
-                                <option value="2000">2,000</option>
-                                <option value="3000">3,000</option>
-                                <option value="4000">4,000</option>
-                                <option value="5000">5,000</option>
-                            </select>
-                        </div>
-                        <span>상대방이 나에게 대화를 요청할 때, 필요한 포인트입니다.</span>
-                    </div>
-                    <div class="labelSelect">
-                        <label>선호 지역 설정</label>
-                        <div class="rightWrap">
-                            <select class = "otoo">
-                                <option value="00">온라인/오프라인 모두 가능</option>
-                                <option value="01">온라인만 가능</option>
-                                <option value="02">오프라인만 가능</option>
-                            </select>
-                            <select class = "areaSort">
-                                <option value="KR00">상관없음</option>
-                                <option value="KR01">서울특별시</option>
-                                <option value="KR02">경기도</option>
-                                <option value="KR03">부산광역시</option>
-                                <option value="KR04">인천광역시</option>
-                                <option value="KR05">대구광역시</option>
-                                <option value="KR06">경상남도</option>
-                                <option value="KR07">경상북도</option>
-                                <option value="KR08">대전광역시</option>
-                                <option value="KR09">충청남도</option>
-                                <option value="KR10">충청북도</option>
-                                <option value="KR11">전라남도</option>
-                                <option value="KR12">전라북도</option>
-                                <option value="KR13">광주광역시</option>
-                                <option value="KR14">강원도</option>
-                                <option value="KR15">울산광역시</option>
-                                <option value="KR16">제주특별자치도</option>
-                                <option value="KR17">세종특별자치시</option>
-                            </select>
+                            <textarea class="userIntroduce" name="userIntroduce" maxlength="250" placeholder="최대 250자까지 작성 가능합니다." style="height: 49px !important; overflow: hidden;" oninput='this.style.height = "49px"; this.style.height = this.scrollHeight + "px"'></textarea>
                         </div>
                     </div>
-                    <div class="labelSelect">
-                        <label>선호 시간 설정</label>
-                        <div class="rightWrap">
-                            <select>
-                                <option value="00">주중/주말 모두가능</option>
-                                <option value="01">주중만 가능</option>
-                                <option value="02">주말만 가능</option>
-                            </select>
-                            <select>
-                                <option value="00">상관없음</option>
-                                <option value="01">오전 위주</option>
-                                <option value="02">오후 위주</option>
-                                <option value="03">저녁 위주</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="profileInputWrap">
-                    <div class="labelInput labelTag">
-                        <label>관심분야 (최대 5개)</label>
-                        <div class="interestWrap">
-                            <p class="">O2O</p>
-                            <p class="">공유서비스</p>
-                            <p class="">데이팅서비스</p>
-                            <p class="">여행</p>
-                            <p class="">소셜네트워크</p>
-                            <p class="">뷰티/패션</p>
-                            <p class="">이커머스</p>
-                            <p class="">엔터테인먼트</p>
-                            <p class="">게임</p>
-                            <p class="">헬스/스포츠</p>
-                            <p class="">뉴스/정보</p>
-                            <p class="">유틸</p>
-                            <p class="active">금융</p>
-                            <p class="">부동산/인테리어</p>
-                            <p class="">종교</p>
-                            <p class="">교육</p>
-                            <p class="">의료/병원</p>
-                            <p class="">모빌리티(교통)</p>
-                            <p class="">육아/출산</p>
-                            <p class="">우주/외계인</p>
-                        </div>
-                    </div>
-                    <div class="labelSelect">
-                        <label>MBTI</label>
-                        <div class="rightWrap">
-                            <select class="mbtiSelect" name="mbtiSelect">
-                                <option value="0000">미지정</option>
-                                <option value="ISTJ">ISTJ</option>
-                                <option value="ISFJ">ISFJ</option>
-                                <option value="INFJ">INFJ</option>
-                                <option value="INTJ">INTJ</option>
-                                <option value="ISTP">ISTP</option>
-                                <option value="ISFP" selected="selected">ISFP</option>
-                                <option value="INTP">INTP</option>
-                                <option value="INFP">INFP</option>
-                                <option value="ESTP">ESTP</option>
-                                <option value="ESFP">ESFP</option>
-                                <option value="ENTP">ENTP</option>
-                                <option value="ENFP">ENFP</option>
-                                <option value="ESTJ">ESTJ</option>
-                                <option value="ESFJ">ESFJ</option>
-                                <option value="ENTJ">ENTJ</option>
-                                <option value="ENFJ">ENFJ</option>
-                            </select>
-                        </div>
-                        <span class="mbtiText">철저한 준비를 하며 활동적입니다. 통솔력이 있으며 단호합니다.</span>
-                    </div>
-                </div>
 
-                <div class="labelTextarea">
-                    <label>자세한 소개</label>
-                    <div class="rightWrap">
-                        <textarea maxlength="250" placeholder="최대 250자까지 작성 가능합니다." style="height: 49px !important; overflow: hidden;" oninput='this.style.height = "49px"; this.style.height = this.scrollHeight + "px"'></textarea>
+                    <div class="btnWrap">
+                        <button class="redBtn updateBtn">업데이트</button>
                     </div>
+                    <p class="secessionTxt" style="font-size: 14px; color: gray; margin-top: 50px; margin-bottom: 20px;">👉 렛플을 탈퇴하려면
+                        <a class="quitBtn" style="color: #1A7CFF; text-decoration: underline; margin-left: 4px; cursor: pointer">여기</a>
+                        를 눌러주세요.
+                    </p>
                 </div>
-
-                <div class="btnWrap">
-                    <button class="redBtn updateBtn">업데이트</button>
-                </div>
-                <p class="secessionTxt" style="font-size: 14px; color: gray; margin-top: 50px; margin-bottom: 20px;">👉 렛플을 탈퇴하려면
-                    <a class="quitBtn" style="color: #1A7CFF; text-decoration: underline; margin-left: 4px; cursor: pointer">여기</a>
-                    를 눌러주세요.
-                </p>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -570,6 +259,7 @@
         <div class="noProject"><p>지원한 모임이 없습니다.</p></div>
 
         <h3 class="tabCommonTit">진행 현황</h3>
+        <div class="noProject"><p>진행 중인 모임이 없습니다.</p></div>
         <div class="projectGridWrap">
             <div class="projectTopInfo">
                 <div class="top">
@@ -933,8 +623,10 @@
             </ul>
         </div>
 
-        <h3 class="tabCommonTit">포인트 내역</h3>
-
+        <h3 class="tabCommonTit totalNeosPoint">포인트 내역</h3>
+        <div class="payTabmenu" style="text-align: right;margin-bottom: -15px;margin-top: -35px;">
+            <span style="font-size: 15px; color: #1A7CFF;">최근 30개만 확인 가능합니다.</span>
+        </div>
         <div class="payTabContents">
             <!--      충전 내역      -->
             <div class="payTable pointChargeTable chargeTable active">
@@ -946,13 +638,12 @@
                         <th>상세</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>22.11.04 </td>
-                        <td>10</td>
-                        <td>[이벤트] 본인인증 완료</td>
-                        <td></td>
-                    </tr>
+                    <tbody class="plusNeosPoint">
+<!--                    <tr>-->
+<!--                        <td>22.11.04 </td>-->
+<!--                        <td>10</td>-->
+<!--                        <td>[이벤트] 본인인증 완료</td>-->
+<!--                    </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -966,17 +657,17 @@
                         <th>상세</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>22.11.04 </td>
-                        <td>-1</td>
-                        <td>추추추님과의 대화 시 지불</td>
-                    </tr>
-                    <tr>
-                        <td>22.11.04 </td>
-                        <td>-1</td>
-                        <td>민쇼니님과의 대화 시 지불</td>
-                    </tr>
+                    <tbody class="minusNeosPoint">
+<!--                    <tr>-->
+<!--                        <td>22.11.04 </td>-->
+<!--                        <td>-1</td>-->
+<!--                        <td>추추추님과의 대화 시 지불</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>22.11.04 </td>-->
+<!--                        <td>-1</td>-->
+<!--                        <td>민쇼니님과의 대화 시 지불</td>-->
+<!--                    </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -1015,13 +706,11 @@
                 <li class ="method">회원가입 시 50네오력 획득</li>
                 <li class ="method">로그인 시 10네오력 획득</li>
                 <li class ="method">구독 시 100네오력 획득</li>
-                <li class ="method">게시글 남길 시 100네오력 획득</li>
-                <li class ="method">포인트(1000~50000)충전시 네오력(10~500)획득</li>
-                <li class ="method">스터디 모집글 작성 후 모집 인원 만원되었을 때 300네오력 획득 </li>
-                <li class ="method">모임 초대 받을 시 50네오력 획득</li>
-                <li class ="method">댓글 남길 시 10네오력 획득</li>
-                <li class ="method">내 댓글에 대댓글 달리 시 10네오력 획득</li>
-                <li class ="method">자료 구매시 100네오력 획득</li>
+                <li class ="method">게시글(스터디, 자료상점) 작성 시 100네오력 획득</li>
+                <li class ="method">커뮤니티(고민상담, 자유게시판) 작성 시 50네오력 획득</li>
+                <li class ="method">포인트(1000~50000)충전 시 네오력(10~500)획득</li>
+                <li class ="method">댓글 작성 시 10네오력 획득</li>
+<!--                <li class ="method">자료 구매시 100네오력 획득</li>-->
             </ul>
         </div>
             </div>
@@ -1029,10 +718,13 @@
         </div>
 
 
-        <h3 class="tabCommonTit">네오력 L<!-- -->2<!-- --> (<!-- -->280<!-- -->) - 다음까지&nbsp;<!-- -->20</h3>
-        <div class="payTabmenu"></div>
+        <h3 class="tabCommonTit totalNeos">네오력 L<!-- -->2<!-- --> (<!-- -->280<!-- -->) - 다음 레벨까지&nbsp;<!-- -->20</h3>
+        <div class="payTabmenu" style="text-align: right;margin-bottom: -15px;margin-top: -35px;">
+            <span style="font-size: 15px; color: #1A7CFF;">최근 30개만 확인 가능합니다.</span>
+        </div>
 
         <div class="payTabContents">
+
             <div class="payTable chargeTable active">
                 <table>
                     <thead>
@@ -1043,19 +735,19 @@
                     </tr>
                     </thead>
 
-                    <tbody>
-                    <tr><td>22.11.15  00:45</td><td>10</td><td>일일 로그인 완료</td></tr>
-                    <tr><td>22.11.14  17:10</td><td>-50</td><td>스터디&amp;네트워킹 구독 취소</td></tr>
-                    <tr><td>22.11.14  17:09</td><td>50</td><td>스터디&amp;네트워킹 구독</td></tr>
-                    <tr><td>22.11.14  17:09</td><td>-50</td><td>스터디&amp;네트워킹 구독 취소</td></tr>
-                    <tr><td>22.11.14  17:09</td><td>30</td><td>네오스인 구독</td></tr>
-                    <tr><td>22.11.14  01:54</td><td>10</td><td>일일 로그인 완료</td></tr>
-                    <tr><td>22.11.13  22:00</td><td>30</td><td>댓글 등록</td></tr>
-                    <tr><td>22.11.13  18:06</td><td>10</td><td>일일 로그인 완료</td></tr>
-                    <tr><td>22.11.11  08:26</td><td>50</td><td>스터디&amp;네트워킹 구독</td></tr>
-                    <tr><td>22.11.11  08:21</td><td>10</td><td>일일 로그인 완료</td></tr>
-                    <tr><td>22.11.08  19:40</td><td>50</td><td>노트 글 작성</td></tr>
-                    <tr><td>22.11.08  17:49</td><td>30</td><td>네오스인 구독</td></tr>
+                    <tbody class="neosPowerTbl">
+<!--                    <tr><td>22.11.15  00:45</td><td>10</td><td>일일 로그인 완료</td></tr>-->
+<!--                    <tr><td>22.11.14  17:10</td><td>-50</td><td>스터디&amp;네트워킹 구독 취소</td></tr>-->
+<!--                    <tr><td>22.11.14  17:09</td><td>50</td><td>스터디&amp;네트워킹 구독</td></tr>-->
+<!--                    <tr><td>22.11.14  17:09</td><td>-50</td><td>스터디&amp;네트워킹 구독 취소</td></tr>-->
+<!--                    <tr><td>22.11.14  17:09</td><td>30</td><td>네오스인 구독</td></tr>-->
+<!--                    <tr><td>22.11.14  01:54</td><td>10</td><td>일일 로그인 완료</td></tr>-->
+<!--                    <tr><td>22.11.13  22:00</td><td>30</td><td>댓글 등록</td></tr>-->
+<!--                    <tr><td>22.11.13  18:06</td><td>10</td><td>일일 로그인 완료</td></tr>-->
+<!--                    <tr><td>22.11.11  08:26</td><td>50</td><td>스터디&amp;네트워킹 구독</td></tr>-->
+<!--                    <tr><td>22.11.11  08:21</td><td>10</td><td>일일 로그인 완료</td></tr>-->
+<!--                    <tr><td>22.11.08  19:40</td><td>50</td><td>노트 글 작성</td></tr>-->
+<!--                    <tr><td>22.11.08  17:49</td><td>30</td><td>네오스인 구독</td></tr>-->
                     </tbody>
 
 
@@ -1106,6 +798,30 @@
 <script src="/js/fix/chatting.js"></script>
 <!--<script src="/js/store/storeList.js"></script>-->
 <script>
+    const $location = $(".collegeCity");
+    const $collegeNames = $("#collegeName");
+    console.log($collegeNames.children());
+    $location.on("change",function () {
+        var collegeCity = $(".collegeCity option:selected").text();
+        console.log(collegeCity);
+        if(collegeCity != '지역 미지정'){
+            $.ajax({
+                url: "/my-detail/change/"+collegeCity,
+                type:"get",
+                success:function (result) {
+                    //i는 인덱스 , item은 object
+                    $collegeNames.empty();
+                    $collegeNames.append(`<option selected="" value="02">대학교</option>`)
+                    $(result).each((i,item)=>{
+                        $collegeNames.append(` <option class="collegeName_1j" value="`+item.collegeName+`">`+item.collegeName+`</option>`)
+                    })
+                }
+            })
+        }
+
+    })
+
+
     function modalOk(heart) {
         $(".modalWrapOpen .modal1 .btnWrap button.blueBtn").on("click", function () {
             $(".modal1").css('display','none');
@@ -1153,6 +869,8 @@
         $(".modalWrap").css('display','none');
         $(".modalWrapOpen").hide();
     });
+
+    mbtiTest();
 
 
 </script>

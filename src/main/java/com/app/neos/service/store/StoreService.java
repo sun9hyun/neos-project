@@ -1,15 +1,19 @@
 package com.app.neos.service.store;
 
+import com.app.neos.domain.neos.NeosPowerDTO;
 import com.app.neos.domain.store.StoreDTO;
 import com.app.neos.domain.store.StoreFlieDTO;
+import com.app.neos.entity.neos.NeosPower;
 import com.app.neos.entity.store.Store;
 import com.app.neos.entity.store.StoreFile;
 import com.app.neos.entity.user.User;
+import com.app.neos.repository.neos.NeosPowerRepository;
 import com.app.neos.repository.store.StoreCustomRepository;
 import com.app.neos.repository.store.StoreFileCustomRepository;
 import com.app.neos.repository.store.StoreFileRepository;
 import com.app.neos.repository.store.StoreRepository;
 import com.app.neos.repository.user.UserRepository;
+import com.app.neos.type.point.NeosPowerContent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,6 +34,7 @@ public class StoreService {
     private final UserRepository userRepository;
     private final StoreFileRepository storeFileRepository;
     private final StoreFileCustomRepository storeFileCustomRepository;
+    private final NeosPowerRepository neosPowerRepository;
 
     // 자료상점 게시글 작성
 //    public void saveStore(Store store) { storeRepository.save(store);}
@@ -154,7 +159,32 @@ public class StoreService {
     // 자료상점 게시글 슬라이스 페이징 처리
     public Slice<StoreDTO> findStorePageBySlice(Pageable pageable, Long userId){return storeCustomRepository.findAllPageBySlice(pageable, userId);}
 
+    @Transactional
+    public void postEXP(Long userId){
+        User user = userRepository.findById(userId).get();
+        user.updateNeosPower(user.getUserNeosPower().getUserNeosPowerAbility()+100);
+        user.levelUp();
 
+        NeosPowerDTO dto = new NeosPowerDTO();
+        dto.setNeosPowerAbility(100);
+        dto.setNeosPowerContent(NeosPowerContent.POST);
+        NeosPower entity = dto.toEntity();
+        entity.changeUser(user);
+        neosPowerRepository.save(entity);
+    }
+    @Transactional
+    public void postDeleteEXP(Long userId){
+        User user = userRepository.findById(userId).get();
+        user.updateNeosPower(user.getUserNeosPower().getUserNeosPowerAbility()-100);
+        user.levelUp();
+
+        NeosPowerDTO dto = new NeosPowerDTO();
+        dto.setNeosPowerAbility(-100);
+        dto.setNeosPowerContent(NeosPowerContent.POST);
+        NeosPower entity = dto.toEntity();
+        entity.changeUser(user);
+        neosPowerRepository.save(entity);
+    }
 
 
 //    // 첨부파일 등록

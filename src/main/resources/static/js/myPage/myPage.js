@@ -88,28 +88,47 @@ var $interest = $(".interestWrap>p");
 
 //최대 5개 조건 추가 해야함
 var $interestP = $(".interestWrap>p.active");
-var $interestPLenght = $interestP.length;
+var $interestPLength = $interestP.length;
+$(".interestAll").val($interestP.text());
 
 $interest.click(function () {
-    $interestPLenght = $interestP.length+1;
-    if($interestPLenght < 6){
+    $interestPLength = $interestP.length+1;
+    $(".interestAll").val("");
+    let text = ""
+
+    if($interestPLength < 2){
         $(this).toggleClass("active");
         $interestP = $(".interestWrap>p.active");
     }
-    if($interestPLenght > 5){
+    if($interestPLength > 1){
         $(this).removeClass("active");
         $interestP = $(".interestWrap>p.active");
     }
+
+    $(".interestAll").val($interestP.text());
 });
 
 
-/*--정보 MBTI 선택-----------------------------------------------------*/
-$(document).ready(function () {
-    var $MBTI = $("select[name='mbtiSelect'] option:selected").text();
+// $interestTag = $(".interestWrap>p.active").text();
+// $interestTag = $(".interestWrap>p.active");
+// console.log("-------시작-----------");
+// console.log($interestTag.innerText);
+// console.log($interestTag[0].innerText);
+// console.log($interestTag[1].innerText);
+// console.log($interestTag[2].innerText);
+// console.log("-------종료-----------");
 
-    if($MBTI == "0000"){
-        $mbtiText.text("");
-    }
+
+
+/*--정보 MBTI 선택-----------------------------------------------------*/
+function mbtiTest() {
+    var $MBTI = $(".mbtiSelectText").val();
+    // var $MBTI = $("select[name='mbtiSelect'] option:selected").val();
+
+
+    console.log("mbti:" + $MBTI)
+
+
     if($MBTI == "ISTJ"){
         $mbtiText.text("책임감이 강하며 현실적이고 매사에 철저하고 보수적인 성격입니다.");
     }
@@ -134,7 +153,7 @@ $(document).ready(function () {
     if($MBTI == "INTP"){
         $mbtiText.text("지적 호기심이 높으며 잠재력과 가능성을 중요시합니다.");
     }
-    if($mbti == "ESTP"){
+    if($MBTI == "ESTP"){
         $mbtiText.text("느긋하고 관용적이며 타협을 잘 합니다. 현실적 문제 해결에 능숙합니다.");
     }
     if($MBTI == "ESFP"){
@@ -158,8 +177,10 @@ $(document).ready(function () {
     if($MBTI == "ENTJ"){
         $mbtiText.text("철저한 준비를 하며 활동적입니다. 통솔력이 있으며 단호합니다.");
     }
-
-});
+    if($MBTI == "0000"){
+        $mbtiText.text("");
+    }
+};
 
 
 
@@ -168,6 +189,7 @@ var $mbtiText = $(".mbtiText");
 
 $mbtiSelect.on("change", function() {
     var $mbti = $(this).val();
+    $(".mbtiSelectText").val($mbti);
 
     if($mbti == "0000"){
         $mbtiText.text("");
@@ -330,4 +352,39 @@ $('.contetnsGrid').on("mouseout", ".lock" ,function(){
     $(this).find(".shop").addClass("shopLink");
 })
 
+console.log($('.userImg').attr("src"));
+
+// $('.userImg').click(function () {
+//     const test = atob( $(this).attr("src"));
+//     console.log(test);
+// })'
+
+/*-----------------------------프로필 사진 수정----------------------------------*/
+
+
+$("input[name='userFileInput']").on("change", function(){
+    console.log("이미지 체인지 들어옴");
+    let formData = new FormData();
+    let files = $(this)[0].files;
+
+    $(files).each(function(i, file){
+        formData.append("upload", file);
+    });
+    console.log("이미지 체인지 들어옴22");
+
+    $.ajax({
+        url: "/my-detail/upload",
+        type: "post",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (realName) {
+            console.log("이미지 체인지 들어옴333");
+            let text = "";
+            let path = "/upload/" + realName;
+            text += `<input type="text" name="userFile" value="` + realName + `">`;
+            $(".left").append(text);
+        }
+    });
+});
 

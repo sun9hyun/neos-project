@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 
 @Component
 @Data
@@ -18,6 +20,8 @@ public class NeosPointDTO {
     private NeosPointContent neosPointContent;
     private User user;
     private Long userId;
+
+    private LocalDateTime createdDate;
 
     public NeosPoint toEntity(){
         return NeosPoint.builder()
@@ -35,10 +39,11 @@ public class NeosPointDTO {
     }
 
     @QueryProjection
-    public NeosPointDTO(Long neosPointId, Integer neosPointMoney, NeosPointContent neosPointContent, Long userId) {
+    public NeosPointDTO(Long neosPointId, Integer neosPointMoney, NeosPointContent neosPointContent, Long userId, LocalDateTime createdDate) {
         this.neosPointId = neosPointId;
         this.neosPointMoney = neosPointMoney;
         this.neosPointContent = neosPointContent;
         this.userId = userId;
+        this.createdDate = createdDate;
     }
 }

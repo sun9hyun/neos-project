@@ -1,6 +1,9 @@
 package com.app.neos.controller.study;
 
+import com.app.neos.aspect.annotation.QuestionReplyAlarm;
+import com.app.neos.domain.study.StudyFeedDTO;
 import com.app.neos.domain.study.StudyFeedReplyDTO;
+import com.app.neos.entity.study.StudyFeed;
 import com.app.neos.entity.study.StudyFeedReply;
 import com.app.neos.service.study.StudyFeedReplyService;
 import lombok.RequiredArgsConstructor;
@@ -21,8 +24,11 @@ public class StudyFeedReplyRestController {
     @PostMapping("/{bno}")
     public String post(@PathVariable("bno") Long feedId, StudyFeedReplyDTO studyFeedReplyDTO, Long userId, HttpSession session){
         Long myId = (Long)session.getAttribute("loginUser");
+        StudyFeedDTO studyFeedDTO = new StudyFeedDTO();
+        studyFeedDTO.setStudyFeedId(feedId);
+        studyFeedReplyDTO.setStudyFeed(studyFeedDTO);
         studyFeedReplyService.expUp(myId);
-        studyFeedReplyService.post(studyFeedReplyDTO,userId,feedId);
+        studyFeedReplyService.post(studyFeedReplyDTO,userId);
         return "sucess";
     }
 

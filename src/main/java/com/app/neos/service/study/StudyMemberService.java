@@ -10,6 +10,8 @@ import com.app.neos.entity.study.StudySupporter;
 import com.app.neos.entity.user.User;
 import com.app.neos.repository.study.*;
 import com.app.neos.repository.user.UserRepository;
+import com.app.neos.service.alarm.AlarmService;
+import com.app.neos.type.alarm.AlarmCategory;
 import com.app.neos.type.study.member.StudyMemberStatus;
 import com.app.neos.type.study.supporter.StudySupporterStatus;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -32,6 +34,7 @@ public class StudyMemberService {
     private final UserRepository userRepository;
     private final StudySupporterCustomRepository studySupporterCustomRepository;
     private final StudyNewsRepository studyNewsRepository;
+    private final AlarmService alarmService;
 
 
     public void supportJoin(StudySupporterDTO supporterDTO){
@@ -40,7 +43,12 @@ public class StudyMemberService {
         StudySupporter supporter = dto.toEntity();
         supporter.changeStudy(studyRepository.findById(dto.getStudyId()).get());
         supporter.changeUser(userRepository.findById(dto.getUser().getUserId()).get());
-        studySupporterRepository.save(supporter);
+       StudySupporter entity =  studySupporterRepository.save(supporter);
+
+         supporterDTO = entity.toDTO();
+         AlarmCategory category = AlarmCategory.STUDYSUPPORT;
+        alarmService.alarm(supporterDTO,category);
+
     }
 
     public List<StudySupporterDTO> showWaitList(){
@@ -53,6 +61,9 @@ public class StudyMemberService {
         dto.setStudySupporterStatus(StudySupporterStatus.FAIL);
         StudySupporter studySupporter = studySupporterRepository.findById(studySupporterDTO.getStudySupporterId()).get();
         studySupporter.update(dto);
+        studySupporterDTO = studySupporter.toDTO();
+        AlarmCategory category = AlarmCategory.SUPPORTFAIL;
+        alarmService.alarm(studySupporterDTO,category);
     }
 
     @Transactional
@@ -89,6 +100,11 @@ public class StudyMemberService {
         news.changeStudyMember(member);
         news.changeStudy(study);
         studyNewsRepository.save(news);
+
+//        알림
+        studyMemberDTO = member.toDTO();
+        AlarmCategory category = AlarmCategory.STUDYMEMBER;
+        alarmService.alarm(studyMemberDTO,category);
 
     }
 

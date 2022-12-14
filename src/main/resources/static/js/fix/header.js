@@ -33,8 +33,8 @@ $GoogleLoginBtn.on("click",function () {
 
 
 var userIdasdfasdfa = document.querySelector("#userId").value;
-show();
-function show(){
+headerShow();
+function headerShow(){
     $.ajax({
         url: "/user/"+userIdasdfasdfa,
         type: "get",
@@ -73,4 +73,28 @@ function getInfo(result){
 
     }
 
+}
+
+$(".profile").on("click",function () {
+    headerAlarmShow();
+})
+
+
+function headerAlarmShow(){
+    $.ajax({
+        url:"/alarm/header",
+        type:"get",
+        success: headerAlarmShowList
+    })
+}
+
+function headerAlarmShowList(result){
+    let time = result.createdTime;
+    let createdTime = time.split('T')[0];
+    let text= '';
+        text += `<li class="alarmContent"><a class="popClick" href="/my?tab=alarm">`
+        text += `<p>`+result.alarmContent+`</p><span class="dateInfo">`+createdTime
+        text += `</span><span class="newTag"></span>`
+        text += `</a></li>`
+    $(".alarmText").html(text);
 }

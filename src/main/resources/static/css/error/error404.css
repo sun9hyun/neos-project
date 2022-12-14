@@ -1,0 +1,104 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.errorSection, .errorSection div.errorWrap {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.errorSection {
+    height: auto;
+    padding: 140px 0;
+    text-align: center;
+    min-width: 1000px;
+    width: 100%;
+}
+
+.errorSection div.errorWrap {
+    position: relative;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+.errorSection, .errorSection div.errorWrap {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.errorSection div.errorWrap .left {
+    text-align: left;
+    margin-right: 118px;
+}
+
+
+.errorSection div.errorWrap .left h3 {
+    color: #42495b;
+    font-weight: 500;
+    font-size: 69px;
+    margin-bottom: 50px;
+}
+
+
+.errorSection div.errorWrap .left .redTxt {
+    font-size: 40px;
+    color: #1A7CFF;
+    font-weight: 500;
+    margin-bottom: 13px;
+}
+
+
+.errorSection div.errorWrap .left .lgTxt {
+    font-size: 24px;
+    color: #42495b;
+    margin-bottom: 11px;
+}
+
+
+.errorSection div.errorWrap .left .normalTxt {
+    font-size: 14px;
+    color: #c9c9d9;
+    margin-bottom: 25px;
+}
+
+
+.errorSection div.errorWrap .left .btnWrap {
+    margin-top: 0;
+    text-align: left;
+}
+
+.errorSection div.errorWrap .left .btnWrap button.blackBtn {
+    background-color: #1A7CFF;
+    border: 1px solid #1A7CFF;
+    color: #fff;
+    margin-right: 4px;
+}
+
+.errorSection div.errorWrap .left .btnWrap button {
+    font-size: .75rem;
+    width: auto;
+    padding: 8px 32px;
+    border-radius: 2px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+.errorSection div.errorWrap .right img {
+    width: 592px;
+    height: auto;
+}
+
+
+
+
+

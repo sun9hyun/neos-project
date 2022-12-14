@@ -25,7 +25,9 @@ public interface NeosUserCustomRepository {
 
 
 //    검색
-//    public List<UserDTO> findByKeyword(String keyword);
+    /*public List<UserDTO> findByKeyword(String keyword);*/
+
+    public Slice<UserDTO> findByKeywordSlice(String keyword , Pageable pageable);
 
 
 }

@@ -1,5 +1,6 @@
 package com.app.neos.controller.neosUser;
 
+import com.app.neos.domain.college.QCollegeDTO;
 import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.study.Study;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -77,7 +79,7 @@ public class NeosUserController {
 
     //    네오스인 페이지 목록 로그인 후
     @GetMapping("/list")
-    public String list(Model model , String keyWord) {
+    public String list(Model model , @RequestParam(required = false,defaultValue = "")String keyWord ) {
 //        List<UserDTO> userDTOS = neosUserService.findUser();
 //        userDTOS.forEach(t -> log.info(t.getCollege().getCollegeName().toString()));
 
@@ -87,14 +89,17 @@ public class NeosUserController {
 
 //        검색
 //        List<UserDTO> userDTOList = neosUserService.findByKeyword(keyWord);
-//
-//        model.addAttribute("userNickNames" , userDTOList);
+//        model.addAttribute("userDTOLists" , userDTOList);
+
+       /* if (keyWord.equals()){
+
+        }*/
+
+
+
 
         //   유저 상세보기
         model.addAttribute("collegeCityList",joinService.getCollegeCityList());
-
-
-
 
         return "app/neosUser/neosListAfter";
     }

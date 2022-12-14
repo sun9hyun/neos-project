@@ -166,28 +166,27 @@
     <div class="commonContentViewHeader letsplerViewerHeader projectView">
         <div class="peopleSearchOption">
             <div class="kimisJJang" style="display : flex; ">
-            <h1 class="tit" style="margin-top: 30px; display : flex; margin-right: -52%;">추천 네오스인</h1>
+            <h1 class="tit" style="margin-top: 30px; display : flex; margin-right: -52%;">인기 네오스인</h1>
 
                 <!--검색바 -->
-            <div class="searchResultSection" >
-                <div class="searchInputWrap" style="display : flex">
-                   <!-- <form action="" method="get" role="search" >-->
-                    <input th:text="*{userNickName}" class="searchInput" type="text" placeholder="닉네임을 검색해 주세요!" maxlength="30" value="" style="padding: 10px; margin-right: 2px; outline: none;" name="keyword" id="search">
-                    <div class="inputBtnWrap">
+                <div class="searchResultSection" >
+                    <div class="searchInputWrap" style="display : flex">
+                        <input class="searchInput" type="text" placeholder="닉네임을 검색해 주세요!" maxlength="30" value="" style="padding: 10px; margin-right: 2px; outline: none;" name="keyword" id="search">
+                        <div class="inputBtnWrap">
                         <span id="del">
-                            <button class="inputSearchBtn" >
+                            <button class="inputSearchBtn" onclick="searchName()">
                                 <img loading="lazy" src="https://letspl.me/assets/images/ic-search.png" alt="검색" style="margin-top: 45px;">
                             </button>
                     </span>
 
-                        <button class="inputinitBtn " style=" display: none; display: flex; margin-right: -136px; margin-top: 30px;"><span style="margin-left: 21px;margin-top: 15px;margin-right: 8px; ">검색 취소</span><img style="position: relative;top: 12px;height: 20px;" loading="lazy" src="https://letspl.me/assets/images/ic-del.svg
-" alt="초기화"></button>
+                            <button class="inputinitBtn " style=" display: none; display: flex; margin-right: -136px; margin-top: 30px;">
+                                <span style="margin-left: 21px;margin-top: 15px;margin-right: 8px; ">검색 취소</span>
+                                <img style="position: relative;top: 12px;height: 20px;" loading="lazy" src="https://letspl.me/assets/images/ic-del.svg" alt="초기화">
+                            </button>
+                        </div>
+
                     </div>
-                    <!--</form>-->
-
-
                 </div>
-            </div>
         </div>
 
     <div class="peopleGrid" style="margin-bottom: -87px;  margin-top: -67px;">
@@ -501,5 +500,461 @@
 
 
 </script>
+
+<!-- 인기 네오스인 더보기 페이징 -->
+<script th:inline="javascript">
+    globalThis.page = 0;
+    globalThis.size = 4;
+
+    $(document).ready(function () {
+        globalThis.check = false;
+        show();
+
+        function show() {
+            console.log("들어옴")
+            $.ajax({
+
+                url:"/neosUser/neosUserList?page=0&size=" + (globalThis.size), /**4*/
+                type : "get",
+                async: false,
+                success: function (userDTOS) {
+                    console.log(userDTOS)
+                    if(userDTOS != null){
+                        getList(userDTOS);
+                    }
+                },
+                error: function (xhr , status , err) {
+                    console.log(xhr,status,err);
+                }
+
+            });
+        }
+
+        function getList(userDTOS) {
+            let text = '';
+            $(userDTOS.content).each((i,item) => {
+
+                $college = item.collegeId;
+
+                $user = item.userName;
+
+
+                text += `<li class="letspler_Re">`
+                text += `<img loading="lazy" class="newMark"  src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">`
+                text += `<div class="top">`
+                text += `<div class="profilePicWrap">`
+                text += `<div class="profilePic" >`
+                text += `<img src="` + item.userFile + `" alt='민쇼니'></div>`
+                text += `<a class="favorite heart"></a>`
+                text += `</div>`
+                text += `<div class="profileTxt">`
+                text += `<div class="idWrap">`
+                text += `<img src="` + item.userNeosBadge + `" loading=\`lazy\` class=\`userLv\` style='width: 20px'>`
+                text += `<div class="userName" >`
+                text += `<span class="name">`+item.userNickName+`</span>`
+                text += `<ul class="idHoverMenu">`
+                text += `<li>`
+                text += `<a class="detail">프로필 상세</a>`
+                text += `<input type="hidden" href=" ` +userId +`">`
+                text += `</li>`
+                text += `<li><a class="chat">1:1대화</a></li>`
+                text += `<li><a class="invite">스터디 초대</a></li>`
+                text += `</ul>`
+                text += `</div>`
+                text += `<div class="certiWrap">`
+                text += `<img loading="lazy" class="userCertIcon"  src="https://letspl.me/assets/images/ic-certi-red.png"  alt="실명인증">`
+                text += `</div>`
+                text += `<div class="certiWrap"></div>`
+                text += `</div>`
+                text += `<div class="coffeAndHeart">`
+                text += `<div>`
+                text += `<p>`
+                text += `<img loading ="lazy" src="/images/neosUser/chatting-icon.png" alt="네오스포인트" style="margin-top: 6px;">`
+                text += `</p>`
+                text += `<span class="userPoint">`+item.userChattingPoint+`</span>`
+                text += `</div>`
+                text += `<div>`
+                text += `<img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"  style="width: 20px; height: 20px;">`
+                text += `<span id="result">0</span>`
+                text += `</div>`
+                text += `</div>`
+                text += `</div>`
+                text += `</div>`
+                text += `<div class="bottom">`
+                text += `<ul class="userFavorite">`
+                text += `<li>`
+
+                if ($college != null){
+                    text += `<h3><span>[대학]&nbsp;<span class="university">`+ item.collegeName+`</span></span>`
+                    text += `<span class="grade">`+ item.userCollegeYear +`</span>`
+                    text += `<span style="font-size: 14px;color: #999999;">학년</span></h3>`
+                }
+
+                if ($college == null){
+                    text += `<h3><span>[대학]&nbsp;<span class="university">해당사항없음</span>`
+                    text += `</span>`
+                    text += `<span class="grade">`
+                    text += `</span>`
+                    text += `<span style="font-size: 14px;color: #999999;">`
+                    text += `</span>`
+                    text += `</h3>`
+                }
+
+                text += `</li>`
+                text += `<li>`
+
+                if ($college != null){
+                    text += `<h3><span>[전공]&nbsp;<span class="major">`+item.userCollegeMajor+`</span></span>`
+                    text += `<span></span>`
+                    text += `</h3>`
+                }
+
+                if ($college == null){
+                    text += `<h3><span>[전공]&nbsp;<span class="major">해당사항없음</span></span>`
+                    text += `<span></span>`
+                    text += `</h3>`
+                }
+
+                text += `</li>`
+                text += `</ul>`
+                text += `<div class="userInfoTagWrap"></div>`
+                text += `<a class="chatBtn">`
+                text += `<div>`
+                text += `<img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="네오스포인트">`
+                text += `<span >NEO CHAT</span>`
+                text += `</div>`
+                text += `</a>`
+                text += `</div>`
+                text += `</li>`
+
+
+
+            });
+
+            $("ul.peopleGridList").html(text);
+            // if (userDTOS.last){
+            //     $(".bigMoreBtn").hide();
+        }
+
+
+
+        /*더 보기 버틀*/
+
+        $(".bigMoreBtn").on("click", function(e){
+            e.preventDefault();
+            if(!globalThis.check){
+                globalThis.size = globalThis.size+4;
+                show();
+            }
+        });
+
+    });
+
+
+
+
+
+</script>
+<!--  추천 네오스인 뿌리기
+
+<script th:inline="javascript">
+
+
+    globalThis.page = 0;
+    $(document).ready(function () {
+        globalThis.check = false;
+        show();
+
+        function show() {
+            console.log("들어옴")
+            $.ajax({
+
+                url:"/neosUser/neosUserList?page=" + (globalThis.page), /**4*/
+                type : "get",
+                async: false,
+                success: function (userDTOS) {
+                    console.log(userDTOS)
+                    if(userDTOS != null){
+                        getList(userDTOS);
+                    }
+                },
+                error: function (xhr , status , err) {
+                    console.log(xhr,status,err);
+                }
+
+            });
+        }
+
+        function getList(userDTOS) {
+            let text = '';
+            $(userDTOS.content).each((i,item) => {
+
+                $college = item.collegeId;
+
+                $user = item.userName;
+
+
+                text += `<li class="letspler_Re">`
+                text += `<img loading="lazy" class="newMark"  src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">`
+                text += `<div class="top">`
+                text += `<div class="profilePicWrap">`
+                text += `<div class="profilePic" >`
+                text += `<img src="` + item.userFile + `" alt='민쇼니'></div>`
+                text += `<a class="favorite heart"></a>`
+                text += `</div>`
+                text += `<div class="profileTxt">`
+                text += `<div class="idWrap">`
+                text += `<img src="` + item.userNeosBadge + `" loading=\`lazy\` class=\`userLv\` style='width: 20px'>`
+                text += `<div class="userName" >`
+                text += `<span class="name">`+item.userNickName+`</span>`
+                text += `<ul class="idHoverMenu">`
+                text += `<li>`
+                text += `<a class="detail">프로필 상세</a>`
+                text += `<input type="hidden" href=" ` +userId +`">`
+                text += `</li>`
+                text += `<li><a class="chat">1:1대화</a></li>`
+                text += `<li><a class="invite">스터디 초대</a></li>`
+                text += `</ul>`
+                text += `</div>`
+                text += `<div class="certiWrap">`
+                text += `<img loading="lazy" class="userCertIcon"  src="https://letspl.me/assets/images/ic-certi-red.png"  alt="실명인증">`
+                text += `</div>`
+                text += `<div class="certiWrap"></div>`
+                text += `</div>`
+                text += `<div class="coffeAndHeart">`
+                text += `<div>`
+                text += `<p>`
+                text += `<img loading ="lazy" src="/images/neosUser/chatting-icon.png" alt="네오스포인트" style="margin-top: 6px;">`
+                text += `</p>`
+                text += `<span class="userPoint">`+item.userChattingPoint+`</span>`
+                text += `</div>`
+                text += `<div>`
+                text += `<img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"  style="width: 20px; height: 20px;">`
+                text += `<span id="result">0</span>`
+                text += `</div>`
+                text += `</div>`
+                text += `</div>`
+                text += `</div>`
+                text += `<div class="bottom">`
+                text += `<ul class="userFavorite">`
+                text += `<li>`
+
+                if ($college != null){
+                    text += `<h3><span>[대학]&nbsp;<span class="university">`+ item.collegeName+`</span></span>`
+                    text += `<span class="grade">`+ item.userCollegeYear +`</span>`
+                    text += `<span style="font-size: 14px;color: #999999;">학년</span></h3>`
+                }
+
+                if ($college == null){
+                    text += `<h3><span>[대학]&nbsp;<span class="university">해당사항없음</span>`
+                    text += `</span>`
+                    text += `<span class="grade">`
+                    text += `</span>`
+                    text += `<span style="font-size: 14px;color: #999999;">`
+                    text += `</span>`
+                    text += `</h3>`
+                }
+
+                text += `</li>`
+                text += `<li>`
+
+                if ($college != null){
+                    text += `<h3><span>[전공]&nbsp;<span class="major">`+item.userCollegeMajor+`</span></span>`
+                    text += `<span></span>`
+                    text += `</h3>`
+                }
+
+                if ($college == null){
+                    text += `<h3><span>[전공]&nbsp;<span class="major">해당사항없음</span></span>`
+                    text += `<span></span>`
+                    text += `</h3>`
+                }
+
+                text += `</li>`
+                text += `</ul>`
+                text += `<div class="userInfoTagWrap"></div>`
+                text += `<a class="chatBtn">`
+                text += `<div>`
+                text += `<img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="네오스포인트">`
+                text += `<span >NEO CHAT</span>`
+                text += `</div>`
+                text += `</a>`
+                text += `</div>`
+                text += `</li>`
+
+
+
+            });
+
+            $("ul.peopleGridList1").append(text);
+            if (userDTOS.list){
+                $(".bigMoreBtn").hide();
+            }
+        }
+
+
+
+        /*더 보기 버틀*/
+
+        $(".bigMoreBtn").on("click", function(e){
+            e.preventDefault();
+            if(!globalThis.check){
+                globalThis.page = globalThis.page+1;
+                show();
+            }
+        });
+
+    });
+
+
+
+
+
+
+</script>
+
+-->
+
+
+<!-- 유저 닉넴임으로 검색 -->
+<!--
+<script th:inline="javascript">
+
+    globalThis.size = 4;
+
+    showNews();
+
+    function showNews(keyword) {
+        $.ajax({
+            url:"/neosUser/" + keyword+"?page=0&size="+globalThis.size,
+            type:"post",
+            success: function (result){
+                    newsList(result)
+            }
+
+        })
+
+    }
+    function newsList(result) {
+        console.log(result);
+        let text = '';
+        $(result.content).each((i,item) =>{
+
+            $college = item.collegeId;
+
+            text += `<li class="letspler_Re">`
+            text += `<img loading="lazy" class="newMark"  src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">`
+            text += `<div class="top">`
+            text += `<div class="profilePicWrap">`
+            text += `<div class="profilePic" >`
+            text += `<img src="` + item.userFile + `" alt='민쇼니'></div>`
+            text += `<a class="favorite heart"></a>`
+            text += `</div>`
+            text += `<div class="profileTxt">`
+            text += `<div class="idWrap">`
+            text += `<img src="` + item.userNeosBadge + `" loading=\`lazy\` class=\`userLv\` style='width: 20px'>`
+            text += `<div class="userName" >`
+            text += `<span class="name">`+item.userNickName+`</span>`
+            text += `<ul class="idHoverMenu">`
+            text += `<li>`
+            text += `<a class="detail">프로필 상세</a>`
+            text += `<input type="hidden" href=" ` +userId +`">`
+            text += `</li>`
+            text += `<li><a class="chat">1:1대화</a></li>`
+            text += `<li><a class="invite">스터디 초대</a></li>`
+            text += `</ul>`
+            text += `</div>`
+            text += `<div class="certiWrap">`
+            text += `<img loading="lazy" class="userCertIcon"  src="https://letspl.me/assets/images/ic-certi-red.png"  alt="실명인증">`
+            text += `</div>`
+            text += `<div class="certiWrap"></div>`
+            text += `</div>`
+            text += `<div class="coffeAndHeart">`
+            text += `<div>`
+            text += `<p>`
+            text += `<img loading ="lazy" src="/images/neosUser/chatting-icon.png" alt="네오스포인트" style="margin-top: 6px;">`
+            text += `</p>`
+            text += `<span class="userPoint">`+item.userChattingPoint+`</span>`
+            text += `</div>`
+            text += `<div>`
+            text += `<img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"  style="width: 20px; height: 20px;">`
+            text += `<span id="result">0</span>`
+            text += `</div>`
+            text += `</div>`
+            text += `</div>`
+            text += `</div>`
+            text += `<div class="bottom">`
+            text += `<ul class="userFavorite">`
+            text += `<li>`
+
+            if ($college != null){
+            text += `<h3><span>[대학]&nbsp;<span class="university">`+ item.collegeName+`</span></span>`
+            text += `<span class="grade">`+ item.userCollegeYear +`</span>`
+            text += `<span style="font-size: 14px;color: #999999;">학년</span></h3>`
+            }
+
+            if ($college == null){
+            text += `<h3><span>[대학]&nbsp;<span class="university">해당사항없음</span>`
+            text += `</span>`
+            text += `<span class="grade">`
+            text += `</span>`
+            text += `<span style="font-size: 14px;color: #999999;">`
+            text += `</span>`
+            text += `</h3>`
+            }
+
+            text += `</li>`
+            text += `<li>`
+
+            if ($college != null){
+            text += `<h3><span>[전공]&nbsp;<span class="major">`+item.userCollegeMajor+`</span></span>`
+            text += `<span></span>`
+            text += `</h3>`
+            }
+
+            if ($college == null){
+            text += `<h3><span>[전공]&nbsp;<span class="major">해당사항없음</span></span>`
+            text += `<span></span>`
+            text += `</h3>`
+            }
+
+            text += `</li>`
+            text += `</ul>`
+            text += `<div class="userInfoTagWrap"></div>`
+            text += `<a class="chatBtn">`
+            text += `<div>`
+            text += `<img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="네오스포인트">`
+            text += `<span >NEO CHAT</span>`
+            text += `</div>`
+            text += `</a>`
+            text += `</div>`
+            text += `</li>`
+
+        })
+
+        $("ul.peopleGridList").html(text);
+        if (result.last){
+            $(".moreBtnWrapUl").hide();
+        }
+
+
+    }
+
+    $(".moreBtnWrapUl").on("click" , function () {
+        globalThis.size = globalThis.size * 2;
+        showNews()
+
+    })
+
+    function searchName(){
+        let keyword = $('.searchInput').val();
+        showNews(keyword);
+
+    }
+
+
+
+</script>
+-->
 
 </html>

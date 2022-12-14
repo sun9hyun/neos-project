@@ -29,10 +29,12 @@ public class InquiryCustomRepositoryImpl implements InquiryCustomRepository{
                 inquiry.inquiryContent,
                 inquiry.inquiryReply,
                 inquiry.inquiryStatus,
+                inquiry.createdDate,
                 inquiry.user
         ))
                 .from(inquiry)
                 .where(inquiry.user.userId.eq(userId))
+                .orderBy(inquiry.updatedDate.desc())
                 .fetch();
 
     }

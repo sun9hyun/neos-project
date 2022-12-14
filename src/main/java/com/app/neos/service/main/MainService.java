@@ -1,11 +1,13 @@
 package com.app.neos.service.main;
 
+import com.app.neos.domain.banner.BannerDTO;
 import com.app.neos.domain.community.CommunityDTO;
 import com.app.neos.domain.store.StoreDTO;
 import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.user.User;
 import com.app.neos.repository.community.CommunityCustomRepository;
+import com.app.neos.repository.neos.MainBannerCustomRepository;
 import com.app.neos.repository.neos.MainStoreCustomRepository;
 import com.app.neos.repository.neos.NeosStudyCustomRepository;
 import com.app.neos.repository.neos.NeosUserCustomRepository;
@@ -32,7 +34,7 @@ public class MainService {
     private final NeosStudyCustomRepository neosStudyCustomRepository;
     private final MainStoreCustomRepository mainStoreCustomRepository;
     private final CommunityCustomRepository communityCustomRepository;
-
+    private final MainBannerCustomRepository mainBannerCustomRepository;
 
     public void saveUser(User user) { userRepository.save(user);}
 
@@ -60,5 +62,9 @@ public class MainService {
     }
 
 
+//  배너 불러오기
+    public Slice<BannerDTO> findBannerPage(Pageable pageable){
+        return mainBannerCustomRepository.findAllBannerpage(pageable);
+    }
 
     }

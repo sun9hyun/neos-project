@@ -57,7 +57,9 @@ public class CommunityRestController {
 
     //     게시글 삭제
     @DeleteMapping("/communityDelete")
-    public String delete(@RequestBody CommunityDTO communityDTO){
+    public String delete(@RequestBody CommunityDTO communityDTO, HttpSession session){
+        Long userId = (Long)session.getAttribute("loginUser");
+        communityService.postDeleteEXP(userId);
         communityService.deleteCommunity(communityDTO);
         return "delete success";
     }

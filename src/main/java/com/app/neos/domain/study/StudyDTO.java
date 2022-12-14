@@ -135,4 +135,14 @@ public class StudyDTO {
         this.createdDate = createdDate;
         this.followTotal = followTotal;
     }
+
+    @QueryProjection
+    public StudyDTO(Long studyId, int studyView, String studyTitle, String studyType, String userNickName, LocalDateTime createdDate) {
+        this.studyId = studyId;
+        this.studyView = studyView;
+        this.studyTitle = studyTitle;
+        this.studyType = studyType;
+        this.userNickName = userNickName;
+        this.createdDate = createdDate;
+    }
 }

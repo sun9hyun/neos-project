@@ -18,6 +18,9 @@ public class PayRestController {
 
     @PostMapping("/chargingOk")
     public String chargingOk(@RequestBody NeosPointDTO neosPointDTO, HttpSession session){
+        Long userId = (Long)session.getAttribute("loginUser");
+        int pay = neosPointDTO.getNeosPointMoney();
+        payService.postEXP(userId, pay);
         payService.savePoint(neosPointDTO);
         payService.userPointUpdate(neosPointDTO);
         return "savePoint success";

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/search/*")
 public class SearchController {
-    @GetMapping("/search-before")
+    @GetMapping("/search")
     public String searchBefore(){
         return "app/search/searchBefore";
     }

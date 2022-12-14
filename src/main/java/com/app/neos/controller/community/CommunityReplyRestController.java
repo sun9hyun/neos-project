@@ -7,6 +7,7 @@ import com.app.neos.service.community.CommunityReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,9 @@ public class CommunityReplyRestController {
     }
 
     @PostMapping("/replyOk")
-    public String write(@RequestBody CommunityReplyDTO communityReplyDTO){
+    public String write(@RequestBody CommunityReplyDTO communityReplyDTO, HttpSession session){
+        Long userId = (Long)session.getAttribute("loginUser");
+        communityReplyService.postEXP(userId);
         communityReplyService.saveCommunityReply(communityReplyDTO);
         return "reply write success";
     }
@@ -37,7 +40,9 @@ public class CommunityReplyRestController {
     }
 
     @DeleteMapping("replyDelete/{rno}")
-    public String delete(@PathVariable("rno") Long replyId){
+    public String delete(@PathVariable("rno") Long replyId, HttpSession session){
+        Long userId = (Long)session.getAttribute("loginUser");
+        communityReplyService.postDeleteEXP(userId);
         communityReplyService.deleteReply(replyId);
         return "reply delete success";
     }

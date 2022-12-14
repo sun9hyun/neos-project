@@ -84,7 +84,7 @@ public class NeosUserServiceTest {
         UserDTO userDTO = new UserDTO();
 
 
-        neosUserService.findByKeyword("민송");
+//        neosUserService.findByKeyword("민송");
 
     }
 

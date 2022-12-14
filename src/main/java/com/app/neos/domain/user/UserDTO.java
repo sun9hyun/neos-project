@@ -201,4 +201,12 @@ public class UserDTO {
         this.createdDate = createdDate;
         this.counts = counts;
     }
+
+    @QueryProjection
+    public UserDTO(Long userId, String userNickName, String userFile, LocalDateTime createdDate){
+        this.userId = userId;
+        this.userNickName = userNickName;
+        this.userFile = userFile;
+        this.createdDate = createdDate;
+    }
 }

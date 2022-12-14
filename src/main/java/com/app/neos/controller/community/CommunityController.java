@@ -4,6 +4,8 @@ import com.app.neos.domain.community.CommunityDTO;
 import com.app.neos.domain.community.CommunityLikeDTO;
 import com.app.neos.domain.community.CommunityReplyDTO;
 import com.app.neos.domain.counseling.CounselingDTO;
+import com.app.neos.domain.study.StudyDTO;
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.community.Community;
 import com.app.neos.entity.counseling.Counseling;
 import com.app.neos.service.community.CommunityReplyService;
@@ -34,8 +36,12 @@ public class CommunityController {
     @GetMapping("/community")
     public String community(CommunityDTO communityDTO, CommunityReplyDTO communityReplyDTO, Model model){
         List<CommunityDTO> communityDTOS = communityService.findAll();
+        List<UserDTO> userDTOS = communityService.findNeosUser();
+        List<StudyDTO> studyDTOS = communityService.findStudy();
 
         model.addAttribute("communitys", communityDTOS);
+        model.addAttribute("neosUsers", userDTOS);
+        model.addAttribute("studys", studyDTOS);
         return "app/community/freeboard";
     }
 
@@ -56,8 +62,10 @@ public class CommunityController {
     @GetMapping("/counseling")
     public String counseling(CounselingDTO counselingDTO, Model model){
         List<CounselingDTO> counselingDTOS = counselingService.findAll();
+        List<UserDTO> userDTOS = communityService.findNeosUser();
 
         model.addAttribute("counselings", counselingDTOS);
+        model.addAttribute("neosUsers", userDTOS);
         return "app/community/counselingboard";
     }
 

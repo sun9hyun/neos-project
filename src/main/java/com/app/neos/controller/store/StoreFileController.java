@@ -39,7 +39,6 @@ public class StoreFileController {
 
         String rootPath = "C:/upload";
         String uploadFileName = null;
-//        String fileQRPath = "https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=";
         List<StoreFlieDTO> files = new ArrayList<>();
 
         File uploadPath = new File(rootPath, createDirectoryByNow());
@@ -56,29 +55,12 @@ public class StoreFileController {
         storeFlieDTO.setStoreFileUuid(uuid.toString());
         storeFlieDTO.setStoreFilePath(createDirectoryByNow());
         storeFlieDTO.setStoreFileSize(upload.getSize());
-//            storeFlieDTO.setStoreFileQR(fileQRPath);
 
         File saveFile = new File(uploadPath, uploadFileName);
         upload.transferTo(saveFile);
 
         files.add(storeFlieDTO);
 
-//        for(MultipartFile multipartFile : upload){
-//            StoreFlieDTO storeFlieDTO = new StoreFlieDTO();
-//            UUID uuid = UUID.randomUUID();
-//            String fileName = multipartFile.getOriginalFilename();
-//            uploadFileName = uuid.toString() + "_" + fileName;
-//            storeFlieDTO.setStoreFileName(fileName);
-//            storeFlieDTO.setStoreFileUuid(uuid.toString());
-//            storeFlieDTO.setStoreFilePath(createDirectoryByNow());
-//            storeFlieDTO.setStoreFileSize(multipartFile.getSize());
-////            storeFlieDTO.setStoreFileQR(fileQRPath);
-//
-//            File saveFile = new File(uploadPath, uploadFileName);
-//            multipartFile.transferTo(saveFile);
-//
-//            files.add(storeFlieDTO);
-//        }
         return files;
     }
 

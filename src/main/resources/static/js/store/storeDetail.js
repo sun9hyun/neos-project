@@ -109,10 +109,20 @@ function changeImg3() {
     }
 }
 
+$(".replyStatusCheck").change(function(){
+    console.log("들어옴")
+    if($(".replyStatusCheck").is(":checked")){
+        $(".replyStatus").val("PRIVATE")
+    }else {
+        $(".replyStatus").val("PUBLIC")
+    };
+});
+
 // 댓글 상태 변경
 // 무료 체크 시 인풋 입력 막기
 $(function(){
     $(".replyStatusCheck").change(function(){
+        console.log("들어옴")
         if($(".replyStatusCheck").is(":checked")){
             $(".replyStatus").val("PRIVATE")
         }else {

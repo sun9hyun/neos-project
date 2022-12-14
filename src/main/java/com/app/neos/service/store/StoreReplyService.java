@@ -1,13 +1,17 @@
 package com.app.neos.service.store;
 
+import com.app.neos.domain.neos.NeosPowerDTO;
 import com.app.neos.domain.store.StoreReplyDTO;
+import com.app.neos.entity.neos.NeosPower;
 import com.app.neos.entity.store.Store;
 import com.app.neos.entity.store.StoreReply;
 import com.app.neos.entity.user.User;
+import com.app.neos.repository.neos.NeosPowerRepository;
 import com.app.neos.repository.store.StoreReplyCustomRepository;
 import com.app.neos.repository.store.StoreReplyRepository;
 import com.app.neos.repository.store.StoreRepository;
 import com.app.neos.repository.user.UserRepository;
+import com.app.neos.type.point.NeosPowerContent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +25,7 @@ public class StoreReplyService {
     private final StoreReplyCustomRepository storeReplyCustomRepository;
     private final UserRepository userRepository;
     private final StoreRepository storeRepository;
+    private final NeosPowerRepository neosPowerRepository;
 
     // 자료상점 댓글 작성
     @Transactional(rollbackFor = Exception.class)
@@ -72,5 +77,32 @@ public class StoreReplyService {
     // 자료상점 댓글 카운팅
     public int countReply(Long storeId){
         return storeReplyCustomRepository.findReplyCount(storeId);
+    }
+
+    @Transactional
+    public void postEXP(Long userId){
+        User user = userRepository.findById(userId).get();
+        user.updateNeosPower(user.getUserNeosPower().getUserNeosPowerAbility()+10);
+        user.levelUp();
+
+        NeosPowerDTO dto = new NeosPowerDTO();
+        dto.setNeosPowerAbility(10);
+        dto.setNeosPowerContent(NeosPowerContent.REPLY);
+        NeosPower entity = dto.toEntity();
+        entity.changeUser(user);
+        neosPowerRepository.save(entity);
+    }
+    @Transactional
+    public void postDeleteEXP(Long userId){
+        User user = userRepository.findById(userId).get();
+        user.updateNeosPower(user.getUserNeosPower().getUserNeosPowerAbility()-10);
+        user.levelUp();
+
+        NeosPowerDTO dto = new NeosPowerDTO();
+        dto.setNeosPowerAbility(-10);
+        dto.setNeosPowerContent(NeosPowerContent.REPLY);
+        NeosPower entity = dto.toEntity();
+        entity.changeUser(user);
+        neosPowerRepository.save(entity);
     }
 }

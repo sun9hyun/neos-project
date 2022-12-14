@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -18,9 +19,10 @@ public class StoreReplyController {
 
     // 자료상점 게시글 댓글 등록
     @PostMapping(value = "/new", consumes = "application/json", produces = "text/plain; charset=utf-8")
-    public ResponseEntity<String> write(@RequestBody StoreReplyDTO storeReplyDTO) throws UnsupportedEncodingException {
+    public ResponseEntity<String> write(@RequestBody StoreReplyDTO storeReplyDTO, HttpSession session) throws UnsupportedEncodingException {
         System.out.println("********************* 컨트롤러 : " + storeReplyDTO + "*********************");
-
+        Long userId = (Long)session.getAttribute("loginUser");
+        storeReplyService.postEXP(userId);
         storeReplyService.saveReply(storeReplyDTO);
         return new ResponseEntity<>(new String("write success".getBytes(), "UTF-8"), HttpStatus.OK);
     }
@@ -45,7 +47,9 @@ public class StoreReplyController {
     
     // 자료상점 게시글 댓글 삭제
     @DeleteMapping("/{rno}")
-    public String delete(@PathVariable("rno") Long storeReplyId) {
+    public String delete(@PathVariable("rno") Long storeReplyId, HttpSession session) {
+        Long userId = (Long)session.getAttribute("loginUser");
+        storeReplyService.postDeleteEXP(userId);
         storeReplyService.deleteByReplyId(storeReplyId);
         return "delete success";
     }

@@ -8,10 +8,91 @@
     function show() {
         // alert("show");
         // alert(userId);
+        myPageService.collegeCityInfo(collegeCityInfo)
         myPageService.userInfo(userId, userInfo)
         myPageService.getList(userId, getList)
+        myPageService.neosPowerList(userId,neosPowerList)
+        myPageService.neosPointList(userId,neosPointList)
     }
 
+/*############################ 네오포인트 START #####################################*/
+function neosPointList(results) {
+    let textPuls = "";
+    let textMinus = "";
+
+    results.forEach(info => {
+        if(info.neosPointMoney > 0) {
+            textPuls += "<tr>";
+            textPuls += "<td>" + myPageService.getReplyDate(info.createdDate) + "</td>";
+            textPuls += "<td>" + info.neosPointMoney + "</td>";
+            textPuls += "<td>" + info.neosPointContent + "</td>";
+            textPuls += "</tr>";
+        }else{
+            textMinus += "<tr>";
+            textMinus += "<td>" + myPageService.getReplyDate(info.createdDate) + "</td>";
+            textMinus += "<td>" + info.neosPointMoney + "</td>";
+            textMinus += "<td>" + info.neosPointContent + "</td>";
+            textMinus += "</tr>";
+        }
+    })
+    $(".plusNeosPoint").append(textPuls);
+    $(".minusNeosPoint").append(textMinus);
+}
+
+
+/*############################ 네오력 START #####################################*/
+function neosPowerList(result) {
+    let text = "";
+
+
+    result.forEach(info => {
+        console.log(info.neosPowerAbility);
+        if (info.neosPowerContent == "LOGIN") {
+            text += "<tr><td>" + myPageService.getReplyDate(info.createdDate) + "</td><td>" + info.neosPowerAbility + "</td><td>로그인 완료</td></tr>";
+        }else if(info.neosPowerContent == "STUDYFOLLOW"){
+            if(info.neosPowerAbility < 0){
+                text += "<tr><td>" + myPageService.getReplyDate(info.createdDate) + "</td><td>" + info.neosPowerAbility + "</td><td>스터디 팔로우 취소</td></tr>";
+            }
+            text += "<tr><td>" + myPageService.getReplyDate(info.createdDate) + "</td><td>" + info.neosPowerAbility + "</td><td>스터디 팔로우 진행</td></tr>";
+        }else if(info.neosPowerContent == "POST"){
+            if(info.neosPowerAbility == 100){
+                console.log("+확인");
+                text += "<tr><td>" + myPageService.getReplyDate(info.createdDate) + "</td><td>" + info.neosPowerAbility + "</td><td>게시글(스터디, 자료상점) 작성</td></tr>";
+            }else if(info.neosPowerAbility == 50){
+                text += "<tr><td>" + myPageService.getReplyDate(info.createdDate) + "</td><td>" + info.neosPowerAbility + "</td><td>커뮤니티(고민상담, 자유게시판) 작성</td></tr>";
+            }else if(info.neosPowerAbility == -50){
+                text += "<tr><td>" + myPageService.getReplyDate(info.createdDate) + "</td><td>" + info.neosPowerAbility + "</td><td>커뮤니티(고민상담, 자유게시판) 삭제</td></tr>";
+            }else if(info.neosPowerAbility == -100){
+                console.log("-확인");
+                text += "<tr><td>" + myPageService.getReplyDate(info.createdDate) + "</td><td>" + info.neosPowerAbility + "</td><td>게시글(스터디, 자료상점) 삭제</td></tr>";
+            }
+        }else if(info.neosPowerContent == "POINT"){
+            text += "<tr><td>" + myPageService.getReplyDate(info.createdDate) + "</td><td>" + info.neosPowerAbility + "</td><td>포인트 구매 적립</td></tr>";
+        }else if(info.neosPowerContent == "REPLY"){
+            if(info.neosPowerAbility < 0){
+                text += "<tr><td>" + myPageService.getReplyDate(info.createdDate) + "</td><td>" + info.neosPowerAbility + "</td><td>댓글 작성 취소</td></tr>";
+            }
+            text += "<tr><td>" + myPageService.getReplyDate(info.createdDate) + "</td><td>" + info.neosPowerAbility + "</td><td>댓글 작성</td></tr>";
+        }
+    });
+
+    $(".neosPowerTbl").append(text)
+}
+
+
+/*############################ 대학 정보 START #####################################*/
+
+function collegeCityInfo(result) {
+        let text = "";
+
+        result.forEach(info => {
+            text += "<option th:value='" + info + "'>" + info + "</option>";
+        })
+
+        $(".KRUni").append(text);
+    }
+
+/*############################ 유저 정보 START #####################################*/
     function userInfo(user) {
 
         // 프로필 이미지
@@ -22,24 +103,62 @@
         $("input[name='userNickName']").val(user.userNickName);
         // 유저 핸드폰 번호
         $("input[name='userPhoneNumber']").val(user.userPhoneNumber);
-        // 유저
-        let collegeCityText = "";
-        collegeCityText = user.collegeCity;
-        $(".KRUni").val(user.collegeCity).prop("selected", true);
-        // let Text = "";
-        // let Text = "";
-        // let Text = "";
-        // let Text = "";
-        // let Text = "";
-        // let Text = "";
-        // let Text = "";
+        // 대학 관련(대학교 지역, 이름 제외)
+        if(user.collegeCity){
+            $(".collegeCity").val(user.collegeCity).prop("selected", true);
+        }
 
+        if(user.collegeName){
+            $(".Univer").empty();
+            $(".Univer").append(` <option class="collegeName_1j" value="`+user.collegeName+`">`+user.collegeName+`</option>`);
+        }
 
-        // $("div.contetnsGrid").append(text);
+        if(user.userCollegeCertify == "noNeed"){
+            $(".userCollegeCertify").prop('checked', true);
+            $('.KRUni').attr('disabled',true);
+        }else if(user.userCollegeCertify == "true"){
+            $(".userCollegeCertify").prop('checked', false);
+            $(".uniPart").val(user.userCollegeMajor).prop("selected", true);
+            $(".uniYear").val(user.userCollegeYear + 1  ).prop("selected", true);
+            $(".uniEmail").val(user.userCollegeEmail);
+        }
+        // 채팅 포인트
+        $(".chatPoint").val(user.userChattingPoint).prop("selected", true);
+
+        // 선호 지역 설정
+        if(user.userO2o){
+            $(".otoo").val(user.userO2o).prop("selected", true);
+        }
+
+        if(user.userCity){
+            $(".areaSort").val(user.userCity).prop("selected", true);
+        }
+
+        // 선호 시간 설정
+        if(user.userDay){
+            $(".userDay").val(user.userDay).prop("selected", true);
+        }
+
+        if(user.userTime){
+            $(".userTime").val(user.userTime).prop("selected", true);
+        }
+
+        // MBTI
+        $(".mbtiSelect").val(user.userMbtiName).prop("selected", true);
+        $(".mbtiSelectText").val(user.userMbtiName);
+
+        // 자세한 소개
+        $(".userIntroduce").val(user.userIntroduce);
+
+        // 네오력 레벨
+        $(".totalNeos").html("MY 네오력 L" + user.userNeosPowerLevel + " (총 : " + user.userNeosPowerAbility);
+        // $(".Univer").html("네오력 L" + user.userNeosPowerLevel + "(" + user.userNeosPowerAbility + ") - 다음 레벨까지" + user.userNeosPowerAbility);
+
+        // 네오포인트 보유량
+        $(".totalNeosPoint").html("포인트 내역 (보유 포인트 : " + user.userNeosPoint + "P)");
+
     }
-
-
-
+/*############################ 유저 정보 END #####################################*/
 
 /*############################ 자료상점 조회 START #####################################*/
     function getList(stores) { //DOM 입력
@@ -97,6 +216,9 @@
         })
 
         $("div.contetnsGrid").append(text);
+        if(stores.last){
+            $(".moreButton").hide();
+        }
     }
 
 $(".moreButton").on("click", function(e){

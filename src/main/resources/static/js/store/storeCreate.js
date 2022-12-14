@@ -64,7 +64,10 @@ function submit() {
     }else if($(".cashCheck").val().length < 4){ // 최소 포인트 조건 미충족
         $(".modalWrapOpen").show();
         $(".modal1").css('display','inline-block');
-    }
+    }else if($(".cashCheck").val().length >= 4){
+    $(".modalWrapOpen").show();
+    $(".modal4").css('display','inline-block');
+}
 }
 /*-------------------------------------------------------------------------------------------------------------*/
 var $file = $(".file");

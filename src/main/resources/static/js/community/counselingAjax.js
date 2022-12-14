@@ -345,7 +345,7 @@ $(document).ready(function () {
         $(".modalWrapOpen").attr("style","display : none !important")
     })
 
-    $(".modalWrapOpen").on("click", ".redBtn", function () {
+    $(".modalWrapOpen").on("click", ".deleteBtn", function () {
         $.ajax({
             url: "/counseling/counselingDelete",
             type: "delete",

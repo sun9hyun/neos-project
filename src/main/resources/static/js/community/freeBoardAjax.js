@@ -365,7 +365,7 @@ $(document).ready(function () {
             text += "<span class='rereplyTextCount'>0</span><span>/</span><span>1000</span>";
             text += "</div>";
             text += "<input type='hidden' th:value='${session.loginUser}'  name='userId' id='replyUser' class='user'>";
-            text += "<input type='hidden' name='communityId' class='replyCommunity'value='" + item.communityId + "'>";
+            text += "<input type='hidden' name='communityId' id='replyCommunity'value='" + item.communityId + "'>";
 
             if($("#userId").attr("value") != null) {
                 text += "<button type='button' class='replyWrite buttonComponents_button__1hvQa buttonComponents_square__3hf2r'>확인</button>";
@@ -398,7 +398,7 @@ $(document).ready(function () {
         let cid = $(this).closest(".loungeCard").children(".cid").val();
         $(".cidDelete").val(cid);
 
-        $(".modalWrapOpen").attr("style","display : block !important")
+        $(".deleteModal").attr("style","display : block !important")
         $(".modalTit").text("글 삭제 확인");
         $(".commonModalContent p").text("해당 글을 삭제하시겠습니까?");
     })
@@ -411,7 +411,7 @@ $(document).ready(function () {
         $(".modalWrapOpen").attr("style","display : none !important")
     })
 
-    $(".modalWrapOpen").on("click", ".redBtn", function () {
+    $(".deleteModal").on("click", ".deleteBtn", function () {
         $.ajax({
             url: "/community/communityDelete",
             type: "delete",

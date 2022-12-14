@@ -58,4 +58,8 @@ public class Store extends Period {
         this.storeContent = storeDTO.getStoreContent();
     }
 
+    public StoreDTO toDTO() {
+        StoreDTO storeDTO = new StoreDTO();
+        return storeDTO;
+    }
 }

@@ -369,11 +369,12 @@ img {
 .letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu {
     display: none;
     position: absolute;
+    top: 44px;
     width: 120px;
     background-color: #fff;
     border: 1px solid #ddd;
     box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 20%);
-    margin-left: -35px;
+    margin-left: -2px;
 }
 
 .letspler_Re .top .profileTxt .idWrap .userName .idHoverMenu li {

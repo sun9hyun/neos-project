@@ -3,6 +3,8 @@ package com.app.neos.service.community;
 import com.app.neos.domain.community.CommunityDTO;
 import com.app.neos.domain.community.CommunityLikeDTO;
 import com.app.neos.domain.neos.NeosPowerDTO;
+import com.app.neos.domain.study.StudyDTO;
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.community.Community;
 import com.app.neos.entity.community.CommunityLike;
 import com.app.neos.entity.neos.NeosPower;
@@ -11,6 +13,7 @@ import com.app.neos.repository.community.CommunityCustomRepository;
 import com.app.neos.repository.community.CommunityLikeRepository;
 import com.app.neos.repository.community.CommunityRepository;
 import com.app.neos.repository.neos.NeosPowerRepository;
+import com.app.neos.repository.user.UserCustomRepository;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.type.point.NeosPowerContent;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +31,7 @@ public class CommunityService {
     private  final CommunityLikeRepository communityLikeRepository;
     private  final UserRepository userRepository;
     private final NeosPowerRepository neosPowerRepository;
+    private final UserCustomRepository userCustomRepository;
 
     //추가
     public void saveCommunity(CommunityDTO communityDTO){
@@ -41,6 +45,16 @@ public class CommunityService {
     //목록 조회
     public List<CommunityDTO> findAll(){
         return communityCustomRepository.findAll();
+    }
+
+    //네오스인
+    public List<UserDTO> findNeosUser(){
+        return communityCustomRepository.findNeosUser();
+    }
+
+    //스터디
+    public List<StudyDTO> findStudy(){
+        return communityCustomRepository.findStudy();
     }
 
     //상세보기
@@ -90,7 +104,10 @@ public class CommunityService {
         neosPowerRepository.save(entity);
     }
 
-
+    // 유저 상세보기
+    public UserDTO findByUserId(Long userId){
+        return userCustomRepository.findById(userId);
+    }
 
 
 

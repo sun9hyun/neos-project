@@ -13,22 +13,23 @@ $(document).ready(function () {
             success: function (result) {
                 if (callback) {
                     callback(result);
-                    alert("댓글 달기 성공");
+                    // alert("댓글 달기 성공");
                 }
-            },
-            error: function (xhr, status, err) {
-                alert("add 오류");
-                console.log(xhr, status, err);
             }
+            // },
+            // error: function (xhr, status, err) {
+            //     alert("add 오류");
+            //     console.log(xhr, status, err);
+            // }
         });
     }
 
     $("div.centerSectionBox").on("click", ".replyWrite", function(){
         var $replyContent = $(this).parent(".replyComponent_replyButtonGroup__2i0ow").prev().children(".replyContent");
-        var $cmid = $(this).prev(".replyCommunity").val();
+        var $cmid = $(this).prev("#replyCommunity").val();
 
-        alert("댓글작성클릭");
-        alert("$cmid" +$cmid);
+        // alert("댓글작성클릭");
+        // alert("$cmid" +$cmid);
         if($replyContent.val() == ""){
             alert("내용을 입력해주세요");
             return;
@@ -50,8 +51,8 @@ $(document).ready(function () {
 
     function getReplyList(communityReplyDTOS) {
         let ic = $("#replyNumber").val();
-        alert("getReplyList");
-        alert("$('#replyNumber').val() "+ic);
+        // alert("getReplyList");
+        // alert("$('#replyNumber').val() "+ic);
         let community = $(".loungeCard").eq(ic).find(".loungeCardContents").find(".loungeCardContentsComponents_loungeContents__262-A").find(".replyComponent_reply__3l-Wc").find(".replyComponent_replyBox__1duHS");
         let text = "";
         $(communityReplyDTOS).each((i, cr) => {
@@ -89,8 +90,8 @@ $(document).ready(function () {
                     text += "<img class='' src='https://letspl.me/assets/images/ic-more.svg'>";
                     text += "</button>";
                     text += "<div class='userInformationComponents_profileRightGroupModifyBoxModal__1csNJ'>";
-                    text += "<button class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>수정</button>";
-                    text += "<button class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>삭제</button>";
+                    // text += "<button class='replyUpdate buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>수정</button>";
+                    text += "<button class='replyDelete buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>삭제</button>";
                     text += "</div></div></div>";
                 }
 
@@ -98,7 +99,8 @@ $(document).ready(function () {
                 text += "</div>";
                 text += "<div class='replyComponent_replyContent__3iS4J'>";
                 text += "<p>" + cr.communityReplyContent + "</p>";
-                text += "<input type='hidden' value='" + cr.community.communityId + "'>"
+                text += "<input type='hidden' class='cridCid' value='" + cr.community.communityId + "'>"
+                text += "<input type='hidden' class='crid' value='" + cr.communityReplyId + "'>"
 
                 text += "<div></div></div></div></div>";
         });
@@ -127,12 +129,79 @@ $(document).ready(function () {
         let communityId = $(this).closest(".loungeCard").children(".cid").val();
         let i = $(this).closest(".loungeCard").index();
         $("#replyNumber").val(i);
-        alert("댓글리스트 클릭 communityId");
-        alert(communityId);
-        alert(i);
+        // alert("댓글리스트 클릭 communityId");
+        // alert(communityId);
+        // alert(i);
 
         showReply(communityId);
     })
+
+    /*-----------------------------------------------------------------------------------------------------------*/
+    /*삭제*/
+    $(".centerSectionBox").on("click", ".replyDelete", function () {
+        let crid = $(this).closest(".userInformationComponents_userReplySection__3ty7Q").next().children(".crid").val();
+        let cridCid = $(this).closest(".userInformationComponents_userReplySection__3ty7Q").next().children(".cridCid").val();
+        $(".cridDelete").val(crid);
+        $(".cridDeleteCid").val(cridCid);
+
+
+        $(".replyDelete").attr("style","display : block !important")
+        $(".modalTit").text("댓글 삭제 확인");
+        $(".commonModalContent p").text("해당 댓글을 삭제하시겠습니까?");
+    });
+
+    $(".replyBtn").on("click", function () {
+       var id =  $(".cridDeleteCid").val();
+       var replyId= $(".cridDelete").val();
+        deleteReply(replyId,id);
+    })
+
+    function deleteReply(replyId, id) {
+        $.ajax({
+            url: "/community-reply/replyDelete/" +replyId,
+            type: "delete",
+            contentType: "application/json; charset=utf-8",
+            success: function(){
+                showReply(id);
+            },
+            error: function (xhr, status, err) {
+                console.log(xhr, status, err);
+            }
+        });
+        $(".modalWrapOpen").attr("style","display : none !important")
+    }
+    // $("div.centerSectionBox").on("click", ".postDelete_1j", function () {
+    //     let cid = $(this).closest(".loungeCard").children(".cid").val();
+    //     $(".cidDelete").val(cid);
+    //
+    //     $(".modalWrapOpen").attr("style","display : block !important")
+    //     $(".modalTit").text("글 삭제 확인");
+    //     $(".commonModalContent p").text("해당 글을 삭제하시겠습니까?");
+    // })
+    //
+    // $(".modalWrapOpen").find(".closeBtn").on("click",function () {
+    //     $(".modalWrapOpen").attr("style","display : none !important")
+    // })
+    //
+    // $(".modalWrapOpen").find(".doubleBtnWrap").click(function () {
+    //     $(".modalWrapOpen").attr("style","display : none !important")
+    // })
+    //
+    // $(".modalWrapOpen").on("click", ".redBtn", function () {
+    //     $.ajax({
+    //         url: "/community/communityDelete",
+    //         type: "delete",
+    //         data: JSON.stringify({communityId : $(".cidDelete").val()}),
+    //         contentType: "application/json; charset=utf-8",
+    //         success: function(){
+    //             showUpdate();
+    //         },
+    //         error: function (xhr, status, err) {
+    //             console.log(xhr, status, err);
+    //         }
+    //     });
+    //     $(".modalWrapOpen").attr("style","display : none !important")
+    // })
 
 
 

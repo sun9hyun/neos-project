@@ -90,11 +90,8 @@ $(document).ready(function(){
 
 
     const $replyDeleteBtn = $(".userInformationComponents_userReplySection__3ty7Q").find(".replyDelete");
-    $replyDeleteBtn.click(function () {
-        $(".modalWrapOpen").attr("style","display : block !important")
-        $(".modalTit").text("댓글 삭제 확인");
-        $(".commonModalContent p").text("해당 댓글을 삭제하시겠습니까?");
-    });
+    // $replyDeleteBtn.click(function () {
+
 })
 /*-----------------------------------------------------------------------------------------------------------*/
 $(document).ready(function(){

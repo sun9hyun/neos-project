@@ -8,6 +8,7 @@ import com.app.neos.service.counseling.CounselingReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -24,7 +25,9 @@ public class CounselingReplyRestController {
     }
 
     @PostMapping("/replyOk")
-    public String write(@RequestBody CounselingReplyDTO counselingReplyDTO){
+    public String write(@RequestBody CounselingReplyDTO counselingReplyDTO, HttpSession session){
+        Long userId = (Long)session.getAttribute("loginUser");
+        counselingReplyService.postEXP(userId);
         counselingReplyService.saveCounselingReply(counselingReplyDTO);
         return "reply write success";
     }
@@ -38,7 +41,9 @@ public class CounselingReplyRestController {
     }
 
     @DeleteMapping("replyDelete/{rno}")
-    public String delete(@PathVariable("rno") Long replyId){
+    public String delete(@PathVariable("rno") Long replyId, HttpSession session){
+        Long userId = (Long)session.getAttribute("loginUser");
+        counselingReplyService.postDeleteEXP(userId);
         counselingReplyService.deleteReply(replyId);
         return "reply delete success";
     }

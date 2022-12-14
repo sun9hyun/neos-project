@@ -114,21 +114,41 @@
     </div>
 </div>
 
-<div class="modalWrapOpen">
+<!--닫기 모달-->
+<div class="modalWrapOpen deleteModal" style="display: none">
     <div class="commonModal">
-        <p class="modalTit" style="font-size: 18px;margin-bottom: 15px">글 삭제 확인</p>
+        <p class="modalTit" style="font-size: 20px;margin-bottom: 12px">글 삭제 확인</p>
         <button type="button" class="closeBtn">
-            <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close"></button>
+            <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close">
+        </button>
         <div class="commonModalContent">
-            <p style="font-size: 12px;margin-bottom: 12px;">해당 글을 삭제하시겠습니까?</p>
+            <p style="font-size: 14px;margin-bottom: 10px;">해당 글을 삭제하시겠습니까?</p>
         </div>
         <input type="hidden" class="cidDelete" >
         <div class="btnWrap doubleBtnWrap">
-            <button type="button" class="btn whiteBtn" style="font-size: 12px;line-height: 3;">아니오</button>
-            <button type="button" class="btn redBtn" style="font-size: 12px;line-height: 3;">예</button>
+            <button type="button" class="btn whiteBtn" style="font-size: 14px;line-height: 3;">아니오</button>
+            <button type="button" class="btn redBtn deleteBtn" style="font-size: 14px;line-height: 3;">예</button>
         </div>
     </div>
 </div>
+<div class="modalWrapOpen deleteModal replyDelete" style="display: none">
+    <div class="commonModal">
+        <p class="modalTit" style="font-size: 20px;margin-bottom: 12px">글 삭제 확인</p>
+        <button type="button" class="closeBtn">
+            <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close">
+        </button>
+        <div class="commonModalContent">
+            <p style="font-size: 14px;margin-bottom: 10px;">해당 글을 삭제하시겠습니까?</p>
+        </div>
+        <input type="hidden" class="csidDelete" >
+        <input type="hidden" class="csidDeleteCid" >
+        <div class="btnWrap doubleBtnWrap">
+            <button type="button" class="btn whiteBtn" style="font-size: 14px;line-height: 3;">아니오</button>
+            <button type="button" id="" class="replyBtn btn redBtn" style="font-size: 14px;line-height: 3;">예</button>
+        </div>
+    </div>
+</div>
+
 <section class="loungeSection_new">
     <div class="editorMdoal">
         <form th:action="@{/community/counseling}" th:object="${counselingDTO}" name="counselingWrite" id="counseling" method="post" class="form-horizontal form-validate" role="form" target="hidden_frame" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate">
@@ -175,241 +195,6 @@
 
         <div class="centerSectionBox">
             <!--카드-->
-<!--            <th:block th:each="counseling:${counselings}" th:object="${counseling}">-->
-<!--            <div class="loungeCard" style="margin-bottom: -10px;">-->
-
-<!--                <div class="loungeCardContents">-->
-<!--                    <div class="loungeCardContentsComponents_loungeContents__262-A">-->
-<!--                        <div class="loungeCardContentsComponents_loungeContentsTagMoreBox__1oKkG">-->
-<!--                            <div class="undefined">-->
-<!--                                <div class="tag_tag__2gh0s tag_typeDefault__3U6Rz tag_sizeDefault__2V2-5">-->
-<!--                                            <span>네오스인 고민</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="loungeCardContentsComponents_loungeContentsRight__14cdz">-->
-<!--                                <div class="loungeCardContentsComponents_loungeContentsMore__2AXVI">-->
-<!--                                    <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    ">-->
-<!--                                        <img class="buttonComponents_mdImg__G1pNE" src="https://letspl.me/assets/images/ic-more.svg">-->
-<!--                                    </button>-->
-<!--                                    <div class="loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo">-->
-<!--                                        <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postUpdate_1j">수정</button>-->
-<!--                                        <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 postDelete_1j">삭제</button></div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
-<!--                        <div class="loungeCardContentsComponents_loungeContentsTitleBox__2NtjH">-->
-<!--                            <div class="loungeCardContentsComponents_loungeContentsTitleDate__1-Xd2">-->
-<!--                                <h3 class="loungeCardContentsComponents_title__1s8RE" th:text="*{counselingTitle}"> </h3>-->
-<!--                                <span class="loungeCardContentsComponents_date__3pY5X">21시간 전</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4" th:text="*{counselingContent}">-->
-
-<!--                        </div>-->
-<!--                        <div class="loungeCardContentsComponents_loungeContentsMoreButtonWrap__1LR4v">-->
-<!--                            <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU   ">펼치기</button>-->
-<!--                        </div>-->
-<!--                        <div class="replyComponent_reply__3l-Wc">-->
-<!--                            <div class="replyComponent_replyButtonBox__2O3ME">-->
-
-<!--                                <div class="replyComponent_replyOnOff__QKoso">-->
-<!--                                    <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_blue__1FlTU   ">-->
-<!--                                        <span class="buttonComponents_gray__1blI9">첫번째 댓글을 달아주세요</span>-->
-<!--                                        <img class="buttonComponents_smMdImg__2IOAr" src="https://letspl.me/assets/images/ic-arrow-up.svg"></button>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="replyComponent_replyFilter__10kow">-->
-<!--                                <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_black__3vMzB   ">-->
-<!--                                    <img class="buttonComponents_smImg__1vYDM" src="/images/community/bluedot.png">등록순</button>-->
-<!--                                <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_gray__1blI9   ">최신순</button>-->
-<!--                            </div>-->
-<!--                            <div class="replyComponent_replyInputBox__2yLKK">-->
-<!--                                <div class="replyComponent_replyInputContainer__3TJW8">-->
-<!--                                    <textarea class="replyComponent_replyInput__2vKhX replyTextArea" maxlength="1000" placeholder="댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>-->
-<!--                                </div>-->
-<!--                                <div class="replyComponent_replyButtonGroup__2i0ow">-->
-<!--                                    <div class="replyComponent_replyButtonGroupCount__j0XkV">-->
-<!--                                        <span class="replyTextCount">0</span>-->
-<!--                                        <span>/</span>-->
-<!--                                        <span>1000</span>-->
-<!--                                    </div>-->
-<!--                                    <button type="button" class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="replyComponent_replyBox__1duHS">-->
-<!--                                <div class="replyComponent_replyContainer__3dxJZ">-->
-<!--                                    <div style="border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;">-->
-<!--                                        <div class="userInformationComponents_userReplySection__3ty7Q">-->
-<!--                                            <div class="userInformationComponents_profile__2pr8a">-->
-<!--                                                <div class="userInformationComponents_profileLeftGroup__1lq6K">-->
-<!--                                                    <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">-->
-<!--                                                        <div class="userInformationComponents_profileImg__3qJcX"><img-->
-<!--                                                                class="userInformationComponents_smImg__2uLTY"-->
-<!--                                                                src="https://letspl.me/assets/images/prof-no-img.png" alt="박종우"></div>-->
-<!--                                                        <p class="userInformationComponents_profileName__3l0ya"><i-->
-<!--                                                                class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>-->
-<!--                                                        <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA"></div>-->
-<!--                                                    </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.09 20:44</span>-->
-<!--                                                </div>-->
-<!--                                                <div class="userInformationComponents_profileRightGroup__3Ro_j">-->
-<!--                                                    <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH">-->
-<!--                                                        <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    ">-->
-<!--                                                            <img class="" src="https://letspl.me/assets/images/ic-more.svg">-->
-<!--                                                        </button>-->
-<!--                                                        <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ">-->
-<!--                                                            <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyUpdate">수정</button>-->
-<!--                                                            <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyDelete">삭제</button>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                        <div class="replyComponent_replyContent__3iS4J">-->
-<!--                                            <p class="replyContent_content_1j">안녕하세요</p>-->
-<!--                                            <div class="replyComponent_replyOpenAndLikeButtonGroup__3r9hv">-->
-<!--                                                <button type="button" class="buttonComponents_button__1hvQa buttonComponets_plain__1ljW5 buttonComponents_lightGray__cqa_C rereplyButton_1j">대댓글쓰기</button>-->
-<!--                                            </div>-->
-<!--                                            <div>-->
-<!--                                                <div class="replyComponent_replyContainer__3dxJZ">-->
-<!--                                                    <div class="userInformationComponents_userReplySection__3ty7Q">-->
-<!--                                                        <div class="userInformationComponents_profile__2pr8a">-->
-<!--                                                            <div class="userInformationComponents_profileLeftGroup__1lq6K">-->
-<!--                                                                <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">-->
-<!--                                                                    <div class="userInformationComponents_profileImg__3qJcX"><img-->
-<!--                                                                            class="userInformationComponents_smImg__2uLTY"-->
-<!--                                                                            src="https://letspl.me/assets/images/prof-no-img.png" alt="아니그웃"></div>-->
-<!--                                                                    <p class="userInformationComponents_profileName__3l0ya"><i-->
-<!--                                                                            class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>-->
-<!--                                                                    <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA">-->
-<!--                                                                        <div class="tag_tag__2gh0s tag_typeGray__3-1Ag tag_sizeDefault__2V2-5" style="text-align: center;margin-left:4px;">-->
-<!--                                                                            <span style="margin-top: 3px;">작성자</span></div>-->
-<!--                                                                    </div>-->
-<!--                                                                </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.10 08:46</span>-->
-<!--                                                            </div>-->
-<!--                                                            <div class="userInformationComponents_profileRightGroup__3Ro_j">-->
-<!--                                                                <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH">-->
-<!--                                                                    <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    ">-->
-<!--                                                                        <img class="" src="https://letspl.me/assets/images/ic-more.svg">-->
-<!--                                                                    </button>-->
-<!--                                                                    <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ">-->
-<!--                                                                        <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyUpdate">수정</button>-->
-<!--                                                                        <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5  replyDelete">삭제</button>-->
-<!--                                                                    </div>-->
-<!--                                                                </div>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="replyComponent_replyContent__3iS4J">-->
-<!--                                                        <p class="replyContent_content_1j">안녕하세요</p>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                                &lt;!&ndash;댓글쓰기 눌럿을때&ndash;&gt;-->
-<!--                                                <div class="replyComponent_replyContainer__3dxJZ rereplyContainer__3x">-->
-<!--                                                    <div class="replyComponent_replyOfCommentContainer__2bLgx">-->
-<!--                                                        <textarea class="replyComponent_replyInput__2vKhX rereply_textarea" maxlength="1000" placeholder="대댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>-->
-<!--                                                        <div class="replyComponent_replyButtonGroup__2i0ow">-->
-<!--                                                            <div class="replyComponent_replyButtonGroupCount__j0XkV">-->
-<!--                                                                <span class="rereplyTextCount">0</span><span>/</span><span>1000</span></div>-->
-<!--                                                            <button type="button" class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                                &lt;!&ndash;댓글쓰기 눌럿을때&ndash;&gt;-->
-
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div style="border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;">-->
-<!--                                        <div class="userInformationComponents_userReplySection__3ty7Q">-->
-<!--                                            <div class="userInformationComponents_profile__2pr8a">-->
-<!--                                                <div class="userInformationComponents_profileLeftGroup__1lq6K">-->
-<!--                                                    <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">-->
-<!--                                                        <div class="userInformationComponents_profileImg__3qJcX"><img-->
-<!--                                                                class="userInformationComponents_smImg__2uLTY"-->
-<!--                                                                src="https://letspl.me/assets/images/prof-no-img.png" alt="박종우"></div>-->
-<!--                                                        <p class="userInformationComponents_profileName__3l0ya"><i-->
-<!--                                                                class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>-->
-<!--                                                        <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA"></div>-->
-<!--                                                    </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.09 20:44</span>-->
-<!--                                                </div>-->
-<!--                                                <div class="userInformationComponents_profileRightGroup__3Ro_j">-->
-<!--                                                    <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH">-->
-<!--                                                        <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    ">-->
-<!--                                                            <img class="" src="https://letspl.me/assets/images/ic-more.svg">-->
-<!--                                                        </button>-->
-<!--                                                        <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ">-->
-<!--                                                            <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button>-->
-<!--                                                            <button type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                        <div class="replyComponent_replyContent__3iS4J">-->
-<!--                                            <p class="replyContent_content_1j">안녕하세요</p>-->
-<!--                                            <div class="replyComponent_replyOpenAndLikeButtonGroup__3r9hv">-->
-<!--                                                <button-->
-<!--                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img class=""-->
-<!--                                                                                                                                  src="https://letspl.me/assets/images/ic_talk_up.svg"></button><button-->
-<!--                                                    class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 buttonComponents_lightGray__cqa_C rereplyButton_1j">대댓글쓰기</button>-->
-<!--                                            </div>-->
-<!--                                            <div>-->
-<!--                                                <div class="replyComponent_replyContainer__3dxJZ">-->
-<!--                                                    <div class="userInformationComponents_userReplySection__3ty7Q">-->
-<!--                                                        <div class="userInformationComponents_profile__2pr8a">-->
-<!--                                                            <div class="userInformationComponents_profileLeftGroup__1lq6K">-->
-<!--                                                                <div class="userInformationComponents_profileLeftGroupLeftBox__2YqvE">-->
-<!--                                                                    <div class="userInformationComponents_profileImg__3qJcX"><img-->
-<!--                                                                            class="userInformationComponents_smImg__2uLTY"-->
-<!--                                                                            src="https://letspl.me/assets/images/prof-no-img.png" alt="아니그웃"></div>-->
-<!--                                                                    <p class="userInformationComponents_profileName__3l0ya"><i-->
-<!--                                                                            class="userInformationComponents_profileLevel__6Bl4w"></i>익명</p>-->
-<!--                                                                    <div class="userInformationComponents_profileLeftGroupTagBox__1IPyA">-->
-<!--                                                                        <div class="tag_tag__2gh0s tag_typeGray__3-1Ag tag_sizeDefault__2V2-5" style="text-align: center;margin-left: 4px">-->
-<!--                                                                            <span style="margin-top: 3px;">작성자</span></div>-->
-<!--                                                                    </div>-->
-<!--                                                                </div><span class="userInformationComponents_recordTime__LAQ3h">22.11.10 08:46</span>-->
-<!--                                                            </div>-->
-<!--                                                            <div class="userInformationComponents_profileRightGroup__3Ro_j">-->
-<!--                                                                <div class="userInformationComponents_profileRightGroupModifyBox__3xfKH">-->
-<!--                                                                    <div class="userInformationComponents_profileRightGroupModifyBoxModal__1csNJ">-->
-<!--                                                                        <button-->
-<!--                                                                                class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyUpdate">수정</button><button-->
-<!--                                                                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 replyDelete">삭제</button>-->
-<!--                                                                    </div>-->
-<!--                                                                </div>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="replyComponent_replyContent__3iS4J">-->
-<!--                                                        <p class="replyContent_content_1j">안녕하세요</p>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                                &lt;!&ndash;댓글쓰기 눌럿을때&ndash;&gt;-->
-<!--                                                <div class="replyComponent_replyContainer__3dxJZ rereplyContainer__3x">-->
-<!--                                                    <div class="replyComponent_replyOfCommentContainer__2bLgx">-->
-<!--                                                        <textarea class="replyComponent_replyInput__2vKhX rereply_textarea" maxlength="1000" placeholder="대댓글을 입력해주세요." style="height: 21px !important;resize: none;" oninput='this.style.height = "21px"; this.style.height = this.scrollHeight + "px"'></textarea>-->
-<!--                                                        <div class="replyComponent_replyButtonGroup__2i0ow">-->
-<!--                                                            <div class="replyComponent_replyButtonGroupCount__j0XkV">-->
-<!--                                                                <span class="rereplyTextCount">0</span><span>/</span><span>1000</span></div>-->
-<!--                                                            <button type="button" class="buttonComponents_button__1hvQa buttonComponents_square__3hf2r    ">확인</button>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                                &lt;!&ndash;댓글쓰기 눌럿을때&ndash;&gt;-->
-
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            </th:block>-->
-
         </div>
         <input type="hidden" id="replyNumber">
 
@@ -422,73 +207,21 @@
     </div>
     <div class="rightSection" style="max-width: 300px;">
         <div class="rightSectionBox">
-            <div class="loungeTrendComponents_LoungeTrendBox__2LuCJ" style="display: none;">
-                <h4>조회 급상승 모임</h4>
-                <ul class="loungeTrendComponents_LoungeTrendContainer__1xnsy">
-                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
-                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">1</span><button
-                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
-                            class="buttonComponents_lgImg__2-hZO"
-                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/undefined/images/rn_image_picker_lib_temp_b398ec73-e178-4289-a927-3a052fc56f91.jpg"><span
-                            class="">대학 동아리 플랫폼 App</span></button></li>
-                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
-                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">2</span><button
-                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
-                            class="buttonComponents_lgImg__2-hZO"
-                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_01.png"><span
-                            class="">근무시간 관리 어플리케이션 팀원모집</span></button></li>
-                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
-                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">3</span><button
-                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><span
-                            class="">스타트업, zero to one</span></button></li>
-                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
-                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">4</span><button
-                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
-                            class="buttonComponents_lgImg__2-hZO"
-                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_08.png"><span
-                            class="">유튜버들의 소재 탐색 자동화 솔루션</span></button></li>
-                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
-                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">5</span><button
-                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
-                            class="buttonComponents_lgImg__2-hZO"
-                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/3616/images/KakaoTalk_Photo_2022-09-05-16-42-32%20001.jpeg"><span
-                            class="">대학교 카풀 앱 제작팀(모든 직군!)</span></button></li>
-                </ul>
-            </div>
             <div class="loungeTrendComponents_LoungeTrendBox__2LuCJ" style="width: 300px;">
-                <h4>지금 인기 렛플인</h4>
+                <h4>다양한 네오스인을 만나보세요!😉</h4>
+
                 <ul class="loungeTrendComponents_LoungeTrendContainer__1xnsy"
                     style="width: 300px !important; max-width:300px !important">
-                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
-                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">1</span><button
-                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
-                            class="buttonComponents_lgImg__2-hZO"
-                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/user/4535/images/%EB%B3%B4%EA%B1%B0%EC%8A%A4.png"><span
-                            class="">민쇼니</span></button></li>
-                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
-                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">2</span><button
-                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
-                            class="buttonComponents_lgImg__2-hZO"
-                            src="https://phinf.pstatic.net/contact/20220629_138/1656481654516fqNNk_PNG/profileImage.png"><span
-                            class="">sun9hyun</span></button></li>
-                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
-                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">3</span><button
-                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
-                            class="buttonComponents_lgImg__2-hZO"
-                            src="https://letspl.me/assets/images/prof-no-img.png"><span
-                            class="">추추추</span></button></li>
-                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
-                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">4</span><button
-                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
-                            class="buttonComponents_lgImg__2-hZO"
-                            src="https://phinf.pstatic.net/contact/20220616_30/1655372073682zvrW8_GIF/%B0%B6%B7%B0%BD%C3.gif"><span
-                            class="">ROSA</span></button></li>
-                    <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd"><span
-                            class="loungeTrendComponents_LoungeLankingTxt__vlofS">5</span><button
-                            class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5    "><img
-                            class="buttonComponents_lgImg__2-hZO"
-                            src="https://k.kakaocdn.net/dn/cjVEIE/btrKqQE6Q8C/NSvM3RRa6GDvHJXurHgxmK/img_640x640.jpg"><span
-                            class="">sojoo</span></button></li>
+                    <th:block th:each="neosUser, neosUserStatus:${neosUsers}" th:object="${neosUser}">
+                        <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd">
+                            <span class="loungeTrendComponents_LoungeLankingTxt__vlofS" th:text="${neosUserStatus.count}">1</span>
+                            <button style="cursor: default" type="button" class="detail buttonComponents_button__1hvQa buttonComponents_plain__1ljW5" >
+                                <input class="neosUser" type="hidden" th:href="*{userId}">
+                                <img class="buttonComponents_lgImg__2-hZO" th:src="*{userFile}">
+                                <span class="" th:text="*{userNickName}">민쇼니</span>
+                            </button>
+                        </li>
+                    </th:block>
                 </ul>
             </div>
         </div>

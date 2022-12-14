@@ -40,14 +40,15 @@ public class PayService {
 
 //    네오력 상승
     @Transactional
-    public void postEXP(Long userId){
+    public void postEXP(Long userId, int pay){
         User user = userRepository.findById(userId).get();
-        user.updateNeosPower(user.getUserNeosPower().getUserNeosPowerAbility()+100);
+        int payPoint = (pay/10);
+        user.updateNeosPower(user.getUserNeosPower().getUserNeosPowerAbility()+payPoint);
         user.levelUp();
 
         NeosPowerDTO dto = new NeosPowerDTO();
-        dto.setNeosPowerAbility(100);
-        dto.setNeosPowerContent(NeosPowerContent.POST);
+        dto.setNeosPowerAbility(payPoint);
+        dto.setNeosPowerContent(NeosPowerContent.POINT);
         NeosPower entity = dto.toEntity();
         entity.changeUser(user);
         neosPowerRepository.save(entity);

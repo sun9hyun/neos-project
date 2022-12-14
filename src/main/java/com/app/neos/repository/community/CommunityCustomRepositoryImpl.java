@@ -4,9 +4,16 @@ import com.app.neos.domain.community.CommunityDTO;
 import com.app.neos.domain.community.CommunityLikeDTO;
 import com.app.neos.domain.community.QCommunityDTO;
 import com.app.neos.domain.community.QCommunityLikeDTO;
+import com.app.neos.domain.study.QStudyDTO;
+import com.app.neos.domain.study.StudyDTO;
+import com.app.neos.domain.user.QUserDTO;
+import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.community.CommunityLike;
 import com.app.neos.entity.community.QCommunity;
 import com.app.neos.entity.community.QCommunityLike;
+import com.app.neos.entity.study.QStudy;
+import com.app.neos.entity.user.QUser;
+import com.querydsl.core.types.dsl.NumberExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +25,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.app.neos.entity.community.QCommunity.community;
+import static com.app.neos.entity.study.QStudy.study;
+import static com.app.neos.entity.user.QUser.user;
+
 @Repository
 @RequiredArgsConstructor
 public class CommunityCustomRepositoryImpl implements CommunityCustomRepository {
@@ -26,33 +37,64 @@ public class CommunityCustomRepositoryImpl implements CommunityCustomRepository 
     @Override
     public List<CommunityDTO> findAll() {
         return jpaQueryFactory.select(new QCommunityDTO(
-                QCommunity.community.communityId,
-                QCommunity.community.communityTitle,
-                QCommunity.community.communityContent,
-                QCommunity.community.communityLikeCount,
-                QCommunity.community.user,
-                QCommunity.community.createdDate,
-                QCommunity.community.updatedDate
+                community.communityId,
+                community.communityTitle,
+                community.communityContent,
+                community.communityLikeCount,
+                community.user,
+                community.createdDate,
+                community.updatedDate
                 ))
-                .from(QCommunity.community)
-                .orderBy(QCommunity.community.updatedDate.desc())
+                .from(community)
+                .orderBy(community.updatedDate.desc())
                 .fetch();
 
     }
 
     @Override
+    public List<UserDTO> findNeosUser() {
+        return jpaQueryFactory.select(new QUserDTO(
+                user.userId,
+                user.userNickName,
+                user.userFile,
+                user.createdDate
+        ))
+                .from(user)
+//                .orderBy(NumberExpression.random().asc())
+                .limit(5)
+                .fetch();
+    }
+
+    @Override
+    public List<StudyDTO> findStudy() {
+        return jpaQueryFactory.select(new QStudyDTO(
+                study.studyId,
+                study.studyView,
+                study.studyTitle,
+                study.studyField.studyType,
+                study.user.userNickName,
+                study.createdDate
+        ))
+                .from(study)
+                .orderBy(study.studyView.desc())
+                .limit(5)
+                .fetch();
+    }
+
+
+    @Override
     public Slice<CommunityDTO> findAllPage(Pageable pageable) {
         List<CommunityDTO> communityDTOList = jpaQueryFactory.select(new QCommunityDTO(
-                QCommunity.community.communityId,
-                QCommunity.community.communityTitle,
-                QCommunity.community.communityContent,
-                QCommunity.community.communityLikeCount,
-                QCommunity.community.user,
-                QCommunity.community.createdDate,
-                QCommunity.community.updatedDate
+                community.communityId,
+                community.communityTitle,
+                community.communityContent,
+                community.communityLikeCount,
+                community.user,
+                community.createdDate,
+                community.updatedDate
                 ))
-                .from(QCommunity.community)
-                .orderBy(QCommunity.community.updatedDate.desc())
+                .from(community)
+                .orderBy(community.updatedDate.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize()+1)
                 .fetch();
@@ -70,16 +112,16 @@ public class CommunityCustomRepositoryImpl implements CommunityCustomRepository 
     @Override
     public CommunityDTO findByCommunityId(Long communityId) {
         return jpaQueryFactory.select(new QCommunityDTO(
-                QCommunity.community.communityId,
-                QCommunity.community.communityTitle,
-                QCommunity.community.communityContent,
-                QCommunity.community.communityLikeCount,
-                QCommunity.community.user,
-                QCommunity.community.createdDate,
-                QCommunity.community.updatedDate
+                community.communityId,
+                community.communityTitle,
+                community.communityContent,
+                community.communityLikeCount,
+                community.user,
+                community.createdDate,
+                community.updatedDate
         ))
-                .from(QCommunity.community)
-                .where(QCommunity.community.communityId.eq(communityId))
+                .from(community)
+                .where(community.communityId.eq(communityId))
                 .fetchOne();
     }
 

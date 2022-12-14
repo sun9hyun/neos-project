@@ -45,7 +45,7 @@
                     <input type="hidden" id="userOauthId">
                 </div>
                 <div class="searchWrap">
-                    <a class="searchIc" th:href="@{/search/search-before}"><span>검색</span>
+                    <a class="searchIc" th:href="@{/search/search}"><span>검색</span>
                         <img class="pcSearch" src="	https://letspl.me/assets/images/ic-search-white.png"
                              alt="검색하기">
                         <img class="mobileSearch" src="	https://letspl.me/assets/images/ic-search.png" alt="검색하기">
@@ -53,7 +53,7 @@
                     </a>
                 </div>
                 <a class="navBtn buildProject" th:href="@{/study/create}">
-                    <span>모임 or 스토리 생성</span>
+                    <span>스터디 생성</span>
                     <img class="mobileBuild" src="https://letspl.me/assets/images/ic-project-new.png" alt="모임/스토리 만들기">
                 </a>
                 <div class="profile" onclick="">
@@ -95,10 +95,11 @@
                         </div>
                     </div>
                     <div class="pointWrap">
-                        <div class="pointTxt"><span id="neosPoint">8 </span><span>&nbsp P</span></div><button><span>충전</span></button>
+                        <div class="pointTxt"><span id="neosPoint">8 </span><span>&nbsp P</span></div>
+                        <a th:href="@{/pay/point}"><button type="button" ><span>충전</span></button></a>
                     </div>
                     <div class="navLIst">
-                        <div><a class="popClick" href="/people/sun9hyun">내 프로필</a></div>
+                        <div><a class="popClick" href="/my?tab=project">내 프로필</a></div>
                         <div><a class="popClick"   th:href="@{/my-page/my}">마이페이지</a></div>
                         <div><a class="popClick" href="/my?tab=project">모임 현황</a></div>
                     </div>

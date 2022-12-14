@@ -65,11 +65,11 @@ public class CounselingService {
     @Transactional
     public void postDeleteEXP(Long userId){
         User user = userRepository.findById(userId).get();
-        user.updateNeosPower(user.getUserNeosPower().getUserNeosPowerAbility()-100);
+        user.updateNeosPower(user.getUserNeosPower().getUserNeosPowerAbility()-50);
         user.levelUp();
 
         NeosPowerDTO dto = new NeosPowerDTO();
-        dto.setNeosPowerAbility(-100);
+        dto.setNeosPowerAbility(-50);
         dto.setNeosPowerContent(NeosPowerContent.POST);
         NeosPower entity = dto.toEntity();
         entity.changeUser(user);

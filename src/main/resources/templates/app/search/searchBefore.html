@@ -14,13 +14,23 @@
 <body>
 <header th:replace="/app/fix/header.html :: header"></header>
     <div class="searchResultSection">
-        <div class="searchInputWrap"><input class="searchInput" type="text" placeholder="검색내용을 입력해주세요(e.g Figma 디자이너)"
+        <div class="searchInputWrap">
+            <input class="searchInput" type="text" placeholder="검색내용을 입력해주세요(ex. )"
                 maxlength="30" value="">
-            <div class="inputBtnWrap"><span id="del"><button class="inputDelBtn"></span><img loading="lazy" src="https://letspl.me/assets/images/ic-del.svg"
-                                                                                             alt="초기화"></button><button class="inputSearchBtn"><img loading="lazy"src="https://letspl.me/assets/images/ic-search.png" alt="검색"></button></div>
+            <div class="inputBtnWrap">
+                <button class="inputDelBtn">
+                    <img loading="lazy" src="https://letspl.me/assets/images/ic-del.svg" alt="초기화">
+                </button>
+                <button class="inputSearchBtn">
+                    <img loading="lazy"src="https://letspl.me/assets/images/ic-search.png" alt="검색">
+                </button>
             </div>
+        </div>
     </div>
-        <div th:replace="/app/fix/footer.html :: footer"></div>
+    <div style="margin: 33.5%;"></div>
+
+
+    <div th:replace="/app/fix/footer.html :: footer"></div>
 
     </body>
 
@@ -39,6 +49,7 @@
         $(this).hide();
     });
 </script>
+<script src="/js/search/searchAjax.js"></script>
 <script src="/js/fix/login.js"></script>
 <script src="/js/fix/header.js"></script>
 </html>

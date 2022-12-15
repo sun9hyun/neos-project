@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface StudySupporterCustomRepository {
 
-    public List<StudySupporter> findAllWait();
+    public List<StudySupporter> findAllWait(Long studyId);
 }

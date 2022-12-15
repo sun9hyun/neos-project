@@ -149,7 +149,7 @@ public class StudyController {
         StudyDTO study = studyService.getStudyDTO(studyId);
         UserDTO user = studyService.getInfo(study.getUserId());
         List<StudyQuestionDTO> questions = studyQuestionService.getInfo(studyId);
-        model.addAttribute("supporter",studyMemberService.showWaitList());
+        model.addAttribute("supporter",studyMemberService.showWaitList(studyId));
         List<Long> memberIds = study.getStudyMemberList().stream().map(i->i.getUserDTO().getUserId()).collect(Collectors.toList());
         memberIds.add(study.getUserId());
         model.addAttribute("memberList",memberIds);

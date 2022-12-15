@@ -39,10 +39,11 @@
 
         <div th:if="${session.loginUser != null}" class="loginWrap">
             <div class="loginLogout">
-                <div class="newDot">
+                <input type="hidden" name="userId" id="userId" th:value="${session.loginUser}">
+                <input type="hidden" id="userOauthId">
+                <div th:if="${checkAlarm == true}" class="newDot">
                     <div class="redDot"></div>
-                    <input type="hidden" name="userId" id="userId" th:value="${session.loginUser}">
-                    <input type="hidden" id="userOauthId">
+
                 </div>
                 <div class="searchWrap">
                     <a class="searchIc" th:href="@{/search/search}"><span>검색</span>
@@ -116,10 +117,6 @@
                         <ul>
                             <li class="alarmTit">신규 알림 (<span class="alarmTotalCount">3</span>)</li>
                             <div class="alarmText"> </div>
-<!--                            <li class="alarmContent"><a class="popClick" href="/my?tab=alarm">-->
-<!--                                <p>회원님을 찾는 프로젝트 대학 동아리 플랫폼 App가 게시되었습니다.</p><span class="dateInfo">22.11.09-->
-<!--                                                09:08</span><span class="newTag"></span>-->
-<!--                            </a></li>-->
                             <li class="moreAlarm">
                                 <p>이 외 <em>0</em>건의 메시지가 있습니다.</p><a class="popClick" href="/my?tab=alarm">확인하러 가기</a>
                             </li>

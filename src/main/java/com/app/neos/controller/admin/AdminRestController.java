@@ -6,6 +6,8 @@ import com.app.neos.domain.store.StoreFlieDTO;
 import com.app.neos.entity.inquiry.Inquiry;
 import com.app.neos.repository.inquiry.InquiryRepository;
 import com.app.neos.service.admin.AdminService;
+import com.app.neos.service.alarm.AlarmService;
+import com.app.neos.type.alarm.AlarmCategory;
 import com.app.neos.type.inquiry.InquiryStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -45,6 +47,7 @@ import java.util.UUID;
 public class AdminRestController {
     private final AdminService adminService;
     private final InquiryRepository inquiryRepository;
+    private final AlarmService alarmService;
 
     @PostMapping("college-upload")
     public String updateProfileImage(@RequestParam MultipartFile profileImageFile) {
@@ -127,13 +130,12 @@ public class AdminRestController {
     public String saveReply(InquiryDTO inquiryDTO, Long inquiryId){
         inquiryDTO.setInquiryStatus(InquiryStatus.COMPLETE);
 
-        log.info(inquiryDTO.toString());
-
         Inquiry inquiry = inquiryRepository.findById(inquiryId).get();
 
         inquiry.update(inquiryDTO);
 
-        log.info(inquiry.toString());
+        AlarmCategory category  = AlarmCategory.INQUIRY;
+        alarmService.alarm(inquiry,category);
 
         return "save success";
     }

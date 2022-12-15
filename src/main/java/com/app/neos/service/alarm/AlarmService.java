@@ -9,6 +9,7 @@ import com.app.neos.domain.store.StoreReplyDTO;
 import com.app.neos.domain.study.*;
 import com.app.neos.domain.user.FollowDTO;
 import com.app.neos.entity.alarm.Alarm;
+import com.app.neos.entity.inquiry.Inquiry;
 import com.app.neos.repository.alarm.AlarmCustomRepository;
 import com.app.neos.repository.alarm.AlarmRepository;
 import com.app.neos.repository.study.StudyRepository;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,6 +33,8 @@ public class AlarmService {
     private final UserRepository userRepository;
     private final StudyRepository studyRepository;
     private final AlarmCustomRepository alarmCustomRepository;
+    private final AlarmRepository alarmRepository;
+
 
     @AlarmInput
     public void alarm(Object obj, AlarmCategory category){
@@ -294,16 +298,16 @@ public class AlarmService {
 
     @Transactional
     public void inquiryAlarm(Object obj){
-        InquiryDTO dto = (InquiryDTO)obj;
+       Inquiry inquiry = (Inquiry)obj;
 
-        String name =dto.getUserNickName();
-        Long ownerId = dto.getUser().getUserId();
+        String name =inquiry.getUser().getUserNickName();
+        Long ownerId = inquiry.getUser().getUserId();
 
         AlarmDTO alarmDTO = new AlarmDTO();
         alarmDTO.setAlarmContent("[문의] "+name+ "의 문의 글에 답변이 달렸습니다.");
         alarmDTO.setReadStatus(ReadStatus.NO);
         alarmDTO.setAlarmCategory(AlarmCategory.INQUIRY);
-        alarmDTO.setContentId(dto.getInquiryId());
+        alarmDTO.setContentId(inquiry.getInquiryId());
         alarmDTO.setUrl("/inquiry/list?userId="+ownerId);
 
         Alarm entity = alarmDTO.toEntity();
@@ -346,8 +350,16 @@ public class AlarmService {
         return alarmCustomRepository.findAllAlarmByUserId(userId).stream().map(Alarm::toDTO).collect(Collectors.toList());
     }
 
-    public AlarmDTO showNoReadRecent(Long userId){
-        return alarmCustomRepository.findByUserIdNoRead(userId).get(0).toDTO();
-    }
 
+
+    @Transactional
+    public String read(Long alarmId){
+        Optional<Alarm> entity = alarmRepository.findById(alarmId);
+        if(entity.isPresent()){
+            Alarm alarm = entity.get();
+            alarm.updateStatus();
+            return alarm.getUrl();
+        }
+        return "fail";
+    }
 }

@@ -4,6 +4,7 @@ package com.app.neos.service.study;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.user.QUser;
 import com.app.neos.entity.user.User;
+import com.app.neos.repository.study.StudyRepository;
 import com.app.neos.repository.user.UserRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +33,8 @@ public class UserSearchTest {
     UserRepository userRepository;
     @Autowired
     JPAQueryFactory factory;
+    @Autowired
+    StudyRepository studyRepository;
 
 
     @Test
@@ -57,5 +60,10 @@ public class UserSearchTest {
 
         users.stream().map(UserDTO::toString).forEach(log::info);
 
+    }
+
+    @Test
+    public void findTest3(){
+        log.info(studyRepository.findById(11l).get().toDTO().toString());
     }
 }

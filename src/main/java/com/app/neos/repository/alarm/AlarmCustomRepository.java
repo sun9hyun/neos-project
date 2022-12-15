@@ -10,5 +10,4 @@ public interface AlarmCustomRepository {
 
     public List<Alarm> findAllAlarmByUserId(Long userId);
 
-    public List<Alarm> findByUserIdNoRead(Long userId);
 }

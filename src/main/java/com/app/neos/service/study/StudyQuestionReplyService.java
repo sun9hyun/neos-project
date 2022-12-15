@@ -1,5 +1,6 @@
 package com.app.neos.service.study;
 
+import com.app.neos.aspect.annotation.AlarmInput;
 import com.app.neos.domain.neos.NeosPowerDTO;
 import com.app.neos.domain.study.StudyQuestionReplyDTO;
 import com.app.neos.entity.neos.NeosPower;
@@ -31,6 +32,7 @@ public class StudyQuestionReplyService {
     private  final StudyQuestionReplyCustomRepository studyQuestionReplyCustomRepository;
     private final NeosPowerRepository neosPowerRepository;
     private final AlarmService alarmService;
+
 
     public void post(Long studyQuestionId, StudyQuestionReplyDTO studyQuestionReplyDTO, Long userId){
         StudyQuestionReplyDTO dto = studyQuestionReplyDTO;
@@ -88,7 +90,6 @@ public class StudyQuestionReplyService {
         entity.changeUser(user);
         neosPowerRepository.save(entity);
     }
-
 
 
 }

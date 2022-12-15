@@ -6,9 +6,7 @@ import com.app.neos.service.alarm.AlarmService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -22,8 +20,14 @@ public class AlarmRestController {
 
 
     @GetMapping("/header")
-    public AlarmDTO showNoReadList(HttpSession session){
+    public List<AlarmDTO> showNoReadList(HttpSession session){
         Long userId = (Long)session.getAttribute("loginUser");
-        return alarmService.showNoReadRecent(userId);
+        return alarmService.showNoRead(userId);
+    }
+
+    @PostMapping("/{bno}")
+    public String read(@PathVariable("bno") Long alarmId){
+        String url = alarmService.read(alarmId);
+        return url;
     }
 }

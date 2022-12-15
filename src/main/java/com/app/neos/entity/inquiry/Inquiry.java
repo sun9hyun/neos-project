@@ -44,4 +44,18 @@ public class Inquiry extends Period {
         this.inquiryReply = inquiryDTO.getInquiryReply();
         this.inquiryStatus = inquiryDTO.getInquiryStatus();
     }
+
+    public InquiryDTO toDto(){
+        InquiryDTO dto = new InquiryDTO();
+        dto.setInquiryId(inquiryId);
+        dto.setInquiryContent(inquiryContent);
+        dto.setInquiryReply(inquiryReply);
+        dto.setInquiryStatus(inquiryStatus);
+        dto.setUser(user);
+        dto.setCreatedDate(getCreatedDate());
+        dto.setUpdatedDate(getUpdatedDate());
+        dto.setUserFile(user.getUserFile());
+        dto.setUserNickName(user.getUserNickName());
+        return dto;
+    }
 }

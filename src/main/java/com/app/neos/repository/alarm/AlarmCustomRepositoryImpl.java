@@ -29,10 +29,7 @@ public class AlarmCustomRepositoryImpl implements AlarmCustomRepository {
        return jpaQueryFactory.selectFrom(alarm).where(alarm.user.userId.eq(userId)).orderBy(alarm.createdDate.desc()).fetch();
     }
 
-    @Override
-    public List<Alarm> findByUserIdNoRead(Long userId) {
-        return jpaQueryFactory.selectFrom(alarm).where(alarm.user.userId.eq(userId).and(alarm.readStatus.eq(ReadStatus.NO))).orderBy(alarm.createdDate.desc()).fetch();
-    }
+
 
 
 }

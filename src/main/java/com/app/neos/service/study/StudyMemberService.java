@@ -51,8 +51,8 @@ public class StudyMemberService {
 
     }
 
-    public List<StudySupporterDTO> showWaitList(){
-        return studySupporterCustomRepository.findAllWait().stream().map(StudySupporter::toDTO).collect(Collectors.toList());
+    public List<StudySupporterDTO> showWaitList(Long studyId){
+        return studySupporterCustomRepository.findAllWait(studyId).stream().map(StudySupporter::toDTO).collect(Collectors.toList());
 
     }
     @Transactional

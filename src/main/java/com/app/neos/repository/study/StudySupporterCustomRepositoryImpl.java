@@ -19,7 +19,7 @@ public class StudySupporterCustomRepositoryImpl implements StudySupporterCustomR
 
 
     @Override
-    public List<StudySupporter> findAllWait() {
-        return jpaQueryFactory.selectFrom(studySupporter).where(studySupporter.studySupporterStatus.eq(StudySupporterStatus.WAIT)).fetch();
+    public List<StudySupporter> findAllWait(Long studyId) {
+        return jpaQueryFactory.selectFrom(studySupporter).where(studySupporter.study.studyId.eq(studyId).and(studySupporter.studySupporterStatus.eq(StudySupporterStatus.WAIT))).fetch();
     }
 }

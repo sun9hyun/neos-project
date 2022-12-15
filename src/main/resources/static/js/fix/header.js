@@ -89,12 +89,38 @@ function headerAlarmShow(){
 }
 
 function headerAlarmShowList(result){
-    let time = result.createdTime;
+    let total = result.length;
+    if(total>0){
+    let need = result[0];
+    let time = need.createdTime;
     let createdTime = time.split('T')[0];
+
     let text= '';
-        text += `<li class="alarmContent"><a class="popClick" href="/my?tab=alarm">`
-        text += `<p>`+result.alarmContent+`</p><span class="dateInfo">`+createdTime
+
+        text += `<li class="alarmContent"><input type="hidden" id="alarmId" value="`+need.alarmId+`"><a class="popClick" onclick="read(this)">`
+        text += `<p>`+need.alarmContent+`</p><span class="dateInfo">`+createdTime
         text += `</span><span class="newTag"></span>`
         text += `</a></li>`
     $(".alarmText").html(text);
+
+    $(".alarmTotalCount").html(total);
+    $(".moreAlarm em").html(total-1);
+    }else{
+        $(".alarmTotalCount").html(total);
+        $(".moreAlarm p").html("최신 알림이 없습니다.");
+    }
+
 }
+
+function read(obj){
+    var id = $(obj).prev().val();
+    $.ajax({
+        url:"/alarm/"+id,
+        type:"post",
+        success:function (result) {
+            location.href=result;
+        }
+    })
+
+}
+

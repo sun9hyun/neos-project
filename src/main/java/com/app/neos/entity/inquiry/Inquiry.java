@@ -41,6 +41,7 @@ public class Inquiry extends Period {
     }
 
     public void update(InquiryDTO inquiryDTO){
+        this.inquiryReply = inquiryDTO.getInquiryReply();
         this.inquiryStatus = inquiryDTO.getInquiryStatus();
     }
 }

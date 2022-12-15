@@ -209,4 +209,13 @@ public class UserDTO {
         this.userFile = userFile;
         this.createdDate = createdDate;
     }
+
+    @QueryProjection
+    public UserDTO (Long userId, String userNickName, String userFile, String userOAuthEmail, LocalDateTime createdDate){
+        this.userId = userId;
+        this.userNickName = userNickName;
+        this.userFile = userFile;
+        this.userOAuthEmail = userOAuthEmail;
+        this.createdDate = createdDate;
+    }
 }

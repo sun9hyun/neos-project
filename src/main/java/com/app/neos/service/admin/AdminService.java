@@ -7,7 +7,9 @@ import com.app.neos.domain.community.CommunityDTO;
 import com.app.neos.domain.community.CommunityReplyDTO;
 import com.app.neos.domain.counseling.CounselingDTO;
 import com.app.neos.domain.counseling.CounselingReplyDTO;
+import com.app.neos.domain.inquiry.InquiryDTO;
 import com.app.neos.domain.store.StoreDTO;
+import com.app.neos.domain.store.StoreFlieDTO;
 import com.app.neos.domain.store.StoreReplyDTO;
 import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.domain.study.StudyFeedReplyDTO;
@@ -27,6 +29,7 @@ import com.app.neos.repository.community.CommunityReplyRepository;
 import com.app.neos.repository.community.CommunityRepository;
 import com.app.neos.repository.counseling.CounselingReplyRepository;
 import com.app.neos.repository.counseling.CounselingRepository;
+import com.app.neos.repository.inquiry.InquiryRepository;
 import com.app.neos.repository.notice.NoticeCustomRepository;
 import com.app.neos.repository.notice.NoticeRepository;
 import com.app.neos.repository.store.StoreReplyRepository;
@@ -82,6 +85,7 @@ public class AdminService {
     private final CommunityReplyRepository communityReplyRepository;
     private final CounselingReplyRepository counselingReplyRepository;
     private final StoreReplyRepository storeReplyRepository;
+    private final InquiryRepository inquiryRepository;
 
 
 
@@ -401,6 +405,11 @@ public class AdminService {
         }
     }
 
+    //    자료상점 첨부파일 가져오기
+    public List<StoreFlieDTO> findStoreFileByStoreId(Long storeId){
+        return adminCustomRepository.findByStoreId(storeId);
+    }
+
 
     //    스터디 댓글 목록 페이징 처리
     public Page<StudyFeedReplyDTO> findStudyRePage(Pageable pageable){
@@ -509,6 +518,55 @@ public class AdminService {
         }
     }
 
+
+    //    문의하기 목록 페이징 처리
+    public Page<InquiryDTO> findInquiryPage(Pageable pageable){
+        Page<InquiryDTO> inquiryDTOS = adminCustomRepository.findAllInquiryPage(pageable);
+
+        return inquiryDTOS;
+    }
+
+    //    문의하기 목록 조회
+    public List<InquiryDTO> findInquiry(){
+        return  adminCustomRepository.findAllInquiry();
+    }
+
+    //    문의하기 삭제
+    public void deleteByInquiryId(String inquiryId){
+        inquiryRepository.deleteById(Long.parseLong(inquiryId));
+    }
+
+    //    문의하기 체크 여부에 따라 삭제하기
+    public void deleteByInquiryCheck(String inquiryIds){
+        String[] arInquiryIds = inquiryIds.split(",");
+
+        for (int i = 0; i < arInquiryIds.length; i++){
+            inquiryRepository.deleteById(Long.parseLong(arInquiryIds[i]));
+        }
+    }
+
+    //    문의하기 번호로 조회
+    public InquiryDTO findByInquiryId(Long inquiryId){
+        return adminCustomRepository.findByInquiryId(inquiryId);
+    }
+
+
+    //    관리자 메인에 뿌려줄 정보들
+    public List<UserDTO> findMainUser(){
+        return adminCustomRepository.findMainUser();
+    }
+
+    public List<StudyDTO> findMainStudy(){
+        return adminCustomRepository.findMainStudy();
+    }
+
+    public List<InquiryDTO> findMainInquiry(){
+        return adminCustomRepository.findMainInquiry();
+    }
+
+    public List<CollegeDTO> findMainCollege(){
+        return adminCustomRepository.findMainCollege();
+    }
 
 
 

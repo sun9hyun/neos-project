@@ -51,6 +51,7 @@ public class StudyDTO {
     private List<StudySupporterDTO> studySupporterDTOS;
 
     private LocalDateTime createdDate;
+    private String userFile;
 
     public Study toEntity(){
        StudyField studyField =  StudyField.builder().studyType(studyType).studyKeyword(studyKeyword).build();
@@ -145,4 +146,16 @@ public class StudyDTO {
         this.userNickName = userNickName;
         this.createdDate = createdDate;
     }
+
+    @QueryProjection
+    public StudyDTO(Long studyId, String studyTitle, String userNickName, String userFile, LocalDateTime createdDate, int followTotal) {
+        this.studyId = studyId;
+        this.studyTitle = studyTitle;
+        this.userNickName = userNickName;
+        this.userFile = userFile;
+        this.createdDate = createdDate;
+        this.followTotal = followTotal;
+    }
+
+
 }

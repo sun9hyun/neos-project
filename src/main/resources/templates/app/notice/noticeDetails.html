@@ -51,15 +51,27 @@
             <div class="beforeNextFeedWrap">
                 <div class="FeedRow">
                     <div class="left">
-                        <div class="befors">이전글</div>
+                        <div class="befors">다음글</div>
                     </div>
-                    <div class="right"><a>채팅 시스템 업데이트 안내</a></div>
+                    <th:block th:if="${prevNoticeDTO != null}">
+                        <div class="right moveNotice"><a href="#" th:text="${prevNoticeDTO.noticeTitle}"></a></div>
+                        <input type="hidden" th:href="${prevNoticeDTO.noticeId}">
+                    </th:block>
+                    <th:block th:unless="${prevNoticeDTO != null}">
+                        <div class="right"><a>다음 글이 없습니다.</a></div>
+                    </th:block>
                 </div>
                 <div class="FeedRow">
                     <div class="left">
-                        <div class="befors">다음글</div>
+                        <div class="befors">이전 글</div>
                     </div>
-                    <div class="right"><a>다음글이 없습니다</a></div>
+                    <th:block th:if="${nextNoticeDTO != null}">
+                        <div class="right moveNotice"><a href="#" th:text="${nextNoticeDTO.noticeTitle}"></a></div>
+                        <input type="hidden" th:href="${nextNoticeDTO.noticeId}">
+                    </th:block>
+                    <th:block th:unless="${nextNoticeDTO != null}">
+                        <div class="right"><a>이전 글이 없습니다.</a></div>
+                    </th:block>
                 </div>
             </div>
         </div>
@@ -78,6 +90,11 @@
     $('.whiteBtn').on("click", function (e) {
         e.preventDefault();
         location.href = "/notice/list";
+    });
+
+    $('.moveNotice').on("click", function (e) {
+        e.preventDefault();
+        location.href = "/notice/detail" + "?noticeId=" + $(this).next().attr("href");
     });
 </script>
 </html>

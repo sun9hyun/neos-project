@@ -133,22 +133,22 @@
                                     <div class="card">
                                         <div class="card-body no-padding">
                                             <div class="company-search" id="companySearch">
-                                                <div class="form-group">
-                                                    <a class="icon_set left" href="javascript:;" onclick="searchUser()">
-                                                        <i class="btl bt-search"></i>
-                                                    </a>
+<!--                                                <div class="form-group">-->
+<!--                                                    <a class="icon_set left" href="javascript:;" onclick="searchUser()">-->
+<!--                                                        <i class="btl bt-search"></i>-->
+<!--                                                    </a>-->
 
-                                                    <div id="prefetch">
-															<span class="twitter-typeahead" >
-																<input type="hidden" name="q" value="YToxOntzOjEwOiJqb2luX29yZGVyIjtzOjQ6ImRlc2MiO30=" class="form-control typeahead">
-																<input type="text" class="form-control typeahead tt-input searchBar" id="keyword_search1" name="keyword" placeholder="검색" autocomplete="off" spellcheck="false" dir="auto" value="">
-																<pre class="bar" aria-hidden="true"></pre>
-																<div class="tt-menu">
-																	<div class="tt-dataset tt-dataset-users"></div>
-																</div>
-															</span>
-                                                    </div>
-                                                </div>
+<!--                                                    <div id="prefetch">-->
+<!--															<span class="twitter-typeahead" >-->
+<!--																<input type="hidden" name="q" value="YToxOntzOjEwOiJqb2luX29yZGVyIjtzOjQ6ImRlc2MiO30=" class="form-control typeahead">-->
+<!--																<input type="text" class="form-control typeahead tt-input searchBar" id="keyword_search1" name="keyword" placeholder="검색" autocomplete="off" spellcheck="false" dir="auto" value="">-->
+<!--																<pre class="bar" aria-hidden="true"></pre>-->
+<!--																<div class="tt-menu">-->
+<!--																	<div class="tt-dataset tt-dataset-users"></div>-->
+<!--																</div>-->
+<!--															</span>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -188,7 +188,7 @@
                                                     <li class="postTitle">제목</li>
                                                     <li class="postNick">작성자</li>
                                                     <li class="postDate">작성일</li>
-                                                    <li class="postLike">좋아요 수</li>
+<!--                                                    <li class="postLike">좋아요 수</li>-->
                                                     <li class="action"></li>
                                                 </ul>
                                                 <!--여기부터-->
@@ -210,7 +210,7 @@
                                                     <li class="postTitle"><a th:text="*{storeTitle}"></a></li> <!-- 작성한 게시글 페이지 이동 -->
                                                     <li class="postDate"><a th:text="*{userNickName}"></a></li><!-- 작성사 상세 페이지 이동 -->
                                                     <li class="postDate" th:text="*{#temporals.format(createdDate, 'yyyy.MM.dd HH:mm')}"></li>
-                                                    <li class="postLike">1</li>
+<!--                                                    <li class="postLike">1</li>-->
 
                                                     <li class="action">
                                                         <div class="dropdown">
@@ -219,9 +219,10 @@
                                                             </button>
                                                             <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">
                                                                 <li>
-                                                                    <a href="javascript:;" onclick="showFiles()">
+                                                                    <a href="javascript:;" class="showFile">
                                                                         자료 보기
                                                                     </a>
+                                                                    <input type="hidden" class="storeId" th:href="*{storeId}">
                                                                 </li>
                                                                 <li>
                                                                     <a href="javascript:;" class="deleteBtn">
@@ -393,24 +394,23 @@
                                             <header class="card-exit" style="float: right;cursor: pointer;">닫기</header>
                                         </div>
                                         <div class="card-body no-padding">
-                                            <div class="li_table" id="UI_TABLE ">
-                                                <ul class="subject _thead" id="table-header" >
+                                            <div class="li_table" id="UI_TABLE2">
 
-                                                    <li class="postTitle">파일 명</li>
-                                                    <li class="postNick">다운로드 QR코드</li>
-                                                </ul>
-                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
 
-                                                    <li class="postCategory">neos.pdf</li>
-                                                    <li class="postTitle"><img src="/images/store/qrDetail.jpg" alt=""></li> <!-- 작성한 게시글 페이지 이동 -->
+<!--                                                <ul class="subject _thead" id="table-header2" >-->
+<!--                                                    <li class="postTitle">파일 명</li>-->
+<!--                                                    <li class="postNick">다운로드 QR코드</li>-->
+<!--                                                </ul>-->
 
-                                                </ul>
-                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
+<!--                                                <ul class="content _tbody storeFile" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">-->
 
-                                                    <li class="postCategory">자료상점 이용방법.pdf</li>
-                                                    <li class="postTitle"><img src="/images/store/qrDetail.jpg" alt=""></li> <!-- 작성한 게시글 페이지 이동 -->
+<!--                                                    <li class="postCategory">neos.pdf</li>-->
+<!--                                                    <li class="postTitle"><img src="/images/store/qrDetail.jpg" alt=""></li> &lt;!&ndash; 작성한 게시글 페이지 이동 &ndash;&gt;-->
 
-                                                </ul>
+<!--                                                </ul>-->
+
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -561,7 +561,41 @@
         $('#deleteCheck').click(function () {
             location.href = "/admin/test/store/delete" + "?storeId=" + storeId;
         })
+    });
+
+
+
+    /* 자료 상점 별로 다운로드 QR */
+    $('.showFile').on("click", function () {
+        let storeId = $(this).next().attr('href');
+        $.ajax({
+            url: "/admin-rest/show-file/" + storeId, // 상태별 url 입력
+            type: "get",
+            success: function (storeFiles) {
+                if (storeFiles != null) {
+                    showFiles();
+                    showStoreFile(storeFiles);
+                } else {
+
+                }
+            }
+        });
     })
+
+    function showStoreFile(storeFiles) {
+        let text = "";
+
+            text += `<ul class="subject _thead" id="table-header2" >`
+            text += `<li class="postTitle">파일 명</li>`
+            text += `<li class="postNick">다운로드 QR코드</li>`
+            text += `</ul>`
+            storeFiles.forEach(file => {
+                text += `<ul class="content _tbody storeFile" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">`
+                text += `<li class="postCategory">` + file.storeFileName + `</li>`
+                text += `<li class="postTitle"><img src="` + file.storeFileQR + `" alt=""></li></ul>`
+            })
+        $('#UI_TABLE2').html(text);
+    }
 
 </script>
 <script src="/js/admin/freeShop.js"></script>

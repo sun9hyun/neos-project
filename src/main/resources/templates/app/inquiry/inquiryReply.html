@@ -202,7 +202,7 @@
                                 </a>
                                     <div class="name">
                                         <p class="profileName" th:text="*{user.userNickName}">
-                                        </p><span class="createdDate" th:text="*{createdDate}">22.11.09 16:51</span>
+                                        </p><span class="createdDate" th:text="*{#temporals.format(createdDate, 'yyyy.MM.dd HH:mm')}">22.11.09 16:51</span>
                                     </div>
                                 </div>
                                 <div class="feedContents"><textarea class="textarea2" maxlength="1000"
@@ -236,7 +236,7 @@
                                             <h4 class="profileName">NM심슨<div class="hoverView">
                                             </div>
                                             </h4>
-                                            <p class="dateTxt">22.11.12 18:35</p>
+                                            <p class="dateTxt" th:text="*{#temporals.format(updatedDate, 'yyyy.MM.dd HH:mm')}">22.11.12 18:35</p>
                                         </div>
                                     </div>
                                     <div class="bottom">

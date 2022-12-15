@@ -50,4 +50,5 @@ public class CollegeDTO {
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
     }
+
 }

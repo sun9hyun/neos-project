@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @Slf4j
 @RequiredArgsConstructor
@@ -40,6 +42,18 @@ public class NoticeController {
 
     @GetMapping("detail")
     public String noticeDetails(Long noticeId, Model model){
+        List<NoticeDTO> noticeDTOS = noticeService.findNoticeAll();
+
+        int index = noticeDTOS.indexOf(noticeService.findByNoticeId(noticeId));
+
+        if(index == 0){
+            model.addAttribute("nextNoticeDTO", noticeDTOS.get(index+1));
+        } else if(index == noticeDTOS.size()-1){
+            model.addAttribute("prevNoticeDTO", noticeDTOS.get(index-1));
+        } else {
+            model.addAttribute("prevNoticeDTO", noticeDTOS.get(index-1));
+            model.addAttribute("nextNoticeDTO", noticeDTOS.get(index+1));
+        }
         model.addAttribute("noticeDTO", noticeService.findByNoticeId(noticeId));
 
         return "app/notice/noticeDetails";

@@ -125,7 +125,9 @@ public class AdminServiceTest {
 //        log.info(adminService.findStudyPage(PageRequest.of(0, 10)).getTotalElements() + "");
 //        log.info(adminService.findStudyPage(PageRequest.of(0, 10)).toString() + "");
 //        adminService.findAllStudy().stream().map(StudyDTO::toString).forEach(log::info);
-        log.info(adminStudyFollowRepository.countByStudyStudyId(6L) + "");
+//        log.info(adminStudyFollowRepository.countByStudyStudyId(6L) + "");
+        log.info(adminService.findByInquiryId(566L).toString());
     }
+
 
 }

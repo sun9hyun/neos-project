@@ -30,7 +30,8 @@ public class InquiryCustomRepositoryImpl implements InquiryCustomRepository{
                 inquiry.inquiryReply,
                 inquiry.inquiryStatus,
                 inquiry.createdDate,
-                inquiry.user
+                inquiry.user,
+                inquiry.updatedDate
         ))
                 .from(inquiry)
                 .where(inquiry.user.userId.eq(userId))

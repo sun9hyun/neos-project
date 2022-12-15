@@ -51,13 +51,11 @@ $(document).ready(function () {
     
     function getReplyList(counselingReplyDTOS) {
         let ic = $("#replyNumber").val();
-        // alert("getReplyList");
-        // alert("$('#replyNumber').val()  "+ic);
-        // alert(counselingReplyDTOS);
-        let seling = $(".loungeCard").eq(ic).find(".loungeCardContents").find(".loungeCardContentsComponents_loungeContents__262-A").find(".replyComponent_reply__3l-Wc").find(".replyComponent_replyBox__1duHS");
+        let id = counselingReplyDTOS[0].counseling.counselingId;
+        let seling = $("#"+id).find(".loungeCardContents").find(".loungeCardContentsComponents_loungeContents__262-A").find(".replyComponent_reply__3l-Wc").find(".replyComponent_replyBox__1duHS");
         let text = "";
         $(counselingReplyDTOS).each((i, cs) => {
-            text += "<div style='border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;'>";
+            text += `<div style='border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;' class="replyComponent_replyContainer__3dxJZ">`;
             text += "<div class='userInformationComponents_userReplySection__3ty7Q'>";
             text += "<div class='userInformationComponents_profile__2pr8a'>";
             text += "<div class='userInformationComponents_profileLeftGroup__1lq6K'>";
@@ -71,15 +69,17 @@ $(document).ready(function () {
             text += "<span class='userInformationComponents_recordTime__LAQ3h'>" +counselingService.timeForToday(cs.updatedDate)+ "</span>";
             text += "</div>";
 
-            if ($("#userId").attr("value") == cr.user.userId) {
+            if ($("#userId").attr("value") == cs.user.userId) {
                 text += "<div class='userInformationComponents_profileRightGroup__3Ro_j'>";
                 text += "<div class='userInformationComponents_profileRightGroupModifyBox__3xfKH'>";
                 text += "<button class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>";
                 text += "<img class='' src='\thttps://letspl.me/assets/images/ic-more.svg'>";
                 text += "</button>";
                 text += "<div class='userInformationComponents_profileRightGroupModifyBoxModal__1csNJ'>";
-                // text += "<button class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>수정</button>";
+                text += "<button class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 updateTry'>수정</button>";
+                text += "<button class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 update'>등록</button>";
                 text += "<button class='replyDelete buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>삭제</button>";
+                text += "<button class='buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 cancelTry'>취소</button>";
                 text += "</div>";
                 text += "</div>";
                 text += "</div>";
@@ -163,6 +163,63 @@ $(document).ready(function () {
         $(".modalWrapOpen").attr("style","display : none !important")
     }
 
+    let reply;
+    let updateCheck = false;
+//수정
+    $(".centerSection").on("click",".updateTry",function () {
+        if(!updateCheck){
+            const $pTag = $(this).closest(".replyComponent_replyContainer__3dxJZ").find(".replyComponent_replyContent__3iS4J p");
+            reply = $pTag.text();
+
+            $pTag.contents().unwrap().wrap( '<textarea class="replyContent_1j"></textarea>' );
+
+            $(this).parent().find(".updateTry").hide();
+            $(this).parent().find(".update").show();
+            $(this).parent().find(".replyDelete").hide();
+            $(this).parent().find(".cancelTry").show();
+            updateCheck=true
+        }else{
+            alert("한번에 하나의 댓글만 수정 가능합니다.");
+        }
+
+
+    })
+
+    $(".centerSection").on("click",".cancelTry",function () {
+        const $textareaTag = $(this).closest(".replyComponent_replyContainer__3dxJZ").find(".replyComponent_replyContent__3iS4J textarea");
+
+        $textareaTag.text(reply)
+        $textareaTag.contents().unwrap().wrap( '<p></p>' );
+
+        $(this).parent().find(".updateTry").show();
+        $(this).parent().find(".update").hide();
+        $(this).parent().find(".replyDelete").show();
+        $(this).parent().find(".cancelTry").hide();
+        updateCheck=false
+
+    })
+
+    $(".centerSection").on("click",".update",function () {
+        const $textareaTag = $(this).closest(".replyComponent_replyContainer__3dxJZ").find(".replyComponent_replyContent__3iS4J textarea");
+        var content = $textareaTag.val();
+        var id = $(this).closest(".userInformationComponents_userReplySection__3ty7Q").next().find(".csid").val();
+        var postId = $(this).closest(".userInformationComponents_userReplySection__3ty7Q").next().find(".csidCid").val();
+
+
+        $.ajax({
+            url:"/counseling-reply/replyUpdate/"+id,
+            type:"put",
+            data:{counselingReplyContent:content},
+            success:function (result) {
+                showReply(postId);
+
+                updateCheck=false;
+
+            }
+        })
+
+
+    })
 
 
 

@@ -11,6 +11,8 @@ import com.app.neos.repository.store.StoreReplyCustomRepository;
 import com.app.neos.repository.store.StoreReplyRepository;
 import com.app.neos.repository.store.StoreRepository;
 import com.app.neos.repository.user.UserRepository;
+import com.app.neos.service.alarm.AlarmService;
+import com.app.neos.type.alarm.AlarmCategory;
 import com.app.neos.type.point.NeosPowerContent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,7 @@ public class StoreReplyService {
     private final UserRepository userRepository;
     private final StoreRepository storeRepository;
     private final NeosPowerRepository neosPowerRepository;
+    private final AlarmService alarmService;
 
     // 자료상점 댓글 작성
     @Transactional(rollbackFor = Exception.class)
@@ -38,7 +41,11 @@ public class StoreReplyService {
         storeReply.changeUser(user);
         storeReply.changeStore(store);
 
-        storeReplyRepository.save(storeReply);
+       StoreReply storeReply1 =  storeReplyRepository.save(storeReply);
+        AlarmCategory category = AlarmCategory.SHOPREPLY;
+       alarmService.alarm(storeReply1,category);
+
+
     }
 
     // 자료상점 댓글 수정

@@ -74,9 +74,12 @@ $(document).ready(function () {
 
     function getList(counselingDTOS) {
         // alert(communityDTOS);
-        let text = "";
+        console.log(counselingDTOS)
+        let id = '';
+        let text= '';
         $(counselingDTOS.content).each((i, item) => {
-            text += "<div class='loungeCard' style='margin-bottom: -10px;'>";
+            id= item.counselingId;
+            text += `<div class='loungeCard' style='margin-bottom: -10px;' id="`+id+`">`;
             text += "<div class='loungeCardContents'>";
             text += "<div class='loungeCardContentsComponents_loungeContents__262-A'>";
             text += "<div class='loungeCardContentsComponents_loungeContentsTagMoreBox__1oKkG'>";

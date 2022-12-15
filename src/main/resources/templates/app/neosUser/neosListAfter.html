@@ -541,7 +541,7 @@
                 text += `</div>`
                 text += `<div>`
                 text += `<img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"  style="width: 20px; height: 20px;">`
-                text += `<span id="result">0</span>`
+                text += `<span id="result" >`+item.followList+`</span>`
                 text += `</div>`
                 text += `</div>`
                 text += `</div>`
@@ -555,8 +555,7 @@
                     text += `<span class="grade">`+ item.userCollegeYear +`</span>`
                     text += `<span style="font-size: 14px;color: #999999;">학년</span></h3>`
                 }
-
-                if ($college == null){
+                else if($college == null){
                     text += `<h3><span>[대학]&nbsp;<span class="university">해당사항없음</span>`
                     text += `</span>`
                     text += `<span class="grade">`
@@ -567,6 +566,7 @@
                 }
 
                 text += `</li>`
+
                 text += `<li>`
 
                 if ($college != null){
@@ -722,9 +722,7 @@
                     text += `<h3><span>[대학]&nbsp;<span class="university">`+ item.collegeName+`</span></span>`
                     text += `<span class="grade">`+ item.userCollegeYear +`</span>`
                     text += `<span style="font-size: 14px;color: #999999;">학년</span></h3>`
-                }
-
-                if ($college == null){
+                }else{
                     text += `<h3><span>[대학]&nbsp;<span class="university">해당사항없음</span>`
                     text += `</span>`
                     text += `<span class="grade">`
@@ -741,9 +739,7 @@
                     text += `<h3><span>[전공]&nbsp;<span class="major">`+item.userCollegeMajor+`</span></span>`
                     text += `<span></span>`
                     text += `</h3>`
-                }
-
-                if ($college == null){
+                }else{
                     text += `<h3><span>[전공]&nbsp;<span class="major">해당사항없음</span></span>`
                     text += `<span></span>`
                     text += `</h3>`

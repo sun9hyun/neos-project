@@ -62,7 +62,7 @@ public class UserDTO {
     private LocalDateTime createdDate;
     private AdminUserDTO counts;
 
-
+    private List<Long> followList;
 
 
     public User toEntity(){

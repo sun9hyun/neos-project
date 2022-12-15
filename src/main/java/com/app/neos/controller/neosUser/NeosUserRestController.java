@@ -31,4 +31,9 @@ public class NeosUserRestController {
         return neosUserService.findBykeyword(keyword,pageable);
    }
 
+//    @GetMapping("{keyword}")            /*검색도 똑같이 넘겨줌 */
+//    public Slice<UserDTO> list (@PageableDefault(size = 4, sort = "id" , direction = Sort.Direction.DESC) Pageable pageable,@PathVariable("keyword")  String keyword){
+//        return neosUserService.findBykeyword(keyword,pageable);
+//    }
+
 }

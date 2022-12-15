@@ -157,7 +157,7 @@
             </div>
             <div class="myTabWrapContainer">
                 <div class="myTabWrap"><a class="active">정보</a>
-                    <a class="inquiryDetail">문의(<!-- --> 1<!-- --> )</a>
+                    <a class="inquiryDetail">문의</a>
                     <input type="hidden" th:href="*{userId}">
                 </div>
             </div>
@@ -347,6 +347,7 @@
 
 
                     <div class="projectGrid projectGridInProfile">
+
                         <th:block th:each="study:${studys}">
                         <div class="projectGridWrap" th:object="${study}">
                             <div class="projectTopInfo">

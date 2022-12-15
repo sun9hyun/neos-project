@@ -1,6 +1,6 @@
 /* 프로필 사진 옆에 하트 hover click 이벤트 */
 
-$(".userName").on("mouseover", function () {
+/*$(".userName").on("mouseover", function () {
     // $(this).css("color", "#24A");
     $(this).children('.idHoverMenu').css("display", "block");
 })
@@ -8,11 +8,11 @@ $(".userName").on("mouseover", function () {
 $(".userName").on("mouseout", function () {
     // $(this).css("color", "#2A4");
     $(this).children('.idHoverMenu').css("display", "none");
-})
+})*/
 
-$(".heart").on("click", function () {
+/*$(".heart").on("click", function () {
     $(this).toggleClass('active');
-})
+})*/
 
 
 /* 스터디 초대 눌렀을 때 가능하다면 나오는 모달 */

@@ -105,16 +105,17 @@
                             </div>
                             <div class="badge black">
                                 <!-- <h2>사이드프로젝트</h2> -->
-                                <img  src="/images/study/inha.png">
+                                <img  th:src="*{collegeLogoFile}" >
                             </div>
                         </div>
                         <div class="favorite listFavorite off"></div>
                     </div>
                     <div class="projectThumb"><img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png" alt="커뮤니티 연계 교통 정보 어플"></div>
                 </div>
+
                 <div class="projectBottomInfo">
                     <div class="txtWrap projectWrap">
-                        <h3 class="category">전공과목</h3>
+                        <h3 class="category" th:text="*{studyType}">전공과목</h3>
                         <h2 class="tit" th:text="*{studyTitle}" >공업수학_라플라스 변환</h2>
                         <!--                                 <div class="iconWrap2"><img loading="lazy"
                                 src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
@@ -133,8 +134,12 @@
                     </div>
                     <div class="bottomWrap">
                         <div class="gatherTxt">
-                            <div><span >모집완료</span><span >0/4</span></div>
+
+                            <div>
+                                <span >모집완료</span><span >0/4</span>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>

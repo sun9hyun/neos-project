@@ -45,6 +45,7 @@ public class NeosUserCustomRepositoryImpl implements NeosUserCustomRepository {
         return jpaQueryFactory.selectFrom(study).where(study.user.userId.eq(userId)).fetch();
     }
 
+
     @Override
     public Slice<UserDTO> findAllPage(Pageable pageable) {
 

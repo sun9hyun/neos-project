@@ -2,9 +2,12 @@ package com.app.neos.controller.neosUser;
 
 import com.app.neos.domain.college.QCollegeDTO;
 import com.app.neos.domain.study.StudyDTO;
+import com.app.neos.domain.user.FollowDTO;
 import com.app.neos.domain.user.UserDTO;
+import com.app.neos.entity.follow.Follow;
 import com.app.neos.entity.study.Study;
 import com.app.neos.entity.user.User;
+import com.app.neos.repository.follow.FollowCustomRepository;
 import com.app.neos.repository.study.StudyRepository;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.service.admin.AdminService;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +35,7 @@ public class NeosUserController {
     private final UserRepository userRepository;
     private final StudyRepository studyRepository;
     private final JoinService joinService;
+    private final FollowCustomRepository followCustomRepository;
 
     @GetMapping("/list-before")
     public String listBefore() {
@@ -79,7 +84,7 @@ public class NeosUserController {
 
     //    네오스인 페이지 목록 로그인 후
     @GetMapping("/list")
-    public String list(Model model , @RequestParam(required = false,defaultValue = "")String keyWord ) {
+    public String list(Model model , @RequestParam(required = false,defaultValue = "")String keyWord /* , Long myId , Long followingId*/ , HttpSession session) {
 //        List<UserDTO> userDTOS = neosUserService.findUser();
 //        userDTOS.forEach(t -> log.info(t.getCollege().getCollegeName().toString()));
 
@@ -87,22 +92,31 @@ public class NeosUserController {
        List<UserDTO> userDTOS = userRepository.findAll().stream().map(i->i.toDTO()).collect(Collectors.toList());
         model.addAttribute("users", userDTOS);
 
-//        검색
-//        List<UserDTO> userDTOList = neosUserService.findByKeyword(keyWord);
-//        model.addAttribute("userDTOLists" , userDTOList);
-
-       /* if (keyWord.equals()){
-
-        }*/
-
-
-
-
         //   유저 상세보기
         model.addAttribute("collegeCityList",joinService.getCollegeCityList());
 
+
+//        내가 구독한 사람
+//        List<FollowDTO> followDTOS = followCustomRepository.findAllByMyId(myId).stream().map(i-> i.toDTO()).collect(Collectors.toList());
+//        model.addAttribute("myIds" , neosUserService.showMyIdList(myId));
+
+
+////        나를 구독한 사람
+//        List<FollowDTO> followDTOList = followCustomRepository.findByFollowingId(followingId).stream().map(i-> i.toDTO()).collect(Collectors.toList());
+//        model.addAttribute("followIds" , neosUserService.showFollowIdList(followingId));
+
         return "app/neosUser/neosListAfter";
     }
+
+
+
+
+
+
+
+
+
+
 //  네오스인 페이지 목록  로그인 전
     @GetMapping("/before/list")
     public String beforeList(Model model){
@@ -134,6 +148,8 @@ public class NeosUserController {
 
         return "app/neosUser/userInfoYes";
     }
+
+
 
 
 

@@ -49,4 +49,12 @@ public class StoreFlieDTO {
         this.storeFileSize = storeFileSize;
         this.storeId = storeId;
     }
+
+    @QueryProjection
+    public StoreFlieDTO(Long storeFileId, String storeFileName, String storeFileQR, Long storeId) {
+        this.storeFileId = storeFileId;
+        this.storeFileName = storeFileName;
+        this.storeFileQR = storeFileQR;
+        this.storeId = storeId;
+    }
 }

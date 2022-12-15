@@ -1,10 +1,13 @@
 package com.app.neos.repository.admin;
 
+import com.app.neos.domain.college.CollegeDTO;
 import com.app.neos.domain.community.CommunityDTO;
 import com.app.neos.domain.community.CommunityReplyDTO;
 import com.app.neos.domain.counseling.CounselingDTO;
 import com.app.neos.domain.counseling.CounselingReplyDTO;
+import com.app.neos.domain.inquiry.InquiryDTO;
 import com.app.neos.domain.store.StoreDTO;
+import com.app.neos.domain.store.StoreFlieDTO;
 import com.app.neos.domain.store.StoreReplyDTO;
 import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.domain.study.StudyFeedReplyDTO;
@@ -42,6 +45,8 @@ public interface AdminCustomRepository {
 
     public List<StoreDTO> findAllStore();
 
+    public List<StoreFlieDTO> findByStoreId(Long storeId);
+
 
 
     public Page<StudyFeedReplyDTO> findAllStudyReplyPage(Pageable pageable);
@@ -59,6 +64,21 @@ public interface AdminCustomRepository {
     public Page<StoreReplyDTO> findAllStoreReplyPage(Pageable pageable);
 
     public List<StoreReplyDTO> findAllStoreReply();
+
+    public Page<InquiryDTO> findAllInquiryPage(Pageable pageable);
+
+    public List<InquiryDTO> findAllInquiry();
+
+    public InquiryDTO findByInquiryId(Long inquiryId);
+
+
+    public List<UserDTO> findMainUser();
+
+    public List<StudyDTO> findMainStudy();
+
+    public List<InquiryDTO> findMainInquiry();
+
+    public List<CollegeDTO> findMainCollege();
 
 
 }

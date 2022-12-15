@@ -7,6 +7,7 @@ import com.app.neos.domain.community.CommunityDTO;
 import com.app.neos.domain.community.CommunityReplyDTO;
 import com.app.neos.domain.counseling.CounselingDTO;
 import com.app.neos.domain.counseling.CounselingReplyDTO;
+import com.app.neos.domain.inquiry.InquiryDTO;
 import com.app.neos.domain.notice.NoticeDTO;
 import com.app.neos.domain.store.StoreDTO;
 import com.app.neos.domain.store.StoreReplyDTO;
@@ -175,7 +176,7 @@ public class AdminTestController {
         Notice notice = noticeDTO.toEntity();
         adminService.saveNotice(notice);
 
-        return new RedirectView("edit");
+        return new RedirectView("/admin/test/index");
     }
 
 
@@ -292,7 +293,13 @@ public class AdminTestController {
 
 //    관리자 홈
     @GetMapping("index")
-    public String index(){
+    public String index(Model model){
+
+        model.addAttribute("users", adminService.findMainUser());
+        model.addAttribute("studies", adminService.findMainStudy());
+        model.addAttribute("inquiries", adminService.findMainInquiry());
+        model.addAttribute("colleges", adminService.findMainCollege());
+
         return "app/admin/adminIndex";
     }
 
@@ -406,6 +413,10 @@ public class AdminTestController {
     @GetMapping("store/list")
     public String store(Model model, @PageableDefault(page = 0, size = 5) Pageable pageable){
         Page<StoreDTO> storeDTOS = adminService.findStorePage(pageable);
+
+        for (StoreDTO storeDTO : storeDTOS) {
+            storeDTO.setStoreFlieDTOS(adminService.findStoreFileByStoreId(storeDTO.getStoreId()));
+        }
 
         int startPage = Math.max(1, storeDTOS.getPageable().getPageNumber());
         int endPage = Math.min(storeDTOS.getPageable().getPageNumber(), storeDTOS.getTotalPages());
@@ -560,10 +571,39 @@ public class AdminTestController {
         return new RedirectView("list");
     }
 
+
+    //    문의하기 리스트 목록 조회
     @GetMapping("inquiry/list")
-    public String inquiry(){
+    public String inquiry(Model model, @PageableDefault(page = 0, size = 5) Pageable pageable, InquiryDTO inquiryDTO){
+        Page<InquiryDTO> inquiryDTOS = adminService.findInquiryPage(pageable);
+
+        int startPage = Math.max(1, inquiryDTOS.getPageable().getPageNumber());
+        int endPage = Math.min(inquiryDTOS.getPageable().getPageNumber(), inquiryDTOS.getTotalPages());
+
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", inquiryDTOS.getTotalPages());
+        model.addAttribute("nowPage", pageable.getPageNumber());
+        model.addAttribute("size", pageable.getPageSize());
+        model.addAttribute("inquiries", inquiryDTOS);
+        model.addAttribute("total", adminService.findInquiry().size());
         return "app/admin/inquiryList";
     }
+
+    //    문의하기 댓글 체크 여부에 따라 삭제하기
+    @GetMapping("inquiry/deleteCheck")
+    public RedirectView deleteByCheckInquiry(String inquiryIds){
+        adminService.deleteByInquiryCheck(inquiryIds);
+        return new RedirectView("list");
+    }
+
+    @GetMapping("inquiry/delete")
+    public RedirectView deleteByIdInquiry(String inquiryId){
+        adminService.deleteByInquiryId(inquiryId);
+        return new RedirectView("list");
+    }
+
+
+
 
 
 

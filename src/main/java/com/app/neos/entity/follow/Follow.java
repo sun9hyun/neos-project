@@ -1,5 +1,6 @@
 package com.app.neos.entity.follow;
 
+import com.app.neos.domain.user.FollowDTO;
 import com.app.neos.entity.period.Created;
 import com.app.neos.entity.user.User;
 import lombok.*;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="TBL_FOLLOW")
 @Getter @ToString(exclude = {"myId","followingId"})
-@NoArgsConstructor/*(access = AccessLevel.PROTECTED)*/
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Follow  extends Created {
     @Id @GeneratedValue
     private Long followId;
@@ -36,8 +37,17 @@ public class Follow  extends Created {
 
    public void changeFollowingId(User followingId){
         this.followingId = followingId;
+        followingId.getFollows().add(this);
     }
 
+
+    public FollowDTO toDTO(){
+        FollowDTO dto = new FollowDTO();
+        dto.setFollowId(followId);
+        dto.setMy(myId.toDTO());
+        dto.setFollowing(followingId.toDTO());
+        return dto;
+    }
 
 
 }

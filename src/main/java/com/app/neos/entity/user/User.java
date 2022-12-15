@@ -8,6 +8,7 @@ import com.app.neos.embeddable.user.UserLike;
 import com.app.neos.embeddable.user.UserMBTI;
 import com.app.neos.embeddable.user.UserNeosPower;
 import com.app.neos.entity.college.College;
+import com.app.neos.entity.follow.Follow;
 import com.app.neos.entity.period.Period;
 import com.app.neos.type.user.UserCollegeMajor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -15,6 +16,8 @@ import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="TBL_USER")
@@ -60,6 +63,9 @@ public class User extends Period {
    @ManyToOne(fetch = FetchType.LAZY)
    @JoinColumn(name="COLLEGE_ID")
     private College college;
+
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "followingId",cascade = CascadeType.ALL)
+    private List<Follow> follows;
 
    public void changeCollege(College college){
        this.college =college;
@@ -212,6 +218,10 @@ public class User extends Period {
             userDTO.setCollegeCity(this.college.getCollegeCity());
             userDTO.setCollegeEmailDomain(this.college.getCollegeEmailDomain());
             userDTO.setCollegeLogoFile(this.college.getCollegeLogoFile());
+        }
+        if(this.follows != null){
+            List<Long> followList = this.follows.stream().map(i->i.getMyId().getUserId()).collect(Collectors.toList());
+            userDTO.setFollowList(followList);
         }
         return userDTO;
     }

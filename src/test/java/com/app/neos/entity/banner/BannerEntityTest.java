@@ -1,7 +1,12 @@
 package com.app.neos.entity.banner;
 
 import com.app.neos.domain.banner.BannerDTO;
+import com.app.neos.domain.user.FollowDTO;
+import com.app.neos.domain.user.UserDTO;
+import com.app.neos.entity.follow.Follow;
 import com.app.neos.repository.banner.BannerRepository;
+import com.app.neos.repository.follow.FollowRepository;
+import com.app.neos.repository.user.UserRepository;
 import com.app.neos.type.banner.BannerStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -17,6 +22,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class BannerEntityTest {
     @Autowired
     BannerRepository bannerRepository;
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    FollowRepository followRepository;
+
 
     @Test
     public void saveTest(){
@@ -54,5 +64,17 @@ public class BannerEntityTest {
         bannerRepository.deleteAll();
     }
 
-
+    @Test
+    public void test32w432$(){
+        FollowDTO followDTO = new FollowDTO();
+        Follow follow = followDTO.toEntity();
+        follow.changeMyId(userRepository.findById(596l).get());
+        follow.changeFollowingId(userRepository.findById(13l).get());
+        followRepository.save(follow);
+    }
+    @Test
+    public void testasdlfkjasdf(){
+        UserDTO user = userRepository.findById(13l).get().toDTO();
+        System.out.println(user.toString());
+    }
 }

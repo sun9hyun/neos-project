@@ -42,16 +42,19 @@ public class Alarm extends Period {
 
     private Long contentId;
 
+    private String url;
+
     public void changeUser(User user){
         this.user = user;
     }
 
     @Builder
-    public Alarm(String alarmContent, ReadStatus readStatus, AlarmCategory alarmCategory, Long contentId) {
+    public Alarm(String alarmContent, ReadStatus readStatus, AlarmCategory alarmCategory, Long contentId, String url) {
         this.alarmContent = alarmContent;
         this.readStatus = readStatus;
         this.alarmCategory = alarmCategory;
         this.contentId = contentId;
+        this.url = url;
     }
 
     public void updateStatus(){
@@ -68,6 +71,7 @@ public class Alarm extends Period {
         dto.setUser(user.toDTO());
         dto.setCreatedTime(this.getCreatedDate());
         dto.setUpdatedTime(this.getUpdatedDate());
+        dto.setUrl(url);
         return dto;
     }
 }

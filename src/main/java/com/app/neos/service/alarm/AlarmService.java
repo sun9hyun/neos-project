@@ -2,7 +2,12 @@ package com.app.neos.service.alarm;
 
 import com.app.neos.aspect.annotation.AlarmInput;
 import com.app.neos.domain.Alarm.AlarmDTO;
+import com.app.neos.domain.community.CommunityReplyDTO;
+import com.app.neos.domain.counseling.CounselingReplyDTO;
+import com.app.neos.domain.inquiry.InquiryDTO;
+import com.app.neos.domain.store.StoreReplyDTO;
 import com.app.neos.domain.study.*;
+import com.app.neos.domain.user.FollowDTO;
 import com.app.neos.entity.alarm.Alarm;
 import com.app.neos.repository.alarm.AlarmCustomRepository;
 import com.app.neos.repository.alarm.AlarmRepository;
@@ -40,9 +45,11 @@ public class AlarmService {
                 break;
 
             case INQUIRY:
+                inquiryAlarm(obj);
                 break;
 
             case FOLLOW:
+                followAlarm(obj);
                 break;
 
             case QUESTIONREPLY:
@@ -57,12 +64,15 @@ public class AlarmService {
                 studySupportAlarm(obj);
                 break;
             case COMMUNITYREPLY:
+                communityReplyAlarm(obj);
                 break;
 
             case COUNSELINGREPLY:
+                counselingReplyAlarm(obj);
                 break;
 
             case SHOPREPLY:
+                shopReplyAlarm(obj);
                 break;
 
             case SUPPORTFAIL:
@@ -77,6 +87,7 @@ public class AlarmService {
 
         StudyFeedReplyDTO dto = (StudyFeedReplyDTO)obj;
        String studyName =  dto.getStudyFeed().getStudy().getStudyTitle();
+       Long studyNumber = dto.getStudyFeed().getStudy().getStudyId();
 
        Long feedWriterUserId = dto.getStudyFeed().getStudyFeedWriter().getUserId();
        Long feedReplyWriterUserId = dto.getStudyFeedReplyWriter().getUserId();
@@ -88,6 +99,7 @@ public class AlarmService {
            alarmDTO.setReadStatus(ReadStatus.NO);
            alarmDTO.setAlarmCategory(AlarmCategory.FEEDREPLY);
            alarmDTO.setContentId(dto.getStudyFeedReplyId());
+           alarmDTO.setUrl("/study/feed/"+studyNumber);
 
            Alarm entity = alarmDTO.toEntity();
            entity.changeUser(userRepository.findById(feedWriterUserId).get());
@@ -104,6 +116,7 @@ public class AlarmService {
         String studyName = dto.getStudyQuestion().getStudyDTO().getStudyTitle();
         Long studyQuestionWriterId = dto.getStudyQuestion().getStudyQuestionWriter().getUserId();
         Long studyQuestionReplyWriterId = dto.getStudyQuestionReplyWriter().getUserId();
+        Long studyNumber = dto.getStudyQuestion().getStudyDTO().getStudyId();
 
         if(studyQuestionWriterId != studyQuestionReplyWriterId){
             AlarmDTO alarmDTO = new AlarmDTO();
@@ -111,6 +124,8 @@ public class AlarmService {
             alarmDTO.setReadStatus(ReadStatus.NO);
             alarmDTO.setAlarmCategory(AlarmCategory.QUESTIONREPLY);
             alarmDTO.setContentId(dto.getStudyQuestionReplyId());
+            alarmDTO.setUrl("/study/question/"+studyNumber);
+
             Alarm entity = alarmDTO.toEntity();
             entity.changeUser(userRepository.findById(studyQuestionWriterId).get());
             repository.save(entity);
@@ -128,6 +143,7 @@ public class AlarmService {
         String supporterName = dto.getUser().getUserNickName();
         Long studyOwnerId = studyDTO.getUserId();
         Long supporterId = dto.getUser().getUserId();
+        Long studyNumber =dto.getStudyId();
 
 
         if(studyOwnerId != supporterId){
@@ -136,7 +152,7 @@ public class AlarmService {
             alarmDTO.setReadStatus(ReadStatus.NO);
             alarmDTO.setAlarmCategory(AlarmCategory.STUDYSUPPORT);
             alarmDTO.setContentId(dto.getStudySupporterId());
-
+            alarmDTO.setUrl("/study/list/"+studyNumber);
             Alarm entity = alarmDTO.toEntity();
             entity.changeUser(userRepository.findById(studyOwnerId).get());
             repository.save(entity);
@@ -164,6 +180,7 @@ public class AlarmService {
             alarmDTO.setReadStatus(ReadStatus.NO);
             alarmDTO.setAlarmCategory(AlarmCategory.SUPPORTFAIL);
             alarmDTO.setContentId(dto.getStudySupporterId());
+            alarmDTO.setUrl("no");
 
             Alarm entity = alarmDTO.toEntity();
             entity.changeUser(userRepository.findById(supporterId).get());
@@ -182,6 +199,7 @@ public class AlarmService {
 
         Long studyOwnerId = studyDTO.getUserId();
         Long memberId = dto.getUserDTO().getUserId();
+        Long studyNumber =dto.getStudyId();
 
 
         if(studyOwnerId != memberId){
@@ -190,6 +208,7 @@ public class AlarmService {
             alarmDTO.setReadStatus(ReadStatus.NO);
             alarmDTO.setAlarmCategory(AlarmCategory.STUDYMEMBER);
             alarmDTO.setContentId(dto.getStudyMemberId());
+            alarmDTO.setUrl("/study/list/"+studyNumber);
 
             Alarm entity = alarmDTO.toEntity();
             entity.changeUser(userRepository.findById(memberId).get());
@@ -197,6 +216,125 @@ public class AlarmService {
 
         }
     }
+
+
+    @Transactional
+    public void shopReplyAlarm(Object obj){
+        StoreReplyDTO storeReplyDTO = (StoreReplyDTO)obj;
+        String name = storeReplyDTO.getStoreTitle();
+
+        Long storeId = storeReplyDTO.getStore().getStoreId();
+        Long ownerId = storeReplyDTO.getStore().getUser().getUserId();
+        Long replierId = storeReplyDTO.getUser().getUserId();
+
+        if(ownerId != replierId){
+            AlarmDTO alarmDTO = new AlarmDTO();
+            alarmDTO.setAlarmContent("[자료상점] "+name+ "에 댓글이 달렸습니다.");
+            alarmDTO.setReadStatus(ReadStatus.NO);
+            alarmDTO.setAlarmCategory(AlarmCategory.SHOPREPLY);
+            alarmDTO.setContentId(storeReplyDTO.getStoreReplyId());
+            alarmDTO.setUrl("/store/store-detail?storeId="+storeId);
+
+            Alarm entity = alarmDTO.toEntity();
+            entity.changeUser(userRepository.findById(ownerId).get());
+            repository.save(entity);
+        }
+
+
+
+    }
+
+    @Transactional
+    public void communityReplyAlarm(Object obj){
+        CommunityReplyDTO dto = (CommunityReplyDTO)obj;
+
+        Long ownerId = dto.getCommunity().getUser().getUserId();
+        Long replierId = dto.getUserId();
+        String name = dto.getCommunity().getCommunityTitle();
+
+        if(ownerId != replierId){
+            AlarmDTO alarmDTO = new AlarmDTO();
+            alarmDTO.setAlarmContent("[커뮤니티] "+name+ "에 댓글이 달렸습니다.");
+            alarmDTO.setReadStatus(ReadStatus.NO);
+            alarmDTO.setAlarmCategory(AlarmCategory.COMMUNITYREPLY);
+            alarmDTO.setContentId(dto.getCommunityReplyId());
+            alarmDTO.setUrl("/community/community");
+
+            Alarm entity = alarmDTO.toEntity();
+            entity.changeUser(userRepository.findById(ownerId).get());
+            repository.save(entity);
+        }
+
+
+
+    }
+
+    @Transactional
+    public void counselingReplyAlarm(Object obj){
+        CounselingReplyDTO dto = (CounselingReplyDTO) obj;
+
+        Long ownerId = dto.getCounseling().getUser().getUserId();
+        Long replierId = dto.getUserId();
+        String name = dto.getCounselingTitle();
+
+        if(ownerId != replierId){
+            AlarmDTO alarmDTO = new AlarmDTO();
+            alarmDTO.setAlarmContent("[고민상담] "+name+ "에 댓글이 달렸습니다.");
+            alarmDTO.setReadStatus(ReadStatus.NO);
+            alarmDTO.setAlarmCategory(AlarmCategory.COUNSELINGREPLY);
+            alarmDTO.setContentId(dto.getCounselingId());
+            alarmDTO.setUrl("/community/counseling");
+
+            Alarm entity = alarmDTO.toEntity();
+            entity.changeUser(userRepository.findById(ownerId).get());
+            repository.save(entity);
+        }
+
+    }
+
+    @Transactional
+    public void inquiryAlarm(Object obj){
+        InquiryDTO dto = (InquiryDTO)obj;
+
+        String name =dto.getUserNickName();
+        Long ownerId = dto.getUser().getUserId();
+
+        AlarmDTO alarmDTO = new AlarmDTO();
+        alarmDTO.setAlarmContent("[문의] "+name+ "의 문의 글에 답변이 달렸습니다.");
+        alarmDTO.setReadStatus(ReadStatus.NO);
+        alarmDTO.setAlarmCategory(AlarmCategory.INQUIRY);
+        alarmDTO.setContentId(dto.getInquiryId());
+        alarmDTO.setUrl("/inquiry/list?userId="+ownerId);
+
+        Alarm entity = alarmDTO.toEntity();
+        entity.changeUser(userRepository.findById(ownerId).get());
+        repository.save(entity);
+
+
+    }
+
+    @Transactional
+    public void followAlarm(Object obj){
+        FollowDTO dto = (FollowDTO)obj;
+        Long my = dto.getMy().getUserId();
+        Long following = dto.getFollowing().getUserId();
+        String myName = dto.getMy().getUserNickName();
+
+
+        if(my != following){
+            AlarmDTO alarmDTO = new AlarmDTO();
+            alarmDTO.setAlarmContent("[팔로우] "+myName+ "님이 팔로우 하셨습니다.");
+            alarmDTO.setReadStatus(ReadStatus.NO);
+            alarmDTO.setAlarmCategory(AlarmCategory.FOLLOW);
+            alarmDTO.setContentId(dto.getFollowId());
+            alarmDTO.setUrl("/my-page/my");
+            Alarm entity = alarmDTO.toEntity();
+            entity.changeUser(userRepository.findById(following).get());
+            repository.save(entity);
+        }
+    }
+
+
 
 
 

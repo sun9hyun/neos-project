@@ -91,7 +91,7 @@ $(document).ready(function () {
         // alert(communityDTOS);
         let text = "";
             $(communityDTOS.content).each((i, item) => {
-                text += "<div class='loungeCard' style='margin-bottom: -10px;'>";
+                text += `<div class='loungeCard' style='margin-bottom: -10px;' id="`+item.communityId+`">`;
                 text += "<div class='userSection'>";
                 text += "<div class='userInformationComponents_profile__2pr8a'>";
                 text += "<div class='userInformationComponents_profileLeftGroup__1lq6K'>";

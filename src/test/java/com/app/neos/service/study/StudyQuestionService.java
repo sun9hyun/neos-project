@@ -1,6 +1,9 @@
 package com.app.neos.service.study;
 
 
+import com.app.neos.domain.user.FollowDTO;
+import com.app.neos.entity.follow.Follow;
+import com.app.neos.entity.follow.QFollow;
 import com.app.neos.entity.study.QStudyQuestion;
 import com.app.neos.entity.study.StudyQuestionReply;
 import com.app.neos.repository.study.StudyQuestionReplyCustomRepository;
@@ -13,6 +16,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.app.neos.entity.follow.QFollow.*;
 import static com.app.neos.entity.study.QStudyQuestion.*;
 
 @SpringBootTest
@@ -37,9 +44,11 @@ public class StudyQuestionService {
     @Test
     public void test2(){
         studyQuestionReplyCustomRepository.findAllByStudyQuestionId(246l).stream().map(StudyQuestionReply::toDTO).forEach(i->log.info(i.toString()));
+
+        List<Follow> list = jpaQueryFactory.selectFrom(follow).fetch();
+
+        List<FollowDTO> list2 =list.stream().map(Follow::toDTO).collect(Collectors.toList());
     }
-
-
 
 
 

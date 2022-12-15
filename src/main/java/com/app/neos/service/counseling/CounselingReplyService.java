@@ -44,7 +44,7 @@ public class CounselingReplyService {
 
     @Transactional
     public void updateReply(CounselingReplyDTO counselingReplyDTO){
-        CounselingReply counselingReply = counselingReplyRepository.findById(counselingReplyDTO.getCounselingId()).get();
+        CounselingReply counselingReply = counselingReplyRepository.findById(counselingReplyDTO.getCounselingReplyId()).get();
         counselingReply.update(counselingReplyDTO);
     }
 

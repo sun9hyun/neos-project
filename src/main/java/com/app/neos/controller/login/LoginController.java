@@ -54,6 +54,7 @@ public class LoginController {
                 session.setAttribute("loginUserName",userDTO.getUserNickName());
                 session.setAttribute("college",userDTO.getCollegeId());
                 session.setAttribute("realId",realId);
+                session.setAttribute("userFile",userDTO.getUserFile());
             }
 
 
@@ -83,6 +84,7 @@ public class LoginController {
                 session.setAttribute("loginUserName",userDTO.getUserNickName());
                 session.setAttribute("college",userDTO.getCollegeId());
                 session.setAttribute("realId",realId);
+                session.setAttribute("userFile",userDTO.getUserFile());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,6 +108,7 @@ public class LoginController {
             session.setAttribute("loginUserName",userDTO.getUserNickName());
             session.setAttribute("college",userDTO.getCollegeId());
             session.setAttribute("realId",realId);
+            session.setAttribute("userFile",userDTO.getUserFile());
         }
 
         return new RedirectView("/main/main?login=true");

@@ -6,6 +6,7 @@ import com.app.neos.entity.counseling.Counseling;
 import com.app.neos.repository.counseling.CounselingReplyRepository;
 import com.app.neos.service.counseling.CounselingReplyService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/counseling-reply")
+@Slf4j
 public class CounselingReplyRestController {
     private final CounselingReplyService counselingReplyService;
     private final CounselingReplyRepository counselingReplyRepository;
@@ -34,8 +36,7 @@ public class CounselingReplyRestController {
 
     @PutMapping("/replyUpdate/{rno}")
     public String modify(@PathVariable("rno")Long CounselingId, CounselingReplyDTO counselingReplyDTO){
-        CounselingReplyDTO replyDTO = counselingReplyDTO;
-        replyDTO.setCounselingReplyId(CounselingId);
+        counselingReplyDTO.setCounselingReplyId(CounselingId);
         counselingReplyService.updateReply(counselingReplyDTO);
         return "reply modify success";
     }

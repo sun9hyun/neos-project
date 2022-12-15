@@ -107,6 +107,7 @@ function headerAlarmShowList(result){
     $(".moreAlarm em").html(total-1);
     }else{
         $(".alarmTotalCount").html(total);
+        $(".alarmText").html(text);
         $(".moreAlarm p").html("최신 알림이 없습니다.");
     }
 
@@ -118,7 +119,11 @@ function read(obj){
         url:"/alarm/"+id,
         type:"post",
         success:function (result) {
-            location.href=result;
+            if(result=='no'){
+             window.location.reload();
+            }else{
+                location.href=result;
+            }
         }
     })
 

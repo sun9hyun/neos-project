@@ -10,6 +10,7 @@ import com.app.neos.domain.study.*;
 import com.app.neos.domain.user.FollowDTO;
 import com.app.neos.entity.alarm.Alarm;
 import com.app.neos.entity.inquiry.Inquiry;
+import com.app.neos.entity.store.StoreReply;
 import com.app.neos.repository.alarm.AlarmCustomRepository;
 import com.app.neos.repository.alarm.AlarmRepository;
 import com.app.neos.repository.study.StudyRepository;
@@ -224,19 +225,19 @@ public class AlarmService {
 
     @Transactional
     public void shopReplyAlarm(Object obj){
-        StoreReplyDTO storeReplyDTO = (StoreReplyDTO)obj;
-        String name = storeReplyDTO.getStoreTitle();
+        StoreReply storeReply = (StoreReply)obj;
+        String name = storeReply.getStore().getStoreTitle();
 
-        Long storeId = storeReplyDTO.getStore().getStoreId();
-        Long ownerId = storeReplyDTO.getStore().getUser().getUserId();
-        Long replierId = storeReplyDTO.getUser().getUserId();
+        Long storeId = storeReply.getStore().getStoreId();
+        Long ownerId = storeReply.getStore().getUser().getUserId();
+        Long replierId = storeReply.getUser().getUserId();
 
         if(ownerId != replierId){
             AlarmDTO alarmDTO = new AlarmDTO();
             alarmDTO.setAlarmContent("[자료상점] "+name+ "에 댓글이 달렸습니다.");
             alarmDTO.setReadStatus(ReadStatus.NO);
             alarmDTO.setAlarmCategory(AlarmCategory.SHOPREPLY);
-            alarmDTO.setContentId(storeReplyDTO.getStoreReplyId());
+            alarmDTO.setContentId(storeReply.getStoreReplyId());
             alarmDTO.setUrl("/store/store-detail?storeId="+storeId);
 
             Alarm entity = alarmDTO.toEntity();

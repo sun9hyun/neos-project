@@ -23,9 +23,10 @@ public class AlarmDTO {
     private Long contentId;
     private LocalDateTime createdTime;
     private LocalDateTime updatedTime;
+    private String url;
 
     public Alarm toEntity(){
-        return Alarm.builder().alarmCategory(alarmCategory).contentId(contentId).alarmContent(alarmContent).readStatus(readStatus).build();
+        return Alarm.builder().alarmCategory(alarmCategory).contentId(contentId).alarmContent(alarmContent).readStatus(readStatus).url(url).build();
     }
 
     @QueryProjection

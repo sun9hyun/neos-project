@@ -97,7 +97,7 @@
     -moz-box-direction: normal;
     flex-direction: column;
     -moz-box-align: start;
-    align-items: flex-start;
+    align-items: center;
     max-width: 1080px;
     margin: 0 auto;
 }

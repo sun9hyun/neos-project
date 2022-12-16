@@ -3,6 +3,7 @@ package com.app.neos.controller.store;
 import com.app.neos.domain.store.StoreDTO;
 import com.app.neos.entity.store.Store;
 import com.app.neos.service.neosUser.NeosUserService;
+import com.app.neos.service.store.StorePurchaseService;
 import com.app.neos.service.store.StoreService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,8 @@ import java.util.List;
 public class StoreController {
     private final StoreService storeService;
     private final NeosUserService neosUserService;
+    private final StorePurchaseService storePurchaseService;
+
 
 //    자료상점 목록
     @GetMapping("/store-list")
@@ -92,10 +95,32 @@ public class StoreController {
 
     // 자료상점 게시글 상세
     @GetMapping("/store-detail")
-    public String storeDetail(Long storeId, Model model){
-        model.addAttribute("store", storeService.findStoreOne(storeId));
-        return "app/store/storeDetail";
+    public String storeDetail(Long storeId, Model model, HttpSession session){
+        Long userId = (Long)session.getAttribute("loginUser");
+        StoreDTO storeDTO = storeService.findStoreOne(storeId);
+        String resultUrl = "";
+
+        if (storeDTO.getStoreStatus().toString() == "FREE") {
+            model.addAttribute("store", storeDTO);
+            resultUrl = "app/store/storeDetail-free";
+        } else if(storeDTO.getStoreStatus().toString() == "PAY"){
+            if (storePurchaseService.checkPurchase(userId, storeId)){
+                model.addAttribute("store", storeDTO);
+                resultUrl = "app/store/storeDetail-purchase";
+            }else if(!storePurchaseService.checkPurchase(userId, storeId)){
+                model.addAttribute("store", storeDTO);
+                resultUrl = "app/store/storeDetail-pay";
+            }
+        }
+        return resultUrl;
     }
+
+//    // 자료상점 게시글 상세
+//    @GetMapping("/store-detail")
+//    public String storeDetail(Long storeId, Model model){
+//        model.addAttribute("store", storeService.findStoreOne(storeId));
+//        return "app/store/storeDetail";
+//    }
     
     // 자료상점 게시글 삭제
     @GetMapping("/store-delete")

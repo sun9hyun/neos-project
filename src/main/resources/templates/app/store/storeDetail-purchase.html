@@ -48,7 +48,7 @@
                     </div>
                 </li>
                 <div class="statusTagWrap">
-                    <span class="statusTag white" th:text="*{storeStatus}">무료</span>
+                    <span class="statusTag white">유료</span>
                     <div class="modifyBtn">
                         <a th:href="*{storeId}" th:if="${store.user.userId == session.loginUser}" class="changeBtn">
                             <img loading="lazy" src="https://letspl.me/assets/images/ic-profile-modify.png" alt="수정버튼"
@@ -82,8 +82,8 @@
                         <div class="section statusSection">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 <h1 class="tabTit" style="padding: 0 !important;">첨부파일</h1>
-                                <button type="button" class="cashButton" th:if="*{storeStatus.toString() == 'PAY'}">
-                                    결제하기
+                                <button type="button" class="cashButton" disabled="disabled" style="background-color: #fff; color: #1A7CFF; border: 1px solid #1A7CFF; ">
+                                    결제완료
                                 </button>
                             </div>
 
@@ -407,23 +407,23 @@
     });
 
 
-    $(".cashButton").on("click",function () {
-        storeId: $("input[name='storeId']").val()
-
-        $.ajax({
-            url: "/store-purchase/purchase/"+storeId,
-            type:"get",
-            success:function (result) {
-                console.log("성공")
-                let text = "";
-
-                text += "결제완료";
-
-                $(".cashButton").text(text);
-            }
-        })
-
-    })
+    // $(".cashButton").on("click",function () {
+    //     storeId: $("input[name='storeId']").val()
+    //
+    //     $.ajax({
+    //         url: "/store-purchase/purchase/"+storeId,
+    //         type:"get",
+    //         success:function (result) {
+    //             console.log("성공")
+    //             let text = "";
+    //
+    //             text += "결제완료";
+    //
+    //             $(".cashButton").text(text);
+    //         }
+    //     })
+    //
+    // })
 
 
 </script>

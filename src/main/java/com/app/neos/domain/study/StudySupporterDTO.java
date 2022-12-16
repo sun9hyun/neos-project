@@ -3,7 +3,6 @@ package com.app.neos.domain.study;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.study.Study;
 import com.app.neos.entity.study.StudySupporter;
-import com.app.neos.entity.user.User;
 import com.app.neos.type.study.supporter.StudySupporterStatus;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
@@ -19,6 +18,7 @@ public class StudySupporterDTO {
     private Long studySupporterId;
     private StudySupporterStatus studySupporterStatus;
     private UserDTO user;
+    private Long userId;
     private Long studyId;
     private LocalDate createdDate;
 
@@ -34,6 +34,14 @@ public class StudySupporterDTO {
         this.studySupporterId = studySupporterId;
         this.studySupporterStatus = studySupporterStatus;
         this.user = user;
+        this.studyId = studyId;
+    }
+
+    @QueryProjection
+    public StudySupporterDTO(Long studySupporterId, StudySupporterStatus studySupporterStatus, Long userId, Long studyId) {
+        this.studySupporterId = studySupporterId;
+        this.studySupporterStatus = studySupporterStatus;
+        this.userId = userId;
         this.studyId = studyId;
     }
 }

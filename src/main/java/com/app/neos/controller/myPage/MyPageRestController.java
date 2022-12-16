@@ -1,12 +1,16 @@
 package com.app.neos.controller.myPage;
 
+import com.app.neos.domain.Alarm.AlarmDTO;
 import com.app.neos.domain.college.CollegeDTO;
 import com.app.neos.domain.neos.NeosPointDTO;
 import com.app.neos.domain.neos.NeosPowerDTO;
 import com.app.neos.domain.store.StoreDTO;
+import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.domain.user.UserDTO;
+import com.app.neos.entity.study.StudyFollow;
 import com.app.neos.entity.user.User;
 import com.app.neos.repository.user.UserRepository;
+import com.app.neos.service.alarm.AlarmService;
 import com.app.neos.service.join.JoinService;
 import com.app.neos.service.myPage.MyPageService;
 import com.app.neos.service.neosUser.NeosUserService;
@@ -37,6 +41,13 @@ public class MyPageRestController {
     private final StoreService storeService;
     private final JoinService joinService;
     private final UserRepository userRepository;
+    private final AlarmService alarmService;
+    
+    // 마이페이지 알림 조회
+    @GetMapping("/alarm/{userId}")
+    public List<AlarmDTO> findAlarmByUserId(@PathVariable("userId") Long userId){
+        return alarmService.showAll(userId);
+    }
 
     // 마이페이지 프로필 사진 이름 저장
     @PostMapping("/upload")
@@ -66,6 +77,30 @@ public class MyPageRestController {
         }
 
         return profileUploadForder + "\\" + profileImageName;
+    }
+
+    // 마이페이지 스터디 구독 조회
+    @GetMapping("/study-follow/{userId}")
+    public List<StudyDTO> selectStudyFollow(@PathVariable("userId") Long userId){
+        return myPageService.findStudyFollow(userId);
+    }
+
+    // 마이페이지 네오스인 구독 조회
+    @GetMapping("/follow/{userId}")
+    public List<UserDTO> selectFollow(@PathVariable("userId") Long userId){
+        return myPageService.findFollow(userId);
+    }
+
+    // 마이페이지 스터디 참여 조회
+    @GetMapping("/study/{userId}")
+    public List<StudyDTO> selectStudyJoin(@PathVariable("userId") Long userId){
+        return myPageService.findJoinStudy(userId);
+    }
+
+    // 마이페이지 스터디 지원 조회
+    @PostMapping("/study/{userId}")
+    public List<StudyDTO> selectStudySupporter(@PathVariable("userId") Long userId){
+        return myPageService.findSupportStudy(userId);
     }
 
     // 마이페이지 네오포인트

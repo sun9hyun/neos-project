@@ -8,6 +8,7 @@ import com.app.neos.entity.community.Community;
 import com.app.neos.entity.user.User;
 import com.app.neos.repository.chatting.ChattingContentRepository;
 import com.app.neos.repository.chatting.ChattingRepository;
+import com.app.neos.repository.chatting.ChattingRoomRepository;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.type.chatting.ChatType;
 import lombok.extern.slf4j.Slf4j;
@@ -28,16 +29,18 @@ public class ChattingContentEntityTest {
     ChattingRepository chattingRepository;
     @Autowired
     ChattingContentRepository chattingContentRepository;
+    @Autowired
+    ChattingRoomRepository chattingRoomRepository;
 
     @Test
     public void saveTest(){
         ChattingContentDTO chattingContentDTO = new ChattingContentDTO();
 
-        chattingContentDTO.setChatting(chattingRepository.findById(7l).get());
-        chattingContentDTO.setMy(chattingRepository.findById(7l).get().getMyId());
-        chattingContentDTO.setReceiver(chattingRepository.findById(7l).get().getReceiverId());
+        chattingContentDTO.setChatting(chattingRepository.findById(9l).get());
+        chattingContentDTO.setMy(chattingRepository.findById(9l).get().getMyId());
+        chattingContentDTO.setReceiver(chattingRepository.findById(9l).get().getReceiverId());
         chattingContentDTO.setChatType(ChatType.ENTER);
-        chattingContentDTO.setChattingContent("테스트임당");
+        chattingContentDTO.setChattingContent("ㅋㅋㅋㅋ");
 
         ChattingContent chattingContent = chattingContentDTO.toEntity();
 

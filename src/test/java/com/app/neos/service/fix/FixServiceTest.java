@@ -2,6 +2,7 @@ package com.app.neos.service.fix;
 
 import com.app.neos.domain.chatting.ChattingContentDTO;
 import com.app.neos.domain.chatting.ChattingDTO;
+import com.app.neos.domain.chatting.QChattingContentDTO;
 import com.app.neos.domain.chatting.QChattingDTO;
 import com.app.neos.entity.chatting.ChattingContent;
 import com.app.neos.entity.chatting.ChattingRoom;
@@ -23,6 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.app.neos.entity.chatting.QChattingContent.chattingContent1;
+
 @SpringBootTest
 @Slf4j
 @Transactional
@@ -43,20 +46,8 @@ public class FixServiceTest {
     @Autowired
     UserRepository userRepository;
 
-    //  채팅방 목록 조회
-    @Test
-    public void findRoom() {
-        List<ChattingDTO> chattingDTOS = jpaQueryFactory.select(new QChattingDTO(
-                QChatting.chatting.chattingId,
-                QChatting.chatting.myId,
-                QChatting.chatting.receiverId,
-                QChatting.chatting.createdDate
-        ))
-                .from(QChatting.chatting)
-                .fetch();
 
 
-    }
 
     //    채팅방 내용 조회
         @Test
@@ -66,12 +57,36 @@ public class FixServiceTest {
 
 
         @Test
-    public void  test2(){
-            List<ChattingContentDTO> contents = fixService.findByIdTest(2l);
-            contents.stream().forEach(i->log.info(i.toString()));
+        public void test2(){
+        Long receiver = fixService.findByIdOneTest(4l).getReceiver().getUserId();
+                ChattingContentDTO chattingContentDTO = jpaQueryFactory.select(new QChattingContentDTO(
+                        chattingContent1.receiver
+                )).distinct().from(chattingContent1)
+                        .where(chattingContent1.receiver.userId.eq(receiver))
+                        .fetchOne();
+
+            }
+
+        @Test
+    public void saveTest(){
+        ChattingContentDTO chattingContentDTO = new ChattingContentDTO();
+            chattingContentDTO.setChatting(chattingRepository.findById(6L).get());
+            chattingContentDTO.setMy(chattingRepository.findById(6L).get().getMyId());
+            chattingContentDTO.setReceiver(chattingRepository.findById(6L).get().getReceiverId());
+            chattingContentDTO.setChatType(ChatType.ENTER);
+            chattingContentDTO.setChattingContent("테스트! ! !");
+
+            ChattingContent chattingContent = chattingContentDTO.toEntity();
+
+            chattingContent.changeMy(chattingContentDTO.getMy());
+            chattingContent.changeReceiver(chattingContentDTO.getReceiver());
+            chattingContent.changeChatting(chattingContentDTO.getChatting());
+
+            fixService.saveChatting(chattingContentDTO);
+        }
         }
 
-    }
+
 
 
 

@@ -30,11 +30,11 @@ public class ChattingRoomEntityTest {
     public void saveTest() {
         ChattingRoomDTO chattingRoomDTO = new ChattingRoomDTO();
         ChattingContentDTO chattingContentDTO = new ChattingContentDTO();
-        chattingRoomDTO.setChattingContentRoom("수정됨");
-        chattingRoomDTO.setChatType(ChatType.ENTER);
-        chattingRoomDTO.setMyRoom(chattingContentRepository.findById(11l).get().getMy());
-        chattingRoomDTO.setReceiverRoom(chattingContentRepository.findById(11l).get().getReceiver());
-        chattingRoomDTO.setChattingContentIdRoom(chattingContentRepository.findById(11l).get());
+        chattingRoomDTO.setChattingContentRoom(chattingContentRepository.findById(13l).get().getChattingContent());
+        chattingRoomDTO.setChatType(ChatType.CHAT);
+        chattingRoomDTO.setMyRoom(chattingContentRepository.findById(13l).get().getMy());
+        chattingRoomDTO.setReceiverRoom(chattingContentRepository.findById(13l).get().getReceiver());
+        chattingRoomDTO.setChattingContentIdRoom(chattingContentRepository.findById(13l).get());
 
         ChattingRoom chattingRoom = chattingRoomDTO.toEntity();
 
@@ -44,8 +44,6 @@ public class ChattingRoomEntityTest {
 
 
         chattingRoomRepository.save(chattingRoom);
-
-
 
     }
 

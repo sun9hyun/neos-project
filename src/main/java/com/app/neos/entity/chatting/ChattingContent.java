@@ -5,10 +5,15 @@ import com.app.neos.domain.chatting.ChattingContentDTO;
 import com.app.neos.entity.period.Created;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.chatting.ChatType;
+import com.app.neos.type.chatting.MessageType;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.persistence.*;
 
@@ -18,12 +23,14 @@ import javax.persistence.*;
 @ToString(exclude = {"my", "receiver", "chatting"}) @Getter
 //@Inheritance (strategy = InheritanceType.JOINED)
 @NoArgsConstructor
-public  class ChattingContent extends Created {
+
+public class ChattingContent extends Created {
     @Id @GeneratedValue
     private Long chattingContentId;
     @NotNull
     private String chattingContent;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "MY_ID")
     private User my;
@@ -38,7 +45,7 @@ public  class ChattingContent extends Created {
     private Chatting chatting;
 
     @Enumerated(EnumType.STRING) @NotNull
-    private ChatType chatType;
+    private MessageType messageType;
 
     public void changeMy(User my){
         this.my = my;
@@ -51,12 +58,17 @@ public  class ChattingContent extends Created {
     }
 
     @Builder
-    public ChattingContent(@NotNull String chattingContent, ChatType chatType) {
+    public ChattingContent(@NotNull String chattingContent, MessageType messageType ,User my,User receiver) {
         this.chattingContent = chattingContent;
-        this.chatType = chatType;
+        this.messageType = messageType;
+        this.my = my;
+        this.receiver =receiver;
     }
 
     public void update(String chattingContent){
         this.chattingContent = chattingContent;
     }
+
+
 }
+

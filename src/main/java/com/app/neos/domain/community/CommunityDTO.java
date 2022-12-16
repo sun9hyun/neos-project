@@ -62,4 +62,14 @@ public class CommunityDTO {
         this.userNickName = userNickName;
         this.createdDate = createdDate;
     }
+
+    @QueryProjection
+    public CommunityDTO(Long communityId, String communityTitle, int communityLikeCount, String userNickName, LocalDateTime createdDate, Long userId) {
+        this.communityId = communityId;
+        this.communityTitle = communityTitle;
+        this.communityLikeCount = communityLikeCount;
+        this.userNickName = userNickName;
+        this.createdDate = createdDate;
+        this.userId = userId;
+    }
 }

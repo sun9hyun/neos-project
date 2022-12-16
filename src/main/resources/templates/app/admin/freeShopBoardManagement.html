@@ -2,6 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
+    <title>NEOS | 자료 상점 관리</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -133,22 +134,6 @@
                                     <div class="card">
                                         <div class="card-body no-padding">
                                             <div class="company-search" id="companySearch">
-<!--                                                <div class="form-group">-->
-<!--                                                    <a class="icon_set left" href="javascript:;" onclick="searchUser()">-->
-<!--                                                        <i class="btl bt-search"></i>-->
-<!--                                                    </a>-->
-
-<!--                                                    <div id="prefetch">-->
-<!--															<span class="twitter-typeahead" >-->
-<!--																<input type="hidden" name="q" value="YToxOntzOjEwOiJqb2luX29yZGVyIjtzOjQ6ImRlc2MiO30=" class="form-control typeahead">-->
-<!--																<input type="text" class="form-control typeahead tt-input searchBar" id="keyword_search1" name="keyword" placeholder="검색" autocomplete="off" spellcheck="false" dir="auto" value="">-->
-<!--																<pre class="bar" aria-hidden="true"></pre>-->
-<!--																<div class="tt-menu">-->
-<!--																	<div class="tt-dataset tt-dataset-users"></div>-->
-<!--																</div>-->
-<!--															</span>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -159,7 +144,6 @@
                                         <div class="companyDelete">
                                             <a href="#modal;" rel="modal:open">선택 게시물 삭제</a>
                                             <span>
-													<!-- <button type="button" class="button" style="display:none";></button> -->
 												</span>
                                         </div>
                                     </div>
@@ -196,6 +180,7 @@
                                                 <tbody>
                                                 <th:block th:each="store:${stores}" th:object="${store}">
                                                 <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
+                                                    <input type="hidden" class="storeId" th:href="*{storeId}">
                                                     <li class="check">
                                                         <div class="checkbox checkbox-styled no-margin">
                                                             <label>
@@ -206,9 +191,11 @@
                                                         </div>
                                                     </li>
 
-                                                    <li class="postCategory">자유상점 게시판</li>
-                                                    <li class="postTitle"><a th:text="*{storeTitle}"></a></li> <!-- 작성한 게시글 페이지 이동 -->
-                                                    <li class="postDate"><a th:text="*{userNickName}"></a></li><!-- 작성사 상세 페이지 이동 -->
+                                                    <li class="postCategory" style="cursor: pointer">자유상점 게시판</li>
+                                                    <li class="postTitle"><a href="#" th:text="*{storeTitle}"></a></li> <!-- 작성한 게시글 페이지 이동 -->
+                                                    <input type="hidden" class="storeId" th:href="*{storeId}">
+                                                    <li class="postDate moveUserDetail"><a href="#" th:text="*{userNickName}"></a></li><!-- 작성사 상세 페이지 이동 -->
+                                                    <input type="hidden" class="userId" th:href="*{userId}">
                                                     <li class="postDate" th:text="*{#temporals.format(createdDate, 'yyyy.MM.dd HH:mm')}"></li>
 <!--                                                    <li class="postLike">1</li>-->
 
@@ -237,150 +224,6 @@
                                                 </th:block>
                                                 </tbody>
 
-<!--                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">-->
-<!--                                                    <li class="check">-->
-<!--                                                        <div class="checkbox checkbox-styled no-margin">-->
-<!--                                                            <label>-->
-<!--                                                                <input type="checkbox" class="terms">-->
-<!--                                                                <span></span>-->
-<!--                                                            </label>-->
-<!--                                                        </div>-->
-<!--                                                    </li>-->
-
-<!--                                                    <li class="postCategory">자유상점 게시판</li>-->
-<!--                                                    <li class="postTitle"><a href="#">퍼블리싱 관련 자료 팝니다</a></li> &lt;!&ndash; 작성한 게시글 페이지 이동 &ndash;&gt;-->
-<!--                                                    <li class="postDate"><a href="#">로사로사</a></li>&lt;!&ndash; 작성사 상세 페이지 이동 &ndash;&gt;-->
-<!--                                                    <li class="postDate">2022-11-10 15:30</li>-->
-<!--                                                    <li class="postLike">123</li>-->
-
-<!--                                                    <li class="action">-->
-<!--                                                        <div class="dropdown">-->
-<!--                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
-<!--                                                                <i class="zmdi zmdi-more"></i>-->
-<!--                                                            </button>-->
-<!--                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
-<!--                                                                <li>-->
-<!--                                                                    <a href="javascript:;" onclick="showFiles()">-->
-<!--                                                                        자료 보기-->
-<!--                                                                    </a>-->
-<!--                                                                </li>-->
-<!--                                                                <li>-->
-<!--                                                                    <a href="javascript:;" onclick="modalUp()">-->
-<!--                                                                        삭제-->
-<!--                                                                    </a>-->
-<!--                                                                </li>-->
-<!--                                                            </ul>-->
-<!--                                                        </div>-->
-<!--                                                    </li>-->
-<!--                                                </ul>-->
-<!--                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">-->
-<!--                                                    <li class="check">-->
-<!--                                                        <div class="checkbox checkbox-styled no-margin">-->
-<!--                                                            <label>-->
-<!--                                                                <input type="checkbox" class="terms">-->
-<!--                                                                <span></span>-->
-<!--                                                            </label>-->
-<!--                                                        </div>-->
-<!--                                                    </li>-->
-
-<!--                                                    <li class="postCategory">자유상점 게시판</li>-->
-<!--                                                    <li class="postTitle"><a href="#">수업 자료 팝니다 </a></li> &lt;!&ndash; 작성한 게시글 페이지 이동 &ndash;&gt;-->
-<!--                                                    <li class="postDate"><a href="#">종우종우</a></li>&lt;!&ndash; 작성사 상세 페이지 이동 &ndash;&gt;-->
-<!--                                                    <li class="postDate">2022-11-10 15:30</li>-->
-<!--                                                    <li class="postLike">123</li>-->
-
-<!--                                                    <li class="action">-->
-<!--                                                        <div class="dropdown">-->
-<!--                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
-<!--                                                                <i class="zmdi zmdi-more"></i>-->
-<!--                                                            </button>-->
-<!--                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
-<!--                                                                <li>-->
-<!--                                                                    <a href="javascript:;" onclick="showFiles()">-->
-<!--                                                                        자료 보기-->
-<!--                                                                    </a>-->
-<!--                                                                </li>-->
-<!--                                                                <li>-->
-<!--                                                                    <a href="javascript:;" onclick="modalUp()">-->
-<!--                                                                        삭제-->
-<!--                                                                    </a>-->
-<!--                                                                </li>-->
-<!--                                                            </ul>-->
-<!--                                                        </div>-->
-<!--                                                    </li>-->
-<!--                                                </ul>-->
-<!--                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">-->
-<!--                                                    <li class="check">-->
-<!--                                                        <div class="checkbox checkbox-styled no-margin">-->
-<!--                                                            <label>-->
-<!--                                                                <input type="checkbox" class="terms">-->
-<!--                                                                <span></span>-->
-<!--                                                            </label>-->
-<!--                                                        </div>-->
-<!--                                                    </li>-->
-
-<!--                                                    <li class="postCategory">자유상점 게시판</li>-->
-<!--                                                    <li class="postTitle"><a href="#">수업 자료 팝니다 </a></li> &lt;!&ndash; 작성한 게시글 페이지 이동 &ndash;&gt;-->
-<!--                                                    <li class="postDate"><a href="#">종우종우</a></li>&lt;!&ndash; 작성사 상세 페이지 이동 &ndash;&gt;-->
-<!--                                                    <li class="postDate">2022-11-10 15:30</li>-->
-<!--                                                    <li class="postLike">123</li>-->
-
-<!--                                                    <li class="action">-->
-<!--                                                        <div class="dropdown">-->
-<!--                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
-<!--                                                                <i class="zmdi zmdi-more"></i>-->
-<!--                                                            </button>-->
-<!--                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
-<!--                                                                <li>-->
-<!--                                                                    <a href="javascript:;" onclick="showFiles()">-->
-<!--                                                                        자료 보기-->
-<!--                                                                    </a>-->
-<!--                                                                </li>-->
-<!--                                                                <li>-->
-<!--                                                                    <a href="javascript:;" onclick="modalUp()">-->
-<!--                                                                        삭제-->
-<!--                                                                    </a>-->
-<!--                                                                </li>-->
-<!--                                                            </ul>-->
-<!--                                                        </div>-->
-<!--                                                    </li>-->
-<!--                                                </ul>-->
-<!--                                                <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">-->
-<!--                                                    <li class="check">-->
-<!--                                                        <div class="checkbox checkbox-styled no-margin">-->
-<!--                                                            <label>-->
-<!--                                                                <input type="checkbox" class="terms">-->
-<!--                                                                <span></span>-->
-<!--                                                            </label>-->
-<!--                                                        </div>-->
-<!--                                                    </li>-->
-
-<!--                                                    <li class="postCategory">자유상점 게시판</li>-->
-<!--                                                    <li class="postTitle"><a href="#">수업 자료 팝니다 </a></li> &lt;!&ndash; 작성한 게시글 페이지 이동 &ndash;&gt;-->
-<!--                                                    <li class="postDate"><a href="#">종우종우</a></li>&lt;!&ndash; 작성사 상세 페이지 이동 &ndash;&gt;-->
-<!--                                                    <li class="postDate">2022-11-10 15:30</li>-->
-<!--                                                    <li class="postLike">123</li>-->
-
-<!--                                                    <li class="action">-->
-<!--                                                        <div class="dropdown">-->
-<!--                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
-<!--                                                                <i class="zmdi zmdi-more"></i>-->
-<!--                                                            </button>-->
-<!--                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
-<!--                                                                <li>-->
-<!--                                                                    <a href="javascript:;" onclick="showFiles()">-->
-<!--                                                                        자료 보기-->
-<!--                                                                    </a>-->
-<!--                                                                </li>-->
-<!--                                                                <li>-->
-<!--                                                                    <a href="javascript:;" onclick="modalUp()">-->
-<!--                                                                        삭제-->
-<!--                                                                    </a>-->
-<!--                                                                </li>-->
-<!--                                                            </ul>-->
-<!--                                                        </div>-->
-<!--                                                    </li>-->
-<!--                                                </ul>-->
                                             </div>
                                             <nav class="text-center" id="paginate"></nav>
                                         </div>
@@ -395,22 +238,6 @@
                                         </div>
                                         <div class="card-body no-padding">
                                             <div class="li_table" id="UI_TABLE2">
-
-
-<!--                                                <ul class="subject _thead" id="table-header2" >-->
-<!--                                                    <li class="postTitle">파일 명</li>-->
-<!--                                                    <li class="postNick">다운로드 QR코드</li>-->
-<!--                                                </ul>-->
-
-<!--                                                <ul class="content _tbody storeFile" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">-->
-
-<!--                                                    <li class="postCategory">neos.pdf</li>-->
-<!--                                                    <li class="postTitle"><img src="/images/store/qrDetail.jpg" alt=""></li> &lt;!&ndash; 작성한 게시글 페이지 이동 &ndash;&gt;-->
-
-<!--                                                </ul>-->
-
-
-
                                             </div>
                                         </div>
                                     </div>
@@ -437,22 +264,22 @@
                                last=(${start + 4 < stores.totalPages ? start + 4 : stores.totalPages})" th:if="${total != 0}">
                         <th:block th:if="${start!=1}">
                             <a class="btn_paging prev screen_out paging"
-                               th:href="${stores.first} ? '#' :@{/admin/test/store/list(page=${stores.number-1})}"></a>
+                               th:href="${stores.first} ? '#' :@{/admin/store/list(page=${stores.number-1})}"></a>
                         </th:block>
                         <th:block th:unless="${start!=1}">
                             <a class="btn_paging prev screen_out paging" style="display: none"
-                               th:href="${stores.first} ? '#' :@{/admin/test/store/list(page=${stores.number-1})}"></a>
+                               th:href="${stores.first} ? '#' :@{/admin/store/list(page=${stores.number-1})}"></a>
                         </th:block>
                         <th:block th:each="num : ${#numbers.sequence(start, last)}">
-                            <a class="paging" th:text="${num}" th:href="@{/admin/test/store/list(page=${num-1})}"></a>
+                            <a class="paging" th:text="${num}" th:href="@{/admin/store/list(page=${num-1})}"></a>
                         </th:block>
                         <th:block th:if="${last != endPage}">
                             <a class="btn_paging next screen_out paging"
-                               th:href="${stores.last} ? '#' : @{/admin/test/store/list(page=${stores.number+1})}"></a>
+                               th:href="${stores.last} ? '#' : @{/admin/store/list(page=${stores.number+1})}"></a>
                         </th:block>
                         <th:block th:unless="${last != endPage}">
                             <a class="btn_paging next screen_out paging" style="display: none"
-                               th:href="${stores.last} ? '#' : @{/admin/test/store/list(page=${stores.number+1})}"></a>
+                               th:href="${stores.last} ? '#' : @{/admin/store/list(page=${stores.number+1})}"></a>
                         </th:block>
                     </th:block>
                 </span>
@@ -462,22 +289,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
-    // base.html
-
-    // 문서로드 완료 후 자바 스크립트 진행
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     const alertBox = document.querySelector('#alertBox');
-    //     const contentArea = document.querySelector('#content');
-    //
-    //     alertBox.classList.remove('alert__wrap-fixed');
-    //     alertBox.classList.add('alert__wrap');
-    //     contentArea.prepend(alertBox);
-    // });
-    //
-    // $(function(){
-    //     SADMIN_MENU_ALERT.openAlert();
-    // });
-
     // 좌측 슬라이드 배너 작동
     $('.gui-folder').click(function(){
         $(this).toggleClass('expanded'); /* expanded가 없으면 생성, 있으면 삭제, 따라서 gui-folder은 계속 유지 */
@@ -501,6 +312,8 @@
         $all.prop("checked", $terms.filter(":checked").length == $terms.length);
 
     });
+
+    // 모달창 관련
     const $deleteModal = $(".modalWrapOpen");
     const $alertModal = $(".modalWrapOpen2")
     const $deleteBtn = $(".companyDelete a");
@@ -530,6 +343,7 @@
         $deleteModal.show();
     }
 
+    // 현재 페이지 css
     pageActive();
 
     function pageActive() {
@@ -543,6 +357,7 @@
         });
     }
 
+    // 체크된 리스트 삭제
     $('#deleteCheck').click(function() {
         var storeIds = "";
         $(".terms:checked").each(function() {
@@ -552,14 +367,15 @@
                 storeIds = storeIds + "," + $(this).next().attr('href');
             }
         });
-        location.href = "/admin/test/store/deleteCheck" + "?storeIds=" + storeIds;
+        location.href = "/admin/store/deleteCheck" + "?storeIds=" + storeIds;
     });
 
+    // 하나만 삭제
     $('.deleteBtn').click(function () {
         let storeId = $(this).next().attr('href');
         modalUp();
         $('#deleteCheck').click(function () {
-            location.href = "/admin/test/store/delete" + "?storeId=" + storeId;
+            location.href = "/admin/store/delete" + "?storeId=" + storeId;
         })
     });
 
@@ -582,6 +398,7 @@
         });
     })
 
+    // 자료 상점 리스트 DOM
     function showStoreFile(storeFiles) {
         let text = "";
 
@@ -596,6 +413,24 @@
             })
         $('#UI_TABLE2').html(text);
     }
+
+
+    // 해당 자료 상점 상세보기로 이동
+    $('.postTitle').click(function () {
+        location.href = "/store/store-detail?storeId=" + $(this).closest('.content').find('.storeId').attr('href');;
+    })
+
+    // 자료 상점 리스트로 이동
+    $('.postCategory').click(function () {
+        location.href = "/store/store-list";
+    })
+
+    // 유저 정보 보기로 이동
+    $('.moveUserDetail').click(function () {
+        location.href = "/admin/user/detail?userId=" + $(this).next().attr('href');
+    })
+
+
 
 </script>
 <script src="/js/admin/freeShop.js"></script>

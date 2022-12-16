@@ -58,4 +58,13 @@ public class CounselingDTO {
         this.createdDate = createdDate;
     }
 
+    @QueryProjection
+    public CounselingDTO(Long counselingId, String counselingTitle, String userNickName, LocalDateTime createdDate, Long userId) {
+        this.counselingId = counselingId;
+        this.counselingTitle = counselingTitle;
+        this.userNickName = userNickName;
+        this.createdDate = createdDate;
+        this.userId = userId;
+    }
+
 }

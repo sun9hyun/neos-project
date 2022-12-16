@@ -129,12 +129,13 @@ public class StudyDTO {
     }
 
     @QueryProjection
-    public StudyDTO(Long studyId, String studyTitle, String userNickName, LocalDateTime createdDate, int followTotal) {
+    public StudyDTO(Long studyId, String studyTitle, String userNickName, LocalDateTime createdDate, int followTotal, Long userId) {
         this.studyId = studyId;
         this.studyTitle = studyTitle;
         this.userNickName = userNickName;
         this.createdDate = createdDate;
         this.followTotal = followTotal;
+        this.userId = userId;
     }
 
     @QueryProjection

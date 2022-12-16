@@ -2,6 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
+    <title>NEOS | 배너 관리</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -93,7 +94,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="btn btn-primary hidden-xs" onclick="location.href='/admin/test/banner/edit'">팝업 추가</a> <!-- 팝업 추가 페이지 링크 필요 -->
+                        <a class="btn btn-primary hidden-xs" onclick="location.href='/admin/banner/edit'">팝업 추가</a> <!-- 팝업 추가 페이지 링크 필요 -->
                         <a class="btn btn-bright hidden-sm hidden-md hidden-lg" style="padding: 4px 6px;" onclick="location.href='#'">  <!-- 팝업 추가 페이지 링크 필요 -->
                             <i class="btl bt-plus vertical-middle"></i>
                         </a>
@@ -227,22 +228,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
-    // base.html
-
-    // 문서로드 완료 후 자바 스크립트 진행
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     const alertBox = document.querySelector('#alertBox');
-    //     const contentArea = document.querySelector('#content');
-    //
-    //     alertBox.classList.remove('alert__wrap-fixed');
-    //     alertBox.classList.add('alert__wrap');
-    //     contentArea.prepend(alertBox);
-    // });
-    //
-    // $(function(){
-    //     SADMIN_MENU_ALERT.openAlert();
-    // });
-
     // 좌측 슬라이드 배너 작동
     $('.gui-folder').click(function(){
         $(this).toggleClass('expanded'); /* expanded가 없으면 생성, 있으면 삭제, 따라서 gui-folder은 계속 유지 */
@@ -256,14 +241,16 @@
 
     });
 
+    // 배너 수정하기 이동
     $('.update').on("click", function (e) {
         e.preventDefault();
-        location.href = "/admin/test/banner/update" + "?bannerId=" + $(this).closest(".dropdown-menu").find("#bannerId").attr("href");
+        location.href = "/admin/banner/update" + "?bannerId=" + $(this).closest(".dropdown-menu").find("#bannerId").attr("href");
     });
 
+    // 배너 삭제
     $('.deleteOk').click(function() {
         let bannerId = $(this).closest(".dropdown-menu").find("#bannerId").attr("href");
-        location.href = "/admin/test/banner/delete" + "?bannerId=" + bannerId;
+        location.href = "/admin/banner/delete" + "?bannerId=" + bannerId;
     });
 
 

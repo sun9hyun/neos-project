@@ -64,4 +64,15 @@ public class CommunityReplyDTO {
         this.createdDate = createdDate;
     }
 
+    @QueryProjection
+    public CommunityReplyDTO(Long communityReplyId, String communityReplyContent, String userNickName, String communityTitle, LocalDateTime createdDate, Long userId, Long communityId) {
+        this.communityReplyId = communityReplyId;
+        this.communityReplyContent = communityReplyContent;
+        this.userNickName = userNickName;
+        this.communityTitle = communityTitle;
+        this.createdDate = createdDate;
+        this.userId = userId;
+        this.communityId = communityId;
+    }
+
 }

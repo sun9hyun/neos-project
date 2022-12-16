@@ -27,6 +27,7 @@ public class InquiryDTO {
 
     private String userNickName;
     private String userFile;
+    private Long userId;
 
     public Inquiry toEntity(){
         return Inquiry.builder()
@@ -57,6 +58,17 @@ public class InquiryDTO {
     }
 
     @QueryProjection
+    public InquiryDTO(Long inquiryId, String inquiryContent, String inquiryReply, InquiryStatus inquiryStatus, String userNickName, LocalDateTime createdDate, Long userId) {
+        this.inquiryId = inquiryId;
+        this.inquiryContent = inquiryContent;
+        this.inquiryReply = inquiryReply;
+        this.inquiryStatus = inquiryStatus;
+        this.userNickName = userNickName;
+        this.createdDate = createdDate;
+        this.userId = userId;
+    }
+
+    @QueryProjection
     public InquiryDTO(Long inquiryId, String inquiryContent, String inquiryReply, InquiryStatus inquiryStatus, String userNickName, String userFile, LocalDateTime createdDate) {
         this.inquiryId = inquiryId;
         this.inquiryContent = inquiryContent;
@@ -76,7 +88,6 @@ public class InquiryDTO {
         this.createdDate = createdDate;
         this.user = user;
         this.updatedDate = updatedDate;
-
     }
 
 }

@@ -85,4 +85,13 @@ public class StoreDTO {
         this.userNickName = userNickName;
         this.createdDate = createdDate;
     }
+
+    @QueryProjection
+    public StoreDTO(Long storeId, String storeTitle, String userNickName, LocalDateTime createdDate, Long userId) {
+        this.storeId = storeId;
+        this.storeTitle = storeTitle;
+        this.userNickName = userNickName;
+        this.createdDate = createdDate;
+        this.userId = userId;
+    }
 }

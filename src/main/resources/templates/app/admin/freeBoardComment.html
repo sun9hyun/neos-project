@@ -2,6 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
+    <title>NEOS | 자유 게시판 댓글 관리</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -130,22 +131,6 @@
                                     <div class="card">
                                         <div class="card-body no-padding">
                                             <div class="company-search" id="companySearch">
-<!--                                                <div class="form-group">-->
-<!--                                                    <a class="icon_set left" href="javascript:;" onclick="searchUser()">-->
-<!--                                                        <i class="btl bt-search"></i>-->
-<!--                                                    </a>-->
-
-<!--                                                    <div id="prefetch">-->
-<!--															<span class="twitter-typeahead" >-->
-<!--																<input type="hidden" name="q" value="YToxOntzOjEwOiJqb2luX29yZGVyIjtzOjQ6ImRlc2MiO30=" class="form-control typeahead">-->
-<!--																<input type="text" class="form-control typeahead tt-input searchBar" id="keyword_search1" name="keyword" placeholder="검색" autocomplete="off" spellcheck="false" dir="auto" value="">-->
-<!--																<pre class="bar" aria-hidden="true"></pre>-->
-<!--																<div class="tt-menu">-->
-<!--																	<div class="tt-dataset tt-dataset-users"></div>-->
-<!--																</div>-->
-<!--															</span>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -156,7 +141,6 @@
                                         <div class="companyDelete">
                                             <a href="#modal;" rel="modal:open">선택 댓글 삭제</a>
                                             <span>
-													<!-- <button type="button" class="button" style="display:none";></button> -->
 												</span>
                                         </div>
                                     </div>
@@ -191,6 +175,8 @@
                                                 <tbody>
                                                 <th:block th:each="communityReply:${communityReplies}" th:object="${communityReply}">
                                                 <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
+                                                    <input type="hidden" class="communityId" th:href="*{communityId}">
+                                                    <input type="hidden" class="userId" th:href="*{userId}">
                                                     <li class="check">
                                                         <div class="checkbox checkbox-styled no-margin">
                                                             <label>
@@ -201,9 +187,9 @@
                                                         </div>
                                                     </li>
 
-                                                    <li class="commentNick"><a th:text="*{userNickName}"></a></li><!-- 작성사 상세 페이지 이동 -->
-                                                    <li class="comment" th:text="*{communityReplyContent}"></li>
-                                                    <li class="commentPost"><a>[자유게시판]&nbsp; <a th:text="*{communityTitle}"></a></a></li> <!-- 작성한 게시글 페이지 이동 -->
+                                                    <li class="commentNick moveUserDetail"><a href="#" th:text="*{userNickName}"></a></li><!-- 작성사 상세 페이지 이동 -->
+                                                    <li class="comment" style="cursor: pointer" th:text="*{communityReplyContent}"></li>
+                                                    <li class="commentPost"><a href="#">[자유게시판]&nbsp; <a href="#" th:text="*{communityTitle}"></a></a></li> <!-- 작성한 게시글 페이지 이동 -->
                                                     <li class="commentDate" th:text="*{#temporals.format(createdDate, 'yyyy.MM.dd HH:mm')}"></li>
 
                                                     <li class="action">
@@ -250,22 +236,22 @@
                                last=(${start + 4 < communityReplies.totalPages ? start + 4 : communityReplies.totalPages})" th:if="${total != 0}">
                         <th:block th:if="${start!=1}">
                             <a class="btn_paging prev screen_out paging"
-                               th:href="${communityReplies.first} ? '#' :@{/admin/test/community/reply/list(page=${communityReplies.number-1})}"></a>
+                               th:href="${communityReplies.first} ? '#' :@{/admin/community/reply/list(page=${communityReplies.number-1})}"></a>
                         </th:block>
                         <th:block th:unless="${start!=1}">
                             <a class="btn_paging prev screen_out paging" style="display: none"
-                               th:href="${communityReplies.first} ? '#' :@{/admin/test/community/reply/list(page=${communityReplies.number-1})}"></a>
+                               th:href="${communityReplies.first} ? '#' :@{/admin/community/reply/list(page=${communityReplies.number-1})}"></a>
                         </th:block>
                         <th:block th:each="num : ${#numbers.sequence(start, last)}">
-                            <a class="paging" th:text="${num}" th:href="@{/admin/test/community/reply/list(page=${num-1})}"></a>
+                            <a class="paging" th:text="${num}" th:href="@{/admin/community/reply/list(page=${num-1})}"></a>
                         </th:block>
                         <th:block th:if="${last != endPage}">
                             <a class="btn_paging next screen_out paging"
-                               th:href="${communityReplies.last} ? '#' : @{/admin/test/community/reply/list(page=${communityReplies.number+1})}"></a>
+                               th:href="${communityReplies.last} ? '#' : @{/admin/community/reply/list(page=${communityReplies.number+1})}"></a>
                         </th:block>
                         <th:block th:unless="${last != endPage}">
                             <a class="btn_paging next screen_out paging" style="display: none"
-                               th:href="${communityReplies.last} ? '#' : @{/admin/test/community/reply/list(page=${communityReplies.number+1})}"></a>
+                               th:href="${communityReplies.last} ? '#' : @{/admin/community/reply/list(page=${communityReplies.number+1})}"></a>
                         </th:block>
                     </th:block>
                 </span>
@@ -301,6 +287,7 @@
 
     });
 
+    // 모달창 관련
     const $deleteModal = $(".modalWrapOpen");
     const $alertModal = $(".modalWrapOpen2")
     const $deleteBtn = $(".companyDelete a");
@@ -330,6 +317,7 @@
         $deleteModal.show();
     }
 
+    // 현제 페이지 css
     pageActive();
 
     function pageActive() {
@@ -343,6 +331,7 @@
         });
     }
 
+    // 체크된 리스트 삭제
     $('#deleteCheck').click(function() {
         var communityReplyIds = "";
         $(".terms:checked").each(function() {
@@ -352,15 +341,31 @@
                 communityReplyIds = communityReplyIds + "," + $(this).next().attr('href');
             }
         });
-        location.href = "/admin/test/community/reply/deleteCheck" + "?communityReplyIds=" + communityReplyIds;
+        location.href = "/admin/community/reply/deleteCheck" + "?communityReplyIds=" + communityReplyIds;
     });
 
+    // 하나만 삭제
     $('.deleteBtn').click(function () {
         let communityReplyId = $(this).next().attr('href');
         modalUp();
         $('#deleteCheck').click(function () {
-            location.href = "/admin/test/community/reply/delete" + "?communityReplyId=" + communityReplyId;
+            location.href = "/admin/community/reply/delete" + "?communityReplyId=" + communityReplyId;
         })
+    })
+
+    // 자유 게시판으로 이동
+    $('.comment').click(function () {
+        location.href = "/community/community/"
+    })
+
+    // 자유 게시판으로 이동
+    $('.commentPost').click(function () {
+        location.href = "/community/community/"
+    })
+
+    // 유저 정보로 이동
+    $('.moveUserDetail').click(function () {
+        location.href = "/admin/user/detail?userId=" + $(this).closest('.content').find('.userId').attr('href');
     })
 
 </script>

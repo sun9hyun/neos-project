@@ -69,6 +69,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
     private final JPAQueryFactory jpaQueryFactory;
     private final StudyFollowRepository studyFollowRepository;
 
+    //    PK 로 유저 엔티티 찾기
     @Override
     public User findByUserId(Long userId) {
         User user = jpaQueryFactory.selectFrom(QUser.user)
@@ -78,6 +79,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return user;
     }
 
+    //    PK 로 유저 DTO 찾기
     @Override
     public UserDTO findByUserDTOId(Long userId) {
         UserDTO userDTO = jpaQueryFactory.select(new QUserDTO(
@@ -112,6 +114,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return userDTO;
     }
 
+    //    스터디 목록 페이징 처리
     @Override
     public Page<StudyDTO> findAllStudyPage(Pageable pageable) {
 
@@ -120,7 +123,8 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 study.studyTitle,
                 study.user.userNickName,
                 study.createdDate,
-                study.followList.size()
+                study.followList.size(),
+                study.user.userId
                 ))
                 .from(study)
                 .orderBy(study.studyId.desc())
@@ -133,7 +137,8 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 study.studyTitle,
                 study.user.userNickName,
                 study.createdDate,
-                study.followList.size()
+                study.followList.size(),
+                study.user.userId
         ))
                 .from(study)
                 .fetch().size();
@@ -141,6 +146,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return new PageImpl<>(studyDTOS,pageable,total);
     }
 
+    //    모든 스터디 정보 스터디 DTO 로 가져오기
     @Override
     public List<StudyDTO> findAllStudy() {
         List<StudyDTO> studyDTOS = jpaQueryFactory.select(new QStudyDTO(
@@ -148,7 +154,8 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 study.studyTitle,
                 study.user.userNickName,
                 study.createdDate,
-                study.followList.size()
+                study.followList.size(),
+                study.user.userId
                 ))
                 .from(study)
                 .orderBy(study.studyId.desc())
@@ -157,6 +164,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return studyDTOS;
     }
 
+    //    자유 게시판 목록 페이징 처리
     @Override
     public Page<CommunityDTO> findAllCommunityPage(Pageable pageable) {
 
@@ -165,7 +173,8 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 community.communityTitle,
                 community.communityLikeCount,
                 community.user.userNickName,
-                community.createdDate
+                community.createdDate,
+                community.user.userId
                  ))
                 .from(community)
                 .orderBy(community.communityId.desc())
@@ -178,7 +187,8 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 community.communityTitle,
                 community.communityLikeCount,
                 community.user.userNickName,
-                community.createdDate
+                community.createdDate,
+                community.user.userId
                 ))
                 .from(community)
                 .fetch().size();
@@ -186,6 +196,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return new PageImpl<>(communityDTOS,pageable,total);
     }
 
+    //    모든 자유 게시판 정보 자유 게시판 DTO 로 가져오기
     @Override
     public List<CommunityDTO> findAllCommunity() {
         List<CommunityDTO> communityDTOS = jpaQueryFactory.select(new QCommunityDTO(
@@ -193,7 +204,8 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 community.communityTitle,
                 community.communityLikeCount,
                 community.user.userNickName,
-                community.createdDate
+                community.createdDate,
+                community.user.userId
         ))
                 .from(community)
                 .orderBy(community.communityId.desc())
@@ -202,6 +214,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return communityDTOS;
     }
 
+    //    고민 상담 게시판 목록 페이징 처리
     @Override
     public Page<CounselingDTO> findAllCounselingPage(Pageable pageable) {
 
@@ -209,7 +222,8 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 counseling.counselingId,
                 counseling.counselingTitle,
                 counseling.user.userNickName,
-                counseling.createdDate
+                counseling.createdDate,
+                counseling.user.userId
                 ))
                 .from(counseling)
                 .orderBy(counseling.counselingId.desc())
@@ -221,7 +235,8 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 counseling.counselingId,
                 counseling.counselingTitle,
                 counseling.user.userNickName,
-                counseling.createdDate
+                counseling.createdDate,
+                counseling.user.userId
         ))
                 .from(counseling)
                 .fetch().size();
@@ -229,6 +244,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return new PageImpl<>(counselingDTOS,pageable,total);
     }
 
+    //    모든 고민 상담 게시판 정보 고민 상담 DTO 로 가져오기
     @Override
     public List<CounselingDTO> findAllCounseling() {
 
@@ -236,7 +252,8 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 counseling.counselingId,
                 counseling.counselingTitle,
                 counseling.user.userNickName,
-                counseling.createdDate
+                counseling.createdDate,
+                counseling.user.userId
                 ))
                 .from(counseling)
                 .orderBy(counseling.counselingId.desc())
@@ -245,13 +262,15 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return counselingDTOS;
     }
 
+    //    자료 상점 목록 페이징 처리
     @Override
     public Page<StoreDTO> findAllStorePage(Pageable pageable) {
         List<StoreDTO> storeDTOS = jpaQueryFactory.select(new QStoreDTO(
                 store.storeId,
                 store.storeTitle,
                 store.user.userNickName,
-                store.createdDate
+                store.createdDate,
+                store.user.userId
                 ))
                 .from(store)
                 .orderBy(store.storeId.desc())
@@ -263,7 +282,8 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 store.storeId,
                 store.storeTitle,
                 store.user.userNickName,
-                store.createdDate
+                store.createdDate,
+                store.user.userId
         ))
                 .from(store)
                 .fetch().size();
@@ -271,19 +291,22 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return new PageImpl<>(storeDTOS,pageable,total);
     }
 
+    //    모든 자료 상점 정보 자료 상점 DTO 로 가져오기
     @Override
     public List<StoreDTO> findAllStore() {
         List<StoreDTO> storeDTOS = jpaQueryFactory.select(new QStoreDTO(
                 store.storeId,
                 store.storeTitle,
                 store.user.userNickName,
-                store.createdDate
+                store.createdDate,
+                store.user.userId
         ))
                 .from(store)
                 .fetch();
         return storeDTOS;
     }
 
+    //    PK 로 해당 자료 상점의 첨부파일 DTO 로 가져오기
     @Override
     public List<StoreFlieDTO> findByStoreId(Long storeId) {
             return jpaQueryFactory.select(new QStoreFlieDTO(
@@ -297,6 +320,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                     .fetch();
     }
 
+    //    스터디 댓글 목록 페이징 처리
     @Override
     public Page<StudyFeedReplyDTO> findAllStudyReplyPage(Pageable pageable) {
         List<StudyFeedReplyDTO> storeDTOS = jpaQueryFactory.select(new QStudyFeedReplyDTO(
@@ -304,7 +328,9 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 studyFeedReply.studyFeedReplyContent,
                 studyFeedReply.studyFeedReplyWriter.userNickName,
                 studyFeedReply.createdDate,
-                studyFeedReply.studyFeed.study.studyTitle
+                studyFeedReply.studyFeed.study.studyTitle,
+                studyFeedReply.studyFeedReplyWriter.userId,
+                studyFeedReply.studyFeed.study.studyId
                 ))
                 .from(studyFeedReply)
                 .orderBy(studyFeedReply.studyFeedReplyId.desc())
@@ -317,7 +343,9 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 studyFeedReply.studyFeedReplyContent,
                 studyFeedReply.studyFeedReplyWriter.userNickName,
                 studyFeedReply.createdDate,
-                studyFeedReply.studyFeed.study.studyTitle
+                studyFeedReply.studyFeed.study.studyTitle,
+                studyFeedReply.studyFeedReplyWriter.userId,
+                studyFeedReply.studyFeed.study.studyId
                 ))
                 .from(studyFeedReply)
                 .fetch().size();
@@ -325,6 +353,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return new PageImpl<>(storeDTOS,pageable,total);
     }
 
+    //    모든 스터디 댓글 DTO 로 가져오기
     @Override
     public List<StudyFeedReplyDTO> findAllStudyReply() {
         List<StudyFeedReplyDTO> studyFeedReplyDTOS = jpaQueryFactory.select(new QStudyFeedReplyDTO(
@@ -332,7 +361,9 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 studyFeedReply.studyFeedReplyContent,
                 studyFeedReply.studyFeedReplyWriter.userNickName,
                 studyFeedReply.createdDate,
-                studyFeedReply.studyFeed.study.studyTitle
+                studyFeedReply.studyFeed.study.studyTitle,
+                studyFeedReply.studyFeedReplyWriter.userId,
+                studyFeedReply.studyFeed.study.studyId
                 ))
                 .from(studyFeedReply)
                 .fetch();
@@ -340,6 +371,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return studyFeedReplyDTOS;
     }
 
+    //    자유 게시판 댓글 목록 페이징 처리
     @Override
     public Page<CommunityReplyDTO> findAllCommunityReplyPage(Pageable pageable) {
         List<CommunityReplyDTO> communityReplyDTOS = jpaQueryFactory.select(new QCommunityReplyDTO(
@@ -347,7 +379,9 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 communityReply.communityReplyContent,
                 communityReply.user.userNickName,
                 communityReply.community.communityTitle,
-                communityReply.createdDate
+                communityReply.createdDate,
+                communityReply.user.userId,
+                communityReply.community.communityId
                 ))
                 .from(communityReply)
                 .orderBy(communityReply.communityReplyId.desc())
@@ -360,7 +394,9 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 communityReply.communityReplyContent,
                 communityReply.user.userNickName,
                 communityReply.community.communityTitle,
-                communityReply.createdDate
+                communityReply.createdDate,
+                communityReply.user.userId,
+                communityReply.community.communityId
         ))
                 .from(communityReply)
                 .fetch().size();
@@ -368,6 +404,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return new PageImpl<>(communityReplyDTOS,pageable,total);
     }
 
+    //    모든 사유 게시판 댓글 DTO 로 가져오기
     @Override
     public List<CommunityReplyDTO> findAllCommunityReply() {
         List<CommunityReplyDTO> communityReplyDTOS = jpaQueryFactory.select(new QCommunityReplyDTO(
@@ -375,13 +412,16 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 communityReply.communityReplyContent,
                 communityReply.user.userNickName,
                 communityReply.community.communityTitle,
-                communityReply.createdDate
+                communityReply.createdDate,
+                communityReply.user.userId,
+                communityReply.community.communityId
         ))
                 .from(communityReply)
                 .fetch();
         return communityReplyDTOS;
     }
 
+    //    고민 상담 댓글 목록 페이징 처리
     @Override
     public Page<CounselingReplyDTO> findAllCounselingReplyPage(Pageable pageable) {
         List<CounselingReplyDTO> counselingReplyDTOS = jpaQueryFactory.select(new QCounselingReplyDTO(
@@ -389,7 +429,9 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 counselingReply.counselingReplyContent,
                 counselingReply.user.userNickName,
                 counselingReply.counseling.counselingTitle,
-                counselingReply.createdDate
+                counselingReply.createdDate,
+                counselingReply.user.userId,
+                counselingReply.counseling.counselingId
                 ))
                 .from(counselingReply)
                 .orderBy(counselingReply.counselingReplyId.desc())
@@ -402,7 +444,9 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 counselingReply.counselingReplyContent,
                 counselingReply.user.userNickName,
                 counselingReply.counseling.counselingTitle,
-                counselingReply.createdDate
+                counselingReply.createdDate,
+                counselingReply.user.userId,
+                counselingReply.counseling.counselingId
         ))
                 .from(counselingReply)
                 .fetch().size();
@@ -411,6 +455,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
 
     }
 
+    //    모든 고민 상담 게시판 댓글 DTO 로 가져오기
     @Override
     public List<CounselingReplyDTO> findAllCounselingReply() {
         List<CounselingReplyDTO> counselingReplyDTOS = jpaQueryFactory.select(new QCounselingReplyDTO(
@@ -418,7 +463,9 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 counselingReply.counselingReplyContent,
                 counselingReply.user.userNickName,
                 counselingReply.counseling.counselingTitle,
-                counselingReply.createdDate
+                counselingReply.createdDate,
+                counselingReply.user.userId,
+                counselingReply.counseling.counselingId
         ))
                 .from(counselingReply)
                 .fetch();
@@ -426,6 +473,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return counselingReplyDTOS;
     }
 
+    //    자료 상점 댓글 목록 페이징 처리
     @Override
     public Page<StoreReplyDTO> findAllStoreReplyPage(Pageable pageable) {
         List<StoreReplyDTO> storeReplyDTOS = jpaQueryFactory.select(new QStoreReplyDTO(
@@ -433,7 +481,9 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 storeReply.storeReplyContent,
                 storeReply.user.userNickName,
                 storeReply.store.storeTitle,
-                storeReply.createdDate
+                storeReply.createdDate,
+                storeReply.user.userId,
+                storeReply.store.storeId
         ))
                 .from(storeReply)
                 .orderBy(storeReply.storeReplyId.desc())
@@ -446,7 +496,9 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 storeReply.storeReplyContent,
                 storeReply.user.userNickName,
                 storeReply.store.storeTitle,
-                storeReply.createdDate
+                storeReply.createdDate,
+                storeReply.user.userId,
+                storeReply.store.storeId
         ))
                 .from(storeReply)
                 .fetch().size();
@@ -454,6 +506,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return new PageImpl<>(storeReplyDTOS,pageable,total);
     }
 
+    //    모든 자료 상점 게시판 댓글 DTO 로 가져오기
     @Override
     public List<StoreReplyDTO> findAllStoreReply() {
 
@@ -462,14 +515,16 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 storeReply.storeReplyContent,
                 storeReply.user.userNickName,
                 storeReply.store.storeTitle,
-                storeReply.createdDate
+                storeReply.createdDate,
+                storeReply.user.userId,
+                storeReply.store.storeId
         ))
                 .from(storeReply)
                 .fetch();
         return storeReplyDTOS;
     }
 
-
+    //    문의하기 목록 페이징 처리
     @Override
     public Page<InquiryDTO> findAllInquiryPage(Pageable pageable) {
         List<InquiryDTO> inquiryDTOS = jpaQueryFactory.select(new QInquiryDTO(
@@ -478,12 +533,13 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 inquiry.inquiryReply,
                 inquiry.inquiryStatus,
                 inquiry.user.userNickName,
-                inquiry.createdDate
+                inquiry.createdDate,
+                inquiry.user.userId
         ))
                 .from(inquiry)
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
-                .orderBy(inquiry.inquiryStatus.desc())
+                .orderBy(inquiry.inquiryStatus.desc(), inquiry.createdDate.desc())
                 .fetch();
 
         long total = jpaQueryFactory.select(new QInquiryDTO(
@@ -492,7 +548,8 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 inquiry.inquiryReply,
                 inquiry.inquiryStatus,
                 inquiry.user.userNickName,
-                inquiry.createdDate
+                inquiry.createdDate,
+                inquiry.user.userId
         ))
                 .from(inquiry)
                 .fetch().size();
@@ -500,6 +557,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return new PageImpl<>(inquiryDTOS,pageable,total);
     }
 
+    //    모든 문의 하기 DTO 로 가져오기
     @Override
     public List<InquiryDTO> findAllInquiry() {
         List<InquiryDTO> inquiryDTOS = jpaQueryFactory.select(new QInquiryDTO(
@@ -508,7 +566,8 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
                 inquiry.inquiryReply,
                 inquiry.inquiryStatus,
                 inquiry.user.userNickName,
-                inquiry.createdDate
+                inquiry.createdDate,
+                inquiry.user.userId
         ))
                 .from(inquiry)
                 .fetch();
@@ -516,6 +575,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return  inquiryDTOS;
     }
 
+    //    PK 로 문의하기 DTO 로 가져오기
     @Override
     public InquiryDTO findByInquiryId(Long inquiryId) {
         InquiryDTO inquiryDTO = jpaQueryFactory.select(new QInquiryDTO(
@@ -534,7 +594,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
     }
 
 
-
+    //    관리자 메인으로 뿌려 줄 유저 DTO 로 뿌려주기
     @Override
     public List<UserDTO> findMainUser() {
         List<UserDTO> userDTOS = jpaQueryFactory.select(new QUserDTO(
@@ -550,6 +610,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return userDTOS;
     }
 
+    //    관리자 메인으로 뿌려 줄 스터디 DTO 로 뿌려주
     @Override
     public List<StudyDTO> findMainStudy() {
         List<StudyDTO> studyDTOS = jpaQueryFactory.select(new QStudyDTO(
@@ -566,6 +627,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return studyDTOS;
     }
 
+    //    관리자 메인으로 뿌려 줄 문의 DTO 로 뿌려주기
     @Override
     public List<InquiryDTO> findMainInquiry() {
         List<InquiryDTO> inquiryDTOS = jpaQueryFactory.select(new QInquiryDTO(
@@ -584,6 +646,7 @@ public class AdminCustomRepositoryImpl implements AdminCustomRepository {
         return inquiryDTOS;
     }
 
+    //    관리자 메인으로 뿌려 줄 대학교 DTO 로 뿌려주기
     @Override
     public List<CollegeDTO> findMainCollege() {
         List<CollegeDTO> collegeDTOS = jpaQueryFactory.select(new QCollegeDTO(

@@ -49,6 +49,7 @@ public class AdminRestController {
     private final InquiryRepository inquiryRepository;
     private final AlarmService alarmService;
 
+//    대학 추가 시 로고 사진 업로드
     @PostMapping("college-upload")
     public String updateProfileImage(@RequestParam MultipartFile profileImageFile) {
         log.info("이미지"+profileImageFile.toString());
@@ -77,6 +78,7 @@ public class AdminRestController {
         return profileUploadForder + "\\" + profileImageName;
     }
 
+//    배너 등록시 배너 사진 업로드
     @PostMapping("banner-upload")
     public String updateBannerImage(@RequestPart("bannerImageFile") MultipartFile bannerImageFile) {
         log.info("이미지"+bannerImageFile.toString());
@@ -105,26 +107,28 @@ public class AdminRestController {
         return profileUploadForder + "\\" + profileImageName;
     }
 
-
+//    자료 상점 파일들 보기
     @GetMapping("show-file/{storeId}")
     public List<StoreFlieDTO> showFile(@PathVariable Long storeId){
         List<StoreFlieDTO> storeFiles = adminService.findStoreFileByStoreId(storeId);
         return storeFiles;
     }
 
-
+//    문의를 올린 해당 유저 정보 가져오기
     @GetMapping("inquiry-reply/{inquiryId}")
     public InquiryDTO showReply(@PathVariable Long inquiryId){
         InquiryDTO inquiryDTO = adminService.findByInquiryId(inquiryId);
         return inquiryDTO;
     }
 
+//    문의하기 전체 리스트 가져오기
     @GetMapping("inquiry/list")
     public Page<InquiryDTO> showInquiry(@PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<InquiryDTO> inquiryDTOS = adminService.findInquiryPage(pageable);
         return inquiryDTOS;
     }
 
+    // 문의하기 답글 업데이트
     @PostMapping("inquiry-reply/save")
     @Transactional
     public String saveReply(InquiryDTO inquiryDTO, Long inquiryId){

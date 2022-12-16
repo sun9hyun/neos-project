@@ -73,6 +73,17 @@ public class StoreReplyDTO {
         this.createdDate = createdDate;
     }
 
+    @QueryProjection
+    public StoreReplyDTO(Long storeReplyId, String storeReplyContent, String userNickName, String storeTitle, LocalDateTime createdDate, Long userId, Long storeId) {
+        this.storeReplyId = storeReplyId;
+        this.storeReplyContent = storeReplyContent;
+        this.userNickName = userNickName;
+        this.storeTitle = storeTitle;
+        this.createdDate = createdDate;
+        this.userId = userId;
+        this.storeId = storeId;
+    }
+
 
 
 

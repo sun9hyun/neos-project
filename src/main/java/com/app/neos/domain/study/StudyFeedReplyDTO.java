@@ -25,6 +25,9 @@ public class StudyFeedReplyDTO {
     private LocalDateTime createdDate2;
     private String studyTitle;
 
+    private Long userId;
+    private Long studyId;
+
     public StudyFeedReply toEntity(){
         return StudyFeedReply.builder()
                 .studyFeedReplyContent(studyFeedReplyContent)
@@ -46,5 +49,16 @@ public class StudyFeedReplyDTO {
         this.userNickName = userNickName;
         this.createdDate2 = createdDate2;
         this.studyTitle = studyTitle;
+    }
+
+    @QueryProjection
+    public StudyFeedReplyDTO(Long studyFeedReplyId, String studyFeedReplyContent, String userNickName, LocalDateTime createdDate2, String studyTitle, Long userId, Long studyId) {
+        this.studyFeedReplyId = studyFeedReplyId;
+        this.studyFeedReplyContent = studyFeedReplyContent;
+        this.userNickName = userNickName;
+        this.createdDate2 = createdDate2;
+        this.studyTitle = studyTitle;
+        this.userId = userId;
+        this.studyId = studyId;
     }
 }

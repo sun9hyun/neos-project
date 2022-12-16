@@ -2,6 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
+    <title>NEOS | 자료 상점 댓글 관리</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -191,6 +192,8 @@
                                                 <tbody>
                                                 <th:block th:each="storeReply:${storeReplies}" th:object="${storeReply}">
                                                 <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
+                                                    <input type="hidden" class="storeId" th:href="*{storeId}">
+                                                    <input type="hidden" class="userId" th:href="*{userId}">
                                                     <li class="check">
                                                         <div class="checkbox checkbox-styled no-margin">
                                                             <label>
@@ -201,9 +204,9 @@
                                                         </div>
                                                     </li>
 
-                                                    <li class="commentNick"><a th:text="*{userNickName}"></a></li><!-- 작성사 상세 페이지 이동 -->
-                                                    <li class="comment" th:text="*{storeReplyContent}"></li>
-                                                    <li class="commentPost"><a>[자유상점]&nbsp; <a th:text="*{storeTitle}"></a></a></li> <!-- 작성한 게시글 페이지 이동 -->
+                                                    <li class="commentNick moveUserDetail"><a href="#" th:text="*{userNickName}"></a></li><!-- 작성사 상세 페이지 이동 -->
+                                                    <li class="comment" style="cursor: pointer" th:text="*{storeReplyContent}"></li>
+                                                    <li class="commentPost"><a href="#">[자유상점]&nbsp; <a href="#" th:text="*{storeTitle}"></a></a></li> <!-- 작성한 게시글 페이지 이동 -->
                                                     <li class="commentDate" th:text="*{#temporals.format(createdDate, 'yyyy.MM.dd HH:mm')}"></li>
 
                                                     <li class="action">
@@ -250,22 +253,22 @@
                                last=(${start + 4 < storeReplies.totalPages ? start + 4 : storeReplies.totalPages})" th:if="${total != 0}">
                         <th:block th:if="${start!=1}">
                             <a class="btn_paging prev screen_out paging"
-                               th:href="${storeReplies.first} ? '#' :@{/admin/test/store/reply/list(page=${storeReplies.number-1})}"></a>
+                               th:href="${storeReplies.first} ? '#' :@{/admin/store/reply/list(page=${storeReplies.number-1})}"></a>
                         </th:block>
                         <th:block th:unless="${start!=1}">
                             <a class="btn_paging prev screen_out paging" style="display: none"
-                               th:href="${storeReplies.first} ? '#' :@{/admin/test/store/reply/list(page=${storeReplies.number-1})}"></a>
+                               th:href="${storeReplies.first} ? '#' :@{/admin/store/reply/list(page=${storeReplies.number-1})}"></a>
                         </th:block>
                         <th:block th:each="num : ${#numbers.sequence(start, last)}">
-                            <a class="paging" th:text="${num}" th:href="@{/admin/test/store/reply/list(page=${num-1})}"></a>
+                            <a class="paging" th:text="${num}" th:href="@{/admin/store/reply/list(page=${num-1})}"></a>
                         </th:block>
                         <th:block th:if="${last != endPage}">
                             <a class="btn_paging next screen_out paging"
-                               th:href="${storeReplies.last} ? '#' : @{/admin/test/store/reply/list(page=${storeReplies.number+1})}"></a>
+                               th:href="${storeReplies.last} ? '#' : @{/admin/store/reply/list(page=${storeReplies.number+1})}"></a>
                         storeReplies
                         <th:block th:unless="${last != endPage}">
                             <a class="btn_paging next screen_out paging" style="display: none"
-                               th:href="${storeReplies.last} ? '#' : @{/admin/test/store/reply/list(page=${storeReplies.number+1})}"></a>
+                               th:href="${storeReplies.last} ? '#' : @{/admin/store/reply/list(page=${storeReplies.number+1})}"></a>
                         </th:block>
                     </th:block>
                 </span>
@@ -330,6 +333,7 @@
         $deleteModal.show();
     }
 
+    // 현재 페이지 css
     pageActive();
 
     function pageActive() {
@@ -343,6 +347,7 @@
         });
     }
 
+    // 체크된 리스트 삭제
     $('#deleteCheck').click(function() {
         var storeReplyIds = "";
         $(".terms:checked").each(function() {
@@ -352,15 +357,31 @@
                 storeReplyIds = storeReplyIds + "," + $(this).next().attr('href');
             }
         });
-        location.href = "/admin/test/store/reply/deleteCheck" + "?storeReplyIds=" + storeReplyIds;
+        location.href = "/admin/store/reply/deleteCheck" + "?storeReplyIds=" + storeReplyIds;
     });
 
+    // 하나만 삭제
     $('.deleteBtn').click(function () {
         let storeReplyId = $(this).next().attr('href');
         modalUp();
         $('#deleteCheck').click(function () {
-            location.href = "/admin/test/store/reply/delete" + "?storeReplyId=" + storeReplyId;
+            location.href = "/admin/store/reply/delete" + "?storeReplyId=" + storeReplyId;
         })
+    })
+
+    // 자료 상점 상세 보기로 이동
+    $('.comment').click(function () {
+        location.href = "/store/store-detail?storeId=" + $(this).closest('.content').find('.storeId').attr('href');
+    })
+
+    // 자료 상점 상세 보기로 이동
+    $('.commentPost').click(function () {
+        location.href = "/store/store-detail?storeId=" + $(this).closest('.content').find('.storeId').attr('href');
+    })
+
+    // 유저 정보 보기로 이동
+    $('.moveUserDetail').click(function () {
+        location.href = "/admin/user/detail?userId=" + $(this).closest('.content').find('.userId').attr('href');
     })
 
 

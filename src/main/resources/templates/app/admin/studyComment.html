@@ -2,6 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
+    <title>NEOS | 스터디 댓글 관리</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -129,22 +130,6 @@
                                     <div class="card">
                                         <div class="card-body no-padding">
                                             <div class="company-search" id="companySearch">
-<!--                                                <div class="form-group">-->
-<!--                                                    <a class="icon_set left" href="javascript:;" onclick="searchUser()">-->
-<!--                                                        <i class="btl bt-search"></i>-->
-<!--                                                    </a>-->
-
-<!--                                                    <div id="prefetch">-->
-<!--															<span class="twitter-typeahead" >-->
-<!--																<input type="hidden" name="q" value="YToxOntzOjEwOiJqb2luX29yZGVyIjtzOjQ6ImRlc2MiO30=" class="form-control typeahead">-->
-<!--																<input type="text" class="form-control typeahead tt-input searchBar" id="keyword_search1" name="keyword" placeholder="검색" autocomplete="off" spellcheck="false" dir="auto" value="">-->
-<!--																<pre class="bar" aria-hidden="true"></pre>-->
-<!--																<div class="tt-menu">-->
-<!--																	<div class="tt-dataset tt-dataset-users"></div>-->
-<!--																</div>-->
-<!--															</span>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -191,6 +176,8 @@
                                                 <tbody>
                                                 <th:block th:each="studyFeedReply:${studyFeedReplies}" th:object="${studyFeedReply}">
                                                 <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">
+                                                    <input type="hidden" class="studyId" th:href="*{studyId}">
+                                                    <input type="hidden" class="userId" th:href="*{userId}">
                                                     <li class="check">
                                                         <div class="checkbox checkbox-styled no-margin">
                                                             <label>
@@ -201,9 +188,9 @@
                                                         </div>
                                                     </li>
 
-                                                    <li class="commentNick"><a th:text="*{userNickName}"></a></li><!-- 작성사 상세 페이지 이동 -->
-                                                    <li class="comment" th:text="*{studyFeedReplyContent}"></li>
-                                                    <li class="commentPost"><a>[스터디] &nbsp;<a th:text="*{studyTitle}"></a> </a></li> <!-- 작성한 게시글 페이지 이동 -->
+                                                    <li class="commentNick moveUserDetail"><a href="#" th:text="*{userNickName}"></a></li><!-- 작성사 상세 페이지 이동 -->
+                                                    <li class="comment" style="cursor: pointer" th:text="*{studyFeedReplyContent}"></li>
+                                                    <li class="commentPost"><a href="#">[스터디] &nbsp;<a href="#" th:text="*{studyTitle}"></a> </a></li> <!-- 작성한 게시글 페이지 이동 -->
                                                     <li class="commentDate" th:text="*{#temporals.format(createdDate2, 'yyyy.MM.dd HH:mm')}"></li>
 
                                                     <li class="action">
@@ -249,22 +236,22 @@
                                last=(${start + 4 < studyFeedReplies.totalPages ? start + 4 : studyFeedReplies.totalPages})" th:if="${total != 0}">
                         <th:block th:if="${start!=1}">
                             <a class="btn_paging prev screen_out paging"
-                               th:href="${studyFeedReplies.first} ? '#' :@{/admin/test/study/reply/list(page=${studyFeedReplies.number-1})}"></a>
+                               th:href="${studyFeedReplies.first} ? '#' :@{/admin/study/reply/list(page=${studyFeedReplies.number-1})}"></a>
                         </th:block>
                         <th:block th:unless="${start!=1}">
                             <a class="btn_paging prev screen_out paging" style="display: none"
-                               th:href="${studyFeedReplies.first} ? '#' :@{/admin/test/study/reply/list(page=${studyFeedReplies.number-1})}"></a>
+                               th:href="${studyFeedReplies.first} ? '#' :@{/admin/study/reply/list(page=${studyFeedReplies.number-1})}"></a>
                         </th:block>
                         <th:block th:each="num : ${#numbers.sequence(start, last)}">
-                            <a class="paging" th:text="${num}" th:href="@{/admin/test/study/reply/list(page=${num-1})}"></a>
+                            <a class="paging" th:text="${num}" th:href="@{/admin/study/reply/list(page=${num-1})}"></a>
                         </th:block>
                         <th:block th:if="${last != endPage}">
                             <a class="btn_paging next screen_out paging"
-                               th:href="${studyFeedReplies.last} ? '#' : @{/admin/test/study/reply/list(page=${studyFeedReplies.number+1})}"></a>
+                               th:href="${studyFeedReplies.last} ? '#' : @{/admin/study/reply/list(page=${studyFeedReplies.number+1})}"></a>
                         </th:block>
                         <th:block th:unless="${last != endPage}">
                             <a class="btn_paging next screen_out paging" style="display: none"
-                               th:href="${studyFeedReplies.last} ? '#' : @{/admin/test/study/reply/list(page=${studyFeedReplies.number+1})}"></a>
+                               th:href="${studyFeedReplies.last} ? '#' : @{/admin/study/reply/list(page=${studyFeedReplies.number+1})}"></a>
                         </th:block>
                     </th:block>
                 </span>
@@ -300,6 +287,7 @@
 
     });
 
+    // 모달 관련
     const $deleteModal = $(".modalWrapOpen");
     const $alertModal = $(".modalWrapOpen2")
     const $deleteBtn = $(".companyDelete a");
@@ -329,7 +317,7 @@
         $deleteModal.show();
     }
 
-
+    // 현제 페이지 css
     pageActive();
 
     function pageActive() {
@@ -343,6 +331,7 @@
         });
     }
 
+    // 체크된 리스트 삭제
     $('#deleteCheck').click(function() {
         var studyFeedReplyIds = "";
         $(".terms:checked").each(function() {
@@ -352,15 +341,31 @@
                 studyFeedReplyIds = studyFeedReplyIds + "," + $(this).next().attr('href');
             }
         });
-        location.href = "/admin/test/study/reply/deleteCheck" + "?studyFeedReplyIds=" + studyFeedReplyIds;
+        location.href = "/admin/study/reply/deleteCheck" + "?studyFeedReplyIds=" + studyFeedReplyIds;
     });
 
+    // 하나만 삭제
     $('.deleteBtn').click(function () {
         let studyFeedReplyId = $(this).next().attr('href');
         modalUp();
         $('#deleteCheck').click(function () {
-            location.href = "/admin/test/study/reply/delete" + "?studyFeedReplyId=" + studyFeedReplyId;
+            location.href = "/admin/study/reply/delete" + "?studyFeedReplyId=" + studyFeedReplyId;
         })
+    })
+
+    // 스터디 상세보기로 이동
+    $('.comment').click(function () {
+        location.href = "/study/list/" + $(this).closest('.content').find('.studyId').attr('href');
+    })
+
+    // 스터디 상세보기로 이동
+    $('.commentPost').click(function () {
+        location.href = "/study/list/" + $(this).closest('.content').find('.studyId').attr('href');
+    })
+
+    // 유저 정보 보기로 이동
+    $('.moveUserDetail').click(function () {
+        location.href = "/admin/user/detail?userId=" + $(this).closest('.content').find('.userId').attr('href');
     })
 </script>
 </html>

@@ -90,13 +90,23 @@ public class User extends Period {
 
     //    대학교
 
+    public void updateNeosPoint(int point){
+        Integer userNeosPoint = this.userNeosPoint;
+       if(point < 0){
+           userNeosPoint = 0;
+       }else{
+           userNeosPoint = point;
+       }
+        this.userNeosPoint = userNeosPoint;
+    }
+
     public void updateNeosPower(int power){
         UserNeosPower userNeosPower = this.userNeosPower;
-       if(power < 0){
-           userNeosPower.setUserNeosPowerAbility(0);
-       }else{
-           userNeosPower.setUserNeosPowerAbility(power);
-       }
+        if(power < 0){
+            userNeosPower.setUserNeosPowerAbility(0);
+        }else{
+            userNeosPower.setUserNeosPowerAbility(power);
+        }
         this.userNeosPower = userNeosPower;
     }
 

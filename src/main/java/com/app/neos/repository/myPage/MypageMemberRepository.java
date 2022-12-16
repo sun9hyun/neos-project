@@ -1,8 +1,8 @@
 package com.app.neos.repository.myPage;
 
 import com.app.neos.entity.neos.NeosPower;
-import com.app.neos.entity.store.Store;
+import com.app.neos.entity.study.StudyMember;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MypageNeosPowerRepository extends JpaRepository<NeosPower, Long> {
+public interface MypageMemberRepository extends JpaRepository<StudyMember, Long> {
 }

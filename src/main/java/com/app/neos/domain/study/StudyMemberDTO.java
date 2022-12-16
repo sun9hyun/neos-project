@@ -20,9 +20,11 @@ public class StudyMemberDTO {
     private Long studyMemberId;
     private StudyMemberStatus studyMemberStatus;
     private UserDTO userDTO;
+    private Long userId;
     private Long studyId;
     private LocalDate creatDate;
     private LocalDateTime createdTime;
+
 
     public StudyMember toEntity(){
         return StudyMember.builder()
@@ -37,6 +39,14 @@ public class StudyMemberDTO {
         this.studyMemberId = studyMemberId;
         this.studyMemberStatus = studyMemberStatus;
         this.userDTO = userDTO;
+        this.studyId = studyId;
+    }
+
+    @QueryProjection
+    public StudyMemberDTO(Long studyMemberId, StudyMemberStatus studyMemberStatus, Long userId, Long studyId) {
+        this.studyMemberId = studyMemberId;
+        this.studyMemberStatus = studyMemberStatus;
+        this.userId = userId;
         this.studyId = studyId;
     }
 }

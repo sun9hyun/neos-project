@@ -15,6 +15,28 @@
     <link rel="stylesheet" href="/css/fix/loginHeader.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
+<style>
+    .projectGridWrap .projectBottomInfo .txtWrap .studyCategory {
+        display: inline !important;
+        font-size: 12px;
+        line-height: 12px;
+        height: 12px;
+        color: #b1b1b1;
+        margin-top: 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+    }
+
+    .favoriteTab .projectContentWrap.active {
+        /*display: flex;*/
+        display: -webkit-box;
+        overflow-x: auto;
+        margin-bottom: 25px;
+    }
+
+</style>
 <body>
 <header th:replace="/app/fix/header.html :: header"></header>
 <section class="mypage">
@@ -53,7 +75,7 @@
     <!--  정보  -->
     <div class="myTabContents myProfileTab active">
         <div class="myProfileWrap">
-            <form action="/my-detail/" >
+            <form style="width: 100%" action="/my-detail/" >
                 <div class="left">
                     <div class="profileImg">
                         <img class="userImg"  src="data:image/;base64" alt="user_image">
@@ -256,59 +278,67 @@
     <!--  스터디  -->
     <div class="myTabContents myProjectTab ">
         <h3 class="tabCommonTit">지원 현황</h3>
-        <div class="noProject"><p>지원한 모임이 없습니다.</p></div>
+        <div class="joinStudy"></div>
+<!--        <div class="noProject"><p>지원한 모임이 없습니다.</p></div>-->
 
-        <h3 class="tabCommonTit">진행 현황</h3>
-        <div class="noProject"><p>진행 중인 모임이 없습니다.</p></div>
-        <div class="projectGridWrap">
-            <div class="projectTopInfo">
-                <div class="top">
-                    <div class="badgeWrap">
-                        <div class="topBadge purple">
-                            <img loading="lazy" src="https://letspl.me/assets/images/ic-badge_project_story.png">
-                        </div>
-                        <div class="badge black">
-                            <!-- <h2>사이드프로젝트</h2> -->
-                            <img src="/images/study/inha.png">
-                        </div>
-                    </div>
-                    <div class="favorite listFavorite off "></div>
-                </div>
-                <div class="projectThumb"><img loading="lazy"
-                                               src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                               alt="커뮤니티 연계 교통 정보 어플"></div>
-            </div>
-            <div class="projectBottomInfo">
-                <div class="txtWrap projectWrap">
-                    <h3 class="category">전공과목</h3>
-                    <h2 class="tit">공업수학_라플라스 변환</h2>
-                    <!--                                 <div class="iconWrap2"><img loading="lazy"
-                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                            alt="Figma"></div> -->
+        <h3 class="tabCommonTit" style="margin-top: 30px">진행 현황</h3>
+        <div class="proceedingStudy" style="display: flex; margin-bottom: 15px;">
 
-                </div>
-            </div>
-            <div class="projectInfo2">
-                <div class="middleWrap">
-                    <div class="left">
-                        <div class="heartCount"><img loading="lazy"
-                                                     src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                     alt="구독자 수"><span>3</span></div>
-                    </div>
-                    <div class="right">
-                        <!-- <p><span> 44</span><span> (-) </span></p> -->
-                    </div>
-                </div>
-                <div class="bottomWrap">
-                    <div class="gatherTxt">
-                        <div><span>모집완료</span><span>0/4</span></div>
-                    </div>
-                </div>
-            </div>
         </div>
+<!--        <div class="noProject"><p>진행 중인 모임이 없습니다.</p></div>-->
+<!--        <div class="projectGridWrap">-->
+<!--            <div class="projectTopInfo">-->
+<!--                <div class="top">-->
+<!--                    <div class="badgeWrap">-->
+<!--                        <div class="topBadge purple">-->
+<!--                            <img loading="lazy" src="https://letspl.me/assets/images/ic-badge_project_story.png">-->
+<!--                        </div>-->
+<!--                        <div class="badge black">-->
+<!--                            &lt;!&ndash; <h2>사이드프로젝트</h2> &ndash;&gt;-->
+<!--                            <img src="/images/study/inha.png">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="favorite listFavorite off "></div>-->
+<!--                </div>-->
+<!--                <div class="projectThumb"><img loading="lazy"-->
+<!--                                               src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"-->
+<!--                                               alt="커뮤니티 연계 교통 정보 어플"></div>-->
+<!--            </div>-->
+<!--            <div class="projectBottomInfo">-->
+<!--                <div class="txtWrap projectWrap">-->
+<!--                    <h3 class="category">전공과목</h3>-->
+<!--                    <h2 class="tit">공업수학_라플라스 변환</h2>-->
+<!--                    &lt;!&ndash;                                 <div class="iconWrap2"><img loading="lazy"-->
+<!--                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"-->
+<!--                            alt="Figma"></div> &ndash;&gt;-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="projectInfo2">-->
+<!--                <div class="middleWrap">-->
+<!--                    <div class="left">-->
+<!--                        <div class="heartCount"><img loading="lazy"-->
+<!--                                                     src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"-->
+<!--                                                     alt="구독자 수"><span>3</span></div>-->
+<!--                    </div>-->
+<!--                    <div class="right">-->
+<!--                        &lt;!&ndash; <p><span> 44</span><span> (-) </span></p> &ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bottomWrap">-->
+<!--                    <div class="gatherTxt">-->
+<!--                        <div><span>모집완료</span><span>0/4</span></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <h3 class="tabCommonTit">완료 현황</h3>
-        <div class="noProject"><p>완료한 모임이 없습니다.</p></div>
+        <div class="finishStudy" style="display: flex; margin-bottom: 15px;">
+
+<!--            <div class="noProject"><p>완료한 모임이 없습니다.</p></div>-->
+        </div>
+
 
     </div>
 
@@ -333,170 +363,21 @@
         <div class="workTabMenu">
             <ul>
                 <li class="active">
-                    <a>스터디&amp;네트워킹&nbsp;(1)</a>
+                    <a>스터디</a>
                 </li>
                 <li class="">
-                    <a>네오스인(2)</a>
+                    <a>네오스인</a>
                 </li>
             </ul>
         </div>
         <!--    스터디 구독    -->
-        <div class="projectContentWrap favoriteTable active">
-            <div class="projectGridWrap" style="margin-right:10px">
-                <div class="projectTopInfo">
-                    <div class="top">
-                        <div class="badgeWrap">
-                            <div class="topBadge red">
-                                <img loading="lazy" src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="새로운 프로젝트">
-                            </div>
-                            <div class="badge black">
-                                <!-- <h2>사이드프로젝트</h2> -->
-                                <img src="/images/study/inha.png">
-                            </div>
-                        </div>
-                        <div class="favorite listFavorite on active"></div>
-                    </div>
-                    <div class="projectThumb"><img loading="lazy"
-                                                   src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
-                                                   alt="커뮤니티 연계 교통 정보 어플"></div>
-                </div>
-                <div class="projectBottomInfo">
-                    <div class="txtWrap projectWrap">
-                        <h3 class="category">전공과목</h3>
-                        <h2 class="tit">공업수학_라플라스 변환</h2>
-                        <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                alt="Figma"></div> -->
+        <div class="projectContentWrap favoriteTable studyFollowTable active">
 
-                    </div>
-                </div>
-                <div class="projectInfo2">
-                    <div class="middleWrap">
-                        <div class="left">
-                            <div class="heartCount"><img loading="lazy"
-                                                         src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                         alt="구독자 수"><span>3</span></div>
-                        </div>
-                        <div class="right">
-                            <!-- <p><span> 44</span><span> (-) </span></p> -->
-                        </div>
-                    </div>
-                    <div class="bottomWrap">
-                        <div class="gatherTxt">
-                            <div><span>모집완료</span><span>0/4</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!--    네오스인 구독    -->
-        <div class="peopleGrid favoriteTable ">
+        <div class="peopleGrid favoriteTable userFollowTable">
             <ul class="peopleGridList">
-
-                <li class="letspler_Re">
-                    <div class="top">
-                        <div class="profilePicWrap">
-                            <div class="profilePic"><img src="https://letspl.me/assets/images/prof-no-img.png" alt="아무무"></div>
-                            <a class="favorite heart active"></a>
-                        </div>
-                        <div class="profileTxt">
-                            <div class="idWrap"><img loading="lazy" class="userLv" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_7.png" alt="렛플렙">
-                                <h2 class="userName">
-                                    <span class="name">아무무</span>
-                                    <ul class="idHoverMenu">
-                                        <li><a class="detail">프로필 상세</a></li>
-                                        <li><a class="chat">1:1대화</a></li>
-                                        <li><a class="invite">스터디 초대</a></li>
-                                    </ul>
-                                </h2>
-                                <div class="certiWrap"><img loading="lazy" class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-red.png" alt="실명인증"></div>
-                            </div>
-                            <div class="coffeAndHeart">
-                                <div><img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="커피포인트"><span>3</span></div>
-                                <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>0</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom">
-                        <ul class="userFavorite">
-                            <li>
-                                <h3><span>[대학]&nbsp;<span class="university"> 순천대학교</span></span><span> 3학년</span></h3>
-                            </li>
-                            <li>
-                                <h3><span> [전공]&nbsp;<span class="major"> 사회복지학과</span></span><span></span></h3>
-                            </li>
-                        </ul>
-                        <p class="ingProjectTxt">진행중인 모임이&nbsp;<span></span>없습니다</p>
-                        <div class="userInfoTagWrap">
-                            <div>
-                                <h3>#FLUTTER</h3>
-                            </div>
-                            <div>
-                                <h3>#ANDROID</h3>
-                            </div>
-                            <div>
-                                <h3>#웹앱</h3>
-                            </div>
-                            <div>
-                                <h3>#앱개발자</h3>
-                            </div>
-                            <div>
-                                <h3>#대기업</h3>
-                            </div>
-                        </div>
-                        <a class="chatBtn">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                        </a>
-                    </div>
-                </li>
-
-                <li class="letspler_Re">
-                    <div class="top">
-                        <div class="profilePicWrap">
-                            <div class="profilePic"><img src="https://k.kakaocdn.net/dn/7ZJ2p/btrCwaZdmw8/5h3vTtKUE3Lm2QRWQ3Q761/img_640x640.jpg" alt="김기명"></div>
-                            <a class="favorite heart active"></a>
-                        </div>
-                        <div class="profileTxt">
-                            <div class="idWrap"><img loading="lazy" class="userLv" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/level/level_7.png" alt="렛플렙">
-                                <h2 class="userName">
-                                    <span class="name">김기명</span>
-                                    <ul class="idHoverMenu">
-                                        <li><a class="detail">프로필 상세</a></li>
-                                        <li><a class="chat">1:1대화</a></li>
-                                        <li><a class="invite">스터디 초대</a></li>
-                                    </ul>
-                                </h2>
-                                <div class="certiWrap"><img loading="lazy" class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-red.png" alt="실명인증"></div>
-                            </div>
-                            <div class="coffeAndHeart">
-                                <div><img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="커피포인트"><span>1</span></div>
-                                <div><img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수" style="width: 20px; height: 20px;"><span>2</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom">
-                        <ul class="userFavorite">
-                            <li>
-                                <h3><span>[대학]&nbsp;<span class="university"> 남해도립대학교</span></span><span> 1학년</span></h3>
-                            </li>
-                            <li>
-                                <h3><span> [전공]&nbsp;<span class="major"> 호텔조리학과</span></span><span></span></h3>
-                            </li>
-                        </ul>
-                        <p class="ingProjectTxt">진행중인 모임이&nbsp;<span>1</span>개 있습니다</p>
-                        <div class="userInfoTagWrap">
-                            <div>
-                                <h3>#영업 #초보 #렛플</h3>
-                            </div>
-                        </div>
-                        <a class="chatBtn">
-                            <div><img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="커피포인트"><span>NEO
-                                    CHAT</span></div>
-                        </a>
-                    </div>
-                </li>
 
             </ul>
         </div>

@@ -48,7 +48,7 @@
                     </div>
                 </li>
                 <div class="statusTagWrap">
-                    <span class="statusTag white" th:text="*{storeStatus}">무료</span>
+                    <span class="statusTag white">유료</span>
                     <div class="modifyBtn">
                         <a th:href="*{storeId}" th:if="${store.user.userId == session.loginUser}" class="changeBtn">
                             <img loading="lazy" src="https://letspl.me/assets/images/ic-profile-modify.png" alt="수정버튼"
@@ -82,16 +82,16 @@
                         <div class="section statusSection">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 <h1 class="tabTit" style="padding: 0 !important;">첨부파일</h1>
-                                <button type="button" class="cashButton" th:if="*{storeStatus.toString() == 'PAY'}">
+                                <button type="button" class="cashButton">
                                     결제하기
                                 </button>
                             </div>
 
                             <ul class="fileList" th:if="*{storeFlieDTOS.size() != 0}">
                                 <li th:if="*{storeFlieDTOS[0].getStoreFileName != null}">
-                                    <a th:href="@{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}">
-                                        <img src="/images/store/pdf.png" class="fileImg">
-                                    </a>
+                                    <div th:href="@{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}">
+                                        <img src="/images/store/pdf.png" class="fileImg" style="filter: blur(3px); cursor: default; ">
+                                    </div>
                                     <input type="hidden" class="attachFile1"
                                            th:value="*{storeFlieDTOS[0].getStoreFileName}">
                                     <p class="checkboxTit"
@@ -99,9 +99,9 @@
                                         neos.pdf</p>
                                 </li>
                                 <li th:if="*{storeFlieDTOS.size() > 1 and (storeFlieDTOS[1].getStoreFileName != null)}">
-                                    <a th:href="@{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}">
-                                        <img src="/images/store/pdf.png" class="fileImg">
-                                    </a>
+                                    <div th:href="@{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}">
+                                        <img src="/images/store/pdf.png" class="fileImg" style="filter: blur(3px); cursor: default; ">
+                                    </div>
                                     <input type="hidden" class="attachFile2"
                                            th:value="*{storeFlieDTOS[1].getStoreFileName}">
                                     <p class="checkboxTit"
@@ -109,9 +109,9 @@
                                         자료상점 이용방법.ppt</p>
                                 </li>
                                 <li th:if="*{storeFlieDTOS.size() > 2}">
-                                    <a th:href="@{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}">
-                                        <img src="/images/store/pdf.png" class="fileImg">
-                                    </a>
+                                    <div th:href="@{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}">
+                                        <img src="/images/store/pdf.png" class="fileImg" style="filter: blur(3px); cursor: default; ">
+                                    </div>
                                     <input type="hidden" class="attachFile3"
                                            th:value="*{storeFlieDTOS[2].getStoreFileName}">
                                     <p class="checkboxTit"
@@ -176,29 +176,29 @@
                     <div class="QRWrap" th:if="*{storeFlieDTOS.size() != 0}">
                         <div class="qrImg" style="text-align: center;"
                              th:if="*{storeFlieDTOS[0].getStoreFileName != null}">
-                            <a th:href="@{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}">
-                                <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}"
+                            <div th:href="@{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}">
+                                <img style="filter: blur(3px); cursor: default; " th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}"
                                      alt="">
-                            </a>
+                            </div>
                             <p class="checkboxTit"
                                th:text="*{storeFlieDTOS[0].getStoreFileName + '(' + storeFlieDTOS[0].storeFileSize/1024 + 'KB' + ')'}">
                                 neos.pdf</p>
                         </div>
                         <div class="qrImg" style="text-align: center;"
                              th:if="*{storeFlieDTOS.size() > 1 and (storeFlieDTOS[1].getStoreFileName != null)}">
-                            <a th:href="@{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}">
-                                <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}"
+                            <div th:href="@{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}">
+                                <img style="filter: blur(3px); cursor: default; " th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}"
                                      alt="">
-                            </a>
+                            </div>
                             <p class="checkboxTit"
                                th:text="*{storeFlieDTOS[1].getStoreFileName + '(' + storeFlieDTOS[1].storeFileSize/1024 + 'KB' + ')'}">
                                 자료상점 이용방법.ppt</p>
                         </div>
                         <div class="qrImg qrLast" style="text-align: center;" th:if="*{storeFlieDTOS.size() > 2}">
-                            <a th:href="@{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}">
-                                <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}"
+                            <div th:href="@{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}">
+                                <img style="filter: blur(3px); cursor: default; " th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}"
                                      alt="">
-                            </a>
+                            </div>
                             <p class="checkboxTit"
                                th:text="*{storeFlieDTOS[2].getStoreFileName + '(' + storeFlieDTOS[2].storeFileSize/1024 + 'KB' + ')'}">
                                 neos기능.word</p>
@@ -407,23 +407,23 @@
     });
 
 
-    $(".cashButton").on("click",function () {
-        storeId: $("input[name='storeId']").val()
-
-        $.ajax({
-            url: "/store-purchase/purchase/"+storeId,
-            type:"get",
-            success:function (result) {
-                console.log("성공")
-                let text = "";
-
-                text += "결제완료";
-
-                $(".cashButton").text(text);
-            }
-        })
-
-    })
+    // $(".cashButton").on("click",function () {
+    //     storeId: $("input[name='storeId']").val()
+    //
+    //     $.ajax({
+    //         url: "/store-purchase/purchase/"+storeId,
+    //         type:"get",
+    //         success:function (result) {
+    //             console.log("성공")
+    //             let text = "";
+    //
+    //             text += "결제완료";
+    //
+    //             $(".cashButton").text(text);
+    //         }
+    //     })
+    //
+    // })
 
 
 </script>

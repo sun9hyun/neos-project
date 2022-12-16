@@ -8,6 +8,101 @@ globalThis.page = 0;
 
 let myPageService = (function () {
 
+    // 알림 조회
+    function alarmList(userId, callback, error) {
+        $.ajax({
+            url: "/my-detail/alarm/" + userId,
+            type: "get",
+            success: function(result){
+                // alert(user);
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function(xhr, status, err){
+                if(error){
+                    error(err);
+                }
+            }
+        });
+    }
+
+    // 스터디 지원 현황 조회
+    function studySupporterList(userId, callback, error) {
+        $.ajax({
+            url: "/my-detail/study/" + userId,
+            type: "post",
+            success: function(result){
+                // alert(user);
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function(xhr, status, err){
+                if(error){
+                    error(err);
+                }
+            }
+        });
+    }
+
+    // 스터디 참여 조회
+    function studyJoinList(userId, callback, error) {
+        $.ajax({
+            url: "/my-detail/study/" + userId,
+            type: "get",
+            success: function(result){
+                // alert(user);
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function(xhr, status, err){
+                if(error){
+                    error(err);
+                }
+            }
+        });
+    }
+
+    // 스터디 구독 조회
+    function studyFollowList(userId, callback, error) {
+        $.ajax({
+            url: "/my-detail/study-follow/" + userId,
+            type: "get",
+            success: function(result){
+                // alert(user);
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function(xhr, status, err){
+                if(error){
+                    error(err);
+                }
+            }
+        });
+    }
+
+    // 네오스인 구독 조회
+    function followList(userId, callback, error) {
+        $.ajax({
+            url: "/my-detail/follow/" + userId,
+            type: "get",
+            success: function(result){
+                // alert(user);
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function(xhr, status, err){
+                if(error){
+                    error(err);
+                }
+            }
+        });
+    }
+
     // 네오력 조회
     function neosPointList(userId, callback, error) {
         $.ajax({
@@ -126,6 +221,23 @@ let myPageService = (function () {
 
     }
 
+    function getDate(replyDate){
+        let today = new Date();
+        let registerDate = new Date(replyDate);
+        let gap = today.getTime() - registerDate.getTime();
 
-    return {getList: getList, userInfo: userInfo, collegeCityInfo: collegeCityInfo, neosPowerList: neosPowerList, getReplyDate:getReplyDate, neosPointList: neosPointList}
+
+        let y = registerDate.getFullYear();
+        let m = registerDate.getMonth() + 1;
+        let d = registerDate.getDate();
+
+        m = (m < 10 ? '0' : '') + m;
+        d = (d < 10 ? '0' : '') + d;
+
+        return [y, m, d].join("-");
+
+    }
+
+
+    return {getList: getList, userInfo: userInfo, collegeCityInfo: collegeCityInfo, neosPowerList: neosPowerList, getDate: getDate, getReplyDate:getReplyDate, neosPointList: neosPointList, studyFollowList: studyFollowList, studyJoinList:studyJoinList, followList:followList, studySupporterList:studySupporterList, alarmList:alarmList}
 })();

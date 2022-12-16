@@ -127,7 +127,7 @@
                                                                     name="studyWorkTargetDateString" placeholder="Date"
                                                                     autocomplete="off"
                                                                     aria-describedby="DateInput__screen-reader-message-date_input1"
-                                                                    value="2022-11-24">
+                                                                    value="">
                                                                 <p class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
                                                                    id="DateInput__screen-reader-message-date_input1">
                                                                     Navigate forward to interact with the calendar and
@@ -836,6 +836,12 @@
         }
 
         if(   $(".choiceMember option:selected").val()=='0'&&$(".meeting option:selected").val()=='00'){
+            $(".modalWrapOpen").show();
+            $(".modal6").show();
+            return;
+        }
+
+        if(!$("#date_input1").val()){
             $(".modalWrapOpen").show();
             $(".modal6").show();
             return;

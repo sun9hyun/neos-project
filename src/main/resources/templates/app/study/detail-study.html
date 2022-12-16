@@ -49,6 +49,11 @@
         location.href="/study/view/"+studyNumber;
 
     }
+    let college = [[${session.college}]];
+    if(!college){
+        alert("스터디 서비스는 대학생부터 이용가능합니다.")
+        location.href="/main/main";
+    }
 
 
 </script>

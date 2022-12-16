@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.app.neos.entity.study.QStudy.*;
+import static com.app.neos.entity.study.QStudyMember.studyMember;
 import static com.app.neos.entity.user.QUser.user;
 
 @Repository
@@ -94,5 +95,11 @@ public class StudyCustomRepositoryImpl implements StudyCustomRepository {
             hasNext = true;
         }
         return new SliceImpl<Study>(content,pageable,hasNext);
+    }
+
+    @Override
+    public List<Study> findMyStudyList(Long userId) {
+        return jpaQueryFactory.selectFrom(study).leftJoin(studyMember).on(study.studyId.eq(studyMember.study.studyId))
+                .where(studyMember.user.userId.eq(userId).or(study.user.userId.eq(userId))).orderBy(study.createdDate.desc()).fetch();
     }
 }

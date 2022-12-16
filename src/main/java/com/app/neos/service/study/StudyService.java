@@ -173,4 +173,9 @@ public class StudyService {
         entity.changeUser(user);
         neosPowerRepository.save(entity);
     }
+
+    @Transactional
+    public List<StudyDTO> myList(Long userId){
+        return studyCustomRepository.findMyStudyList(userId).stream().map(Study::toDTO).collect(Collectors.toList());
+    }
 }

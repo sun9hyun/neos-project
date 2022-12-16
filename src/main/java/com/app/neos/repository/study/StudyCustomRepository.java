@@ -16,5 +16,6 @@ public interface StudyCustomRepository {
     public long pageTotal(Pageable pageable, StudySearch search);
     public int getTotal();
     public Slice<Study> findAllSlice(Pageable pageable);
+    public List<Study> findMyStudyList(Long userId);
 
 }

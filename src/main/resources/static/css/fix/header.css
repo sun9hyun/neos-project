@@ -1779,3 +1779,12 @@ section {
             0% {left: 0px;}
             100% {left: 10px;}
         }
+
+        .myStudyList{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .myStudyListMoreButton{
+            color: #9e9e9e;
+        }

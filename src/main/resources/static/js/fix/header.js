@@ -31,7 +31,7 @@ $GoogleLoginBtn.on("click",function () {
 
 
 
-
+let collegeCheckHeader = false;
 var userIdasdfasdfa = document.querySelector("#userId").value;
 headerShow();
 function headerShow(){
@@ -68,6 +68,7 @@ function getInfo(result){
     $userOauthId.val(userOauthId);
     if(userCollegeName==null){
         $userCollege.text("학생")
+        collegeCheckHeader=true;
     }else{
         $userCollege.text(userCollegeName)
 
@@ -77,6 +78,9 @@ function getInfo(result){
 
 $(".profile").on("click",function () {
     headerAlarmShow();
+    if(!collegeCheckHeader){
+        myStudyList();
+    }
 })
 
 
@@ -107,7 +111,7 @@ function headerAlarmShowList(result){
     $(".moreAlarm em").html(total-1);
     }else{
         $(".alarmTotalCount").html(total);
-        $(".alarmText").html(text);
+        // $(".alarmText").html(text);
         $(".moreAlarm p").html("최신 알림이 없습니다.");
     }
 
@@ -126,6 +130,41 @@ function read(obj){
             }
         }
     })
+
+}
+
+function myStudyList() {
+    var userId = $("#userId").val();
+    $.ajax({
+        url:"/alarm/"+userId,
+        type:"put",
+        success:showStudyListHeader
+    })
+}
+
+function showStudyListHeader(result) {
+    let text= '';
+
+    for(var i = 0 ; i < 3 ; i ++ ){
+        text += `<li class="alarmContent"><a class="popClick" href="/study/list/`+result[i].studyId+`">`
+        text += `<p>`+result[i].studyTitle+`</p><span class="dateInfo">`+result[i].studyStartDate
+        text += `일에 개설</span><span class="newTag"></span>`
+        text += `</a></li>`
+
+    }
+
+
+    // $(result).each((i,item)=>{
+    //     console.log(item);
+    //     text += `<li class="alarmContent"><a class="popClick" href="/study/list/`+item.studyId+`">`
+    //     text += `<p>`+item.studyTitle+`</p><span class="dateInfo">`+item.studyStartDate
+    //     text += `일에 개설</span><span class="newTag"></span>`
+    //     text += `</a></li>`
+    // })
+
+    $(".myStudyListShow").html(text);
+    $(".myStudyListTotal").text(result.length);
+
 
 }
 

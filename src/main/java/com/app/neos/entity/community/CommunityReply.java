@@ -1,5 +1,6 @@
 package com.app.neos.entity.community;
 
+import com.app.neos.domain.community.CommunityDTO;
 import com.app.neos.domain.community.CommunityReplyDTO;
 import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
@@ -10,6 +11,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "TBL_COMMUNITY_REPLY")
@@ -58,4 +60,22 @@ public class CommunityReply extends Period {
     public void update(CommunityReplyDTO communityReply){
         this.communityReplyContent = communityReply.getCommunityReplyContent();
     }
+
+    public CommunityReplyDTO toDTO(){
+        CommunityReplyDTO dto = new CommunityReplyDTO();
+        dto.setCommunityReplyId(communityReplyId);
+        dto.setCommunityReplyContent(communityReplyContent);
+        dto.setCommunityReplyLikeCount(communityReplyLikeCount);
+        dto.setUser(user);
+        dto.setCommunity(community);
+        dto.setUserId(user.getUserId());
+        dto.setCommunityId(community.getCommunityId());
+        dto.setCreatedDate(getCreatedDate());
+        dto.setUpdatedDate(getUpdatedDate());
+        dto.setCommunityTitle(community.getCommunityTitle());
+        dto.setUserNickName(user.getUserNickName());
+
+        return dto;
+    }
+
 }

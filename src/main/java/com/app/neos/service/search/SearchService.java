@@ -1,5 +1,6 @@
 package com.app.neos.service.search;
 
+import com.app.neos.domain.store.StoreDTO;
 import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.repository.search.SearchCustomRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,10 @@ import org.springframework.stereotype.Service;
 public class SearchService {
     private final SearchCustomRepository searchCustomRepository;
 
-    public Slice<StudyDTO> findByKeyWord(String keyword, Pageable pageable){
+    public Slice<StudyDTO> findByKeywordStudy(String keyword, Pageable pageable){
         return searchCustomRepository.findByKeywordStudy(keyword, pageable);
+    }
+    public Slice<StoreDTO> findByKeywordStore(String keyword, Pageable pageable){
+        return searchCustomRepository.findByKeywordStore(keyword, pageable);
     }
 }

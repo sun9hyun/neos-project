@@ -6,6 +6,8 @@ import com.app.neos.entity.user.User;
 import com.app.neos.type.store.StoreStatus;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -30,9 +32,11 @@ public class Store extends Period {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "store")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     List<StoreFile> files;
 
     public void changeUser(User user){
@@ -60,6 +64,9 @@ public class Store extends Period {
 
     public StoreDTO toDTO() {
         StoreDTO storeDTO = new StoreDTO();
+        storeDTO.setStoreTitle(this.storeTitle);
+        storeDTO.setStoreContent(this.storeContent);
+        storeDTO.setStoreStatus(this.storeStatus);
         return storeDTO;
     }
 }

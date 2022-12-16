@@ -35,7 +35,7 @@
                             <td><label class="checkBox" ><input class = "inputRadio" type="radio" name="price" value="F01" ><span
                                     class="checkmark"></span></label></td>
                             <td>직접 입력</td>
-                            <td><input class="cashCheck" id="name"  onkeyup="printName()" name = "point" type="text" placeholder="포인트를 입력해주세요 (숫자만)" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); disabled" disabled="disabled" ></td>
+                            <td><input class="cashCheck" id="Ehrlflshas"  onkeyup="printName()" name = "point" type="text" placeholder="포인트를 입력해주세요 (숫자만)" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); disabled" disabled="disabled" ></td>
                         </tr>
                         <tr>
                             <td><label class="checkBox"><input class = "radio" type="radio" name="price" value="5000" checked="" ><span
@@ -139,6 +139,7 @@
 
     function showPay() {
         $(".payModal").css("display", "block");
+        $("#Ehrlflshas").val("");
     }
     $(".closeBtn").on("click", function () {
         $(".payModal").css("display", "none");
@@ -188,7 +189,6 @@
             ],
             "extra": {
                 "open_type": "iframe",
-                "card_quota": "0,2,3",
                 "seller_name": "NEOS",
                 "escrow": false
             }
@@ -226,7 +226,7 @@
                 }
             ],
             "extra": {
-                "open_type": "popup",
+                "open_type": "iframe",
                 "seller_name": "NEOS",
                 "escrow": false
             }

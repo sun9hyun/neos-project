@@ -42,7 +42,7 @@ public class PayService {
     @Transactional
     public void postEXP(Long userId, int pay){
         User user = userRepository.findById(userId).get();
-        int payPoint = (pay/10);
+        int payPoint = (pay/100);
         user.updateNeosPower(user.getUserNeosPower().getUserNeosPowerAbility()+payPoint);
         user.levelUp();
 

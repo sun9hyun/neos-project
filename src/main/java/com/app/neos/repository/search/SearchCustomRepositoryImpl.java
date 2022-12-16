@@ -28,7 +28,7 @@ public class SearchCustomRepositoryImpl implements SearchCustomRepository {
     public Slice<StudyDTO> findByKeywordStudy(String keyword, Pageable pageable) {
         List<Study> studyList = jpaQueryFactory
                 .selectFrom(study)
-                .where(study.studyTitle.like("%" + keyword+ "%").or(study.user.userNickName.like("%" + keyword+ "%")))
+                .where(study.studyTitle.like("%" + keyword+ "%").or(study.studyField.studyKeyword.like("%" + keyword+ "%")))
                 .orderBy(study.studyId.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize()+1)
@@ -51,7 +51,7 @@ public class SearchCustomRepositoryImpl implements SearchCustomRepository {
     public Slice<StoreDTO> findByKeywordStore(String keyword, Pageable pageable) {
         List<Store> storeList = jpaQueryFactory
                 .selectFrom(store)
-                .where(store.storeTitle.like("%" + keyword+ "%").or(store.storeContent.like("%" + keyword+ "%")).or(store.user.userNickName.like("%" + keyword+ "%")))
+                .where(store.storeTitle.like("%" + keyword+ "%").or(store.storeContent.like("%" + keyword+ "%")))
                 .orderBy(store.storeId.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize()+1)
@@ -69,5 +69,10 @@ public class SearchCustomRepositoryImpl implements SearchCustomRepository {
 
         return new SliceImpl<>(content , pageable , hasNext);
 
+    }
+
+    @Override
+    public Slice<StudyDTO> findByStudyList(Pageable pageable) {
+        return null;
     }
 }

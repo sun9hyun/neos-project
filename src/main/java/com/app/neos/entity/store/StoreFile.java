@@ -3,6 +3,8 @@ package com.app.neos.entity.store;
 import com.app.neos.entity.period.Period;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -26,6 +28,7 @@ public class StoreFile extends Period {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STORE_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Store store;
 
     public void changeStore(Store store){

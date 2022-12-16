@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEOS | 검색 전</title>
+    <title>NEOS</title>
     <link rel="stylesheet" href="/css/search/searchBefore.css">
+    <link rel="stylesheet" href="/css/search/searchComplete.css">
     <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="stylesheet" href="/css/fix/loginHeader.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
@@ -13,9 +14,12 @@
 
 <body>
 <header th:replace="/app/fix/header.html :: header"></header>
+
     <div class="searchResultSection">
+
+
         <div class="searchInputWrap">
-            <input class="searchInput" type="text" placeholder="검색내용을 입력해주세요(ex. )"
+            <input class="searchInput" type="text" placeholder="검색내용을 입력해주세요(ex. 제목, 내용, 닉네임)"
                 maxlength="30" value="">
             <div class="inputBtnWrap">
                 <button class="inputDelBtn">
@@ -26,8 +30,85 @@
                 </button>
             </div>
         </div>
+
+
+<!--        &lt;!&ndash; ==================================================================================================================== &ndash;&gt;-->
+<!--        <div class="searchResultTxtWrap">-->
+<!--            <h3 class="searchResultTxt">-->
+<!--                "개발"에 대한 검색 결과-->
+<!--                <span>&nbsp;59</span>-->
+<!--                &nbsp;개-->
+<!--            </h3>-->
+<!--            <button class="inputinitBtn">-->
+<!--                <span>검색 초기화</span>-->
+<!--                <img loading="lazy" src="https://letspl.me/assets/images/ic-del.svg" alt="초기화">-->
+<!--            </button>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; =======스터디============================================================================================================= &ndash;&gt;-->
+<!--        <div class="searchResultList projectToplRightWrap projectLayoutRowFlex1 ">-->
+<!--            <div class="subtitWrap">-->
+<!--                <p class="subtit"> 스터디<span> 5</span>&nbsp;건</p>-->
+<!--            </div>-->
+<!--            <div class="recommendProjectlist">-->
+<!--                <div class="projectThumbWrap">-->
+<!--                    <img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png" alt="전기차 충전운영 플랫폼 개발">-->
+<!--                </div>-->
+<!--                <div class="txtWrap">-->
+<!--                    <p class="tit">[서울] 전기차 충전운영 플랫폼 개발</p>-->
+<!--                    <p class="desTxt">-->
+<!--                <span>SCS(Smart Charging Solution)는 개인 맞춤형 충전정보 및 자동예약/해지 서비스가 적용된 전기차 충전운영 통합 솔루션-->
+<!--                            플랫폼 서비스를 준비중인 예비창업 팀입니다. 현재 4명(총괄, 디자인1, 개발1)의 팀원으로 구성되어 앱 개발을 진행하고 있습니다. (30% 완료, 11월 출시-->
+<!--                            예정) 전기차 시대를 맞이하여 충전 문화의 혁신을 주도할 팀원을 모집합니다.[ SCS 팀 구성원 ]-->
+<!--                            현재 저희 팀은 이런식으로 구성되어 있어요👥-->
+<!--                            기획자 1명-->
+<!--                            UX/UI디자이너 1명-->
+<!--                            프론트엔드 개발자 1명-->
+<!--                            smartcharging.notion.-->
+<!--                </span>-->
+<!--                    </p>-->
+<!--                    <p class="typeTxt">[모집중] 크로스플랫폼</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; =======자료상점============================================================================================================= &ndash;&gt;-->
+<!--        <div class="searchResultList projectCollectWrap storySection" style="padding: 20px 0px 0px;">-->
+<!--            <div class="subtitWrap">-->
+<!--                <p class="subtit">자료상점 <span>10</span>건</p>-->
+<!--            </div>-->
+<!--            <div class="contents">-->
+<!--                <div class="contentsList">-->
+<!--                    <ul>-->
+<!--                        <li>-->
+<!--                            <div class="left">-->
+<!--                                <div class="listTIt">-->
+<!--                                    <div class="categoryTitWrap">-->
+<!--                                        <span class="category2">FREE</span>-->
+<!--                                        <p class="titTxt">[언노운나이츠]사이드프로젝트로 게임 개발하기 1/2</p>-->
+<!--                                    </div>-->
+<!--                                    <div class="previewTxt">﻿이 글은 인디게임 제작사 "Teamarex"에서 직접 작성한,"언노운 나이츠"게임개발 후기에-->
+<!--                                        대한 내용입니다.렛플은 해당 게임의 개발 및 수익과 무관하며, 컨텐츠 공유의 목적에서 이 스토리를 양도받아 게재합니다.사이드프로젝트로-->
+<!--                                        게임개발하시는 분들에게 도움이 되길 바랍니다.사이드프로젝트의 시작-->
+
+<!--                                        처음에는 가벼운 마음으로 시작했다. 말 그대로 사이드 프로젝트였다.-->
+<!--                                        매진하고 있던 일이 따로 있었기 때문이기도 하고, 시작은 가볍게 하고 싶었기 때문이기도 하다.-->
+<!--                                        무슨 일이든 시작도 하기 전에 진지해지면 그 무게감 때문에 아무 것도 못하기가 쉽다.-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+
+
     </div>
-    <div style="margin: 33.5%;"></div>
+
+
+<!-- ==================================================================================================================== -->
+    <div style="margin: 25.5%;"></div>
 
 
     <div th:replace="/app/fix/footer.html :: footer"></div>

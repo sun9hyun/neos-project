@@ -54,6 +54,7 @@ $(document).ready(function () {
         // alert("getReplyList");
         // alert("$('#replyNumber').val() "+ic);
         let id = communityReplyDTOS[0].community.communityId;
+        console.log(communityReplyDTOS);
         let community = $("#"+id).find(".loungeCardContents").find(".loungeCardContentsComponents_loungeContents__262-A").find(".replyComponent_reply__3l-Wc").find(".replyComponent_replyBox__1duHS");
         // let community = $(".loungeCard").eq(ic).find(".loungeCardContents").find(".loungeCardContentsComponents_loungeContents__262-A").find(".replyComponent_reply__3l-Wc").find(".replyComponent_replyBox__1duHS");
         let text = "";

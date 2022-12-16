@@ -563,12 +563,17 @@
     border-radius: 4px;
     padding: 8px 6px;
     left: -30px;
-    bottom: -30px;
+    bottom: -55px;
     grid-gap: 10px;
     gap: 10px;
     display: none;
 }
-
+.replyContent_1j{
+    border: solid 1px #e1e1e1;
+    border-radius: 4px;
+    padding: 10px;
+    resize: none;
+}
 .userInformationComponents_profileRightGroupModifyBoxModal__1csNJ button:hover {
     font-weight: 700
 }

@@ -11,6 +11,8 @@ import com.app.neos.repository.community.CommunityReplyRepository;
 import com.app.neos.repository.community.CommunityRepository;
 import com.app.neos.repository.neos.NeosPowerRepository;
 import com.app.neos.repository.user.UserRepository;
+import com.app.neos.service.alarm.AlarmService;
+import com.app.neos.type.alarm.AlarmCategory;
 import com.app.neos.type.point.NeosPowerContent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,7 @@ public class CommunityReplyService {
     public final CommunityRepository communityRepository;
     public final UserRepository userRepository;
     private final NeosPowerRepository neosPowerRepository;
+    private final AlarmService alarmService;
 
     public void saveCommunityReply(CommunityReplyDTO communityReplyDTO){
         CommunityReply communityReply = communityReplyDTO.toEntity();
@@ -35,7 +38,12 @@ public class CommunityReplyService {
         Community community = communityRepository.findById(communityId).get();
         communityReply.changeUser(user);
         communityReply.changeCommunity(community);
-        communityReplyRepository.save(communityReply);
+//        communityReplyRepository.save(communityReply);
+        CommunityReply communityReply1 =  communityReplyRepository.save(communityReply);
+        communityReplyDTO = communityReply1.toDTO();
+        AlarmCategory category = AlarmCategory.COMMUNITYREPLY;
+        alarmService.alarm(communityReplyDTO,category);
+
     }
 
     public List<CommunityReplyDTO> findReplyAll(Long communityId){

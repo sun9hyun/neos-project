@@ -5,6 +5,8 @@ import com.app.neos.entity.user.User;
 import com.app.neos.type.point.NeosPointContent;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -27,6 +29,7 @@ public class NeosPoint extends Created {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="USER_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
     public void changeUser(User user){

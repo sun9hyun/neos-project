@@ -10,4 +10,5 @@ public interface SearchCustomRepository {
 
     public Slice<StoreDTO> findByKeywordStore(String keyword , Pageable pageable);
 
+    public Slice<StudyDTO> findByStudyList(Pageable pageable);
 }

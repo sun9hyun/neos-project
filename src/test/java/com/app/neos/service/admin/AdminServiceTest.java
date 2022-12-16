@@ -31,8 +31,6 @@ import java.util.List;
 @Transactional
 @Rollback(false)
 public class AdminServiceTest {
-    @Autowired
-    AdminCollegeService adminCollegeService;
 
     @Autowired
     AdminService adminService;
@@ -69,7 +67,6 @@ public class AdminServiceTest {
 
         College college = collegeDTO.toEntity();
 
-        adminCollegeService.saveCollege(college);
     }
 
 //    대학 목록 테스트

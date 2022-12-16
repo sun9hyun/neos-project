@@ -46,10 +46,15 @@ public class NoticeController {
 
         int index = noticeDTOS.indexOf(noticeService.findByNoticeId(noticeId));
 
-        if(index == 0){
+        if(index == 0 && noticeDTOS.size() != 1){
             model.addAttribute("nextNoticeDTO", noticeDTOS.get(index+1));
+            model.addAttribute("prevNoticeDTO", null);
+        } else if(noticeDTOS.size() == 1){
+            model.addAttribute("prevNoticeDTO", null);
+            model.addAttribute("nextNoticeDTO", null);
         } else if(index == noticeDTOS.size()-1){
             model.addAttribute("prevNoticeDTO", noticeDTOS.get(index-1));
+            model.addAttribute("nextNoticeDTO", null);
         } else {
             model.addAttribute("prevNoticeDTO", noticeDTOS.get(index-1));
             model.addAttribute("nextNoticeDTO", noticeDTOS.get(index+1));

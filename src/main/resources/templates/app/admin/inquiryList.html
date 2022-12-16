@@ -2,6 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
+    <title>NEOS | 문의 관리</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -144,22 +145,6 @@
                                 <div class="card">
                                     <div class="card-body no-padding">
                                         <div class="company-search" id="companySearch">
-                                            <!--                                                <div class="form-group">-->
-                                            <!--                                                    <a class="icon_set left" href="javascript:;" onclick="searchUser()">-->
-                                            <!--                                                        <i class="btl bt-search"></i>-->
-                                            <!--                                                    </a>-->
-
-                                            <!--                                                    <div id="prefetch">-->
-                                            <!--															<span class="twitter-typeahead" >-->
-                                            <!--																<input type="hidden" name="q" value="YToxOntzOjEwOiJqb2luX29yZGVyIjtzOjQ6ImRlc2MiO30=" class="form-control typeahead">-->
-                                            <!--																<input type="text" class="form-control typeahead tt-input searchBar" id="keyword_search1" name="keyword" placeholder="검색" autocomplete="off" spellcheck="false" dir="auto" value="">-->
-                                            <!--																<pre class="bar" aria-hidden="true"></pre>-->
-                                            <!--																<div class="tt-menu">-->
-                                            <!--																	<div class="tt-dataset tt-dataset-users"></div>-->
-                                            <!--																</div>-->
-                                            <!--															</span>-->
-                                            <!--                                                    </div>-->
-                                            <!--                                                </div>-->
                                         </div>
                                     </div>
                                 </div>
@@ -178,161 +163,6 @@
 
 
                             <div class="col-md-12" id="inquiryList">
-                                <!--                                    <div class="card">-->
-                                <!--                                        <div class="card-head" id="card-head">-->
-                                <!--                                            <header class="small">전체 문의글-->
-                                <!--                                                <span class="text-primary" id="total-member-count" th:text="${total}"></span>-->
-                                <!--                                            </header>-->
-                                <!--                                        </div>-->
-
-                                <!--                                        <div class="card-body no-padding">-->
-                                <!--                                            <div class="li_table" id="UI_TABLE">-->
-                                <!--                                                &lt;!&ndash;여기부터 시작&ndash;&gt;-->
-                                <!--                                                <ul class="subject _thead" id="table-header" >-->
-                                <!--                                                    <li class="check">-->
-                                <!--                                                        <div class="checkbox checkbox-styled no-margin">-->
-                                <!--                                                            <label>-->
-                                <!--                                                                <input type="checkbox" value="" class="_all_check term" name="term"><span></span>-->
-                                <!--                                                            </label>-->
-                                <!--                                                        </div>-->
-                                <!--                                                    </li>-->
-                                <!--                                                    <li class="inquiryTitle">문의 내용</li>-->
-                                <!--                                                    <li class="inquiryNick">작성자</li>-->
-                                <!--                                                    <li class="inquiryDate">작성일</li>-->
-                                <!--                                                    <li class="inquiryState">진행 상태</li>-->
-                                <!--                                                    <li class="action"></li>-->
-                                <!--                                                </ul>-->
-
-
-                                <!--                                                <tbody>-->
-                                <!--                                                <th:block th:each="inquiry:${inquiries}" th:object="${inquiry}">-->
-                                <!--                                                    <ul class="content _tbody" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">-->
-                                <!--                                                        <li class="check">-->
-                                <!--                                                            <div class="checkbox checkbox-styled no-margin">-->
-                                <!--                                                                <label>-->
-                                <!--                                                                    <input type="checkbox" class="terms">-->
-                                <!--                                                                    <input type="hidden" class="inquiryId" th:href="*{inquiryId}">-->
-                                <!--                                                                    <span></span>-->
-                                <!--                                                                </label>-->
-                                <!--                                                            </div>-->
-                                <!--                                                        </li>-->
-
-
-                                <!--                                                        <li class="inquiryTitle"><a th:text="*{inquiryContent}"></a></li> &lt;!&ndash; 작성한 문의글 페이지 이동 &ndash;&gt;-->
-                                <!--                                                        <li class="inquiryNick"><a th:text="*{userNickName}"></a></li>&lt;!&ndash; 작성사 상세 페이지 이동 &ndash;&gt;-->
-                                <!--                                                        <li class="inquiryDate" th:text="*{#temporals.format(createdDate, 'yyyy.MM.dd HH:mm')}"></li>-->
-                                <!--                                                        <th:block th:if="*{inquiryStatus.toString().equals('WAITING')}">-->
-                                <!--                                                            <li class="inquiryState"> <span class="badge">답변 작성 중</span></li>	&lt;!&ndash; 조건에 따른 토글 클래스로 색상 변경, 기본 badge &ndash;&gt;-->
-                                <!--                                                        </th:block>-->
-                                <!--                                                        <th:block th:unless="*{inquiryStatus.toString().equals('WAITING')}">-->
-                                <!--                                                            <li class="inquiryState"> <span class="badgeSuccess">답변 완료</span></li>	&lt;!&ndash; 조건에 따른 토글 클래스로 색상 변경, 기본 badge &ndash;&gt;-->
-                                <!--                                                        </th:block>-->
-                                <!--                                                        <li class="action">-->
-                                <!--                                                            <div class="dropdown">-->
-                                <!--                                                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
-                                <!--                                                                    <i class="zmdi zmdi-more"></i>-->
-                                <!--                                                                </button>-->
-                                <!--                                                                <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
-                                <!--                                                                    <li>-->
-                                <!--                                                                        <a href="javascript:;" class="dropdown-menu_list_1j showTextarea_1j" onclick="replyOn()">-->
-                                <!--                                                                            답변 달기-->
-                                <!--                                                                        </a>-->
-
-                                <!--                                                                            <a href="javascript:;" class="dropdown-menu_list_1j"class="deleteBtn">-->
-                                <!--                                                                            삭제-->
-                                <!--                                                                            </a>-->
-                                <!--                                                                        <input type="hidden" class="inquiryId" th:href="*{inquiryId}">-->
-                                <!--                                                                    </li>-->
-                                <!--                                                                </ul>-->
-                                <!--                                                            </div>-->
-                                <!--                                                        </li>-->
-                                <!--                                                    </ul>-->
-                                <!--                                                </th:block>-->
-                                <!--                                                </tbody>-->
-
-                                <!--여기까지 한개-->
-
-                                <!--                                                <tbody>-->
-                                <!--                                                <th:block th:each="inquiry:${inquiries}" th:object="${inquiry}">-->
-                                <!--                                                <ul class="content _tbody" id="member_item_m20220929a41c742d489423" data-nick="관리자" data-app="">-->
-                                <!--                                                    <li class="check">-->
-                                <!--                                                        <div class="checkbox checkbox-styled no-margin">-->
-                                <!--                                                            <label>-->
-                                <!--                                                                <input type="checkbox" class="terms">-->
-                                <!--                                                                <input type="hidden" class="inquiryId" th:href="*{inquiryId}">-->
-                                <!--                                                                <span></span>-->
-                                <!--                                                            </label>-->
-                                <!--                                                        </div>-->
-                                <!--                                                    </li>-->
-
-                                <!--                                                    <li class="inquiryTitle"><a th:text="*{inquiryContent}"></a></li> &lt;!&ndash; 작성한 문의글 페이지 이동 &ndash;&gt;-->
-                                <!--                                                    <li class="inquiryNick"><a th:text="*{userNickName}">종우종우</a></li>&lt;!&ndash; 작성사 상세 페이지 이동 &ndash;&gt;-->
-                                <!--                                                    <li class="inquiryDate" th:text="*{#temporals.format(createdDate, 'yyyy.MM.dd HH:mm')}">2022-11-16 15:30</li>-->
-
-                                <!--                                                    <th:block th:if="*{inquiryStatus.toString().equals('WAITING')}">-->
-                                <!--                                                        <li class="inquiryState"> <span class="badge">답변 작성 중</span></li>	&lt;!&ndash; 조건에 따른 토글 클래스로 색상 변경, 기본 badge &ndash;&gt;-->
-                                <!--                                                    </th:block>-->
-                                <!--                                                    <th:block th:unless="*{inquiryStatus.toString().equals('WAITING')}">-->
-                                <!--                                                        <li class="inquiryState"> <span class="badgeSuccess">답변 완료</span></li>	&lt;!&ndash; 조건에 따른 토글 클래스로 색상 변경, 기본 badge &ndash;&gt;-->
-                                <!--                                                    </th:block>-->
-
-                                <!--                                                    <li class="action">-->
-                                <!--                                                        <div class="dropdown">-->
-                                <!--                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
-                                <!--                                                                <i class="zmdi zmdi-more"></i>-->
-                                <!--                                                            </button>-->
-                                <!--                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
-                                <!--                                                                <li>-->
-                                <!--                                                                    <a href="javascript:;" class="dropdown-menu_list_1j showTextarea_1j showReplyBtn">-->
-                                <!--                                                                        답변 달기-->
-                                <!--                                                                    </a>-->
-                                <!--                                                                    <input type="hidden" class="inquiryId" th:href="*{inquiryId}">-->
-                                <!--                                                                    <a href="javascript:;" class="dropdown-menu_list_1j deleteBtn">-->
-                                <!--                                                                        삭제-->
-                                <!--                                                                    </a>-->
-                                <!--                                                                    <input type="hidden" class="inquiryId" th:href="*{inquiryId}">-->
-                                <!--                                                                </li>-->
-                                <!--                                                            </ul>-->
-                                <!--                                                        </div>-->
-                                <!--                                                    </li>-->
-                                <!--                                                </ul>-->
-                                <!--                                                </th:block>-->
-                                <!--                                                </tbody>-->
-
-
-                                <!--                                                <ul class="content _tbody" data-nick="관리자" data-app="">-->
-                                <!--                                                    <li class="check">-->
-                                <!--                                                        <div class="checkbox checkbox-styled no-margin">-->
-                                <!--                                                            <label>-->
-                                <!--                                                                <input type="checkbox" class="terms">-->
-                                <!--                                                                <span></span>-->
-                                <!--                                                            </label>-->
-                                <!--                                                        </div>-->
-                                <!--                                                    </li>-->
-
-                                <!--                                                    <li class="inquiryTitle"><a href="#">고민상담게시판은 어떻게 이용하나요?</a></li> &lt;!&ndash; 작성한 문의글 페이지 이동 &ndash;&gt;-->
-                                <!--                                                    <li class="inquiryNick"><a href="#">종우종우</a></li>&lt;!&ndash; 작성사 상세 페이지 이동 &ndash;&gt;-->
-                                <!--                                                    <li class="inquiryDate">2022-11-16 15:30</li>-->
-                                <!--                                                    <li class="inquiryState"> <span class="badgeSuccess">답변 완료</span></li>	&lt;!&ndash; 조건에 따른 토글 클래스로 색상 변경, 기본 badge &ndash;&gt;-->
-
-                                <!--                                                    <li class="action">-->
-                                <!--                                                        <div class="dropdown">-->
-                                <!--                                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-flat">-->
-                                <!--                                                                <i class="zmdi zmdi-more"></i>-->
-                                <!--                                                            </button>-->
-                                <!--                                                            <ul class="dropdown-menu animation-dock right" role="menu" aria-labelledby="dLabel">-->
-                                <!--                                                                <li>-->
-                                <!--                                                                    <a href="javascript:;" class="dropdown-menu_list_1j showTextarea_1j" onclick="replyOn()">-->
-                                <!--                                                                        답변 달기-->
-                                <!--                                                                    </a>-->
-                                <!--                                                                    <a href="javascript:;" class="dropdown-menu_list_1j" onclick="modalUp()">-->
-                                <!--                                                                        삭제-->
-                                <!--                                                                    </a>-->
-                                <!--                                                                </li>-->
-                                <!--                                                            </ul>-->
-                                <!--                                                        </div>-->
-                                <!--                                                    </li>-->
-                                <!--                                                </ul>-->
 
 
                             </div>
@@ -396,21 +226,21 @@
                     <!--                               last=(${start + 4 < inquiries.totalPages ? start + 4 : inquiries.totalPages})" th:if="${total != 0}">-->
                     <!--                        <th:block th:if="${start!=1}">-->
                     <!--                            <a class="btn_paging prev screen_out paging"-->
-                    <!--                               th:href="${inquiries.first} ? '#' :@{/admin/test/inquiry/list(page=${inquiries.number-1})}"></a>-->
+                    <!--                               th:href="${inquiries.first} ? '#' :@{/admin/inquiry/list(page=${inquiries.number-1})}"></a>-->
                     <!--                        </th:block>-->
                     <!--                        <th:block th:unless="${start!=1}">-->
                     <!--                            <a class="btn_paging prev screen_out paging" style="display: none"-->
-                    <!--                               th:href="${inquiries.first} ? '#' :@{/admin/test/inquiry/list(page=${inquiries.number-1})}"></a>-->
+                    <!--                               th:href="${inquiries.first} ? '#' :@{/admin/inquiry/list(page=${inquiries.number-1})}"></a>-->
                     <!--                        </th:block>-->
                     <!--                        <th:block th:each="num : ${#numbers.sequence(start, last)}">-->
-                    <!--                            <a class="paging" th:text="${num}" th:href="@{/admin/test/inquiry/list(page=${num-1})}"></a>-->
+                    <!--                            <a class="paging" th:text="${num}" th:href="@{/admin/inquiry/list(page=${num-1})}"></a>-->
                     <!--                        </th:block>-->
                     <!--                        <th:block th:if="${last != endPage}">-->
                     <!--                            <a class="btn_paging next screen_out paging"-->
-                    <!--                               th:href="${inquiries.last} ? '#' : @{/admin/test/inquiry/list(page=${inquiries.number+1})}"></a>-->
+                    <!--                               th:href="${inquiries.last} ? '#' : @{/admin/inquiry/list(page=${inquiries.number+1})}"></a>-->
                     <!--                        <th:block th:unless="${last != endPage}">-->
                     <!--                            <a class="btn_paging next screen_out paging" style="display: none"-->
-                    <!--                               th:href="${inquiries.last} ? '#' : @{/admin/test/inquiry/list(page=${inquiries.number+1})}"></a>-->
+                    <!--                               th:href="${inquiries.last} ? '#' : @{/admin/inquiry/list(page=${inquiries.number+1})}"></a>-->
                     <!--                        </th:block>-->
                     <!--                    </th:block>-->
                 </span>
@@ -426,22 +256,6 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="/js/admin/inquiryList.js"></script>
 <script>
-    // base.html
-
-    // 문서로드 완료 후 자바 스크립트 진행
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     const alertBox = document.querySelector('#alertBox');
-    //     const contentArea = document.querySelector('#content');
-    //
-    //     alertBox.classList.remove('alert__wrap-fixed');
-    //     alertBox.classList.add('alert__wrap');
-    //     contentArea.prepend(alertBox);
-    // });
-    //
-    // $(function(){
-    //     SADMIN_MENU_ALERT.openAlert();
-    // });
-    //
     // 좌측 슬라이드 배너 작동
     $('.gui-folder').click(function () {
         $(this).toggleClass('expanded'); /* expanded가 없으면 생성, 있으면 삭제, 따라서 gui-folder은 계속 유지 */
@@ -485,11 +299,6 @@
     console.log($all)
     console.log($terms)
 
-    // 전체 체크박스 선택
-    // $all.on("click", function () {
-    //     $terms.prop("checked", $(this).is(":checked"));
-    // });
-
     $("div.section-body").on("click", ".term", function(){
         $('.terms').prop("checked", $(this).is(":checked"));
     });
@@ -499,6 +308,8 @@
         $all.prop("checked", $terms.filter(":checked").length == $terms.length);
 
     });
+
+    // 모달창 관련
     const $deleteModal = $(".modalWrapOpen");
     const $alertModal = $(".modalWrapOpen2")
     const $deleteBtn = $(".companyDelete a");
@@ -513,14 +324,6 @@
         }
         $deleteModal.show();
     });
-
-    // $deleteBtn.click(function () {
-    //     if ($terms.filter(":checked").length == 0) {
-    //         $alertModal.show();
-    //         return;
-    //     }
-    //     $deleteModal.show();
-    // })
 
     $cancelBtn2.click(function () {
         $deleteModal.hide();
@@ -537,7 +340,7 @@
         $deleteModal.show();
     }
 
-
+    // 현제 페이지 css
     pageActive();
 
     function pageActive() {
@@ -551,6 +354,7 @@
         });
     }
 
+    // 체크된 리스트 삭제
     $('#deleteCheck').click(function () {
         var inquiryIds = "";
         $(".terms:checked").each(function () {
@@ -560,28 +364,22 @@
                 inquiryIds = inquiryIds + "," + $(this).next().attr('href');
             }
         });
-        location.href = "/admin/test/inquiry/deleteCheck" + "?inquiryIds=" + inquiryIds;
+        location.href = "/admin/inquiry/deleteCheck" + "?inquiryIds=" + inquiryIds;
     });
 
+    // 하나만 삭제
     $("div.section-body").on("click", ".deleteBtn", function(){
         let inquiryId = $(this).attr('id');
         modalUp();
         $('#deleteCheck').click(function () {
-            location.href = "/admin/test/inquiry/delete" + "?inquiryId=" + inquiryId;
+            location.href = "/admin/inquiry/delete" + "?inquiryId=" + inquiryId;
         })
     });
-
-    // $('.deleteBtn').click(function () {
-    //     let inquiryId = $(this).next().attr('href');
-    //     modalUp();
-    //     $('#deleteCheck').click(function () {
-    //         location.href = "/admin/test/inquiry/delete" + "?inquiryId=" + inquiryId;
-    //     })
-    // })
 
     globalThis.page = 1;
     showList();
 
+    // 문의 리스트 데이터 가져오기
     function showList() {
         $.ajax({
             url: "/admin-rest/inquiry/list?page=" + (globalThis.page - 1),
@@ -596,6 +394,7 @@
         })
     }
 
+    // 문의하기 리스트 DOM
     function showInquiryList(inquiryDTOS) {
         var count = inquiryDTOS.totalElements;
         var end = inquiryDTOS.totalPages;
@@ -626,6 +425,7 @@
 
         $(inquiryDTOS.content).each((i, inquiry) => {
             text += `<ul class="content _tbody" data-nick="관리자" data-app="">`
+            text += `<input type="hidden" class="userId" value="` + inquiry.userId +`">`
             text += `<li class="check">`
             text += `<div class="checkbox checkbox-styled no-margin">`
             text += `<label>`
@@ -635,8 +435,8 @@
             text += `</label>`
             text += `</div>`
             text += `</li>`
-            text += `<li class="inquiryTitle"><a href="#">` + (i + 1) + `.` + `&nbsp&nbsp&nbsp` + inquiry.inquiryContent + `</a></li>`
-            text += `<li class="inquiryNick"><a href="#">` + inquiry.userNickName + `</a></li>`
+            text += `<li class="inquiryTitle"><a>` + (i + 1) + `.` + `&nbsp&nbsp&nbsp` + inquiry.inquiryContent + `</a></li>`
+            text += `<li class="inquiryNick moveUserDetail"><a href = "/admin/user/detail?userId=` + inquiry.userId + `">` + inquiry.userNickName + `</a></li>`
             text += `<li class="inquiryDate">` + inquiry.createdDate + `</li>`
             if (inquiry.inquiryStatus == 'COMPLETE') {
                 text += `<li class="inquiryState"> <span class="badgeSuccess">답변 완료</span></li>`
@@ -672,7 +472,7 @@
         pagination(count, end)
     }
 
-
+    // 페이징 처리 관련
     function pagination(count, end) {
         let endNumber = Math.ceil(globalThis.page / 5) * 5;
         let startNumber = endNumber - 4;
@@ -731,7 +531,7 @@
     })
 
 
-
+    // 답변 달기 클릭시 답변 달 수 있는 부분 실행
     function showReply(reply) {
         let text = "";
 
@@ -742,10 +542,16 @@
         $('#card-head2').html(text);
     }
 
-
+    // 등록 버튼 누르면 실행
     $('.replyRegister').on("click", function () {
         let inquiryId = $('.reInquiryId').val();
         let inquiryReply =  $("textarea[name='inquiryReply']").val();
+
+        // 유효성 검사
+        if(inquiryReply == ""){
+            alert("답변을 달아주세요!")
+            return;
+        }
 
         let formData = new FormData();
         formData.append('inquiryReply', inquiryReply);
@@ -782,6 +588,12 @@
             }
         });
     })
+
+    // 유저 정보 보기로 이동
+    $("div.pagingAndBtn").on("click", ".moveUserDetail", function (e) {
+        location.href = "/admin/user/detail?userId=" + $(this).closest('.content').find('.userId').val();
+    });
+
 
 
 </script>

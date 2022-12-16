@@ -2,6 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
+    <title>NEOS | 유저 정보</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -100,7 +101,7 @@
             <div class="card style-transparent card-top no-tab">
                 <div class="card-head">
                     <header>
-                        <a th:href="@{/admin/test/user/list}"> <!-- 사용자 목록 리스트 주소 입력 필요 -->
+                        <a th:href="@{/admin/user/list}"> <!-- 사용자 목록 리스트 주소 입력 필요 -->
                             <i class="zmdi zmdi-arrow-back"></i>리스트로 돌아가기
                         </a>
                     </header>
@@ -126,28 +127,12 @@
                                     <div class="profile-info">
                                         <form id="dof" method="post" class="form-horizontal form-validate" role="form" target="hidden_frame" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate">
                                             <!-- 해당 사용자 상세내용 아래 방법으로 코드 작성  -->
-                                            <!-- <input type="hidden" name="idx" value="22645265">
-                                            <input type="hidden" name="code" value="m20220929a41c742d48942">
-                                            <input type="hidden" name="join_type_code" value="t20220929dd5f7889009e5">
-                                            <input type="hidden" name="photo" value="">
-                                            <input type="hidden" name="photo_tmp_idx" value="" id="photo_tmp_idx">
-                                            <input type="hidden" name="from_permission" value=""> -->
-                                            <!-- 해당 사용자 상세내용 -->
-
-<!--                                            <div class="form-group">-->
-<!--                                                <label class="col-sm-3 control-label text-right">회원 유형</label>-->
-<!--                                                <span class="form-control-static col-md-9">admin</span>-->
-<!--                                            </div>-->
 
                                             <div class="form-group">
                                                 <label class="col-sm-3 control-label text-right">계정</label>
                                                 <span class="form-control-static col-md-9" th:text="*{userOAuthEmail}"></span>
                                             </div>
 
-<!--                                            <div class="form-group">-->
-<!--                                                <label class="col-sm-3 control-label text-right" for="">이름</label>-->
-<!--                                                <span class="form-control-static col-md-9 user_name">박종우</span>-->
-<!--                                            </div>-->
                                             <th:block th:if="*{collegeId == null}">
                                                 <div class="form-group">
                                                     <label class="col-sm-3 control-label text-right">대학교</label>
@@ -204,7 +189,7 @@
                                             <div class="form-group margin-bottom-xxxl">
                                                 <label class="col-sm-3 control-label text-right margin-top-5">가입일</label>
                                                 <div class="col-sm-9">
-                                                    <p class="form-control-static dateJoin" th:text="*{createdDate}"></p>
+                                                    <p class="form-control-static dateJoin" th:text="*{#temporals.format(createdDate, 'yyyy.MM.dd HH:mm')}"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -294,13 +279,6 @@
     $('.gui-folder').click(function(){
         $(this).toggleClass('expanded'); /* expanded가 없으면 생성, 있으면 삭제, 따라서 gui-folder은 계속 유지 */
         $(this).parent().children('.expanded').not(this).removeClass('expanded');
-    });
-
-    $(".dateJoin").ready(function () {
-        $(".dateJoin").bind("click", function () {
-            $(this).html($(this).text().slice(0, 10));
-        });
-        $(".dateJoin").trigger("click");
     });
 
 

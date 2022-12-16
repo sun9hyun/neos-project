@@ -2,6 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
+	<title>NEOS | 관리자 페이지</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -105,7 +106,7 @@
 							<div class="ma-item col-md-6 col-sm-6 col-xs-12 _item">
 								<div class="card">
 									<div class="card-head">
-										<header><a href="javascript:;">신규 회원 </a></header>
+										<header><a th:href="@{/admin/user/list}">신규 회원 </a></header>
 									</div>
 	
 									<div class="card-body border-top">
@@ -114,7 +115,7 @@
 											<tbody>
 											<th:block th:each="user:${users}" th:object="${user}">
 											<li class="tile"><!-- 최대 6개 반복 -->
-												<a class="tile-content" href="#">
+												<a class="tile-content" th:href="@{/admin/user/list}">
 													<div class="tile-icon">
 														<img class="" th:src="*{userFile}" alt="">
 													</div>
@@ -135,96 +136,6 @@
 											</tbody>
 
 
-<!--											<li class="tile">&lt;!&ndash; 최대 6개 반복 &ndash;&gt;-->
-<!--												<a class="tile-content" href="#">-->
-<!--													<div class="tile-icon">-->
-<!--														<img class="" src="https://testchoo.imweb.me/common/img/default_profile.png" alt="">-->
-<!--													</div>-->
-<!--													<div class="tile-text">-->
-<!--														<div>-->
-<!--															<span>성현성현</span>-->
-<!--															<span class="text-default-bright list-badge header-badge badge-danger">N</span>-->
-<!--														</div>-->
-<!--														<small class="text-12">-->
-<!--															<span>123@dk.dnd2</span>-->
-<!--															<em class="opacity-50 text-gray-bright">|</em>-->
-<!--															<span>2022-11-09 17:35</span>-->
-<!--														</small>-->
-<!--													</div>-->
-<!--												</a>-->
-<!--											</li>-->
-<!--											<li class="tile">&lt;!&ndash; 최대 6개 반복 &ndash;&gt;-->
-<!--												<a class="tile-content" href="#">-->
-<!--													<div class="tile-icon">-->
-<!--														<img class="" src="https://testchoo.imweb.me/common/img/default_profile.png" alt="">-->
-<!--													</div>-->
-<!--													<div class="tile-text">-->
-<!--														<div>-->
-<!--															<span>종우종우</span>-->
-<!--															<span class="text-default-bright list-badge header-badge badge-danger">N</span>-->
-<!--														</div>-->
-<!--														<small class="text-12">-->
-<!--															<span>111@ddd.ddd</span>-->
-<!--															<em class="opacity-50 text-gray-bright">|</em>-->
-<!--															<span>2022-11-09 17:33</span>-->
-<!--														</small>-->
-<!--													</div>-->
-<!--												</a>-->
-<!--											</li>-->
-<!--											<li class="tile">&lt;!&ndash; 최대 6개 반복 &ndash;&gt;-->
-<!--												<a class="tile-content" href="#">-->
-<!--													<div class="tile-icon">-->
-<!--														<img class="" src="https://testchoo.imweb.me/common/img/default_profile.png" alt="">-->
-<!--													</div>-->
-<!--													<div class="tile-text">-->
-<!--														<div>-->
-<!--															<span>로사로사</span>-->
-<!--															<span class="text-default-bright list-badge header-badge badge-danger">N</span>-->
-<!--														</div>-->
-<!--														<small class="text-12">-->
-<!--															<span>123@dk.dnd</span>-->
-<!--															<em class="opacity-50 text-gray-bright">|</em>-->
-<!--															<span>2022-11-09 17:34</span>-->
-<!--														</small>-->
-<!--													</div>-->
-<!--												</a>-->
-<!--											</li>-->
-<!--											<li class="tile">&lt;!&ndash; 최대 6개 반복 &ndash;&gt;-->
-<!--												<a class="tile-content" href="#">-->
-<!--													<div class="tile-icon">-->
-<!--														<img class="" src="https://testchoo.imweb.me/common/img/default_profile.png" alt="">-->
-<!--													</div>-->
-<!--													<div class="tile-text">-->
-<!--														<div>-->
-<!--															<span>민성민성</span>-->
-<!--															<span class="text-default-bright list-badge header-badge badge-danger">N</span>-->
-<!--														</div>-->
-<!--														<small class="text-12">-->
-<!--															<span>1223@dk.dnd</span>-->
-<!--															<em class="opacity-50 text-gray-bright">|</em>-->
-<!--															<span>2022-11-09 17:34</span>-->
-<!--														</small>-->
-<!--													</div>-->
-<!--												</a>-->
-<!--											</li>-->
-
-<!--											<li class="tile">&lt;!&ndash; 최대 6개 반복 &ndash;&gt;-->
-<!--												<a class="tile-content" href="#">-->
-<!--													<div class="tile-icon">-->
-<!--														<img class="" src="https://testchoo.imweb.me/common/img/default_profile.png" alt=""> &lt;!&ndash; 나중에 개인별 설정한 프로필 사진으로 변경 필요 &ndash;&gt;-->
-<!--													</div>-->
-<!--													<div class="tile-text">-->
-<!--														<div>-->
-<!--															<span>관리자</span>-->
-<!--														</div>-->
-<!--														<small class="text-12">-->
-<!--															<span>slions1113@gmail.com</span>-->
-<!--															<em class="opacity-50 text-gray-bright">|</em>-->
-<!--															<span>2022-11-09 00:00</span>-->
-<!--														</small>-->
-<!--													</div>-->
-<!--												</a>-->
-<!--											</li>-->
 										</ul>
 									</div>
 								</div>
@@ -233,7 +144,7 @@
 							<div class="ma-item col-md-6 col-sm-6 col-xs-12">
 								<div class="card">
 									<div class="card-head">
-										 <header><a href="#">신규 스터디</a></header>
+										 <header><a th:href="@{/admin/study/list}">신규 스터디</a></header>
 									</div>
 									<div class="card-body border-top">
 										<ul class="list list-preview">
@@ -241,7 +152,7 @@
 											<tbody>
 											<th:block th:each="study:${studies}" th:object="${study}">
 											<li class="tile">
-												<a class="tile-content" href="#">
+												<a class="tile-content" th:href="@{/admin/study/list}">
 													<div class="tile-icon">
 														<img class="" th:src="*{userFile}" alt="">
 													</div>
@@ -258,40 +169,6 @@
 											</li>
 											</th:block>
 											</tbody>
-<!--											<li class="tile">-->
-<!--												<a class="tile-content" href="#">-->
-<!--													<div class="tile-icon">-->
-<!--														<img class="" src="https://testchoo.imweb.me/common/img/default_profile.png" alt="">-->
-<!--													</div>-->
-<!--													<div class="tile-text">-->
-<!--														<div>-->
-<!--															<span>[자유 게시글] 테스트입니다</span>-->
-<!--														</div>-->
-<!--														<small class="text-12">-->
-<!--															<span>관리자</span>-->
-<!--															<em class="opacity-50 text-gray-bright">|</em>-->
-<!--															<span>2022-11-04 13:41</span>-->
-<!--														</small>-->
-<!--													</div>-->
-<!--												</a>-->
-<!--											</li>		-->
-<!--											<li class="tile">-->
-<!--												<a class="tile-content" href="#">-->
-<!--													<div class="tile-icon">-->
-<!--														<img class="" src="https://testchoo.imweb.me/common/img/default_profile.png" alt="">-->
-<!--													</div>-->
-<!--													<div class="tile-text">-->
-<!--														<div>-->
-<!--															<span>[고민상담 게시글] 테스트입니다</span>-->
-<!--														</div>-->
-<!--														<small class="text-12">-->
-<!--															<span>관리자</span>-->
-<!--															<em class="opacity-50 text-gray-bright">|</em>-->
-<!--															<span>2022-11-04 13:41</span>-->
-<!--														</small>-->
-<!--													</div>-->
-<!--												</a>-->
-<!--											</li>-->
 										</ul>
 									</div>
 								</div>
@@ -302,7 +179,7 @@
 							<div class="ma-item col-md-6 col-sm-6 col-xs-12">
 								<div class="card">
 									<div class="card-head">
-										<header><a href="#">문의사항</a></header>
+										<header><a th:href="@{/admin/inquiry/list}">문의사항</a></header>
 									</div>
 									<div class="card-body border-top">
 										<ul class="list list-preview">
@@ -310,7 +187,7 @@
 											<tbody>
 											<th:block th:each="inquiry:${inquiries}" th:object="${inquiry}">
 											<li class="tile">
-												<a class="tile-content" href="#">
+												<a class="tile-content" th:href="@{/admin/inquiry/list}">
 													<div class="tile-icon">
 														<img class="" th:src="*{userFile}" alt="">
 													</div>
@@ -328,40 +205,6 @@
 											</th:block>
 											</tbody>
 
-<!--											<li class="tile">-->
-<!--												<a class="tile-content" href="#">-->
-<!--													<div class="tile-icon">-->
-<!--														<img class="" src="https://testchoo.imweb.me/common/img/default_profile.png" alt="">-->
-<!--													</div>-->
-<!--													<div class="tile-text">-->
-<!--														<div>-->
-<!--															<span>[문의] NEOS 테스트 문의입니다</span>-->
-<!--														</div>-->
-<!--														<small class="text-12">-->
-<!--															<span>관리자</span>-->
-<!--															<em class="opacity-50 text-gray-bright">|</em>-->
-<!--															<span>2022-11-04 13:41</span>-->
-<!--														</small>-->
-<!--													</div>-->
-<!--												</a>-->
-<!--											</li>-->
-<!--											<li class="tile">-->
-<!--												<a class="tile-content" href="#">-->
-<!--													<div class="tile-icon">-->
-<!--														<img class="" src="https://testchoo.imweb.me/common/img/default_profile.png" alt="">-->
-<!--													</div>-->
-<!--													<div class="tile-text">-->
-<!--														<div>-->
-<!--															<span>[문의] NEOS 테스트 문의입니다</span>-->
-<!--														</div>-->
-<!--														<small class="text-12">-->
-<!--															<span>관리자</span>-->
-<!--															<em class="opacity-50 text-gray-bright">|</em>-->
-<!--															<span>2022-11-04 13:41</span>-->
-<!--														</small>-->
-<!--													</div>-->
-<!--												</a>-->
-<!--											</li>-->
 										</ul>
 
 									</div>
@@ -371,7 +214,7 @@
 							<div class="ma-item col-md-6 col-sm-6 col-xs-12">
 								<div class="card">
 									<div class="card-head">
-										<header><a href="#" target="_blank">대학교 목록</a></header>
+										<header><a th:href="@{/admin/college/list}">대학교 목록</a></header>
 									</div>
 	
 									<div class="card-body border-top">
@@ -380,7 +223,7 @@
 											<tbody>
 											<th:block th:each="college:${colleges}" th:object="${college}">
 											<li class="tile"><!-- 최대 6개 반복 -->
-												<a class="tile-content" href="#"> <!-- 각 회원별 상세페이지로 이동할 수 있도록 주소 변경 필요 -->
+												<a class="tile-content" th:href="@{/admin/college/list}"> <!-- 각 회원별 상세페이지로 이동할 수 있도록 주소 변경 필요 -->
 													<div class="tile-icon">
 														<img class="" th:src="*{collegeLogoFile}" alt=""> <!-- 나중에 개인별 설정한 프로필 사진으로 변경 필요 -->
 													</div>
@@ -397,38 +240,6 @@
 											</th:block>
 											</tbody>
 
-<!--											<li class="tile">&lt;!&ndash; 최대 6개 반복 &ndash;&gt;-->
-<!--												<a class="tile-content" href="#"> &lt;!&ndash; 각 회원별 상세페이지로 이동할 수 있도록 주소 변경 필요 &ndash;&gt;-->
-<!--													<div class="tile-icon">-->
-<!--														<img class="" src="/images/admin/college/yenseiCollege.jpg" alt=""> &lt;!&ndash; 나중에 개인별 설정한 프로필 사진으로 변경 필요 &ndash;&gt;-->
-<!--													</div>-->
-<!--													<div class="tile-text">-->
-<!--														<div>-->
-<!--															<span>연세대학교</span>-->
-<!--														</div>-->
-<!--														<small class="text-12">-->
-<!--															<span>2022-11-03 00:00</span>-->
-<!--														</small>-->
-<!--													</div>-->
-<!--												</a>-->
-<!--											</li>-->
-<!--											-->
-<!--											-->
-<!--											<li class="tile">&lt;!&ndash; 최대 6개 반복 &ndash;&gt;-->
-<!--												<a class="tile-content" href="#"> &lt;!&ndash; 각 회원별 상세페이지로 이동할 수 있도록 주소 변경 필요 &ndash;&gt;-->
-<!--													<div class="tile-icon">-->
-<!--														<img class="" src="/images/admin/college/koreaCollege.png" alt=""> &lt;!&ndash; 나중에 개인별 설정한 프로필 사진으로 변경 필요 &ndash;&gt;-->
-<!--													</div>-->
-<!--													<div class="tile-text">-->
-<!--														<div>-->
-<!--															<span>고려대학교</span>-->
-<!--														</div>-->
-<!--														<small class="text-12">-->
-<!--															<span>2022-11-03 00:00</span>-->
-<!--														</small>-->
-<!--													</div>-->
-<!--												</a>-->
-<!--											</li>-->
 										</ul>
 									</div>
 								</div>
@@ -443,100 +254,10 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script>
-
-	// 문서로드 완료 후 자바 스크립트 진행
-	// document.addEventListener('DOMContentLoaded', function() {
-	// 	const alertBox = document.querySelector('#alertBox');
-	// 	const contentArea = document.querySelector('#content');
-	//
-	// 	alertBox.classList.remove('alert__wrap-fixed');
-	// 	alertBox.classList.add('alert__wrap');
-	// 	contentArea.prepend(alertBox);
-	// });
-	//
-	// $(function(){
-	// 	SADMIN_MENU_ALERT.openAlert();
-	// });
-
 	// 좌측 슬라이드 배너 작동
 	$('.gui-folder').click(function(){
 		$(this).toggleClass('expanded'); /* expanded가 없으면 생성, 있으면 삭제, 따라서 gui-folder은 계속 유지 */
 		$(this).parent().children('.expanded').not(this).removeClass('expanded');	
 	});
-	
-	// 메인페이지 그래프
-	// var context = document
-    //             .getElementById('statChart')
-    //             .getContext('2d');
-    // var statChart = new Chart(context, {
-    //             type: 'line', // 차트의 형태
-    //             data: { // 차트에 들어갈 데이터
-    //                 labels: [
-    //                     //x 축
-    //                     '09-30','10-01','10-02','10-03','10-04','10-05','10-06'
-    //                 ],
-	//
-    //                 datasets: [
-    //                     { //데이터
-    //                         label: '페이지뷰', //차트 제목
-	// 						fillColor : "rgba(253, 175, 177,0.3)",
-	// 						strokeColor : "rgba(253, 175, 177,1)",
-	// 						pointColor : "rgba(253, 175, 177, 1)",
-	// 						pointStrokeColor : "#eee",
-	// 						pointHighlightFill : "#fff",
-	// 						pointHighlightStroke : "rgba(151,187,205,1)",
-    //                         data: [
-    //                             1,3,2,2,1,5,6 //x축 label에 대응되는 데이터 값
-    //                         ],
-    //                         backgroundColor: [
-    //                             //색상
-	// 							'rgba(57, 82, 224, 0.2)'
-    //                         ],
-    //                         borderColor: [
-    //                             //경계선 색상
-    //                             'rgb(57, 82, 224)'
-    //                         ],
-    //                         borderWidth: 1 //경계선 굵기
-    //                     },
-    //                     {
-    //                         label: '방문자', //차트 제목
-	// 						fillColor : "rgba(253, 175, 177,0.3)",
-	// 						strokeColor : "rgba(253, 175, 177,1)",
-	// 						pointColor : "rgba(252, 95, 100,1)",
-	// 						pointStrokeColor : "#eee",
-	// 						pointHighlightFill : "#fff",
-	// 						pointHighlightStroke : "rgba(151,187,205,1)",
-    //                         data: [
-    //                             1,1,0,3,2,1,4 //x축 label에 대응되는 데이터 값
-    //                         ],
-    //                         backgroundColor: [
-    //                             //색상
-    //                             'rgba(255, 99, 132, 0.2)'
-    //                         ],
-    //                         borderColor: [
-    //                             //경계선 색상
-    //                             'rgba(255, 99, 132, 1)'
-    //                         ],
-    //                         borderWidth: 1 //경계선 굵기
-    //                     }
-    //                 ]
-    //             },
-    //             options: {
-	// 				legend: {
-	// 					display: false,
-	// 				},
-    //                 scales: {
-    //                     yAxes: [
-    //                         {
-    //                             ticks: {
-    //                                 beginAtZero: true
-    //                             }
-    //                         }
-    //                     ]
-    //                 }
-    //             }
-	//
-	//
-    //         });
 </script>
 </html>

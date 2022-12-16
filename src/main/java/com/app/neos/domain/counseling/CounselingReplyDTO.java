@@ -59,4 +59,15 @@ public class CounselingReplyDTO {
         this.counselingTitle = counselingTitle;
         this.createdDate = createdDate;
     }
+
+    @QueryProjection
+    public CounselingReplyDTO(Long counselingReplyId, String counselingReplyContent, String userNickName, String counselingTitle, LocalDateTime createdDate, Long userId, Long counselingId) {
+        this.counselingReplyId = counselingReplyId;
+        this.counselingReplyContent = counselingReplyContent;
+        this.userNickName = userNickName;
+        this.counselingTitle = counselingTitle;
+        this.createdDate = createdDate;
+        this.userId = userId;
+        this.counselingId = counselingId;
+    }
 }

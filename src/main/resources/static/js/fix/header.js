@@ -144,14 +144,29 @@ function myStudyList() {
 
 function showStudyListHeader(result) {
     let text= '';
-
-    for(var i = 0 ; i < 3 ; i ++ ){
-        text += `<li class="alarmContent"><a class="popClick" href="/study/list/`+result[i].studyId+`">`
-        text += `<p>`+result[i].studyTitle+`</p><span class="dateInfo">`+result[i].studyStartDate
-        text += `일에 개설</span><span class="newTag"></span>`
-        text += `</a></li>`
-
+    let total = result.length;
+    if(total == 0){
+        text += `<li class="alarmContent">`
+        text += `<p></p><span class="dateInfo">`
+        text += `</span><span style="font-size: .75rem; color: #42495b; margin: 6px 0" class="newTag">현재 진행중인 스터디가 없습니다.</span>`
+        text += `</li>`
+    }else if(total>=0 && total<=3){
+        for(var i = 0 ; i < (total%4) ; i ++ ){
+            text += `<li class="alarmContent"><a class="popClick" href="/study/list/`+result[i].studyId+`">`
+            text += `<p>`+result[i].studyTitle+`</p><span class="dateInfo">`+result[i].studyStartDate
+            text += `일에 개설</span><span class="newTag"></span>`
+            text += `</a></li>`
+        }
+    }else{
+        for(var i = 0 ; i < 3 ; i ++ ){
+            text += `<li class="alarmContent"><a class="popClick" href="/study/list/`+result[i].studyId+`">`
+            text += `<p>`+result[i].studyTitle+`</p><span class="dateInfo">`+result[i].studyStartDate
+            text += `일에 개설</span><span class="newTag"></span>`
+            text += `</a></li>`
+        }
     }
+
+
 
 
     // $(result).each((i,item)=>{

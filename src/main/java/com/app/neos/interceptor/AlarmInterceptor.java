@@ -21,19 +21,21 @@ import java.util.List;
 public class AlarmInterceptor implements HandlerInterceptor {
     private final AlarmCustomRepository alarmCustomRepository;
 
-
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
         Long userId = (Long) request.getSession().getAttribute("loginUser");
         if(userId != null){
             List<Alarm> list = alarmCustomRepository.findAllNoReadAlarmByUserId(userId);
 
             if(list.size()>0){
-                modelAndView.addObject("checkAlarm", true);
+                request.getSession().setAttribute("checkAlarm",true);
+                return true;
             }else{
-//                modelAndView.addObject("checkAlarm", false);
+                request.getSession().setAttribute("checkAlarm",false);
+                return true;
             }
-
         }
+        return true;
     }
 }

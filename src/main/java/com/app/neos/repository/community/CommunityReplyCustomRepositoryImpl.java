@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import static com.app.neos.entity.community.QCommunityReply.*;
+
 @Repository
 @RequiredArgsConstructor
 public class CommunityReplyCustomRepositoryImpl implements CommunityReplyCustomRepository {
@@ -17,17 +19,17 @@ public class CommunityReplyCustomRepositoryImpl implements CommunityReplyCustomR
     @Override
     public List<CommunityReplyDTO> findAll(Long communityId) {
         return jpaQueryFactory.select(new QCommunityReplyDTO(
-                QCommunityReply.communityReply.communityReplyId,
-                QCommunityReply.communityReply.communityReplyContent,
-                QCommunityReply.communityReply.communityReplyLikeCount,
-                QCommunityReply.communityReply.user,
-                QCommunityReply.communityReply.community,
-                QCommunityReply.communityReply.createdDate,
-                QCommunityReply.communityReply.updatedDate
+                communityReply.communityReplyId,
+                communityReply.communityReplyContent,
+                communityReply.communityReplyLikeCount,
+                communityReply.user,
+                communityReply.community,
+                communityReply.createdDate,
+                communityReply.updatedDate
         ))
-                .from(QCommunityReply.communityReply)
-                .where(QCommunityReply.communityReply.community.communityId.eq(communityId))
-                .orderBy(QCommunityReply.communityReply.updatedDate.asc())
+                .from(communityReply)
+                .where(communityReply.community.communityId.eq(communityId))
+                .orderBy(communityReply.updatedDate.asc())
                 .fetch();
     }
 }

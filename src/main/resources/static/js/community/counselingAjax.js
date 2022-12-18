@@ -7,6 +7,7 @@ $(document).ready(function () {
     globalThis.check = false;
     show();
 
+    // 작성
     function add(counseling, callback) {
         $.ajax({
             url: "/counseling/counselingOk",
@@ -24,13 +25,13 @@ $(document).ready(function () {
         });
     }
 
+    // 목록
     function show() {
         // alert(globalThis.page);
 
         $.ajax({
             url: "/counseling/counselingList?page=" + (globalThis.page),
             type: "get",
-            async: false,
             success: function (counselingDTOS) {
                 if (counselingDTOS != null) {
                     getList(counselingDTOS);
@@ -43,6 +44,7 @@ $(document).ready(function () {
     };
 
 
+    // 작성 send 클릭
     $("#sendButton").on("click", function () {
         var $title = $("#counselingTitle");
         var $content = $("#summernote");
@@ -72,6 +74,7 @@ $(document).ready(function () {
 
     });
 
+    //dom 화면
     function getList(counselingDTOS) {
         // alert(communityDTOS);
         console.log(counselingDTOS);
@@ -122,21 +125,21 @@ $(document).ready(function () {
             text += "</div>";
 
             //댓글
-            text += "<form th:action='@{/counseling/counseling}' th:object='${counselingReplyDTO}' name='communityReplyWrite' class='replyForm' method='post' class='form-horizontal form-validate' role='form' target='hidden_frame' enctype='multipart/form-data' autocomplete='off'novalidate='novalidate'>";
+            text += "<form  name='communityReplyWrite' class='replyForm' method='post' class='form-horizontal form-validate' role='form' target='hidden_frame' enctype='multipart/form-data' autocomplete='off'novalidate='novalidate'>";
             text += "<div class='replyComponent_replyInputBox__2yLKK'>";
             text += "<div class='replyComponent_replyInputContainer__3TJW8'>";
 
             if ($("#userId").attr("value") != null) {
-                text += "<textarea th:field='*{counselingReplyContent}' class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
+                text += "<textarea class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
             } else {
-                text += "<textarea th:field='*{counselingReplyContent}' readonly class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
+                text += "<textarea  readonly class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
             }
             text += "</div>";
             text += "<div class='replyComponent_replyButtonGroup__2i0ow'>";
             text += "<div class='replyComponent_replyButtonGroupCount__j0XkV'>";
             text += "<span class='rereplyTextCount'>0</span><span>/</span><span>1000</span>";
             text += "</div>";
-            text += "<input type='hidden' th:value='${session.loginUser}'  name='userId' id='replyUser' class='user'>";
+            text += "<input type='hidden'  name='userId' id='replyUser' class='user'>";
             text += "<input type='hidden' name='counselingId' class='replyCounseling'value='" + item.counselingId + "'>";
 
             if ($("#userId").attr("value") != null) {
@@ -164,6 +167,7 @@ $(document).ready(function () {
         }
     }
 
+    //더보기 버튼 클릭
     $(".moreButton").on("click", function(e){
         // alert("클릭");
         e.preventDefault();
@@ -176,7 +180,7 @@ $(document).ready(function () {
 
 
     /*-----------------------------------------------------------------------------------------------------------*/
-    //수정
+    //수정 버튼 클릭(모달 띄우기)
     $("div.centerSectionBox").on("click", ".postUpdate_1j", function () {
         const $titles = $(".counTitle");
         const $contents = $(".counContent");
@@ -199,6 +203,7 @@ $(document).ready(function () {
     })
 
 
+    //수정 ajax
     $(".updatePost_1j").on("click", function () {
         $.ajax({
             url: "/counseling/counselingUpdate",
@@ -223,12 +228,12 @@ $(document).ready(function () {
         $(".editorMdoal").find(".note-editable").val("");
     })
 
+    // 수정 후 목록 ajax
     function showUpdate() {
         globalThis.page = 0
         $.ajax({
             url: "/counseling/counselingList?page= "+ (globalThis.page) +"&size" + (globalThis.page) * 5,
             type: "get",
-            async: false,
             success: function (counselingDTOS) {
                 if(counselingDTOS != null){
                     getListUpdate(counselingDTOS);
@@ -240,6 +245,7 @@ $(document).ready(function () {
         });
     };
 
+    // 수정 후 dom
     function getListUpdate(counselingDTOS) {
         // alert(communityDTOS);
         console.log(counselingDTOS);
@@ -290,21 +296,21 @@ $(document).ready(function () {
             text += "</div>";
 
             //댓글
-            text += "<form th:action='@{/counseling/counseling}' th:object='${counselingReplyDTO}' name='communityReplyWrite' class='replyForm' method='post' class='form-horizontal form-validate' role='form' target='hidden_frame' enctype='multipart/form-data' autocomplete='off'novalidate='novalidate'>";
+            text += "<form  name='communityReplyWrite' class='replyForm' method='post' class='form-horizontal form-validate' role='form' target='hidden_frame' enctype='multipart/form-data' autocomplete='off'novalidate='novalidate'>";
             text += "<div class='replyComponent_replyInputBox__2yLKK'>";
             text += "<div class='replyComponent_replyInputContainer__3TJW8'>";
 
             if ($("#userId").attr("value") != null) {
-                text += "<textarea th:field='*{counselingReplyContent}' class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
+                text += "<textarea  class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
             } else {
-                text += "<textarea th:field='*{counselingReplyContent}' readonly class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
+                text += "<textarea  readonly class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
             }
             text += "</div>";
             text += "<div class='replyComponent_replyButtonGroup__2i0ow'>";
             text += "<div class='replyComponent_replyButtonGroupCount__j0XkV'>";
             text += "<span class='rereplyTextCount'>0</span><span>/</span><span>1000</span>";
             text += "</div>";
-            text += "<input type='hidden' th:value='${session.loginUser}'  name='userId' id='replyUser' class='user'>";
+            text += "<input type='hidden'  name='userId' id='replyUser' class='user'>";
             text += "<input type='hidden' name='counselingId' class='replyCounseling'value='" + item.counselingId + "'>";
 
             if ($("#userId").attr("value") != null) {
@@ -333,7 +339,7 @@ $(document).ready(function () {
     }
 
     /*-----------------------------------------------------------------------------------------------------------*/
-    /*삭제*/
+    //삭제 모달 띄우기
     $("div.centerSectionBox").on("click", ".postDelete_1j", function () {
         let cid = $(this).closest(".loungeCard").children(".cid").val();
         $(".cidDelete").val(cid);
@@ -342,15 +348,16 @@ $(document).ready(function () {
         $(".modalTit").text("글 삭제 확인");
         $(".commonModalContent p").text("해당 글을 삭제하시겠습니까?");
     })
-
+    //삭제 모달 지우기
     $(".modalWrapOpen").find(".closeBtn").on("click",function () {
         $(".modalWrapOpen").attr("style","display : none !important")
     })
-
+    //삭제 모달 지우기
     $(".modalWrapOpen").find(".doubleBtnWrap").click(function () {
         $(".modalWrapOpen").attr("style","display : none !important")
     })
 
+    // 삭제 ajax
     $(".modalWrapOpen").on("click", ".deleteBtn", function () {
         $.ajax({
             url: "/counseling/counselingDelete",

@@ -13,6 +13,8 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.app.neos.entity.counseling.QCounseling.*;
+
 @Repository
 @RequiredArgsConstructor
 public class CounselingCustomRepositoryImpl implements CounselingCustomRepository {
@@ -21,30 +23,30 @@ public class CounselingCustomRepositoryImpl implements CounselingCustomRepositor
     @Override
     public List<CounselingDTO> findAll() {
         return jpaQueryFactory.select(new QCounselingDTO(
-                QCounseling.counseling.counselingId,
-                QCounseling.counseling.counselingTitle,
-                QCounseling.counseling.counselingContent,
-                QCounseling.counseling.user,
-                QCounseling.counseling.createdDate,
-                QCounseling.counseling.updatedDate
+                counseling.counselingId,
+                counseling.counselingTitle,
+                counseling.counselingContent,
+                counseling.user,
+                counseling.createdDate,
+                counseling.updatedDate
         ))
-                .from(QCounseling.counseling)
-                .orderBy(QCounseling.counseling.counselingId.desc())
+                .from(counseling)
+                .orderBy(counseling.counselingId.desc())
                 .fetch();
     }
 
     @Override
     public Slice<CounselingDTO> findAllPage(Pageable pageable) {
         List<CounselingDTO> counselingDTOS = jpaQueryFactory.select(new QCounselingDTO(
-                QCounseling.counseling.counselingId,
-                QCounseling.counseling.counselingTitle,
-                QCounseling.counseling.counselingContent,
-                QCounseling.counseling.user,
-                QCounseling.counseling.createdDate,
-                QCounseling.counseling.updatedDate
+                counseling.counselingId,
+                counseling.counselingTitle,
+                counseling.counselingContent,
+                counseling.user,
+                counseling.createdDate,
+                counseling.updatedDate
         ))
-                .from(QCounseling.counseling)
-                .orderBy(QCounseling.counseling.updatedDate.desc())
+                .from(counseling)
+                .orderBy(counseling.updatedDate.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize()+1)
                 .fetch();

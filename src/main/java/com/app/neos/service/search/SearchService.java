@@ -13,9 +13,12 @@ import org.springframework.stereotype.Service;
 public class SearchService {
     private final SearchCustomRepository searchCustomRepository;
 
+    // 스터디 검색
     public Slice<StudyDTO> findByKeywordStudy(String keyword, Pageable pageable){
         return searchCustomRepository.findByKeywordStudy(keyword, pageable);
     }
+
+    //자료상점 검색
     public Slice<StoreDTO> findByKeywordStore(String keyword, Pageable pageable){
         return searchCustomRepository.findByKeywordStore(keyword, pageable);
     }

@@ -18,7 +18,20 @@ import org.springframework.web.bind.annotation.*;
 public class SearchRestController {
     private final SearchService searchService;
 
-//    @PostMapping("/search")
+    // 스터디 더보기
+    @PostMapping("/study")
+    public Slice<StudyDTO> studyDTOS(@PageableDefault(size = 5, sort = "id" , direction = Sort.Direction.DESC) Pageable pageable, String keyword){
+        return searchService.findByKeywordStudy(keyword, pageable);
+    }
+
+    // 자료상점 더보기
+    @PostMapping("/store")
+    public Slice<StoreDTO> storeDTOS(@PageableDefault(size = 5, sort = "id" , direction = Sort.Direction.DESC) Pageable pageable, String keyword){
+        return searchService.findByKeywordStore(keyword, pageable);
+    }
+
+
+    //    @PostMapping("/search")
 //    public String searchBefore(StudyDTO studyDTO, StoreDTO storeDTO, Model model, @PageableDefault(size = 5, sort = "id" , direction = Sort.Direction.DESC) Pageable pageable, String keyword){
 //        Slice<StudyDTO> studyDTOList =  searchService.findByKeywordStudy(keyword, pageable);
 //        Slice<StoreDTO> storeDTOList =  searchService.findByKeywordStore(keyword, pageable);
@@ -31,18 +44,6 @@ public class SearchRestController {
 ////        model.addAttribute("total", studyDTOList.getNumberOfElements()+storeDTOList.getNumberOfElements());
 //        return "app/search/searchComplete";
 //    }
-
-    @PostMapping("/study")
-    public Slice<StudyDTO> studyDTOS(@PageableDefault(size = 5, sort = "id" , direction = Sort.Direction.DESC) Pageable pageable, String keyword){
-        return searchService.findByKeywordStudy(keyword, pageable);
-    }
-
-    @PostMapping("/store")
-    public Slice<StoreDTO> storeDTOS(@PageableDefault(size = 5, sort = "id" , direction = Sort.Direction.DESC) Pageable pageable, String keyword){
-        return searchService.findByKeywordStore(keyword, pageable);
-    }
-
-
 
 
 

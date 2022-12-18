@@ -4,6 +4,7 @@
 * */
 $(document).ready(function () {
 
+    //작성 ajax
     function addReply(reply, callback) {
         $.ajax({
             url: "/counseling-reply/replyOk",
@@ -22,6 +23,7 @@ $(document).ready(function () {
         });
     }
 
+    // 댓글 send 클릭
     $("div.centerSectionBox").on("click", ".replyWrite", function(){
         var $replyContent = $(this).parent(".replyComponent_replyButtonGroup__2i0ow").prev().children(".replyContent");
         var $csid = $(this).prev(".replyCounseling").val();
@@ -48,7 +50,8 @@ $(document).ready(function () {
         $(".rereplyTextCount").text("0");
 
     })
-    
+
+    // 화면 dom
     function getReplyList(counselingReplyDTOS) {
         let ic = $("#replyNumber").val();
         // let id = counselingReplyDTOS[0].counseling.counselingId;
@@ -102,6 +105,7 @@ $(document).ready(function () {
 
     }
 
+    // 목록 ajax
     function showReply(id) {
         $.ajax({
             url: "/counseling-reply/reply/" + id,
@@ -119,6 +123,7 @@ $(document).ready(function () {
 
     }
 
+    //댓글 목록 클릭
     $("div.centerSectionBox").on("click", ".replyList", function(){
         let counselingId = $(this).closest(".loungeCard").children(".cid").val();
         let i = $(this).closest(".loungeCard").index();
@@ -131,7 +136,7 @@ $(document).ready(function () {
     })
 
     /*-----------------------------------------------------------------------------------------------------------*/
-    /*삭제*/
+    // 삭제 모달 띄우기
     $(".centerSectionBox").on("click", ".replyDelete", function () {
         let csid = $(this).closest(".userInformationComponents_userReplySection__3ty7Q").next().children(".csid").val();
         let csidCid = $(this).closest(".userInformationComponents_userReplySection__3ty7Q").next().children(".csidCid").val();
@@ -144,12 +149,14 @@ $(document).ready(function () {
         $(".commonModalContent p").text("해당 댓글을 삭제하시겠습니까?");
     });
 
+    //삭제 클릭
     $(".replyBtn").on("click", function () {
         var id =  $(".csidDeleteCid").val();
         var replyId= $(".csidDelete").val();
         deleteReply(replyId,id);
     })
 
+    //삭제 ajax
     function deleteReply(replyId, id) {
         $.ajax({
             url: "/counseling-reply/replyDelete/" +replyId,
@@ -167,7 +174,7 @@ $(document).ready(function () {
 
     let reply;
     let updateCheck = false;
-//수정
+    //수정 textarea
     $(".centerSection").on("click",".updateTry",function () {
         if(!updateCheck){
             const $pTag = $(this).closest(".replyComponent_replyContainer__3dxJZ").find(".replyComponent_replyContent__3iS4J p");
@@ -183,10 +190,9 @@ $(document).ready(function () {
         }else{
             alert("한번에 하나의 댓글만 수정 가능합니다.");
         }
-
-
     })
 
+    // 수정 취소
     $(".centerSection").on("click",".cancelTry",function () {
         const $textareaTag = $(this).closest(".replyComponent_replyContainer__3dxJZ").find(".replyComponent_replyContent__3iS4J textarea");
 
@@ -201,12 +207,12 @@ $(document).ready(function () {
 
     })
 
+    // 수정 send 클릭
     $(".centerSection").on("click",".update",function () {
         const $textareaTag = $(this).closest(".replyComponent_replyContainer__3dxJZ").find(".replyComponent_replyContent__3iS4J textarea");
         var content = $textareaTag.val();
         var id = $(this).closest(".userInformationComponents_userReplySection__3ty7Q").next().find(".csid").val();
         var postId = $(this).closest(".userInformationComponents_userReplySection__3ty7Q").next().find(".csidCid").val();
-
 
         $.ajax({
             url:"/counseling-reply/replyUpdate/"+id,
@@ -214,15 +220,9 @@ $(document).ready(function () {
             data:{counselingReplyContent:content},
             success:function (result) {
                 showReply(postId);
-
                 updateCheck=false;
-
             }
         })
-
-
     })
-
-
 
 })

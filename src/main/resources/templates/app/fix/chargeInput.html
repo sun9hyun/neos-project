@@ -35,7 +35,7 @@
                             <td><label class="checkBox" ><input class = "inputRadio" type="radio" name="price" value="F01" ><span
                                     class="checkmark"></span></label></td>
                             <td>직접 입력</td>
-                            <td><input class="cashCheck" id="Ehrlflshas"  onkeyup="printName()" name = "point" type="text" placeholder="포인트를 입력해주세요 (숫자만)" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); disabled" disabled="disabled" ></td>
+                            <td><input class="cashCheck" id="name"  onkeyup="printName()" name="point" type="text" placeholder="포인트를 입력해주세요 (숫자만)" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); disabled" disabled="disabled" ></td>
                         </tr>
                         <tr>
                             <td><label class="checkBox"><input class = "radio" type="radio" name="price" value="5000" checked="" ><span
@@ -123,7 +123,6 @@
         if($(".radio").is(":checked")){
             $(".cashCheck").attr("disabled", true);
         };
-
         $(".radio").change(function(){
             if($(".radio").is(":checked")){
                 $(".cashCheck").attr("disabled", true);
@@ -139,7 +138,7 @@
 
     function showPay() {
         $(".payModal").css("display", "block");
-        $("#Ehrlflshas").val("");
+        $("#name").val("");
     }
     $(".closeBtn").on("click", function () {
         $(".payModal").css("display", "none");
@@ -169,28 +168,27 @@
 
     async function kakaoPay() {
         const response = await Bootpay.requestPayment({
-            "application_id": "6396df69d01c7e001bfeb951",
-            "price": $(".results").text(),
-            "order_name": "NEOS",
-            "order_id": 'order_id_' + new Date().getTime(),
-            "pg": "카카오페이",
-            "method": "카카오페이",
-            "tax_free": 0,
-            "user": {
+            "application_id": "6396df69d01c7e001bfeb951", /*WEB Application ID*/
+            "price": $(".results").text(), /*결제 요청할 금액*/
+            "order_name": "NEOS",/*결제할 상품명*/
+            "order_id": 'order_id_' + new Date().getTime(), /*주문번호*/
+            "pg": "카카오페이", /*결제 요청할 PG Symbol*/
+            "method": "카카오페이", /*결제 요청할 결제수단 symbol*/
+            "user": { /*구매자 정보*/
                 "id": $("#user").val()
             },
             "items": [
                 {
-                    "id": 'id_' + new Date().getTime(),
-                    "name": "Neos Point",
-                    "qty": 1,
-                    "price": $(".results").text()
+                    "id": 'id_' + new Date().getTime(), /*상품의 고유 ID*/
+                    "name": "Neos Point", /*상품명*/
+                    "qty": 1, /*상품 구매 개수*/
+                    "price": $(".results").text() /*상품 하나의 단가*/
                 }
             ],
             "extra": {
-                "open_type": "iframe",
-                "seller_name": "NEOS",
-                "escrow": false
+                "open_type": "iframe", /*결제창 진행방식*/
+                "seller_name": "NEOS", /*판매자 이름*/
+                "escrow": false /*에스크로 결제인 경우 true로 요청*/
             }
         })
         switch (response.event) {
@@ -208,27 +206,28 @@
 
     async function publicPay() {
         const response = await Bootpay.requestPayment({
-            "application_id": "6396df69d01c7e001bfeb951",
-            "price": $(".results").text(),
-            "order_name": "NEOS",
-            "order_id": 'order_id_' + new Date().getTime(),
-            "pg": "케이씨피",
-            "method": "카드",
-            "user": {
+            "application_id": "6396df69d01c7e001bfeb951", /*WEB Application ID*/
+            "price": $(".results").text(), /*결제 요청할 금액*/
+            "order_name": "NEOS", /*결제할 상품명*/
+            "order_id": 'order_id_' + new Date().getTime(), /*주문번호*/
+            "pg": "케이씨피", /*결제 요청할 PG Symbol*/
+            "method": "카드", /*결제 요청할 결제수단 symbol*/
+            "user": { /*구매자 정보*/
                 "id": $("#user").val()
             },
             "items": [
                 {
-                    "id": 'id_' + new Date().getTime(),
-                    "name": "Neos Point",
-                    "qty": 1,
-                    "price": $(".results").text()
+                    "id": 'id_' + new Date().getTime(), /*상품의 고유 ID*/
+                    "name": "Neos Point", /*상품명*/
+                    "qty": 1, /*상품 구매 개수*/
+                    "price": $(".results").text() /*상품 하나의 단가*/
                 }
             ],
             "extra": {
-                "open_type": "iframe",
-                "seller_name": "NEOS",
-                "escrow": false
+                "open_type": "iframe", /*결제창 진행방식*/
+                "seller_name": "NEOS", /*판매자 이름*/
+                "escrow": false, /*에스크로 결제인 경우 true로 요청*/
+                "except_card_companies": ["카카오페이"] /*제외 시킬 카드사(일부 pg사에서만 사용가능)*/
             }
         })
         switch (response.event) {

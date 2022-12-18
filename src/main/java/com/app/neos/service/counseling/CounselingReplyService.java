@@ -27,6 +27,7 @@ public class CounselingReplyService {
     public final UserRepository userRepository;
     private final NeosPowerRepository neosPowerRepository;
 
+    //작성
     public void saveCounselingReply(CounselingReplyDTO counselingReplyDTO){
         CounselingReply counselingReply = counselingReplyDTO.toEntity();
         Long userId = counselingReplyDTO.getUserId();
@@ -38,16 +39,19 @@ public class CounselingReplyService {
         counselingReplyRepository.save(counselingReply);
     }
 
+    //목록
     public List<CounselingReplyDTO> findReplyAll(Long counselingId){
         return counselingReplyCustomRepository.findAll(counselingId);
     }
 
+    //수정
     @Transactional
     public void updateReply(CounselingReplyDTO counselingReplyDTO){
         CounselingReply counselingReply = counselingReplyRepository.findById(counselingReplyDTO.getCounselingReplyId()).get();
         counselingReply.update(counselingReplyDTO);
     }
 
+    //삭제
     public void deleteReply(Long counselingReplyId){
         counselingReplyRepository.deleteById(counselingReplyId);
     }

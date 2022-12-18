@@ -30,6 +30,7 @@ public class CommunityReplyService {
     private final NeosPowerRepository neosPowerRepository;
     private final AlarmService alarmService;
 
+    //작성
     public void saveCommunityReply(CommunityReplyDTO communityReplyDTO){
         CommunityReply communityReply = communityReplyDTO.toEntity();
         Long userId = communityReplyDTO.getUserId();
@@ -46,16 +47,19 @@ public class CommunityReplyService {
 
     }
 
+    //목록
     public List<CommunityReplyDTO> findReplyAll(Long communityId){
         return communityReplyCustomRepository.findAll(communityId);
     }
 
+    //수정
     @Transactional
     public void updateReply(CommunityReplyDTO communityReplyDTO){
         CommunityReply communityReply = communityReplyRepository.findById(communityReplyDTO.getCommunityReplyId()).get();
         communityReply.update(communityReplyDTO);
     }
 
+    //삭제
     public void deleteReply(Long communityReplyId){
         communityReplyRepository.deleteById(communityReplyId);
     }

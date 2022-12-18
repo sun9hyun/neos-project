@@ -4,6 +4,8 @@ import com.app.neos.domain.user.FollowDTO;
 import com.app.neos.entity.period.Created;
 import com.app.neos.entity.user.User;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -17,10 +19,12 @@ public class Follow  extends Created {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="MY_ID_USER_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User myId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="FOLLOWING_ID_USER_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User followingId;
 
     @Builder

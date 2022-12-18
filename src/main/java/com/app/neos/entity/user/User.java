@@ -14,6 +14,8 @@ import com.app.neos.type.user.UserCollegeMajor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -62,6 +64,7 @@ public class User extends Period {
    @JsonIgnore
    @ManyToOne(fetch = FetchType.LAZY)
    @JoinColumn(name="COLLEGE_ID")
+   @OnDelete(action = OnDeleteAction.CASCADE)
     private College college;
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "followingId",cascade = CascadeType.ALL)

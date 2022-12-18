@@ -36,6 +36,7 @@ public class ChattingContent extends ChatPeriod {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CHATTING_ROOM_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private ChattingRoom chattingRoom;
 
     @JsonIgnore

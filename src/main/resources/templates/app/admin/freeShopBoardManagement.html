@@ -407,12 +407,17 @@
             text += `<li class="postNick">다운로드 QR코드</li>`
             text += `</ul>`
             storeFiles.forEach(file => {
+                if(file.storeFileName == null){
+                    return;
+                }
                 text += `<ul class="content _tbody storeFile" id="member_item_m20220929a41c742d48942" data-nick="관리자" data-app="">`
                 text += `<li class="postCategory">` + file.storeFileName + `</li>`
-                text += `<li class="postTitle"><img src="` + file.storeFileQR + `" alt=""></li></ul>`
+                text += `<li class="postTitle"><img src="https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718/file/download?fileName=`+file.storeFilePath+'/'+file.storeFileUuid+'_'+file.storeFileName+`" alt=""></li></ul>`
             })
         $('#UI_TABLE2').html(text);
     }
+
+
 
 
     // 해당 자료 상점 상세보기로 이동

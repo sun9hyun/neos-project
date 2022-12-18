@@ -26,7 +26,7 @@ $(document).ready(function () {
 
     $("div.centerSectionBox").on("click", ".replyWrite", function(){
         var $replyContent = $(this).parent(".replyComponent_replyButtonGroup__2i0ow").prev().children(".replyContent");
-        var $cmid = $(this).prev("#replyCommunity").val();
+        var $cmid = $(this).prev(".replyCommunity").val();
 
         // alert("댓글작성클릭");
         // alert("$cmid" +$cmid);

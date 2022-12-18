@@ -1083,7 +1083,7 @@ section.bannerSection .bannerWrap a {
 }
 
 .click:hover{
-    color:#1A7CFF;
+    color:#1A7CFF !important;
 }
 
 .popClick:hover{
@@ -1197,9 +1197,9 @@ em.pinkColor {
 }
 
 .reviewContentWrap .reviewWrap .reviewCard .top .profileImgAndId .imgThumb img {
-    width: 23px;
-    height: 23px;
-    object-fit: contain;
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
 }
 .reviewContentWrap .reviewWrap .reviewCard .top .profileImgAndId h3, .reviewContentWrap .reviewWrap .reviewCard .top .profileImgAndId p {
     font-size: 15px;
@@ -1294,11 +1294,11 @@ section {
     margin-top: 12px;
 }
 .reviewContentWrap .reviewWrap .reviewCard .top .profileImgAndId .imgThumb {
-    width: 23px;
-    height: 23px;
+    width: 45px;
+    height: 45px;
     border-radius: 4px;
     overflow: hidden;
-    margin-right: 7px;
+    margin-right: 16px;
 }
 
 .reviewContentWrap .reviewWrap .reviewCard {
@@ -1342,15 +1342,17 @@ section {
 }
 
 .reviewContentWrap .reviewWrap .reviewCard .top .descTxt {
-    font-size: 14px;
+    font-size: 16px;
     color: #666;
+    margin-top: 6px;
+    margin-left: 6px;
     line-height: 18px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 10;
     -webkit-box-orient: vertical;
-    height: 160px;
+    height: 150px;
     font-weight: 400;
 }
 .reviewContentWrap .reviewWrap .scroll {

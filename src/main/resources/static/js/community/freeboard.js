@@ -88,10 +88,6 @@ $(document).ready(function(){
         $(this).css('opacity','1')
     })
 
-
-    const $replyDeleteBtn = $(".userInformationComponents_userReplySection__3ty7Q").find(".replyDelete");
-    // $replyDeleteBtn.click(function () {
-
 })
 /*-----------------------------------------------------------------------------------------------------------*/
 $(document).ready(function(){
@@ -125,10 +121,9 @@ $(document).ready(function(){
     $("div.centerSectionBox").on("click",".likeBtn",function () {
         if($(this).children(".likeImg").attr("src")=='https://letspl.me/assets/images/ic-letspler-heart-empty.png'){
             $(this).children(".likeImg").attr("src","https://letspl.me/assets/images/ic-letspler-heart-full.png")
-            // $(this).after(`<span class="replyLikeCount">1</span>`)
+            $(this).children(".likeCount").text("1");
         }else{
             $(this).children(".likeImg").attr("src",'https://letspl.me/assets/images/ic-letspler-heart-empty.png')
-            // $(this).parent().find('.replyLikeCount').remove();
         }
     });
 
@@ -156,19 +151,6 @@ $(document).ready(function(){
             }
         }
     );
-
-    // $(".rereply_textarea").on("keyup", function (e) {
-    //         let content = $(this).val();
-    //         if (content.length == 0 || content == "") {
-    //             $(this).next().find(".rereplyTextCount").text("0")
-    //         } else {
-    //             $(this).next().find(".rereplyTextCount").text(content.length);
-    //         }
-    //     }
-    // );
-
-
-//    ready
 })
 
 
@@ -190,9 +172,6 @@ $heartButtons.on("click", function () {
         $(this).html(emptyHeart + (count - 1));
     }
 });
-
-/* 댓글 최신순 정렬 */
-
 
 
 /* 댓글 좋아요 버튼 */

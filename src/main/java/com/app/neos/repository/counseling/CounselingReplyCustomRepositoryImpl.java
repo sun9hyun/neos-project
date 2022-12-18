@@ -12,6 +12,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import static com.app.neos.entity.counseling.QCounselingReply.*;
+
 @Repository
 @RequiredArgsConstructor
 public class CounselingReplyCustomRepositoryImpl implements CounselingReplyCustomRepository {
@@ -21,16 +23,16 @@ public class CounselingReplyCustomRepositoryImpl implements CounselingReplyCusto
     @Override
     public List<CounselingReplyDTO> findAll(Long counselingId) {
         return jpaQueryFactory.select(new QCounselingReplyDTO(
-                QCounselingReply.counselingReply.counselingReplyId,
-                QCounselingReply.counselingReply.counselingReplyContent,
-                QCounselingReply.counselingReply.user,
-                QCounselingReply.counselingReply.counseling,
-                QCounselingReply.counselingReply.createdDate,
-                QCounselingReply.counselingReply.updatedDate
+                counselingReply.counselingReplyId,
+                counselingReply.counselingReplyContent,
+                counselingReply.user,
+                counselingReply.counseling,
+                counselingReply.createdDate,
+                counselingReply.updatedDate
         ))
-                .from(QCounselingReply.counselingReply)
-                .where(QCounselingReply.counselingReply.counseling.counselingId.eq(counselingId))
-                .orderBy(QCounselingReply.counselingReply.updatedDate.asc())
+                .from(counselingReply)
+                .where(counselingReply.counseling.counselingId.eq(counselingId))
+                .orderBy(counselingReply.updatedDate.asc())
                 .fetch();
     }
 }

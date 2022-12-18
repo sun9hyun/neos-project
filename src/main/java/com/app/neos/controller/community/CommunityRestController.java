@@ -20,13 +20,6 @@ public class CommunityRestController {
     private final CommunityService communityService;
     private final CommunityCustomRepository communityCustomRepository;
 
-    //    @GetMapping("/communityList")
-    //    public List<CommunityDTO> list(CommunityDTO communityDTO){
-    //        List<CommunityDTO> communityDTOS = communityService.findAll();
-    //        return communityDTOS;
-    //    }
-
-
     //     게시글 전체 조회
     @GetMapping("/communityList")
     public Slice<CommunityDTO> list(@PageableDefault(size = 5, sort = "updatedDate", direction = Sort.Direction.DESC) Pageable pageable){
@@ -59,19 +52,24 @@ public class CommunityRestController {
     }
 
 //   ---------------------------------------------------------------------------------------------------------------
+    //     게시글 좋아요 수정1
+    @PutMapping("/communityLikeUpdate")
+    public String likeModify(@RequestBody CommunityDTO communityDTO){
+        communityService.updateCommunityLike(communityDTO);
+        return "likeModify success";
+    }
 
 
-
-
-
-
-
-    //     게시글 좋아요 수정
-//    @PutMapping("/communityLikeUpdate")
-//    public String likeModify(@RequestBody CommunityDTO communityDTO){
-//        communityService.updateCommunityLike(communityDTO);
-//        return "likeModify success";
+    //     게시글 좋아요 수정2
+//    @PutMapping("/communityLike")
+//    public String like(@RequestBody Long userId, Long communityId){
+//        boolean check = communityService.checkLike(userId, communityId);
+//        if (check){
+//            communityService.communityLike(userId, communityId);
+//        }
+//        return "like success";
 //    }
+
 
     //    @GetMapping("/communityDetail")
     //    public CommunityDTO detail(Long communityId){
@@ -90,7 +88,11 @@ public class CommunityRestController {
 //        return communityService.LikeCheck(communityId, userId);
 //    }
 
-
+//    @GetMapping("/communityList")
+    //    public List<CommunityDTO> list(CommunityDTO communityDTO){
+    //        List<CommunityDTO> communityDTOS = communityService.findAll();
+    //        return communityDTOS;
+    //    }
 
 
 }

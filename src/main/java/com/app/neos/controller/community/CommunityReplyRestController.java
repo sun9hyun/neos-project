@@ -19,12 +19,14 @@ public class CommunityReplyRestController {
     private final CommunityReplyService communityReplyService;
     private final CommunityReplyRepository communityReplyRepository;
 
+    // 댓글 목록
     @GetMapping("/reply/{rno}")
     public List<CommunityReplyDTO> replyList(@PathVariable("rno")Long communityId, CommunityReplyDTO communityReplyDTO){
         List<CommunityReplyDTO> communityReplyDTOS = communityReplyService.findReplyAll(communityId);
         return communityReplyDTOS;
     }
 
+    // 댓글 작성
     @PostMapping("/replyOk")
     public String write(@RequestBody CommunityReplyDTO communityReplyDTO, HttpSession session){
         Long userId = (Long)session.getAttribute("loginUser");
@@ -33,9 +35,9 @@ public class CommunityReplyRestController {
         return "reply write success";
     }
 
+    // 댓글 수정
     @PutMapping("/replyUpdate/{rno}")
     public String modify(@PathVariable("rno") Long CommunityReplyId, CommunityReplyDTO communityReplyDTO){
-
         communityReplyDTO.setCommunityReplyId(CommunityReplyId);
         log.info("==================================================");
         log.info(communityReplyDTO.toString());
@@ -44,6 +46,7 @@ public class CommunityReplyRestController {
         return "reply modify success";
     }
 
+    // 댓글 삭제
     @DeleteMapping("replyDelete/{rno}")
     public String delete(@PathVariable("rno") Long replyId, HttpSession session){
         Long userId = (Long)session.getAttribute("loginUser");

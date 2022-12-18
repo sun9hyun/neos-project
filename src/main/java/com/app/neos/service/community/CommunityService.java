@@ -3,15 +3,18 @@ package com.app.neos.service.community;
 import com.app.neos.domain.community.CommunityDTO;
 import com.app.neos.domain.neos.NeosPowerDTO;
 import com.app.neos.domain.study.StudyDTO;
+import com.app.neos.domain.user.FollowDTO;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.community.Community;
 import com.app.neos.entity.community.CommunityLike;
+import com.app.neos.entity.follow.Follow;
 import com.app.neos.entity.neos.NeosPower;
 import com.app.neos.entity.user.User;
 import com.app.neos.repository.community.CommunityCustomRepository;
 import com.app.neos.repository.community.CommunityLikeCustomRepository;
 import com.app.neos.repository.community.CommunityLikeRepository;
 import com.app.neos.repository.community.CommunityRepository;
+import com.app.neos.repository.follow.FollowCustomRepository;
 import com.app.neos.repository.neos.NeosPowerRepository;
 import com.app.neos.repository.user.UserCustomRepository;
 import com.app.neos.repository.user.UserRepository;
@@ -22,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -33,6 +37,7 @@ public class CommunityService {
     private  final UserRepository userRepository;
     private final NeosPowerRepository neosPowerRepository;
     private final UserCustomRepository userCustomRepository;
+    private final FollowCustomRepository followCustomRepository;
 
     //추가
     public void saveCommunity(CommunityDTO communityDTO){
@@ -110,17 +115,20 @@ public class CommunityService {
         return userCustomRepository.findById(userId);
     }
 
-
-
-
     //--------------------------------------------------------------------------------------------------------
-//  게시글에 좋아요를 눌렀는지 중복 체크
+
+    //    내가 구독한 사람
+    public List<FollowDTO> showMyIdList(Long myId){
+        return followCustomRepository.findAllByMyId(myId).stream().map(Follow::toDTO).collect(Collectors.toList());
+    }
+
+    //  게시글에 좋아요를 눌렀는지 중복 체크
     @Transactional
     public boolean checkLike(Long userId, Long communityId){
         return communityLikeCustomRepository.duplicate(userId, communityId);
     }
 
-//    좋아요 하기
+    //    좋아요 하기
     @Transactional
     public boolean communityLike(Long userId, Long communityId){
         if (!communityLikeCustomRepository.duplicate(userId, communityId)){
@@ -135,12 +143,14 @@ public class CommunityService {
         return false;
     }
 
+    //--------------------------------------------------------------------------------------------------------
+
     //좋아요 수 수정
-//    @Transactional
-//    public void updateCommunityLike(CommunityDTO communityDTO){
-//        Community community= communityRepository.findById(communityDTO.getCommunityId()).get();
-//        community.updateCommunityLikeCount(communityDTO.getCommunityLikeCount()+1);
-//    }
+    @Transactional
+    public void updateCommunityLike(CommunityDTO communityDTO){
+        Community community= communityRepository.findById(communityDTO.getCommunityId()).get();
+        community.updateCommunityLikeCount(communityDTO.getCommunityLikeCount()+1);
+    }
 
 //    public Optional<CommunityLike> findByLikeId(Long communityId){
 //        return communityLikeRepository.findById(communityId);

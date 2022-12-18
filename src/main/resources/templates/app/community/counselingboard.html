@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,8 +16,6 @@
     <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="stylesheet" href="/css/fix/chatting.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
-
-
 </head>
 <style>
     @font-face {
@@ -43,7 +40,6 @@
             font-size: 14px;
         }
     }
-
 
     .chattingWrap .chattingContentWrap .chattingHeader .left p{
         font-size: 16px;
@@ -219,11 +215,13 @@
                     <th:block th:each="neosUser, neosUserStatus:${neosUsers}" th:object="${neosUser}">
                         <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd">
                             <span class="loungeTrendComponents_LoungeLankingTxt__vlofS" th:text="${neosUserStatus.count}">1</span>
-                            <button style="cursor: default" type="button" class="detail buttonComponents_button__1hvQa buttonComponents_plain__1ljW5" >
-                                <input class="neosUser" type="hidden" th:href="*{userId}">
-                                <img class="buttonComponents_lgImg__2-hZO" th:src="*{userFile}">
-                                <span class="" th:text="*{userNickName}">민쇼니</span>
-                            </button>
+                            <a class="detail">
+                                <button style="cursor: pointer" type="button" class=" buttonComponents_button__1hvQa buttonComponents_plain__1ljW5" >
+                                    <img class="buttonComponents_lgImg__2-hZO" th:src="*{userFile}">
+                                    <span class="" th:text="*{userNickName}">민쇼니</span>
+                                </button>
+                            </a>
+                            <input class="neosUser" type="hidden" th:href="*{userId}">
                         </li>
                     </th:block>
                 </ul>
@@ -262,6 +260,13 @@
             fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
             fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
         });
+    });
+
+    /*프로필 상세 누를시 상세 페이지 이동 */
+    $(".detail").on("click", function (e) {
+        // alert($(this).next(".neosUser").attr("href"));
+        e.preventDefault();
+        location.href = "/neosUser/info/yes?userId=" + $(this).next(".neosUser").attr("href");
     });
 
 </script>

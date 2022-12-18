@@ -23,11 +23,13 @@ import java.util.List;
 public class SearchController {
     private final SearchService searchService;
 
+    // 검색 페이지
     @GetMapping("/search")
     public String search(){
         return "app/search/searchComplete";
     }
 
+    // 검색 결과
     @PostMapping("/search")
     public String searchBefore(StudyDTO studyDTO, StoreDTO storeDTO, Model model,@PageableDefault(size = 5, sort = "id" , direction = Sort.Direction.DESC) Pageable pageable,  String keyword){
         Slice<StudyDTO> studyDTOList =  searchService.findByKeywordStudy(keyword, pageable);
@@ -42,12 +44,6 @@ public class SearchController {
         return "app/search/searchComplete";
     }
 
-//    @PostMapping("/searchOk")
-//    public RedirectView searchOk(){
-//
-//        return new RedirectView("search");
-//    }
-
 //    @PostMapping("{keyword}")
 //    public Slice<StudyDTO> studyDTOS(@PageableDefault(size = 5, sort = "id" , direction = Sort.Direction.DESC) Pageable pageable, @PathVariable("keyword")  String keyword){
 //        return searchService.findByKeywordStudy(keyword, pageable);
@@ -58,14 +54,4 @@ public class SearchController {
 //        return searchService.findByKeywordStore(keyword, pageable);
 //    }
 
-
-    @GetMapping("/search-after")
-    public String searchAfter(){
-        return "app/search/searchAfter";
-    }
-
-    @GetMapping("/search-complete")
-    public String searchComplete(){
-        return "app/search/searchComplete";
-    }
 }

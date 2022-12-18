@@ -18,15 +18,17 @@ import org.springframework.web.servlet.view.RedirectView;
 public class PayController {
     private final PayService payService;
 
+    // 결제 페이지
     @GetMapping("/point")
     public String point(){
         return "app/fix/chargeInput";
     }
 
-    @PostMapping("/charging")
-    public RedirectView charging(NeosPointDTO neosPointDTO){
-        payService.savePoint(neosPointDTO);
-        payService.userPointUpdate(neosPointDTO);
-        return new RedirectView("point");
-    }
+    // 결제 후
+//    @PostMapping("/charging")
+//    public RedirectView charging(NeosPointDTO neosPointDTO){
+//        payService.savePoint(neosPointDTO);
+//        payService.userPointUpdate(neosPointDTO);
+//        return new RedirectView("point");
+//    }
 }

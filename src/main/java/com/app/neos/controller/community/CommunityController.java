@@ -29,7 +29,7 @@ public class CommunityController {
     private final CommunityReplyService communityReplyService;
     private final CounselingService counselingService;
 
-//    자유게시판
+//    자유게시판 목록
     @GetMapping("/community")
     public String community(CommunityDTO communityDTO, CommunityReplyDTO communityReplyDTO, Model model){
         List<CommunityDTO> communityDTOS = communityService.findAll();
@@ -41,21 +41,16 @@ public class CommunityController {
         model.addAttribute("studys", studyDTOS);
         return "app/community/freeboard";
     }
-
+//    자유게시판 글잓성
     @PostMapping("/community")
     public RedirectView communityOk(CommunityDTO communityDTO){
-//        Community community = communityDTO.toEntity();
         communityService.saveCommunity(communityDTO);
 
         return new RedirectView("community");
     }
 
 
-
-
-
-
-//    고민게시판
+//    고민게시판 목록
     @GetMapping("/counseling")
     public String counseling(CounselingDTO counselingDTO, Model model){
         List<CounselingDTO> counselingDTOS = counselingService.findAll();
@@ -65,10 +60,9 @@ public class CommunityController {
         model.addAttribute("neosUsers", userDTOS);
         return "app/community/counselingboard";
     }
-
+//    고민게시판 글작성
     @PostMapping("/counseling")
     public RedirectView counselingOk(CounselingDTO counselingDTO){
-//        Counseling counseling = counselingDTO.toEntity();
         counselingService.saveCounseling(counselingDTO);
 
         return new RedirectView("counseling");

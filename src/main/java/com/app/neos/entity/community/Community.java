@@ -42,7 +42,7 @@ public class Community extends Period {
     }
 
     public void updateCommunityLikeCount(int communityLikeCount){
-        this.communityLikeCount = communityLikeCount;
+        this.communityLikeCount = this.communityLikeCount + communityLikeCount;
     }
 
     public void update(CommunityDTO communityDTO){

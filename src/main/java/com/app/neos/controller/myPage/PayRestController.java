@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 public class PayRestController {
     private final PayService payService;
 
+    // 결제 후
     @PostMapping("/chargingOk")
     public String chargingOk(@RequestBody NeosPointDTO neosPointDTO, HttpSession session){
         Long userId = (Long)session.getAttribute("loginUser");

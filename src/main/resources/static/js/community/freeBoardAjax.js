@@ -31,7 +31,6 @@ $(document).ready(function () {
         $.ajax({
             url: "/community/communityList?page=" + (globalThis.page),
             type: "get",
-            async: false,
             success: function (communityDTOS) {
                 if(communityDTOS != null){
                     getList(communityDTOS);
@@ -108,12 +107,12 @@ $(document).ready(function () {
 
                 //userFollower
                 //if(userFollower == )
-                if ($("#userId").attr("value") != item.user.userId) {
-                    text += "<div class='userInformationComponents_profileRightGroupFollow__kBAl7'>";
-                    text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_radius__2l9SM'>";
-                    text += "<img src='https://letspl.me/assets/images/ic-letspler-heart-full.png'>팔로잉</button>";
-                    text += "</div>";
-                }
+                // if ($("#userId").attr("value") != item.user.userId) {
+                //     text += "<div class='userInformationComponents_profileRightGroupFollow__kBAl7'>";
+                //     text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_radius__2l9SM'>";
+                //     text += "<img src='https://letspl.me/assets/images/ic-letspler-heart-full.png'>팔로잉</button>";
+                //     text += "</div>";
+                // }
 
                 text += "</div></div></div>";
                 text += "<div class='loungeCardContents'>";
@@ -148,7 +147,8 @@ $(document).ready(function () {
                 text += "<div class='replyComponent_reply__3l-Wc'>";
                 text += "<div class='replyComponent_replyButtonBox__2O3ME'>";
                 text += "<button type='button' class='likeBtn buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 button_heart_1ljw5'>";
-                text += "<img class='likeImg' src='https://letspl.me/assets/images/ic-letspler-heart-empty.png'>" + item.communityLikeCount;
+                text += "<img class='likeImg' src='https://letspl.me/assets/images/ic-letspler-heart-empty.png'>";
+                text += "<p class='likeCount'>"+ item.communityLikeCount + "</p>";
                 text += "</button>";
                 text += "<div class='replyComponent_replyOnOff__QKoso'>";
                 text += "<button type='button' class='replyList buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>";
@@ -159,22 +159,22 @@ $(document).ready(function () {
                 text += "</div>";
 
                 //댓글
-                text += "<form th:action='@{/community/community}' th:object='${communityReplyDTO}' name='communityReplyWrite' class='replyForm' method='post' class='form-horizontal form-validate' role='form' target='hidden_frame' enctype='multipart/form-data' autocomplete='off'novalidate='novalidate'>";
+                text += "<form  name='communityReplyWrite' class='replyForm' method='post' class='form-horizontal form-validate' role='form' target='hidden_frame' enctype='multipart/form-data' autocomplete='off'novalidate='novalidate'>";
                 text += "<div class='replyComponent_replyInputBox__2yLKK'>";
                 text += "<div class='replyComponent_replyInputContainer__3TJW8'>";
 
                 if ($("#userId").attr("value") != null) {
-                    text += "<textarea th:field='*{communityReplyContent}' class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
+                    text += "<textarea  class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
                 } else {
-                    text += "<textarea th:field='*{communityReplyContent}' readonly class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
+                    text += "<textarea  readonly class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
                 }
                 text += "</div>";
                 text += "<div class='replyComponent_replyButtonGroup__2i0ow'>";
                 text += "<div class='replyComponent_replyButtonGroupCount__j0XkV'>";
                 text += "<span class='rereplyTextCount'>0</span><span>/</span><span>1000</span>";
                 text += "</div>";
-                text += "<input type='hidden' th:value='${session.loginUser}'  name='userId' id='replyUser' class='user'>";
-                text += "<input type='hidden' name='communityId' id='replyCommunity'value='" + item.communityId + "'>";
+                text += "<input type='hidden' name='userId' id='replyUser' class='user'>";
+                text += "<input type='hidden' name='communityId' class='replyCommunity'value='" + item.communityId + "'>";
 
                 if ($("#userId").attr("value") != null) {
                     text += "<button type='button' class='replyWrite buttonComponents_button__1hvQa buttonComponents_square__3hf2r'>확인</button>";
@@ -266,7 +266,6 @@ $(document).ready(function () {
         $.ajax({
             url: "/community/communityList?page= "+ (globalThis.page) +"&size" + (globalThis.page) * 5,
             type: "get",
-            async: false,
             success: function (communityDTOS) {
                 if(communityDTOS != null){
                     getListUpdate(communityDTOS);
@@ -299,12 +298,12 @@ $(document).ready(function () {
 
             //userFollower
             //if(userFollower == )
-            if($("#userId").attr("value") != item.user.userId) {
-                text += "<div class='userInformationComponents_profileRightGroupFollow__kBAl7'>";
-                text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_radius__2l9SM'>";
-                text += "<img src='https://letspl.me/assets/images/ic-letspler-heart-full.png'>팔로잉</button>";
-                text += "</div>";
-            }
+            // if($("#userId").attr("value") != item.user.userId) {
+            //     text += "<div class='userInformationComponents_profileRightGroupFollow__kBAl7'>";
+            //     text += "<button type='button' class='buttonComponents_button__1hvQa buttonComponents_radius__2l9SM'>";
+            //     text += "<img src='https://letspl.me/assets/images/ic-letspler-heart-full.png'>팔로잉</button>";
+            //     text += "</div>";
+            // }
 
             text += "</div></div></div>";
             text += "<div class='loungeCardContents'>";
@@ -339,7 +338,8 @@ $(document).ready(function () {
             text += "<div class='replyComponent_reply__3l-Wc'>";
             text += "<div class='replyComponent_replyButtonBox__2O3ME'>";
             text += "<button type='button' class='likeBtn buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 button_heart_1ljw5'>";
-            text += "<img class='likeImg' src='https://letspl.me/assets/images/ic-letspler-heart-empty.png'>"+ item.communityLikeCount;
+            text += "<img class='likeImg' src='https://letspl.me/assets/images/ic-letspler-heart-empty.png'>";
+            text += "<p class='likeCount'>"+ item.communityLikeCount + "</p>";
             text += "</button>";
             text += "<div class='replyComponent_replyOnOff__QKoso'>";
             text += "<button type='button' class='replyList buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>";
@@ -350,22 +350,22 @@ $(document).ready(function () {
             text += "</div>";
 
             //댓글
-            text += "<form th:action='@{/community/community}' th:object='${communityReplyDTO}' name='communityReplyWrite' class='replyForm' method='post' class='form-horizontal form-validate' role='form' target='hidden_frame' enctype='multipart/form-data' autocomplete='off'novalidate='novalidate'>";
+            text += "<form name='communityReplyWrite' class='replyForm' method='post' class='form-horizontal form-validate' role='form' target='hidden_frame' enctype='multipart/form-data' autocomplete='off'novalidate='novalidate'>";
             text += "<div class='replyComponent_replyInputBox__2yLKK'>";
             text += "<div class='replyComponent_replyInputContainer__3TJW8'>";
 
             if($("#userId").attr("value") != null) {
-                text += "<textarea th:field='*{communityReplyContent}' class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
+                text += "<textarea class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
             }else {
-                text += "<textarea th:field='*{communityReplyContent}' readonly class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
+                text += "<textarea readonly class='replyContent replyComponent_replyInput__2vKhX' maxlength='1000' placeholder='댓글을 입력해주세요.' style='height: 21px !important;'></textarea>";
             }
             text += "</div>";
             text += "<div class='replyComponent_replyButtonGroup__2i0ow'>";
             text += "<div class='replyComponent_replyButtonGroupCount__j0XkV'>";
             text += "<span class='rereplyTextCount'>0</span><span>/</span><span>1000</span>";
             text += "</div>";
-            text += "<input type='hidden' th:value='${session.loginUser}'  name='userId' id='replyUser' class='user'>";
-            text += "<input type='hidden' name='communityId' id='replyCommunity'value='" + item.communityId + "'>";
+            text += "<input type='hidden'  name='userId' id='replyUser' class='user'>";
+            text += "<input type='hidden' name='communityId' class='replyCommunity'value='" + item.communityId + "'>";
 
             if($("#userId").attr("value") != null) {
                 text += "<button type='button' class='replyWrite buttonComponents_button__1hvQa buttonComponents_square__3hf2r'>확인</button>";
@@ -427,31 +427,44 @@ $(document).ready(function () {
         $(".modalWrapOpen").attr("style","display : none !important")
     })
 
+    // function like(communityDTOS){
+    //     let text = "";
+    //     $(communityDTOS.content).each((i,item) => {
+    //         text += "<img class='likeImg' src='https://letspl.me/assets/images/ic-letspler-heart-full.png'>";
+    //         text += "<p class='likeCount'>"+ item.communityLikeCount + "</p>";
+    //     });
+    //     $(".likeBtn").html(text);
+    // }
 
+    /*좋아요 수 수정*/
+    $("div.centerSectionBox").on("click",".likeBtn",function () {
+        let up = $(this).closest(".loungeCard").children(".cid").val();
+
+        $("#cidUpdate").val(up);
+        $.ajax({
+            url: "/community/communityLikeUpdate",
+            type: "put",
+            data: JSON.stringify({
+                communityId : $("#cidUpdate").val(),
+                userId: $("#user").val()
+            }),
+            contentType: "application/json; charset=utf-8",
+            success: function(){
+                showUpdate();
+                // like();
+            },
+            error: function (xhr, status, err) {
+                console.log(xhr, status, err);
+            }
+        });
+    });
 
 
 });
 
 
 /*-----------------------------------------------------------------------------------------------------------*/
-/*좋아요 수 수정*/
-// $("div.centerSectionBox").on("click",".likeBtn",function () {
-//     $.ajax({
-//         url: "/community/communityLikeUpdate",
-//         type: "put",
-//         data: JSON.stringify({
-//             communityId : $("#cidUpdate").val(),
-//             userId: $("#user").val()
-//         }),
-//         contentType: "application/json; charset=utf-8",
-//         success: function(){
-//             showUpdate();
-//         },
-//         error: function (xhr, status, err) {
-//             console.log(xhr, status, err);
-//         }
-//     });
-// });
+
 
 /*-----------------------------------------------------------------------------------------------------------*/
 // 서비스에 대한 기능들을 하나의 모듈로 묶어서 처리한다.

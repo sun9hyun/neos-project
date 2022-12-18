@@ -21,7 +21,7 @@ public class PayService {
     private final UserRepository userRepository;
     private final NeosPowerRepository neosPowerRepository;
 
-    //포인트 저장(결제)
+    // 포인트 저장(결제)
     public void savePoint(NeosPointDTO neosPointDTO){
         NeosPoint neosPoint = neosPointDTO.toEntity();
         Long userId = neosPointDTO.getUserId();
@@ -30,7 +30,7 @@ public class PayService {
         neosPointRepository.save(neosPoint);
     }
 
-    //user 포인트 저장
+    // user 포인트 저장
     @Transactional
     public void userPointUpdate(NeosPointDTO neosPointDTO){
         User user = userRepository.findById(neosPointDTO.getUserId()).get();
@@ -38,7 +38,7 @@ public class PayService {
     }
 
 
-//    네오력 상승
+    // 네오력 상승
     @Transactional
     public void postEXP(Long userId, int pay){
         User user = userRepository.findById(userId).get();

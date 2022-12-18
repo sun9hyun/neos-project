@@ -10,6 +10,15 @@
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
+<script th:inline="javascript">
+
+    let college = [[${session.college}]];
+    if(!college){
+        alert("자료상점 서비스는 대학생부터 이용가능합니다.")
+        location.href="/main/main";
+    }
+</script>
+
     <header th:replace="/app/fix/header.html :: header"></header>
 
     <section class="storySection">
@@ -37,6 +46,8 @@
                                 </div> -->
                                 <div class="top">
                                     <img src="/images/store/storeNeos.png" alt="">
+<!--                                    <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}"-->
+<!--                                         alt="">-->
                                 </div>
                                 <div class="bottom">
                                     <div class="titWrap">
@@ -82,7 +93,7 @@
                                 <div class="bottom">
                                     <div class="titWrap">
                                         <h2 class="titTxt" th:text="*{storeTitle}">MATE 팀의 문서 작성기</h2>
-                                        <h3 class="category" th:text=" '네오포인트 : ' + *{storePoint} ">[프로젝트] 대학교 카풀 앱 제작팀(모든 직군!)</h3>
+                                        <h3 class="category" th:text=" '네오포인트 : ' + *{storePoint} +'P'">[프로젝트] 대학교 카풀 앱 제작팀(모든 직군!)</h3>
                                     </div>
                                     <div class="viewWrap">
 <!--                                        <h3 class="category" th:text="*{createdDate}">렛플운영자</h3>-->
@@ -115,7 +126,7 @@
                                 </div>
                             </a>
                             <div class="shopLink">
-                                <a href='javascript:;' class='lockCash shopDetail'>결제하기</a>
+<!--                                <a href='javascript:;' class='lockCash shopDetail'>결제하기</a>-->
                                 <a th:href="*{storeId}" class='lockDetail shopDetail detailBtn'>상세보기</a>
                             </div>
                         </div>

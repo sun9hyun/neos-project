@@ -1,6 +1,7 @@
 package com.app.neos.repository.store;
 
 import com.app.neos.domain.store.QStoreDTO;
+import com.app.neos.domain.store.QStoreFlieDTO;
 import com.app.neos.domain.store.StoreDTO;
 import com.app.neos.entity.store.QStore;
 import com.app.neos.entity.store.Store;
@@ -96,7 +97,8 @@ public class StoreCustomRepositoryImpl implements StoreCustomRepository {
                 QStore.store.storePoint,
                 QStore.store.storeTitle,
                 QStore.store.storeContent,
-                QStore.store.updatedDate
+                QStore.store.updatedDate,
+                QStore.store.user
                 ))
                 .from(QStore.store)
                 .orderBy(QStore.store.storeId.desc())

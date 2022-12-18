@@ -427,7 +427,11 @@
 
 
 /*-----스터디------------------------------------------------------------------------------------------*/
-.mypage .myTabContents.favoriteTab .noProject, .mypage .myTabContents.myProfileTab .noProject, .mypage .myTabContents.myProjectTab .noProject, .mypage .myTabContents.noticeTab .noProject {
+.mypage .myTabContents.favoriteTab .noProject,
+.mypage .myTabContents.myProfileTab .noProject,
+.mypage .myTabContents.myProjectTab .noProject,
+.mypage .myTabContents.noticeTab .noProject,
+.noStore {
     width: 100%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -439,7 +443,8 @@
     margin-bottom: 30px;
 }
 
-.mypage .myTabContents.favoriteTab .noProject p, .mypage .myTabContents.myProjectTab .noProject p, .mypage .myTabContents.noticeTab .noProject p {
+.mypage .myTabContents.favoriteTab .noProject p, .mypage .myTabContents.myProjectTab .noProject p, .mypage .myTabContents.noticeTab .noProject p,
+.noProject p{
     font-size: 1rem;
     color: #c9c9c9;
 }
@@ -674,7 +679,7 @@ body, button, input, select, td, textarea, th {
 
 .mypage .myTabContents .noticeListWrap ul.noticeListTimeLine .noticeDayWrap ul li.noticeContentWrap div.left p.categoryAndDate {
     display: -moz-inline-box;
-    display: inline-flex;
+    /*display: inline-flex;*/
     font-size: .75rem;
     margin-bottom: 2px;
 }

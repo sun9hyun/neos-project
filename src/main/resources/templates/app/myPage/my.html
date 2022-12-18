@@ -29,7 +29,10 @@
         -webkit-line-clamp: 1;
     }
 
-    .favoriteTab .projectContentWrap.active {
+    .favoriteTab .projectContentWrap.active,
+    .joinStudy,
+    .proceedingStudy,
+    .finishStudy{
         /*display: flex;*/
         display: -webkit-box;
         overflow-x: auto;
@@ -46,7 +49,7 @@
             <span class="bgTxt">마이페이지</span>
         </h1>
     </div>
-    <input type="text" th:value="${session.loginUser}" name="userId"></input>
+    <input type="hidden" th:value="${session.loginUser}" name="userId"></input>
     <div class="myTabMenu">
         <ul>
             <li class="active">
@@ -146,9 +149,9 @@
                                 <input type="checkbox" id="uni_radio" class="userCollegeCertify" style="width: 20px; height: 20px; margin: 8px; margin-left: 0;">
                                 <label for="uni_radio" style="padding: 0; margin: 0; line-height: 1px; font-size: 12.5px; color: #6e6e6e;">선택 안함</label>
                             </div>
-                            <input type="text" class="collegeName" name="collegeName" value=""></input>
-                            <input type="text" class="collegeId" name="collegeId" value=""></input>
-                            <input type="text" name="CollegeCertify" class="CollegeCertify" value="true"></input>
+                            <input type="hidden" class="collegeName" name="collegeName" value=""></input>
+                            <input type="hidden" class="collegeId" name="collegeId" value=""></input>
+                            <input type="hidden" name="CollegeCertify" class="CollegeCertify" value="true"></input>
 
                         </div>
 
@@ -280,14 +283,14 @@
     <!--  스터디  -->
     <div class="myTabContents myProjectTab ">
         <h3 class="tabCommonTit">지원 현황</h3>
-        <div class="joinStudy"></div>
-<!--        <div class="noProject"><p>지원한 모임이 없습니다.</p></div>-->
+        <div class="joinStudy">
+            <div class="noProject"><p>지원한 모임이 없습니다.</p></div>
+        </div>
 
         <h3 class="tabCommonTit" style="margin-top: 30px">진행 현황</h3>
         <div class="proceedingStudy" style="display: flex; margin-bottom: 15px;">
-
+            <div class="noProject"><p>진행 중인 모임이 없습니다.</p></div>
         </div>
-<!--        <div class="noProject"><p>진행 중인 모임이 없습니다.</p></div>-->
 <!--        <div class="projectGridWrap">-->
 <!--            <div class="projectTopInfo">-->
 <!--                <div class="top">-->
@@ -338,7 +341,7 @@
         <h3 class="tabCommonTit">완료 현황</h3>
         <div class="finishStudy" style="display: flex; margin-bottom: 15px;">
 
-<!--            <div class="noProject"><p>완료한 모임이 없습니다.</p></div>-->
+            <div class="noProject"><p>완료한 모임이 없습니다.</p></div>
         </div>
 
 
@@ -349,10 +352,18 @@
         <h3 class="tabCommonTit">내 자료상점</h3>
         <div class="storyContentsWrap">
             <div class="contents highLanking myStore">
+                <div class="noStoreWrap">
+                    <div class="noStore">
+                        <div class="noProject"><p>내가 작성한 자료상점 게시글이 없습니다.</p></div>
+                    </div>
+                </div>
+
                 <div class="contetnsGrid">
 
                 </div>
             </div>
+
+
         </div>
         <div class="moreButtonBox" style="margin-top: 15px;">
             <button type="button" class="moreButton buttonComponents_button__1hvQa buttonComponents_radius__2l9SM buttonComponents_md__26Zib ">
@@ -379,8 +390,8 @@
 
         <!--    네오스인 구독    -->
         <div class="peopleGrid favoriteTable userFollowTable">
+            <div class="noProject" style="height: 400px;"><p style="margin-top: 170px; color: black">서비스 구현 예정입니다.</p></div>
             <ul class="peopleGridList">
-
             </ul>
         </div>
     </div>
@@ -393,98 +404,98 @@
 
         <div class="noticeListWrap">
             <ul class="noticeListTimeLine">
-                <li class="noticeDayWrap">
-                    <span class="day">22.11.15</span>
-                    <ul>
-                        <li class="noticeContentWrap">
-                            <div class="left">
-                                <p class="categoryAndDate">
-                                    <span>[스터디&amp;네트워킹]</span>
-                                    <span>22.11.15</span>
-                                </p>
-                                <p class="noticeContent">오메가호근몬님이 스터디&amp;네트워킹 test에 초대하였습니다.</p>
-                            </div>
-                            <div class="btnWrap right">
-                                <a href="javascript:;">프로필 가기</a>
-                                <a href="javascript:;">스터디&amp;네트워킹 가기</a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
+<!--                <li class="noticeDayWrap">-->
+<!--                    <span class="day">22.11.15</span>-->
+<!--                    <ul>-->
+<!--                        <li class="noticeContentWrap">-->
+<!--                            <div class="left">-->
+<!--                                <p class="categoryAndDate">-->
+<!--                                    <span>[스터디&amp;네트워킹]</span>-->
+<!--                                    <span>22.11.15</span>-->
+<!--                                </p>-->
+<!--                                <p class="noticeContent">오메가호근몬님이 스터디&amp;네트워킹 test에 초대하였습니다.</p>-->
+<!--                            </div>-->
+<!--                            <div class="btnWrap right">-->
+<!--                                <a href="javascript:;">프로필 가기</a>-->
+<!--                                <a href="javascript:;">스터디&amp;네트워킹 가기</a>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </li>-->
 
-                <li class="noticeDayWrap">
-                    <span class="day">22.11.14</span>
-                    <ul>
-                        <li class="noticeContentWrap">
-                            <div class="left">
-                                <p class="categoryAndDate">
-                                    <span>[소셜]</span>
-                                    <span>22.11.14</span>
-                                </p>
-                                <p class="noticeContent">오메가호근몬님이 회원님을 구독하기 시작했습니다.</p>
-                            </div>
-                            <div class="btnWrap right">
-                                <a href="javascript:;">프로필 가기</a>
-                            </div>
-                        </li>
-                        <li class="noticeContentWrap">
-                            <div class="left">
-                                <p class="categoryAndDate">
-                                    <span>[스터디&amp;네트워킹]</span>
-                                    <span>22.11.14</span>
-                                </p>
-                                <p class="noticeContent">추추추님이 스터디&amp;네트워킹 spring  boot 팀프로젝트에 문의 글을 등록하셨습니다.</p>
-                            </div>
-                            <div class="btnWrap right">
-                                <a href="javascript:;">프로필 가기</a>
-                                <a href="javascript:;">스터디&amp;네트워킹 가기</a>
-                            </div>
-                        </li>
-                        <li class="noticeContentWrap">
-                            <div class="left">
-                                <p class="categoryAndDate">
-                                    <span>[스터디&amp;네트워킹]</span>
-                                    <span>22.11.14</span>
-                                </p>
-                                <p class="noticeContent">추추추님이 스터디&amp;네트워킹 spring  boot 팀프로젝트에 문의 글을 등록하셨습니다.</p>
-                            </div>
-                            <div class="btnWrap right">
-                                <a href="javascript:;">프로필 가기</a>
-                                <a href="javascript:;">스터디&amp;네트워킹 가기</a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
+<!--                <li class="noticeDayWrap">-->
+<!--                    <span class="day">22.11.14</span>-->
+<!--                    <ul>-->
+<!--                        <li class="noticeContentWrap">-->
+<!--                            <div class="left">-->
+<!--                                <p class="categoryAndDate">-->
+<!--                                    <span>[소셜]</span>-->
+<!--                                    <span>22.11.14</span>-->
+<!--                                </p>-->
+<!--                                <p class="noticeContent">오메가호근몬님이 회원님을 구독하기 시작했습니다.</p>-->
+<!--                            </div>-->
+<!--                            <div class="btnWrap right">-->
+<!--                                <a href="javascript:;">프로필 가기</a>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li class="noticeContentWrap">-->
+<!--                            <div class="left">-->
+<!--                                <p class="categoryAndDate">-->
+<!--                                    <span>[스터디&amp;네트워킹]</span>-->
+<!--                                    <span>22.11.14</span>-->
+<!--                                </p>-->
+<!--                                <p class="noticeContent">추추추님이 스터디&amp;네트워킹 spring  boot 팀프로젝트에 문의 글을 등록하셨습니다.</p>-->
+<!--                            </div>-->
+<!--                            <div class="btnWrap right">-->
+<!--                                <a href="javascript:;">프로필 가기</a>-->
+<!--                                <a href="javascript:;">스터디&amp;네트워킹 가기</a>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li class="noticeContentWrap">-->
+<!--                            <div class="left">-->
+<!--                                <p class="categoryAndDate">-->
+<!--                                    <span>[스터디&amp;네트워킹]</span>-->
+<!--                                    <span>22.11.14</span>-->
+<!--                                </p>-->
+<!--                                <p class="noticeContent">추추추님이 스터디&amp;네트워킹 spring  boot 팀프로젝트에 문의 글을 등록하셨습니다.</p>-->
+<!--                            </div>-->
+<!--                            <div class="btnWrap right">-->
+<!--                                <a href="javascript:;">프로필 가기</a>-->
+<!--                                <a href="javascript:;">스터디&amp;네트워킹 가기</a>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </li>-->
 
-                <li class="noticeDayWrap">
-                    <span class="day">22.11.10</span>
-                    <ul>
-                        <li class="noticeContentWrap">
-                            <div class="left">
-                                <p class="categoryAndDate">
-                                    <span>[스터디&amp;네트워킹]</span>
-                                    <span>22.11.10</span>
-                                </p>
-                                <p class="noticeContent">회원님을 찾는 스터디 프로덕트헌트_ 스타트업 제품런칭플랫폼가 게시되었습니다.</p>
-                            </div>
-                            <div class="btnWrap right">
-                                <a href="javascript:;">스터디 가기</a>
-                            </div>
-                        </li>
-                        <li class="noticeContentWrap">
-                            <div class="left">
-                                <p class="categoryAndDate">
-                                    <span>[스터디&amp;네트워킹]</span>
-                                    <span>22.11.10</span>
-                                </p>
-                                <p class="noticeContent">회원님을 찾는 스터디 취약계층 지원 AI서비스 플랫폼가 게시되었습니다.</p>
-                            </div>
-                            <div class="btnWrap right">
-                                <a href="javascript:;">스터디 가기</a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
+<!--                <li class="noticeDayWrap">-->
+<!--                    <span class="day">22.11.10</span>-->
+<!--                    <ul>-->
+<!--                        <li class="noticeContentWrap">-->
+<!--                            <div class="left">-->
+<!--                                <p class="categoryAndDate">-->
+<!--                                    <span>[스터디&amp;네트워킹]</span>-->
+<!--                                    <span>22.11.10</span>-->
+<!--                                </p>-->
+<!--                                <p class="noticeContent">회원님을 찾는 스터디 프로덕트헌트_ 스타트업 제품런칭플랫폼가 게시되었습니다.</p>-->
+<!--                            </div>-->
+<!--                            <div class="btnWrap right">-->
+<!--                                <a href="javascript:;">스터디 가기</a>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li class="noticeContentWrap">-->
+<!--                            <div class="left">-->
+<!--                                <p class="categoryAndDate">-->
+<!--                                    <span>[스터디&amp;네트워킹]</span>-->
+<!--                                    <span>22.11.10</span>-->
+<!--                                </p>-->
+<!--                                <p class="noticeContent">회원님을 찾는 스터디 취약계층 지원 AI서비스 플랫폼가 게시되었습니다.</p>-->
+<!--                            </div>-->
+<!--                            <div class="btnWrap right">-->
+<!--                                <a href="javascript:;">스터디 가기</a>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </li>-->
             </ul>
 
 
@@ -765,7 +776,28 @@
         });
     });
 
+    $collegeNames.on("change",function () {
+        var collegeName = $("#collegeName option:selected").text();
+        if(collegeName != "대학교"){
+            $.ajax({
+                url: "/my-detail/change-email/"+collegeName,
+                type:"get",
+                success:function (result) {
+                    console.log("대학 이메일 수정 들어옴");
+                    console.log(result);
+                    //i는 인덱스 , item은 object
+                    var url = result.collegeEmailDomain.split("www.")[1];
+                    // var id = result.collegeId;
+                    console.log(url);
 
+                    $(".uniEmailText").text("@"+url);
+
+                    // $("#collegeUrl_1j").after(`<input type="hidden" id="collegeId_1j" name="collegeId" value="`+id+`">`)
+                }
+            })
+        }
+
+    })
 
 
 </script>

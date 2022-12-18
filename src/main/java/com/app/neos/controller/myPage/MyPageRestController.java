@@ -11,6 +11,7 @@ import com.app.neos.entity.college.College;
 import com.app.neos.entity.study.StudyFollow;
 import com.app.neos.entity.user.User;
 import com.app.neos.repository.user.UserRepository;
+import com.app.neos.service.admin.AdminService;
 import com.app.neos.service.alarm.AlarmService;
 import com.app.neos.service.join.JoinService;
 import com.app.neos.service.myPage.MyPageService;
@@ -43,6 +44,14 @@ public class MyPageRestController {
     private final JoinService joinService;
     private final UserRepository userRepository;
     private final AlarmService alarmService;
+    private final AdminService adminService;
+
+    // 유저 탈퇴
+    @GetMapping("/delete/{userId}")
+    public String delete(@PathVariable("userId") String userId){
+        adminService.deleteByUserId(userId);
+        return "delete success";
+    }
 
     // 마이페이지 정보 수정
     @PostMapping("/modify/{userId}")
@@ -144,6 +153,12 @@ public class MyPageRestController {
     @GetMapping("/change/{collegeCity}")
     public List<CollegeDTO> getNameList(@PathVariable String collegeCity){
         return joinService.showColleges(collegeCity);
+    }
+
+    // 마이페이지 대학교 이메일 조회
+    @GetMapping("/change-email/{collegeName}")
+    public CollegeDTO getUrl(@PathVariable String collegeName){
+        return joinService.showUrl(collegeName);
     }
 
     // 마이페이지 자료상점 게시글 조회

@@ -8,6 +8,25 @@ globalThis.page = 0;
 
 let myPageService = (function () {
 
+
+    // 회원 탈퇴
+    function deleteUser(userId, callback, error) {
+        $.ajax({
+            url: "/delete/" + userId,
+            type: "get",
+            success: function(result){
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function(xhr, status, err){
+                if(error){
+                    error(err);
+                }
+            }
+        });
+    }
+
     // 내정보 대학교ID 찾기
     function checkCollegeId(college, callback, error) {
         $.ajax({
@@ -277,5 +296,5 @@ let myPageService = (function () {
     }
 
 
-    return {getList: getList, userInfo: userInfo, collegeCityInfo: collegeCityInfo, neosPowerList: neosPowerList, getDate: getDate, getReplyDate:getReplyDate, neosPointList: neosPointList, studyFollowList: studyFollowList, studyJoinList:studyJoinList, followList:followList, studySupporterList:studySupporterList, alarmList:alarmList, modify:modify, checkCollegeId:checkCollegeId}
+    return {getList: getList, userInfo: userInfo, collegeCityInfo: collegeCityInfo, neosPowerList: neosPowerList, getDate: getDate, getReplyDate:getReplyDate, neosPointList: neosPointList, studyFollowList: studyFollowList, studyJoinList:studyJoinList, followList:followList, studySupporterList:studySupporterList, alarmList:alarmList, modify:modify, checkCollegeId:checkCollegeId, deleteUser:deleteUser}
 })();

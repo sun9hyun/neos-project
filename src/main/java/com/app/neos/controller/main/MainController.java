@@ -54,16 +54,20 @@ public class MainController {
         }
 //       유저 정보
         Pageable pageable = PageRequest.of(0, 4);
-        Slice<UserDTO> userDTOS = mainService.findUserPage(pageable);
-        model.addAttribute("users",userDTOS);
+
+        List<UserDTO> userDTOS = mainService.findUserPage();
+                model.addAttribute("users",userDTOS);
 
 //      스터디 정보
-        Slice<StudyDTO> studyDTOS = mainService.findStudyPage(pageable);
-        model.addAttribute("study" ,studyDTOS);
+        List<StudyDTO> studyDTOS = mainService.findStudyPage();
+                model.addAttribute("study" ,studyDTOS);
 
 //      상점 정보
         Slice<StoreDTO> storeDTOS = mainService.findStorePage(pageable);
-        model.addAttribute("store",storeDTOS);
+//        List<StoreDTO> storeDTOS = mainService.findStorePage();
+        model.addAttribute("stores",storeDTOS);
+
+        storeDTOS.stream().map(StoreDTO::toString).forEach(log::info);
 
 //      커뮤니티 정보
         Slice<CommunityDTO> communityDTOS = mainService.findCommunityPage(pageable);
@@ -72,6 +76,12 @@ public class MainController {
 
 //      유저 상세보기
         model.addAttribute("collegeCityList",joinService.getCollegeCityList());
+
+
+//      유저 아이디 넘기기
+        model.addAttribute("userId", loginUser == null ? 0 : loginUser);
+
+
 
         return "app/main/main";
     }

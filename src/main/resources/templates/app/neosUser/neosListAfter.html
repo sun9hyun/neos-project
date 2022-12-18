@@ -76,7 +76,7 @@
         margin-bottom: 0;
         margin-top: 40px;
         display: block;
-        width: 100%;
+        width: 103%;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
@@ -166,12 +166,14 @@
     <div class="commonContentViewHeader letsplerViewerHeader projectView">
         <div class="peopleSearchOption">
             <div class="kimisJJang" style="display : flex; ">
-            <h1 class="tit" style="margin-top: 30px; display : flex; margin-right: -52%;">인기 네오스인</h1>
+            <h1 class="tit" style="margin-top: 30px; display : flex; margin-right: -52%;">새로운 네오스인</h1>
 
                 <!--검색바 -->
                 <div class="searchResultSection" >
                     <div class="searchInputWrap" style="display : flex">
-                        <input class="searchInput" type="text" placeholder="닉네임을 검색해 주세요!" maxlength="30" value="" style="padding: 10px; margin-right: 2px; outline: none;" name="keyword" id="search">
+                        <input   class="searchInput" type="text" placeholder="닉네임을 검색해 주세요!" maxlength="30" value="" style="    padding: 5px;
+    margin-right: -30px;
+    outline: none;" name="keyword" id="search">
                         <div class="inputBtnWrap">
                         <span id="del">
                             <button class="inputSearchBtn" onclick="searchName()">
@@ -275,6 +277,7 @@
         <div class="peopleSearchOption">
             <h1 class="tit" style="margin-top: 30px;">추천 네오스인</h1>
 
+
             <!-- 추천 유저 프로필 -->
          <div class="peopleGrid" >
                 <ul class="peopleGridList neos">
@@ -355,8 +358,8 @@
 
              <div class="bigMoreBtn moreBtn1"><a>더 불러오기</a></div>
             </div>
-
         </div>
+
 
 
 
@@ -409,7 +412,6 @@
 
     /* 프로필 상세 위임 */
     $("#_next").on("click", ".detail" ,function () {
-        alert($(this).next().attr("href"));
         location.href = "/neosUser/info/yes" + "?userId=" + $(this).next().attr("href");
     })
 
@@ -432,11 +434,24 @@
     })
 
 
+    $("#_next").on("click", ".startChat", function () {
+        let name = $(this).closest(".letspler_Re").find(".name").text();
+        let text = "";
+        text += `<p>예를 누르시면,</p>`
+        text += `<p>` + name + ` 님과 대화를 시작합니다!` + `</p>`
+        $(".request_chat .commonModal .commonModalContent").html(text);
+        $(".request_chat").css("display", "block");
+    })
+
+
+
 
 </script>
 
+
 <!-- 인기 네오스인 더보기 페이징 -->
-<script th:inline="javascript">
+<script>
+
     globalThis.page = 0;
     globalThis.size = 4;
 
@@ -500,18 +515,16 @@
             let text = '';
             $(userDTOS.content).each((i,item) => {
 
-                $college = item.collegeId;
+                let college = item.collegeId;
 
                 $user = item.userName;
 
 
                 text += `<li class="letspler_Re">`
-                text += `<img loading="lazy" class="newMark"  src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">`
                 text += `<div class="top">`
                 text += `<div class="profilePicWrap">`
                 text += `<div class="profilePic" >`
                 text += `<img src="` + item.userFile + `" alt='민쇼니'></div>`
-                text += `<a class="favorite heart"></a>`
                 text += `</div>`
                 text += `<div class="profileTxt">`
                 text += `<div class="idWrap">`
@@ -540,8 +553,6 @@
                 text += `<span class="userPoint">`+item.userChattingPoint+`</span>`
                 text += `</div>`
                 text += `<div>`
-                text += `<img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"  style="width: 20px; height: 20px;">`
-                text += `<span id="result" >`+item.followList+`</span>`
                 text += `</div>`
                 text += `</div>`
                 text += `</div>`
@@ -550,12 +561,12 @@
                 text += `<ul class="userFavorite">`
                 text += `<li>`
 
-                if ($college != null){
+                if (college != null){
                     text += `<h3><span>[대학]&nbsp;<span class="university">`+ item.collegeName+`</span></span>`
                     text += `<span class="grade">`+ item.userCollegeYear +`</span>`
                     text += `<span style="font-size: 14px;color: #999999;">학년</span></h3>`
                 }
-                else if($college == null){
+                else if(college == null){
                     text += `<h3><span>[대학]&nbsp;<span class="university">해당사항없음</span>`
                     text += `</span>`
                     text += `<span class="grade">`
@@ -569,13 +580,13 @@
 
                 text += `<li>`
 
-                if ($college != null){
+                if (college != null){
                     text += `<h3><span>[전공]&nbsp;<span class="major">`+item.userCollegeMajor+`</span></span>`
                     text += `<span></span>`
                     text += `</h3>`
                 }
 
-                if ($college == null){
+                if (college == null){
                     text += `<h3><span>[전공]&nbsp;<span class="major">해당사항없음</span></span>`
                     text += `<span></span>`
                     text += `</h3>`
@@ -584,7 +595,7 @@
                 text += `</li>`
                 text += `</ul>`
                 text += `<div class="userInfoTagWrap"></div>`
-                text += `<a class="chatBtn">`
+                text += `<a class="chatBtn startChat">`
                 text += `<div>`
                 text += `<img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="네오스포인트">`
                 text += `<span >NEO CHAT</span>`
@@ -599,8 +610,8 @@
 
             $("ul.popularity").html(text);
             /*if (userDTOS.last){
-                $(".moreBtn").hide();*/
-
+                $(".moreBtn").hide();
+                }*/
            /* $("ul.neos").html(text);
             /!*if (userDTOS.last){
                 $(".moreBtn").hide();*!/*/
@@ -624,31 +635,33 @@
         });
 
 
-
-
-
-
-
-
-
 </script>
+
+
+
+
+
+
 
 
 <!--  추천 네오스인 뿌리기  -->
 
-<script th:inline="javascript">
+<script>
 
 
     globalThis.page = 0;
-    $(document).ready(function () {
+
+
+    /*$(document).ready(function () {*/
         globalThis.check = false;
         showneos();
 
         function showneos() {
-            console.log("들어옴")
+            globalThis.check = false;
+            console.log("들어옴@@@")
             $.ajax({
 
-                url:"/neosUser/neosUserList?page=" + (globalThis.page), /**4*/
+                url:"/neosUser/neosUserList/pop?page=" + (globalThis.page), /**4*/
                 type : "get",
                 async: false,
                 success: function (userDTOS) {
@@ -674,12 +687,10 @@
 
 
                 text += `<li class="letspler_Re">`
-                text += `<img loading="lazy" class="newMark"  src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">`
                 text += `<div class="top">`
                 text += `<div class="profilePicWrap">`
                 text += `<div class="profilePic" >`
                 text += `<img src="` + item.userFile + `" alt='민쇼니'></div>`
-                text += `<a class="favorite heart"></a>`
                 text += `</div>`
                 text += `<div class="profileTxt">`
                 text += `<div class="idWrap">`
@@ -689,7 +700,7 @@
                 text += `<ul class="idHoverMenu">`
                 text += `<li>`
                 text += `<a class="detail">프로필 상세</a>`
-                text += `<input type="hidden" href=" ` +userId +`">`
+                text += `<input type="hidden" href=" ` +item.userId +`">`
                 text += `</li>`
                 text += `<li><a class="chat">1:1대화</a></li>`
                 text += `<li><a class="invite">스터디 초대</a></li>`
@@ -708,8 +719,6 @@
                 text += `<span class="userPoint">`+item.userChattingPoint+`</span>`
                 text += `</div>`
                 text += `<div>`
-                text += `<img loading="lazy" src="https://letspl.me/assets/images/ico_like.png" alt="구독자 수"  style="width: 20px; height: 20px;">`
-                text += `<span id="result">0</span>`
                 text += `</div>`
                 text += `</div>`
                 text += `</div>`
@@ -722,7 +731,11 @@
                     text += `<h3><span>[대학]&nbsp;<span class="university">`+ item.collegeName+`</span></span>`
                     text += `<span class="grade">`+ item.userCollegeYear +`</span>`
                     text += `<span style="font-size: 14px;color: #999999;">학년</span></h3>`
-                }else{
+
+                }
+
+
+                if($college == null ){
                     text += `<h3><span>[대학]&nbsp;<span class="university">해당사항없음</span>`
                     text += `</span>`
                     text += `<span class="grade">`
@@ -739,7 +752,9 @@
                     text += `<h3><span>[전공]&nbsp;<span class="major">`+item.userCollegeMajor+`</span></span>`
                     text += `<span></span>`
                     text += `</h3>`
-                }else{
+                }
+
+                if($college == null){
                     text += `<h3><span>[전공]&nbsp;<span class="major">해당사항없음</span></span>`
                     text += `<span></span>`
                     text += `</h3>`
@@ -748,7 +763,7 @@
                 text += `</li>`
                 text += `</ul>`
                 text += `<div class="userInfoTagWrap"></div>`
-                text += `<a class="chatBtn">`
+                text += `<a class="chatBtn startChat">`
                 text += `<div>`
                 text += `<img loading="lazy" src="/images/neosUser/chatting-icon.png" alt="네오스포인트">`
                 text += `<span >NEO CHAT</span>`
@@ -762,9 +777,9 @@
             });
 
             $("ul.neos").append(text);
-            /*if (userDTOS.list){
-                $(".bigMoreBtn").hide();
-            }*/
+            // if (userDTOS.last){
+            //     $(".moreBtn1").hide();
+            // }
         }
 
 
@@ -779,7 +794,7 @@
             }
         });
 
-    });
+    /*});*/
 
 
 

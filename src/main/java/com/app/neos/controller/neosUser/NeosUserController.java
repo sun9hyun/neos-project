@@ -12,6 +12,7 @@ import com.app.neos.repository.study.StudyRepository;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.service.admin.AdminService;
 import com.app.neos.service.join.JoinService;
+import com.app.neos.service.myPage.MyPageService;
 import com.app.neos.service.neosUser.NeosUserService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -36,15 +37,11 @@ public class NeosUserController {
     private final StudyRepository studyRepository;
     private final JoinService joinService;
     private final FollowCustomRepository followCustomRepository;
+    private final MyPageService myPageService;
 
     @GetMapping("/list-before")
     public String listBefore() {
         return "app/neosUser/neosListBefore";
-    }
-
-    @GetMapping("/list-after")
-    public String listAfter() {
-        return "app/neosUser/neosListAfter";
     }
 
     @GetMapping("/info-yes")
@@ -84,16 +81,11 @@ public class NeosUserController {
 
     //    네오스인 페이지 목록 로그인 후
     @GetMapping("/list")
-    public String list(Model model , @RequestParam(required = false,defaultValue = "")String keyWord /* , Long myId , Long followingId*/ , HttpSession session) {
-//        List<UserDTO> userDTOS = neosUserService.findUser();
-//        userDTOS.forEach(t -> log.info(t.getCollege().getCollegeName().toString()));
+    public String list(Model model , @RequestParam(required = false,defaultValue = "")String keyWord , HttpSession session) {
 
 //        전체 유저 정보 불러오기
        List<UserDTO> userDTOS = userRepository.findAll().stream().map(i->i.toDTO()).collect(Collectors.toList());
         model.addAttribute("users", userDTOS);
-
-        //   유저 상세보기
-        model.addAttribute("collegeCityList",joinService.getCollegeCityList());
 
 
 //        내가 구독한 사람
@@ -111,23 +103,17 @@ public class NeosUserController {
 
 
 
-
-
-
-
-
-
 //  네오스인 페이지 목록  로그인 전
-    @GetMapping("/before/list")
-    public String beforeList(Model model){
-//        List<UserDTO> userDTO = neosUserService.findUser();
-
-        List<UserDTO> userDTO = userRepository.findAll().stream().map(i->i.toDTO()).collect(Collectors.toList());
-        model.addAttribute("users",userDTO);
-
-        return "app/neosUser/neosListBefore";
-
-    }
+//    @GetMapping("/before/list")
+//    public String beforeList(Model model){
+////        List<UserDTO> userDTO = neosUserService.findUser();
+//
+//        List<UserDTO> userDTO = userRepository.findAll().stream().map(i->i.toDTO()).collect(Collectors.toList());
+//        model.addAttribute("users",userDTO);
+//
+//        return "app/neosUser/neosListBefore";
+//
+//    }
 
 
 
@@ -140,11 +126,12 @@ public class NeosUserController {
 //        UserDTO userDTO = (UserDTO) userRepository.findById(userId).stream().map(i->i.toDTO()).collect(Collectors.toList());
 //        model.addAttribute("userInterest", neosUserService.findByUserId(userId));
 
-//       유저
+//       유저 상세보기
         model.addAttribute("user", neosUserService.findByUserId(userId));
 
 //        스터디
         model.addAttribute("studys" , neosUserService.findByStudyId(userId));
+
 
         return "app/neosUser/userInfoYes";
     }

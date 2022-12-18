@@ -21,6 +21,7 @@ public interface UserCustomRepository {
 
     public UserDTO findNoCollegeById(Long userId);
 
+    /* 유저 상세보기 */
     public UserDTO findById(Long userId);
 
 

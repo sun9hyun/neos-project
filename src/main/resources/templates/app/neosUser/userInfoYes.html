@@ -17,19 +17,17 @@
 <header th:replace="/app/fix/header.html :: header"></header>
 
 
-<th:block>
+
 <section class="userProfileSection">
+    <th:block>
     <div class="profileInfo" th:object="${user}">
 
         <div class="pic">
             <div class="picWrap"><img th:src="*{userFile}" ></div>
-            <a class="favoriteSymbol">
-                <div class="favorite "></div>
-            </a></div>
+            </div>
         <div class="profileInfoTxt">
             <div class="profileInfoTxtFirst">
                 <div class="profileStatusSection">
-                    <div class="userTag "><span>본인인증</span></div>
                     <!-- 유저의 mbti 가 entp 일때-->
                     <th:block th:if="*{userMbtiName} == ENTP">
                     <div class="userTag entp" >
@@ -149,16 +147,14 @@
                 <h2 class="tit"><img class="userLv"
                                      th:src="*{userNeosBadge}"
                                      alt="렛플렙">&nbsp; <span class="name" th:text="*{userNickName}"></span></h2>
-                <p class="introduction">마지막 로그인 : 1일전</p>
                 <div class="topBtnWrap btnWrap">
                     <button class="pinkBtn">1:1 대화</button>
-                    <button class="blackBtn">스터디 초대</button>
                 </div>
             </div>
             <div class="myTabWrapContainer">
                 <div class="myTabWrap"><a class="active">정보</a>
                     <a class="inquiryDetail">문의</a>
-                    <input type="hidden" th:href="*{userId}">
+                    <input type="hidden" id="userId" th:href="*{userId}">
                 </div>
             </div>
             <div class="summaryInfo">
@@ -205,8 +201,6 @@
                             <li class="userOption"><span class="optionTxt">모임 장소</span><span th:text="*{userCity}">상관없음</span></li>
                             <li class="userOption"><span class="optionTxt">모임 시간</span>
                                 <h3  th:text="*{userTime}" >주중,주말 가능<!-- --> /시간대 미정</h3></li>
-                            <li class="userOption"><span class="optionTxt" >관심 분야</span>
-                                <h3>설정된 관심분야가 없습니다</h3></li>
                             <li class="userOption"><span class="optionTxt">대화 포인트</span>
                                 <h3  th:text="*{userChattingPoint}">1네오</h3></li>
                         </ul>
@@ -355,31 +349,40 @@
                                     <div class="badgeWrap">
                                         <div class="badge black">
                                             <!-- <h2>사이드프로젝트</h2> -->
-                                            <img  src="/images/study/inha.png">
                                         </div>
                                     </div>
-                                    <div class="favorite2 off "></div>
                                 </div>
+
+
                                 <div class="projectThumb"><img loading="lazy"
                                                                src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_19.png"
                                                                alt="커뮤니티 연계 교통 정보 어플"></div>
+
+
+
+
                             </div>
+
+                            <a th:href="@{/study/list/}+${study.studyId}">
                             <div class="projectBottomInfo">
                                 <div class="txtWrap projectWrap">
                                     <h3 class="category">전공과목</h3>
                                     <h2 class="tit" th:text="*{studyTitle}">공업수학_라플라스 변환</h2>
-                                    <!--                                 <div class="iconWrap2"><img loading="lazy"
-                                            src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
-                                            alt="Figma"></div> -->
+
 
                                 </div>
                             </div>
                             <div class="projectInfo2">
                                 <div class="middleWrap">
                                     <div class="left">
-                                        <div class="heartCount"><img loading="lazy"
-                                                                     src="https://letspl.me/assets/images/ic-favorite-empty-white.svg"
-                                                                     alt="구독자 수"><span>3</span></div>
+                                        <div class="heartCount">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 16 16" fill="none" style="position: relative;top: -0.1rem;">
+                                                <path d="M8 2.48901C6.27297 2.48988 4.58622 3.01069 3.15934 3.98365C1.73246 4.9566 0.631569 6.33661 0 7.94401C0.630962 9.55179 1.73172 10.9321 3.15875 11.9051C4.58577 12.878 6.27285 13.3985 8 13.3985C9.72715 13.3985 11.4142 12.878 12.8413 11.9051C14.2683 10.9321 15.369 9.55179 16 7.94401C15.3684 6.33661 14.2675 4.9566 12.8407 3.98365C11.4138 3.01069 9.72703 2.48988 8 2.48901V2.48901ZM8 11.58C7.28087 11.58 6.57788 11.3668 5.97995 10.9672C5.38201 10.5677 4.91597 9.99984 4.64077 9.33545C4.36557 8.67106 4.29357 7.93998 4.43386 7.23466C4.57416 6.52935 4.92046 5.88148 5.42896 5.37297C5.93746 4.86447 6.58534 4.51817 7.29065 4.37788C7.99597 4.23758 8.72704 4.30959 9.39144 4.58479C10.0558 4.85999 10.6237 5.32602 11.0232 5.92396C11.4228 6.5219 11.636 7.22488 11.636 7.94401C11.6355 8.90818 11.2522 9.8327 10.5705 10.5145C9.88869 11.1962 8.96416 11.5795 8 11.58ZM8 5.76201C7.56844 5.76201 7.14657 5.88999 6.78775 6.12975C6.42892 6.36951 6.14925 6.71029 5.9841 7.109C5.81894 7.50771 5.77573 7.94643 5.85993 8.3697C5.94412 8.79297 6.15194 9.18176 6.45709 9.48692C6.76225 9.79208 7.15105 9.99989 7.57431 10.0841C7.99758 10.1683 8.43631 10.1251 8.83502 9.95992C9.23372 9.79477 9.57451 9.5151 9.81427 9.15627C10.054 8.79744 10.182 8.37557 10.182 7.94401C10.1824 7.65736 10.1262 7.37344 10.0167 7.10853C9.90719 6.84362 9.74648 6.60292 9.54379 6.40023C9.34109 6.19753 9.10039 6.03682 8.83548 5.9273C8.57057 5.81779 8.28666 5.76162 8 5.76201Z" fill="#A4A4B4"></path>
+                                            </svg> <span style="margin-right:0.5rem;margin-left:0.2rem;font-size: 12px;color:#888" th:text="*{studyView}" ></span>
+
+
+                                         <!--   <img loading="lazy" src="https://letspl.me/assets/images/ic-favorite-empty-white.svg" alt="구독자 수">
+                                            <span th:text="*{followTotal}"></span></div>-->
                                     </div>
                                     <div class="right">
                                         <!-- <p><span> 44</span><span> (-) </span></p> -->
@@ -387,7 +390,22 @@
                                 </div>
                                 <div class="bottomWrap">
                                     <div class="gatherTxt">
-                                        <div><span th:text="*{studyStatus}">모집완료</span><span th:text="*{studySupport}">0/4</span></div>
+                                        <div>
+                                            <th:block th:if="*{studyRecruitStatus.toString() == 'RECRUITING'}">
+                                            <span>모집중</span>
+                                            </th:block>
+
+
+                                            <th:block th:unless="*{studyRecruitStatus.toString() == 'RECRUITING'}">
+                                                <span >모집완료</span>
+                                            </th:block>
+
+                                            <span th:text="*{studyMemberList.size()}" >0</span>
+                                            <span>/</span>
+                                            <span th:text="*{studySupport}"></span>
+
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -399,7 +417,7 @@
 
             </div>
 
-            <div class="projectInfo subscriberWrap">
+            <!--<div class="projectInfo subscriberWrap">
                 <li class="userOption watchedLetspler"><h1 class="subTit">sun9hyun님을 구독중인 렛플인<span> 2</span>명
                 </h1>
                     <ul>
@@ -423,7 +441,7 @@
                     </ul>
                 </li>
 
-            </div>
+            </div>-->
 
         </div>
 
@@ -432,7 +450,7 @@
 
 
 
-            <div class="projectInfo">
+           <!-- <div class="projectInfo">
 
 
                 <div class="morePeopleView peopleRecommendWrap">
@@ -473,7 +491,7 @@
                                 <p>#집중력</p>
                                 <p>#체력</p>
                             </div>
-                        </div>
+                        </div>-->
 
 
 <!--                        <div class="box">-->
@@ -663,9 +681,16 @@
 <script src="/js/fix/header.js"></script>
 
 <script>
+    let userId = [[${session.loginUser}]];
 
+
+    /* 문의하기 다른 계정이 프로필 상세 들어 올시 막아주기 */
+    if($(".inquiryDetail").next().attr("href") != userId){
+        $('.inquiryDetail').css('display', 'none');
+    }
+
+    /* 본인 상세 프로필 보기 들어가면 문의하기로 이동 */
     $(".inquiryDetail").on("click", function (e) {
-        alert($(this).next().attr("href"));
         e.preventDefault();
         location.href = "/inquiry/list" + "?userId=" + $(this).next().attr("href");
     });

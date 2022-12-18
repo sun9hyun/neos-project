@@ -52,13 +52,15 @@ public class NeosUserService {
 
     // 유저 상세보기
     public UserDTO findByUserId(Long userId){
-        return userCustomRepository.findById(userId);
+        return neosUserCustomRepository.findById(userId);
     }
+
 
 //    유저가 속한 스터디
     public List<Study> findByStudyId(Long studyId){
         return neosUserCustomRepository.findByUserId(studyId);
     }
+
 
 
 //  유저 검색

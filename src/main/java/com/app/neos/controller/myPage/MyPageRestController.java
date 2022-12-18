@@ -7,6 +7,7 @@ import com.app.neos.domain.neos.NeosPowerDTO;
 import com.app.neos.domain.store.StoreDTO;
 import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.domain.user.UserDTO;
+import com.app.neos.entity.college.College;
 import com.app.neos.entity.study.StudyFollow;
 import com.app.neos.entity.user.User;
 import com.app.neos.repository.user.UserRepository;
@@ -42,6 +43,24 @@ public class MyPageRestController {
     private final JoinService joinService;
     private final UserRepository userRepository;
     private final AlarmService alarmService;
+
+    // 마이페이지 정보 수정
+    @PostMapping("/modify/{userId}")
+    public String updateUserInfo(@RequestBody UserDTO userDTO, @PathVariable("userId") Long userId){
+        System.out.println("*********************업데이트 " + userDTO.getUserFile() + "*********************");
+//        User user = userRepository.findById(userDTO.getUserId()).get();
+//        College college = myPageService.findCollege(userDTO.getCollegeName()).toEntity();
+//        user.changeCollege(college);
+
+        myPageService.updateUser(userDTO);
+        return "update success";
+    }
+
+//    // 마이페이지 대학 정보 수정
+//    @PostMapping("/check/{college}")
+//    public Long checkCollegeId(@PathVariable("college") String college){
+//        return myPageService.findCollege(college);
+//    }
     
     // 마이페이지 알림 조회
     @GetMapping("/alarm/{userId}")

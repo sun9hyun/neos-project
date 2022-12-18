@@ -188,6 +188,7 @@ public class User extends Period {
         this.userFile = userDTO.getUserFile();
         this.userIntroduce = userDTO.getUserIntroduce();
         this.userMBTI = userMBTI;
+        this.userCollegeCertify = userDTO.getUserCollegeCertify();
     }
 
 

@@ -75,13 +75,12 @@
     <!--  정보  -->
     <div class="myTabContents myProfileTab active">
         <div class="myProfileWrap">
-            <form style="width: 100%" action="/my-detail/" >
                 <div class="left">
                     <div class="profileImg">
                         <img class="userImg"  src="data:image/;base64" alt="user_image">
                     </div>
-                    <label for="ImgBtn"></label>
-                    <input type="file" name="userFileInput" accept="image/*" class="changeImgBtn" id="ImgBtn">
+<!--                    <label for="ImgBtn"></label>-->
+<!--                    <input type="file" name="userFileInput" accept="image/*" class="changeImgBtn" id="ImgBtn">-->
 
                 </div>
                 <div class="right">
@@ -131,11 +130,11 @@
                                     <option value="기타계열">기타계열</option>
                                 </select>
                                 <select class="selectUni uniYear">
-                                    <option value="1">학년</option>
-                                    <option value="2">1학년</option>
-                                    <option value="3">2학년</option>
-                                    <option value="4">3학년</option>
-                                    <option value="5">4학년</option>
+                                    <option value="0">학년</option>
+                                    <option value="1">1학년</option>
+                                    <option value="2">2학년</option>
+                                    <option value="3">3학년</option>
+                                    <option value="4">4학년</option>
                                 </select>
 
                             </div>
@@ -147,6 +146,10 @@
                                 <input type="checkbox" id="uni_radio" class="userCollegeCertify" style="width: 20px; height: 20px; margin: 8px; margin-left: 0;">
                                 <label for="uni_radio" style="padding: 0; margin: 0; line-height: 1px; font-size: 12.5px; color: #6e6e6e;">선택 안함</label>
                             </div>
+                            <input type="text" class="collegeName" name="collegeName" value=""></input>
+                            <input type="text" class="collegeId" name="collegeId" value=""></input>
+                            <input type="text" name="CollegeCertify" class="CollegeCertify" value="true"></input>
+
                         </div>
 
                         <div class="labelSelect">
@@ -270,7 +273,6 @@
                         를 눌러주세요.
                     </p>
                 </div>
-            </form>
         </div>
     </div>
 
@@ -752,6 +754,18 @@
     });
 
     mbtiTest();
+
+    $(function(){
+        $(".userCollegeCertify").change(function(){
+            if($(".userCollegeCertify").is(":checked")){
+                $(".CollegeCertify").val("noNeed")
+            }else {
+                $(".CollegeCertify").val("true")
+            };
+        });
+    });
+
+
 
 
 </script>

@@ -95,7 +95,8 @@ public class StoreCustomRepositoryImpl implements StoreCustomRepository {
                 QStore.store.storeStatus,
                 QStore.store.storePoint,
                 QStore.store.storeTitle,
-                QStore.store.storeContent
+                QStore.store.storeContent,
+                QStore.store.updatedDate
                 ))
                 .from(QStore.store)
                 .orderBy(QStore.store.storeId.desc())

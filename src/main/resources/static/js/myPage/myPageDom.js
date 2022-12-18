@@ -2,6 +2,7 @@
 *
 * */
     let userId = $("input[name='userId']").val();
+    let college = $(".Univer").prop("selected", true).val()
 
     show();
 
@@ -18,12 +19,46 @@
         myPageService.followList(userId, followList)
         myPageService.studySupporterList(userId, studySupporterList)
         myPageService.alarmList(userId, alarmList)
+        // myPageService.checkCollegeId(college, checkCollegeId)
     }
 
     function showStore() {
         myPageService.getList(userId, getList)
-
     }
+
+    function showUserInfo() {
+        myPageService.userInfo(userId, userInfo)
+    }
+
+
+/*############################ 유저정보 수정 START #####################################*/
+$(".updateBtn").on("click", function(){
+    myPageService.modify({
+        userId : $("input[name='userId']").val(),
+        userFile : $(".userImg").attr("src"),
+        userNickName: $("input[name='userNickName']").val(),
+        collegeCity : $(".collegeCity").prop("selected", true).val(),
+        collegeName : $(".Univer").prop("selected", true).val(),
+        userCollegeCertify :$("input[name='CollegeCertify']").val(),
+        userCollegeMajor : $(".uniPart").prop("selected", true).val(),
+        userCollegeYear :  $(".uniYear").prop("selected", true).val(),
+        userCollegeEmail : $(".uniEmail").val(),
+        // userCollegeCertify : $(".userCollegeCertify").is(":checked") ? "noNeed" : "true",
+        // userCollegeCertify : "true",
+        userChattingPoint : $(".chatPoint").prop("selected", true).val(),
+        userO2o : $(".otoo").prop("selected", true).val(),
+        userCity : $(".areaSort").prop("selected", true).val(),
+        userDay : $(".userDay").prop("selected", true).val(),
+        userTime : $(".userTime").prop("selected", true).val(),
+        userMbtiName : $(".mbtiSelect").prop("selected", true).val(),
+        userIntroduce : $(".userIntroduce").val()
+    }, function(){showUserInfo();});
+});
+// /*############################ 대학교 찾기 START #####################################*/
+// function checkCollegeId(results) {
+//     $("input[name='collegeId']").val(results);
+// }
+
 
 /*############################ 알림 지원 START #####################################*/
 function alarmList(results) {
@@ -482,11 +517,13 @@ function collegeCityInfo(result) {
 
         if(user.userCollegeCertify == "noNeed"){
             $(".userCollegeCertify").prop('checked', true);
+            $(".CollegeCertify").val("noNeed");
             $('.KRUni').attr('disabled',true);
         }else if(user.userCollegeCertify == "true"){
             $(".userCollegeCertify").prop('checked', false);
+            $(".CollegeCertify").val("true");
             $(".uniPart").val(user.userCollegeMajor).prop("selected", true);
-            $(".uniYear").val(user.userCollegeYear + 1  ).prop("selected", true);
+            $(".uniYear").val(user.userCollegeYear).prop("selected", true);
             $(".uniEmail").val(user.userCollegeEmail);
         }
         // 채팅 포인트

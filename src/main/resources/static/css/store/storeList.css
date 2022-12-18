@@ -194,6 +194,15 @@ section {
     overflow: hidden;
 }
 
+.categoryDate {
+    font-size: 12px;
+    color: black;
+    line-height: 12px;
+    margin: 9px 0 15px;
+    font-weight: 500;
+    overflow: hidden;
+}
+
 .storySection .contents .contetnsGrid .storyGridBox .bottom .viewWrap {
     display: -moz-inline-box;
     display: inline-flex;

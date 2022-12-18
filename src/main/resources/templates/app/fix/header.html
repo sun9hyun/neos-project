@@ -41,7 +41,7 @@
             <div class="loginLogout">
                 <input type="hidden" name="userId" id="userId" th:value="${session.loginUser}">
                 <input type="hidden" id="userOauthId">
-                <div th:if="${checkAlarm == true}" class="newDot">
+                <div th:if="${session.checkAlarm == true}" class="newDot">
                     <div class="redDot"></div>
 
                 </div>

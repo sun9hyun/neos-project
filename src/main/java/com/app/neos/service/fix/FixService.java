@@ -39,7 +39,7 @@ public class FixService {
         return chatContentCustomRepository.findById(chattingRoomId);
     }
 
-    //    채팅방 저장
+    //    채팅 내용 저장
     public void saveChatting(ChattingContentDTO chattingContentDTO) {
         ChattingContent chattingContent = chattingContentDTO.toEntity();
 
@@ -64,26 +64,34 @@ public class FixService {
             /*상대가 보낸 모든 채팅은 읽음으로 변경*/
             for(int i = 0; i < findByIdTest.size(); i++) {
                 ChattingContent chattingContent = chattingContentRepository.findById(findByIdTest.get(i).getChattingContentId()).get();
-                chattingContent.changeMessageType(MessageType.READ);
+                chattingContent.changeMessageType(MessageType.UNREAD);
                 chattingContentRepository.save(chattingContent);
             }
         }
 
-    // 상대방 아이디 하나 구하기
+    // 채팅방 하나 구하기
     public Long findByReceiverId(Long chattingRoomId) {
         return chatContentCustomRepository.findByIdOne(chattingRoomId);
     }
 
 
 
-//    //    채팅방 나가기
-//    public void deleteRoom(ChattingRoomDTO chattingRoomDTO) {
-//        chattingContentRepository.deleteById(chattingRoomDTO.getChattingRoomId());
+    //    채팅방 나가기
+//    public void deleteRoom(Long chattingRoomId) {
+//        chattingContentRepository.deleteById(chattingRoomId);
 //    }
 
 
-//
-//
+    //    채팅방 만들기
+    public void createChattingRoom(ChattingRoomDTO chattingRoomDTO) {
+        ChattingRoom chattingRoom = chattingRoomDTO.toEntity();
+
+        chattingRoom.changeReceiverRoom(userRepository.findById(chattingRoomDTO.getReceiverRoomId()).get());
+        chattingRoom.changeMyRoom(userRepository.findById(chattingRoomDTO.getMyRoomId()).get());
+        chattingRoomRepository.save(chattingRoom);
+        System.out.println("서비스~~~~~~~~~~~~~~~~~~~~~" +chattingRoom);
+    }
+
 ////    public ChattingDTO findByChattingId(Long chattingId) {
 ////        return chattingCustomRepository.findByChatting(chattingId);
 ////    }

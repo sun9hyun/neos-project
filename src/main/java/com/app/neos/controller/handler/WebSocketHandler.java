@@ -57,10 +57,9 @@ public class WebSocketHandler extends TextWebSocketHandler {
 //        Long chattingRoomId = fixService.findByReceiverId(chattingContentDTO.getChattingRoomId());
 //        chattingContentDTO.setChattingRoomId(chattingRoomId);
 //        List<ChattingContentDTO> chattingRoomDTO = chatContentCustomRepository.findById(chattingContentDTO.getChattingRoomId());
-        log.info(chattingRoomDTO.toString());
         log.info(String.valueOf(session.getAttributes().get("chattingRoomId")));
-        chattingRoomDTO.handleMessage(session, chattingContentDTO, objectMapper);
         log.info(chattingContentDTO.toString());
+        chattingRoomDTO.handleMessage(session, chattingContentDTO, objectMapper);
 
     }
 

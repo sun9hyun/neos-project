@@ -7,6 +7,7 @@ import com.app.neos.entity.period.Created;
 import com.app.neos.entity.period.Period;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.chatting.ChatType;
+import com.app.neos.type.chatting.MessageType;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
@@ -25,6 +26,7 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 @NoArgsConstructor
+
 public class ChattingRoom extends ChatPeriod {
     @Id @GeneratedValue
     private Long chattingRoomId;
@@ -41,6 +43,13 @@ public class ChattingRoom extends ChatPeriod {
     @Builder
     public ChattingRoom( User myRoom,User receiverRoom,ChattingContent chattingContentIdRoom,String chattingContentRoom, ChatType chatType) {
         this.myRoom = myRoom;
+        this.receiverRoom = receiverRoom;
+    }
+
+    public void changeMyRoom(User myRoom){
+        this.myRoom = myRoom;
+    }
+    public void changeReceiverRoom(User receiverRoom){
         this.receiverRoom = receiverRoom;
     }
 

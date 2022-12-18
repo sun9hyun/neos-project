@@ -2,6 +2,7 @@ package com.app.neos.entity.chatting;
 
 
 import com.app.neos.domain.chatting.ChattingContentDTO;
+import com.app.neos.entity.period.ChatPeriod;
 import com.app.neos.entity.period.Created;
 import com.app.neos.entity.user.User;
 import com.app.neos.type.chatting.ChatType;
@@ -12,62 +13,65 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.persistence.*;
 
-
+@JsonAutoDetect
 @Entity
 @Table(name="TBL_CHATTING_CONTENT")
-@ToString(exclude = {"my", "receiver", "chatting"}) @Getter
+@ToString(exclude = {"writer", "chattingRoom"}) @Getter
 //@Inheritance (strategy = InheritanceType.JOINED)
 @NoArgsConstructor
 
-public class ChattingContent extends Created {
+public class ChattingContent extends ChatPeriod {
     @Id @GeneratedValue
     private Long chattingContentId;
     @NotNull
     private String chattingContent;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "MY_ID")
-    private User my;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CHATTING_ROOM_ID")
+    private ChattingRoom chattingRoom;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "RECEIVER_ID")
-    private User receiver;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CHATTING_ID")
-    private Chatting chatting;
+    @JoinColumn(name = "WRITER_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private User writer;
 
     @Enumerated(EnumType.STRING) @NotNull
     private MessageType messageType;
 
-    public void changeMy(User my){
-        this.my = my;
+    public void changeWriter(User writer){
+        this.writer = writer;
     }
-    public void changeReceiver(User receiver){
-        this.receiver = receiver;
+    public void changeChattingRoom(ChattingRoom chattingRoom){
+        this.chattingRoom = chattingRoom;
     }
-    public void changeChatting(Chatting chatting ){
-        this.chatting = chatting;
+    public void changeMessageType(MessageType messageType){
+        this.messageType = messageType;
     }
 
     @Builder
-    public ChattingContent(@NotNull String chattingContent, MessageType messageType ,User my,User receiver) {
+    public ChattingContent(@NotNull Long chattingContentId,String chattingContent, MessageType messageType ,User writer,ChattingRoom chattingRoom) {
+        this.chattingContentId=chattingContentId;
         this.chattingContent = chattingContent;
         this.messageType = messageType;
-        this.my = my;
-        this.receiver =receiver;
+        this.writer = writer;
+        this.chattingRoom=chattingRoom;
     }
 
-    public void update(String chattingContent){
-        this.chattingContent = chattingContent;
-    }
+//    public void update(ChattingContentDTO chattingContentDTO){
+//        this.chattingContent = chattingContentDTO.getChattingContent();
+//        this.chatting = chattingContentDTO.getChatting();
+//        this.writer = chattingContentDTO.();
+//        this.chattingContent = chattingContentDTO.getChattingContent();
+//    }
 
 
 }

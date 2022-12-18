@@ -2,15 +2,12 @@ package com.app.neos.entity.chatting;
 
 
 import com.app.neos.domain.chatting.ChattingContentDTO;
-import com.app.neos.domain.community.CommunityDTO;
-import com.app.neos.entity.college.College;
-import com.app.neos.entity.community.Community;
-import com.app.neos.entity.user.User;
+import com.app.neos.domain.chatting.ChattingRoomDTO;
 import com.app.neos.repository.chatting.ChattingContentRepository;
-import com.app.neos.repository.chatting.ChattingRepository;
 import com.app.neos.repository.chatting.ChattingRoomRepository;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.type.chatting.ChatType;
+import com.app.neos.type.chatting.MessageType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,38 +23,37 @@ public class ChattingContentEntityTest {
     @Autowired
     UserRepository userRepository;
     @Autowired
-    ChattingRepository chattingRepository;
+    ChattingRoomRepository chattingRoomRepository;
     @Autowired
     ChattingContentRepository chattingContentRepository;
-    @Autowired
-    ChattingRoomRepository chattingRoomRepository;
+
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
+
+
         ChattingContentDTO chattingContentDTO = new ChattingContentDTO();
+        ChattingRoomDTO chattingRoomDTO = new ChattingRoomDTO();
 
-        chattingContentDTO.setChatting(chattingRepository.findById(9l).get());
-        chattingContentDTO.setMy(chattingRepository.findById(9l).get().getMyId());
-        chattingContentDTO.setReceiver(chattingRepository.findById(9l).get().getReceiverId());
-        chattingContentDTO.setChatType(ChatType.ENTER);
-        chattingContentDTO.setChattingContent("ㅋㅋㅋㅋ");
-
+        chattingContentDTO.setChattingContent("?? ");
+        chattingContentDTO.setMessageType(MessageType.UNREAD);
+        chattingContentDTO.setWriter(chattingRoomRepository.findById(184l).get().getMyRoom()); // 보낸사람
+        chattingContentDTO.setChattingRoom(chattingRoomRepository.findById(184l).get());
         ChattingContent chattingContent = chattingContentDTO.toEntity();
 
-        chattingContent.changeMy(chattingContentDTO.getMy());
-        chattingContent.changeReceiver(chattingContentDTO.getReceiver());
-        chattingContent.changeChatting(chattingContentDTO.getChatting());
-
+        chattingContent.changeChattingRoom(chattingContentDTO.getChattingRoom());
         chattingContentRepository.save(chattingContent);
-    }
 
-    @Test
-    public void deleteTest(){
-        chattingContentRepository.deleteById(7l);
+        //채팅방
     }
+//    @Test
+//    public void deleteTest(){
+//        chattingContentRepository.deleteById(7l);
+//    }
+//
+//    @Test
+//    public void findAllTest(){
+//        chattingContentRepository.findAll().stream().map(ChattingContent::toString).forEach(log::info);
+//    }
 
-    @Test
-    public void findAllTest(){
-        chattingContentRepository.findAll().stream().map(ChattingContent::toString).forEach(log::info);
-    }
 }

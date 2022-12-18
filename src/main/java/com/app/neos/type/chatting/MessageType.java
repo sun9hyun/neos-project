@@ -3,7 +3,7 @@ package com.app.neos.type.chatting;
 import com.app.neos.type.alarm.ReadStatus;
 
 public enum MessageType {
-    READ("읽음"), UNREAD("안 읽음");
+    READ("읽음"), UNREAD("안읽음");
 
     private String value;
 

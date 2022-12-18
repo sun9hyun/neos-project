@@ -1,6 +1,7 @@
 package com.app.neos.controller.main;
 
 import com.app.neos.aspect.annotation.QuestionReplyAlarm;
+import com.app.neos.domain.chatting.ChattingContentDTO;
 import com.app.neos.domain.chatting.ChattingRoomDTO;
 import com.app.neos.domain.community.CommunityDTO;
 import com.app.neos.domain.store.StoreDTO;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,10 +41,12 @@ public class MainController {
 
 
     @GetMapping("/main")
-    public String login(HttpServletRequest  request,Model model){
+    public String login( HttpServletRequest  request, Model model){
         HttpSession session = request.getSession();
         Long loginUser = (Long) session.getAttribute("loginUser");
-        System.out.println("-----------------------" + loginUser);
+//        session.setAttribute("receiver",receiver);
+//
+//        System.out.println("-----------------------" + receiver);
         if(loginUser!=null) {
             List<ChattingRoomDTO> chattingContentDTOS = fixService.findContent(loginUser);
             model.addAttribute("contents", chattingContentDTOS);

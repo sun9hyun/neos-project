@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class ChatRoomCustomRepositoryImpl implements ChatRoomCustomRepository {
+public class ChatRoomCustomRepositoryImpl {
     private final JPAQueryFactory jpaQueryFactory;
 
 //    채팅방 목록 업데이트

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @Getter
-public class Created {
+public abstract class ChatPeriod {
     @CreatedDate
-    private LocalDateTime createdDate;
+    private LocalDateTime chatDate;
 }

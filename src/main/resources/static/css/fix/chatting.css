@@ -523,7 +523,7 @@ img {
 
 .chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chattingRoomWrap .opponent .userIdChatTxt .chatTxt {
     box-sizing: border-box;
-    padding: 5px 6px 5px 10px;
+    padding: 5px 10px 5px 10px;
     font-size: 0.8rem;
     background-color: #f1f1f3;
     position: relative;
@@ -559,7 +559,7 @@ img {
     font-size: .65rem;
     color: #b1b1b1;
     bottom: 0;
-    right: -55px;
+    right: -44px;
 }
 
 .chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chatInputArea {
@@ -912,5 +912,28 @@ body, button, input, select, td, textarea, th {
 
 
 
+.chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chattingRoomWrap .my .timeWrap {
+    /*position: absolute;*/
+    bottom: 0;
+    left: -55px;
+    font-size: .65rem;
+    color: #222;
+    display: -moz-inline-box;
+    display: inline-flex;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -moz-box-align: end;
+    align-items: flex-end;
+    padding-right: 15px;
+}
 
+.chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chattingRoomWrap .my .timeWrap .check {
+    color: #ea6560;
+    font-size: 11px;
+}
 
+.chattingWrap .chattingContentWrap .chattingSection .chattingRoom .chattingRoomWrap .my .timeWrap .time {
+    color: #b1b1b1;
+    font-size: 11px;
+}

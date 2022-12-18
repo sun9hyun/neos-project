@@ -66,7 +66,7 @@ $("li.leftChattingList").on("click", function () {
                 text += "</span>"
                 text += "<div>"
                 text += "<div class='timeWrap'>";
-                text += "<span class=\"check\">" + content.messageType +"</span>";
+                text += "<span class=\"check\">" + "읽음" +"</span>";
                 text += "<span class=\"time\">" + contentService.getReplyDates(content.chatDate) +"</span>";
                 text += "</div>";
                 text += "</div>";
@@ -166,20 +166,22 @@ $(".buttonComponents_circle__2iQ3w").on("click", function () {
 * ----------채팅방 나가기----------------
 * */
 
-// $("#exit").on("click", function () {
-//     $.ajax({
-//         url: "/chat/chattingDelete",
-//         type: "delete",
-//         data: JSON.stringify({receiverId :  (this).closest('.chattingRoom').prev().find('.select').find('.chattingId').val()}),
-//         contentType: "application/json; charset=utf-8",
-//         success: function () {
-//             alert(receiverId)
-//             show()
-//         },
-//         error: function (xhr, status, err) {
-//         }
-//     })
-// });
+
+$(".chatExitModal").on("click",".redBtn", function () {
+    console.log("나가기 클릭");
+    $.ajax({
+        url: "/chat/chattingDelete/" + receiverRoomId,
+        type: "delete",
+        data: receiverRoomId,
+        contentType: "application/json; charset=utf-8",
+        success: function () {
+            console.log("삭제성공")
+        },
+        error: function (xhr, status, err) {
+            console.log(err);
+        }
+    })
+});
 
 // $("#morAndFoldBtnWrap").on("click", function () {
 //
@@ -270,7 +272,7 @@ function send(){
     webSocket.send(JSON.stringify({
         writerId : sessionId,
         chattingContent : msg,
-        messageType:'READ',
+        messageType:'UNREAD',
         chattingRoomId:receiverRoomId
     }))
     console.log("~~~~send~~~~~~")
@@ -297,31 +299,33 @@ function onMessage(e) {
     let time = dateTime.split(":")
     // console.log(realDatas[0]) //채팅 내용
     // console.log(realDatas[1])
+    // console.log(realDatas[2])
+    // console.log(realDatas[3])
     // console.log(time[0])
     // console.log(time[1])
     chatroom = document.getElementById("chatroom");
-        chatroom.innerHTML = chatroom.innerHTML
-         + " <div class=\"my chatTxt\">"
-         + " <p class=\"chatTxt\">"
-         + "<span class=\"chatTxtContents\">"
-         + "<a style=\"color: rgb(255, 255, 255);\">" +realDatas[0] +"</a>"
-         + "</span>"
-         + "<div>"
-         + "<div class='timeWrap'>"
-         +" <span class=\"check\">" + "UNREAD" +"</span>"
-         + "<span class=\"time\">" + time[0]+ ":" + time[1]+"</span>"
-         + "</div>"
-         + "</div>"
-         +"</p>"
-         + "</div>"
-    }
+
+chatroom.innerHTML = chatroom.innerHTML
+    + " <div class=\"my chatTxt\">"
+    + " <p class=\"chatTxt\">"
+    + "<span class=\"chatTxtContents\">"
+    + "<a style=\"color: rgb(255, 255, 255);\">" +realDatas[0] +"</a>"
+    + "</span>"
+    + "<div>"
+    + "<div class='timeWrap'>"
+    +" <span class=\"check\">" + 1 +"</span>"
+    + "<span class=\"time\">" + time[0]+ ":" + time[1]+"</span>"
+    + "</div>"
+    + "</div>"
+    +"</p>"
+    + "</div>"
+}
 
 function onClose(){
     disconnect();
     console.log("~~~~onClose~~~~~~");
 }
 
-
-
-
-
+$(document).ready(function() {
+    $('.chattingRoomWrap').scrollTop($('.chattingRoomWrap')[0].scrollHeight);
+});

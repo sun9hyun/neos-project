@@ -46,8 +46,8 @@
 <!--                            <input type="hidden" th:value="*{chattingRoomId}" name="receiverIdRoom">-->
                             <!-- 상대방 아이디 받아오기 -->
                             <li class="active leftChattingList" th:href="*{chattingRoomId}" >
-                                <input type="hidden" th:vlaue="*{chattingRoomId}" id="chattingId" >
-                                <input type="hidden" th:text="*{chattingRoomId}" id="" >
+                                <input type="hidden" th:vlaue="*{chattingRoomId}" class="chattingId" >
+<!--                                <input type="hidden" th:text="*{chattingRoomId}"  >-->
 
                                 <div class="thumb" th:if ="${session.loginUser} == *{myRoom.userId}" ><img
                                         th:src="*{receiverRoom.userFile}"
@@ -70,6 +70,7 @@
 <!--                                    <p class="chatInfoTxt" th:text="*{chattingContentRoom}">-->
 
                                     </p>
+
                                     <p class="endTime" th:text="*{chatDate +''}"></p></div>
                             </a>
                         </th:block>
@@ -112,7 +113,7 @@
             </button>
             <div class="btnWrap doubleBtnWrap">
                 <button class="btn whiteBtn">아니오</button>
-                <button class="btn redBtn" id = "exit">예</button>
+                <button class="btn redBtn" >예</button>
             </div>
         </div>
     </div>

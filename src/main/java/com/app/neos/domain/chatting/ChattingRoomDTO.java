@@ -26,12 +26,17 @@ import java.util.Map;
 public class ChattingRoomDTO {
 
     private Long chattingRoomId;
+    @JsonIgnore
     private User myRoom;
     @JsonIgnore
     private User receiverRoom;
     private LocalDateTime chatDate;
     private Long receiverId;
     private Long listLookId;
+    @JsonIgnore
+    private Long myRoomId;
+    @JsonIgnore
+    private Long receiverRoomId;
     private static Map<Long, WebSocketSession> sessions = new HashMap<>();
     private ChattingRoomDTO chattingRoomDTO;
 
@@ -109,19 +114,14 @@ public class ChattingRoomDTO {
         log.info("********handleMessage");
         log.info(String.valueOf(session.getAttributes().get("chattingRoomId")));
         log.info(chattingContentDTO.toString());
-//        if (session.getAttributes().get("chattingRoomId") == chattingContentDTO.getChattingRoomId()) {
-//            chattingContentDTO.setChattingContent(chattingContentDTO.getReceiver().getUserNickName() + "님이 입장하셨습니다.");
-//
-        sessions.put(chattingContentDTO.getChattingRoomId(), session);
+        if (session.getAttributes().get("chattingRoomId") == chattingContentDTO.getChattingRoomId()) {
+            sessions.put(chattingContentDTO.getWriterId(), session);
+        }
+        send(chattingContentDTO, objectMapper);
         log.info(sessions.toString());
-//        }
-//        else {
-//            chattingContentDTO.setChattingContent(chattingContentDTO.getReceiver().getUserNickName() + " : " + chattingContentDTO.getChattingContent());
-//        }
 
 //        sessions.put(chattingRoomDTO.getReceiverRoom(), session);
 //        if (session.getAttributes().get("receiverRoomId") == chattingContentDTO.getChattingRoomId()) {
-        send(chattingContentDTO, objectMapper);
 //        }
     }
 
@@ -134,15 +134,16 @@ public class ChattingRoomDTO {
         TextMessage textMessage = new TextMessage(objectMapper.
                 writeValueAsString(chattingContentDTO.getChattingContent()));
         for (WebSocketSession sess : sessions.values()) {
-            if (sess.getAttributes().get("chattingRoomId") == chattingContentDTO.getChattingRoom())
-                    log.info(String.valueOf(sess.getAttributes().get("chattingRoomId")));
-                    log.info(String.valueOf(chattingContentDTO.getChattingRoomId()));
-            sess.sendMessage(textMessage);
-
+            if (sess.getAttributes().get("chattingRoomId") == chattingContentDTO.getChattingRoomId()) {
+//                log.info(String.valueOf(sess.getAttributes().get("chattingRoomId")));
+//                log.info(String.valueOf(chattingContentDTO.getChattingRoomId()));
+                sess.sendMessage(textMessage);
+            }
         }
 
         log.info(sessions.toString());
     }
+
 }
 
 

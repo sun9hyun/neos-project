@@ -415,7 +415,7 @@ $(document).ready(function () {
         $.ajax({
             url: "/community/communityDelete",
             type: "delete",
-            data: JSON.stringify({communityId : $(".cidDelete").val()}),
+                data: JSON.stringify({communityId : $(".cidDelete").val()}),
             contentType: "application/json; charset=utf-8",
             success: function(){
                 showUpdate();

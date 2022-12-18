@@ -49,7 +49,13 @@ public class FixServiceTest {
 
         log.info(fixService.findByIdTest(8l).toString());
     }
+
 }
+//    @Test
+//    public void deleteTest(){
+//        fixService.deleteRoom(184l);
+//    }
+//}
 //
 //
 //        @Test

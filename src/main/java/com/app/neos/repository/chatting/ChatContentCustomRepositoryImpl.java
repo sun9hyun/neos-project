@@ -50,7 +50,7 @@ public class ChatContentCustomRepositoryImpl implements ChatContentCustomReposit
                 .fetch();
     }
 
-//    채
+//    채팅방 하나 찾기
 
     @Override
     public Long findByIdOne(Long chattingRoomId) {
@@ -61,6 +61,15 @@ public class ChatContentCustomRepositoryImpl implements ChatContentCustomReposit
                 .fetchOne();
 
     }
+//    @Override
+//    public Long findByIdOne(Long chattingRoomId) {
+//        return jpaQueryFactory.select(
+//                chattingRoom.chattingRoomId
+//        ).from(chattingRoom)
+//                .where(chattingRoom.chattingRoomId.eq(chattingRoomId))
+//                .fetchOne();
+//
+//    }
 //
 //}
 //

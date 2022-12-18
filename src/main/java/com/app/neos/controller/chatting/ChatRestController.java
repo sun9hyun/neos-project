@@ -3,6 +3,7 @@ package com.app.neos.controller.chatting;
 import com.app.neos.domain.chatting.ChattingContentDTO;
 import com.app.neos.domain.chatting.ChattingRoomDTO;
 import com.app.neos.entity.chatting.ChattingContent;
+import com.app.neos.entity.chatting.ChattingRoom;
 import com.app.neos.repository.chatting.ChattingContentRepository;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.service.fix.FixService;
@@ -28,25 +29,21 @@ public class ChatRestController {
     @GetMapping("/chatContent/{receiverRoomId}")
     public List<ChattingContentDTO> content(@PathVariable("receiverRoomId")Long chattingRoomId,HttpServletRequest request) {
         HttpSession session = request.getSession();
-//        Long loginUser = (Long)session.getAttribute("loginUser");
-        session.setAttribute("chattingRoomId",chattingRoomId);
+        Long loginUser = (Long) session.getAttribute("loginUser");
+        session.setAttribute("chattingRoomId", chattingRoomId);
 
         List<ChattingContentDTO> contents = fixService.findByIdTest(chattingRoomId);
 
-//        if (!contents.isEmpty()) {
-//            for (ChattingContentDTO chatDTO : contents) {
-//                if (!chatDTO.getWriter().equals(chatDTO.getWriter().getUserId())) {
-//                    fixService.readChange(chatDTO.getWriter().getUserId(), chatDTO.getWriter().getUserId());
-//                }
-//            }
-//            for (ChattingContentDTO chatDTO : contents){
-//                if(loginUser == chatDTO.getWriter().getUserId()){
-//
-//                }
-//            }
+        if (!contents.isEmpty()) {
+            for (ChattingContentDTO chatDTO : contents) {
+                if (!chatDTO.getWriter().equals(chatDTO.getWriter().getUserId())) {
+                    fixService.readChange(chatDTO.getWriter().getUserId(), chatDTO.getWriter().getUserId());
+                }
 
-        System.out.println("#############################조회" + contents);
 
+            }
+            System.out.println("#############################조회" + contents);
+        }
         return contents;
     }
 
@@ -66,17 +63,26 @@ public class ChatRestController {
         return "success";
     }
 
+//    채팅방 만들기
+    @PostMapping(value = "/saveOk", consumes = "application/json", produces = "text/plain; charset=utf-8")
+    public String roomSave(@RequestBody ChattingRoomDTO chattingRoomDTO){
+        fixService.createChattingRoom(chattingRoomDTO);
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$채팅방 저장임 " + chattingRoomDTO);
+        return "saveSuccess";
+    }
 
-
-
-//    채팅방 나가기
-//    @DeleteMapping("/chattingDelete")
-//    public String delete(@RequestBody ChattingRoomDTO chattingRoomDTO){
-//        fixService.deleteRoom(chattingRoomDTO);
-//        log.info("@@@@@@@@@@@@@@@@@@@@@");
+////    채팅방 나가기
+//    @DeleteMapping("/chattingDelete/{receiverRoomId}")
+//    public String delete(@PathVariable("receiverRoomId")Long chattingRoomId, HttpServletRequest request){
+//        HttpSession session = request.getSession();
+//        session.setAttribute("chattingRoomId",chattingRoomId);
+//        fixService.deleteRoom(chattingRoomId);
+//        log.info(chattingRoomId.toString());
+//        log.info("삭제 컨트롤러 $$$$$$$$$$$$$$$44");
 //        return "delete success";
 //    }
-//
+
+
 
 }
 

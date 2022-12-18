@@ -526,7 +526,6 @@
     <div class="hotProjectWrap wrap mainWrap">
         <h1><span class="bigTxt">새로운<em class="pinkColor">' </em>네오스인</span></h1>
         <div class="hotProjectContentWrap" >
-
             <th:block th:each="user:${users}" th:object="${user}">
             <li class="letspler_Re"><img loading="lazy" class="newMark" src="https://letspl.me/assets/images/ic-badge_project_new.png" alt="신규 렛플인">
                 <div class="top">
@@ -540,11 +539,12 @@
                                 <span class="name" th:text="*{userNickName}">민쇼니</span>
                                 <ul class="idHoverMenu" style="display: none;">
                                     <li><a class="detail">프로필 상세</a></li>
-                                    <input type="hidden" th:href="*{userId}">
+                                    <input type="hidden" th:href="*{userId}" class="receiverId">
                                     <li><a class="chat">1:1대화</a></li>
                                     <li><a class="invite">스터디 초대</a></li>
                                 </ul>
                             </div>
+                            <input type="hidden" th:value="${session.loginUser}" name="loginUser" class="sessionLoginUser">
                             <div class="certiWrap"><img loading="lazy" class="userCertIcon" src="https://letspl.me/assets/images/ic-certi-red.png" alt="실명인증"></div>
                             <div class="certiWrap"></div>
                         </div>
@@ -816,6 +816,7 @@
 <script src="/js/store/storeList.js"></script>
 <script src="/js/fix/chatting.js"></script>
 <script src="/js/fix/chattingAll.js"></script>
+<script src="/js/main/maindummy.js"></script>
 <script>
     /*프로필 상세 누를시 상세 페이지 이동 */
     $(".detail").on("click", function (e) {

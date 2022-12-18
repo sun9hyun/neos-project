@@ -15,6 +15,11 @@ $change.on("click", function (e) {
     location.href = "/store/store-update" + "?storeId=" + $(this).attr("href");
 })
 
+$(".cashButton").on("click", function (e) {
+    e.preventDefault();
+    location.href = "/store/store-purchase/" + $(this).attr("href");
+})
+
 // 첨부파일 이미지 변경
 var $attachFile1 = $(".attachFile1");
 var $attachFile2 = $(".attachFile2");

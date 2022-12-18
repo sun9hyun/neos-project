@@ -8,6 +8,44 @@ globalThis.page = 0;
 
 let myPageService = (function () {
 
+    // 내정보 대학교ID 찾기
+    function checkCollegeId(college, callback, error) {
+        $.ajax({
+            url: "/my-detail/check/" + college,
+            type: "post",
+            success: function(result){
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function(xhr, status, err){
+                if(error){
+                    error(err);
+                }
+            }
+        });
+    }
+
+    // 내정보 수정
+    function modify(user, callback, error) {
+        $.ajax({
+            url: "/my-detail/modify/" + user.userId,
+            type: "post",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(user),
+            success: function(result){
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function(xhr, status, err){
+                if(error){
+                    error(err);
+                }
+            }
+        });
+    }
+
     // 알림 조회
     function alarmList(userId, callback, error) {
         $.ajax({
@@ -239,5 +277,5 @@ let myPageService = (function () {
     }
 
 
-    return {getList: getList, userInfo: userInfo, collegeCityInfo: collegeCityInfo, neosPowerList: neosPowerList, getDate: getDate, getReplyDate:getReplyDate, neosPointList: neosPointList, studyFollowList: studyFollowList, studyJoinList:studyJoinList, followList:followList, studySupporterList:studySupporterList, alarmList:alarmList}
+    return {getList: getList, userInfo: userInfo, collegeCityInfo: collegeCityInfo, neosPowerList: neosPowerList, getDate: getDate, getReplyDate:getReplyDate, neosPointList: neosPointList, studyFollowList: studyFollowList, studyJoinList:studyJoinList, followList:followList, studySupporterList:studySupporterList, alarmList:alarmList, modify:modify, checkCollegeId:checkCollegeId}
 })();

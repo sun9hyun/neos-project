@@ -13,6 +13,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -131,5 +132,22 @@ public class StoreController {
         return new RedirectView("store-list");
     }
 
-    // 자료상점 게시글 페이징 처리
+    // 자료상점 게시글 결제
+    @GetMapping("/store-purchase/{storeId}")
+    public String purchase(@PathVariable("storeId") Long storeId, Model model, HttpSession session){
+        System.out.println("********************* 1 : 들어옴*********************");
+
+        Long userId = (Long)session.getAttribute("loginUser");
+        StoreDTO storeDTO = storeService.findStoreOne(storeId);
+        model.addAttribute("store", storeDTO);
+        boolean check = storePurchaseService.purchase(userId, storeId);
+        String resultUrl = "";
+        resultUrl = "app/store/storeDetail-purchase";
+        System.out.println("********************* 2 : 들어옴*********************");
+
+
+//        return new RedirectView("store-list");
+        return resultUrl;
+    }
+
 }

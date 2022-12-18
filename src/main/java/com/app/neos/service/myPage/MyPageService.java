@@ -1,5 +1,6 @@
 package com.app.neos.service.myPage;
 
+import com.app.neos.domain.college.CollegeDTO;
 import com.app.neos.domain.neos.NeosPointDTO;
 import com.app.neos.domain.neos.NeosPowerDTO;
 import com.app.neos.domain.store.StoreDTO;
@@ -46,22 +47,35 @@ public class MyPageService {
     private final MyPageMemberCustomRepository myPageMemberCustomRepository;
     private final MyPageFollowCustomRepository myPageFollowCustomRepository;
     private final MyPageSupporterCustomRepository myPageSupporterCustomRepository;
+    private final MyPageUserCustomRepository myPageUserCustomRepository;
+    private final MyPageCollegeCustomRepository myPageCollegeCustomRepository;
 
     // 마이페이지 유저 업데이트
     @Transactional(rollbackFor = Exception.class)
     public void updateUser(UserDTO userDTO){
+        System.out.println("*********************서비스 " + userDTO.getUserCollegeCertify() + "*********************");
 
         updateEntity(userDTO);
         User user = userRepository.findById(userDTO.getUserId()).get();
-        College college = collegeRepository.findById(userDTO.getCollegeId()).get();
+
+        String collegeName = userDTO.getCollegeName();
+        CollegeDTO collegeDTO = myPageCollegeCustomRepository.findCollege(collegeName);
+        College college = collegeRepository.findById(collegeDTO.getCollegeId()).get();
+        System.out.println("*********************서비스college " + college+ "*********************");
         user.changeCollege(college);
 
+        myPageUserCustomRepository.update(user);
     }
 
     @Transactional
     public void updateEntity(UserDTO userDTO){
         User user = userRepository.findById(userDTO.getUserId()).get();
         user.update(userDTO);
+    }
+
+    // 마이페이지 대학 아이디 찾기
+    public CollegeDTO findCollege(String college) {
+        return myPageCollegeCustomRepository.findCollege(college);
     }
     
     // 마이페이지 스터디 구독 조회

@@ -3,6 +3,7 @@ package com.app.neos.repository.myPage;
 import com.app.neos.domain.college.CollegeDTO;
 import com.app.neos.domain.college.QCollegeDTO;
 import com.app.neos.domain.user.UserDTO;
+import com.app.neos.entity.college.QCollege;
 import com.app.neos.entity.user.QUser;
 import com.app.neos.entity.user.User;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -17,20 +18,16 @@ public class MyPagCollegeCustomRepositoryImpl implements MyPageCollegeCustomRepo
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public void update(User user) {
-
-        System.out.println("*********************" + user + "*********************");
-
-        jpaQueryFactory.update(QUser.user)
-                .set(QUser.user.userFile, user.getUserFile())
-                .set(QUser.user.userNickName, user.getUserNickName())
-                .set(QUser.user.userCollegeInfo, user.getUserCollegeInfo())
-                .set(QUser.user.userCollegeCertify, user.getUserCollegeCertify())
-                .set(QUser.user.userChattingPoint, user.getUserChattingPoint())
-                .set(QUser.user.userLike, user.getUserLike())
-                .set(QUser.user.userMBTI, user.getUserMBTI())
-                .set(QUser.user.userIntroduce, user.getUserIntroduce())
-                .where(QUser.user.userId.eq(user.getUserId()))
-                .execute();
+    public CollegeDTO findCollege(String college) {
+        return jpaQueryFactory.select(new QCollegeDTO(
+                QCollege.college.collegeId,
+                QCollege.college.collegeCity,
+                QCollege.college.collegeName,
+                QCollege.college.collegeLogoFile,
+                QCollege.college.collegeEmailDomain
+                ))
+                .from(QCollege.college)
+                .where(QCollege.college.collegeName.eq(college))
+                .fetchOne();
     }
 }

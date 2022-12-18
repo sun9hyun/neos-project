@@ -30,6 +30,7 @@ public class CounselingReply extends Period {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COUNSELING_ID")
     @JsonIgnore
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Counseling counseling;
 
     public void changeUser(User user){

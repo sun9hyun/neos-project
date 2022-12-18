@@ -24,6 +24,7 @@ public class StudyFeedReply extends Period {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User studyFeedReplyWriter;
 
     @ManyToOne(fetch = FetchType.LAZY)

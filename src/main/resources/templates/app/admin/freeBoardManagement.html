@@ -171,7 +171,7 @@
                                                     <li class="postTitle">제목</li>
                                                     <li class="postNick">작성자</li>
                                                     <li class="postDate">작성일</li>
-                                                    <li class="postLike">좋아요 수</li>
+<!--                                                    <li class="postLike">좋아요 수</li>-->
                                                     <li class="action"></li>
                                                 </ul>
 
@@ -193,7 +193,7 @@
                                                     <li class="postDate moveUserDetail"><a href="#" th:text="*{userNickName}"></a></li><!-- 작성사 상세 페이지 이동 -->
                                                     <input type="hidden" class="userId" th:href="*{userId}">
                                                     <li class="postDate" th:text="*{#temporals.format(createdDate, 'yyyy.MM.dd HH:mm')}"></li>
-                                                    <li class="postLike" th:text="*{communityLikeCount}"></li>
+<!--                                                    <li class="postLike" th:text="*{communityLikeCount}"></li>-->
 
                                                     <li class="action">
                                                         <div class="dropdown">

@@ -1,13 +1,10 @@
 package com.app.neos.controller.community;
 
 import com.app.neos.domain.community.CommunityDTO;
-import com.app.neos.domain.community.CommunityLikeDTO;
 import com.app.neos.domain.community.CommunityReplyDTO;
 import com.app.neos.domain.counseling.CounselingDTO;
 import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.domain.user.UserDTO;
-import com.app.neos.entity.community.Community;
-import com.app.neos.entity.counseling.Counseling;
 import com.app.neos.service.community.CommunityReplyService;
 import com.app.neos.service.community.CommunityService;
 import com.app.neos.service.counseling.CounselingService;

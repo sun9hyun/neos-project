@@ -53,7 +53,7 @@ public class CommunityEntityTest {
         Community community = communityRepository.findById(3L).get();
         CommunityDTO communityDTO = new CommunityDTO();
         communityDTO.setCommunityLikeCount(6);
-        community.updateCommunityLikeCount(communityDTO);
+//        community.updateCommunityLikeCount(communityDTO);
     }
 
     @Test

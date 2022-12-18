@@ -1,8 +1,6 @@
 package com.app.neos.controller.community;
 
 import com.app.neos.domain.community.CommunityDTO;
-import com.app.neos.domain.community.CommunityLikeDTO;
-import com.app.neos.entity.community.Community;
 import com.app.neos.repository.community.CommunityCustomRepository;
 import com.app.neos.service.community.CommunityService;
 import lombok.RequiredArgsConstructor;
@@ -10,14 +8,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -65,12 +59,19 @@ public class CommunityRestController {
     }
 
 //   ---------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
     //     게시글 좋아요 수정
-    @PutMapping("/communityLikeUpdate")
-    public String likeModify(@RequestBody CommunityDTO communityDTO){
-        communityService.updateCommunityLike(communityDTO);
-        return "likeModify success";
-    }
+//    @PutMapping("/communityLikeUpdate")
+//    public String likeModify(@RequestBody CommunityDTO communityDTO){
+//        communityService.updateCommunityLike(communityDTO);
+//        return "likeModify success";
+//    }
 
     //    @GetMapping("/communityDetail")
     //    public CommunityDTO detail(Long communityId){
@@ -78,16 +79,16 @@ public class CommunityRestController {
     //        return communityDTOS;
     //    }
 
-    @GetMapping("/communityLike")
-    public List<CommunityLikeDTO> likeList(Long communityId){
-        List<CommunityLikeDTO> communityLikeDTOS = communityCustomRepository.findByLikeId(communityId);
-        return communityLikeDTOS;
-    }
+//    @GetMapping("/communityLike")
+//    public List<CommunityLikeDTO> likeList(Long communityId){
+//        List<CommunityLikeDTO> communityLikeDTOS = communityCustomRepository.findByLikeId(communityId);
+//        return communityLikeDTOS;
+//    }
 
-    @GetMapping("/communityLikeList")
-    public int LikeCheck(Long communityId, Long userId){
-        return communityService.LikeCheck(communityId, userId);
-    }
+//    @GetMapping("/communityLikeList")
+//    public int LikeCheck(Long communityId, Long userId){
+//        return communityService.LikeCheck(communityId, userId);
+//    }
 
 
 

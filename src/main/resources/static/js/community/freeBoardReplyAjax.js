@@ -51,12 +51,12 @@ $(document).ready(function () {
 
     function getReplyList(communityReplyDTOS) {
         let ic = $("#replyNumber").val();
-        // alert("getReplyList");
-        // alert("$('#replyNumber').val() "+ic);
-        let id = communityReplyDTOS[0].community.communityId;
-        console.log(communityReplyDTOS);
-        let community = $("#"+id).find(".loungeCardContents").find(".loungeCardContentsComponents_loungeContents__262-A").find(".replyComponent_reply__3l-Wc").find(".replyComponent_replyBox__1duHS");
-        // let community = $(".loungeCard").eq(ic).find(".loungeCardContents").find(".loungeCardContentsComponents_loungeContents__262-A").find(".replyComponent_reply__3l-Wc").find(".replyComponent_replyBox__1duHS");
+        // console.log(communityReplyDTOS);
+        // console.log(communityReplyDTOS[0].community.communityId);
+        // let id = communityReplyDTOS[0].community.communityId;
+        // console.log(communityReplyDTOS);
+        // let community = $("#"+id).find(".loungeCardContents").find(".loungeCardContentsComponents_loungeContents__262-A").find(".replyComponent_reply__3l-Wc").find(".replyComponent_replyBox__1duHS");
+        let community = $(".loungeCard").eq(ic).find(".loungeCardContents").find(".loungeCardContentsComponents_loungeContents__262-A").find(".replyComponent_reply__3l-Wc").find(".replyComponent_replyBox__1duHS");
         let text = "";
         $(communityReplyDTOS).each((i, cr) => {
                 text += "<div class='replyComponent_replyContainer__3dxJZ'>";

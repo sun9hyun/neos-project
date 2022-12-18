@@ -64,6 +64,7 @@ public class Store extends Period {
 
     public StoreDTO toDTO() {
         StoreDTO storeDTO = new StoreDTO();
+        storeDTO.setStoreId(this.storeId);
         storeDTO.setStoreTitle(this.storeTitle);
         storeDTO.setStoreContent(this.storeContent);
         storeDTO.setStoreStatus(this.storeStatus);

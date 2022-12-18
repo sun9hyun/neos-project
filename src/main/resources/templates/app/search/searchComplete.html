@@ -53,7 +53,7 @@
     <th:block th:if="${keyword != null}">
         <div class="searchHistoryWrap" style="margin-bottom: 0px;"></div>
         <div class="searchResultTxtWrap">
-            <h3 class="searchResultTxt">"<span th:text="${keyword}" id="keyword" th:value="${keyword}"></span>"에 대한 검색 결과&nbsp;<span th:text="${total}">&nbsp;59</span>개
+            <h3 class="searchResultTxt">"<span th:text="${keyword}" id="keyword" th:value="${keyword}"></span>"에 대한 검색 결과&nbsp;<span class="totalCount" th:text="${total}">&nbsp;59</span>개
             </h3>
             <a th:href="@{/search/search}">
                 <button type="button" class="inputinitBtn">
@@ -72,37 +72,41 @@
                                     <span>0</span>건
                                 </th:block>
                                 <th:block th:unless="${studysize == 0}">
-                                    <span th:text="${studysize}">&nbsp;5</span>건
+                                    <span class="studyCount" th:text="${studysize}">&nbsp;5</span>건
                                 </th:block>
                             </p>
                         </div>
                 <div class="studyWrap">
                     <th:block th:each="study, studyStatus:${studys}" th:object="${study}">
                             <div class="recommendProjectlist">
-                                <div class="projectThumbWrap">
-                                    <img th:if="*{studyType =='전공'}" class="buttonComponents_lgImg__2-hZO" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_12.png">
-                                    <img th:if="*{studyType =='교양'}" class="buttonComponents_lgImg__2-hZO" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_01.png">
-                                    <img th:if="*{studyType =='공통'}" class="buttonComponents_lgImg__2-hZO" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_05.png">
-                                </div>
-                                <div class="txtWrap">
-                                    <p class="tit" style="font-size: 20px;" th:text="*{studyTitle}">[서울] 전기차 충전운영 플랫폼 개발</p>
-                                    <p class="desTxt">
-                                        <span th:text="*{studyContent}">
-                                                플랫폼 서비스를 준비중인 예비창업 팀입니다. 현재 4명(총괄, 디자인1, 개발1)의 팀원으로 구성되어 앱 개발을 진행하고 있습니다. (30% 완료, 11월 출시
-                                                예정) 전기차 시대를 맞이하여 충전 문화의 혁신을 주도할 팀원을 모집합니다.[ SCS 팀 구성원 ]
-                                                현재 저희 팀은 이런식으로 구성되어 있어요👥
-                                        </span>
-                                    </p>
-                                    <p class="typeTxt" style="font-size: 14px;" th:text="'#'+*{studyKeyword}">[모집중] 크로스플랫폼</p>
-                                </div>
+                                <a class="studyDetail" th:href="*{studyId}" style="display:flex;">
+                                    <div class="projectThumbWrap">
+                                        <img th:if="*{studyType =='전공'}" class="buttonComponents_lgImg__2-hZO" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_12.png">
+                                        <img th:if="*{studyType =='교양'}" class="buttonComponents_lgImg__2-hZO" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_01.png">
+                                        <img th:if="*{studyType =='공통'}" class="buttonComponents_lgImg__2-hZO" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_05.png">
+                                    </div>
+                                    <div class="txtWrap" style="display: inline-grid;">
+                                        <p class="tit" style="font-size: 20px;" th:text="*{studyTitle}">[서울] 전기차 충전운영 플랫폼 개발</p>
+                                        <p class="desTxt">
+                                            <span th:text="*{studyContent}">
+                                                    플랫폼 서비스를 준비중인 예비창업 팀입니다. 현재 4명(총괄, 디자인1, 개발1)의 팀원으로 구성되어 앱 개발을 진행하고 있습니다. (30% 완료, 11월 출시
+                                                    예정) 전기차 시대를 맞이하여 충전 문화의 혁신을 주도할 팀원을 모집합니다.[ SCS 팀 구성원 ]
+                                                    현재 저희 팀은 이런식으로 구성되어 있어요👥
+                                            </span>
+                                        </p>
+                                        <p class="typeTxt" style="font-size: 14px;" th:text="'#'+*{studyKeyword}">[모집중] 크로스플랫폼</p>
+                                    </div>
+                                </a>
                             </div>
                     </th:block>
                 </div>
+                <th:block th:if="${studysize >= 5}">
                 <div class="moreButtonBox">
                     <button type="button" class="moreButton studyBtn buttonComponents_button__1hvQa buttonComponents_radius__2l9SM buttonComponents_md__26Zib ">
                         더 보기
                     </button>
                 </div>
+                </th:block>
                 </div>
 
             <div class="searchResultList projectCollectWrap storySection" style="padding: 0px 0px;">
@@ -112,7 +116,7 @@
                         <span>0</span>건
                     </th:block>
                     <th:block th:unless="${storesize == 0}">
-                        <span th:text="${storesize}">&nbsp;5</span>건
+                        <span class="storeCount" th:text="${storesize}">&nbsp;5</span>건
                     </th:block>
                 </p>
             </div>
@@ -121,26 +125,30 @@
                     <ul class="storeAdd">
                         <th:block th:each="store, storeStatus:${stores}" th:object="${store}">
                             <li>
-                                <div class="left">
-                                    <div class="listTIt">
-                                        <div class="categoryTitWrap">
-                                            <span class="category2" th:text="*{storeStatus}">FREE</span>
-                                            <p class="titTxt" th:text="*{storeTitle}">[언노운나이츠]사이드프로젝트로 게임 개발하기 1/2</p>
-                                        </div>
-                                        <div class="previewTxt" th:utext="*{storeContent}">﻿이 글은 인디게임 제작사 "Teamarex"에서 직접 작성한,"언노운 나이츠"게임개발 후기에
-                                            대한 내용입니다.렛플은 해당 게임의 개발 및 수익과 무관하며, 컨텐츠 공유의 목적에서 이 스토리를 양도받아 게재합니다.사이드프로젝트로
-                                            게임개발하시는 분들에게 도움이 되길 바랍니다.사이드프로젝트의 시작
+                                <a class="storeDetail" th:href="*{storeId}">
+                                    <div class="left">
+                                        <div class="listTIt">
+                                            <div class="categoryTitWrap">
+                                                <span class="category2" th:text="*{storeStatus}">FREE</span>
+                                                <p class="titTxt" th:text="*{storeTitle}">[언노운나이츠]사이드프로젝트로 게임 개발하기 1/2</p>
+                                            </div>
+                                            <div class="previewTxt" th:utext="*{storeContent}">﻿이 글은 인디게임 제작사 "Teamarex"에서 직접 작성한,"언노운 나이츠"게임개발 후기에
+                                                대한 내용입니다.렛플은 해당 게임의 개발 및 수익과 무관하며, 컨텐츠 공유의 목적에서 이 스토리를 양도받아 게재합니다.사이드프로젝트로
+                                                게임개발하시는 분들에게 도움이 되길 바랍니다.사이드프로젝트의 시작
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </li>
                         </th:block>
                     </ul>
+                    <th:block th:if="${storesize >= 5}">
                     <div class="moreButtonBox">
                         <button type="button" class="moreButton storeBtn buttonComponents_button__1hvQa buttonComponents_radius__2l9SM buttonComponents_md__26Zib ">
                             더 보기
                         </button>
                     </div>
+                    </th:block>
 
                 </div>
             </div>
@@ -150,14 +158,14 @@
 
         <th:block th:if="${total == 0}">
             <div>
-                <img src="https://letspl.me/assets/images/no-result.png" style="margin-top: 50px; max-width: 300px; height: auto; margin-left: 434px; margin-bottom: 27px;">
+                <img src="/images/search/no-result.png" style="margin-top: 50px; max-width: 300px; height: auto; margin-left: 434px; margin-bottom: 27px;">
             </div>
             <div style="margin: -35%;"></div>
         </th:block>
 
     </th:block>
 </div>
-<div style="margin: 25.5%;"></div>
+<div style="margin: 25.8%;"></div>
 
 
 <div th:replace="/app/fix/footer.html :: footer"></div>
@@ -192,6 +200,18 @@
 
         $("#searchForm").submit();
     })
+
+    /*스터디 상세 페이지 이동 */
+    $(".studyDetail").on("click", function (e) {
+        e.preventDefault();
+        location.href = "/study/list?studyId=" + $(this).attr("href");
+    });
+
+    /*자료상점 상세 페이지 이동 */
+    $(".storeDetail").on("click", function (e) {
+        e.preventDefault();
+        location.href = "/store/store-detail?storeId=" + $(this).attr("href");
+    });
 
 </script>
 <script src="/js/search/searchAjax.js"></script>

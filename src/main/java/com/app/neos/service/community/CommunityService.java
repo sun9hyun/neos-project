@@ -1,7 +1,6 @@
 package com.app.neos.service.community;
 
 import com.app.neos.domain.community.CommunityDTO;
-import com.app.neos.domain.community.CommunityLikeDTO;
 import com.app.neos.domain.neos.NeosPowerDTO;
 import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.domain.user.UserDTO;
@@ -10,6 +9,7 @@ import com.app.neos.entity.community.CommunityLike;
 import com.app.neos.entity.neos.NeosPower;
 import com.app.neos.entity.user.User;
 import com.app.neos.repository.community.CommunityCustomRepository;
+import com.app.neos.repository.community.CommunityLikeCustomRepository;
 import com.app.neos.repository.community.CommunityLikeRepository;
 import com.app.neos.repository.community.CommunityRepository;
 import com.app.neos.repository.neos.NeosPowerRepository;
@@ -29,6 +29,7 @@ public class CommunityService {
     private  final CommunityRepository communityRepository;
     private  final CommunityCustomRepository communityCustomRepository;
     private  final CommunityLikeRepository communityLikeRepository;
+    private  final CommunityLikeCustomRepository communityLikeCustomRepository;
     private  final UserRepository userRepository;
     private final NeosPowerRepository neosPowerRepository;
     private final UserCustomRepository userCustomRepository;
@@ -113,12 +114,33 @@ public class CommunityService {
 
 
     //--------------------------------------------------------------------------------------------------------
-    //좋아요 수 수정
+//  게시글에 좋아요를 눌렀는지 중복 체크
     @Transactional
-    public void updateCommunityLike(CommunityDTO communityDTO){
-        Community community= communityRepository.findById(communityDTO.getCommunityId()).get();
-        community.updateCommunityLikeCount(communityDTO);
+    public boolean checkLike(Long userId, Long communityId){
+        return communityLikeCustomRepository.duplicate(userId, communityId);
     }
+
+//    좋아요 하기
+    @Transactional
+    public boolean communityLike(Long userId, Long communityId){
+        if (!communityLikeCustomRepository.duplicate(userId, communityId)){
+            CommunityLike communityLike = CommunityLike.create();
+            communityLike.changeCommunity(communityRepository.findById(communityId).get());
+            communityLike.changeUser(userRepository.findById(userId).get());
+            communityLikeRepository.save(communityLike);
+
+            Community community = communityRepository.findById(communityId).get();
+            community.updateCommunityLikeCount(community.getCommunityLikeCount()+1);
+        }
+        return false;
+    }
+
+    //좋아요 수 수정
+//    @Transactional
+//    public void updateCommunityLike(CommunityDTO communityDTO){
+//        Community community= communityRepository.findById(communityDTO.getCommunityId()).get();
+//        community.updateCommunityLikeCount(communityDTO.getCommunityLikeCount()+1);
+//    }
 
 //    public Optional<CommunityLike> findByLikeId(Long communityId){
 //        return communityLikeRepository.findById(communityId);
@@ -127,20 +149,23 @@ public class CommunityService {
 //    public List<CommunityLikeDTO> findByLikeId(Long communityId){
 //        return communityCustomRepository.findByLikeId(communityId);
 //    }
-    public List<CommunityLikeDTO> findLike(Long communityId, Long userId){
-        return communityCustomRepository.findLike(communityId, userId);
-    }
+//    public List<CommunityLikeDTO> findLike(Long communityId, Long userId){
+//        return communityCustomRepository.findLike(communityId, userId);
+//    }
 
     //사용자가 이미 좋아요 한 게시물인지 체크
-    public int LikeCheck(Long communityId, Long userId){
-        Optional<CommunityLike> likeCheck = communityLikeRepository.findByCommunityAndUser(communityId, userId);
+//    public int LikeCheck(Long communityId, Long userId){
+//        Optional<CommunityLike> likeCheck = communityLikeRepository.findByCommunityAndUser(communityId, userId);
+//
+//        if (likeCheck.isEmpty()){
+//            return 0;
+//        }else {
+//            return 1;
+//        }
+//    }
 
-        if (likeCheck.isEmpty()){
-            return 0;
-        }else {
-            return 1;
-        }
-    }
+
+
 
 
 

@@ -74,7 +74,7 @@ $(document).ready(function () {
 
     function getList(counselingDTOS) {
         // alert(communityDTOS);
-        console.log(counselingDTOS)
+        console.log(counselingDTOS);
         let id = '';
         let text= '';
         $(counselingDTOS.content).each((i, item) => {
@@ -115,7 +115,7 @@ $(document).ready(function () {
             text += "<div class='replyComponent_replyButtonBox__2O3ME'>";
             text += "<div class='replyComponent_replyOnOff__QKoso'>";
             text += "<button type='button' class='replyList buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>";
-            text += "<span class='buttonComponents_gray__1blI9'>첫번째 댓글을 달아주세요</span>";
+            text += "<span class='buttonComponents_gray__1blI9'>댓글을 달아주세요</span>";
             text += "<img class='buttonComponents_smMdImg__2IOAr' src='https://letspl.me/assets/images/ic-arrow-up.svg'>";
             text += "</button>";
             text += "</div>";
@@ -242,9 +242,12 @@ $(document).ready(function () {
 
     function getListUpdate(counselingDTOS) {
         // alert(communityDTOS);
-        let text = "";
+        console.log(counselingDTOS);
+        let id = '';
+        let text= '';
         $(counselingDTOS.content).each((i, item) => {
-            text += "<div class='loungeCard' style='margin-bottom: -10px;'>";
+            id= item.counselingId;
+            text += `<div class='loungeCard' style='margin-bottom: -10px;' id="`+id+`">`;
             text += "<div class='loungeCardContents'>";
             text += "<div class='loungeCardContentsComponents_loungeContents__262-A'>";
             text += "<div class='loungeCardContentsComponents_loungeContentsTagMoreBox__1oKkG'>";
@@ -280,7 +283,7 @@ $(document).ready(function () {
             text += "<div class='replyComponent_replyButtonBox__2O3ME'>";
             text += "<div class='replyComponent_replyOnOff__QKoso'>";
             text += "<button type='button' class='replyList buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>";
-            text += "<span class='buttonComponents_gray__1blI9'>첫번째 댓글을 달아주세요</span>";
+            text += "<span class='buttonComponents_gray__1blI9'>댓글을 달아주세요</span>";
             text += "<img class='buttonComponents_smMdImg__2IOAr' src='https://letspl.me/assets/images/ic-arrow-up.svg'>";
             text += "</button>";
             text += "</div>";

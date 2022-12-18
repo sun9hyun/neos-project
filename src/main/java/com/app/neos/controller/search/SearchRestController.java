@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,6 +17,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/search/*")
 public class SearchRestController {
     private final SearchService searchService;
+
+//    @PostMapping("/search")
+//    public String searchBefore(StudyDTO studyDTO, StoreDTO storeDTO, Model model, @PageableDefault(size = 5, sort = "id" , direction = Sort.Direction.DESC) Pageable pageable, String keyword){
+//        Slice<StudyDTO> studyDTOList =  searchService.findByKeywordStudy(keyword, pageable);
+//        Slice<StoreDTO> storeDTOList =  searchService.findByKeywordStore(keyword, pageable);
+////
+////        model.addAttribute("keyword", keyword);
+////        model.addAttribute("studys", studyDTOList);
+////        model.addAttribute("studysize", studyDTOList.getNumberOfElements());
+////        model.addAttribute("stores", storeDTOList);
+////        model.addAttribute("storesize", storeDTOList.getNumberOfElements());
+////        model.addAttribute("total", studyDTOList.getNumberOfElements()+storeDTOList.getNumberOfElements());
+//        return "app/search/searchComplete";
+//    }
 
     @PostMapping("/study")
     public Slice<StudyDTO> studyDTOS(@PageableDefault(size = 5, sort = "id" , direction = Sort.Direction.DESC) Pageable pageable, String keyword){

@@ -4,6 +4,7 @@ import com.app.neos.domain.store.QStoreDTO;
 import com.app.neos.domain.store.StoreDTO;
 import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.store.QStore;
+import com.app.neos.entity.store.Store;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.app.neos.entity.store.QStore.store;
 
 @RequiredArgsConstructor
 @Repository
@@ -24,17 +27,18 @@ public class MainStoreCustomRepositoryImpl  implements MainStoreCustomRepository
 
         List<StoreDTO> storeDTOS = jpaQueryFactory.select(new QStoreDTO(
 
-                QStore.store.storeId,
-                QStore.store.storeStatus,
-                QStore.store.storePoint,
-                QStore.store.storeTitle,
-                QStore.store.storeContent,
-                QStore.store.user.userId
+                store.storeId,
+                store.storeStatus,
+                store.storePoint,
+                store.storeTitle,
+                store.storeContent,
+                store.user.userId,
+                store.createdDate
 
 
         ))
-                .from(QStore.store)
-                .orderBy(QStore.store.updatedDate.desc())
+                .from(store)
+                .orderBy(store.updatedDate.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize() + 1)
                 .fetch();
@@ -48,4 +52,19 @@ public class MainStoreCustomRepositoryImpl  implements MainStoreCustomRepository
         }
         return new SliceImpl<>(content , pageable , hasNext);
     }
+
+//    @Override
+//    public List<StoreDTO> findStoreForMain() {
+//        return jpaQueryFactory.select(new QStoreDTO(
+//                store.storeId,
+//                store.storeStatus,
+//                store.storePoint,
+//                store.storeTitle,
+//                store.storeContent,
+//                store.user.userId
+//
+//                ))
+//                .orderBy(store.createdDate.desc()).limit(4l).fetch();
+//
+//    }
 }

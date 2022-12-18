@@ -32,7 +32,7 @@ public class StudyEntityTest {
     public void saveTest(){
         for(int i = 0 ; i<100 ; i++){
             StudyDTO studyDTO = new StudyDTO();
-            studyDTO.setStudyTitle("엑셀의 활용");
+            studyDTO.setStudyTitle("이건 더미 데이타  활용");
             studyDTO.setStudyType("전공");
             studyDTO.setStudyKeyword("음악");
             studyDTO.setStudyO2o("offline");
@@ -48,7 +48,7 @@ public class StudyEntityTest {
             studyDTO.setStudyEndDate(LocalDate.now().plusMonths(6));
 
             Study study = studyDTO.toEntity();
-            study.changeUser(userRepository.findById(9L).get());
+            study.changeUser(userRepository.findById(28L).get());
             studyRepository.save(study);
         }
 

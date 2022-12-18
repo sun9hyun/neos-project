@@ -9,6 +9,7 @@ import com.app.neos.entity.study.QStudy;
 import com.app.neos.entity.study.Study;
 import com.app.neos.entity.user.QUser;
 import com.app.neos.entity.user.User;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Repository;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -72,14 +74,21 @@ public class NeosUserCustomRepositoryImpl implements NeosUserCustomRepository {
                 user.userMBTI.userMbtiColor,
                 user.userIntroduce,
                 user.userFile,
-                user.college.collegeId,
-                user.college.collegeCity,
-                user.college.collegeName,
-                user.college.collegeLogoFile,
-                user.college.collegeEmailDomain
+                QCollege.college.collegeId,
+                QCollege.college.collegeCity,
+                QCollege.college.collegeName,
+                QCollege.college.collegeLogoFile,
+                QCollege.college.collegeEmailDomain
+//                user.college.collegeId,
+//                user.college.collegeCity,
+//                user.college.collegeName,
+//                user.college.collegeLogoFile,
+//                user.college.collegeEmailDomain
 
         ))
                 .from(user)
+                .leftJoin(QCollege.college)
+                .on(user.college.collegeId.eq(QCollege.college.collegeId))
                 .orderBy(user.updatedDate.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize() + 1)
@@ -94,6 +103,65 @@ public class NeosUserCustomRepositoryImpl implements NeosUserCustomRepository {
         }
         return new SliceImpl<>(content , pageable , hasNext);
     }
+
+    @Override
+    public Slice<UserDTO> findAllPagePop(Pageable pageable) {
+        List<UserDTO> userDTOList = jpaQueryFactory.select(new QUserDTO(
+                user.userId,
+                user.userNickName,
+                user.userOAuthId,
+                user.userOAuthEmail,
+                user.userCollegeEmail,
+                user.userPhoneNumber,
+                user.userCollegeCertify,
+                user.userCollegeInfo.userCollegeYear,
+                user.userCollegeInfo.userCollegeMajor,
+                user.userNeosPower.userNeosBadge,
+                user.userNeosPower.userNeosPowerLevel,
+                user.userNeosPower.userNeosPowerAbility,
+                user.userNeosPoint,
+                user.userChattingPoint,
+                user.userLike.userO2o,
+                user.userLike.userCity,
+                user.userLike.userDay,
+                user.userLike.userTime,
+                user.userMBTI.userMbtiName,
+                user.userMBTI.userMbtiColor,
+                user.userIntroduce,
+                user.userFile,
+                QCollege.college.collegeId,
+                QCollege.college.collegeCity,
+                QCollege.college.collegeName,
+                QCollege.college.collegeLogoFile,
+                QCollege.college.collegeEmailDomain
+//                user.college.collegeId,
+//                user.college.collegeCity,
+//                user.college.collegeName,
+//                user.college.collegeLogoFile,
+//                user.college.collegeEmailDomain
+
+        ))
+                .from(user)
+                .leftJoin(QCollege.college)
+                .on(user.college.collegeId.eq(QCollege.college.collegeId))
+                .orderBy(user.updatedDate.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize() + 1)
+                .fetch();
+
+        Collections.shuffle(userDTOList);
+
+        ArrayList<UserDTO> content = (ArrayList<UserDTO>)userDTOList;
+
+        boolean hasNext = false;
+        if (content.size() > pageable.getPageSize()){
+            content.remove(pageable.getPageSize());
+            hasNext=true;
+        }
+        return new SliceImpl<>(content , pageable , hasNext);
+    }
+
+
 
 
 
@@ -126,6 +194,92 @@ public class NeosUserCustomRepositoryImpl implements NeosUserCustomRepository {
 
 
         return new SliceImpl<>(content , pageable , hasNext);
+    }
+
+    @Override
+    public UserDTO findById(Long userId) {
+        return jpaQueryFactory.select(new QUserDTO(
+                user.userId,
+                user.userNickName,
+                user.userOAuthId,
+                user.userOAuthEmail,
+                user.userCollegeEmail,
+                user.userPhoneNumber,
+                user.userCollegeCertify,
+                user.userCollegeInfo.userCollegeYear,
+                user.userCollegeInfo.userCollegeMajor,
+                user.userNeosPower.userNeosBadge,
+                user.userNeosPower.userNeosPowerLevel,
+                user.userNeosPower.userNeosPowerAbility,
+                user.userNeosPoint,
+                user.userChattingPoint,
+                user.userLike.userO2o,
+                user.userLike.userCity,
+                user.userLike.userDay,
+                user.userLike.userTime,
+                user.userMBTI.userMbtiName,
+                user.userMBTI.userMbtiColor,
+                user.userIntroduce,
+                user.userFile,
+                QCollege.college.collegeId,
+                QCollege.college.collegeCity,
+                QCollege.college.collegeName,
+                QCollege.college.collegeLogoFile,
+                QCollege.college.collegeEmailDomain
+        ))
+                .from(user)
+                .leftJoin(QCollege.college)
+                .on(user.college.collegeId.eq(QCollege.college.collegeId))
+                .where(user.userId.eq(userId))
+                .fetchOne();
+    }
+
+    @Override
+    public List<UserDTO> userTest() {
+        List<UserDTO> userDTOList = jpaQueryFactory.select(new QUserDTO(
+                user.userId,
+                user.userNickName,
+                user.userOAuthId,
+                user.userOAuthEmail,
+                user.userCollegeEmail,
+                user.userPhoneNumber,
+                user.userCollegeCertify,
+                user.userCollegeInfo.userCollegeYear,
+                user.userCollegeInfo.userCollegeMajor,
+                user.userNeosPower.userNeosBadge,
+                user.userNeosPower.userNeosPowerLevel,
+                user.userNeosPower.userNeosPowerAbility,
+                user.userNeosPoint,
+                user.userChattingPoint,
+                user.userLike.userO2o,
+                user.userLike.userCity,
+                user.userLike.userDay,
+                user.userLike.userTime,
+                user.userMBTI.userMbtiName,
+                user.userMBTI.userMbtiColor,
+                user.userIntroduce,
+                user.userFile,
+                QCollege.college.collegeId,
+                QCollege.college.collegeCity,
+                QCollege.college.collegeName,
+                QCollege.college.collegeLogoFile,
+                QCollege.college.collegeEmailDomain
+//                user.college.collegeId,
+//                user.college.collegeCity,
+//                user.college.collegeName,
+//                user.college.collegeLogoFile,
+//                user.college.collegeEmailDomain
+
+        ))
+                .from(user)
+                .leftJoin(QCollege.college)
+                .on(user.college.collegeId.eq(QCollege.college.collegeId))
+                .orderBy(user.updatedDate.desc())
+                .fetch();
+
+
+
+        return userDTOList;
     }
 
 }

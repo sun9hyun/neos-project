@@ -22,12 +22,23 @@ public interface NeosUserCustomRepository {
 //    페이징
     public Slice<UserDTO> findAllPage(Pageable pageable);
 
+//    추천인
+    public Slice<UserDTO> findAllPagePop(Pageable pageable);
+
 
 
 //    검색
-    /*public List<UserDTO> findByKeyword(String keyword);*/
 
     public Slice<UserDTO> findByKeywordSlice(String keyword , Pageable pageable);
+
+//    유저 상세
+    public UserDTO findById(Long userId);
+
+
+
+
+//    Test
+    public List<UserDTO> userTest();
 
 
 }

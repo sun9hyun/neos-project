@@ -106,4 +106,15 @@ public class StoreDTO {
         this.createdDate = createdDate;
         this.userId = userId;
     }
+
+    @QueryProjection
+    public StoreDTO(Long storeId, StoreStatus storeStatus, Integer storePoint, String storeTitle, String storeContent, Long userId, LocalDateTime createdDate) {
+        this.storeId = storeId;
+        this.storeStatus = storeStatus;
+        this.storePoint = storePoint;
+        this.storeTitle = storeTitle;
+        this.storeContent = storeContent;
+        this.userId = userId;
+        this.createdDate = createdDate;
+    }
 }

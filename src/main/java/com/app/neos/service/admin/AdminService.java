@@ -69,11 +69,8 @@ public class AdminService {
 
     private final AdminStudyFeedReplyRepository adminStudyFeedReplyRepository;
     private final AdminCommunityReplyRepository adminCommunityReplyRepository;
-    private final AdminCommunityReReplyRepository adminCommunityReReplyRepository;
     private final AdminCounselingReplyRepository adminCounselingReplyRepository;
-    private final AdminCounselingReReplyRepository adminCounselingReReplyRepository;
     private final AdminStoreReplyRepository adminStoreReplyRepository;
-    private final AdminStoreReReplyRepository adminStoreReReplyRepository;
 
     private final AdminStudyFollowRepository adminStudyFollowRepository;
     private final StudyRepository studyRepository;
@@ -190,13 +187,10 @@ public class AdminService {
 
         int studyFeedReply = adminStudyFeedReplyRepository.findAllByStudyFeedReplyWriter_UserId(userId).size();
         int communityReply = adminCommunityReplyRepository.findByUser_UserId(userId).size();
-        int communityReReply = adminCommunityReReplyRepository.findByUser_UserId(userId).size();
         int counselingReply = adminCounselingReplyRepository.findByUser_UserId(userId).size();
-        int counselingReReply = adminCounselingReReplyRepository.findByUser_UserId(userId).size();
         int storeReply = adminStoreReplyRepository.findByUser_UserId(userId).size();
-        int storeReReply = adminStoreReReplyRepository.findByUser_UserId(userId).size();
 
-        replyCount = studyFeedReply + communityReply + communityReReply + counselingReply + counselingReReply + storeReply + storeReReply;
+        replyCount = studyFeedReply + communityReply  + counselingReply  + storeReply;
 
 
         adminUserDTO.setStoreCount((long) adminStoreRepository.findByUser_UserId(userId).size());

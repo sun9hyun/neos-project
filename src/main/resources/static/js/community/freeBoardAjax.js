@@ -152,7 +152,7 @@ $(document).ready(function () {
                 text += "</button>";
                 text += "<div class='replyComponent_replyOnOff__QKoso'>";
                 text += "<button type='button' class='replyList buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>";
-                text += "<span class='buttonComponents_gray__1blI9'>첫번째 댓글을 달아주세요</span>";
+                text += "<span class='buttonComponents_gray__1blI9'>댓글을 달아주세요</span>";
                 text += "<img class='buttonComponents_smMdImg__2IOAr' src='https://letspl.me/assets/images/ic-arrow-up.svg'>";
                 text += "</button>";
                 text += "</div>";
@@ -282,7 +282,7 @@ $(document).ready(function () {
         // alert(communityDTOS);
         let text = "";
         $(communityDTOS.content).each((i,item) => {
-            text += "<div class='loungeCard' style='margin-bottom: -10px;'>";
+            text += "<div class='loungeCard' style='margin-bottom: -10px;' id='" + item.communityId + "'>";
             text += "<div class='userSection'>";
             text += "<div class='userInformationComponents_profile__2pr8a'>";
             text += "<div class='userInformationComponents_profileLeftGroup__1lq6K'>";
@@ -343,7 +343,7 @@ $(document).ready(function () {
             text += "</button>";
             text += "<div class='replyComponent_replyOnOff__QKoso'>";
             text += "<button type='button' class='replyList buttonComponents_button__1hvQa buttonComponents_plain__1ljW5'>";
-            text += "<span class='buttonComponents_gray__1blI9'>첫번째 댓글을 달아주세요</span>";
+            text += "<span class='buttonComponents_gray__1blI9'>댓글을 달아주세요</span>";
             text += "<img class='buttonComponents_smMdImg__2IOAr' src='https://letspl.me/assets/images/ic-arrow-up.svg'>";
             text += "</button>";
             text += "</div>";

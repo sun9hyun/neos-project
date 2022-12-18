@@ -29,10 +29,9 @@ public class SearchController {
     }
 
     @PostMapping("/search")
-    public String searchBefore(StudyDTO studyDTO, StoreDTO storeDTO, Model model,@PageableDefault(size = 10, sort = "id" , direction = Sort.Direction.DESC) Pageable pageable,  String keyword){
+    public String searchBefore(StudyDTO studyDTO, StoreDTO storeDTO, Model model,@PageableDefault(size = 5, sort = "id" , direction = Sort.Direction.DESC) Pageable pageable,  String keyword){
         Slice<StudyDTO> studyDTOList =  searchService.findByKeywordStudy(keyword, pageable);
         Slice<StoreDTO> storeDTOList =  searchService.findByKeywordStore(keyword, pageable);
-//        log.info("여기 : " +keyword);
 
         model.addAttribute("keyword", keyword);
         model.addAttribute("studys", studyDTOList);

@@ -1,19 +1,12 @@
 package com.app.neos.repository.community;
 
 import com.app.neos.domain.community.CommunityDTO;
-import com.app.neos.domain.community.CommunityLikeDTO;
 import com.app.neos.domain.community.QCommunityDTO;
-import com.app.neos.domain.community.QCommunityLikeDTO;
 import com.app.neos.domain.study.QStudyDTO;
 import com.app.neos.domain.study.StudyDTO;
 import com.app.neos.domain.user.QUserDTO;
 import com.app.neos.domain.user.UserDTO;
-import com.app.neos.entity.community.CommunityLike;
-import com.app.neos.entity.community.QCommunity;
 import com.app.neos.entity.community.QCommunityLike;
-import com.app.neos.entity.study.QStudy;
-import com.app.neos.entity.user.QUser;
-import com.querydsl.core.types.dsl.NumberExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -23,7 +16,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static com.app.neos.entity.community.QCommunity.community;
 import static com.app.neos.entity.study.QStudy.study;
@@ -125,43 +117,43 @@ public class CommunityCustomRepositoryImpl implements CommunityCustomRepository 
                 .fetchOne();
     }
 
-    @Override
-    public List<CommunityLikeDTO> findByLikeId(Long communityId) {
-        return jpaQueryFactory.select(new QCommunityLikeDTO(
-                QCommunityLike.communityLike.communityLikeId,
-                QCommunityLike.communityLike.user,
-                QCommunityLike.communityLike.community
-        ))
-                .from(QCommunityLike.communityLike)
-                .where(QCommunityLike.communityLike.community.communityId.eq(communityId))
-                .fetch();
-    }
-
-    @Override
-    public List<CommunityLikeDTO> findLike(Long communityId, Long userId) {
-        return jpaQueryFactory.select(new QCommunityLikeDTO(
-                QCommunityLike.communityLike.communityLikeId,
-                QCommunityLike.communityLike.user,
-                QCommunityLike.communityLike.community
-        ))
-                .from(QCommunityLike.communityLike)
-                .where(QCommunityLike.communityLike.community.communityId.eq(communityId))
-                .where(QCommunityLike.communityLike.user.userId.eq(userId))
-                .fetch();
-    }
-
-    @Override
-    public List<CommunityLikeDTO> findByCommunityAndUser(Long communityId, Long userId) {
-        return jpaQueryFactory.select(new QCommunityLikeDTO(
-                QCommunityLike.communityLike.communityLikeId,
-                QCommunityLike.communityLike.user,
-                QCommunityLike.communityLike.community
-        ))
-                .from(QCommunityLike.communityLike)
-                .join(QCommunityLike.communityLike.community)
-                .fetchJoin()
-                .fetch();
-    }
+//    @Override
+//    public List<CommunityLikeDTO> findByLikeId(Long communityId) {
+//        return jpaQueryFactory.select(new QCommunityLikeDTO(
+//                QCommunityLike.communityLike.communityLikeId,
+//                QCommunityLike.communityLike.user,
+//                QCommunityLike.communityLike.community
+//        ))
+//                .from(QCommunityLike.communityLike)
+//                .where(QCommunityLike.communityLike.community.communityId.eq(communityId))
+//                .fetch();
+//    }
+//
+//    @Override
+//    public List<CommunityLikeDTO> findLike(Long communityId, Long userId) {
+//        return jpaQueryFactory.select(new QCommunityLikeDTO(
+//                QCommunityLike.communityLike.communityLikeId,
+//                QCommunityLike.communityLike.user,
+//                QCommunityLike.communityLike.community
+//        ))
+//                .from(QCommunityLike.communityLike)
+//                .where(QCommunityLike.communityLike.community.communityId.eq(communityId))
+//                .where(QCommunityLike.communityLike.user.userId.eq(userId))
+//                .fetch();
+//    }
+//
+//    @Override
+//    public List<CommunityLikeDTO> findByCommunityAndUser(Long communityId, Long userId) {
+//        return jpaQueryFactory.select(new QCommunityLikeDTO(
+//                QCommunityLike.communityLike.communityLikeId,
+//                QCommunityLike.communityLike.user,
+//                QCommunityLike.communityLike.community
+//        ))
+//                .from(QCommunityLike.communityLike)
+//                .join(QCommunityLike.communityLike.community)
+//                .fetchJoin()
+//                .fetch();
+//    }
 //    List<Pet> fetchJoin = jpaQueryFactory.selectFrom(pet).join(pet.owner).fetchJoin().fetch();
 //    @Override
 //    public CommunityDTO update(Long communityId) {

@@ -35,10 +35,9 @@ public class CommunityLike extends Created {
         this.community =community;
     }
 
-    @Builder
-    public CommunityLike(@NotNull User user, @NotNull Community community ){
-        this.user = user;
-        this.community = community;
+
+    public static CommunityLike create() {
+        return new CommunityLike();
     }
 
 }

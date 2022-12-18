@@ -51,8 +51,10 @@ $(document).ready(function () {
     
     function getReplyList(counselingReplyDTOS) {
         let ic = $("#replyNumber").val();
-        let id = counselingReplyDTOS[0].counseling.counselingId;
-        let seling = $("#"+id).find(".loungeCardContents").find(".loungeCardContentsComponents_loungeContents__262-A").find(".replyComponent_reply__3l-Wc").find(".replyComponent_replyBox__1duHS");
+        // let id = counselingReplyDTOS[0].counseling.counselingId;
+        // let seling = $("#"+id).find(".loungeCardContents").find(".loungeCardContentsComponents_loungeContents__262-A").find(".replyComponent_reply__3l-Wc").find(".replyComponent_replyBox__1duHS");
+        let seling = $(".loungeCard").eq(ic).find(".loungeCardContents").find(".loungeCardContentsComponents_loungeContents__262-A").find(".replyComponent_reply__3l-Wc").find(".replyComponent_replyBox__1duHS");
+
         let text = "";
         $(counselingReplyDTOS).each((i, cs) => {
             text += `<div style='border-style: solid; border-width: 0px 0px 1px; border-color: rgb(234, 234, 234); margin-bottom: 12px;' class="replyComponent_replyContainer__3dxJZ">`;

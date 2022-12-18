@@ -219,12 +219,15 @@
                     <th:block th:each="study, studyStatus:${studys}" th:object="${study}">
                         <li class="loungeTrendComponents_LoungeTrendContainerListTypeA__3y_Hd">
                             <span class="loungeTrendComponents_LoungeLankingTxt__vlofS" th:text="${studyStatus.count}">1</span>
-                            <button style="cursor: default" type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5">
+                            <a class="studyDetail">
+                            <button style="cursor: pointer" type="button" class="buttonComponents_button__1hvQa buttonComponents_plain__1ljW5">
                                 <img th:if="*{studyType =='전공'}" class="buttonComponents_lgImg__2-hZO" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_12.png">
                                 <img th:if="*{studyType =='교양'}" class="buttonComponents_lgImg__2-hZO" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_01.png">
                                 <img th:if="*{studyType =='공통'}" class="buttonComponents_lgImg__2-hZO" src="https://letspl.s3.ap-northeast-2.amazonaws.com/images/project_thumb_05.png">
                                 <span class="" th:text="*{studyTitle}"> 타이틀 </span>
                             </button>
+                            </a>
+                            <input class="stuDetail" type="hidden" th:href="*{studyId}">
                         </li>
                     </th:block>
                 </ul>
@@ -286,21 +289,8 @@
                 ['view', ['fullscreen']]
             ],
             fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
-            fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
-            callbacks: {	//여기 부분이 이미지를 첨부하는 부분
-                onImageUpload : function(files) {
-                    uploadSummernoteImageFile(files[0],this);
-                },
-                onPaste: function (e) {
-                    var clipboardData = e.originalEvent.clipboardData;
-                    if (clipboardData && clipboardData.items && clipboardData.items.length) {
-                        var item = clipboardData.items[0];
-                        if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
-                            e.preventDefault();
-                        }
-                    }
-                }
-            }
+            fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
+
         });
     });
 
@@ -308,7 +298,13 @@
     $(".detail").on("click", function (e) {
         // alert($(this).next(".neosUser").attr("href"));
         e.preventDefault();
-        location.href = "/neosUser/info/yes" + "?userId=" + $(this).next(".neosUser").attr("href");
+        location.href = "/neosUser/info/yes?userId=" + $(this).next(".neosUser").attr("href");
+    });
+
+    /*스터디 상세 페이지 이동 */
+    $(".studyDetail").on("click", function (e) {
+        e.preventDefault();
+        location.href = "/study/list?studyId=" + $(this).next(".stuDetail").attr("href");
     });
 </script>
 <script src="/js/fix/chatting.js"></script>

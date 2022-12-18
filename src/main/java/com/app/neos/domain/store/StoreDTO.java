@@ -60,13 +60,14 @@ public class StoreDTO {
     }
 
     @QueryProjection
-    public StoreDTO(Long storeId, StoreStatus storeStatus, Integer storePoint, String storeTitle, String storeContent, LocalDateTime createdDate) {
+    public StoreDTO(Long storeId, StoreStatus storeStatus, Integer storePoint, String storeTitle, String storeContent, LocalDateTime createdDate,  User user) {
         this.storeId = storeId;
         this.storeStatus = storeStatus;
         this.storePoint = storePoint;
         this.storeTitle = storeTitle;
         this.storeContent = storeContent;
         this.createdDate = createdDate;
+        this.user = user;
     }
 
 

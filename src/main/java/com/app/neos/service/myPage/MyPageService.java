@@ -11,6 +11,7 @@ import com.app.neos.domain.user.UserDTO;
 import com.app.neos.entity.college.College;
 import com.app.neos.entity.follow.Follow;
 import com.app.neos.entity.store.Store;
+import com.app.neos.entity.study.Study;
 import com.app.neos.entity.study.StudyFollow;
 import com.app.neos.entity.study.StudySupporter;
 import com.app.neos.entity.user.User;
@@ -30,6 +31,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -109,18 +111,21 @@ public class MyPageService {
     }
 
     // 마이페이지 참여한 스터디 조회
+//    public List<StudyDTO> findJoinStudy(Long userId){
+//        List<StudyMemberDTO> studyMemberDTOS = myPageMemberCustomRepository.findByUserId(userId);
+//
+//        List<StudyDTO> studyDTOS = new ArrayList<>();
+//
+//        for(StudyMemberDTO studyMemberDTO:studyMemberDTOS){
+//            Long studyId = studyMemberDTO.getStudyId();
+//            StudyDTO studyDTO = myPageStudyCustomRepository.findStudyDTO(studyId);
+//
+//            studyDTOS.add(studyDTO);
+//        }
+//        return studyDTOS;
+//    }
     public List<StudyDTO> findJoinStudy(Long userId){
-        List<StudyMemberDTO> studyMemberDTOS = myPageMemberCustomRepository.findByUserId(userId);
-
-        List<StudyDTO> studyDTOS = new ArrayList<>();
-
-        for(StudyMemberDTO studyMemberDTO:studyMemberDTOS){
-            Long studyId = studyMemberDTO.getStudyId();
-            StudyDTO studyDTO = myPageStudyCustomRepository.findStudyDTO(studyId);
-
-            studyDTOS.add(studyDTO);
-        }
-        return studyDTOS;
+        return studyCustomRepository.findMyStudyList(userId).stream().map(Study::toDTO).collect(Collectors.toList());
     }
 
     // 마이페이지 지원한 스터디 조회

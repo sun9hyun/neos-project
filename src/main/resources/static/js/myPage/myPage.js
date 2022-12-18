@@ -333,12 +333,12 @@ console.log("storedList 들어옴");
 // });
 
 $('.contetnsGrid').on("mouseover", ".free" ,function(){
-    $(this).find(".top img").attr("src", "/images/store/qr.jpg");
+    $(this).find(".top").css("filter", "brightness(0.6)");
     $(this).find(".shop").removeClass("shopLink");
 })
 
 $('.contetnsGrid').on("mouseout", ".free" ,function(){
-    $(this).find(".top img").attr("src", "/images/store/storeNeos.png");
+    $(this).find(".top").css("filter", "brightness(1)");
     $(this).find(".shop").addClass("shopLink");
 })
 

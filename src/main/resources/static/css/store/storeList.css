@@ -99,8 +99,10 @@ section {
 .lockCash{
     top: 32% !important;
 }
-.lockDetail{
-    top: 52% !important;
+.lockDetail,
+.detailBtn{
+    /*top: 52% !important;*/
+    top: 43% !important;
 }
 
 

@@ -128,10 +128,10 @@
 
                         <div class="projectDetailWrap" style="padding: 0;">
                             <div class="projectTab projectFeedContents active">
-                                <input type="text" th:value="*{user.userId}" class="storeUserId" name="storeUserId"></input>
-                                <input type="text" th:value="${session.loginUser}" name="userId"></input>
-                                <input type="text" name="storeReplySecret" class="replyStatus" value="PUBLIC"></input>
-                                <input type="text" name="storeId" th:value="*{storeId}"></input>
+                                <input type="hidden" th:value="*{user.userId}" class="storeUserId" name="storeUserId"></input>
+                                <input type="hidden" th:value="${session.loginUser}" name="userId"></input>
+                                <input type="hidden" name="storeReplySecret" class="replyStatus" value="PUBLIC"></input>
+                                <input type="hidden" name="storeId" th:value="*{storeId}"></input>
                                 <div class="section feedInputSection ">
                                     <div class="feedInputWrap">
                                         <textarea class="textarea" name="storeReplyContent"
@@ -160,8 +160,6 @@
 
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -407,23 +405,23 @@
     });
 
 
-    $(".cashButton").on("click",function () {
-        storeId: $("input[name='storeId']").val()
-
-        $.ajax({
-            url: "/store-purchase/purchase/"+storeId,
-            type:"get",
-            success:function (result) {
-                console.log("성공")
-                let text = "";
-
-                text += "결제완료";
-
-                $(".cashButton").text(text);
-            }
-        })
-
-    })
+    // $(".cashButton").on("click",function () {
+    //     storeId: $("input[name='storeId']").val()
+    //
+    //     $.ajax({
+    //         url: "/store-purchase/purchase/"+storeId,
+    //         type:"get",
+    //         success:function (result) {
+    //             console.log("성공")
+    //             let text = "";
+    //
+    //             text += "결제완료";
+    //
+    //             $(".cashButton").text(text);
+    //         }
+    //     })
+    //
+    // })
 
 
 </script>

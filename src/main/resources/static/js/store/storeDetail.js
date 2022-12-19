@@ -5,34 +5,34 @@
 const $detail = $("a.detailBtn");
 const $change = $("a.changeBtn");
 
-$detail.on("click", function (e) {
-    let res = confirm("게시글을 삭제하시겠습니까?")
-    if (res){
-        e.preventDefault();
-        location.href = "/store/store-delete" + "?storeId=" + $(this).attr("href");
-    }else if(!res){
-        e.preventDefault();
-        location.href = "/store/store-detail" + "?storeId=" + $(this).attr("href");
-    }
-})
+// $detail.on("click", function (e) {
+//     let res = confirm("게시글을 삭제하시겠습니까?")
+//     if (res){
+//         e.preventDefault();
+//         location.href = "/store/store-delete" + "?storeId=" + $(this).attr("href");
+//     }else if(!res){
+//         e.preventDefault();
+//         location.href = "/store/store-detail" + "?storeId=" + $(this).attr("href");
+//     }
+// })
 
 $change.on("click", function (e) {
     e.preventDefault();
     location.href = "/store/store-update" + "?storeId=" + $(this).attr("href");
 })
 
-$(".cashButton").on("click", function (e) {
-    let res = confirm("결제하시겠습니까?")
-    if (res){
-        e.preventDefault();
-        location.href = "/store/store-purchase/" + $(this).attr("href");
-    }else if(!res){
-        e.preventDefault();
-        location.href = "/store/store-detail" + "?storeId=" + $(this).attr("href");
-    }
-    // e.preventDefault();
-    // location.href = "/store/store-purchase/" + $(this).attr("href");
-})
+// $(".cashButton").on("click", function (e) {
+//     let res = confirm("결제하시겠습니까?")
+//     if (res){
+//         e.preventDefault();
+//         location.href = "/store/store-purchase/" + $(this).attr("href");
+//     }else if(!res){
+//         e.preventDefault();
+//         location.href = "/store/store-detail" + "?storeId=" + $(this).attr("href");
+//     }
+//     // e.preventDefault();
+//     // location.href = "/store/store-purchase/" + $(this).attr("href");
+// })
 
 // 첨부파일 이미지 변경
 var $attachFile1 = $(".attachFile1");

@@ -2,6 +2,8 @@ package com.app.neos.controller.store;
 
 import com.app.neos.domain.store.StoreDTO;
 import com.app.neos.entity.store.Store;
+import com.app.neos.entity.user.User;
+import com.app.neos.repository.user.UserRepository;
 import com.app.neos.service.neosUser.NeosUserService;
 import com.app.neos.service.store.StorePurchaseService;
 import com.app.neos.service.store.StoreService;
@@ -31,6 +33,7 @@ public class StoreController {
     private final StoreService storeService;
     private final NeosUserService neosUserService;
     private final StorePurchaseService storePurchaseService;
+    private final UserRepository userRepository;
 
 
 //    자료상점 목록
@@ -99,17 +102,25 @@ public class StoreController {
     public String storeDetail(Long storeId, Model model, HttpSession session){
         Long userId = (Long)session.getAttribute("loginUser");
         StoreDTO storeDTO = storeService.findStoreOne(storeId);
+
+        User user = userRepository.findById(userId).get();
         String resultUrl = "";
 
         if (storeDTO.getStoreStatus().toString() == "FREE") {
             model.addAttribute("store", storeDTO);
+            model.addAttribute("user", user);
+
             resultUrl = "app/store/storeDetail-free";
         } else if(storeDTO.getStoreStatus().toString() == "PAY"){
             if (storePurchaseService.checkPurchase(userId, storeId)){
                 model.addAttribute("store", storeDTO);
+                model.addAttribute("user", user);
+
                 resultUrl = "app/store/storeDetail-purchase";
             }else if(!storePurchaseService.checkPurchase(userId, storeId)){
                 model.addAttribute("store", storeDTO);
+                model.addAttribute("user", user);
+
                 resultUrl = "app/store/storeDetail-pay";
             }
         }

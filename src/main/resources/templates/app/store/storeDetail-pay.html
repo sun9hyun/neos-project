@@ -6,12 +6,13 @@
     <!--    <link rel="stylesheet" href="/css/study/feedStudy.css">-->
     <link rel="stylesheet" href="/css/store/storeDetail.css">
     <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/study/studyModal.css">
     <link rel="stylesheet" href="/css/fix/loginHeader.css">
     <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body style="overflow: unset;">
 <header th:replace="/app/fix/header.html :: header"></header>
-
+<!-- 자료상점 상세보기(유료_결제 전) START-->
 <section>
     <div class="storyDetailWrap" th:object="${store}">
         <div class="projectPageHeaderWrap">
@@ -57,7 +58,7 @@
                     </div>
 
                     <div class="deleteBtn">
-                        <a th:href="*{storeId}" th:if="${store.user.userId == session.loginUser}" class="detailBtn">
+                        <a th:if="${store.user.userId == session.loginUser}" class="detailBtn">
                             <img loading="lazy" src="/images/store/delete.png"
                                  style="vertical-align: middle; height: 28px; margin-left: 5px; cursor: pointer;">
                         </a>
@@ -82,9 +83,13 @@
                         <div class="section statusSection">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 <h1 class="tabTit" style="padding: 0 !important;">첨부파일(<span th:text="*{storePoint}"></span>P)</h1>
-                                <a type="button" th:href="*{storeId}" class="cashButton">
+<!--                                <a type="button" th:href="*{storeId}" class="cashButton" th:if="${store.user.userId != session.loginUser}">-->
+                                <a type="button" class="cashButton" th:if="${store.user.userId != session.loginUser}">
                                     결제하기
                                 </a>
+                                <div type="button" th:href="*{storeId}" class="myButton" th:if="${store.user.userId == session.loginUser}">
+                                    나의 판매글
+                                </div>
                             </div>
 
                             <ul class="fileList" th:if="*{storeFlieDTOS.size() != 0}">
@@ -131,7 +136,9 @@
                                 <input type="hidden" th:value="*{user.userId}" class="storeUserId" name="storeUserId"></input>
                                 <input type="hidden" th:value="${session.loginUser}" name="userId"></input>
                                 <input type="hidden" name="storeReplySecret" class="replyStatus" value="PUBLIC"></input>
-                                <input type="hidden" name="storeId" th:value="*{storeId}"></input>
+                                <input type="hidden" name="storeId" th:value="*{storeId}" class="storeId"></input>
+                                <input type="hidden" name="storePoint" th:value="*{storePoint}" class="storePoint"></input>
+                                <input type="hidden" name="userNeosPoint" th:value="${user.userNeosPoint}" class="userNeosPoint"></input>
                                 <div class="section feedInputSection ">
                                     <div class="feedInputWrap">
                                         <textarea class="textarea" name="storeReplyContent"
@@ -213,6 +220,54 @@
         </div>
     </div>
 </section>
+<!-- 자료상점 상세보기(유료_결제 전) END-->
+
+<!-- 관련 모달 START-->
+<div class="modalWrapOpen">
+    <!--결제하기 클릭 시, 문제없는 경우-->
+    <div class="modalWrap modal1">
+        <p class="modalTit studyTit">자료를 구매하시겠습니까?</p>
+        <button class="closeBtn">
+            <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
+        </button>
+        <div class="modalContent">
+            <p>자료금액 : <span th:text="${store.storePoint}"></span></p>
+            <p>보유금액 : <span th:text="${user.userNeosPoint}"></span></p>
+            <p>잔여금액 : <span th:text="${store.storePoint - user.userNeosPoint}"></span></p>
+        </div>
+        <div class="btnWrap doubleBtnWrap">
+            <button class="btn whiteBtn">아니요</button>
+            <button class="btn blueBtn okBtn">예</button>
+        </div>
+    </div>
+    <!--결제하기 클릭 시, 금액이 부족한 경우-->
+    <div class="modalWrap modal2">
+        <p class="modalTit">결제에 필요한 포인트가 부족합니다.</p>
+        <button class="closeBtn">
+            <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" class="closeBtnImg">
+        </button>
+        <div class="modalContent">
+            <p>포인트 충전 후 이용해주세요.</p>
+        </div>
+        <div class="btnWrap singleBtnWrap">
+            <button class="btn blueBtn">확인</button>
+        </div>
+    </div>
+    <!--삭제하기 버튼-->
+    <div class="modalWrap modal3">
+        <p class="modalTit studyTit">게시글을 삭제하시겠습니까?</p>
+        <button class="closeBtn">
+            <img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close" class="closeBtnImg">
+        </button>
+        <div class="modalContent">
+        </div>
+        <div class="btnWrap doubleBtnWrap">
+            <button class="btn whiteBtn">아니요</button>
+            <button class="btn blueBtn okBtn">예</button>
+        </div>
+    </div>
+</div>
+<!-- 관련 모달 END-->
 
 <div th:replace="/app/fix/footer.html :: footer"></div>
 </body>
@@ -222,6 +277,8 @@
 <script src="/js/fix/header.js"></script>
 <script src="/js/store/storeDetailAjax.js"></script>
 <script src="/js/store/storeDetail.js"></script>
+<script src="/js/store/storeModal.js"></script>
+
 <script th:inline="javascript">
     let storeId = $("input[name='storeId']").val();
 
@@ -340,7 +397,7 @@
                     text += "<div class='feedContentsWrap'>";
                     text += "<div class='top secret'>";
                     text += "<div class='name' style='margin-top: 14px; margin-bottom: 14px;'>";
-                    text += "<h2 class='profileName'>비밀 댓글 입니다.</h2>";
+                    text += "<h2 class='profileName'>🔒비밀 댓글 입니다.</h2>";
                     text += "<span>" + replyService.timeForToday(reply.updatedDate) + "</span>";
                     text += "</div>";
                     text += "</div>";

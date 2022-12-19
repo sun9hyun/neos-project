@@ -82,9 +82,9 @@
                         <div class="section statusSection">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 <h1 class="tabTit" style="padding: 0 !important;">첨부파일(<span th:text="*{storePoint}"></span>P)</h1>
-                                <button type="button" class="cashButton" disabled="disabled" style="background-color: #fff; color: #1A7CFF; border: 1px solid #1A7CFF; ">
+                                <div type="button" class="myButton" style="padding: 11px 35px;">
                                     결제완료
-                                </button>
+                                </div>
                             </div>
 
                             <ul class="fileList" th:if="*{storeFlieDTOS.size() != 0}">
@@ -344,7 +344,7 @@
                     text += "<div class='feedContentsWrap'>";
                     text += "<div class='top secret'>";
                     text += "<div class='name' style='margin-top: 14px; margin-bottom: 14px;'>";
-                    text += "<h2 class='profileName'>비밀 댓글 입니다.</h2>";
+                    text += "<h2 class='profileName'>🔒비밀 댓글 입니다.</h2>";
                     text += "<span>" + replyService.timeForToday(reply.updatedDate) + "</span>";
                     text += "</div>";
                     text += "</div>";

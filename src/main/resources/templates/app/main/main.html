@@ -44,18 +44,14 @@
             location.href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.metadata.readonly&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=http%3A%2F%2Flocalhost%3A10718%2Fjoin%2Fgoogle&client_id=514426667105-1lnfsvd1qiivml6ajencglio5lpvct8d.apps.googleusercontent.com&service=lso&o2v=2&flowName=GeneralOAuthFlow";
         }
 
-        else if(urlParams.get("login")=='true'){
-            alert("로그인 성공")
-        }else if(urlParams.get("join")=='true'){
+       else if(urlParams.get("join")=='true'){
             alert("회원가입 성공")
-        }else if(urlParams.get("logout")=='true'){
-            alert("로그아웃 성공")
         }else if(urlParams.get("join")=='need'){
             alert("메일을 성공적으로 보냈습니다.")
         }else if(urlParams.get("certify")=='true'){
             alert("인증이 완료되었습니다.")
         }else if(urlParams.get("login")=='need'){
-            alert("인증이 필요합니다.")
+           location.href="/join/certification";
         }
 
         history.replaceState({}, null, location.pathname);

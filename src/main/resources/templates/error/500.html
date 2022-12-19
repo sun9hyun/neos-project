@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/error/error404.css">
     <link rel="stylesheet" href="/css/fix/header.css">
     <link rel="stylesheet" href="/css/fix/loginHeader.css">
+    <link rel="icon" type="image/x-icon" href="/images/fix/favicon.png">
 </head>
 <body>
 <header th:replace="/app/fix/header.html :: header"></header>
@@ -19,7 +20,7 @@
                 <a href="#" onClick="history.back()">
                     <button class="blackBtn">이전 페이지로</button>
                 </a>
-                <a th:href="@{/main/main}">
+                <a th:href="@{/main}">
                     <button class="blackBtn">첫 화면으로</button>
                 </a>
             </div>

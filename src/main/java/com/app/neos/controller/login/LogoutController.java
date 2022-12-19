@@ -51,13 +51,13 @@ public class LogoutController {
             naverService.logoutNaver(session.getAttribute("token").toString());
         }
         session.invalidate();
-        return new RedirectView("/main/main?logout=true");
+        return new RedirectView("/main?logout=true");
     }
 
     @GetMapping("/google")
     public RedirectView logout(HttpServletRequest request, HttpSession session, SessionStatus status){
         session.invalidate();
         status.setComplete();
-        return new RedirectView("/main/main?logout=true");
+        return new RedirectView("/main?logout=true");
     }
 }

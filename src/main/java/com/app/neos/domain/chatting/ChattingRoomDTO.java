@@ -110,11 +110,13 @@ public class ChattingRoomDTO {
     public void handleMessage(WebSocketSession session, ChattingContentDTO chattingContentDTO,
                               ObjectMapper objectMapper) throws IOException {
 
-        ChattingRoomDTO chattingRoomDTO = new ChattingRoomDTO();
         log.info("********handleMessage");
         log.info(String.valueOf(session.getAttributes().get("chattingRoomId")));
         log.info(chattingContentDTO.toString());
+//        채팅방 세션 값과 chattingRoomId 값이 같다면
         if (session.getAttributes().get("chattingRoomId") == chattingContentDTO.getChattingRoomId()) {
+//            세션값을 작성자 아이디에 저장
+//
             sessions.put(chattingContentDTO.getWriterId(), session);
         }
         send(chattingContentDTO, objectMapper);
@@ -126,17 +128,16 @@ public class ChattingRoomDTO {
     }
 
 
-    // 확성기 없애기
+//    채팅방 메세지 전달하는 메소드
     private void send(ChattingContentDTO chattingContentDTO, ObjectMapper objectMapper) throws IOException {
         log.info("=========send");
         log.info(chattingContentDTO.toString());
 
         TextMessage textMessage = new TextMessage(objectMapper.
                 writeValueAsString(chattingContentDTO.getChattingContent()));
+//       채팅방 세션이랑 채팅방 아이디 값이 같으면 메세지 전달
         for (WebSocketSession sess : sessions.values()) {
             if (sess.getAttributes().get("chattingRoomId") == chattingContentDTO.getChattingRoomId()) {
-//                log.info(String.valueOf(sess.getAttributes().get("chattingRoomId")));
-//                log.info(String.valueOf(chattingContentDTO.getChattingRoomId()));
                 sess.sendMessage(textMessage);
             }
         }

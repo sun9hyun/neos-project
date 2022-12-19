@@ -47,13 +47,6 @@ public class ChatRestController {
         return contents;
     }
 
-//    @PostMapping("/chatContent/{receiverRoomId}")
-//    public Long findId(@PathVariable("receiverRoomId")Long id,ChattingContentDTO chattingContentDTO,HttpServletRequest request) {
-//        HttpSession session = request.getSession();
-//        session.setAttribute("chattingRoomId",id);
-//        fixService.findByReceiverId(id);
-//        return id;
-//    }
 
     //    채팅방 내용 저장
     @PostMapping(value = "/chattingOk", consumes = "application/json", produces = "text/plain; charset=utf-8")
@@ -63,24 +56,25 @@ public class ChatRestController {
         return "success";
     }
 
-//    채팅방 만들기
-    @PostMapping(value = "/saveOk", consumes = "application/json", produces = "text/plain; charset=utf-8")
-    public String roomSave(@RequestBody ChattingRoomDTO chattingRoomDTO){
-        fixService.createChattingRoom(chattingRoomDTO);
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$채팅방 저장임 " + chattingRoomDTO);
+    //    채팅방 만들기
+//    @PostMapping(value = "/saveOk", consumes = "application/json", produces = "text/plain; charset=utf-8")
+    @GetMapping("/saveOk/{receiverId}/{myRoomId}")
+    public String roomSave(@PathVariable("receiverId") Long receiverId,@PathVariable("myRoomId")Long myRoomId){
+        fixService.createChattingRoom(receiverId,myRoomId );
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$채팅방 저장임 ");
         return "saveSuccess";
     }
 
-////    채팅방 나가기
-//    @DeleteMapping("/chattingDelete/{receiverRoomId}")
-//    public String delete(@PathVariable("receiverRoomId")Long chattingRoomId, HttpServletRequest request){
-//        HttpSession session = request.getSession();
-//        session.setAttribute("chattingRoomId",chattingRoomId);
-//        fixService.deleteRoom(chattingRoomId);
-//        log.info(chattingRoomId.toString());
-//        log.info("삭제 컨트롤러 $$$$$$$$$$$$$$$44");
-//        return "delete success";
-//    }
+    //    채팅방 나가기
+    @DeleteMapping("/chattingDelete/{receiverRoomId}")
+    public String delete(@PathVariable("receiverRoomId")Long chattingRoomId, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.setAttribute("chattingRoomId",chattingRoomId);
+        fixService.deleteRoom(chattingRoomId);
+        log.info(chattingRoomId.toString());
+        log.info("삭제 컨트롤러 $$$$$$$$$$$$$$$44");
+        return "delete success";
+    }
 
 
 

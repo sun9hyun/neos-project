@@ -46,6 +46,7 @@ public class ChattingContent extends ChatPeriod {
     private User writer;
 
     @Enumerated(EnumType.STRING) @NotNull
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private MessageType messageType;
 
     public void changeWriter(User writer){

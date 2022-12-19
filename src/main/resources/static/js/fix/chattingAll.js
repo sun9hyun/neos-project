@@ -21,63 +21,65 @@ $("li.leftChattingList").on("click", function () {
     console.log(nickName);
 
 
-    $.ajax({
-        url: "/chat/chatContent/" + receiverRoomId,
-        type: "get",
-        async: false,
-        success: function (contents) {
-            if (contents != null) {
-                getChattingContentList(contents);
+
+        $.ajax({
+                url: "/chat/chatContent/" + receiverRoomId,
+                type: "get",
+                async: false,
+                success: function (contents) {
+                    if (contents != null) {
+                        getChattingContentList(contents);
+                    }
+                },
+                error: function (xhr, status, err) {
+                    console.log(err);
+                }
+
+
             }
-        },
-        error: function (xhr, status, err) {
-            console.log(err);
+        );
+
+        function getChattingContentList(contents) {
+            let text = "";
+            contents.forEach(content => {
+                if (content.writer.userId != sessionId) {
+                    text += " <div class=\"opponent\">";
+                    text += " <div class=\"thumb\">";
+                    text += "<img src='" + content.writer.userFile + "'>";
+                    text += "</div>"
+                    text += "<div class='userIdChatTxt'>"
+                    text += "<span class='userId'>" + content.writer.userNickName + "</span>";
+                    text += "<div class='chatTxt'>";
+                    text += "<span class='chatTxtContents'>";
+                    text += "<a style='color: rgb(51, 51, 51);'>" + content.chattingContent + "</a>";
+                    text += "</span>";
+                    text += "<div class='timeWrap'>";
+                    text += "<span class='time'>" + contentService.getReplyDates(content.chatDate) + "</span>";
+                    text += "</div>";
+                    text += "</div>";
+                    text += "</div>";
+                    text += "</div>";
+                } else {
+                    text += "<div class=\"my chatTxt\">";
+                    text += "<p class=\"chatTxt\">";
+                    text += "<span class=\"chatTxtContents\">"
+                    text += "<a style=\"color: rgb(255, 255, 255);\">" + content.chattingContent;
+                    +"</a>"
+                    text += "</span>"
+                    text += "<div>"
+                    text += "<div class='timeWrap'>";
+                    // text += "<span class=\"check\">" + "읽음" + "</span>";
+                    text += "<span class=\"time\">" + contentService.getReplyDates(content.chatDate) + "</span>";
+                    text += "</div>";
+                    text += "</div>";
+                    text += "</p>";
+                    text += "</div>";
+                }
+            });
+            $("div.chattingRoomWrap").html(text);
         }
 
-
-    }
-    );
-
-    function getChattingContentList(contents) {
-        let text = "";
-        contents.forEach(content => {
-            if(content.writer.userId != sessionId) {
-                text += " <div class=\"opponent\">";
-                text += " <div class=\"thumb\">";
-                text += "<img src='" + content.writer.userFile + "'>";
-                text += "</div>"
-                text += "<div class='userIdChatTxt'>"
-                text += "<span class='userId'>" + content.writer.userNickName + "</span>";
-                text += "<div class='chatTxt'>";
-                text += "<span class='chatTxtContents'>";
-                text += "<a style='color: rgb(51, 51, 51);'>" + content.chattingContent + "</a>";
-                text += "</span>";
-                text += "<div class='timeWrap'>";
-                text += "<span class='time'>" + contentService.getReplyDates(content.chatDate) + "</span>";
-                text += "</div>";
-                text += "</div>";
-                text += "</div>";
-                text += "</div>";
-            }else{
-                text += "<div class=\"my chatTxt\">";
-                text += "<p class=\"chatTxt\">";
-                text += "<span class=\"chatTxtContents\">"
-                text += "<a style=\"color: rgb(255, 255, 255);\">" +content.chattingContent; +"</a>"
-                text += "</span>"
-                text += "<div>"
-                text += "<div class='timeWrap'>";
-                text += "<span class=\"check\">" + "읽음" +"</span>";
-                text += "<span class=\"time\">" + contentService.getReplyDates(content.chatDate) +"</span>";
-                text += "</div>";
-                text += "</div>";
-                text += "</p>";
-                text += "</div>";
-            }
-        });
-        $("div.chattingRoomWrap").html(text);
-    }
-
-});
+    });
 
 
 /*
@@ -109,7 +111,6 @@ $(".buttonComponents_circle__2iQ3w").on("click", function () {
         messageType: 1
     })
     send();
-
 });
 
 
@@ -172,33 +173,17 @@ $(".chatExitModal").on("click",".redBtn", function () {
     $.ajax({
         url: "/chat/chattingDelete/" + receiverRoomId,
         type: "delete",
-        data: receiverRoomId,
+        data: JSON.stringify({chattingRoomId:receiverRoomId}),
         contentType: "application/json; charset=utf-8",
         success: function () {
             console.log("삭제성공")
+            location.reload();
         },
         error: function (xhr, status, err) {
             console.log(err);
         }
     })
 });
-
-// $("#morAndFoldBtnWrap").on("click", function () {
-//
-//     $.ajax({
-//         url: "/chat/chattingDelete",
-//         type: "delete",
-//         data: JSON.stringify({receiverId :  (this).closest('.chattingRoom').prev().find('.select').find('.chattingId').val()}),
-//         contentType: "application/json; charset=utf-8",
-//         success: function () {
-//             alert(receiverId)
-//             show()
-//         },
-//         error: function (xhr, status, err) {
-//         }
-//     })
-// });
-
 
 
 
@@ -329,3 +314,5 @@ function onClose(){
 $(document).ready(function() {
     $('.chattingRoomWrap').scrollTop($('.chattingRoomWrap')[0].scrollHeight);
 });
+
+

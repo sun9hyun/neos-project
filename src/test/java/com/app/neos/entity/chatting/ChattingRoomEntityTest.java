@@ -29,8 +29,8 @@ public class ChattingRoomEntityTest {
     public void saveTest() {
         ChattingRoomDTO chattingRoomDTO = new ChattingRoomDTO();
 
-        chattingRoomDTO.setMyRoom(userRepository.findById(75l).get());
-        chattingRoomDTO.setReceiverRoom(userRepository.findById(23l).get());
+        chattingRoomDTO.setMyRoom(userRepository.findById(182l).get());
+        chattingRoomDTO.setReceiverRoom(userRepository.findById(18l).get());
         ChattingRoom chattingRoom = chattingRoomDTO.toEntity();
         chattingRoomRepository.save(chattingRoom);
 

@@ -77,17 +77,40 @@ public class FixService {
 
 
     //    채팅방 나가기
-//    public void deleteRoom(Long chattingRoomId) {
-//        chattingContentRepository.deleteById(chattingRoomId);
-//    }
+    public void deleteRoom(Long chattingRoomId) {
+        chattingRoomRepository.deleteById(chattingRoomId);
+    }
 
 
     //    채팅방 만들기
-    public void createChattingRoom(ChattingRoomDTO chattingRoomDTO) {
-        ChattingRoom chattingRoom = chattingRoomDTO.toEntity();
+//    public void createChattingRoom(ChattingRoomDTO chattingRoomDTO) {
+    public void createChattingRoom(Long receiverId, Long myRoomId) {
+//        Long myRoomId= chattingRoomDTO.getMyRoomId();
+//        Long receiverRoomId = chattingRoomDTO.getReceiverRoomId();
+//        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX"+myRoomId);
+//        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX"+receiverRoomId);
+//
+//        User myRoom = userRepository.findById(myRoomId).get();
+//        User receiverRoom = userRepository.findById(receiverRoomId).get();
+//
+//        chattingRoom.changeMyRoom(myRoom);
+//        chattingRoom.changeReceiverRoom(receiverRoom);
+//        ChattingRoom chattingRoom = chattingRoomDTO.toEntity();
+        ChattingRoom chattingRoom = new ChattingRoom();
+        System.out.println("서비스~~~~~~~~~~~~~~~~~~~~~" +receiverId);
+        System.out.println("서비스~~~~~~~~~~~~~~~~~~~~~" +myRoomId);
 
-        chattingRoom.changeReceiverRoom(userRepository.findById(chattingRoomDTO.getReceiverRoomId()).get());
-        chattingRoom.changeMyRoom(userRepository.findById(chattingRoomDTO.getMyRoomId()).get());
+        chattingRoom.changeReceiverRoom(userRepository.findById(receiverId).get());
+        chattingRoom.changeMyRoom(userRepository.findById(myRoomId).get());
+//        chattingRoomDTO.setMyRoom(userRepository.findById(myRoomId).get());
+//        chattingRoomDTO.setReceiverRoom(userRepository.findById(c).get());
+//        ChattingRoom chattingRoom = chattingRoomDTO.toEntity();
+
+
+
+//        chattingRoom.changeReceiverRoom(userRepository.findById(chattingRoomDTO.getReceiverRoomId()).get());
+//        System.out.println(chattingRoomDTO.getMyRoom());
+//        chattingRoom.changeMyRoom(userRepository.findById(chattingRoomDTO.getMyRoomId()).get());
         chattingRoomRepository.save(chattingRoom);
         System.out.println("서비스~~~~~~~~~~~~~~~~~~~~~" +chattingRoom);
     }

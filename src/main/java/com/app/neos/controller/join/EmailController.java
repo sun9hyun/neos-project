@@ -32,7 +32,7 @@ public class EmailController {
     @GetMapping("/email")
     public RedirectView email(String token, String email) throws Exception{
         emailService.sendSimpleMessage(email, token);
-        return new RedirectView("/main/main?join=need");
+        return new RedirectView("/main?join=need");
     }
 
 
@@ -42,7 +42,7 @@ public class EmailController {
         log.info("==================================================");
         log.info(token);
         joinService.certify(token);
-        return new RedirectView("/main/main?certify=true");
+        return new RedirectView("/main?certify=true");
     }
 
     @GetMapping("test")

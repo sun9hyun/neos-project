@@ -177,7 +177,7 @@
                         <div class="qrImg" style="text-align: center;"
                              th:if="*{storeFlieDTOS[0].getStoreFileName != null}">
                             <div th:href="@{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}">
-                                <img style="filter: blur(3px); cursor: default; " th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}"
+                                <img style="filter: blur(3px); cursor: default; " th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://192.168.181.38:10718' + @{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}"
                                      alt="">
                             </div>
                             <p class="checkboxTit"
@@ -187,8 +187,10 @@
                         <div class="qrImg" style="text-align: center;"
                              th:if="*{storeFlieDTOS.size() > 1 and (storeFlieDTOS[1].getStoreFileName != null)}">
                             <div th:href="@{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}">
-                                <img style="filter: blur(3px); cursor: default; " th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}"
+                                <img style="filter: blur(3px); cursor: default; " th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://192.168.181.38:10718' + @{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}"
                                      alt="">
+<!--                                <img style="filter: blur(3px); cursor: default; " th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}"-->
+<!--                                     alt="">-->
                             </div>
                             <p class="checkboxTit"
                                th:text="*{storeFlieDTOS[1].getStoreFileName + '(' + storeFlieDTOS[1].storeFileSize/1024 + 'KB' + ')'}">
@@ -196,7 +198,7 @@
                         </div>
                         <div class="qrImg qrLast" style="text-align: center;" th:if="*{storeFlieDTOS.size() > 2}">
                             <div th:href="@{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}">
-                                <img style="filter: blur(3px); cursor: default; " th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}"
+                                <img style="filter: blur(3px); cursor: default; " th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://192.168.181.38:10718' + @{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}"
                                      alt="">
                             </div>
                             <p class="checkboxTit"

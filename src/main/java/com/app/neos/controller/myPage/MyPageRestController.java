@@ -49,6 +49,7 @@ public class MyPageRestController {
     // 유저 탈퇴
     @GetMapping("/delete/{userId}")
     public String delete(@PathVariable("userId") String userId){
+        System.out.println("*********************userId " + userId + "*********************");
         adminService.deleteByUserId(userId);
         return "delete success";
     }

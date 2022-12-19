@@ -88,6 +88,7 @@ $(document).ready(function () {
 
     function getList(communityDTOS) {
         // alert(communityDTOS);
+        console.log(communityDTOS);
         let text = "";
             $(communityDTOS.content).each((i, item) => {
                 text += `<div class='loungeCard' style='margin-bottom: -10px;' id="`+item.communityId+`">`;
@@ -138,7 +139,7 @@ $(document).ready(function () {
                 text += "<span class='loungeCardContentsComponents_loungeContentsTitleBoxNewsTxt__9_Iok'>자유게시글</span>";
                 text += "<div class='loungeCardContentsComponents_loungeContentsTitleDate__1-Xd2'>";
                 text += "<h3 class='comTitle loungeCardContentsComponents_title__1s8RE'>" + item.communityTitle + "</h3>";
-                text += "<span class='loungeCardContentsComponents_date__3pY5X'>" + communityService.timeForToday(item.updatedDate) + "</span>";
+                text += "<span class='loungeCardContentsComponents_date__3pY5X'>" + communityService.timeForToday(item.createdDate) + "</span>";
                 text += "</div></div>";
                 text += "<div class='comContent loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4'>" + item.communityContent + "</div>";
                 text += "<div class='loungeCardContentsComponents_loungeContentsMoreButtonWrap__1LR4v'>";
@@ -147,7 +148,12 @@ $(document).ready(function () {
                 text += "<div class='replyComponent_reply__3l-Wc'>";
                 text += "<div class='replyComponent_replyButtonBox__2O3ME'>";
                 text += "<button type='button' class='likeBtn buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 button_heart_1ljw5'>";
-                text += "<img class='likeImg' src='https://letspl.me/assets/images/ic-letspler-heart-empty.png'>";
+
+                if(item.checkLike == true){
+                    text += "<img class='likeImg' src='https://letspl.me/assets/images/ic-letspler-heart-full.png'>";
+                }else {
+                    text += "<img class='likeImg' src='https://letspl.me/assets/images/ic-letspler-heart-empty.png'>";
+                }
                 text += "<p class='likeCount'>"+ item.communityLikeCount + "</p>";
                 text += "</button>";
                 text += "<div class='replyComponent_replyOnOff__QKoso'>";
@@ -329,7 +335,7 @@ $(document).ready(function () {
             text += "<span class='loungeCardContentsComponents_loungeContentsTitleBoxNewsTxt__9_Iok'>자유게시글</span>";
             text += "<div class='loungeCardContentsComponents_loungeContentsTitleDate__1-Xd2'>";
             text += "<h3 class='comTitle loungeCardContentsComponents_title__1s8RE'>" + item.communityTitle + "</h3>";
-            text += "<span class='loungeCardContentsComponents_date__3pY5X'>" +  communityService.timeForToday(item.updatedDate) + "</span>";
+            text += "<span class='loungeCardContentsComponents_date__3pY5X'>" +  communityService.timeForToday(item.createdDate) + "</span>";
             text += "</div></div>";
             text += "<div class='comContent loungeCardContentsComponents_loungeContentsAreaDefault__3QCG4'>"+ item.communityContent +"</div>";
             text += "<div class='loungeCardContentsComponents_loungeContentsMoreButtonWrap__1LR4v'>";
@@ -338,7 +344,11 @@ $(document).ready(function () {
             text += "<div class='replyComponent_reply__3l-Wc'>";
             text += "<div class='replyComponent_replyButtonBox__2O3ME'>";
             text += "<button type='button' class='likeBtn buttonComponents_button__1hvQa buttonComponents_plain__1ljW5 button_heart_1ljw5'>";
-            text += "<img class='likeImg' src='https://letspl.me/assets/images/ic-letspler-heart-empty.png'>";
+            if(item.checkLike == true){
+                text += "<img class='likeImg' src='https://letspl.me/assets/images/ic-letspler-heart-full.png'>";
+            }else {
+                text += "<img class='likeImg' src='https://letspl.me/assets/images/ic-letspler-heart-empty.png'>";
+            }
             text += "<p class='likeCount'>"+ item.communityLikeCount + "</p>";
             text += "</button>";
             text += "<div class='replyComponent_replyOnOff__QKoso'>";
@@ -440,16 +450,15 @@ $(document).ready(function () {
     $("div.centerSectionBox").on("click",".likeBtn",function () {
         let up = $(this).closest(".loungeCard").children(".cid").val();
 
-        $("#cidUpdate").val(up);
+        console.log(up);
+        // $("#cidUpdate").val(up);
         $.ajax({
-            url: "/community/communityLikeUpdate",
-            type: "put",
-            data: JSON.stringify({
-                communityId : $("#cidUpdate").val(),
-                userId: $("#user").val()
-            }),
+            url: "/community/communityLike",
+            type: "post",
+            data: JSON.stringify({communityId : up}),
             contentType: "application/json; charset=utf-8",
             success: function(){
+                // show();
                 showUpdate();
                 // like();
             },

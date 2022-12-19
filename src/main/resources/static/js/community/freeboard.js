@@ -119,11 +119,16 @@ $(document).ready(function(){
 
 //좋아요 버튼
     $("div.centerSectionBox").on("click",".likeBtn",function () {
+        let likeP = $(this).children(".likeCount").val();
         if($(this).children(".likeImg").attr("src")=='https://letspl.me/assets/images/ic-letspler-heart-empty.png'){
-            $(this).children(".likeImg").attr("src","https://letspl.me/assets/images/ic-letspler-heart-full.png")
-            $(this).children(".likeCount").text("1");
+            // $(this).children(".likeImg").attr("src","https://letspl.me/assets/images/ic-letspler-heart-full.png")
+            // console.log(parseInt(likeP+1));
+            // $(this).children(".likeCount").text(parseInt(likeP+1));
         }else{
-            $(this).children(".likeImg").attr("src",'https://letspl.me/assets/images/ic-letspler-heart-empty.png')
+            // $(this).children(".likeImg").attr("src",'https://letspl.me/assets/images/ic-letspler-heart-empty.png')
+            // console.log(parseInt(likeP-1));
+
+            // $(this).children(".likeCount").text(parseInt(likeP-1));
         }
     });
 

@@ -25,6 +25,8 @@ public class CommunityDTO {
 
     private String userNickName;
 
+    private Boolean checkLike;
+
     public Community toEntity(){
         return Community.builder()
                 .communityTitle(communityTitle)
@@ -72,4 +74,18 @@ public class CommunityDTO {
         this.createdDate = createdDate;
         this.userId = userId;
     }
+
+    @QueryProjection
+    public CommunityDTO(Long communityId, String communityTitle, String communityContent, int communityLikeCount, User user, LocalDateTime createdDate, LocalDateTime updatedDate, Boolean checkLike) {
+        this.communityId = communityId;
+        this.communityTitle = communityTitle;
+        this.communityContent = communityContent;
+        this.communityLikeCount = communityLikeCount;
+        this.user = user;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.checkLike = checkLike;
+    }
+
+
 }

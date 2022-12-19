@@ -41,7 +41,7 @@ public class CommunityController {
         model.addAttribute("studys", studyDTOS);
         return "app/community/freeboard";
     }
-//    자유게시판 글잓성
+//    자유게시판 글작성
     @PostMapping("/community")
     public RedirectView communityOk(CommunityDTO communityDTO){
         communityService.saveCommunity(communityDTO);

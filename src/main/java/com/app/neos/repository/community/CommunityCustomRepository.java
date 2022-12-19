@@ -17,7 +17,9 @@ public interface CommunityCustomRepository {
 //  스터디 5개 목록
     public List<StudyDTO> findStudy();
 
-    public Slice<CommunityDTO> findAllPage(Pageable pageable);
+    public Slice<CommunityDTO> findAllPageS(Pageable pageable);
+
+    public List<CommunityDTO> findAllPage(Pageable pageable);
 
     public CommunityDTO findByCommunityId(Long communityId);
 
@@ -28,5 +30,9 @@ public interface CommunityCustomRepository {
 //    public CommunityDTO update(Long communityId);
 
 //    public List<CommunityLikeDTO> findByCommunityAndUser(Long communityId, Long userId);
+
+
+//    좋아요 할 때 쓸 커뮤니티 PK만 다 가지고 오기
+    public List<CommunityDTO> findPK();
 
 }

@@ -98,8 +98,21 @@ public class FixServiceTest {
 //
 //
 //}
+
+//@Test
+//    public void createTest(){
+//        ChattingContentDTO chattingContentDTO = new ChattingContentDTO();
+//            chattingContentDTO.setChatting(chattingRepository.findById(6L).get());
+//            chattingContentDTO.setMy(chattingRepository.findById(6L).get().getMyId());
+//            chattingContentDTO.setReceiver(chattingRepository.findById(6L).get().getReceiverId());
+//            chattingContentDTO.setChatType(ChatType.ENTER);
+//            chattingContentDTO.setChattingContent("테스트! ! !");
 //
+//            ChattingContent chattingContent = chattingContentDTO.toEntity();
 //
+//            chattingContent.changeMy(chattingContentDTO.getMy());
+//            chattingContent.changeReceiver(chattingContentDTO.getReceiver());
+//            chattingContent.changeChatting(chattingContentDTO.getChatting());
 //
-//
-//
+//            fixService.saveChatting(chattingContentDTO);
+//        }

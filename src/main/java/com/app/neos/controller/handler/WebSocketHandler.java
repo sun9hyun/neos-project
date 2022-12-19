@@ -31,12 +31,9 @@ public class WebSocketHandler extends TextWebSocketHandler {
     private final ChatContentCustomRepository chatContentCustomRepository;
     private static Map<ChattingRoom, WebSocketSession> sessions = new HashMap<>();
 
-
-//
-//
-//
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws IOException {
+//       메세지 전송 시 호출되는 메서드
         log.info("메세지 전송 = {} : {}", session, message.getPayload());
         String msg = message.getPayload();
         log.info("======");
@@ -44,19 +41,6 @@ public class WebSocketHandler extends TextWebSocketHandler {
         log.info("=====");
 
         ChattingContentDTO chattingContentDTO = objectMapper.readValue(msg, ChattingContentDTO.class);
-
-//        ChattingDTO chattingDTO = chattingCustomRepository.findByChatting(chattingContentDTO.getChatting().getChattingId());
-//        Long chattingId = chattingCustomRepository.findChattingAndUserId(chattingContentDTO.getReceiverId(),chattingContentDTO.getChattingId());
-//        chattingContentDTO.setReceiverId(chattingId);
-//        chattingContentDTO.getMyId()값 null
-//        ChattingRoomDTO chattingRoomDTO = (ChattingRoomDTO) chatContentCustomRepository.findById(chattingContentDTO.getMyId(), chattingContentDTO.getReceiverId());
-//        log.info(chattingRoomDTO.toString());
-
-//        log.info(String.valueOf(chattingContentDTO.getReceiverId()));
-//        log.info(String.valueOf(chattingContentDTO.getMyId()));
-//        Long chattingRoomId = fixService.findByReceiverId(chattingContentDTO.getChattingRoomId());
-//        chattingContentDTO.setChattingRoomId(chattingRoomId);
-//        List<ChattingContentDTO> chattingRoomDTO = chatContentCustomRepository.findById(chattingContentDTO.getChattingRoomId());
         log.info(String.valueOf(session.getAttributes().get("chattingRoomId")));
         log.info(chattingContentDTO.toString());
         chattingRoomDTO.handleMessage(session, chattingContentDTO, objectMapper);

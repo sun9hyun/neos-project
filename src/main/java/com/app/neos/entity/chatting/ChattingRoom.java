@@ -29,6 +29,7 @@ import java.time.LocalDateTime;
 
 public class ChattingRoom extends ChatPeriod {
     @Id @GeneratedValue
+
     private Long chattingRoomId;
 
     @ManyToOne(fetch = FetchType.LAZY)

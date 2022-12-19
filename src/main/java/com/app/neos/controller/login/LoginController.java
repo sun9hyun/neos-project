@@ -45,10 +45,10 @@ public class LoginController {
             String realId = id+"k";
             UserDTO userDTO = loginService.login(realId);
             if(userDTO == null){
-                return new RedirectView("/main/main?login=KakaoFalse");
+                return new RedirectView("/main?login=KakaoFalse");
             }else {
                 if(userDTO.getUserCollegeCertify().equals("false")){
-                    return new RedirectView("/main/main?login=need");
+                    return new RedirectView("/main?login=need");
                 }
                 session.setAttribute("loginUser",userDTO.getUserId());
                 session.setAttribute("loginUserName",userDTO.getUserNickName());
@@ -61,7 +61,7 @@ public class LoginController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return new RedirectView("/main/main?login=true");
+        return new RedirectView("/main?login=true");
     }
 
 
@@ -75,10 +75,10 @@ public class LoginController {
             String realId = id+"-naver";
             UserDTO userDTO = loginService.login(realId);
             if(userDTO == null){
-                return new RedirectView("/main/main?login=NaverFalse");
+                return new RedirectView("/main?login=NaverFalse");
             }else {
                 if(userDTO.getUserCollegeCertify().equals("false")){
-                    return new RedirectView("/main/main?login=need");
+                    return new RedirectView("/main?login=need");
                 }
                 session.setAttribute("loginUser",userDTO.getUserId());
                 session.setAttribute("loginUserName",userDTO.getUserNickName());
@@ -90,7 +90,7 @@ public class LoginController {
             e.printStackTrace();
         }
 
-        return new RedirectView("/main/main?login=true");
+        return new RedirectView("/main?login=true");
     }
 
     @GetMapping("/google")
@@ -99,10 +99,10 @@ public class LoginController {
         String realId = id+"-google";
         UserDTO userDTO = loginService.login(realId);
         if(userDTO == null){
-            return new RedirectView("/main/main?login=GoogleFalse");
+            return new RedirectView("/main?login=GoogleFalse");
         }else {
             if(userDTO.getUserCollegeCertify().equals("false")){
-                return new RedirectView("/main/main?login=need");
+                return new RedirectView("/main?login=need");
             }
             session.setAttribute("loginUser",userDTO.getUserId());
             session.setAttribute("loginUserName",userDTO.getUserNickName());
@@ -111,7 +111,7 @@ public class LoginController {
             session.setAttribute("userFile",userDTO.getUserFile());
         }
 
-        return new RedirectView("/main/main?login=true");
+        return new RedirectView("/main?login=true");
     }
 
 

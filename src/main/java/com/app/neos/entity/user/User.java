@@ -120,7 +120,6 @@ public class User extends Period {
     public void levelUp(){
         int levelUpSection = 0;
         int realLevel = 0;
-        if(levelUpCheck()){
             levelUpSection = this.userNeosPower.getUserNeosPowerAbility() / 100;
            if(levelUpSection>=0&&levelUpSection<1){
                realLevel=1;
@@ -146,7 +145,6 @@ public class User extends Period {
             this.userNeosPower.setUserNeosPowerLevel(realLevel);
             this.userNeosPower.setUserNeosBadge("/images/fix/neosLevel"+realLevel+".png");
         }
-    }
 
 
 

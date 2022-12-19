@@ -72,7 +72,7 @@ public class JoinController {
             redirectAttributes.addFlashAttribute("tokenId",realId);
             redirectAttributes.addFlashAttribute("oAuthUserProfile",userProfile);
             if(joinService.duplicateId(realId)){
-                return new RedirectView("/main/main?check=true");
+                return new RedirectView("/main?check=true");
             }
 
         } catch (Exception e) {
@@ -86,7 +86,7 @@ public class JoinController {
     public RedirectView joinOk(UserDTO userDTO,RedirectAttributes redirectAttributes){
         joinService.join(userDTO);
         if(userDTO.getUserCollegeCertify().equals("noNeed")){
-            return new RedirectView("/main/main?join=true");
+            return new RedirectView("/main?join=true");
         }
         redirectAttributes.addAttribute("token", userDTO.getUserOAuthId());
         redirectAttributes.addAttribute("email",userDTO.getUserCollegeEmail());
@@ -112,7 +112,7 @@ public class JoinController {
             redirectAttributes.addFlashAttribute("oAuthUserProfile","/images/fix/userBasic.png");
             redirectAttributes.addFlashAttribute("phone",naverPhoneNumber);
             if(joinService.duplicateId(naverId)){
-                return new RedirectView("/main/main?check=true");
+                return new RedirectView("/main?check=true");
             }
 
         } catch (Exception e) {
@@ -135,10 +135,15 @@ public class JoinController {
         redirectAttributes.addFlashAttribute("tokenId",oauthId);
         redirectAttributes.addFlashAttribute("oAuthUserProfile",userFile);
         if(joinService.duplicateId(oauthId)){
-            return new RedirectView("/main/main?check=true");
+            return new RedirectView("/main?check=true");
         }
 
         return new RedirectView("/join/join-page-details");
+    }
+
+    @GetMapping("/certification")
+    public String certification(){
+        return "app/main/certificationNeed";
     }
 
 

@@ -30,7 +30,7 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("/main/*")
+@RequestMapping("/*")
 public class MainController {
 
     private final FixService fixService;

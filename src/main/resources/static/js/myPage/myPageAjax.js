@@ -12,7 +12,7 @@ let myPageService = (function () {
     // 회원 탈퇴
     function deleteUser(userId, callback, error) {
         $.ajax({
-            url: "/delete/" + userId,
+            url: "/my-detail/delete/" + userId,
             type: "get",
             success: function(result){
                 if(callback){

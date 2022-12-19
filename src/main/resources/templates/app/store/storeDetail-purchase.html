@@ -81,7 +81,7 @@
                     <div class="projectTab projectInfoTabContents active">
                         <div class="section statusSection">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <h1 class="tabTit" style="padding: 0 !important;">첨부파일</h1>
+                                <h1 class="tabTit" style="padding: 0 !important;">첨부파일(<span th:text="*{storePoint}"></span>P)</h1>
                                 <button type="button" class="cashButton" disabled="disabled" style="background-color: #fff; color: #1A7CFF; border: 1px solid #1A7CFF; ">
                                     결제완료
                                 </button>
@@ -177,8 +177,10 @@
                         <div class="qrImg" style="text-align: center;"
                              th:if="*{storeFlieDTOS[0].getStoreFileName != null}">
                             <a th:href="@{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}">
-                                <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}"
+                                <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://192.168.181.38:10718' + @{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}"
                                      alt="">
+<!--                                <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[0].getStoreFilePath + '/' + storeFlieDTOS[0].getStoreFileUuid + '_' + storeFlieDTOS[0].getStoreFileName})}"-->
+<!--                                     alt="">-->
                             </a>
                             <p class="checkboxTit"
                                th:text="*{storeFlieDTOS[0].getStoreFileName + '(' + storeFlieDTOS[0].storeFileSize/1024 + 'KB' + ')'}">
@@ -187,8 +189,10 @@
                         <div class="qrImg" style="text-align: center;"
                              th:if="*{storeFlieDTOS.size() > 1 and (storeFlieDTOS[1].getStoreFileName != null)}">
                             <a th:href="@{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}">
-                                <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}"
+                                <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://192.168.181.38:10718' + @{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}"
                                      alt="">
+<!--                                <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[1].getStoreFilePath + '/' + storeFlieDTOS[1].getStoreFileUuid + '_' + storeFlieDTOS[1].getStoreFileName})}"-->
+<!--                                     alt="">-->
                             </a>
                             <p class="checkboxTit"
                                th:text="*{storeFlieDTOS[1].getStoreFileName + '(' + storeFlieDTOS[1].storeFileSize/1024 + 'KB' + ')'}">
@@ -196,8 +200,10 @@
                         </div>
                         <div class="qrImg qrLast" style="text-align: center;" th:if="*{storeFlieDTOS.size() > 2}">
                             <a th:href="@{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}">
-                                <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}"
+                                <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://192.168.181.38:10718' + @{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}"
                                      alt="">
+<!--                                <img th:src="'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=http://localhost:10718' + @{/file/download(fileName=*{storeFlieDTOS[2].getStoreFilePath + '/' + storeFlieDTOS[2].getStoreFileUuid + '_' + storeFlieDTOS[2].getStoreFileName})}"-->
+<!--                                     alt="">-->
                             </a>
                             <p class="checkboxTit"
                                th:text="*{storeFlieDTOS[2].getStoreFileName + '(' + storeFlieDTOS[2].storeFileSize/1024 + 'KB' + ')'}">

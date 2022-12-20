@@ -1,6 +1,7 @@
 package com.app.neos.controller.main;
 
 import com.app.neos.aspect.annotation.QuestionReplyAlarm;
+import com.app.neos.domain.banner.BannerDTO;
 import com.app.neos.domain.chatting.ChattingContentDTO;
 import com.app.neos.domain.chatting.ChattingRoomDTO;
 import com.app.neos.domain.community.CommunityDTO;
@@ -81,6 +82,9 @@ public class MainController {
 //      유저 아이디 넘기기
         model.addAttribute("userId", loginUser == null ? 0 : loginUser);
 
+//        배너 정보
+        List<BannerDTO> bannerDTOS = mainService.findAllBanner();
+        model.addAttribute("banners", bannerDTOS);
 
 
         return "app/main/main";

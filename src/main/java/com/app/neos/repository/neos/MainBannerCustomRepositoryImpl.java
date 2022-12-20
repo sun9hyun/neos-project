@@ -4,6 +4,7 @@ import com.app.neos.domain.banner.BannerDTO;
 import com.app.neos.domain.banner.QBannerDTO;
 import com.app.neos.domain.store.StoreDTO;
 import com.app.neos.entity.banner.QBanner;
+import com.app.neos.type.banner.BannerStatus;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -24,31 +25,45 @@ public class MainBannerCustomRepositoryImpl implements MainBannerCustomRepositor
     private final JPAQueryFactory jpaQueryFactory;
 
 
+//    @Override
+//    public Slice<BannerDTO> findAllBannerpage(Pageable pageable) {
+//
+//        List<BannerDTO> bannerDTOS = jpaQueryFactory.select(new QBannerDTO(
+//
+//                banner.bannerId,
+//                banner.bannerTitle,
+//                banner.bannerUrl,
+//                banner.bannerStatus
+//
+//        ))
+//
+//                .from(banner)
+//                .orderBy(banner.updatedDate.desc())
+//                .offset(pageable.getOffset())
+//                .limit(pageable.getPageSize() + 1)
+//                .fetch();
+//
+//        ArrayList<BannerDTO> content = (ArrayList<BannerDTO>)bannerDTOS;
+//
+//        boolean hasNext = false;
+//        if (content.size() > pageable.getPageSize()){
+//            content.remove(pageable.getPageSize());
+//            hasNext=true;
+//        }
+//        return new SliceImpl<>(content , pageable , hasNext);
+//    }
+
     @Override
-    public Slice<BannerDTO> findAllBannerpage(Pageable pageable) {
-
-        List<BannerDTO> bannerDTOS = jpaQueryFactory.select(new QBannerDTO(
-
+    public List<BannerDTO> findAllBanner() {
+        return jpaQueryFactory.select(new QBannerDTO(
                 banner.bannerId,
                 banner.bannerTitle,
                 banner.bannerUrl,
                 banner.bannerStatus
 
         ))
-
                 .from(banner)
-                .orderBy(banner.updatedDate.desc())
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize() + 1)
+                .where(banner.bannerStatus.eq(BannerStatus.개제중))
                 .fetch();
-
-        ArrayList<BannerDTO> content = (ArrayList<BannerDTO>)bannerDTOS;
-
-        boolean hasNext = false;
-        if (content.size() > pageable.getPageSize()){
-            content.remove(pageable.getPageSize());
-            hasNext=true;
-        }
-        return new SliceImpl<>(content , pageable , hasNext);
     }
 }

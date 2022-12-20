@@ -61,8 +61,11 @@
         <!-- <th:block th:each="banner:${banner}" th:object="${banner}">-->
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img class="banner1" src="/images/main/banner1.png"></div>
-                <div class="swiper-slide"><img class="banner2" src="/images/main/banner2.png"></div>
+                <th:block th:each="banner:${banners}" th:object="${banner}">
+                    <div class="swiper-slide mainBanner" style="width: 1903px; height: 436px;"><img class="banner1" th:src="*{bannerUrl}" style="display: block; width: 100%; height: 100%; object-fit: cover;"></div>
+<!--                    <div class="swiper-slide"><img class="banner1" src="/images/main/banner1.png"></div>-->
+<!--                    <div class="swiper-slide"><img class="banner2" src="/images/main/banner2.png"></div>-->
+                </th:block>
                 <!-- <div class="swiper-slide"><img class="banner1"
                 src="banner3.jpg"></div> -->
             </div>

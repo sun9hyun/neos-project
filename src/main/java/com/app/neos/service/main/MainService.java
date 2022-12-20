@@ -38,8 +38,9 @@ public class MainService {
     private final MainUserCustomRepository mainUserCustomRepository;
 
 
-    public void saveUser(User user) { userRepository.save(user);}
-
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
 
 
 //    유저 불러오기
@@ -47,18 +48,18 @@ public class MainService {
 //        return neosUserCustomRepository.findAllPage(pageable);
 //    }
 
-    public List<UserDTO> findUserPage(){
+    public List<UserDTO> findUserPage() {
         return mainUserCustomRepository.findUserForMain().stream().map(User::toDTO).collect(Collectors.toList());
     }
 
-//    스터디 불러오기
-    public List<StudyDTO> findStudyPage(){
+    //    스터디 불러오기
+    public List<StudyDTO> findStudyPage() {
         return neosStudyCustomRepository.findStudyForMain().stream().map(Study::toDTO).collect(Collectors.toList());
 
     }
 
-//    상점 불러오기
-    public Slice<StoreDTO> findStorePage(Pageable pageable){
+    //    상점 불러오기
+    public Slice<StoreDTO> findStorePage(Pageable pageable) {
         return mainStoreCustomRepository.findAllPage(pageable);
     }
 //    public List<StoreDTO> findStorePage(){
@@ -66,20 +67,27 @@ public class MainService {
 //    }
 
 
-////    커뮤니티 불러오기
-    public Slice<CommunityDTO> findCommunityPage(Pageable pageable){
+    ////    커뮤니티 불러오기
+    public Slice<CommunityDTO> findCommunityPage(Pageable pageable) {
         return communityCustomRepository.findAllPageS(pageable);
     }
 
 
-//  배너 불러오기
-    public Slice<BannerDTO> findBannerPage(Pageable pageable){
-        return mainBannerCustomRepository.findAllBannerpage(pageable);
+//
+////  배너 불러오기
+
+//    public Slice<BannerDTO> findBannerPage(Pageable pageable){
+//        return mainBannerCustomRepository.findAllBannerpage(pageable);
+//    }
+
+    // 배너 불러오기
+    public List<BannerDTO> findAllBanner() {
+        return mainBannerCustomRepository.findAllBanner();
     }
 
 //  유저 상세
-    public UserDTO findByUserId(Long userId){
-        return userCustomRepository.findById(userId);
-    }
+        public UserDTO findByUserId (Long userId){
+            return userCustomRepository.findById(userId);
+        }
 
     }

@@ -137,8 +137,8 @@
                                 <input type="hidden" th:value="${session.loginUser}" name="userId"></input>
                                 <input type="hidden" name="storeReplySecret" class="replyStatus" value="PUBLIC"></input>
                                 <input type="hidden" name="storeId" th:value="*{storeId}" class="storeId"></input>
-                                <input type="hidden" name="storePoint" th:value="*{storePoint}" class="storePoint"></input>
-                                <input type="hidden" name="userNeosPoint" th:value="${user.userNeosPoint}" class="userNeosPoint"></input>
+                                <input type="text" name="storePoint" th:value="*{storePoint}" class="storePoint"></input>
+                                <input type="text" name="userNeosPoint" th:value="${user.userNeosPoint}" class="userNeosPoint"></input>
                                 <div class="section feedInputSection ">
                                     <div class="feedInputWrap">
                                         <textarea class="textarea" name="storeReplyContent"
@@ -233,7 +233,7 @@
         <div class="modalContent">
             <p>자료금액 : <span th:text="${store.storePoint}"></span></p>
             <p>보유금액 : <span th:text="${user.userNeosPoint}"></span></p>
-            <p>잔여금액 : <span th:text="${store.storePoint - user.userNeosPoint}"></span></p>
+            <p>잔여금액 : <span th:text="${user.userNeosPoint - store.storePoint}"></span></p>
         </div>
         <div class="btnWrap doubleBtnWrap">
             <button class="btn whiteBtn">아니요</button>

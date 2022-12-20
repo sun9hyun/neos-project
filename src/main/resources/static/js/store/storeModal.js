@@ -49,43 +49,19 @@ $(".cashButton").on("click", function (e) {
     let storePoint = $(".storePoint").val();
     let userPoint = $(".userNeosPoint").val();
 
-    if(userPoint >= storePoint){
+    if(parseInt(userPoint) >= parseInt(storePoint)){
+        console.log("구매 가능");
+        console.log(storePoint);
+        console.log(userPoint);
         $(".modalWrapOpen").show();
         $(".modal1").css('display','inline-block');
-    }else{
+    }else if(parseInt(userPoint) < parseInt(storePoint)){
+        console.log("구매 불가");
+        console.log($(".storePoint").val());
+        console.log($(".userNeosPoint").val());
         $(".modalWrapOpen").show();
         $(".modal2").css('display','inline-block');
     }
 
 })
 
-// 작성완료 버튼 클릭
-function submit() {
-    console.log($(".storeStatus").val());
-    console.log($(".cashCheck").val());
-    console.log($(".textInput").val());
-    console.log($(".storeContent").val());
-    console.log($(".cashCheck").val().length);
-    console.log($(".addFile").length);
-
-    if($(".textInput").val().length < 3){ // 제목 조건 미충족
-        $(".modalWrapOpen").show();
-        $(".modal2").css('display','inline-block');
-    }else if($(".addFile").length < 1){ // 자료 조건 미충족
-        $(".modalWrapOpen").show();
-        $(".modal5").css('display','inline-block');
-    }else if($(".storeContent").val().length < 1){ // 내용 조건 미충족
-        $(".modalWrapOpen").show();
-        $(".modal3").css('display','inline-block');
-    }else if($(".storeStatus").val() == "FREE"){  // 작성 완료
-        $(".cashCheck").val("0");
-        $(".modalWrapOpen").show();
-        $(".modal4").css('display','inline-block');
-    }else if($(".cashCheck").val().length < 4){ // 최소 포인트 조건 미충족
-        $(".modalWrapOpen").show();
-        $(".modal1").css('display','inline-block');
-    }else if($(".cashCheck").val().length >= 4){
-        $(".modalWrapOpen").show();
-        $(".modal4").css('display','inline-block');
-    }
-}

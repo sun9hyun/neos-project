@@ -14,9 +14,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @SpringBootTest
@@ -127,6 +130,12 @@ public class CommunityServiceTest {
 //        communityService.saveCommunity(community);
     }
 
+
+    @Test
+    public void test111(){
+
+        communityService.findAllPage(PageRequest.of(4, 12), 38L).stream().map(CommunityDTO::toString).forEach(log::info);
+    }
 
 
 }

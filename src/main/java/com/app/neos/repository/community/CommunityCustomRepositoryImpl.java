@@ -75,7 +75,7 @@ public class CommunityCustomRepositoryImpl implements CommunityCustomRepository 
 
 
     @Override
-    public Slice<CommunityDTO> findAllPage(Pageable pageable) {
+    public Slice<CommunityDTO> findAllPageS(Pageable pageable) {
         List<CommunityDTO> communityDTOList = jpaQueryFactory.select(new QCommunityDTO(
                 community.communityId,
                 community.communityTitle,
@@ -102,6 +102,26 @@ public class CommunityCustomRepositoryImpl implements CommunityCustomRepository 
     }
 
     @Override
+    public List<CommunityDTO> findAllPage(Pageable pageable) {
+        List<CommunityDTO> communityDTOList = jpaQueryFactory.select(new QCommunityDTO(
+                community.communityId,
+                community.communityTitle,
+                community.communityContent,
+                community.communityLikeCount,
+                community.user,
+                community.createdDate,
+                community.updatedDate
+        ))
+                .from(community)
+                .orderBy(community.createdDate.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize()+1)
+                .fetch();
+
+        return communityDTOList;
+    }
+
+    @Override
     public CommunityDTO findByCommunityId(Long communityId) {
         return jpaQueryFactory.select(new QCommunityDTO(
                 community.communityId,
@@ -115,6 +135,22 @@ public class CommunityCustomRepositoryImpl implements CommunityCustomRepository 
                 .from(community)
                 .where(community.communityId.eq(communityId))
                 .fetchOne();
+    }
+
+    @Override
+    public List<CommunityDTO> findPK() {
+        List<CommunityDTO> communityDTOList = jpaQueryFactory.select(new QCommunityDTO(
+                community.communityId,
+                community.communityTitle,
+                community.communityContent,
+                community.communityLikeCount,
+                community.user,
+                community.createdDate,
+                community.updatedDate
+        ))
+                .from(community)
+                .fetch();
+        return communityDTOList;
     }
 
 //    @Override

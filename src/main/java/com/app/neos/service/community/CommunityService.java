@@ -20,9 +20,13 @@ import com.app.neos.repository.user.UserCustomRepository;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.type.point.NeosPowerContent;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import org.springframework.data.domain.SliceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -128,6 +132,15 @@ public class CommunityService {
         return communityLikeCustomRepository.duplicate(userId, communityId);
     }
 
+    //    좋아요 취소하기
+    @Transactional
+    public void likeCancel(Long userId, Long communityId){
+        Community community = communityRepository.findById(communityId).get();
+        community.updateMinusCommunityLikeCount(1);
+
+        communityLikeRepository.delete(communityLikeCustomRepository.findByIdAndCommunityId(userId, communityId));
+    }
+
     //    좋아요 하기
     @Transactional
     public boolean communityLike(Long userId, Long communityId){
@@ -138,10 +151,18 @@ public class CommunityService {
             communityLikeRepository.save(communityLike);
 
             Community community = communityRepository.findById(communityId).get();
-            community.updateCommunityLikeCount(community.getCommunityLikeCount()+1);
+            community.updateCommunityLikeCount(1);
         }
+//        else{
+//            Community community = communityRepository.findById(communityId).get();
+//            community.updateMinusCommunityLikeCount(community.getCommunityLikeCount()-1);
+//
+//            likeCancel(userId, communityId);
+//        }
         return false;
     }
+
+
 
     //--------------------------------------------------------------------------------------------------------
 
@@ -175,7 +196,22 @@ public class CommunityService {
 //    }
 
 
+    public Slice<CommunityDTO> findAllPage(Pageable pageable, Long userId){
+        List<CommunityDTO> communityDTOS = communityCustomRepository.findAllPage(pageable);
 
+        for (CommunityDTO communityDTO: communityDTOS) {
+            communityDTO.setCheckLike(communityLikeCustomRepository.checkLike(userId,communityDTO.getCommunityId()));
+        }
+
+        ArrayList<CommunityDTO> content = (ArrayList<CommunityDTO>)communityDTOS;
+
+        boolean hasNext = false;
+        if(content.size() > pageable.getPageSize()){
+            content.remove(pageable.getPageSize());
+            hasNext=true;
+        }
+        return new SliceImpl<>(content,pageable,hasNext);
+    }
 
 
 

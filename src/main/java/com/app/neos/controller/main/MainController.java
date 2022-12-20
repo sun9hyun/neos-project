@@ -69,7 +69,7 @@ public class MainController {
 
         storeDTOS.stream().map(StoreDTO::toString).forEach(log::info);
 
-//      커뮤니티 정보
+////      커뮤니티 정보
         Slice<CommunityDTO> communityDTOS = mainService.findCommunityPage(pageable);
         model.addAttribute("community" , communityDTOS);
 

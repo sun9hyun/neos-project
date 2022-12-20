@@ -1,7 +1,9 @@
 package com.app.neos.controller.community;
 
 import com.app.neos.domain.community.CommunityDTO;
+import com.app.neos.entity.community.Community;
 import com.app.neos.repository.community.CommunityCustomRepository;
+import com.app.neos.repository.community.CommunityRepository;
 import com.app.neos.service.community.CommunityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -18,12 +20,17 @@ import java.util.List;
 @RequestMapping("/community/*")
 public class CommunityRestController {
     private final CommunityService communityService;
+    private final CommunityRepository communityRepository;
     private final CommunityCustomRepository communityCustomRepository;
 
     //     게시글 전체 조회
     @GetMapping("/communityList")
-    public Slice<CommunityDTO> list(@PageableDefault(size = 5, sort = "updatedDate", direction = Sort.Direction.DESC) Pageable pageable){
-        return communityCustomRepository.findAllPage(pageable);
+    public Slice<CommunityDTO> list(@PageableDefault(size = 5, sort = "updatedDate", direction = Sort.Direction.DESC) Pageable pageable, HttpSession session){
+        Long userId = (Long)session.getAttribute("loginUser");
+        if(userId == null){
+            userId = 0L;
+        }
+        return communityService.findAllPage(pageable, userId);
     }
 
     //     게시글 등록
@@ -61,14 +68,24 @@ public class CommunityRestController {
 
 
     //     게시글 좋아요 수정2
-//    @PutMapping("/communityLike")
-//    public String like(@RequestBody Long userId, Long communityId){
-//        boolean check = communityService.checkLike(userId, communityId);
-//        if (check){
-//            communityService.communityLike(userId, communityId);
-//        }
-//        return "like success";
-//    }
+    @PostMapping("/communityLike")
+    public String like(@RequestBody CommunityDTO communityDTO, HttpSession session){
+        Long userId = (Long)session.getAttribute("loginUser");
+        System.out.println("********************* communityLike : 들어옴*********************" + userId);
+        Long communityId = communityDTO.getCommunityId();
+
+        boolean check = communityService.checkLike(userId, communityId);
+        System.out.println("********************* communityLike check : 들어옴*********************" + check);
+
+        if (!check){
+            communityService.communityLike(userId, communityId);
+            System.out.println("********************* communityLike check : if 들어옴 *********************");
+        }else {
+            communityService.likeCancel(userId, communityId);
+            System.out.println("********************* communityLike check : likeCancel 들어옴 *********************");
+        }
+        return "like success";
+    }
 
 
     //    @GetMapping("/communityDetail")

@@ -66,9 +66,9 @@ public class MainService {
 //    }
 
 
-//    커뮤니티 불러오기
+////    커뮤니티 불러오기
     public Slice<CommunityDTO> findCommunityPage(Pageable pageable){
-        return communityCustomRepository.findAllPage(pageable);
+        return communityCustomRepository.findAllPageS(pageable);
     }
 
 

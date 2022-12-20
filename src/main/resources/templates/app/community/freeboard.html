@@ -299,7 +299,7 @@
     /*스터디 상세 페이지 이동 */
     $(".studyDetail").on("click", function (e) {
         e.preventDefault();
-        location.href = "/study/list?studyId=" + $(this).next(".stuDetail").attr("href");
+        location.href = "/study/list/" + $(this).next(".stuDetail").attr("href");
     });
 </script>
 <script src="/js/fix/chatting.js"></script>

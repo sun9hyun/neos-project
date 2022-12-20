@@ -1,9 +1,6 @@
 package com.app.neos.controller.chatting;
 
 import com.app.neos.domain.chatting.ChattingContentDTO;
-import com.app.neos.domain.chatting.ChattingRoomDTO;
-import com.app.neos.entity.chatting.ChattingContent;
-import com.app.neos.entity.chatting.ChattingRoom;
 import com.app.neos.repository.chatting.ChattingContentRepository;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.service.fix.FixService;
@@ -51,13 +48,15 @@ public class ChatRestController {
     //    채팅방 내용 저장
     @PostMapping(value = "/chattingOk", consumes = "application/json", produces = "text/plain; charset=utf-8")
     public String save(@RequestBody ChattingContentDTO chattingContentDTO, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Long loginUser = (Long) session.getAttribute("loginUser");
+        chattingContentDTO.setWriterId(loginUser);
         fixService.saveChatting(chattingContentDTO);
         System.out.println("#############################컨트롤러저장" + chattingContentDTO);
         return "success";
     }
 
     //    채팅방 만들기
-//    @PostMapping(value = "/saveOk", consumes = "application/json", produces = "text/plain; charset=utf-8")
     @GetMapping("/saveOk/{receiverId}/{myRoomId}")
     public String roomSave(@PathVariable("receiverId") Long receiverId,@PathVariable("myRoomId")Long myRoomId){
         fixService.createChattingRoom(receiverId,myRoomId );
@@ -75,7 +74,6 @@ public class ChatRestController {
         log.info("삭제 컨트롤러 $$$$$$$$$$$$$$$44");
         return "delete success";
     }
-
 
 
 }

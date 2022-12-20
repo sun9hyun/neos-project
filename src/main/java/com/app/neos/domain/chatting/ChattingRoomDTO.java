@@ -113,18 +113,22 @@ public class ChattingRoomDTO {
         log.info("********handleMessage");
         log.info(String.valueOf(session.getAttributes().get("chattingRoomId")));
         log.info(chattingContentDTO.toString());
-//        채팅방 세션 값과 chattingRoomId 값이 같다면
-        if (session.getAttributes().get("chattingRoomId") == chattingContentDTO.getChattingRoomId()) {
-//            세션값을 작성자 아이디에 저장
-//
-            sessions.put(chattingContentDTO.getWriterId(), session);
-        }
-        send(chattingContentDTO, objectMapper);
+//        if (session.getAttributes().get("chattingRoomId") == chattingContentDTO.getChattingRoomId()) {
+//         sessions.put(chattingContentDTO.getChattingRoomId(), session);
+//                if (session.getAttributes().get("chattingRoomId") == chattingContentDTO.getChattingRoomId()) {
+                        sessions.put(chattingContentDTO.getWriterId(), session);
+//                    }
+                send(chattingContentDTO, objectMapper);
         log.info(sessions.toString());
+        //        }
+                //        else {
+                        //            chattingContentDTO.setChattingContent(chattingContentDTO.getReceiver().getUserNickName() + " : " + chattingContentDTO.getChattingContent());
+                                //        }
 
-//        sessions.put(chattingRoomDTO.getReceiverRoom(), session);
-//        if (session.getAttributes().get("receiverRoomId") == chattingContentDTO.getChattingRoomId()) {
-//        }
+                                        //        sessions.put(chattingRoomDTO.getReceiverRoom(), session);
+                                        //        if (session.getAttributes().get("receiverRoomId") == chattingContentDTO.getChattingRoomId()) {
+
+        //        }
     }
 
 
@@ -135,11 +139,14 @@ public class ChattingRoomDTO {
 
         TextMessage textMessage = new TextMessage(objectMapper.
                 writeValueAsString(chattingContentDTO.getChattingContent()));
-//       채팅방 세션이랑 채팅방 아이디 값이 같으면 메세지 전달
+
         for (WebSocketSession sess : sessions.values()) {
-            if (sess.getAttributes().get("chattingRoomId") == chattingContentDTO.getChattingRoomId()) {
+//            if (sess.getAttributes().get("chattingRoomId") == chattingContentDTO.getWriterId()) {
+//                log.info(String.valueOf(sess.getAttributes().get("chattingRoomId")));
+//            log.info(String.valueOf(chattingContentDTO.getChattingRoomId()));
                 sess.sendMessage(textMessage);
-            }
+//            }
+
         }
 
         log.info(sessions.toString());

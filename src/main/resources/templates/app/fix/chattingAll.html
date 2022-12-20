@@ -43,9 +43,10 @@
                         <tbody>
                         <th:block th:each="content:${contents}" th:object="${content}" class="object">
                             <!-- 채팅방 목록 확인  -->
-<!--                            <input type="hidden" th:value="*{chattingRoomId}" name="receiverIdRoom">-->
+                            <input type="hidden" th:value="*{myRoom.userId}" class="myWriter">
+                            <input type="hidden" th:value="*{receiverRoom.userId}" class="receiverWriter">
                             <!-- 상대방 아이디 받아오기 -->
-                            <li class="active leftChattingList" th:href="*{chattingRoomId}" >
+                            <li class="active leftChattingList" th:href="*{chattingRoomId}">
                                 <input type="hidden" th:vlaue="*{chattingRoomId}" class="chattingId" >
 <!--                                <input type="hidden" th:text="*{chattingRoomId}"  >-->
 

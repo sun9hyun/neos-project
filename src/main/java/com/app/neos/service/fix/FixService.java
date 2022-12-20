@@ -3,12 +3,17 @@ package com.app.neos.service.fix;
 import com.app.neos.domain.chatting.ChattingContentDTO;
 
 import com.app.neos.domain.chatting.ChattingRoomDTO;
+import com.app.neos.domain.neos.NeosPointDTO;
 import com.app.neos.entity.chatting.ChattingContent;
 import com.app.neos.entity.chatting.ChattingRoom;
+import com.app.neos.entity.neos.NeosPoint;
 import com.app.neos.entity.user.User;
 import com.app.neos.repository.chatting.*;
+import com.app.neos.repository.neos.NeosPointRepository;
+import com.app.neos.repository.store.StoreRepository;
 import com.app.neos.repository.user.UserRepository;
 import com.app.neos.type.chatting.MessageType;
+import com.app.neos.type.point.NeosPointContent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -25,6 +30,9 @@ public class FixService {
     private final ChattingContentRepository chattingContentRepository;
     private final UserRepository userRepository;
     private final ChattingRoomRepository chattingRoomRepository;
+    private final StoreRepository storeRepository;
+    private final NeosPointRepository neosPointRepository;
+
 
 
     //    채팅방 목록 조회
@@ -85,52 +93,32 @@ public class FixService {
     //    채팅방 만들기
 //    public void createChattingRoom(ChattingRoomDTO chattingRoomDTO) {
     public void createChattingRoom(Long receiverId, Long myRoomId) {
-//        Long myRoomId= chattingRoomDTO.getMyRoomId();
-//        Long receiverRoomId = chattingRoomDTO.getReceiverRoomId();
-//        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX"+myRoomId);
-//        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX"+receiverRoomId);
-//
-//        User myRoom = userRepository.findById(myRoomId).get();
-//        User receiverRoom = userRepository.findById(receiverRoomId).get();
-//
-//        chattingRoom.changeMyRoom(myRoom);
-//        chattingRoom.changeReceiverRoom(receiverRoom);
-//        ChattingRoom chattingRoom = chattingRoomDTO.toEntity();
+
         ChattingRoom chattingRoom = new ChattingRoom();
         System.out.println("서비스~~~~~~~~~~~~~~~~~~~~~" +receiverId);
         System.out.println("서비스~~~~~~~~~~~~~~~~~~~~~" +myRoomId);
 
         chattingRoom.changeReceiverRoom(userRepository.findById(receiverId).get());
         chattingRoom.changeMyRoom(userRepository.findById(myRoomId).get());
-//        chattingRoomDTO.setMyRoom(userRepository.findById(myRoomId).get());
-//        chattingRoomDTO.setReceiverRoom(userRepository.findById(c).get());
-//        ChattingRoom chattingRoom = chattingRoomDTO.toEntity();
 
 
+//        int neoPoint = storeRepository.findById(myRoomId).get().getStorePoint();
 
-//        chattingRoom.changeReceiverRoom(userRepository.findById(chattingRoomDTO.getReceiverRoomId()).get());
-//        System.out.println(chattingRoomDTO.getMyRoom());
-//        chattingRoom.changeMyRoom(userRepository.findById(chattingRoomDTO.getMyRoomId()).get());
+        // 채팅 건 사람 포인트 차감(1000)
+        User user = userRepository.findById(myRoomId).get();
+        user.updateNeosPoint(user.getUserNeosPoint() - 1000);
+
+        NeosPointDTO neosPointDTO = new NeosPointDTO();
+        neosPointDTO.setNeosPointMoney(1000*(-1));
+        neosPointDTO.setNeosPointContent(NeosPointContent.채팅연결);
+        NeosPoint neosPoint = neosPointDTO.toEntity();
+        neosPoint.changeUser(user);
+        neosPointRepository.save(neosPoint);
+
         chattingRoomRepository.save(chattingRoom);
         System.out.println("서비스~~~~~~~~~~~~~~~~~~~~~" +chattingRoom);
     }
 
-////    public ChattingDTO findByChattingId(Long chattingId) {
-////        return chattingCustomRepository.findByChatting(chattingId);
-////    }
-//
-//
-//    //    채팅방에서 상대방아이디 찾는 쿼리 작성 (상대방아이디 채팅방 아이디 값이랑 같고)
-//    public Long findChattingAndUserIdRoom(Long chattingId){
-//        return chattingCustomRepository.findChattingAndUserId(chattingId);
-//    }
-//
-//    public List<ChattingRoomDTO> findByReceiverIdChatting(HttpServletRequest request){
-//        HttpSession session = request.getSession();
-//        Long receiverId = (Long)session.getAttribute("receiver");
-//
-//        return chatContentCustomRepository.findByReceiverId(receiverId);
-//    }
-//}
+
 
 }

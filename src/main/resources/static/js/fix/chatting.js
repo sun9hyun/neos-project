@@ -81,6 +81,8 @@ $(".chat").on("click", function () {
 })
 
 $(".letspler_Re .bottom .chatBtn").on("click", function () {
+    $(this).closest(".letspler_Re").find(".receiverId").addClass("chattingDelete")
+
     let name = $(this).closest(".letspler_Re").find(".name").text();
     let text = "";
     text += `<p>예를 누르시면,</p>`

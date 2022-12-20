@@ -5,81 +5,138 @@ let sessionId = $(".sessionLoginUser").val();//내 아이디(세션 아이디)
 let receiverRoomId;
 let nickName;
 let profile;
-let roomId;
 let msg;
+let myWriter;
+let receiverWriter;
+let chatTime;
+let writerType;
+
+chatAjax();
 
 $("li.leftChattingList").on("click", function () {
     receiverRoomId =$(this).attr("href"); // 채팅방 아이디
     nickName = $(this).find(".userId").text(); // 닉네임
     profile = $(this).find(".userProfile").attr("src") // 유저 프로필
+    myWriter = $(this).find(".myWriter").val();
+    receiverWriter = $(this).find(".receiverWriter").val();
+    chatTime = $(this).find(".endTime").text()
+    writerType ;
+    console.log(writerType);
+
     $(".chattingRoomName").text(nickName); // 해당 채팅방 닉네임 변경
     $(".profileImages").attr("src", profile); // 해당 채팅방 유저 프로필 변경
+
     connect();
 
     console.log(receiverRoomId);
     console.log(sessionId);
     console.log(nickName);
+    chatAjax();
 
 
 
-        $.ajax({
-                url: "/chat/chatContent/" + receiverRoomId,
-                type: "get",
-                async: false,
-                success: function (contents) {
-                    if (contents != null) {
-                        getChattingContentList(contents);
-                    }
-                },
-                error: function (xhr, status, err) {
-                    console.log(err);
-                }
-
-
-            }
-        );
-
-        function getChattingContentList(contents) {
-            let text = "";
-            contents.forEach(content => {
-                if (content.writer.userId != sessionId) {
-                    text += " <div class=\"opponent\">";
-                    text += " <div class=\"thumb\">";
-                    text += "<img src='" + content.writer.userFile + "'>";
-                    text += "</div>"
-                    text += "<div class='userIdChatTxt'>"
-                    text += "<span class='userId'>" + content.writer.userNickName + "</span>";
-                    text += "<div class='chatTxt'>";
-                    text += "<span class='chatTxtContents'>";
-                    text += "<a style='color: rgb(51, 51, 51);'>" + content.chattingContent + "</a>";
-                    text += "</span>";
-                    text += "<div class='timeWrap'>";
-                    text += "<span class='time'>" + contentService.getReplyDates(content.chatDate) + "</span>";
-                    text += "</div>";
-                    text += "</div>";
-                    text += "</div>";
-                    text += "</div>";
-                } else {
-                    text += "<div class=\"my chatTxt\">";
-                    text += "<p class=\"chatTxt\">";
-                    text += "<span class=\"chatTxtContents\">"
-                    text += "<a style=\"color: rgb(255, 255, 255);\">" + content.chattingContent;
-                    +"</a>"
-                    text += "</span>"
-                    text += "<div>"
-                    text += "<div class='timeWrap'>";
-                    // text += "<span class=\"check\">" + "읽음" + "</span>";
-                    text += "<span class=\"time\">" + contentService.getReplyDates(content.chatDate) + "</span>";
-                    text += "</div>";
-                    text += "</div>";
-                    text += "</p>";
-                    text += "</div>";
-                }
-            });
-            $("div.chattingRoomWrap").html(text);
-        }
+        // function getChattingContentList(contents) {
+        //     let text = "";
+        //     contents.forEach(content => {
+        //         if (content.writer.userId != sessionId) {
+        //             text += " <div class=\"opponent\">";
+        //             text += " <div class=\"thumb\">";
+        //             text += "<img src='" + content.writer.userFile + "'>";
+        //             text += "</div>"
+        //             text += "<div class='userIdChatTxt'>"
+        //             text += "<span class='userId'>" + content.writer.userNickName + "</span>";
+        //             text += "<input class='writerType2' type='hidden' value='"+ content.writer.userId + "'>";
+        //             text += "<div class='chatTxt'>";
+        //             text += "<span class='chatTxtContents'>";
+        //             text += "<a style='color: rgb(51, 51, 51);'>" + content.chattingContent + "</a>";
+        //             text += "</span>";
+        //             text += "<div class='timeWrap'>";
+        //             text += "<span class='time'>" + contentService.getReplyDates(content.chatDate) + "</span>";
+        //             text += "</div>";
+        //             text += "</div>";
+        //             text += "</div>";
+        //             text += "</div>";
+        //         } else {
+        //             text += "<div class=\"my chatTxt\">";
+        //             text += "<p class=\"chatTxt\">";
+        //             text += "<span class=\"chatTxtContents\">"
+        //             text += "<a style=\"color: rgb(255, 255, 255);\">" + content.chattingContent;
+        //             +"</a>"
+        //             text += "</span>"
+        //             text += "<div>"
+        //             text += "<div class='timeWrap'>";
+        //             text += "<input class='writerType2' type='hidden' value='"+ content.writer.userId + "'>";
+        //             text += "<span class=\"time\">" + contentService.getReplyDates(content.chatDate) + "</span>";
+        //             text += "</div>";
+        //             text += "</div>";
+        //             text += "</p>";
+        //             text += "</div>";
+        //         }
+        //     });
+        //     $("div.chattingRoomWrap").html(text);
+        // }
 
     });
+
+function chatAjax(){
+    $.ajax({
+            url: "/chat/chatContent/" + receiverRoomId,
+            type: "get",
+            async: false,
+            success: function (contents) {
+                if (contents != null) {
+                    getChattingContentList(contents);
+                }
+            },
+            error: function (xhr, status, err) {
+                console.log(err);
+            }
+
+
+        }
+    );
+}
+
+function getChattingContentList(contents) {
+    let text = "";
+    contents.forEach(content => {
+        if (content.writer.userId != sessionId) {
+            text += " <div class=\"opponent\">";
+            text += " <div class=\"thumb\">";
+            text += "<img src='" + content.writer.userFile + "'>";
+            text += "</div>"
+            text += "<div class='userIdChatTxt'>"
+            text += "<span class='userId'>" + content.writer.userNickName + "</span>";
+            text += "<input class='writerType2' type='hidden' value='"+ content.writer.userId + "'>";
+            text += "<div class='chatTxt'>";
+            text += "<span class='chatTxtContents'>";
+            text += "<a style='color: rgb(51, 51, 51);'>" + content.chattingContent + "</a>";
+            text += "</span>";
+            text += "<div class='timeWrap'>";
+            text += "<span class='time'>" + contentService.getReplyDates(content.chatDate) + "</span>";
+            text += "</div>";
+            text += "</div>";
+            text += "</div>";
+            text += "</div>";
+        } else {
+            text += "<div class=\"my chatTxt\">";
+            text += "<p class=\"chatTxt\">";
+            text += "<span class=\"chatTxtContents\">"
+            text += "<a style=\"color: rgb(255, 255, 255);\">" + content.chattingContent;
+            +"</a>"
+            text += "</span>"
+            text += "<div>"
+            text += "<div class='timeWrap'>";
+            text += "<input class='writerType2' type='hidden' value='"+ content.writer.userId + "'>";
+            text += "<span class=\"time\">" + contentService.getReplyDates(content.chatDate) + "</span>";
+            text += "</div>";
+            text += "</div>";
+            text += "</p>";
+            text += "</div>";
+        }
+    });
+    $("div.chattingRoomWrap").html(text);
+}
 
 
 /*
@@ -98,6 +155,7 @@ function add(chattingContent) {
         error: function (xhr, status, err) {
         }
     });
+    chatAjax();
 }
 
 $(".buttonComponents_circle__2iQ3w").on("click", function () {
@@ -111,6 +169,7 @@ $(".buttonComponents_circle__2iQ3w").on("click", function () {
         messageType: 1
     })
     send();
+    chatAjax();
 });
 
 
@@ -260,7 +319,31 @@ function send(){
         messageType:'UNREAD',
         chattingRoomId:receiverRoomId
     }))
-    console.log("~~~~send~~~~~~")
+    //
+    //
+    // // console.log(realDatas[0]) //채팅 내용
+    // // console.log(realDatas[1])
+    // // console.log(realDatas[2])
+    // // console.log(realDatas[3])
+    // // console.log(time[0])
+    // // console.log(time[1])
+    // chatroom = document.getElementById("chatroom");
+    //
+    // chatroom.innerHTML = chatroom.innerHTML
+    //     + " <div class=\"my chatTxt\">"
+    //     + " <p class=\"chatTxt\">"
+    //     + "<span class=\"chatTxtContents\">"
+    //     + "<a style=\"color: rgb(255, 255, 255);\">" +msg +"</a>"
+    //     + "</span>"
+    //     + "<div>"
+    //     + "<div class='timeWrap'>"
+    //     // +" <span class=\"check\">" + 1 +"</span>"
+    //     // + "<span class=\"time\">" + time[0]+ ":" + time[1]+"</span>"
+    //     + "</div>"
+    //     + "</div>"
+    //     +"</p>"
+    //     + "</div>"
+
 }
 
 function onOpen(){
@@ -275,6 +358,7 @@ function onOpen(){
 
 function onMessage(e) {
     data = e.data;
+    console.log(data);
     console.log("~~~~onMessage~~~~~~");
     let datas = data.replaceAll("\"", "");
     console.log(datas);
@@ -290,20 +374,89 @@ function onMessage(e) {
     // console.log(time[1])
     chatroom = document.getElementById("chatroom");
 
-chatroom.innerHTML = chatroom.innerHTML
-    + " <div class=\"my chatTxt\">"
-    + " <p class=\"chatTxt\">"
-    + "<span class=\"chatTxtContents\">"
-    + "<a style=\"color: rgb(255, 255, 255);\">" +realDatas[0] +"</a>"
-    + "</span>"
-    + "<div>"
-    + "<div class='timeWrap'>"
-    +" <span class=\"check\">" + 1 +"</span>"
-    + "<span class=\"time\">" + time[0]+ ":" + time[1]+"</span>"
-    + "</div>"
-    + "</div>"
-    +"</p>"
-    + "</div>"
+
+     // if(myWriter ==sessionId) { //내가 보내면 상대방 쪽에 보인다
+     //     chatroom.innerHTML = chatroom.innerHTML
+     //         +" <div class=\"my chatTxt\">"
+     //     + " <p class=\"chatTxt\">"
+     //     + "<span class=\"chatTxtContents\">"
+     //     + "<a style=\"color: rgb(255, 255, 255);\">" + realDatas[0] + "</a>"
+     //     + "</span>"
+     //     + "<div>"
+     //     + "<div class='timeWrap'>"
+     //     // + " <span class=\"check\">" + 1 + "</span>"
+     //     + "<span class=\"time\">" + time[0] + ":" + time[1] + "</span>"
+     //     + "</div>"
+     //     + "</div>"
+     //     + "</p>"
+     //     + "</div>"
+     // }else {
+     //     chatroom.innerHTML = chatroom.innerHTML
+     //      + " <div class=\"opponent\">"
+     //         + " <div class=\"thumb\">"
+     //         + "<a href=\"/people/dddog\" target=\"_blank\">"
+     //         + "<img src='" + profile + "' alt='chat_image'>"
+     //         + "</a>"
+     //         + "</div>"
+     //         + "<div class='userIdChatTxt'>"
+     //         + "<span class='userId'>" + nickName + "</span>"
+     //         + "<div class='chatTxt'>"
+     //         + "<span class='chatTxtContents'>"
+     //         + "<a style='color: rgb(51, 51, 51);'>" + realDatas[0] + "</a>"
+     //         + "</span>"
+     //         + "<div class='timeWrap'>"
+     //         + "<span class='time'>" + time[0] + ":" + time[1] + "</span>"
+     //         + "</div>"
+     //         + "</div>"
+     //         + "</div>"
+     //         + "</div>"
+     //
+     // }
+
+    let writerChatting = $(".writerType2").val();
+    console.log(writerChatting);
+    console.log(sessionId);
+
+
+     // if(check) { //내가 보내면 상대방 쪽에 보인다
+         chatroom.innerHTML = chatroom.innerHTML
+             +" <div class=\"my chatTxt\">"
+             + " <p class=\"chatTxt\">"
+             + "<span class=\"chatTxtContents\">"
+             + "<a style=\"color: rgb(255, 255, 255);\">" + realDatas[0] + "</a>"
+             + "</span>"
+             + "<div>"
+             + "<div class='timeWrap'>"
+             // + " <span class=\"check\">" + 1 + "</span>"
+             + "<span class=\"time\">" + time[0] + ":" + time[1] + "</span>"
+             + "</div>"
+             + "</div>"
+             + "</p>"
+             + "</div>"
+//      }else {
+//              chatroom.innerHTML = chatroom.innerHTML
+//
+//
+//                  + " <div class=\"opponent\">"
+//                  + " <div class=\"thumb\">"
+//                  + "<a href=\"/people/dddog\" target=\"_blank\">"
+//                  + "<img src='" + profile + "' alt='chat_image'>"
+//                  + "</a>"
+//                  + "</div>"
+//                  + "<div class='userIdChatTxt'>"
+//                  + "<span class='userId'>" + nickName + "</span>"
+//                  + "<div class='chatTxt'>"
+//                  + "<span class='chatTxtContents'>"
+//                  + "<a style='color: rgb(51, 51, 51);'>" + realDatas[0] + "</a>"
+//                  + "</span>"
+//                  + "<div class='timeWrap'>"
+//                  + "<span class='time'>" + time[0] + ":" + time[1] + "</span>"
+//                  + "</div>"
+//                  + "</div>"
+//                  + "</div>"
+//                  + "</div>"
+// }
+    chatAjax();
 }
 
 function onClose(){
